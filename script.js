@@ -1,5 +1,5 @@
 emailjs.init({
-    publicKey: "Guuv0-3BSaDwwgi5E",
+    publicKey: "MjRM1_6Bb8yJSG3d0",
 });
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
@@ -170,8 +170,8 @@ form.addEventListener("submit", function (e) {
     formMessage.style.color = "#00bfff";
 
     emailjs.send(
-    "service_xz2fssc",
-    "template_i22k6em",
+    "service_rumjowb",
+    "template_malid0j",
         {
             name: name,
             email: email,
