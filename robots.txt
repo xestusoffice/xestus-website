@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xestusoffice.github.io/xestus-website/sitemap.xml
