@@ -4,8 +4,15 @@ emailjs.init({
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 
+console.log(menuToggle);
+console.log(navLinks);
+
 menuToggle.addEventListener("click", () => {
+
+    console.log("Menu clicked");
+
     navLinks.classList.toggle("active");
+
 });
 
 const navItems = document.querySelectorAll(".nav-link");
