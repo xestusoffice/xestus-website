@@ -757,8 +757,9 @@ body > *:not(.cursor-glow){
 }
 
 .project-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 15px 35px rgba(0,191,255,.25);
+    transform:translateY(-12px) scale(1.03);
+    box-shadow:0 20px 45px rgba(0,191,255,.30);
+    border-color:#00bfff;
 }
 
 .project-card h3{
@@ -770,6 +771,18 @@ body > *:not(.cursor-glow){
 .project-card p{
     color:#d0d0d0;
     line-height:1.8;
+}
+
+.project-card span{
+    display:inline-block;
+    margin-top:20px;
+    padding:8px 16px;
+    border-radius:30px;
+    background:rgba(0,191,255,.12);
+    color:#00bfff;
+    font-size:14px;
+    font-weight:600;
+    border:1px solid rgba(0,191,255,.35);
 }
 
 /* =========================
@@ -970,4 +983,17 @@ body > *:not(.cursor-glow){
 
 .contact-links a{
     text-decoration:none;
+}
+
+.project-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+.project-buttons a{
+    padding:10px 20px;
+    font-size:14px;
 }
