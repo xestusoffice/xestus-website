@@ -377,28 +377,16 @@ nav{
     background:#101827;
 }
 
-.founder-container{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:60px;
-
-    flex-wrap:wrap;
-}
-
-.founder-image img{
-
+.founder-container img{
     width:320px;
+    height:auto;
+    aspect-ratio:5/6;
+    object-fit:cover;
 
     border-radius:20px;
-
-    border:3px solid var(--primary);
-
-    box-shadow:0 20px 40px rgba(0,191,255,.2);
+    border:3px solid #00bfff;
+    box-shadow:0 15px 35px rgba(0,191,255,.25);
+    transition:.35s;
 }
 
 .founder-content{
