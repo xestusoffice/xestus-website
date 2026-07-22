@@ -137,12 +137,12 @@ nav{
 }
 
 .btn-primary{
-    background:#00bfff;
-    color:white;
+    background:#0078d4;
+    color:#ffffff;
 }
 
 .btn-primary:hover{
-    background:#0099cc;
+    background:#005fa3;
     transform:translateY(-4px);
 }
 
