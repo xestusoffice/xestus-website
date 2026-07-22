@@ -412,7 +412,7 @@ nav{
 
 .founder-content p{
 
-    color:#d5d5d5;
+    color:#e2e8f0;
 
     line-height:1.8;
 
@@ -606,7 +606,7 @@ footer p{
 ========================= */
 
 .hidden{
-    opacity:0;
+    opacity:1;
     transform:translateY(60px);
     transition:all .8s ease;
 }
