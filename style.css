@@ -1064,3 +1064,48 @@ body > *:not(.cursor-glow){
 .project-card{
     overflow:hidden;
 }
+
+/*==============================
+404 PAGE
+==============================*/
+
+.error-page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+    background:#0b0f19;
+}
+
+.error-container{
+    max-width:700px;
+}
+
+.error-code{
+    font-size:140px;
+    color:#00bfff;
+    margin-bottom:10px;
+    text-shadow:0 0 30px rgba(0,191,255,.45);
+}
+
+.error-container h2{
+    font-size:42px;
+    color:white;
+    margin-bottom:20px;
+}
+
+.error-container p{
+    font-size:20px;
+    color:#d5d5d5;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.error-container .btn-primary{
+    display:inline-block;
+    padding:18px 40px;
+    border-radius:12px;
+    text-decoration:none;
+}
