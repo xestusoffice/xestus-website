@@ -243,3 +243,90 @@ serviceCards.forEach(card => {
     });
 
 });
+
+const tiltCards = document.querySelectorAll(".tilt-card");
+
+tiltCards.forEach(card=>{
+
+    card.addEventListener("mousemove",(e)=>{
+
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = -(y-centerY)/18;
+        const rotateY = (x-centerX)/18;
+
+        card.style.transform =
+        `perspective(1000px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        scale(1.03)`;
+
+    });
+
+    card.addEventListener("mouseleave",()=>{
+
+        card.style.transform =
+        "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
+
+    });
+
+});
+
+const cards = document.querySelectorAll(".project-card");
+
+cards.forEach(card=>{
+
+    const light = card.querySelector(".light");
+
+    card.addEventListener("mousemove",(e)=>{
+
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+
+        const y = e.clientY - rect.top;
+
+        light.style.left = `${x}px`;
+
+        light.style.top = `${y}px`;
+
+    });
+
+});
+
+const magneticButtons = document.querySelectorAll(".magnetic-btn");
+
+magneticButtons.forEach(button=>{
+
+    button.addEventListener("mousemove",(e)=>{
+
+        const rect = button.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+
+        const y = e.clientY - rect.top;
+
+        const moveX = (x - rect.width/2)/5;
+
+        const moveY = (y - rect.height/2)/5;
+
+        button.style.transform =
+        `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+
+    });
+
+    button.addEventListener("mouseleave",()=>{
+
+        button.style.transform =
+        "translate(0px,0px) scale(1)";
+
+    });
+
+});

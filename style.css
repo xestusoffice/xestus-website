@@ -1080,14 +1080,16 @@ body > *:not(.cursor-glow){
 }
 
 .project-container{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    flex-wrap:wrap;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:25px;
+    margin-top:50px;
 }
 
 .project-card{
-    width:320px;
+    width:100%;
+    height:auto;
+    min-height:560px;
     background:#131c30;
     padding:35px 30px;
     border-radius:20px;
@@ -1099,6 +1101,54 @@ body > *:not(.cursor-glow){
     transform:translateY(-12px) scale(1.03);
     box-shadow:0 20px 45px rgba(0,191,255,.30);
     border-color:#00bfff;
+}
+
+.project-image{
+
+    position:relative;
+
+    overflow:hidden;
+
+    height:190px;
+
+}
+
+.project-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(15,23,42,.95),
+        rgba(15,23,42,.15),
+        transparent
+    );
+}
+
+.project-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:
+        transform .7s ease,
+        filter .7s ease;
+}
+
+.project-card:hover .project-image img{
+
+    transform:scale(1.08) rotate(1deg);
+
+    filter:
+        brightness(1.08)
+        contrast(1.08)
+        saturate(1.15);
+
+}
+
+.project-content{
+
+    padding:28px;
+
 }
 
 .project-card h3{
@@ -1569,5 +1619,510 @@ nav.scrolled{
     justify-content:center;
 
 }
+
+}
+
+/* =========================
+   PORTFOLIO
+========================= */
+
+.portfolio{
+
+    padding:120px 8%;
+
+    background:#080d18;
+
+}
+
+.portfolio-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+
+    gap:35px;
+
+}
+
+.project-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(0,191,255,.18) 45%,
+        rgba(255,255,255,.15) 50%,
+        rgba(0,191,255,.18) 55%,
+        transparent 100%
+    );
+
+    transform:translateX(-150%);
+
+    transition:transform .8s ease;
+
+    pointer-events:none;
+
+}
+
+.project-card:hover::before{
+
+    transform:translateX(150%);
+
+}
+
+.project-card:hover{
+
+    transform:translateY(-12px);
+
+    border-color:#00bfff;
+
+    box-shadow:0 25px 60px rgba(0,191,255,.18);
+
+}
+
+/* =========================
+   PORTFOLIO
+========================= */
+
+.portfolio{
+    padding:120px 8%;
+    background:#0b1220;
+}
+
+.portfolio-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+    gap:35px;
+    margin-top:60px;
+}
+
+.project-card{
+
+    display:flex;
+    flex-direction:column;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    backdrop-filter:blur(18px);
+
+    transition:
+    transform .45s ease,
+    box-shadow .45s ease,
+    border-color .45s ease;
+
+}
+
+.tilt-card{
+
+    transform-style:preserve-3d;
+
+    transition:
+        transform .18s ease,
+        box-shadow .35s ease;
+
+    will-change:transform;
+
+}
+
+.project-card:hover{
+
+    transform:
+    translateY(-12px)
+    scale(1.02);
+
+    border-color:#00bfff;
+
+    box-shadow:
+    0 25px 70px rgba(0,191,255,.22);
+
+}
+
+.project-image{
+
+    position:relative;
+
+    height:240px;
+
+    overflow:hidden;
+
+    background:#10182b;
+
+}
+
+.project-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:
+    transform .7s ease,
+    filter .7s ease;
+
+}
+
+.project-card:hover .project-image img{
+
+    transform:scale(1.08);
+
+    filter:brightness(1.08);
+
+}
+
+.project-card:hover h3{
+
+    color:#39d0ff;
+
+}
+
+.project-image::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    
+    linear-gradient(
+    to top,
+    rgba(8,17,31,.75),
+    transparent);
+    transition:.5s ease;
+}
+
+.project-content{
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    justify-content:space-between;
+}
+
+.project-category{
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    z-index:10;
+
+    background:rgba(0,191,255,.15);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(0,191,255,.45);
+
+    color:#7bdcff;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+    letter-spacing:.6px;
+
+    transition:.35s ease;
+
+}
+
+.project-content h3{
+
+    font-size:1.7rem;
+
+    color:#fff;
+
+    transition:.35s ease;
+
+    position:relative;
+
+    display:inline-block;
+
+}
+
+.project-content p{
+    color:#b8bfd2;
+    line-height:1.2;
+    margin-bottom:8px;
+}
+
+.project-tech{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:18px;
+}
+
+.project-tech span{
+
+    padding:8px 14px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(0,191,255,.25);
+
+    color:#9fe7ff;
+
+    font-size:.8rem;
+
+}
+
+.project-buttons{
+    display:flex;
+    gap:12px;
+    margin-top:auto;
+}
+
+.project-buttons a{
+    flex:1;
+    text-align:center;
+    padding:12px 20px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:.9rem;
+    transition:.3s;
+}
+
+.btn-demo{
+    background:#00bfff;
+    color:#fff;
+}
+
+.btn-demo:hover{
+    background:#009dd9;
+    transform:translateY(-3px);
+}
+
+.btn-github{
+    border:1px solid #00bfff;
+    color:#00bfff;
+}
+
+.btn-github:hover{
+    background:#00bfff;
+    color:#fff;
+    transform:translateY(-3px);
+}
+
+@media (max-width:1200px){
+    .project-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .project-card{
+        margin:auto;
+    }
+}
+
+@media (max-width:768px){
+    .project-container{
+        grid-template-columns:1fr;
+    }
+
+    .project-card{
+        max-width:100%;
+    }
+}
+
+.project-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.08),
+        transparent
+    );
+
+    transform:translateX(-120%);
+
+    transition:1s;
+
+}
+.project-card:hover::before{
+
+    transform:translateX(120%);
+
+}
+
+.project-card:hover .project-category{
+
+    transform:translateY(-4px);
+
+    background:#00bfff;
+
+    color:#fff;
+
+    box-shadow:0 8px 25px rgba(0,191,255,.35);
+
+}
+
+.project-content h3::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:#00bfff;
+
+    transition:.4s ease;
+
+}
+
+.project-card:hover h3{
+
+    color:#4ad8ff;
+
+    text-shadow:
+        0 0 10px rgba(0,191,255,.5),
+        0 0 25px rgba(0,191,255,.35);
+
+}
+
+.project-card:hover h3::after{
+
+    width:100%;
+
+}
+
+.project-buttons a{
+
+    position:relative;
+
+    transition:
+        transform .25s ease,
+        box-shadow .3s ease,
+        background .3s ease,
+        color .3s ease;
+
+}
+
+.project-buttons a:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 0 15px rgba(0,191,255,.35),
+        0 10px 35px rgba(0,191,255,.25);
+
+}
+
+.project-card:hover .project-image::after{
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(0,191,255,.28),
+        rgba(15,23,42,.18),
+        transparent
+    );
+
+}
+
+@keyframes borderFlow{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    100%{
+        background-position:200% 50%;
+    }
+
+}
+
+@keyframes borderFlow{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    100%{
+        background-position:200% 50%;
+    }
+
+}
+
+.light{
+
+    position:absolute;
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        rgba(0,191,255,.28),
+        transparent 70%
+    );
+
+    pointer-events:none;
+
+    transform:translate(-50%,-50%);
+
+    opacity:0;
+
+    transition:opacity .3s ease;
+
+}
+
+.project-card:hover .light{
+
+    opacity:1;
+
+}
+
+.magnetic-btn{
+
+    position:relative;
+
+    transition:
+    transform .18s ease,
+    box-shadow .3s ease,
+    background .3s ease;
+
+    will-change:transform;
 
 }
