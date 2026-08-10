@@ -3,7 +3,6 @@
     padding:0;
     box-sizing:border-box;
 }
-
 :root{
     --bg:#0b0f19;
     --primary:#00bfff;
@@ -31,7 +30,7 @@ nav{
 
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    align-items:flex-start;
 
     padding:0 45px;
 
@@ -198,20 +197,25 @@ nav{
 /* =========================
    HERO SECTION
 ========================= */
-
 .hero{
     min-height:100vh;
+    box-sizing:border-box;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     text-align:center;
+
     padding:120px 8% 80px;
+
     position:relative;
     overflow:hidden;
+
     background:
-    radial-gradient(circle at top right, rgba(0,191,255,.12), transparent 40%),
-    radial-gradient(circle at bottom left, rgba(0,191,255,.08), transparent 35%),
-    linear-gradient(135deg,#080c16,#10192f,#080c16);
+        radial-gradient(circle at top right, rgba(0,191,255,.12), transparent 40%),
+        radial-gradient(circle at bottom left, rgba(0,191,255,.08), transparent 35%),
+        linear-gradient(135deg,#080c16,#10192f,#080c16);
 }
 
 .hero-content{
@@ -224,7 +228,10 @@ nav{
     font-weight:900;
     letter-spacing:4px;
     line-height:1.05;
+
+    margin-top:0;
     margin-bottom:18px;
+
     text-transform:uppercase;
     color:#ffffff;
 }
@@ -1680,11 +1687,13 @@ nav.scrolled{
 
 .project-card:hover{
 
-    transform:translateY(-12px);
+    transform:translateY(-8px);
 
-    border-color:#00bfff;
+    border-color:rgba(0,191,255,.75);
 
-    box-shadow:0 25px 60px rgba(0,191,255,.18);
+    box-shadow:
+        0 18px 45px rgba(0,191,255,.12),
+        0 0 25px rgba(0,191,255,.08);
 
 }
 
@@ -1970,7 +1979,81 @@ nav.scrolled{
 
     transition:1s;
 
+    pointer-events:none;
+
+    z-index:1;
 }
+
+
+.project-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:24px;
+
+    padding:1.5px;
+
+    background:
+    linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(0,191,255,.15) 20%,
+        rgba(0,191,255,1) 38%,
+        rgba(255,255,255,1) 50%,
+        rgba(0,191,255,1) 62%,
+        rgba(0,191,255,.15) 80%,
+        transparent 100%
+    );
+
+    background-size:300% 300%;
+
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity .4s ease;
+
+    z-index:2;
+}
+
+
+.project-card:hover::after{
+
+    opacity:1;
+
+    animation:auroraFlow 2s linear infinite;
+
+}
+
+
+@keyframes auroraFlow{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
 .project-card:hover::before{
 
     transform:translateX(120%);
@@ -2125,4 +2208,69 @@ nav.scrolled{
 
     will-change:transform;
 
+}
+
+.cursor-dot{
+
+    position:fixed;
+
+    width:7px;
+    height:7px;
+
+    background:#00bfff;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:99999;
+
+    transform:translate(-50%,-50%);
+
+    box-shadow:
+        0 0 10px rgba(0,191,255,.9),
+        0 0 20px rgba(0,191,255,.5);
+
+}
+
+
+.cursor-outline{
+
+    position:fixed;
+
+    width:34px;
+    height:34px;
+
+    border:1px solid rgba(0,191,255,.7);
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:99998;
+
+    transform:translate(-50%,-50%);
+
+    transition:
+        width .2s ease,
+        height .2s ease,
+        border-color .2s ease;
+
+}
+
+#progress-bar{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:0%;
+    height:3px;
+
+    background:#00bfff;
+
+    z-index:99999;
+
+    box-shadow:
+        0 0 8px rgba(0,191,255,.8),
+        0 0 18px rgba(0,191,255,.4);
 }

@@ -302,31 +302,45 @@ cards.forEach(card=>{
 });
 
 const magneticButtons = document.querySelectorAll(".magnetic-btn");
+console.log("Magnetic buttons found:", magneticButtons.length);
+magneticButtons.forEach(button => {
 
-magneticButtons.forEach(button=>{
-
-    button.addEventListener("mousemove",(e)=>{
+    button.addEventListener("mousemove", (e) => {
 
         const rect = button.getBoundingClientRect();
 
         const x = e.clientX - rect.left;
-
         const y = e.clientY - rect.top;
-
-        const moveX = (x - rect.width/2)/5;
-
-        const moveY = (y - rect.height/2)/5;
+        console.log("Mouse moving on button");
+        const moveX = (x - rect.width / 2) / 7;
+        const moveY = (y - rect.height / 2) / 7;
 
         button.style.transform =
-        `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+            `translate(${moveX}px, ${moveY}px) scale(1.05)`;
 
     });
 
-    button.addEventListener("mouseleave",()=>{
+    button.addEventListener("mouseleave", () => {
 
         button.style.transform =
-        "translate(0px,0px) scale(1)";
+            "translate(0px, 0px) scale(1)";
 
     });
+
+});
+
+const cursorDot = document.querySelector(".cursor-dot");
+const cursorOutline = document.querySelector(".cursor-outline");
+
+window.addEventListener("mousemove", (e) => {
+
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    cursorDot.style.left = `${mouseX}px`;
+    cursorDot.style.top = `${mouseY}px`;
+
+    cursorOutline.style.left = `${mouseX}px`;
+    cursorOutline.style.top = `${mouseY}px`;
 
 });
