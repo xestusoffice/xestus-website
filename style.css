@@ -2274,3 +2274,234 @@ nav.scrolled{
         0 0 8px rgba(0,191,255,.8),
         0 0 18px rgba(0,191,255,.4);
 }
+
+/* =========================================
+   XESTUS CONNECTION LOST
+========================================= */
+
+.connection-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 191, 255, 0.10),
+            transparent 45%
+        ),
+        rgba(4, 8, 18, 0.96);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    text-align: center;
+}
+
+.connection-overlay.show {
+    display: flex;
+    animation: connectionFadeIn .35s ease;
+}
+
+.connection-box {
+    width: min(520px, 100%);
+    padding: 45px 30px;
+
+    border: 1px solid rgba(0, 191, 255, .18);
+    border-radius: 24px;
+
+    background: rgba(12, 20, 38, .75);
+
+    box-shadow:
+        0 0 60px rgba(0, 191, 255, .08),
+        inset 0 0 40px rgba(255, 255, 255, .015);
+
+    animation: connectionFloat 3s ease-in-out infinite;
+}
+
+.connection-icon {
+    font-size: 58px;
+    margin-bottom: 20px;
+
+    filter: drop-shadow(
+        0 0 15px rgba(0, 191, 255, .5)
+    );
+
+    animation: signalLost 1.5s infinite;
+}
+
+.connection-status {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #8b96aa;
+    margin-bottom: 15px;
+}
+
+.connection-status span {
+    color: #00bfff;
+    font-weight: 700;
+}
+
+.connection-box h2 {
+    margin: 0 0 15px;
+
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.15;
+
+    color: #fff;
+}
+
+.connection-box p {
+    margin: 0 auto 28px;
+
+    max-width: 420px;
+
+    color: #b9c1cf;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.connection-loader {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-bottom: 28px;
+}
+
+.connection-loader span {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+    background: #00bfff;
+
+    animation: connectionDots 1.2s infinite ease-in-out;
+}
+
+.connection-loader span:nth-child(2) {
+    animation-delay: .15s;
+}
+
+.connection-loader span:nth-child(3) {
+    animation-delay: .3s;
+}
+
+#retryConnection {
+    border: none;
+    outline: none;
+
+    padding: 14px 28px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #00bfff,
+        #008cff
+    );
+
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0, 191, 255, .22);
+
+    transition: .3s ease;
+}
+
+#retryConnection:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 191, 255, .4);
+}
+
+.connection-box small {
+    display: block;
+
+    margin-top: 22px;
+
+    color: #687386;
+    font-size: 11px;
+}
+
+
+/* Animations */
+
+@keyframes connectionFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes connectionFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes signalLost {
+    0%, 100% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: rotate(-12deg);
+        opacity: .55;
+    }
+}
+
+@keyframes connectionDots {
+    0%, 80%, 100% {
+        transform: scale(.6);
+        opacity: .4;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .connection-box {
+        padding: 38px 22px;
+        border-radius: 20px;
+    }
+
+    .connection-icon {
+        font-size: 48px;
+    }
+
+    .connection-box p {
+        font-size: 14px;
+    }
+
+    #retryConnection {
+        width: 100%;
+    }
+}

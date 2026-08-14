@@ -344,3 +344,105 @@ window.addEventListener("mousemove", (e) => {
     cursorOutline.style.top = `${mouseY}px`;
 
 });
+
+/* =========================================
+   XESTUS CONNECTION MONITOR
+========================================= */
+
+const connectionOverlay =
+    document.getElementById("connectionOverlay");
+
+const retryConnection =
+    document.getElementById("retryConnection");
+
+const connectionMessage =
+    document.getElementById("connectionMessage");
+
+
+const funnyMessages = [
+    "The internet apparently went for a coffee break. ☕",
+
+    "Our signal took a wrong turn somewhere. 🛰️",
+
+    "The Wi-Fi has entered its mysterious era. 📡",
+
+    "Houston, we have... no internet. 🚀",
+
+    "The internet ghosted us. 👻",
+
+    "Our packets are currently sightseeing. 📦",
+
+    "XESTUS is ready. The internet is not. 😐"
+];
+
+
+function showConnectionLost() {
+
+    if (!connectionOverlay) return;
+
+    const randomMessage =
+        funnyMessages[
+            Math.floor(
+                Math.random() * funnyMessages.length
+            )
+        ];
+
+    connectionMessage.textContent = randomMessage;
+
+    connectionOverlay.classList.add("show");
+}
+
+
+function hideConnectionLost() {
+
+    if (!connectionOverlay) return;
+
+    connectionOverlay.classList.remove("show");
+}
+
+
+/* Internet disconnected */
+
+window.addEventListener("offline", () => {
+    showConnectionLost();
+});
+
+
+/* Internet restored */
+
+window.addEventListener("online", () => {
+    hideConnectionLost();
+});
+
+
+/* Manual retry */
+
+if (retryConnection) {
+
+    retryConnection.addEventListener("click", async () => {
+
+        retryConnection.textContent =
+            "Checking connection...";
+
+        try {
+
+            await fetch(
+                window.location.href,
+                {
+                    method: "HEAD",
+                    cache: "no-store"
+                }
+            );
+
+            hideConnectionLost();
+
+        } catch (error) {
+
+            connectionMessage.textContent =
+                "Still offline. The internet is being dramatic. 😭";
+
+            retryConnection.textContent =
+                "↻ Try Again";
+        }
+    });
+}
