@@ -349,100 +349,104 @@ window.addEventListener("mousemove", (e) => {
    XESTUS CONNECTION MONITOR
 ========================================= */
 
-const connectionOverlay =
-    document.getElementById("connectionOverlay");
+document.addEventListener("DOMContentLoaded", () => {
 
-const retryConnection =
-    document.getElementById("retryConnection");
+    const connectionOverlay =
+        document.getElementById("connectionOverlay");
 
-const connectionMessage =
-    document.getElementById("connectionMessage");
+    const retryConnection =
+        document.getElementById("retryConnection");
 
-
-const funnyMessages = [
-    "The internet apparently went for a coffee break. ☕",
-
-    "Our signal took a wrong turn somewhere. 🛰️",
-
-    "The Wi-Fi has entered its mysterious era. 📡",
-
-    "Houston, we have... no internet. 🚀",
-
-    "The internet ghosted us. 👻",
-
-    "Our packets are currently sightseeing. 📦",
-
-    "XESTUS is ready. The internet is not. 😐"
-];
+    const connectionMessage =
+        document.getElementById("connectionMessage");
 
 
-function showConnectionLost() {
-
-    if (!connectionOverlay) return;
-
-    const randomMessage =
-        funnyMessages[
-            Math.floor(
-                Math.random() * funnyMessages.length
-            )
-        ];
-
-    connectionMessage.textContent = randomMessage;
-
-    connectionOverlay.classList.add("show");
-}
+    if (!connectionOverlay) {
+        console.warn("XESTUS: Connection overlay not found.");
+        return;
+    }
 
 
-function hideConnectionLost() {
-
-    if (!connectionOverlay) return;
-
-    connectionOverlay.classList.remove("show");
-}
-
-
-/* Internet disconnected */
-
-window.addEventListener("offline", () => {
-    showConnectionLost();
-});
+    const funnyMessages = [
+        "The internet apparently went for a coffee break. ☕",
+        "Our signal took a wrong turn somewhere. 🛰️",
+        "The Wi-Fi has entered its mysterious era. 📡",
+        "Houston, we have... no internet. 🚀",
+        "The internet ghosted us. 👻",
+        "Our packets are currently sightseeing. 📦",
+        "XESTUS is ready. The internet is not. 😐"
+    ];
 
 
-/* Internet restored */
+    function showConnectionLost() {
 
-window.addEventListener("online", () => {
-    hideConnectionLost();
-});
+        const randomMessage =
+            funnyMessages[
+                Math.floor(
+                    Math.random() * funnyMessages.length
+                )
+            ];
+
+        connectionMessage.textContent =
+            randomMessage;
+
+        connectionOverlay.classList.add("show");
+    }
 
 
-/* Manual retry */
+    function hideConnectionLost() {
 
-if (retryConnection) {
+        connectionOverlay.classList.remove("show");
+    }
 
-    retryConnection.addEventListener("click", async () => {
 
-        retryConnection.textContent =
-            "Checking connection...";
+    /* Internet disconnected */
 
-        try {
-
-            await fetch(
-                window.location.href,
-                {
-                    method: "HEAD",
-                    cache: "no-store"
-                }
-            );
-
-            hideConnectionLost();
-
-        } catch (error) {
-
-            connectionMessage.textContent =
-                "Still offline. The internet is being dramatic. 😭";
-
-            retryConnection.textContent =
-                "↻ Try Again";
-        }
+    window.addEventListener("offline", () => {
+        showConnectionLost();
     });
-}
+
+
+    /* Internet restored */
+
+    window.addEventListener("online", () => {
+        hideConnectionLost();
+    });
+
+
+    /* Manual retry */
+
+    if (retryConnection) {
+
+        retryConnection.addEventListener(
+            "click",
+            async () => {
+
+                retryConnection.textContent =
+                    "Checking connection...";
+
+                try {
+
+                    await fetch(
+                        window.location.href,
+                        {
+                            method: "HEAD",
+                            cache: "no-store"
+                        }
+                    );
+
+                    hideConnectionLost();
+
+                } catch (error) {
+
+                    connectionMessage.textContent =
+                        "Still offline. The internet is being dramatic. 😭";
+
+                    retryConnection.textContent =
+                        "↻ Try Again";
+                }
+            }
+        );
+    }
+
+});
