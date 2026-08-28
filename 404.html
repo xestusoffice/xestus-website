@@ -1,41 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>404 | XESTUS</title>
+  <title>404 | XESTUS</title>
 
-    <meta name="description" content="The page you are looking for could not be found. Return to XESTUS homepage.">
+  <meta name="description" content="Oops! This XESTUS page seems to have drifted into deep space.">
 
-    <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(80, 80, 255, 0.12), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255, 120, 40, 0.10), transparent 30%),
+        #050609;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.6;
+      background-image:
+        radial-gradient(circle, #fff 1px, transparent 1px),
+        radial-gradient(circle, #fff 1px, transparent 1px);
+      background-size: 90px 90px, 140px 140px;
+      background-position: 20px 30px, 70px 90px;
+    }
+
+    .container {
+      width: min(900px, 92%);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 5px;
+      margin-bottom: 35px;
+    }
+
+    .logo span {
+      color: #ff7200;
+    }
+
+    .error-code {
+      font-size: clamp(110px, 25vw, 230px);
+      line-height: 0.8;
+      font-weight: 900;
+      letter-spacing: -12px;
+      background: linear-gradient(180deg, #ffffff, #777);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
+
+    .error-code::after {
+      content: "404";
+      position: absolute;
+      inset: 0;
+      color: #ff7200;
+      opacity: 0.12;
+      transform: translate(7px, 4px);
+      z-index: -1;
+    }
+
+    .signal {
+      margin: 45px auto 25px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 7px;
+      height: 45px;
+    }
+
+    .signal span {
+      width: 8px;
+      background: #ff7200;
+      border-radius: 5px;
+      animation: signal 1s infinite ease-in-out;
+    }
+
+    .signal span:nth-child(1) {
+      height: 15px;
+      animation-delay: 0s;
+    }
+
+    .signal span:nth-child(2) {
+      height: 25px;
+      animation-delay: 0.15s;
+    }
+
+    .signal span:nth-child(3) {
+      height: 38px;
+      animation-delay: 0.3s;
+    }
+
+    .signal span:nth-child(4) {
+      height: 28px;
+      animation-delay: 0.45s;
+    }
+
+    .signal span:nth-child(5) {
+      height: 12px;
+      animation-delay: 0.6s;
+    }
+
+    @keyframes signal {
+      50% {
+        opacity: 0.25;
+        transform: scaleY(0.35);
+      }
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      margin-bottom: 15px;
+    }
+
+    .message {
+      color: #aaa;
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 25px;
+      padding: 10px 17px;
+      border: 1px solid #333;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.04);
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #ff3b30;
+      box-shadow: 0 0 12px #ff3b30;
+      animation: blink 1.2s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0.25;
+      }
+    }
+
+    .buttons {
+      margin-top: 35px;
+    }
+
+    .home-btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 10px;
+      background: #ff7200;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.25s;
+      box-shadow: 0 10px 30px rgba(255,114,0,0.18);
+    }
+
+    .home-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(255,114,0,0.3);
+    }
+
+    .joke {
+      margin-top: 30px;
+      color: #666;
+      font-size: 13px;
+    }
+
+    .joke strong {
+      color: #888;
+    }
+
+    .orbit {
+      position: absolute;
+      width: 480px;
+      height: 180px;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 50%;
+      left: 50%;
+      top: 42%;
+      transform: translate(-50%, -50%) rotate(-12deg);
+      pointer-events: none;
+    }
+
+    .planet {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      background: #ff7200;
+      border-radius: 50%;
+      top: -6px;
+      left: 50%;
+      box-shadow: 0 0 20px #ff7200;
+    }
+
+    @media (max-width: 600px) {
+      .orbit {
+        width: 300px;
+        height: 120px;
+      }
+
+      .error-code {
+        letter-spacing: -7px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<section class="error-page">
+  <div class="stars"></div>
 
-    <div class="error-container">
+  <main class="container">
 
-        <h1 class="error-code">404</h1>
-
-        <h2>Oops!</h2>
-
-        <p>
-            Looks like this page drifted into deep space.
-            <br>
-            The page you're looking for doesn't exist.
-        </p>
-
-        <a href="index.html" class="btn-primary">
-            ← Back to Home
-        </a>
-
+    <div class="logo">
+      XESTU<span>S</span>
     </div>
 
-</section>
+    <div class="orbit">
+      <div class="planet"></div>
+    </div>
+
+    <div class="error-code">404</div>
+
+    <div class="signal">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <h1>Houston... we lost this page. 🚀</h1>
+
+    <p class="message">
+      The page you're looking for has either disappeared,
+      gone for a coffee, or simply decided that it needs
+      a little more processing power.
+    </p>
+
+    <div class="status">
+      <span class="dot"></span>
+      XESTUS connection: <strong>PAGE NOT FOUND</strong>
+    </div>
+
+    <div class="buttons">
+      <a href="/" class="home-btn">
+        ← Take Me Home
+      </a>
+    </div>
+
+    <p class="joke">
+      <strong>Error 404:</strong> Even intelligent systems
+      occasionally lose the plot.
+    </p>
+
+  </main>
 
 </body>
-
 </html>
