@@ -450,3 +450,79 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+/* =========================================
+   XESTUS ORB - SMOOTH MOUSE INTERACTION
+========================================= */
+
+const xestusOrb = document.querySelector(".xestus-3d-orb");
+
+if (xestusOrb) {
+
+    const orbCore = xestusOrb.querySelector(".orb-core");
+
+    // Default values
+    xestusOrb.style.setProperty("--mouse-x", "0px");
+    xestusOrb.style.setProperty("--mouse-y", "0px");
+    xestusOrb.style.setProperty("--mouse-rx", "12deg");
+    xestusOrb.style.setProperty("--mouse-ry", "-15deg");
+
+    document.addEventListener("mousemove", (e) => {
+
+        const mouseX =
+            (e.clientX / window.innerWidth - 0.5) * 2;
+
+        const mouseY =
+            (e.clientY / window.innerHeight - 0.5) * 2;
+
+        // Orb movement
+        const moveX = mouseX * 18;
+        const moveY = mouseY * 18;
+
+        // Orb rotation
+        const rotateX = 12 + (mouseY * -10);
+        const rotateY = -15 + (mouseX * 14);
+
+        xestusOrb.style.setProperty(
+            "--mouse-x",
+            `${moveX}px`
+        );
+
+        xestusOrb.style.setProperty(
+            "--mouse-y",
+            `${moveY}px`
+        );
+
+        xestusOrb.style.setProperty(
+            "--mouse-rx",
+            `${rotateX}deg`
+        );
+
+        xestusOrb.style.setProperty(
+            "--mouse-ry",
+            `${rotateY}deg`
+        );
+    });
+
+    // Extra glow when cursor is near the Orb
+    document.addEventListener("mousemove", (e) => {
+
+        const rect = xestusOrb.getBoundingClientRect();
+
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const distance = Math.sqrt(
+            Math.pow(e.clientX - centerX, 2) +
+            Math.pow(e.clientY - centerY, 2)
+        );
+
+        if (distance < 180) {
+            xestusOrb.classList.add("orb-active");
+        } else {
+            xestusOrb.classList.remove("orb-active");
+        }
+    });
+
+}
+   

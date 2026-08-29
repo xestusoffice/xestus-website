@@ -271,9 +271,11 @@ nav{
         linear-gradient(135deg,#080c16,#10192f,#080c16);
 }
 
-.hero-content{
-    max-width:900px;
-    z-index:2;
+.hero-content {
+    position: relative;
+    max-width: 900px;
+    width: 70%;
+    z-index: 3;
 }
 
 .hero h1{
@@ -2697,4 +2699,485 @@ nav.scrolled{
 
 .project-link:hover span{
     transform:translateX(6px);
+}
+
+/* ================================
+   XESTUS 3D ORB ANIMATION
+   ================================ */
+
+.xestus-3d-orb {
+    position: absolute;
+
+    right: 8%;
+    top: 52%;
+
+    width: 260px;
+    height: 260px;
+
+    transform: translateY(-50%);
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    /* keeps the orb visually separated from hero text */
+    max-width: 260px;
+}
+
+/* Glowing central core */
+
+.orb-core {
+    position: absolute;
+    width: 105px;
+    height: 105px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff 0%,
+            #d9e2ea 8%,
+            #0b3040 38%,
+            #03131d 72%,
+            #000000 100%
+        );
+
+    box-shadow:
+        0 0 20px rgba(255, 120, 0, 0.45),
+        0 0 50px rgba(0, 190, 255, 0.25),
+        inset 0 0 25px rgba(255, 255, 255, 0.15);
+
+    animation: none;
+}
+/* X inside the core */
+
+.orb-core span {
+    font-size: 48px;
+    font-weight: 900;
+    color: #ffffff;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.9),
+        0 0 22px rgba(255,120,0,0.8);
+
+    animation: coreGlow 2s ease-in-out infinite alternate;
+}
+
+/* Orbital rings */
+
+.orb-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: 230px;
+    height: 85px;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(255, 140, 40, 0.45);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 12px rgba(255, 120, 0, 0.15);
+
+    transform-style: preserve-3d;
+}
+
+.orb-ring-1 {
+    animation: orbitOne 7s linear infinite;
+}
+
+.orb-ring-2 {
+    width: 230px;
+    height: 85px;
+
+    border-color: rgba(80, 200, 255, 0.30);
+
+    animation: orbitTwo 9s linear infinite reverse;
+}
+
+/* Soft surrounding glow */
+
+.xestus-3d-orb::before {
+    content: "";
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(255, 120, 0, 0.16),
+        rgba(0, 180, 255, 0.06) 45%,
+        transparent 70%
+    );
+
+    filter: blur(18px);
+
+    animation: ambientGlow 4s ease-in-out infinite;
+}
+
+/* ================================
+   ANIMATIONS
+   ================================ */
+
+@keyframes orbPulse {
+
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.06);
+    }
+}
+
+@keyframes coreGlow {
+
+    from {
+        text-shadow:
+            0 0 8px rgba(255,255,255,0.8),
+            0 0 18px rgba(255,120,0,0.55);
+    }
+
+    to {
+        text-shadow:
+            0 0 12px rgba(255,255,255,1),
+            0 0 30px rgba(255,120,0,1);
+    }
+}
+
+@keyframes orbitOne {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotateX(68deg)
+            rotateZ(0deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotateX(68deg)
+            rotateZ(360deg);
+    }
+}
+
+@keyframes orbitTwo {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotateX(68deg)
+            rotateY(45deg)
+            rotateZ(0deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotateX(68deg)
+            rotateY(45deg)
+            rotateZ(360deg);
+    }
+}
+
+@keyframes ambientGlow {
+
+    0%, 100% {
+        opacity: 0.55;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
+/* Mouse depth response */
+
+.orb-core {
+    transform:
+        translate(
+            var(--mouse-x, 0px),
+            var(--mouse-y, 0px)
+        )
+        rotateX(var(--tilt-x, 0deg))
+        rotateY(var(--tilt-y, 0deg));
+}
+
+/* =========================================
+   XESTUS ORB RESPONSIVE POSITION FIX
+========================================= */
+
+/* Desktop */
+@media (min-width: 801px) {
+
+    .xestus-3d-orb {
+        right: 1%;
+        top: 54%;
+        width: 230px;
+        height: 230px;
+    }
+
+    .orb-core {
+        width: 100px;
+        height: 100px;
+    }
+
+    .orb-core span {
+        font-size: 46px;
+    }
+
+    .orb-ring {
+        width: 210px;
+        height: 78px;
+    }
+
+    .orb-ring-2 {
+        width: 210px;
+        height: 78px;
+    }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (min-width: 601px) and (max-width: 800px) {
+
+    .xestus-3d-orb {
+        right: 2%;
+        top: 58%;
+        width: 190px;
+        height: 190px;
+
+        opacity: 0.8;
+    }
+
+    .orb-core {
+        width: 85px;
+        height: 85px;
+    }
+
+    .orb-core span {
+        font-size: 38px;
+    }
+
+    .orb-ring {
+        width: 170px;
+        height: 65px;
+    }
+
+    .orb-ring-2 {
+        width: 170px;
+        height: 65px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .xestus-3d-orb {
+        position: absolute;
+
+        left: 50%;
+        right: auto;
+
+        top: 6%;
+
+        width: 155px;
+        height: 155px;
+
+        transform: translateX(-50%);
+
+        opacity: 0.65;
+
+        z-index: 1;
+
+        pointer-events: none;
+    }
+
+    .orb-core {
+        width: 72px;
+        height: 72px;
+    }
+
+    .orb-core span {
+        font-size: 32px;
+    }
+
+    .orb-ring {
+        width: 135px;
+        height: 52px;
+    }
+
+    .orb-ring-2 {
+        width: 135px;
+        height: 52px;
+    }
+
+
+    /* Give the Hero content enough breathing room */
+
+    .hero-content {
+        position: relative;
+        z-index: 3;
+
+        width: 100%;
+        max-width: 100%;
+
+        padding-top: 125px;
+    }
+}
+
+/* =========================================
+   XESTUS ORB MOUSE INTERACTION
+========================================= */
+
+.xestus-3d-orb {
+    --mouse-x: 0px;
+    --mouse-y: 0px;
+    --mouse-rx: 12deg;
+    --mouse-ry: -15deg;
+}
+
+
+/* =========================================
+   CORE
+========================================= */
+
+.orb-core {
+    animation: orbPulse 3s ease-in-out infinite;
+}
+
+@keyframes orbPulse {
+
+    0%, 100% {
+        transform:
+            translate(
+                calc(-50% + var(--mouse-x)),
+                calc(-50% + var(--mouse-y))
+            )
+            rotateX(var(--mouse-rx))
+            rotateY(var(--mouse-ry))
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(
+                calc(-50% + var(--mouse-x)),
+                calc(-50% + var(--mouse-y))
+            )
+            rotateX(var(--mouse-rx))
+            rotateY(var(--mouse-ry))
+            scale(1.06);
+    }
+}
+
+
+/* =========================================
+   RING 1
+========================================= */
+
+.orb-ring-1 {
+    animation: orbitOne 7s linear infinite;
+}
+
+@keyframes orbitOne {
+
+    from {
+        transform:
+            translate(
+                calc(-50% + var(--mouse-x)),
+                calc(-50% + var(--mouse-y))
+            )
+            rotateX(68deg)
+            rotateZ(0deg);
+    }
+
+    to {
+        transform:
+            translate(
+                calc(-50% + var(--mouse-x)),
+                calc(-50% + var(--mouse-y))
+            )
+            rotateX(68deg)
+            rotateZ(360deg);
+    }
+}
+
+
+/* =========================================
+   RING 2
+========================================= */
+
+.orb-ring-2 {
+    animation: orbitTwo 9s linear infinite reverse;
+}
+
+@keyframes orbitTwo {
+
+    from {
+        transform:
+            translate(
+                calc(-50% + var(--mouse-x)),
+                calc(-50% + var(--mouse-y))
+            )
+            rotateX(68deg)
+            rotateY(45deg)
+            rotateZ(0deg);
+    }
+
+    to {
+        transform:
+            translate(
+                calc(-50% + var(--mouse-x)),
+                calc(-50% + var(--mouse-y))
+            )
+            rotateX(68deg)
+            rotateY(45deg)
+            rotateZ(360deg);
+    }
+}
+
+
+/* =========================================
+   MOUSE NEAR ORB
+========================================= */
+
+.xestus-3d-orb.orb-active .orb-core {
+    filter:
+        brightness(1.3)
+        drop-shadow(
+            0 0 25px rgba(255,120,0,.75)
+        );
+}
+
+.xestus-3d-orb.orb-active::before {
+    opacity: 1;
 }
