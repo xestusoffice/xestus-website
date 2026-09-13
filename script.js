@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        const interactiveCards = document.querySelectorAll(".service-card, .solution-card, .project-card, .lab-card");
+        const interactiveCards = document.querySelectorAll(".service-card, .solution-card, .project-card, .lab-card, .why-card, .tech-stack-card, .stat-card");
         interactiveCards.forEach((card) => {
             card.addEventListener("pointermove", (e) => {
                 const rect = card.getBoundingClientRect();
