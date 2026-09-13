@@ -383,12 +383,12 @@ document.addEventListener("DOMContentLoaded", () => {
             ctaText: "Automate Your Business Workflows"
         },
         "nexus-platform": {
-            title: "Nexus: Intelligent Corporate Platform",
+            title: "XESTUS: Intelligent Corporate Platform",
             category: "Web Platforms",
             status: "Production Platform",
             statusClass: "status-prod",
             image: "assets/images/projects/nexus-platform.svg",
-            alt: "Nexus Platform Architecture",
+            alt: "XESTUS Platform Architecture",
             summary: "Ultra-fast corporate web architecture engineered for premium brand positioning and automated lead conversion.",
             challenge: "Traditional corporate websites suffer from heavy framework bloat, slow mobile loading times, and poor conversion funnels, degrading client trust.",
             solution: "Built a pure semantic HTML5/CSS3 architecture with tokenized design systems, zero runtime framework overhead, GPU-accelerated micro-interactions, and secure client-side form routing.",

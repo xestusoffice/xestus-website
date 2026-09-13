@@ -32,7 +32,7 @@
     <!-- URL Bar -->
     <rect x="180" y="8" width="240" height="22" rx="6" fill="#070f1e" stroke="rgba(0, 191, 255, 0.25)"/>
     <circle cx="195" cy="19" r="3" fill="#00ffff"/>
-    <text x="206" y="23" fill="#88a0c0" font-family="system-ui, sans-serif" font-size="10">https://nexus-enterprise.platform</text>
+    <text x="206" y="23" fill="#88a0c0" font-family="system-ui, sans-serif" font-size="10">https://xestus.in</text>
 
     <!-- Page Content -->
     <!-- Nav strip inside mockup -->
