@@ -121,67 +121,104 @@ gtag('config', 'G-EF3ZRR55YY');
     <div id="progress-bar"></div>
 
     <!-- Navbar -->
-    <nav>
-<div class="logo">
-    <img src="assets/images/xestus-logo.png" alt="XESTUS Logo">
-    <span>XESTUS</span>
-</div>
-
-<ul class="nav-links">
-    <li><a href="#home" class="nav-link">Home</a></li>
-    <li><a href="#services" class="nav-link">Services</a></li>
-    <li><a href="#projects" class="nav-link">Projects</a></li>
-    <li><a href="#founder" class="nav-link">Founder</a></li>
-    <li><a href="#contact" class="nav-link">Contact</a></li>
-</ul>
-
-<div class="menu-toggle">
-    ☰
-</div>
-
- </nav>
-<!-- Hero Section -->
-  
-<main>
-<section class="hero">
-
-    <div class="hero-content">
-
-        <h1>XESTUS</h1>
-
-        <h2>Intelligence Beyond Limits</h2>
-
-        <p>
-            We engineer AI-powered software, intelligent automation,
-            cloud platforms, and modern web solutions that help
-            businesses innovate, scale, and succeed.
-        </p>
-
-        <div class="buttons">
-
-            <a href="#services" class="btn-primary magnetic-btn">
-                Explore Services
+    <header class="site-header">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="#home" class="logo" aria-label="XESTUS Home">
+                <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
             </a>
 
-            <a href="#contact" class="btn-secondary magnetic-btn">
-                Start Your Project
-            </a>
+            <ul class="nav-links" id="primaryNav">
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#services" class="nav-link">Solutions</a></li>
+                <li><a href="#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="#services" class="nav-link">Innovation Lab</a></li>
+                <li><a href="#founder" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
 
+            <div class="nav-actions">
+                <a href="#contact" class="btn-primary btn-nav-cta magnetic-btn">
+                    <span>Start a Project</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+    <section class="hero" id="home">
+        <div class="hero-backdrop" aria-hidden="true">
+            <div class="hero-ambient-glow hero-glow-1"></div>
+            <div class="hero-ambient-glow hero-glow-2"></div>
+            <div class="hero-grid-overlay"></div>
         </div>
 
-    </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-pill-badge">
+                    <span class="badge-pulse"></span>
+                    <span>INTELLIGENCE BEYOND LIMITS</span>
+                </div>
 
-    <!-- XESTUS 3D HERO ORB -->
-    <div class="xestus-3d-orb" aria-hidden="true">
-        <div class="orb-ring orb-ring-1"></div>
-        <div class="orb-ring orb-ring-2"></div>
+                <h1 class="hero-headline">
+                    <span class="hero-brand">XESTUS</span>
+                    <span class="hero-subtitle">Intelligence Beyond Limits</span>
+                </h1>
 
-        <div class="orb-core">
-            <span>X</span>
+                <p class="hero-description">
+                    We engineer intelligent software, automation, and digital systems for businesses ready to move beyond limits.
+                </p>
+
+                <div class="hero-cta-group">
+                    <a href="#contact" class="btn-primary hero-btn-primary magnetic-btn">
+                        <span>Start Your Project</span>
+                        <i data-lucide="arrow-right" class="cta-arrow"></i>
+                    </a>
+
+                    <a href="#services" class="btn-secondary hero-btn-secondary magnetic-btn">
+                        <span>Explore Solutions</span>
+                    </a>
+                </div>
+
+                <div class="hero-capability-strip">
+                    <div class="capability-item">
+                        <span class="capability-value">AI Software</span>
+                        <span class="capability-label">Custom Intelligent Apps</span>
+                    </div>
+                    <div class="capability-sep"></div>
+                    <div class="capability-item">
+                        <span class="capability-value">Automation</span>
+                        <span class="capability-label">Intelligent Workflows</span>
+                    </div>
+                    <div class="capability-sep"></div>
+                    <div class="capability-item">
+                        <span class="capability-value">Cloud & Web</span>
+                        <span class="capability-label">Scalable Systems</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- XESTUS 3D HERO ORB -->
+            <div class="hero-visual-wrapper">
+                <div class="xestus-3d-orb" aria-hidden="true">
+                    <div class="orb-ambient-halo"></div>
+                    <div class="orb-ring orb-ring-1"></div>
+                    <div class="orb-ring orb-ring-2"></div>
+                    <div class="orb-ring orb-ring-3"></div>
+                    <div class="orb-core">
+                        <span class="orb-letter">X</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
-</section>
+    </section>
     <!-- Hero -->
 
    <!-- =========================
