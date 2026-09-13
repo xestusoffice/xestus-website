@@ -4,16 +4,11 @@ emailjs.init({
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 
-console.log(menuToggle);
-console.log(navLinks);
-
-menuToggle.addEventListener("click", () => {
-
-    console.log("Menu clicked");
-
-    navLinks.classList.toggle("active");
-
-});
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+}
 
 const navItems = document.querySelectorAll(".nav-link");
 
@@ -302,7 +297,6 @@ cards.forEach(card=>{
 });
 
 const magneticButtons = document.querySelectorAll(".magnetic-btn");
-console.log("Magnetic buttons found:", magneticButtons.length);
 magneticButtons.forEach(button => {
 
     button.addEventListener("mousemove", (e) => {
@@ -311,7 +305,6 @@ magneticButtons.forEach(button => {
 
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        console.log("Mouse moving on button");
         const moveX = (x - rect.width / 2) / 7;
         const moveY = (y - rect.height / 2) / 7;
 
