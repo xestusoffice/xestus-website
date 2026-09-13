@@ -1417,40 +1417,199 @@ gtag('config', 'G-EF3ZRR55YY');
 
 </section>
 
-    <!-- Contact -->
+<!-- ==========================================================================
+     CONTACT & INQUIRY SYSTEM SECTION
+     ========================================================================== -->
 <section class="contact hidden" id="contact">
 
-    <h2>Let's Build Something Amazing</h2>
+    <div class="section-title">
+        <span class="badge-pulsing"><i data-lucide="send"></i> INITIATE CONSULTATION</span>
+        <h2>Architect Your Next Breakthrough</h2>
+        <p>
+            Whether you require an autonomous AI agent swarm, a high-throughput microservice architecture, or an enterprise workflow automation pipeline, our engineering team is ready to architect your solution.
+        </p>
+    </div>
 
-    <p>
-        Have an idea or project? Let's discuss how XESTUS can help bring it to life.
-    </p>
+    <div class="contact-container">
 
- <form class="contact-form">
+        <!-- Left Column: Direct Channels & SLA Commitments -->
+        <div class="contact-info-panel">
 
-    <input id="name" type="text" placeholder="Your Name" required>
+            <div class="contact-card-group">
 
-    <input id="email" type="email" placeholder="Your Email" required>
+                <!-- Direct Email Channel with Copy Action -->
+                <div class="contact-channel-card">
+                    <div class="channel-icon">
+                        <i data-lucide="mail"></i>
+                    </div>
+                    <div class="channel-details">
+                        <span class="channel-label">Direct Corporate Email</span>
+                        <a href="mailto:xestus.office@gmail.com" class="channel-value" id="corpEmailLink">xestus.office@gmail.com</a>
+                    </div>
+                    <button type="button" class="btn-copy-email" id="copyEmailBtn" aria-label="Copy Email Address to Clipboard" title="Copy Email">
+                        <i data-lucide="copy"></i>
+                        <span class="copy-text">Copy</span>
+                    </button>
+                </div>
 
-    <textarea id="message"
-    placeholder="Tell us about your project"
-    required></textarea>
+                <!-- Executive Leadership Channel -->
+                <div class="contact-channel-card">
+                    <div class="channel-icon">
+                        <i data-lucide="linkedin"></i>
+                    </div>
+                    <div class="channel-details">
+                        <span class="channel-label">Founder &amp; Lead Architect</span>
+                        <span class="channel-value">Sudip Khatua</span>
+                    </div>
+                    <a href="https://www.linkedin.com/in/sudip-khatua-16bb07354"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn-channel-link"
+                       aria-label="Connect with Sudip Khatua on LinkedIn">
+                        <span>Connect</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
 
-    <button type="submit" class="btn-primary">
-        Send Message
-    </button>
+            </div>
 
-    <p id="form-message"></p>
+            <!-- Engineering Commitments & SLAs -->
+            <div class="contact-sla-box">
+                <div class="sla-item">
+                    <div class="sla-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <div class="sla-content">
+                        <h4>&lt; 24-Hour Response SLA</h4>
+                        <p>Every enterprise inquiry is directly reviewed by senior engineering leadership with a technical assessment within 24 business hours.</p>
+                    </div>
+                </div>
 
-</form>
+                <div class="sla-item">
+                    <div class="sla-icon">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <div class="sla-content">
+                        <h4>Confidentiality &amp; NDA Ready</h4>
+                        <p>We respect your intellectual property. All project briefs, architecture requirements, and data schemas are held under strict confidentiality.</p>
+                    </div>
+                </div>
 
-    <div class="contact-buttons">
+                <div class="sla-item">
+                    <div class="sla-icon">
+                        <i data-lucide="globe"></i>
+                    </div>
+                    <div class="sla-content">
+                        <h4>Global Edge Delivery</h4>
+                        <p>Remote-first operations with edge micro-servers and distributed systems serving clients across global time zones.</p>
+                    </div>
+                </div>
+            </div>
 
-        <a href="https://www.linkedin.com/in/sudip-khatua-16bb07354"
-   target="_blank"
-   class="btn-primary">
-   Connect on LinkedIn
-</a>
+        </div>
+
+        <!-- Right Column: Glassmorphic Inquiry Form -->
+        <div class="contact-form-wrapper">
+
+            <form class="contact-form" id="contactForm" novalidate>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name" class="form-label">
+                            <span>Your Name / Organization</span>
+                            <span class="required-star">*</span>
+                        </label>
+                        <div class="input-container">
+                            <i data-lucide="user" class="input-icon"></i>
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                class="form-input"
+                                placeholder="e.g. Alex Mercer"
+                                required
+                                autocomplete="name"
+                                aria-required="true">
+                        </div>
+                        <span class="input-error-msg" id="nameError">Please enter your name (minimum 2 characters).</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <span>Business Email</span>
+                            <span class="required-star">*</span>
+                        </label>
+                        <div class="input-container">
+                            <i data-lucide="mail" class="input-icon"></i>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                class="form-input"
+                                placeholder="e.g. alex@company.com"
+                                required
+                                autocomplete="email"
+                                aria-required="true">
+                        </div>
+                        <span class="input-error-msg" id="emailError">Please enter a valid email address.</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="service" class="form-label">
+                        <span>Project Domain / Architecture Scope</span>
+                    </label>
+                    <div class="input-container select-container">
+                        <i data-lucide="layers" class="input-icon"></i>
+                        <select id="service" name="service" class="form-input form-select">
+                            <option value="AI & Autonomous Agents">AI &amp; Autonomous Agent Swarms (RAG / MCP)</option>
+                            <option value="Full-Stack Web Architecture">Full-Stack Web Architecture &amp; Platforms</option>
+                            <option value="Workflow Automation">Event-Driven Workflow Automation &amp; Pipelines</option>
+                            <option value="Cloud & Edge Infrastructure">Cloud Infrastructure, Reverse Proxies &amp; Edge</option>
+                            <option value="Innovation Lab Collaboration">Innovation Lab R&amp;D / Custom Prototype</option>
+                            <option value="General Technical Inquiry">General Technical Consultation</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="select-chevron"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="form-label">
+                        <span>Project Brief &amp; Technical Requirements</span>
+                        <span class="required-star">*</span>
+                    </label>
+                    <div class="input-container textarea-container">
+                        <i data-lucide="message-square" class="input-icon textarea-icon"></i>
+                        <textarea
+                            id="message"
+                            name="message"
+                            class="form-input form-textarea"
+                            placeholder="Describe your system requirements, target deliverables, or architectural challenge..."
+                            rows="4"
+                            required
+                            aria-required="true"></textarea>
+                    </div>
+                    <span class="input-error-msg" id="messageError">Please provide a brief description (minimum 10 characters).</span>
+                </div>
+
+                <div class="form-submit-row">
+                    <button type="submit" class="btn-primary btn-submit-inquiry magnetic-btn" id="submitBtn">
+                        <span class="btn-text">Submit Inquiry</span>
+                        <i data-lucide="arrow-right" class="btn-arrow"></i>
+                        <span class="btn-spinner" aria-hidden="true"></span>
+                    </button>
+                    <div class="form-privacy-guarantee">
+                        <i data-lucide="lock"></i>
+                        <span>Encrypted transmission • Direct engineering review</span>
+                    </div>
+                </div>
+
+                <!-- Live Status & Feedback Banner -->
+                <div id="form-message" class="form-status-banner" role="status" aria-live="polite"></div>
+
+            </form>
+
+        </div>
 
     </div>
 

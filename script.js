@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        const interactiveCards = document.querySelectorAll(".service-card, .solution-card, .project-card, .lab-card, .why-card, .tech-stack-card, .stat-card");
+        const interactiveCards = document.querySelectorAll(".service-card, .solution-card, .project-card, .lab-card, .why-card, .tech-stack-card, .stat-card, .contact-channel-card, .contact-sla-box, .contact-form-wrapper");
         interactiveCards.forEach((card) => {
             card.addEventListener("pointermove", (e) => {
                 const rect = card.getBoundingClientRect();
@@ -626,16 +626,61 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------------------------------
-    // 9. Contact Form Validation & EmailJS Delivery Adapter
+    // 9. Contact Form Validation, Copy Action & EmailJS Delivery Adapter
     // --------------------------------------------------------------------------
-    const contactForm = document.querySelector(".contact-form");
+    const copyEmailBtn = document.getElementById("copyEmailBtn");
+    if (copyEmailBtn) {
+        copyEmailBtn.addEventListener("click", async () => {
+            const emailToCopy = "xestus.office@gmail.com";
+            const copyTextSpan = copyEmailBtn.querySelector(".copy-text");
+
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(emailToCopy);
+                } else {
+                    // Fallback for older browsers
+                    const tempInput = document.createElement("input");
+                    tempInput.value = emailToCopy;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(tempInput);
+                }
+
+                copyEmailBtn.classList.add("copied");
+                if (copyTextSpan) copyTextSpan.textContent = "Copied!";
+
+                setTimeout(() => {
+                    copyEmailBtn.classList.remove("copied");
+                    if (copyTextSpan) copyTextSpan.textContent = "Copy";
+                }, 2500);
+            } catch (err) {
+                console.warn("Clipboard copy error:", err);
+            }
+        });
+    }
+
+    const contactForm = document.getElementById("contactForm") || document.querySelector(".contact-form");
     const nameInput = document.getElementById("name");
     const emailInput = document.getElementById("email");
+    const serviceSelect = document.getElementById("service");
     const messageInput = document.getElementById("message");
     const formMessage = document.getElementById("form-message");
+    const submitBtn = document.getElementById("submitBtn") || (contactForm ? contactForm.querySelector("button[type='submit']") : null);
 
     if (contactForm && nameInput && emailInput && messageInput && formMessage) {
         let isSubmitting = false;
+
+        // Clear error states on input
+        [nameInput, emailInput, messageInput].forEach((input) => {
+            input.addEventListener("input", () => {
+                const group = input.closest(".form-group");
+                if (group) {
+                    group.classList.remove("has-error");
+                }
+                input.setAttribute("aria-invalid", "false");
+            });
+        });
 
         contactForm.addEventListener("submit", function (e) {
             e.preventDefault();
@@ -644,47 +689,104 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const name = nameInput.value.trim();
             const email = emailInput.value.trim();
+            const service = serviceSelect ? serviceSelect.value : "General Technical Consultation";
             const message = messageInput.value.trim();
 
-            if (!name || !email || !message) {
-                formMessage.innerText = "Please fill out all required fields.";
-                formMessage.style.color = "#ff4d4d";
-                return;
+            let hasError = false;
+
+            // Name validation
+            if (name.length < 2) {
+                const group = nameInput.closest(".form-group");
+                if (group) group.classList.add("has-error");
+                nameInput.setAttribute("aria-invalid", "true");
+                hasError = true;
+            } else {
+                const group = nameInput.closest(".form-group");
+                if (group) group.classList.remove("has-error");
+                nameInput.setAttribute("aria-invalid", "false");
             }
 
+            // Email validation
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(email)) {
-                formMessage.innerText = "Please enter a valid email address.";
-                formMessage.style.color = "#ff4d4d";
+                const group = emailInput.closest(".form-group");
+                if (group) group.classList.add("has-error");
+                emailInput.setAttribute("aria-invalid", "true");
+                hasError = true;
+            } else {
+                const group = emailInput.closest(".form-group");
+                if (group) group.classList.remove("has-error");
+                emailInput.setAttribute("aria-invalid", "false");
+            }
+
+            // Message validation
+            if (message.length < 10) {
+                const group = messageInput.closest(".form-group");
+                if (group) group.classList.add("has-error");
+                messageInput.setAttribute("aria-invalid", "true");
+                hasError = true;
+            } else {
+                const group = messageInput.closest(".form-group");
+                if (group) group.classList.remove("has-error");
+                messageInput.setAttribute("aria-invalid", "false");
+            }
+
+            if (hasError) {
+                formMessage.className = "form-status-banner status-error";
+                formMessage.innerHTML = '<i data-lucide="alert-circle"></i> <span>Please correct the highlighted fields above before submitting.</span>';
+                if (window.lucide) lucide.createIcons();
                 return;
             }
 
+            // Begin submission state
             isSubmitting = true;
-            formMessage.innerText = "Transmitting message to XESTUS...";
-            formMessage.style.color = "#00bfff";
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.classList.add("is-loading");
+                const btnText = submitBtn.querySelector(".btn-text");
+                if (btnText) btnText.textContent = "Transmitting...";
+            }
 
-            const submitBtn = contactForm.querySelector("button[type='submit']");
-            if (submitBtn) submitBtn.disabled = true;
+            formMessage.className = "form-status-banner status-transmitting";
+            formMessage.innerHTML = '<i data-lucide="loader-2" class="spin"></i> <span>Encrypting &amp; transmitting inquiry to XESTUS engineering team...</span>';
+            if (window.lucide) lucide.createIcons();
 
-            emailjs.send("service_rumjowb", "template_malid0j", {
+            // Prepare payload for EmailJS (Preserving service_rumjowb and template_malid0j)
+            const formattedMessage = `[Scope: ${service}]\n\n${message}`;
+
+            const templateParams = {
                 name: name,
                 email: email,
-                message: message,
-            })
-            .then(() => {
-                formMessage.innerText = "Message sent successfully. We will be in touch shortly.";
-                formMessage.style.color = "#00ff99";
-                contactForm.reset();
-            })
-            .catch((error) => {
-                console.error("XESTUS Contact Error:", error);
-                formMessage.innerText = "Message delivery failed. Please email xestus.office@gmail.com directly.";
-                formMessage.style.color = "#ff4d4d";
-            })
-            .finally(() => {
-                isSubmitting = false;
-                if (submitBtn) submitBtn.disabled = false;
-            });
+                message: formattedMessage,
+                service: service
+            };
+
+            const sendPromise = (typeof emailjs !== "undefined" && typeof emailjs.send === "function")
+                ? emailjs.send("service_rumjowb", "template_malid0j", templateParams)
+                : Promise.reject(new Error("EmailJS SDK unavailable"));
+
+            sendPromise
+                .then(() => {
+                    formMessage.className = "form-status-banner status-success";
+                    formMessage.innerHTML = '<i data-lucide="check-circle-2"></i> <span>Inquiry received. Sudip Khatua and the XESTUS team will review your requirements and respond within 24 business hours.</span>';
+                    contactForm.reset();
+                    if (window.lucide) lucide.createIcons();
+                })
+                .catch((error) => {
+                    console.error("XESTUS Contact Error:", error);
+                    formMessage.className = "form-status-banner status-error";
+                    formMessage.innerHTML = '<i data-lucide="alert-triangle"></i> <span>Transmission interrupted. Please email us directly at <a href="mailto:xestus.office@gmail.com" style="color:#ffffff;text-decoration:underline;font-weight:700;">xestus.office@gmail.com</a>.</span>';
+                    if (window.lucide) lucide.createIcons();
+                })
+                .finally(() => {
+                    isSubmitting = false;
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove("is-loading");
+                        const btnText = submitBtn.querySelector(".btn-text");
+                        if (btnText) btnText.textContent = "Submit Inquiry";
+                    }
+                });
         });
     }
 
