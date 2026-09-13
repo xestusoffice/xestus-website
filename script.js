@@ -117,15 +117,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // --------------------------------------------------------------------------
     const hiddenElements = document.querySelectorAll(".hidden");
     if (hiddenElements.length > 0) {
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show");
-                }
-            });
-        }, { threshold: 0.15 });
+        if (window.innerWidth <= 1024 || typeof IntersectionObserver === "undefined") {
+            hiddenElements.forEach((el) => el.classList.add("show"));
+        } else {
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: "0px 0px -40px 0px", threshold: 0.05 });
 
-        hiddenElements.forEach((el) => revealObserver.observe(el));
+            hiddenElements.forEach((el) => revealObserver.observe(el));
+        }
     }
 
     // --------------------------------------------------------------------------
