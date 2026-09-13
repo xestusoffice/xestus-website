@@ -791,7 +791,179 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------------------------------
-    // 10. Connection Lost & Network Status Monitor
+    // 10. Back-to-Top Controller
+    // --------------------------------------------------------------------------
+    const backToTopBtn = document.getElementById("backToTopBtn");
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    }
+
+    // --------------------------------------------------------------------------
+    // 11. Accessible Legal & Policy Modal Controller
+    // --------------------------------------------------------------------------
+    const legalData = {
+        privacy: {
+            title: "Privacy Notice & Data Safeguards",
+            category: "LEGAL STANDARDS",
+            summary: "How XESTUS safeguards client communication, technical inquiries, and project specifications.",
+            sections: [
+                {
+                    heading: "Direct Communication & Confidentiality",
+                    text: "Inquiries submitted via our consultation portal are transmitted directly to our executive engineering inbox (xestus.office@gmail.com) via encrypted channels. We do not sell, rent, monetize, or expose client contact details to third-party ad networks or brokers."
+                },
+                {
+                    heading: "Proprietary Data Protection",
+                    text: "All architectural diagrams, data schemas, code repositories, and project requirements shared during technical discovery are treated under strict confidentiality standards. We are prepared to execute bilateral Non-Disclosure Agreements (NDAs) prior to in-depth technical audits."
+                },
+                {
+                    heading: "Analytics & Telemetry",
+                    text: "We utilize zero invasive tracking cookies. Our public platform runs on edge CDN delivery with minimal, privacy-respecting telemetry focused purely on system availability, TLS handshake health, and service uptime."
+                }
+            ]
+        },
+        terms: {
+            title: "Terms of Service & Engagement",
+            category: "CLIENT AGREEMENT",
+            summary: "Standard terms governing architectural consultations, software engineering deliverables, and client engagements.",
+            sections: [
+                {
+                    heading: "Engineering Scope & Deliverables",
+                    text: "XESTUS provides custom software architecture, autonomous AI systems, full-stack web platforms, workflow automation pipelines, and technical CAD drafting. All project deliverables and milestone timelines are defined in written Statements of Work (SOW)."
+                },
+                {
+                    heading: "100% Code & IP Ownership Transfer",
+                    text: "Upon milestone completion and receipt of final settlement, full intellectual property rights, source code, deployment scripts, and architectural blueprints transfer completely to the client. No vendor lock-in or proprietary licensing traps."
+                },
+                {
+                    heading: "Engineering Warranties & Post-Launch SLAs",
+                    text: "All custom architectures include post-deployment verification and bug-fix warranty periods to guarantee stability against defined technical specifications."
+                }
+            ]
+        },
+        security: {
+            title: "Security Standards & Defense-in-Depth",
+            category: "SECURITY ARCHITECTURE",
+            summary: "Technical security safeguards implemented across our engineering infrastructure and client deployments.",
+            sections: [
+                {
+                    heading: "Transport Layer Security (TLS 1.3)",
+                    text: "All web services and API endpoints enforce TLS 1.3 encryption with strict HTTP Strict Transport Security (HSTS) headers and automated SSL certificate rotations."
+                },
+                {
+                    heading: "Secrets & Environment Segregation",
+                    text: "Zero plaintext API credentials or database secrets are committed to version control. Production systems utilize strict environment variable segregation and role-based access control (RBAC)."
+                },
+                {
+                    heading: "Edge Defense & Rate Limiting",
+                    text: "Containerized edge proxies (Nginx / Caddy) implement automated connection rate limiting, DDoS buffer shields, and input sanitization to protect backend services against malicious injection."
+                }
+            ]
+        }
+    };
+
+    const legalModal = document.getElementById("legalModal");
+    const legalModalBackdrop = document.getElementById("legalModalBackdrop");
+    const legalModalCloseBtn = document.getElementById("legalModalCloseBtn");
+    const legalModalContent = document.getElementById("legalModalContent");
+    let lastLegalFocusedElement = null;
+
+    function openLegalModal(legalKey, triggerBtn) {
+        const data = legalData[legalKey];
+        if (!data || !legalModal || !legalModalContent) return;
+
+        lastLegalFocusedElement = triggerBtn || document.activeElement;
+
+        legalModalContent.innerHTML = `
+            <div class="modal-header">
+                <div class="modal-badges">
+                    <span class="project-category-badge">${data.category}</span>
+                    <span class="project-status-badge status-prod">Official Policy</span>
+                </div>
+                <h3 class="modal-title" id="legalModalTitle">${data.title}</h3>
+                <p class="modal-summary">${data.summary}</p>
+            </div>
+
+            <div class="legal-sections-wrapper">
+                ${data.sections.map((s) => `
+                    <div class="modal-section">
+                        <h4 class="modal-section-title">
+                            <i data-lucide="shield-check"></i>
+                            <span>${s.heading}</span>
+                        </h4>
+                        <p>${s.text}</p>
+                    </div>
+                `).join("")}
+            </div>
+
+            <div class="modal-footer">
+                <a href="#contact" class="btn-primary modal-footer-cta" id="legalDiscussCta">
+                    <span>Contact Engineering Team</span>
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+            </div>
+        `;
+
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        const legalDiscussCta = document.getElementById("legalDiscussCta");
+        if (legalDiscussCta) {
+            legalDiscussCta.addEventListener("click", () => {
+                closeLegalModal();
+            });
+        }
+
+        legalModal.classList.add("is-open");
+        legalModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+
+        setTimeout(() => {
+            if (legalModalCloseBtn) legalModalCloseBtn.focus();
+        }, 100);
+    }
+
+    function closeLegalModal() {
+        if (!legalModal) return;
+        legalModal.classList.remove("is-open");
+        legalModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+
+        if (lastLegalFocusedElement && typeof lastLegalFocusedElement.focus === "function") {
+            lastLegalFocusedElement.focus();
+        }
+    }
+
+    document.addEventListener("click", (e) => {
+        const trigger = e.target.closest("[data-legal-modal]");
+        if (trigger) {
+            e.preventDefault();
+            const legalKey = trigger.getAttribute("data-legal-modal");
+            openLegalModal(legalKey, trigger);
+        }
+    });
+
+    if (legalModalCloseBtn) {
+        legalModalCloseBtn.addEventListener("click", closeLegalModal);
+    }
+
+    if (legalModalBackdrop) {
+        legalModalBackdrop.addEventListener("click", closeLegalModal);
+    }
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && legalModal && legalModal.classList.contains("is-open")) {
+            closeLegalModal();
+        }
+    });
+
+    // --------------------------------------------------------------------------
+    // 12. Connection Lost & Network Status Monitor
     // --------------------------------------------------------------------------
     const connectionOverlay = document.getElementById("connectionOverlay");
     const retryConnection = document.getElementById("retryConnection");
