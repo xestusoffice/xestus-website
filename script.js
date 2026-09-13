@@ -567,9 +567,35 @@ document.addEventListener("DOMContentLoaded", () => {
         modalBackdrop.addEventListener("click", closeCaseStudyModal);
     }
 
+    function trapFocus(e, modalContainer) {
+        if (!modalContainer || !modalContainer.classList.contains("is-open")) return;
+        if (e.key === "Tab") {
+            const focusableEls = modalContainer.querySelectorAll('a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])');
+            if (!focusableEls.length) return;
+            const firstEl = focusableEls[0];
+            const lastEl = focusableEls[focusableEls.length - 1];
+
+            if (e.shiftKey) {
+                if (document.activeElement === firstEl) {
+                    e.preventDefault();
+                    lastEl.focus();
+                }
+            } else {
+                if (document.activeElement === lastEl) {
+                    e.preventDefault();
+                    firstEl.focus();
+                }
+            }
+        }
+    }
+
     document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && caseStudyModal && caseStudyModal.classList.contains("is-open")) {
-            closeCaseStudyModal();
+        if (caseStudyModal && caseStudyModal.classList.contains("is-open")) {
+            if (e.key === "Escape") {
+                closeCaseStudyModal();
+            } else if (e.key === "Tab") {
+                trapFocus(e, caseStudyModal);
+            }
         }
     });
 
@@ -968,8 +994,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && legalModal && legalModal.classList.contains("is-open")) {
-            closeLegalModal();
+        if (legalModal && legalModal.classList.contains("is-open")) {
+            if (e.key === "Escape") {
+                closeLegalModal();
+            } else if (e.key === "Tab") {
+                trapFocus(e, legalModal);
+            }
         }
     });
 

@@ -3884,8 +3884,58 @@ body.modal-open {
     }
 
     .footer-legal-links {
-        justify-content: center;
-        flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   17B. ULTRA-COMPACT MOBILE SAFEGUARDS (<= 360px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+    :root {
+        --section-pad-x: 14px;
+        --section-pad-y: 55px;
+    }
+
+    .hero-brand {
+        font-size: 36px;
+        letter-spacing: 1px;
+    }
+
+    .hero-subtitle {
+        font-size: 19px;
+    }
+
+    .hero-pill-badge {
+        font-size: 10.5px;
+        letter-spacing: 1px;
+        padding: 5px 12px;
+    }
+
+    .contact-form-wrapper,
+    .service-card,
+    .solution-card,
+    .project-card,
+    .lab-card,
+    .why-card {
+        padding: 20px 14px;
+    }
+
+    .modal-content-container {
+        padding: 18px 12px 24px;
+    }
+
+    .modal-badges {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .modal-tech-pills {
+        gap: 6px;
+    }
+
+    .modal-tech-pills span {
+        font-size: 11px;
+        padding: 4px 9px;
     }
 }
 
