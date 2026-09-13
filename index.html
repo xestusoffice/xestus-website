@@ -2,67 +2,71 @@
 <html lang="en">
 
 <head>
- <!-- Google Analytics (gtag.js) -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
- <script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
- gtag('config', 'G-EF3ZRR55YY');
- </script>
+    <!-- Google Analytics (gtag.js) - Deferred Initialization -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
 
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 
- <!-- Primary Page Metadata -->
- <title>XESTUS | Intelligence Beyond Limits — AI Software, Autonomous Systems &amp; Web Development</title>
- <meta name="description" content="XESTUS engineers autonomous AI agent swarms, Model Context Protocol (MCP) integrations, high-performance web platforms, and mission-critical enterprise workflow automation.">
- <meta name="keywords" content="XESTUS, AI Software, Autonomous Agent Swarms, LangGraph, Model Context Protocol, MCP, RAG, Web Development, FastAPI, Workflow Automation, Cloud Infrastructure, India, Sudip Khatua">
- <meta name="author" content="Sudip Khatua, XESTUS">
- <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
- <meta name="theme-color" content="#070c18">
+    <!-- Primary Page Metadata -->
+    <title>XESTUS | Intelligence Beyond Limits — AI Software, Autonomous Systems &amp; Web Development</title>
+    <meta name="description" content="XESTUS engineers autonomous AI agent swarms, Model Context Protocol (MCP) integrations, high-performance web platforms, and mission-critical enterprise workflow automation.">
+    <meta name="keywords" content="XESTUS, AI Software, Autonomous Agent Swarms, LangGraph, Model Context Protocol, MCP, RAG, Web Development, FastAPI, Workflow Automation, Cloud Infrastructure, India, Sudip Khatua">
+    <meta name="author" content="Sudip Khatua, XESTUS">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#070c18">
 
- <!-- Canonical URL -->
- <link rel="canonical" href="https://xestus.in/">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://xestus.in/">
 
- <!-- Open Graph / Facebook -->
- <meta property="og:type" content="website">
- <meta property="og:site_name" content="XESTUS">
- <meta property="og:url" content="https://xestus.in/">
- <meta property="og:title" content="XESTUS | Intelligence Beyond Limits — AI Software, Autonomous Systems &amp; Web Development">
- <meta property="og:description" content="Engineering autonomous AI systems, high-performance web platforms, and mission-critical workflow automation pipelines for modern enterprises.">
- <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
- <meta property="og:image:alt" content="XESTUS — Intelligence Beyond Limits">
- <meta property="og:locale" content="en_US">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="XESTUS">
+    <meta property="og:url" content="https://xestus.in/">
+    <meta property="og:title" content="XESTUS | Intelligence Beyond Limits — AI Software, Autonomous Systems &amp; Web Development">
+    <meta property="og:description" content="Engineering autonomous AI systems, high-performance web platforms, and mission-critical workflow automation pipelines for modern enterprises.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+    <meta property="og:image:alt" content="XESTUS — Intelligence Beyond Limits">
+    <meta property="og:locale" content="en_US">
 
- <!-- Twitter Cards -->
- <meta name="twitter:card" content="summary_large_image">
- <meta name="twitter:url" content="https://xestus.in/">
- <meta name="twitter:title" content="XESTUS | Intelligence Beyond Limits">
- <meta name="twitter:description" content="AI Software, Autonomous Agent Swarms, Web Platforms &amp; Enterprise Automation.">
- <meta name="twitter:image" content="https://xestus.in/assets/images/xestus-logo.png">
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://xestus.in/">
+    <meta name="twitter:title" content="XESTUS | Intelligence Beyond Limits">
+    <meta name="twitter:description" content="AI Software, Autonomous Agent Swarms, Web Platforms &amp; Enterprise Automation.">
+    <meta name="twitter:image" content="https://xestus.in/assets/images/xestus-logo.png">
 
- <!-- Favicon & Icons -->
- <link rel="icon" type="image/png" href="assets/images/xestus-logo.png">
- <link rel="apple-touch-icon" href="assets/images/xestus-logo.png">
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" href="assets/images/xestus-logo.png">
+    <link rel="apple-touch-icon" href="assets/images/xestus-logo.png">
 
- <!-- Resource Preconnects -->
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
- <link rel="dns-prefetch" href="https://unpkg.com">
+    <!-- Resource Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://unpkg.com">
 
- <!-- Google Fonts (Poppins) with Swap Display -->
- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts (Poppins) Non-blocking Preload -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    </noscript>
 
- <!-- Core Stylesheet -->
- <link rel="stylesheet" href="style.css?v=3.3.1">
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="style.css?v=3.4.0">
 
- <!-- Unified Structured Data / JSON-LD -->
- <script type="application/ld+json">
- {
+    <!-- Unified Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
 "@context":"https://schema.org",
 "@graph": [
  {
@@ -141,7 +145,7 @@
  <header class="site-header" role="banner">
  <nav class="nav-container" aria-label="Main Navigation">
  <a href="#home" class="logo" aria-label="XESTUS Home">
- <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+ <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46" fetchpriority="high" decoding="async">
  <span>XESTUS</span>
  </a>
 
@@ -1305,7 +1309,7 @@
  target="_blank"
  rel="noopener noreferrer"
  class="btn-primary magnetic-btn">
- <i data-lucide="linkedin"></i>
+ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
  <span>Connect on LinkedIn</span>
  </a>
  <a href="#contact" class="btn-secondary">
@@ -1472,7 +1476,7 @@
  <!-- Executive Leadership Channel -->
  <div class="contact-channel-card">
  <div class="channel-icon">
- <i data-lucide="linkedin"></i>
+ <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
  </div>
  <div class="channel-details">
  <span class="channel-label">Founder &amp; Lead Architect</span>
@@ -1664,7 +1668,7 @@
  class="footer-social-btn"
  aria-label="Connect with Founder Sudip Khatua on LinkedIn"
  title="LinkedIn">
- <i data-lucide="linkedin"></i>
+ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
  </a>
  <a href="https://github.com/xestusoffice"
  target="_blank"
@@ -1672,7 +1676,7 @@
  class="footer-social-btn"
  aria-label="Visit XESTUS on GitHub"
  title="GitHub">
- <i data-lucide="github"></i>
+ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
  </a>
  <a href="mailto:xestus.office@gmail.com"
  class="footer-social-btn"
@@ -1752,9 +1756,9 @@
 
  <div class="footer-legal-links">
  <button type="button" class="legal-link-btn" data-legal-modal="privacy">Privacy Notice</button>
- <span class="legal-sep">•</span>
+ <span class="legal-sep" aria-hidden="true">•</span>
  <button type="button" class="legal-link-btn" data-legal-modal="terms">Terms of Service</button>
- <span class="legal-sep">•</span>
+ <span class="legal-sep" aria-hidden="true">•</span>
  <button type="button" class="legal-link-btn" data-legal-modal="security">Security Standards</button>
  </div>
 
@@ -1798,13 +1802,13 @@
 </div>
 
 <!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <!-- Lucide Icons -->
-<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="https://unpkg.com/lucide@latest"></script>
 
 <!-- Your Script -->
-<script src="script.js?v=3.3.1"></script>
+<script defer src="script.js?v=3.4.0"></script>
 
 <!-- XESTUS Connection Lost Overlay -->
 <div id="connectionOverlay" class="connection-overlay">

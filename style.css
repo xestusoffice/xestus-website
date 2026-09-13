@@ -1213,6 +1213,19 @@ button, input, textarea {
 /* --------------------------------------------------------------------------
    9. PORTFOLIO & FEATURED PROJECTS
    -------------------------------------------------------------------------- */
+.solutions,
+.portfolio,
+.lab,
+.why-us,
+.founder,
+.technologies,
+.stats,
+.contact,
+.site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 750px;
+}
+
 .portfolio {
     padding: var(--section-pad-y) var(--section-pad-x);
     background: var(--bg-primary);
@@ -3687,6 +3700,13 @@ body.modal-open {
         border-radius: var(--radius-sm);
         padding: 12px 18px;
         flex: 1 1 40%;
+    }
+
+    .services-container,
+    .solutions-container,
+    .portfolio-container,
+    .lab-grid {
+        grid-template-columns: 1fr;
     }
 
     .footer-nav-grid {

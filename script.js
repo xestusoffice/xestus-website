@@ -9,17 +9,24 @@
 // --------------------------------------------------------------------------
 // 1. EmailJS Client Initialization (Preserved Configuration)
 // --------------------------------------------------------------------------
-if (typeof emailjs !== "undefined") {
-    emailjs.init({
-        publicKey: "MjRM1_6Bb8yJSG3d0",
-    });
+function initEmailJS() {
+    if (typeof emailjs !== "undefined" && typeof emailjs.init === "function") {
+        emailjs.init({
+            publicKey: "MjRM1_6Bb8yJSG3d0",
+        });
+    }
+}
+initEmailJS();
+
+function initLucide() {
+    if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+        lucide.createIcons();
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Initialize Lucide Icons
-    if (typeof lucide !== "undefined") {
-        lucide.createIcons();
-    }
+    initLucide();
+    initEmailJS();
 
     // --------------------------------------------------------------------------
     // 2. Navigation & Mobile Drawer Controller
@@ -1056,5 +1063,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
+    }
+});
+
+window.addEventListener("load", () => {
+    if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+        lucide.createIcons();
     }
 });
