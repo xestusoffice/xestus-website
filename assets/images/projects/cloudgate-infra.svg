@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cloudBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080e1a"/>
+      <stop offset="60%" stop-color="#0b172a"/>
+      <stop offset="100%" stop-color="#040912"/>
+    </linearGradient>
+    <radialGradient id="cloudGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00bfff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00bfff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#cloudBg)"/>
+  <circle cx="400" cy="225" r="230" fill="url(#cloudGlow)"/>
+
+  <!-- Cloud Infrastructure Diagram -->
+  <g transform="translate(100, 60)">
+    <!-- Global Edge / Internet Ring -->
+    <g transform="translate(300, 20)">
+      <circle cx="0" cy="0" r="38" fill="#0c1d38" stroke="#00ffff" stroke-width="2"/>
+      <path d="M -16 -6 C -16 -16, 0 -22, 10 -16 C 18 -22, 28 -10, 24 2 C 28 8, 20 18, 10 16 L -12 16 C -20 16, -22 6, -16 -6 Z" fill="none" stroke="#00ffff" stroke-width="2"/>
+      <text x="0" y="28" text-anchor="middle" fill="#88a0c0" font-family="system-ui, sans-serif" font-size="10" font-weight="600">EDGE INGRESS</text>
+    </g>
+
+    <!-- Paths from Edge to Gateway -->
+    <path d="M 300 65 L 300 120" stroke="#00ffff" stroke-width="2.5" stroke-dasharray="4,4"/>
+    <circle cx="300" cy="95" r="4" fill="#00ffff"/>
+
+    <!-- Central Reverse Proxy / Security Gateway -->
+    <g transform="translate(180, 125)">
+      <rect width="240" height="75" rx="10" fill="#0f2444" stroke="#00ffff" stroke-width="2"/>
+      <circle cx="35" cy="37" r="18" fill="rgba(0, 255, 255, 0.2)"/>
+      <path d="M 28 32 L 35 27 L 42 32 L 42 41 C 42 45, 35 48, 35 48 C 35 48, 28 45, 28 41 Z" fill="none" stroke="#00ffff" stroke-width="2"/>
+      <text x="68" y="35" fill="#ffffff" font-family="system-ui, sans-serif" font-size="14" font-weight="700">CloudGate SSL &amp; Proxy</text>
+      <text x="68" y="52" fill="#00ff88" font-family="system-ui, sans-serif" font-size="11">WAF / TLS 1.3 / DDoS Filter</text>
+    </g>
+
+    <!-- Connecting Branches to Microservice Containers -->
+    <path d="M 300 200 L 100 260" stroke="rgba(0, 191, 255, 0.5)" stroke-width="2"/>
+    <path d="M 300 200 L 300 260" stroke="rgba(0, 191, 255, 0.7)" stroke-width="2"/>
+    <path d="M 300 200 L 500 260" stroke="rgba(0, 191, 255, 0.5)" stroke-width="2"/>
+
+    <!-- Container 1: Auth & API -->
+    <g transform="translate(20, 260)">
+      <rect width="160" height="75" rx="8" fill="#0b172a" stroke="rgba(0, 191, 255, 0.3)" stroke-width="1.5"/>
+      <circle cx="25" cy="25" r="10" fill="rgba(0, 191, 255, 0.2)"/>
+      <text x="45" y="29" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="700">App API Cluster</text>
+      <text x="20" y="55" fill="#88a0c0" font-family="system-ui, sans-serif" font-size="10">FastAPI / Python (x3)</text>
+    </g>
+
+    <!-- Container 2: Worker Queue -->
+    <g transform="translate(220, 260)">
+      <rect width="160" height="75" rx="8" fill="#0b172a" stroke="#00ffff" stroke-width="2"/>
+      <circle cx="25" cy="25" r="10" fill="rgba(0, 255, 255, 0.3)"/>
+      <text x="45" y="29" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Worker Engines</text>
+      <text x="20" y="55" fill="#00ffff" font-family="system-ui, sans-serif" font-size="10">Redis / Celery Tasks</text>
+    </g>
+
+    <!-- Container 3: Persistent DB -->
+    <g transform="translate(420, 260)">
+      <rect width="160" height="75" rx="8" fill="#0b172a" stroke="rgba(0, 191, 255, 0.3)" stroke-width="1.5"/>
+      <circle cx="25" cy="25" r="10" fill="rgba(0, 191, 255, 0.2)"/>
+      <text x="45" y="29" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="700">PostgreSQL Vector</text>
+      <text x="20" y="55" fill="#88a0c0" font-family="system-ui, sans-serif" font-size="10">Replicated &amp; Encrypted</text>
+    </g>
+  </g>
+</svg>

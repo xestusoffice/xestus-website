@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080e1a"/>
+      <stop offset="50%" stop-color="#0c172a"/>
+      <stop offset="100%" stop-color="#050a12"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ffff"/>
+      <stop offset="100%" stop-color="#0077b6"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ffff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00ffff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="gridPattern1" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(0, 191, 255, 0.08)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad1)"/>
+  <rect width="800" height="450" fill="url(#gridPattern1)"/>
+  <circle cx="400" cy="225" r="220" fill="url(#glow1)"/>
+
+  <!-- Neural Network & Agent Nodes -->
+  <g opacity="0.95">
+    <!-- Connecting Lines -->
+    <path d="M 220 225 L 340 140 L 460 140 L 580 225 L 460 310 L 340 310 Z" fill="none" stroke="rgba(0, 255, 255, 0.3)" stroke-width="2" stroke-dasharray="4,4"/>
+    <path d="M 340 140 L 400 225 L 460 140" fill="none" stroke="rgba(0, 191, 255, 0.5)" stroke-width="2"/>
+    <path d="M 340 310 L 400 225 L 460 310" fill="none" stroke="rgba(0, 191, 255, 0.5)" stroke-width="2"/>
+    <path d="M 220 225 L 400 225 L 580 225" fill="none" stroke="rgba(0, 255, 255, 0.7)" stroke-width="2.5"/>
+
+    <!-- Left Layer (Input/Ingestion) -->
+    <circle cx="220" cy="160" r="18" fill="#0f223d" stroke="#00bfff" stroke-width="2"/>
+    <circle cx="220" cy="225" r="22" fill="#0f223d" stroke="#00ffff" stroke-width="3"/>
+    <circle cx="220" cy="290" r="18" fill="#0f223d" stroke="#00bfff" stroke-width="2"/>
+    <path d="M 220 160 L 340 140" stroke="rgba(0, 191, 255, 0.3)" stroke-width="1.5"/>
+    <path d="M 220 290 L 340 310" stroke="rgba(0, 191, 255, 0.3)" stroke-width="1.5"/>
+
+    <!-- Hidden / Reasoning Nodes -->
+    <circle cx="340" cy="140" r="20" fill="#102a4c" stroke="#00bfff" stroke-width="2"/>
+    <circle cx="460" cy="140" r="20" fill="#102a4c" stroke="#00bfff" stroke-width="2"/>
+    <circle cx="340" cy="310" r="20" fill="#102a4c" stroke="#00bfff" stroke-width="2"/>
+    <circle cx="460" cy="310" r="20" fill="#102a4c" stroke="#00bfff" stroke-width="2"/>
+
+    <!-- Central RAG Embedding Core -->
+    <circle cx="400" cy="225" r="46" fill="#09182d" stroke="#00ffff" stroke-width="3"/>
+    <circle cx="400" cy="225" r="34" fill="none" stroke="rgba(0, 255, 255, 0.5)" stroke-width="1.5" stroke-dasharray="6,3"/>
+    
+    <!-- Central AI Icon / Glyphs -->
+    <path d="M 390 215 L 410 215 M 400 205 L 400 245 M 392 235 L 408 235" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- Right Layer (Output / Action Execution) -->
+    <circle cx="580" cy="160" r="18" fill="#0f223d" stroke="#00bfff" stroke-width="2"/>
+    <circle cx="580" cy="225" r="24" fill="#0f223d" stroke="#00ffff" stroke-width="3"/>
+    <circle cx="580" cy="290" r="18" fill="#0f223d" stroke="#00bfff" stroke-width="2"/>
+    <path d="M 460 140 L 580 160" stroke="rgba(0, 191, 255, 0.3)" stroke-width="1.5"/>
+    <path d="M 460 310 L 580 290" stroke="rgba(0, 191, 255, 0.3)" stroke-width="1.5"/>
+
+    <!-- Telemetry Badges -->
+    <g transform="translate(40, 40)">
+      <rect width="180" height="32" rx="6" fill="rgba(10, 25, 47, 0.85)" stroke="rgba(0, 191, 255, 0.3)"/>
+      <circle cx="16" cy="16" r="4" fill="#00ffff"/>
+      <text x="30" y="21" fill="#a0c0e0" font-family="system-ui, sans-serif" font-size="12" font-weight="600">RAG Vector Index: 99.8%</text>
+    </g>
+
+    <g transform="translate(580, 40)">
+      <rect width="180" height="32" rx="6" fill="rgba(10, 25, 47, 0.85)" stroke="rgba(0, 191, 255, 0.3)"/>
+      <circle cx="16" cy="16" r="4" fill="#00ffff"/>
+      <text x="30" y="21" fill="#00ffff" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Latency: 142ms</text>
+    </g>
+  </g>
+</svg>

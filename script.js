@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        const interactiveCards = document.querySelectorAll(".service-card, .solution-card");
+        const interactiveCards = document.querySelectorAll(".service-card, .solution-card, .project-card");
         interactiveCards.forEach((card) => {
             card.addEventListener("pointermove", (e) => {
                 const rect = card.getBoundingClientRect();
@@ -283,19 +283,284 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.style.setProperty("--y", `${e.clientY - rect.top}px`);
             });
         });
+    }
 
-        const projectCards = document.querySelectorAll(".project-card");
-        projectCards.forEach((card) => {
-            const light = card.querySelector(".light");
-            if (light) {
-                card.addEventListener("pointermove", (e) => {
-                    const rect = card.getBoundingClientRect();
-                    light.style.left = `${e.clientX - rect.left}px`;
-                    light.style.top = `${e.clientY - rect.top}px`;
+    // --------------------------------------------------------------------------
+    // 8B. Portfolio Category Filtering
+    // --------------------------------------------------------------------------
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    if (filterButtons.length && projectCards.length) {
+        filterButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const selectedFilter = btn.getAttribute("data-filter");
+
+                // Update active state on buttons
+                filterButtons.forEach((b) => {
+                    b.classList.remove("active");
+                    b.setAttribute("aria-selected", "false");
                 });
-            }
+                btn.classList.add("active");
+                btn.setAttribute("aria-selected", "true");
+
+                // Filter cards with smooth visibility
+                projectCards.forEach((card) => {
+                    const cardCategory = card.getAttribute("data-category");
+                    if (selectedFilter === "all" || cardCategory === selectedFilter) {
+                        card.classList.remove("is-hidden");
+                    } else {
+                        card.classList.add("is-hidden");
+                    }
+                });
+            });
         });
     }
+
+    // --------------------------------------------------------------------------
+    // 8C. Case Study Accessible Modal Data & Controller
+    // --------------------------------------------------------------------------
+    const caseStudiesData = {
+        "synapse-ai": {
+            title: "Synapse AI: Enterprise Knowledge Agent",
+            category: "AI & Intelligent Agents",
+            status: "Lab Architecture",
+            statusClass: "status-lab",
+            image: "assets/images/projects/synapse-ai.svg",
+            alt: "Synapse AI Architecture Diagram",
+            summary: "Autonomous retrieval-augmented AI agent connecting multi-source enterprise docs with contextual LLM reasoning.",
+            challenge: "Enterprise teams waste hundreds of hours navigating siloed documentation across internal wikis, PDFs, and repositories, resulting in slow query resolution and repetitive internal support requests.",
+            solution: "Engineered a high-performance RAG pipeline leveraging pgvector embeddings with dynamic chunking, cross-encoder re-ranking, and citation-backed agentic reasoning to deliver sub-second, hallucination-free answers.",
+            capabilities: [
+                "Sub-second vector search across unstructured documents",
+                "Multi-source ingestion pipeline (PDF, Markdown, Webhooks)",
+                "Strict citation grounding with verifiable source links",
+                "Role-based permission gating for sensitive data"
+            ],
+            techStack: ["Python", "FastAPI", "LangChain", "pgvector", "OpenAI API", "Docker", "PostgreSQL"],
+            ctaText: "Discuss AI Agent Architecture"
+        },
+        "flowsync-automation": {
+            title: "FlowSync: Omnichannel Automation Pipeline",
+            category: "Workflow Automation",
+            status: "Production Engine",
+            statusClass: "status-prod",
+            image: "assets/images/projects/flowsync-automation.svg",
+            alt: "FlowSync Automation Pipeline",
+            summary: "Event-driven orchestration engine syncing CRMs, databases, and webhook triggers with automated error fallback.",
+            challenge: "Manual lead routing and disjointed multi-app handoffs between contact forms, CRM tables, and messaging channels caused delayed follow-ups and dropped business opportunities.",
+            solution: "Constructed an automated event-driven webhook pipeline in n8n and Python with dead-letter queue recovery, data validation schemas, and real-time alerts across team communication channels.",
+            capabilities: [
+                "Zero-loss webhook queue processing with automated retry logic",
+                "Bi-directional synchronization between CRM and databases",
+                "Instant multi-channel notifications (Email, Slack, SMS)",
+                "End-to-end data integrity validation and audit logging"
+            ],
+            techStack: ["n8n", "Python", "REST APIs", "Webhooks", "PostgreSQL", "Redis", "Docker"],
+            ctaText: "Automate Your Business Workflows"
+        },
+        "nexus-platform": {
+            title: "Nexus: Intelligent Corporate Platform",
+            category: "Web Platforms",
+            status: "Production Platform",
+            statusClass: "status-prod",
+            image: "assets/images/projects/nexus-platform.svg",
+            alt: "Nexus Platform Architecture",
+            summary: "Ultra-fast corporate web architecture engineered for premium brand positioning and automated lead conversion.",
+            challenge: "Traditional corporate websites suffer from heavy framework bloat, slow mobile loading times, and poor conversion funnels, degrading client trust.",
+            solution: "Built a pure semantic HTML5/CSS3 architecture with tokenized design systems, zero runtime framework overhead, GPU-accelerated micro-interactions, and secure client-side form routing.",
+            capabilities: [
+                "Near-instantaneous first contentful paint (< 0.6s)",
+                "100/100 Lighthouse performance and SEO score potential",
+                "Full responsiveness with zero layout shift (CLS 0.00)",
+                "Direct edge CDN deployment with automated contact delivery"
+            ],
+            techStack: ["HTML5", "CSS3", "JavaScript ES6+", "EmailJS", "Cloudflare Edge", "SEO"],
+            ctaText: "Build Your Digital Platform"
+        },
+        "pulse-metrics": {
+            title: "PulseMetrics: Operational Telemetry Hub",
+            category: "Data & Analytics",
+            status: "System Architecture",
+            statusClass: "status-sys",
+            image: "assets/images/projects/pulse-metrics.svg",
+            alt: "PulseMetrics Real-Time Dashboard",
+            summary: "Unified analytics and telemetry portal streaming operational throughput, cluster health, and business KPIs.",
+            challenge: "Fragmented logs across servers and third-party tools made real-time monitoring difficult, leading to delayed issue identification and lack of visibility into system bottlenecks.",
+            solution: "Architected a unified real-time dashboard aggregating high-frequency operational metrics via WebSockets with dynamic Chart.js visualizations and automated anomaly alerts.",
+            capabilities: [
+                "Real-time WebSocket telemetry ingestion with 42ms update rate",
+                "Interactive multi-dimensional filtering by cluster and timeframe",
+                "Configurable metric thresholds with automated alert triggers",
+                "Lightweight client-side rendering with zero UI stutter"
+            ],
+            techStack: ["FastAPI", "Chart.js", "PostgreSQL", "WebSockets", "Docker", "Linux"],
+            ctaText: "Deploy Telemetry Dashboards"
+        },
+        "cloudgate-infra": {
+            title: "CloudGate: Reverse Proxy & Gateway",
+            category: "Cloud Infrastructure",
+            status: "DevOps Architecture",
+            statusClass: "status-devops",
+            image: "assets/images/projects/cloudgate-infra.svg",
+            alt: "CloudGate Gateway Infrastructure",
+            summary: "Hardened containerized edge proxy with automated TLS provisioning, IP rate limiting, and microservice routing.",
+            challenge: "Direct backend microservice exposure risked denial-of-service spikes, connection exhaustion, and complex manual certificate maintenance.",
+            solution: "Designed an automated Docker-compose infrastructure combining Nginx reverse proxying, Let's Encrypt automated TLS renewal, IP rate limiting buffers, and isolated internal networks.",
+            capabilities: [
+                "A+ SSL Labs security grading with TLS 1.3 enforcement",
+                "Sub-millisecond proxy routing latency across microservices",
+                "Automated zero-downtime certificate renewal and reload",
+                "Configurable rate limiting shields against volumetric abuse"
+            ],
+            techStack: ["Docker", "Nginx", "Linux (Ubuntu)", "Bash Scripting", "Let's Encrypt", "TLS 1.3"],
+            ctaText: "Architect Cloud Infrastructure"
+        },
+        "aeroplan-cad": {
+            title: "AeroPlan: Precision CAD Schematics",
+            category: "Technical Design",
+            status: "Engineering Portfolio",
+            statusClass: "status-cad",
+            image: "assets/images/projects/aeroplan-cad.svg",
+            alt: "AeroPlan Technical Drafting",
+            summary: "Layer-standardized 2D architectural blueprints, geometric dimensioning, and fabrication-ready drafting.",
+            challenge: "Engineering projects often suffer from inconsistent drafting standards, missing layer hierarchies, and dimensional ambiguities between CAD models and fabrication.",
+            solution: "Developed disciplined AutoCAD drawing packages adhering to strict layer conventions, parametric dimensioning, and standardized title block templates for architectural and engineering review.",
+            capabilities: [
+                "High-precision 1:50 architectural and engineering drafting",
+                "Standardized AIA layer hierarchy for seamless multi-team collaboration",
+                "Parametric dimensional verification eliminating fabrication mismatch",
+                "Multi-sheet export sets ready for plot and digital submission"
+            ],
+            techStack: ["AutoCAD 2D", "Technical Drafting", "CAD Schematics", "Engineering Blueprints"],
+            ctaText: "Discuss CAD & Technical Design"
+        }
+    };
+
+    const caseStudyModal = document.getElementById("caseStudyModal");
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+    const modalContentContainer = document.getElementById("modalContentContainer");
+    let lastFocusedElement = null;
+
+    function openCaseStudyModal(projectId, triggerBtn) {
+        const data = caseStudiesData[projectId];
+        if (!data || !caseStudyModal || !modalContentContainer) return;
+
+        lastFocusedElement = triggerBtn || document.activeElement;
+
+        // Render modal content
+        modalContentContainer.innerHTML = `
+            <div class="modal-header">
+                <div class="modal-badges">
+                    <span class="project-category-badge">${data.category}</span>
+                    <span class="project-status-badge ${data.statusClass}">${data.status}</span>
+                </div>
+                <h3 class="modal-title" id="modalProjectTitle">${data.title}</h3>
+                <p class="modal-summary">${data.summary}</p>
+            </div>
+
+            <div class="modal-visual-preview">
+                <img src="${data.image}" alt="${data.alt}" width="800" height="450">
+            </div>
+
+            <div class="modal-grid-2">
+                <div class="modal-box">
+                    <h4>THE CHALLENGE</h4>
+                    <p>${data.challenge}</p>
+                </div>
+                <div class="modal-box">
+                    <h4>THE XESTUS SOLUTION</h4>
+                    <p>${data.solution}</p>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h4 class="modal-section-title">
+                    <i data-lucide="check-circle-2"></i>
+                    <span>Key Capabilities &amp; Engineering Highlights</span>
+                </h4>
+                <ul class="modal-features-list">
+                    ${data.capabilities.map((c) => `<li><i data-lucide="arrow-right"></i> <span>${c}</span></li>`).join("")}
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h4 class="modal-section-title">
+                    <i data-lucide="layers"></i>
+                    <span>Technical Architecture &amp; Stack</span>
+                </h4>
+                <div class="modal-tech-pills">
+                    ${data.techStack.map((t) => `<span>${t}</span>`).join("")}
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a href="#contact" class="btn-primary modal-footer-cta" id="modalDiscussCta">
+                    <span>${data.ctaText}</span>
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+            </div>
+        `;
+
+        // Refresh icons inside modal
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+
+        // Close on CTA click and scroll to contact
+        const modalDiscussCta = document.getElementById("modalDiscussCta");
+        if (modalDiscussCta) {
+            modalDiscussCta.addEventListener("click", () => {
+                closeCaseStudyModal();
+            });
+        }
+
+        // Display modal
+        caseStudyModal.classList.add("is-open");
+        caseStudyModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+
+        // Focus close button for accessible keyboard navigation
+        setTimeout(() => {
+            if (modalCloseBtn) modalCloseBtn.focus();
+        }, 100);
+    }
+
+    function closeCaseStudyModal() {
+        if (!caseStudyModal) return;
+        caseStudyModal.classList.remove("is-open");
+        caseStudyModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+
+        if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+            lastFocusedElement.focus();
+        }
+    }
+
+    // Modal event triggers
+    document.addEventListener("click", (e) => {
+        const trigger = e.target.closest("[data-open-modal]");
+        if (trigger) {
+            e.preventDefault();
+            const projectId = trigger.getAttribute("data-open-modal");
+            openCaseStudyModal(projectId, trigger);
+        }
+    });
+
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener("click", closeCaseStudyModal);
+    }
+
+    if (modalBackdrop) {
+        modalBackdrop.addEventListener("click", closeCaseStudyModal);
+    }
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && caseStudyModal && caseStudyModal.classList.contains("is-open")) {
+            closeCaseStudyModal();
+        }
+    });
 
     // --------------------------------------------------------------------------
     // 9. Contact Form Validation & EmailJS Delivery Adapter

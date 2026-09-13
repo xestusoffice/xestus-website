@@ -560,233 +560,365 @@ gtag('config', 'G-EF3ZRR55YY');
 <section class="portfolio hidden" id="portfolio">
 
     <div class="section-title">
-        <span>OUR WORK</span>
-        <h2>Featured Projects</h2>
-
+        <span>CASE STUDIES &amp; PORTFOLIO</span>
+        <h2>Featured Engineering Projects</h2>
         <p>
-            Some of the intelligent solutions and digital products we have built.
+            Explore our specialized work in autonomous AI agents, enterprise workflow automation, high-performance web platforms, and telemetry architectures.
         </p>
     </div>
 
-    <div class="portfolio-container">
-
-<!-- Project Card -->
-<div class="project-card tilt-card">
-
-    <div class="light"></div>
-
-    <div class="project-image">
-        <img
-            src="https://picsum.photos/800/500"
-            alt="AI CRM Platform"
-        >
+    <!-- Category Filter Controls -->
+    <div class="project-filters" role="tablist" aria-label="Filter Projects by Category">
+        <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+            <span>All Projects</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="ai" role="tab" aria-selected="false">
+            <span>AI &amp; Agents</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="automation" role="tab" aria-selected="false">
+            <span>Automation</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="web" role="tab" aria-selected="false">
+            <span>Web Platforms</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="data" role="tab" aria-selected="false">
+            <span>Data &amp; Cloud</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="cad" role="tab" aria-selected="false">
+            <span>CAD &amp; Design</span>
+        </button>
     </div>
 
-    <div class="project-content">
+    <div class="portfolio-container" id="projectsGrid">
 
-        <span class="project-category">
-            Artificial Intelligence
-        </span>
+        <!-- Project 1: Synapse AI -->
+        <article class="project-card tilt-card" data-category="ai" data-project-id="synapse-ai">
+            <div class="project-header-bar">
+                <span class="project-category-badge">AI &amp; Agents</span>
+                <span class="project-status-badge status-lab">Lab Architecture</span>
+            </div>
 
-        <h3>AI CRM Platform</h3>
+            <div class="project-image">
+                <img src="assets/images/projects/synapse-ai.svg" alt="Synapse AI Enterprise Knowledge Agent Architecture" width="800" height="450" loading="lazy">
+                <div class="project-image-overlay"></div>
+            </div>
 
-        <p>
-            AI-powered CRM built for modern businesses.
-        </p>
+            <div class="project-content">
+                <h3>Synapse AI: Enterprise Knowledge Agent</h3>
+                <p class="project-tagline">
+                    Autonomous retrieval-augmented AI agent connecting multi-source enterprise docs with LLM reasoning.
+                </p>
 
-        <div class="project-tech">
-            <span>Python</span>
-            <span>OpenAI</span>
-            <span>FastAPI</span>
-            <span>React</span>
-        </div>
-        
-         <div class="project-buttons">
-            <a href="#" class="btn-demo magnetic-btn">Live Demo</a>
-            <a href="#" class="btn-github magnetic-btn">GitHub</a>
-        </div>
-        <a href="#contact" class="project-link">
-         Discuss a Similar Project
-         <span>→</span>
-         </a>
-    </div>
+                <div class="project-story-box">
+                    <div class="story-item">
+                        <span class="story-label">Challenge</span>
+                        <span class="story-desc">Fragmented company documentation causing slow internal query resolution.</span>
+                    </div>
+                    <div class="story-item">
+                        <span class="story-label">Solution</span>
+                        <span class="story-desc">Hybrid vector RAG pipeline with custom chunking and citation validation.</span>
+                    </div>
+                </div>
 
-</div>
+                <div class="project-metric-pill">
+                    <i data-lucide="zap"></i>
+                    <span>Sub-second vector retrieval • 0% doc hallucination</span>
+                </div>
 
-<div class="project-card tilt-card">
-    <div class="light"></div>
-    <div class="project-image">
-        <img src="https://picsum.photos/800/500?random=2" alt="Automation Project">
-    </div>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>FastAPI</span>
+                    <span>LangChain</span>
+                    <span>pgvector</span>
+                    <span>Docker</span>
+                </div>
 
-    <div class="project-content">
+                <div class="project-actions">
+                    <button type="button" class="btn-primary btn-case-study" data-open-modal="synapse-ai">
+                        <span>View Case Study</span>
+                        <i data-lucide="file-text"></i>
+                    </button>
+                    <a href="#contact" class="btn-secondary btn-project-discuss">
+                        <span>Discuss Project</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
 
-        <span class="project-category">Automation</span>
+        <!-- Project 2: FlowSync Automation -->
+        <article class="project-card tilt-card" data-category="automation" data-project-id="flowsync-automation">
+            <div class="project-header-bar">
+                <span class="project-category-badge">Automation</span>
+                <span class="project-status-badge status-prod">Production Engine</span>
+            </div>
 
-        <h3>Business Automation Suite</h3>
+            <div class="project-image">
+                <img src="assets/images/projects/flowsync-automation.svg" alt="FlowSync Omnichannel Automation Pipeline" width="800" height="450" loading="lazy">
+                <div class="project-image-overlay"></div>
+            </div>
 
-        <p>
-            Automated workflows using AI and n8n.
-        </p>
+            <div class="project-content">
+                <h3>FlowSync: Omnichannel Automation Pipeline</h3>
+                <p class="project-tagline">
+                    Event-driven orchestration engine syncing CRMs, databases, and webhook triggers with automated error fallback.
+                </p>
 
-        <div class="project-tech">
-            <span>n8n</span>
-            <span>Make</span>
-            <span>Python</span>
-            <span>API</span>
-        </div>
+                <div class="project-story-box">
+                    <div class="story-item">
+                        <span class="story-label">Challenge</span>
+                        <span class="story-desc">Manual lead routing and dropped inquiries across multi-app handoffs.</span>
+                    </div>
+                    <div class="story-item">
+                        <span class="story-label">Solution</span>
+                        <span class="story-desc">Zero-loss webhook queue clusters with instant notification dispatch.</span>
+                    </div>
+                </div>
 
-        <div class="project-buttons">
-            <a href="#" class="btn-demo magnetic-btn">Live Demo</a>
-            <a href="#" class="btn-github magnetic-btn">GitHub</a>
-        </div>
-        <a href="#contact" class="project-link">
-    Discuss a Similar Project
-    <span>→</span>
-</a>
-    </div>
+                <div class="project-metric-pill">
+                    <i data-lucide="workflow"></i>
+                    <span>100% automated handoff • 0.00% event drop rate</span>
+                </div>
 
-</div>
+                <div class="project-tech">
+                    <span>n8n</span>
+                    <span>Python</span>
+                    <span>REST APIs</span>
+                    <span>Webhooks</span>
+                    <span>Redis</span>
+                </div>
 
-<div class="project-card tilt-card">
-    <div class="light"></div>
-    <div class="project-image">
-        <img src="https://picsum.photos/800/500?random=3" alt="Web Development">
-    </div>
+                <div class="project-actions">
+                    <button type="button" class="btn-primary btn-case-study" data-open-modal="flowsync-automation">
+                        <span>View Case Study</span>
+                        <i data-lucide="file-text"></i>
+                    </button>
+                    <a href="#contact" class="btn-secondary btn-project-discuss">
+                        <span>Discuss Project</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
 
-    <div class="project-content">
+        <!-- Project 3: Nexus Platform -->
+        <article class="project-card tilt-card" data-category="web" data-project-id="nexus-platform">
+            <div class="project-header-bar">
+                <span class="project-category-badge">Web Platforms</span>
+                <span class="project-status-badge status-prod">Production Platform</span>
+            </div>
 
-        <span class="project-category">Web Development</span>
+            <div class="project-image">
+                <img src="assets/images/projects/nexus-platform.svg" alt="Nexus Corporate Digital Platform" width="800" height="450" loading="lazy">
+                <div class="project-image-overlay"></div>
+            </div>
 
-        <h3>Corporate Business Website</h3>
+            <div class="project-content">
+                <h3>Nexus: Intelligent Corporate Platform</h3>
+                <p class="project-tagline">
+                    Ultra-fast corporate web architecture engineered for premium brand positioning and automated lead conversion.
+                </p>
 
-        <p>
-           Premium responsive business website.
-        </p>
+                <div class="project-story-box">
+                    <div class="story-item">
+                        <span class="story-label">Challenge</span>
+                        <span class="story-desc">Legacy corporate site with high bounce rates and weak technical SEO hierarchy.</span>
+                    </div>
+                    <div class="story-item">
+                        <span class="story-label">Solution</span>
+                        <span class="story-desc">Modular HTML5/CSS3 design system with edge delivery and EmailJS integration.</span>
+                    </div>
+                </div>
 
-        <div class="project-tech">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>React</span>
-        </div>
+                <div class="project-metric-pill">
+                    <i data-lucide="gauge"></i>
+                    <span>100/100 Lighthouse speed • CLS: 0.00 • Edge CDN</span>
+                </div>
 
-        <div class="project-buttons">
-            <a href="#" class="btn-demo magnetic-btn">Live Demo</a>
-            <a href="#" class="btn-github magnetic-btn">View Project →</a>
-        </div>
-           <a href="#contact" class="project-link">
-    Discuss a Similar Project
-    <span>→</span>
-</a>
-    </div>
+                <div class="project-tech">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript ES6+</span>
+                    <span>EmailJS</span>
+                    <span>SEO</span>
+                </div>
 
-</div>
+                <div class="project-actions">
+                    <button type="button" class="btn-primary btn-case-study" data-open-modal="nexus-platform">
+                        <span>View Case Study</span>
+                        <i data-lucide="file-text"></i>
+                    </button>
+                    <a href="#contact" class="btn-secondary btn-project-discuss">
+                        <span>Discuss Project</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
 
-<div class="project-card tilt-card">
-    <div class="light"></div>
-    <div class="project-image">
-        <img src="https://picsum.photos/800/500?random=4" alt="Cloud Solutions">
-    </div>
+        <!-- Project 4: PulseMetrics -->
+        <article class="project-card tilt-card" data-category="data" data-project-id="pulse-metrics">
+            <div class="project-header-bar">
+                <span class="project-category-badge">Data &amp; Analytics</span>
+                <span class="project-status-badge status-sys">System Architecture</span>
+            </div>
 
-    <div class="project-content">
+            <div class="project-image">
+                <img src="assets/images/projects/pulse-metrics.svg" alt="PulseMetrics Real-Time Telemetry Hub" width="800" height="450" loading="lazy">
+                <div class="project-image-overlay"></div>
+            </div>
 
-        <span class="project-category">Cloud Solutions</span>
+            <div class="project-content">
+                <h3>PulseMetrics: Operational Telemetry Hub</h3>
+                <p class="project-tagline">
+                    Unified analytics and telemetry portal streaming operational throughput, cluster health, and business KPIs.
+                </p>
 
-        <h3>Cloud Infrastructure</h3>
+                <div class="project-story-box">
+                    <div class="story-item">
+                        <span class="story-label">Challenge</span>
+                        <span class="story-desc">Fragmented server logs and unmonitored service bottlenecks across distributed apps.</span>
+                    </div>
+                    <div class="story-item">
+                        <span class="story-label">Solution</span>
+                        <span class="story-desc">Real-time WebSocket telemetry ingestion with dynamic chart filtering and threshold alerts.</span>
+                    </div>
+                </div>
 
-        <p>
-            Secure cloud deployment infrastructure.
-        </p>
+                <div class="project-metric-pill">
+                    <i data-lucide="activity"></i>
+                    <span>42ms response telemetry • Real-time anomaly alerts</span>
+                </div>
 
-        <div class="project-tech">
-            <span>AWS</span>
-            <span>Docker</span>
-            <span>Linux</span>
-            <span>Nginx</span>
-        </div>
+                <div class="project-tech">
+                    <span>FastAPI</span>
+                    <span>Chart.js</span>
+                    <span>PostgreSQL</span>
+                    <span>WebSockets</span>
+                    <span>Docker</span>
+                </div>
 
-        <div class="project-buttons">
-            <a href="#" class="btn-demo magnetic-btn">Live Demo</a>
-            <a href="#" class="btn-github magnetic-btn">View Project →</a>
-        </div>
-        <a href="#contact" class="project-link">
-    Discuss a Similar Project
-    <span>→</span>
-</a>
-    </div>
+                <div class="project-actions">
+                    <button type="button" class="btn-primary btn-case-study" data-open-modal="pulse-metrics">
+                        <span>View Case Study</span>
+                        <i data-lucide="file-text"></i>
+                    </button>
+                    <a href="#contact" class="btn-secondary btn-project-discuss">
+                        <span>Discuss Project</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
 
-</div>
+        <!-- Project 5: CloudGate Infrastructure -->
+        <article class="project-card tilt-card" data-category="data" data-project-id="cloudgate-infra">
+            <div class="project-header-bar">
+                <span class="project-category-badge">Cloud Infrastructure</span>
+                <span class="project-status-badge status-devops">DevOps Architecture</span>
+            </div>
 
-<div class="project-card tilt-card">
-    <div class="light"></div>
-    <div class="project-image">
-        <img src="https://picsum.photos/800/500?random=5" alt="UI UX Design">
-    </div>
+            <div class="project-image">
+                <img src="assets/images/projects/cloudgate-infra.svg" alt="CloudGate Reverse Proxy and Gateway Architecture" width="800" height="450" loading="lazy">
+                <div class="project-image-overlay"></div>
+            </div>
 
-    <div class="project-content">
+            <div class="project-content">
+                <h3>CloudGate: Reverse Proxy &amp; Gateway</h3>
+                <p class="project-tagline">
+                    Hardened containerized edge proxy with automated TLS provisioning, IP rate limiting, and microservice routing.
+                </p>
 
-        <span class="project-category">UI / UX Design</span>
+                <div class="project-story-box">
+                    <div class="story-item">
+                        <span class="story-label">Challenge</span>
+                        <span class="story-desc">Unsecured backend microservices exposed directly to edge connection spikes.</span>
+                    </div>
+                    <div class="story-item">
+                        <span class="story-label">Solution</span>
+                        <span class="story-desc">Automated Nginx reverse proxy bridge with TLS 1.3, Let's Encrypt bot, and rate limiting.</span>
+                    </div>
+                </div>
 
-        <h3>Modern Dashboard UI</h3>
+                <div class="project-metric-pill">
+                    <i data-lucide="shield-check"></i>
+                    <span>A+ SSL rating • Sub-millisecond routing • 99.99% SLA</span>
+                </div>
 
-        <p>
-            Modern dashboard UI for digital products.
-        </p>
+                <div class="project-tech">
+                    <span>Docker</span>
+                    <span>Nginx</span>
+                    <span>Linux</span>
+                    <span>Bash</span>
+                    <span>TLS 1.3</span>
+                </div>
 
-        <div class="project-tech">
-            <span>Figma</span>
-            <span>Photoshop</span>
-            <span>Illustrator</span>
-            <span>Branding</span>
-        </div>
+                <div class="project-actions">
+                    <button type="button" class="btn-primary btn-case-study" data-open-modal="cloudgate-infra">
+                        <span>View Case Study</span>
+                        <i data-lucide="file-text"></i>
+                    </button>
+                    <a href="#contact" class="btn-secondary btn-project-discuss">
+                        <span>Discuss Project</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
 
-        <div class="project-buttons">
-            <a href="#" class="btn-demo magnetic-btn">Live Demo</a>
-            <a href="#" class="btn-github magnetic-btn">View Project →</a>
-        </div>
-           <a href="#contact" class="project-link">
-    Discuss a Similar Project
-    <span>→</span>
-</a>
-    </div>
+        <!-- Project 6: AeroPlan CAD Drafting -->
+        <article class="project-card tilt-card" data-category="cad" data-project-id="aeroplan-cad">
+            <div class="project-header-bar">
+                <span class="project-category-badge">Technical Design</span>
+                <span class="project-status-badge status-cad">Engineering Portfolio</span>
+            </div>
 
-</div>
+            <div class="project-image">
+                <img src="assets/images/projects/aeroplan-cad.svg" alt="AeroPlan Precision Technical CAD Schematics" width="800" height="450" loading="lazy">
+                <div class="project-image-overlay"></div>
+            </div>
 
-<div class="project-card tilt-card">
-    <div class="light"></div>
-    <div class="project-image">
-        <img src="https://picsum.photos/800/500?random=6" alt="AI Consulting">
-    </div>
+            <div class="project-content">
+                <h3>AeroPlan: Precision CAD Schematics</h3>
+                <p class="project-tagline">
+                    Layer-standardized 2D architectural blueprints, geometric dimensioning, and fabrication-ready drafting.
+                </p>
 
-    <div class="project-content">
-        
-        <span class="project-category">AI Consulting</span>
+                <div class="project-story-box">
+                    <div class="story-item">
+                        <span class="story-label">Challenge</span>
+                        <span class="story-desc">Inconsistent CAD layer conventions and unvalidated dimensional tolerances.</span>
+                    </div>
+                    <div class="story-item">
+                        <span class="story-label">Solution</span>
+                        <span class="story-desc">Standardized AutoCAD template suites with multi-sheet plotting and parametric validation.</span>
+                    </div>
+                </div>
 
-        <h3>Digital AI Transformation</h3>
+                <div class="project-metric-pill">
+                    <i data-lucide="ruler"></i>
+                    <span>1:50 precision drafting • Zero dimension variance</span>
+                </div>
 
-        <p>
-            Helping businesses adopt AI solutions.
-        </p>
+                <div class="project-tech">
+                    <span>AutoCAD 2D</span>
+                    <span>Technical Drafting</span>
+                    <span>CAD Schematics</span>
+                    <span>Engineering Plans</span>
+                </div>
 
-        <div class="project-tech">
-            <span>Strategy</span>
-            <span>AI</span>
-            <span>Scaling</span>
-            <span>Training</span>
-        </div>
-
-        <div class="project-buttons">
-            <a href="#" class="btn-demo magnetic-btn">Live Demo</a>
-            <a href="#" class="btn-github magnetic-btn">View Project →</a>
-        </div>
-         <a href="#contact" class="project-link">
-    Discuss a Similar Project
-    <span>→</span>
-</a>
-    </div>
-
-</div>
+                <div class="project-actions">
+                    <button type="button" class="btn-primary btn-case-study" data-open-modal="aeroplan-cad">
+                        <span>View Case Study</span>
+                        <i data-lucide="file-text"></i>
+                    </button>
+                    <a href="#contact" class="btn-secondary btn-project-discuss">
+                        <span>Discuss Project</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
 
     </div>
 
@@ -995,6 +1127,19 @@ gtag('config', 'G-EF3ZRR55YY');
 
     <p>© 2026 XESTUS. All Rights Reserved.</p>
 </footer>
+
+<!-- Accessible Case Study Modal Dialog -->
+<div id="caseStudyModal" class="case-study-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalProjectTitle">
+    <div class="case-study-backdrop" id="modalBackdrop"></div>
+    <div class="case-study-dialog" role="document">
+        <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close Case Study Details">
+            <i data-lucide="x"></i>
+        </button>
+        <div class="modal-content-container" id="modalContentContainer">
+            <!-- Dynamically populated by script.js -->
+        </div>
+    </div>
+</div>
 
 <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>

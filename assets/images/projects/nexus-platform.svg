@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="nexusBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070d18"/>
+      <stop offset="60%" stop-color="#0b172a"/>
+      <stop offset="100%" stop-color="#040912"/>
+    </linearGradient>
+    <radialGradient id="nexusGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#00ffff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00ffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#nexusBg)"/>
+  <circle cx="400" cy="180" r="260" fill="url(#nexusGlow)"/>
+
+  <!-- Browser UI Window Mockup -->
+  <g transform="translate(100, 45)">
+    <!-- Main Window Frame -->
+    <rect width="600" height="360" rx="14" fill="#0b1526" stroke="rgba(0, 191, 255, 0.35)" stroke-width="1.5"/>
+    
+    <!-- Window Header / Titlebar -->
+    <rect width="600" height="38" rx="14" fill="#0e1b30"/>
+    <rect y="24" width="600" height="14" fill="#0e1b30"/>
+    <line x1="0" y1="38" x2="600" y2="38" stroke="rgba(0, 191, 255, 0.15)" stroke-width="1"/>
+    
+    <!-- Window Controls -->
+    <circle cx="24" cy="19" r="5" fill="#ff5f56"/>
+    <circle cx="40" cy="19" r="5" fill="#ffbd2e"/>
+    <circle cx="56" cy="19" r="5" fill="#27c93f"/>
+
+    <!-- URL Bar -->
+    <rect x="180" y="8" width="240" height="22" rx="6" fill="#070f1e" stroke="rgba(0, 191, 255, 0.25)"/>
+    <circle cx="195" cy="19" r="3" fill="#00ffff"/>
+    <text x="206" y="23" fill="#88a0c0" font-family="system-ui, sans-serif" font-size="10">https://nexus-enterprise.platform</text>
+
+    <!-- Page Content -->
+    <!-- Nav strip inside mockup -->
+    <rect x="25" y="55" width="80" height="14" rx="4" fill="#00ffff"/>
+    <rect x="420" y="55" width="40" height="12" rx="3" fill="rgba(255,255,255,0.1)"/>
+    <rect x="470" y="55" width="40" height="12" rx="3" fill="rgba(255,255,255,0.1)"/>
+    <rect x="520" y="52" width="55" height="18" rx="4" fill="#00bfff"/>
+
+    <!-- Hero banner inside mockup -->
+    <g transform="translate(25, 85)">
+      <rect width="550" height="130" rx="10" fill="linear-gradient(135deg, #102442 0%, #0c1a2e 100%)" stroke="rgba(0, 191, 255, 0.25)"/>
+      <text x="25" y="45" fill="#ffffff" font-family="system-ui, sans-serif" font-size="18" font-weight="800">Intelligence Beyond Limits</text>
+      <text x="25" y="70" fill="#88a0c0" font-family="system-ui, sans-serif" font-size="11">Enterprise-grade fullstack web architecture deployed on global edge.</text>
+      <rect x="25" y="88" width="100" height="24" rx="12" fill="#00ffff"/>
+      <rect x="135" y="88" width="100" height="24" rx="12" fill="none" stroke="#00bfff" stroke-width="1.5"/>
+    </g>
+
+    <!-- 3 Mini Cards inside mockup -->
+    <g transform="translate(25, 230)">
+      <rect x="0" width="170" height="100" rx="8" fill="#0f2038" stroke="rgba(0, 191, 255, 0.2)"/>
+      <circle cx="25" cy="25" r="10" fill="rgba(0, 191, 255, 0.2)"/>
+      <rect x="20" y="48" width="100" height="10" rx="3" fill="#ffffff"/>
+      <rect x="20" y="65" width="130" height="6" rx="2" fill="#6680a0"/>
+      <rect x="20" y="77" width="90" height="6" rx="2" fill="#6680a0"/>
+
+      <rect x="190" width="170" height="100" rx="8" fill="#0f2038" stroke="#00ffff" stroke-width="1.5"/>
+      <circle cx="215" cy="25" r="10" fill="rgba(0, 255, 255, 0.3)"/>
+      <rect x="210" y="48" width="100" height="10" rx="3" fill="#ffffff"/>
+      <rect x="210" y="65" width="130" height="6" rx="2" fill="#6680a0"/>
+      <rect x="210" y="77" width="90" height="6" rx="2" fill="#6680a0"/>
+
+      <rect x="380" width="170" height="100" rx="8" fill="#0f2038" stroke="rgba(0, 191, 255, 0.2)"/>
+      <circle cx="405" cy="25" r="10" fill="rgba(0, 191, 255, 0.2)"/>
+      <rect x="400" y="48" width="100" height="10" rx="3" fill="#ffffff"/>
+      <rect x="400" y="65" width="130" height="6" rx="2" fill="#6680a0"/>
+      <rect x="400" y="77" width="90" height="6" rx="2" fill="#6680a0"/>
+    </g>
+  </g>
+</svg>
