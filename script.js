@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        const interactiveCards = document.querySelectorAll(".service-card, .solution-card, .project-card");
+        const interactiveCards = document.querySelectorAll(".service-card, .solution-card, .project-card, .lab-card");
         interactiveCards.forEach((card) => {
             card.addEventListener("pointermove", (e) => {
                 const rect = card.getBoundingClientRect();
@@ -561,6 +561,69 @@ document.addEventListener("DOMContentLoaded", () => {
             closeCaseStudyModal();
         }
     });
+
+    // --------------------------------------------------------------------------
+    // 8D. Innovation Lab Interactive Terminal Controller
+    // --------------------------------------------------------------------------
+    const labTerminalContent = document.getElementById("labTerminalContent");
+    const terminalTabs = document.querySelectorAll(".terminal-tab");
+
+    const terminalLogs = {
+        mcp: `
+<div class="terminal-line"><span class="term-prompt">&gt;</span> <span class="term-cyan">[MCP-INIT]</span> <span class="term-white">Initializing Model Context Protocol (MCP) Server...</span></div>
+<div class="terminal-line"><span class="term-dim">14:02:11.024</span> <span class="term-green">[PROTOCOL]</span> Version: <span class="term-white">2024-11-05</span> | Transport: <span class="term-highlight">JSON-RPC 2.0 / stdio</span></div>
+<div class="terminal-line"><span class="term-dim">14:02:11.031</span> <span class="term-cyan">[DISCOVERY]</span> Registering dynamic capabilities:</div>
+<div class="terminal-line">&nbsp;&nbsp;<span class="term-dim">├──</span> <span class="term-purple">tool:</span> <span class="term-white">vector_rag_query</span> <span class="term-dim">(params: query, top_k, threshold)</span></div>
+<div class="terminal-line">&nbsp;&nbsp;<span class="term-dim">├──</span> <span class="term-purple">tool:</span> <span class="term-white">ast_security_scan</span> <span class="term-dim">(params: file_path, ruleset)</span></div>
+<div class="terminal-line">&nbsp;&nbsp;<span class="term-dim">└──</span> <span class="term-purple">tool:</span> <span class="term-white">edge_telemetry_fetch</span> <span class="term-dim">(params: cluster_id, metric_window)</span></div>
+<div class="terminal-line"><span class="term-dim">14:02:11.042</span> <span class="term-amber">[EXECUTE]</span> Agent call: <span class="term-cyan">vector_rag_query</span>("enterprise authentication policies", top_k=3)</div>
+<div class="terminal-line"><span class="term-dim">14:02:11.049</span> <span class="term-green">[RETURN]</span> Vector distance: <span class="term-white">0.082 (Cosine Sim: 99.18%)</span> | Latency: <span class="term-highlight">6.8ms</span></div>
+<div class="terminal-line"><span class="term-prompt">&gt;</span> <span class="term-green">✓ MCP Mesh Handshake Active • 0 Schema Errors</span>
+        `,
+        swarm: `
+<div class="terminal-line"><span class="term-prompt">&gt;</span> <span class="term-purple">[SWARM-DAG]</span> <span class="term-white">Spawning Hierarchical Agent Swarm Graph (LangGraph)</span></div>
+<div class="terminal-line"><span class="term-dim">14:02:15.102</span> <span class="term-cyan">[PLANNER-AGENT]</span> Decomposed goal into 3 parallel execution nodes:</div>
+<div class="terminal-line">&nbsp;&nbsp;<span class="term-dim">├── Node 1:</span> <span class="term-white">Vector Ingestion &amp; Chunk Semantic Verification</span> <span class="term-green">[DONE]</span></div>
+<div class="terminal-line">&nbsp;&nbsp;<span class="term-dim">├── Node 2:</span> <span class="term-white">FastAPI Microservice Generation with Pydantic V2</span> <span class="term-green">[DONE]</span></div>
+<div class="terminal-line">&nbsp;&nbsp;<span class="term-dim">└── Node 3:</span> <span class="term-white">Security &amp; Rate-Limit Constraint Validation</span> <span class="term-amber">[IN REVIEW]</span></div>
+<div class="terminal-line"><span class="term-dim">14:02:15.188</span> <span class="term-purple">[CRITIC-AGENT]</span> Running automated AST compliance checks:</div>
+<div class="terminal-line">&nbsp;&nbsp;<span class="term-green">✓ Clean dependency boundary</span> | <span class="term-green">✓ Zero unhandled async exceptions</span></div>
+<div class="terminal-line"><span class="term-dim">14:02:15.210</span> <span class="term-cyan">[SYNTHESIZER]</span> Merging consensus outputs • Total Swarm Tokens: <span class="term-highlight">1,420</span></div>
+<div class="terminal-line"><span class="term-prompt">&gt;</span> <span class="term-green">✓ DAG Execution Successful • Output Artifact Verified</span>
+        `,
+        edge: `
+<div class="terminal-line"><span class="term-prompt">&gt;</span> <span class="term-cyan">[NODE-TELEMETRY]</span> <span class="term-white">xestus-edge-f41-01 (Samsung Galaxy F41 Linux Node)</span></div>
+<div class="terminal-line"><span class="term-dim">14:02:20.001</span> <span class="term-dim">[SYSTEM]</span> Architecture: <span class="term-white">aarch64 (Exynos 9611 8-Core)</span> | Kernel: <span class="term-dim">Linux 4.14-perf+</span></div>
+<div class="terminal-line"><span class="term-dim">14:02:20.012</span> <span class="term-green">[SERVICES]</span> Active Container Pods:</div>
+<div class="terminal-line">&nbsp;&nbsp;<span class="term-dim">├──</span> <span class="term-white">caddy-reverse-proxy</span> <span class="term-green">[HEALTHY]</span> (Port 80/443, TLS 1.3)</div>
+<div class="terminal-line">&nbsp;&nbsp;<span class="term-dim">├──</span> <span class="term-white">fastapi-staging-backend</span> <span class="term-green">[HEALTHY]</span> (Uvicorn 4 workers)</div>
+<div class="terminal-line">&nbsp;&nbsp;<span class="term-dim">└──</span> <span class="term-white">tailscale-mesh-gateway</span> <span class="term-green">[HEALTHY]</span> (Encrypted WireGuard Peer)</div>
+<div class="terminal-line"><span class="term-dim">14:02:20.038</span> <span class="term-amber">[VITALS]</span> Thermal: <span class="term-white">34.4°C</span> | CPU Load: <span class="term-highlight">11.8%</span> | RAM: <span class="term-white">2.3GB / 5.8GB</span></div>
+<div class="terminal-line"><span class="term-prompt">&gt;</span> <span class="term-green">✓ 24/7 Edge Cluster Online • Continuous Home Lab Uptime: 99.98%</span>
+        `
+    };
+
+    function renderTerminalTab(tabKey) {
+        if (!labTerminalContent || !terminalLogs[tabKey]) return;
+        labTerminalContent.innerHTML = terminalLogs[tabKey].trim();
+    }
+
+    if (terminalTabs.length && labTerminalContent) {
+        renderTerminalTab("mcp");
+
+        terminalTabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                const targetKey = tab.getAttribute("data-tab");
+                terminalTabs.forEach((t) => {
+                    t.classList.remove("active");
+                    t.setAttribute("aria-selected", "false");
+                });
+                tab.classList.add("active");
+                tab.setAttribute("aria-selected", "true");
+                renderTerminalTab(targetKey);
+            });
+        });
+    }
 
     // --------------------------------------------------------------------------
     // 9. Contact Form Validation & EmailJS Delivery Adapter
