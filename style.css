@@ -166,14 +166,49 @@ button, input, textarea {
 /* --------------------------------------------------------------------------
    3. ACCESSIBILITY & REDUCED MOTION
    -------------------------------------------------------------------------- */
+.skip-to-content {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cyan-primary);
+    color: #ffffff;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    z-index: 2147483647;
+    box-shadow: 0 8px 30px rgba(0, 191, 255, 0.5);
+    transition: top var(--transition-fast);
+    text-decoration: none;
+}
+
+.skip-to-content:focus {
+    top: 0;
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto !important;
     }
     *, *::before, *::after {
-        animation-duration: 0.01ms !important;
+        animation-duration: 0.001ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        transition-duration: 0.001ms !important;
         scroll-behavior: auto !important;
     }
     .cursor-dot, .cursor-outline, .cursor-glow {
@@ -181,6 +216,13 @@ button, input, textarea {
     }
     .tilt-card {
         transform: none !important;
+    }
+    .xestus-3d-orb, .orb-core, .orb-ring-1, .orb-ring-2, .orb-ring-3 {
+        animation: none !important;
+        transform: none !important;
+    }
+    .status-live-dot, .pulse-indicator {
+        animation: none !important;
     }
 }
 
@@ -3844,5 +3886,40 @@ body.modal-open {
     .footer-legal-links {
         justify-content: center;
         flex-wrap: wrap;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   18. PRINT MEDIA STYLES
+   -------------------------------------------------------------------------- */
+@media print {
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+    .site-header,
+    .cursor-dot,
+    .cursor-outline,
+    .cursor-glow,
+    #progress-bar,
+    .connection-overlay,
+    .case-study-modal,
+    .btn-back-to-top,
+    .menu-toggle {
+        display: none !important;
+    }
+    .hero,
+    .services,
+    .solutions,
+    .portfolio,
+    .lab,
+    .why-us,
+    .founder,
+    .technologies,
+    .stats,
+    .contact,
+    .site-footer {
+        padding: 20px 0 !important;
+        page-break-inside: avoid;
     }
 }

@@ -73,33 +73,44 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Sticky Header Scroll State
-    function handleHeaderScroll() {
+    // --------------------------------------------------------------------------
+    // 3. Consolidated Scroll State & Progress Bar (rAF Throttled)
+    // --------------------------------------------------------------------------
+    const progressBar = document.getElementById("progress-bar");
+    let isScrollRafScheduled = false;
+
+    function onScrollUpdate() {
+        const scrollY = window.scrollY;
+
+        // Sticky Header Toggle
         if (siteHeader) {
-            siteHeader.classList.toggle("scrolled", window.scrollY > 30);
+            siteHeader.classList.toggle("scrolled", scrollY > 30);
         }
         const legacyNav = document.querySelector("nav");
         if (legacyNav) {
-            legacyNav.classList.toggle("scrolled", window.scrollY > 30);
+            legacyNav.classList.toggle("scrolled", scrollY > 30);
         }
-    }
-    window.addEventListener("scroll", handleHeaderScroll, { passive: true });
-    handleHeaderScroll();
 
-    // --------------------------------------------------------------------------
-    // 3. Scroll Progress Bar
-    // --------------------------------------------------------------------------
-    const progressBar = document.getElementById("progress-bar");
-    if (progressBar) {
-        window.addEventListener("scroll", () => {
-            const scrollTop = document.documentElement.scrollTop;
+        // Progress Bar
+        if (progressBar) {
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             if (scrollHeight > 0) {
-                const progress = (scrollTop / scrollHeight) * 100;
+                const progress = (scrollY / scrollHeight) * 100;
                 progressBar.style.width = `${progress}%`;
             }
-        }, { passive: true });
+        }
+
+        isScrollRafScheduled = false;
     }
+
+    window.addEventListener("scroll", () => {
+        if (!isScrollRafScheduled) {
+            isScrollRafScheduled = true;
+            requestAnimationFrame(onScrollUpdate);
+        }
+    }, { passive: true });
+
+    onScrollUpdate();
 
     // --------------------------------------------------------------------------
     // 4. Scroll Reveal (IntersectionObserver)
