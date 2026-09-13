@@ -275,8 +275,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        const serviceCards = document.querySelectorAll(".service-card");
-        serviceCards.forEach((card) => {
+        const interactiveCards = document.querySelectorAll(".service-card, .solution-card");
+        interactiveCards.forEach((card) => {
             card.addEventListener("pointermove", (e) => {
                 const rect = card.getBoundingClientRect();
                 card.style.setProperty("--x", `${e.clientX - rect.left}px`);
