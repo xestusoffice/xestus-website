@@ -46,6 +46,29 @@ window.XESTUS_TRANSLATIONS = {
     "hero.cap3_val": "Cloud & Web",
     "hero.cap3_lbl": "Scalable Systems",
 
+    // Live Stats & Telemetry Modal
+    "stats.live_badge": "LIVE STATS",
+    "stats.visits": "Visits",
+    "stats.page_views": "Page Views",
+    "stats.unique_visitors": "Unique Visitors",
+    "stats.followers": "Followers",
+    "stats.view_activity": "View Activity",
+    "stats.syncing": "Telemetry Syncing with Node",
+    "stats.unavailable": "Stats Temporarily Unavailable",
+    "stats.live_telemetry": "REAL-TIME ACTIVITY TELEMETRY",
+    "stats.modal_title": "XESTUS Live Activity",
+    "stats.modal_sub": "Verified aggregate platform engagement and active follower metrics across rolling timeframes.",
+    "stats.period_header": "Time Window",
+    "stats.website_header": "Website Visits",
+    "stats.followers_header": "Confirmed Followers",
+    "stats.period_24h": "Last 24 Hours",
+    "stats.period_7d": "Last 7 Days",
+    "stats.period_30d": "Last 30 Days",
+    "stats.period_12m": "Last 12 Months",
+    "stats.privacy_title": "Privacy & Data Integrity Guarantee:",
+    "stats.privacy_note": "All statistics represent verified aggregate metrics. We never track individual IP addresses, cookies, or expose subscriber identities.",
+    "stats.close": "Close Breakdown",
+
     // Core Services Section
     "services.badge": "CORE CAPABILITIES",
     "services.title": "Specialized Engineering Services",
@@ -272,6 +295,29 @@ window.XESTUS_TRANSLATIONS = {
     "hero.cap2_lbl": "স্বয়ংক্রিয় কাজের ধারা",
     "hero.cap3_val": "ক্লাউড ও ওয়েব",
     "hero.cap3_lbl": "গতিশীল সিস্টেম",
+
+    // Live Stats & Telemetry Modal
+    "stats.live_badge": "লাইভ স্ট্যাটস",
+    "stats.visits": "ভিজিট",
+    "stats.page_views": "পেজ ভিউ",
+    "stats.unique_visitors": "ইউনিক ভিজিটর",
+    "stats.followers": "অনুসারী",
+    "stats.view_activity": "কার্যকলাপ দেখুন",
+    "stats.syncing": "টেলিমেট্রি নোডের সাথে সিঙ্ক হচ্ছে",
+    "stats.unavailable": "স্ট্যাটস সাময়িকভাবে অনুপলব্ধ",
+    "stats.live_telemetry": "রিয়েল-টাইম কার্যকলাপ টেলিমেট্রি",
+    "stats.modal_title": "XESTUS লাইভ কার্যকলাপ",
+    "stats.modal_sub": "নির্দিষ্ট সময়সীমায় যাচাইকৃত সামগ্রিক প্ল্যাটফর্ম সম্পৃক্ততা এবং সক্রিয় অনুসারী মেট্রিক্স।",
+    "stats.period_header": "সময়কাল",
+    "stats.website_header": "ওয়েবসাইট ভিজিট",
+    "stats.followers_header": "নিশ্চিত অনুসারী",
+    "stats.period_24h": "গত ২৪ ঘণ্টা",
+    "stats.period_7d": "গত ৭ দিন",
+    "stats.period_30d": "গত ৩০ দিন",
+    "stats.period_12m": "গত ১২ মাস",
+    "stats.privacy_title": "গোপনীয়তা ও ডেটা সততা নিশ্চয়তা:",
+    "stats.privacy_note": "সমস্ত পরিসংখ্যান যাচাইকৃত সামগ্রিক মেট্রিক উপস্থাপন করে। আমরা কখনই ব্যক্তিগত আইপি ঠিকানা, কুকিজ ট্র্যাক করি না বা গ্রাহকদের পরিচয় প্রকাশ করি না।",
+    "stats.close": "বন্ধ করুন",
 
     // Core Services Section
     "services.badge": "মূল কারিগরি দক্ষতা",
@@ -500,6 +546,29 @@ window.XESTUS_TRANSLATIONS = {
     "hero.cap3_val": "क्लाउड व वेब",
     "hero.cap3_lbl": "स्केलेबल सिस्टम",
 
+    // Live Stats & Telemetry Modal
+    "stats.live_badge": "लाइव स्टैट्स",
+    "stats.visits": "विज़िट्स",
+    "stats.page_views": "पेज व्यूज़",
+    "stats.unique_visitors": "यूनिक विज़िटर्स",
+    "stats.followers": "फ़ॉलोअर्स",
+    "stats.view_activity": "गतिविधि देखें",
+    "stats.syncing": "नोड के साथ टेलीमेट्री सिंक हो रही है",
+    "stats.unavailable": "स्टैट्स अस्थायी रूप से अनुपलब्ध",
+    "stats.live_telemetry": "रियल-टाइम गतिविधि टेलीमेट्री",
+    "stats.modal_title": "XESTUS लाइव गतिविधि",
+    "stats.modal_sub": "विभिन्न समय सीमाओं में सत्यापित समग्र प्लेटफ़ॉर्म जुड़ाव और सक्रिय फ़ॉलोअर मेट्रिक्स।",
+    "stats.period_header": "समय सीमा",
+    "stats.website_header": "वेबसाइट विज़िट्स",
+    "stats.followers_header": "सत्यापित फ़ॉलोअर्स",
+    "stats.period_24h": "पिछले 24 घंटे",
+    "stats.period_7d": "पिछले 7 दिन",
+    "stats.period_30d": "पिछले 30 दिन",
+    "stats.period_12m": "पिछले 12 महीने",
+    "stats.privacy_title": "गोपनीयता और डेटा अखंडता गारंटी:",
+    "stats.privacy_note": "सभी आंकड़े सत्यापित समग्र मेट्रिक्स का प्रतिनिधित्व करते हैं। हम कभी भी व्यक्तिगत आईपी पते, कुकीज़ ट्रैक नहीं करते हैं और न ही ग्राहकों की पहचान उजागर करते हैं।",
+    "stats.close": "बंद करें",
+
     // Core Services Section
     "services.badge": "मुख्य तकनीकी क्षमताएं",
     "services.title": "विशेषज्ञ इंजीनियरिंग सेवाएं",
@@ -688,3 +757,5 @@ window.XESTUS_TRANSLATIONS = {
     "footer.designed": "सटीक इंजीनियरिंग और बुद्धिमत्ता से निर्मित।"
   }
 };
+
+window.translations = window.XESTUS_TRANSLATIONS;

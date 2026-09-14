@@ -62,10 +62,10 @@
     </noscript>
 
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=3.4.0">
+    <link rel="stylesheet" href="style.css?v=3.5.0">
 
     <!-- Preloaded Translations Dictionary -->
-    <script src="js/translations.js?v=1.0.0"></script>
+    <script src="js/translations.js?v=1.1.0"></script>
 
     <!-- Unified Structured Data / JSON-LD -->
     <script type="application/ld+json">
@@ -255,6 +255,49 @@
                 </button>
             </div>
             <span class="hero-follow-hint" data-i18n="hero.follow_hint">Get notified when we build something new.</span>
+
+            <!-- XESTUS Live Stats / Social Proof Component -->
+            <div class="hero-live-stats" id="heroLiveStats" aria-label="XESTUS Live Activity and Follower Stats">
+                <div class="stats-pill">
+                    <div class="stats-pill-meta">
+                        <div class="stats-live-pulse" aria-hidden="true">
+                            <span class="pulse-dot"></span>
+                        </div>
+                        <span class="stats-live-tag" data-i18n="stats.live_badge">LIVE STATS</span>
+                    </div>
+
+                    <div class="stats-pill-metrics" id="statsPillMetrics">
+                        <!-- Skeleton loader while fetching -->
+                        <div class="stats-skeleton" id="statsSkeleton" aria-hidden="true">
+                            <span class="skeleton-pill"></span>
+                            <span class="skeleton-pill skeleton-small"></span>
+                        </div>
+
+                        <!-- Active real metrics (rendered dynamically when valid telemetry received) -->
+                        <div class="stats-active-data" id="statsActiveData" style="display: none;">
+                            <div class="stat-bubble">
+                                <span class="stat-num" id="heroVisitsCount">--</span>
+                                <span class="stat-lbl" id="heroVisitsLabel" data-i18n="stats.visits">Visits</span>
+                            </div>
+                            <span class="stat-divider" aria-hidden="true">·</span>
+                            <div class="stat-bubble">
+                                <span class="stat-num" id="heroFollowersCount">--</span>
+                                <span class="stat-lbl" id="heroFollowersLabel" data-i18n="stats.followers">Followers</span>
+                            </div>
+                        </div>
+
+                        <!-- Graceful fallback message if endpoint unconfigured / syncing -->
+                        <div class="stats-syncing-fallback" id="statsSyncingFallback">
+                            <span class="stats-sync-text" data-i18n="stats.syncing">Telemetry Syncing with Node</span>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-stats-inspect" id="btnStatsInspect" aria-haspopup="dialog" aria-controls="statsModal" aria-label="View XESTUS live activity breakdown" title="View detailed rolling activity statistics">
+                        <span data-i18n="stats.view_activity">View Activity</span>
+                        <i data-lucide="arrow-up-right" class="stats-inspect-icon" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
 
             <div class="hero-capability-strip">
                 <div class="capability-item">
@@ -1885,6 +1928,81 @@
             </div>
         </div>
     </div>
+
+<!-- =========================
+     XESTUS LIVE STATS MODAL
+========================= -->
+<div id="statsModal" class="case-study-modal stats-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="statsModalTitle">
+    <div class="case-study-backdrop" id="statsModalBackdrop"></div>
+    <div class="case-study-dialog stats-modal-dialog">
+        <button type="button" class="modal-close-btn" id="statsModalCloseBtn" aria-label="Close Live Activity Dialog">
+            <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+
+        <div class="stats-modal-header">
+            <div class="stats-modal-badge">
+                <span class="pulse-dot" aria-hidden="true"></span>
+                <span data-i18n="stats.live_telemetry">REAL-TIME ACTIVITY TELEMETRY</span>
+            </div>
+            <h2 id="statsModalTitle" data-i18n="stats.modal_title">XESTUS Live Activity</h2>
+            <p class="stats-modal-sub" data-i18n="stats.modal_sub">
+                Verified aggregate platform engagement and active follower metrics across rolling timeframes.
+            </p>
+        </div>
+
+        <div class="stats-modal-body">
+            <!-- Telemetry Matrix Table -->
+            <div class="stats-table-wrapper" role="region" aria-label="Activity Table" tabindex="0">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th scope="col" data-i18n="stats.period_header">Time Window</th>
+                            <th scope="col" id="colWebsiteHeader" data-i18n="stats.website_header">Website Visits</th>
+                            <th scope="col" id="colFollowersHeader" data-i18n="stats.followers_header">Confirmed Followers</th>
+                        </tr>
+                    </thead>
+                    <tbody id="statsTableBody">
+                        <tr>
+                            <th scope="row" class="period-cell" data-i18n="stats.period_24h">Last 24 Hours</th>
+                            <td class="val-cell" id="statWeb24h"><span class="table-fallback-dash">--</span></td>
+                            <td class="val-cell" id="statFollow24h"><span class="table-fallback-dash">--</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="period-cell" data-i18n="stats.period_7d">Last 7 Days</th>
+                            <td class="val-cell" id="statWeb7d"><span class="table-fallback-dash">--</span></td>
+                            <td class="val-cell" id="statFollow7d"><span class="table-fallback-dash">--</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="period-cell" data-i18n="stats.period_30d">Last 30 Days</th>
+                            <td class="val-cell" id="statWeb30d"><span class="table-fallback-dash">--</span></td>
+                            <td class="val-cell" id="statFollow30d"><span class="table-fallback-dash">--</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="period-cell" data-i18n="stats.period_12m">Last 12 Months</th>
+                            <td class="val-cell" id="statWeb12m"><span class="table-fallback-dash">--</span></td>
+                            <td class="val-cell" id="statFollow12m"><span class="table-fallback-dash">--</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Syncing notice / privacy guarantee -->
+            <div class="stats-telemetry-notice" id="statsTelemetryNotice">
+                <i data-lucide="shield-check" class="notice-icon" aria-hidden="true"></i>
+                <div class="notice-content">
+                    <strong data-i18n="stats.privacy_title">Privacy &amp; Data Integrity Guarantee:</strong>
+                    <span data-i18n="stats.privacy_note">All statistics represent verified aggregate metrics. We never track individual IP addresses, cookies, or expose subscriber identities.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-modal-footer">
+            <button type="button" class="btn-primary stats-modal-done magnetic-btn" id="btnStatsDone">
+                <span data-i18n="stats.close">Close Breakdown</span>
+            </button>
+        </div>
+    </div>
+</div>
 </section>
 
  </main>
@@ -2158,6 +2276,81 @@
  </div>
 </div>
 
+<!-- =========================
+     XESTUS LIVE STATS MODAL
+========================= -->
+<div id="statsModal" class="case-study-modal stats-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="statsModalTitle">
+    <div class="case-study-backdrop" id="statsModalBackdrop"></div>
+    <div class="case-study-dialog stats-modal-dialog" role="document">
+        <button type="button" class="modal-close-btn" id="statsModalCloseBtn" aria-label="Close Live Activity Dialog">
+            <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+
+        <div class="stats-modal-header">
+            <div class="stats-modal-badge">
+                <span class="pulse-dot" aria-hidden="true"></span>
+                <span data-i18n="stats.live_telemetry">REAL-TIME ACTIVITY TELEMETRY</span>
+            </div>
+            <h2 id="statsModalTitle" data-i18n="stats.modal_title">XESTUS Live Activity</h2>
+            <p class="stats-modal-sub" data-i18n="stats.modal_sub">
+                Verified aggregate platform engagement and active follower metrics across rolling timeframes.
+            </p>
+        </div>
+
+        <div class="stats-modal-body">
+            <!-- Telemetry Matrix Table -->
+            <div class="stats-table-wrapper" role="region" aria-label="Activity Table" tabindex="0">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th scope="col" data-i18n="stats.period_header">Time Window</th>
+                            <th scope="col" id="colWebsiteHeader" data-i18n="stats.website_header">Website Visits</th>
+                            <th scope="col" id="colFollowersHeader" data-i18n="stats.followers_header">Confirmed Followers</th>
+                        </tr>
+                    </thead>
+                    <tbody id="statsTableBody">
+                        <tr>
+                            <th scope="row" class="period-cell" data-i18n="stats.period_24h">Last 24 Hours</th>
+                            <td class="val-cell" id="statWeb24h"><span class="table-fallback-dash">--</span></td>
+                            <td class="val-cell" id="statFollow24h"><span class="table-fallback-dash">--</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="period-cell" data-i18n="stats.period_7d">Last 7 Days</th>
+                            <td class="val-cell" id="statWeb7d"><span class="table-fallback-dash">--</span></td>
+                            <td class="val-cell" id="statFollow7d"><span class="table-fallback-dash">--</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="period-cell" data-i18n="stats.period_30d">Last 30 Days</th>
+                            <td class="val-cell" id="statWeb30d"><span class="table-fallback-dash">--</span></td>
+                            <td class="val-cell" id="statFollow30d"><span class="table-fallback-dash">--</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="period-cell" data-i18n="stats.period_12m">Last 12 Months</th>
+                            <td class="val-cell" id="statWeb12m"><span class="table-fallback-dash">--</span></td>
+                            <td class="val-cell" id="statFollow12m"><span class="table-fallback-dash">--</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Syncing notice / privacy guarantee -->
+            <div class="stats-telemetry-notice" id="statsTelemetryNotice">
+                <i data-lucide="shield-check" class="notice-icon" aria-hidden="true"></i>
+                <div class="notice-content">
+                    <strong data-i18n="stats.privacy_title">Privacy &amp; Data Integrity Guarantee:</strong>
+                    <span data-i18n="stats.privacy_note">All statistics represent verified aggregate metrics. We never track individual IP addresses, cookies, or expose subscriber identities.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-modal-footer">
+            <button type="button" class="btn-primary stats-modal-done magnetic-btn" id="btnStatsDone">
+                <span data-i18n="stats.close">Close Breakdown</span>
+            </button>
+        </div>
+    </div>
+</div>
+
 <!-- EmailJS -->
 <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
@@ -2165,10 +2358,10 @@
 <script defer src="https://unpkg.com/lucide@latest"></script>
 
 <!-- Translations Engine -->
-<script defer src="js/translations.js?v=1.0.0"></script>
+<script defer src="js/translations.js?v=1.1.0"></script>
 
 <!-- Your Script -->
-<script defer src="script.js?v=3.4.0"></script>
+<script defer src="script.js?v=3.5.0"></script>
 
 <!-- XESTUS Connection Lost Overlay -->
 <div id="connectionOverlay" class="connection-overlay">

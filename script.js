@@ -7,6 +7,15 @@
 "use strict";
 
 // --------------------------------------------------------------------------
+// 0. Global Configuration & Telemetry Boundaries
+// --------------------------------------------------------------------------
+window.XESTUS_CONFIG = window.XESTUS_CONFIG || {
+    // Analytics & Telemetry Endpoint (Leave empty for static/syncing fallback mode)
+    statsApiEndpoint: "", // e.g. "https://api.xestus.in/api/v1/stats" or Serverless / Worker endpoint
+    statsRefreshIntervalMs: 300000 // 5 minutes cache TTL
+};
+
+// --------------------------------------------------------------------------
 // 1. EmailJS Client Initialization (Preserved Configuration)
 // --------------------------------------------------------------------------
 function initEmailJS() {
@@ -1444,14 +1453,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentLangLabel = document.querySelector(".lang-current-label");
 
     function setLanguage(lang) {
-        if (!window.XESTUS_TRANSLATIONS) {
+        const allTrans = window.XESTUS_TRANSLATIONS || window.translations;
+        if (!allTrans) {
             return;
         }
-        if (!window.XESTUS_TRANSLATIONS[lang]) {
+        if (!allTrans[lang]) {
             lang = "en";
         }
 
-        const dict = window.XESTUS_TRANSLATIONS[lang];
+        const dict = allTrans[lang];
         if (!dict) return;
 
         document.documentElement.setAttribute("lang", lang);
@@ -1511,6 +1521,11 @@ document.addEventListener("DOMContentLoaded", () => {
         // Synchronize Follow UI button texts in active language
         if (typeof syncFollowUI === "function") {
             syncFollowUI();
+        }
+
+        // Synchronize Live Stats UI in active language
+        if (typeof syncLiveStatsUI === "function") {
+            syncLiveStatsUI();
         }
 
         if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
@@ -1590,6 +1605,269 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    // --------------------------------------------------------------------------
+    // 15. XESTUS Live Stats & Real Telemetry Controller
+    // --------------------------------------------------------------------------
+    const STATS_CACHE_KEY = "xestus_live_stats_cache_v1";
+    const heroLiveStats = document.getElementById("heroLiveStats");
+    const statsSkeleton = document.getElementById("statsSkeleton");
+    const statsActiveData = document.getElementById("statsActiveData");
+    const statsSyncingFallback = document.getElementById("statsSyncingFallback");
+    const heroVisitsCount = document.getElementById("heroVisitsCount");
+    const heroVisitsLabel = document.getElementById("heroVisitsLabel");
+    const heroFollowersCount = document.getElementById("heroFollowersCount");
+    const heroFollowersLabel = document.getElementById("heroFollowersLabel");
+    const btnStatsInspect = document.getElementById("btnStatsInspect");
+
+    const statsModal = document.getElementById("statsModal");
+    const statsModalBackdrop = document.getElementById("statsModalBackdrop");
+    const statsModalCloseBtn = document.getElementById("statsModalCloseBtn");
+    const btnStatsDone = document.getElementById("btnStatsDone");
+
+    const colWebsiteHeader = document.getElementById("colWebsiteHeader");
+    const colFollowersHeader = document.getElementById("colFollowersHeader");
+    const statWeb24h = document.getElementById("statWeb24h");
+    const statFollow24h = document.getElementById("statFollow24h");
+    const statWeb7d = document.getElementById("statWeb7d");
+    const statFollow7d = document.getElementById("statFollow7d");
+    const statWeb30d = document.getElementById("statWeb30d");
+    const statFollow30d = document.getElementById("statFollow30d");
+    const statWeb12m = document.getElementById("statWeb12m");
+    const statFollow12m = document.getElementById("statFollow12m");
+
+    let lastStatsFocusedElement = null;
+    let currentLiveStatsData = null;
+
+    function formatNumberCompact(num) {
+        if (typeof num !== "number" || isNaN(num)) return "--";
+        if (num >= 1000000) {
+            return (num / 1000000).toFixed(1).replace(/\.0$/, "") + "M+";
+        }
+        if (num >= 1000) {
+            return (num / 1000).toFixed(1).replace(/\.0$/, "") + "K+";
+        }
+        return num.toLocaleString();
+    }
+
+    function animateCounter(el, targetNum, isCompact = false) {
+        if (!el) return;
+        if (typeof targetNum !== "number" || isNaN(targetNum)) {
+            el.textContent = "--";
+            return;
+        }
+
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (prefersReducedMotion) {
+            el.textContent = isCompact ? formatNumberCompact(targetNum) : targetNum.toLocaleString();
+            return;
+        }
+
+        const duration = 900;
+        const startTime = performance.now();
+        const startVal = 0;
+
+        function updateCount(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
+            const currentVal = Math.floor(startVal + (targetNum - startVal) * easeProgress);
+
+            if (progress < 1) {
+                el.textContent = isCompact ? formatNumberCompact(currentVal) : currentVal.toLocaleString();
+                requestAnimationFrame(updateCount);
+            } else {
+                el.textContent = isCompact ? formatNumberCompact(targetNum) : targetNum.toLocaleString();
+            }
+        }
+        requestAnimationFrame(updateCount);
+    }
+
+    function renderLiveStatsData(data) {
+        if (!data || !data.metrics) {
+            renderStatsFallback("stats.syncing");
+            return;
+        }
+
+        currentLiveStatsData = data;
+
+        const webMetric = data.metrics.website || {};
+        const followMetric = data.metrics.followers || {};
+
+        if (statsSkeleton) statsSkeleton.style.display = "none";
+        if (statsSyncingFallback) statsSyncingFallback.style.display = "none";
+        if (statsActiveData) statsActiveData.style.display = "inline-flex";
+
+        // Determine current language dictionary
+        const currentLang = localStorage.getItem(LANG_STORAGE_KEY) || "en";
+        const dict = (window.XESTUS_TRANSLATIONS && window.XESTUS_TRANSLATIONS[currentLang]) ? window.XESTUS_TRANSLATIONS[currentLang] : null;
+
+        // Populate Hero Pill
+        if (heroVisitsCount && typeof webMetric.total === "number") {
+            animateCounter(heroVisitsCount, webMetric.total, true);
+        }
+        if (heroVisitsLabel) {
+            const isPageViews = webMetric.type === "pageviews" || webMetric.type === "page_views";
+            heroVisitsLabel.textContent = dict ? (isPageViews ? (dict["stats.page_views"] || "Page Views") : (dict["stats.visits"] || "Visits")) : (isPageViews ? "Page Views" : "Visits");
+        }
+
+        if (heroFollowersCount && typeof followMetric.total === "number") {
+            animateCounter(heroFollowersCount, followMetric.total, true);
+        }
+        if (heroFollowersLabel) {
+            heroFollowersLabel.textContent = dict && dict["stats.followers"] ? dict["stats.followers"] : "Followers";
+        }
+
+        // Populate Table Column Headers
+        if (colWebsiteHeader) {
+            const isPageViews = webMetric.type === "pageviews" || webMetric.type === "page_views";
+            colWebsiteHeader.textContent = dict ? (isPageViews ? (dict["stats.page_views"] || "Page Views") : (dict["stats.website_header"] || "Website Visits")) : (isPageViews ? "Page Views" : "Website Visits");
+        }
+        if (colFollowersHeader) {
+            colFollowersHeader.textContent = dict && dict["stats.followers_header"] ? dict["stats.followers_header"] : "Confirmed Followers";
+        }
+
+        // Populate Table Time Window Cells
+        const setCell = (el, val) => {
+            if (!el) return;
+            if (typeof val === "number") {
+                el.innerHTML = `<span class="val-num">${val.toLocaleString()}</span>`;
+            } else {
+                el.innerHTML = `<span class="table-fallback-dash">--</span>`;
+            }
+        };
+
+        setCell(statWeb24h, webMetric.last24h);
+        setCell(statFollow24h, followMetric.last24h);
+        setCell(statWeb7d, webMetric.last7d);
+        setCell(statFollow7d, followMetric.last7d);
+        setCell(statWeb30d, webMetric.last30d);
+        setCell(statFollow30d, followMetric.last30d);
+        setCell(statWeb12m, webMetric.last12m);
+        setCell(statFollow12m, followMetric.last12m);
+    }
+
+    function renderStatsFallback(msgKey = "stats.syncing") {
+        currentLiveStatsData = null;
+        if (statsSkeleton) statsSkeleton.style.display = "none";
+        if (statsActiveData) statsActiveData.style.display = "none";
+        if (statsSyncingFallback) {
+            statsSyncingFallback.style.display = "inline-flex";
+            const textEl = statsSyncingFallback.querySelector(".stats-sync-text");
+            if (textEl) {
+                const currentLang = localStorage.getItem(LANG_STORAGE_KEY) || "en";
+                const dict = (window.XESTUS_TRANSLATIONS && window.XESTUS_TRANSLATIONS[currentLang]) ? window.XESTUS_TRANSLATIONS[currentLang] : null;
+                textEl.textContent = dict && dict[msgKey] ? dict[msgKey] : (msgKey === "stats.unavailable" ? "Stats Temporarily Unavailable" : "Telemetry Syncing with Node");
+            }
+        }
+    }
+
+    function syncLiveStatsUI() {
+        if (currentLiveStatsData) {
+            renderLiveStatsData(currentLiveStatsData);
+        } else {
+            renderStatsFallback("stats.syncing");
+        }
+    }
+    window.syncLiveStatsUI = syncLiveStatsUI;
+
+    async function initLiveStats() {
+        // 1. Check Session Storage Cache
+        try {
+            const rawCache = sessionStorage.getItem(STATS_CACHE_KEY);
+            if (rawCache) {
+                const parsed = JSON.parse(rawCache);
+                const ttl = (window.XESTUS_CONFIG && window.XESTUS_CONFIG.statsRefreshIntervalMs) || 300000;
+                if (parsed && parsed.timestamp && (Date.now() - parsed.timestamp < ttl) && parsed.data) {
+                    renderLiveStatsData(parsed.data);
+                    return;
+                }
+            }
+        } catch (e) {}
+
+        // 2. Check if a real endpoint is configured
+        const endpoint = window.XESTUS_CONFIG && window.XESTUS_CONFIG.statsApiEndpoint;
+        if (!endpoint || typeof endpoint !== "string" || !endpoint.trim()) {
+            // Graceful fallback for static GitHub Pages without backend
+            renderStatsFallback("stats.syncing");
+            return;
+        }
+
+        // 3. Fetch from Telemetry API Endpoint
+        try {
+            const res = await fetch(endpoint, {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            });
+
+            if (!res.ok) {
+                throw new Error(`HTTP ${res.status}`);
+            }
+
+            const data = await res.json();
+            if (data && data.metrics) {
+                try {
+                    sessionStorage.setItem(STATS_CACHE_KEY, JSON.stringify({
+                        timestamp: Date.now(),
+                        data: data
+                    }));
+                } catch (e) {}
+                renderLiveStatsData(data);
+            } else {
+                renderStatsFallback("stats.unavailable");
+            }
+        } catch (err) {
+            // Data integrity: Never display fabricated stats on network error
+            renderStatsFallback("stats.unavailable");
+        }
+    }
+
+    function openStatsModal(triggerBtn) {
+        if (!statsModal) return;
+        lastStatsFocusedElement = triggerBtn || document.activeElement;
+        statsModal.classList.add("is-open");
+        statsModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+        if (statsModalCloseBtn) {
+            statsModalCloseBtn.focus();
+        }
+    }
+
+    function closeStatsModal() {
+        if (!statsModal) return;
+        statsModal.classList.remove("is-open");
+        statsModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        if (lastStatsFocusedElement && typeof lastStatsFocusedElement.focus === "function") {
+            lastStatsFocusedElement.focus();
+        }
+    }
+
+    if (btnStatsInspect) {
+        btnStatsInspect.addEventListener("click", () => openStatsModal(btnStatsInspect));
+    }
+    if (statsModalCloseBtn) {
+        statsModalCloseBtn.addEventListener("click", closeStatsModal);
+    }
+    if (statsModalBackdrop) {
+        statsModalBackdrop.addEventListener("click", closeStatsModal);
+    }
+    if (btnStatsDone) {
+        btnStatsDone.addEventListener("click", closeStatsModal);
+    }
+
+    document.addEventListener("keydown", (e) => {
+        if (statsModal && statsModal.classList.contains("is-open")) {
+            if (e.key === "Escape") {
+                closeStatsModal();
+            } else if (e.key === "Tab") {
+                trapFocus(e, statsModal);
+            }
+        }
+    });
+
+    initLiveStats();
 
     // Initialize stored or default language
     let initialLang = "en";
