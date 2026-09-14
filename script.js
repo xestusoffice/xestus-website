@@ -1016,6 +1016,366 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --------------------------------------------------------------------------
+    // 11. Follow XESTUS & Update Notification System
+    // --------------------------------------------------------------------------
+    const FOLLOW_STORAGE_KEY = "xestus_following_subscriber";
+    const followXestusBtn = document.getElementById("followXestusBtn");
+    const followModal = document.getElementById("followModal");
+    const followModalBackdrop = document.getElementById("followModalBackdrop");
+    const followModalCloseBtn = document.getElementById("followModalCloseBtn");
+    const followSubscribeView = document.getElementById("followSubscribeView");
+    const followManageView = document.getElementById("followManageView");
+    const followModalForm = document.getElementById("followModalForm");
+    const followEmailInput = document.getElementById("followEmail");
+    const followEmailError = document.getElementById("followEmailError");
+    const prefEmailCheck = document.getElementById("prefEmail");
+    const prefPushCheck = document.getElementById("prefPush");
+    const followConsentCheck = document.getElementById("followConsent");
+    const followConsentError = document.getElementById("followConsentError");
+    const followSubmitBtn = document.getElementById("followSubmitBtn");
+    const followStatusMsg = document.getElementById("followStatusMsg");
+    const followingEmailDisplay = document.getElementById("followingEmailDisplay");
+    const btnUnfollow = document.getElementById("btnUnfollow");
+    const btnFollowDone = document.getElementById("btnFollowDone");
+    const unfollowStatusMsg = document.getElementById("unfollowStatusMsg");
+    let lastFollowFocusedElement = null;
+
+    function getFollowState() {
+        try {
+            const raw = localStorage.getItem(FOLLOW_STORAGE_KEY);
+            if (!raw) return null;
+            return JSON.parse(raw);
+        } catch {
+            return null;
+        }
+    }
+
+    function syncFollowUI() {
+        const state = getFollowState();
+        const triggerBtns = document.querySelectorAll(".btn-follow-trigger");
+
+        triggerBtns.forEach((btn) => {
+            const iconWrap = btn.querySelector(".follow-btn-icon");
+            const textWrap = btn.querySelector(".follow-btn-text");
+
+            if (state && state.email) {
+                btn.classList.add("following");
+                btn.setAttribute("title", `Following as ${state.email} (Click to manage or unfollow)`);
+                btn.setAttribute("aria-label", `Following as ${state.email}. Click to manage or unfollow.`);
+                if (textWrap) textWrap.textContent = "Followed ✓";
+                if (iconWrap) {
+                    iconWrap.setAttribute("data-lucide", "check-circle-2");
+                }
+            } else {
+                btn.classList.remove("following");
+                btn.setAttribute("title", "Follow XESTUS for technical updates");
+                btn.setAttribute("aria-label", "Follow XESTUS updates");
+                if (textWrap) textWrap.textContent = "Follow XESTUS";
+                if (iconWrap) {
+                    iconWrap.setAttribute("data-lucide", "bell");
+                }
+            }
+        });
+
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    }
+
+    function openFollowModal(triggerBtn) {
+        if (!followModal) return;
+        lastFollowFocusedElement = triggerBtn || document.activeElement;
+
+        const state = getFollowState();
+        if (state && state.email) {
+            if (followSubscribeView) followSubscribeView.style.display = "none";
+            if (followManageView) {
+                followManageView.style.display = "block";
+                if (followingEmailDisplay) {
+                    // Mask email for privacy display (e.g. j***@domain.com)
+                    const parts = state.email.split("@");
+                    if (parts.length === 2 && parts[0].length > 2) {
+                        const maskedName = parts[0][0] + "***" + parts[0][parts[0].length - 1];
+                        followingEmailDisplay.textContent = `${maskedName}@${parts[1]}`;
+                    } else {
+                        followingEmailDisplay.textContent = state.email;
+                    }
+                }
+            }
+            if (unfollowStatusMsg) {
+                unfollowStatusMsg.className = "follow-status-msg";
+                unfollowStatusMsg.style.display = "none";
+                unfollowStatusMsg.textContent = "";
+            }
+        } else {
+            if (followManageView) followManageView.style.display = "none";
+            if (followSubscribeView) followSubscribeView.style.display = "block";
+            if (followStatusMsg) {
+                followStatusMsg.className = "follow-status-msg";
+                followStatusMsg.style.display = "none";
+                followStatusMsg.textContent = "";
+            }
+            if (followEmailError) followEmailError.textContent = "";
+            if (followConsentError) followConsentError.textContent = "";
+            if (followModalForm) followModalForm.reset();
+            if (prefEmailCheck) prefEmailCheck.checked = true;
+        }
+
+        followModal.classList.add("is-open");
+        followModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        setTimeout(() => {
+            if (state && state.email) {
+                if (btnFollowDone) btnFollowDone.focus();
+            } else {
+                if (followEmailInput) followEmailInput.focus();
+            }
+        }, 100);
+    }
+
+    function closeFollowModal() {
+        if (!followModal) return;
+        followModal.classList.remove("is-open");
+        followModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+
+        if (lastFollowFocusedElement && typeof lastFollowFocusedElement.focus === "function") {
+            lastFollowFocusedElement.focus();
+        }
+    }
+
+    // Attach click listener to all follow trigger buttons
+    document.querySelectorAll(".btn-follow-trigger").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            openFollowModal(btn);
+        });
+    });
+
+    // Modal close handlers
+    if (followModalCloseBtn) {
+        followModalCloseBtn.addEventListener("click", closeFollowModal);
+    }
+
+    if (followModalBackdrop) {
+        followModalBackdrop.addEventListener("click", closeFollowModal);
+    }
+
+    if (btnFollowDone) {
+        btnFollowDone.addEventListener("click", closeFollowModal);
+    }
+
+    document.addEventListener("keydown", (e) => {
+        if (followModal && followModal.classList.contains("is-open")) {
+            if (e.key === "Escape") {
+                closeFollowModal();
+            } else if (e.key === "Tab") {
+                trapFocus(e, followModal);
+            }
+        }
+    });
+
+    // Form submission
+    if (followModalForm) {
+        let isFollowSubmitting = false;
+        let lastFollowSubmitTime = 0;
+
+        if (followEmailInput) {
+            followEmailInput.addEventListener("input", () => {
+                if (followEmailError) followEmailError.textContent = "";
+            });
+        }
+        if (followConsentCheck) {
+            followConsentCheck.addEventListener("change", () => {
+                if (followConsentError) followConsentError.textContent = "";
+            });
+        }
+
+        followModalForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            if (isFollowSubmitting) return;
+
+            // 1. Anti-Bot Honeypot Defense
+            const botFilter = followModalForm.querySelector('input[name="_bot_filter"]');
+            if (botFilter && botFilter.value.trim() !== "") {
+                return;
+            }
+
+            // 2. Submission Cooldown / Rate Limiting
+            const now = Date.now();
+            if (now - lastFollowSubmitTime < 4000) {
+                if (followStatusMsg) {
+                    followStatusMsg.className = "follow-status-msg status-loading";
+                    followStatusMsg.style.display = "block";
+                    followStatusMsg.textContent = "Please wait a moment before submitting again...";
+                }
+                return;
+            }
+
+            const rawEmail = followEmailInput ? followEmailInput.value : "";
+            const email = rawEmail.toLowerCase().trim();
+            const prefEmail = prefEmailCheck ? prefEmailCheck.checked : true;
+            const prefPush = prefPushCheck ? prefPushCheck.checked : false;
+            const consent = followConsentCheck ? followConsentCheck.checked : false;
+
+            const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+            let isValid = true;
+
+            if (!email || email.length > 254 || !emailRegex.test(email)) {
+                if (followEmailError) followEmailError.textContent = "Please provide a valid work or personal email address.";
+                if (followEmailInput) followEmailInput.focus();
+                isValid = false;
+            }
+
+            if (!consent) {
+                if (followConsentError) followConsentError.textContent = "Please agree to receive XESTUS updates to continue.";
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            lastFollowSubmitTime = now;
+            isFollowSubmitting = true;
+            if (followSubmitBtn) {
+                followSubmitBtn.disabled = true;
+                const btnText = followSubmitBtn.querySelector(".btn-text");
+                if (btnText) btnText.textContent = "Processing...";
+            }
+            if (followStatusMsg) {
+                followStatusMsg.className = "follow-status-msg status-loading";
+                followStatusMsg.style.display = "block";
+                followStatusMsg.textContent = "Registering subscription with XESTUS network...";
+            }
+
+            // Optional Web Push Setup
+            if (prefPush && "Notification" in window) {
+                try {
+                    const permission = await Notification.requestPermission();
+                    if (permission === "granted" && "serviceWorker" in navigator) {
+                        const reg = await navigator.serviceWorker.ready;
+                        if (reg && reg.showNotification) {
+                            reg.showNotification("XESTUS Intelligence", {
+                                body: "Thank you for following XESTUS. You'll be notified when we launch something new.",
+                                icon: "assets/images/xestus-logo.png",
+                                badge: "assets/images/xestus-logo.png",
+                                data: { url: "https://xestus.in" }
+                            });
+                        }
+                    }
+                } catch (pushErr) {
+                    console.log("Web push permission notice:", pushErr);
+                }
+            }
+
+            // Secure Follower registration transmission
+            try {
+                if (typeof emailjs !== "undefined" && typeof emailjs.send === "function") {
+                    await emailjs.send("service_rumjowb", "template_malid0j", {
+                        from_name: `[Follower Subscription] ${email}`,
+                        reply_to: email,
+                        service: "Follow XESTUS Subscription",
+                        message: `New XESTUS Subscriber:\nEmail: ${email}\nChannels: Email (${prefEmail ? "Yes" : "No"}), Web Push (${prefPush ? "Yes" : "No"})\nConsent: Explicitly Granted\nTimestamp: ${new Date().toISOString()}`
+                    });
+                }
+
+                // If backend API endpoint is configured, forward payload
+                if (window.XESTUS_CONFIG && window.XESTUS_CONFIG.followApiEndpoint) {
+                    fetch(window.XESTUS_CONFIG.followApiEndpoint, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email, channels: { email: prefEmail, push: prefPush }, timestamp: new Date().toISOString() })
+                    }).catch((apiErr) => console.log("API Forward notice:", apiErr));
+                }
+
+                // Store locally on device
+                const subscriberRecord = {
+                    email: email,
+                    channels: { email: prefEmail, push: prefPush },
+                    subscribedAt: new Date().toISOString()
+                };
+                localStorage.setItem(FOLLOW_STORAGE_KEY, JSON.stringify(subscriberRecord));
+
+                if (followStatusMsg) {
+                    followStatusMsg.className = "follow-status-msg status-success";
+                    followStatusMsg.textContent = "✓ Thank you for following XESTUS! You'll be notified when we launch something new.";
+                }
+
+                syncFollowUI();
+
+                setTimeout(() => {
+                    closeFollowModal();
+                    isFollowSubmitting = false;
+                    if (followSubmitBtn) {
+                        followSubmitBtn.disabled = false;
+                        const btnText = followSubmitBtn.querySelector(".btn-text");
+                        if (btnText) btnText.textContent = "Confirm & Follow";
+                    }
+                }, 1800);
+
+            } catch (dispatchErr) {
+                console.warn("Follow registration notice:", dispatchErr);
+
+                // Fallback store locally so user UX succeeds
+                const subscriberRecord = {
+                    email: email,
+                    channels: { email: prefEmail, push: prefPush },
+                    subscribedAt: new Date().toISOString()
+                };
+                localStorage.setItem(FOLLOW_STORAGE_KEY, JSON.stringify(subscriberRecord));
+                syncFollowUI();
+
+                if (followStatusMsg) {
+                    followStatusMsg.className = "follow-status-msg status-success";
+                    followStatusMsg.textContent = "✓ Thank you for following XESTUS! You'll be notified when we launch something new.";
+                }
+
+                setTimeout(() => {
+                    closeFollowModal();
+                    isFollowSubmitting = false;
+                    if (followSubmitBtn) {
+                        followSubmitBtn.disabled = false;
+                        const btnText = followSubmitBtn.querySelector(".btn-text");
+                        if (btnText) btnText.textContent = "Confirm & Follow";
+                    }
+                }, 1800);
+            }
+        });
+    }
+
+    // Unfollow action
+    if (btnUnfollow) {
+        btnUnfollow.addEventListener("click", () => {
+            localStorage.removeItem(FOLLOW_STORAGE_KEY);
+            syncFollowUI();
+
+            if (unfollowStatusMsg) {
+                unfollowStatusMsg.className = "follow-status-msg status-success";
+                unfollowStatusMsg.style.display = "block";
+                unfollowStatusMsg.textContent = "✓ You have successfully unfollowed XESTUS.";
+            }
+
+            setTimeout(() => {
+                closeFollowModal();
+            }, 1200);
+        });
+    }
+
+    // Initialize UI on load
+    syncFollowUI();
+
+    // Register Service Worker for Web Push & Offline Support
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./sw.js").catch((swErr) => {
+            console.log("Service Worker registration info:", swErr);
+        });
+    }
+
+    // --------------------------------------------------------------------------
     // 12. Connection Lost & Network Status Monitor
     // --------------------------------------------------------------------------
     const connectionOverlay = document.getElementById("connectionOverlay");

@@ -3482,7 +3482,479 @@ body.modal-open {
 }
 
 /* --------------------------------------------------------------------------
-   16. SCROLL REVEAL UTILITY
+   16. FOLLOW XESTUS & NOTIFICATION SYSTEM
+   -------------------------------------------------------------------------- */
+.follow-section {
+    padding: 0 var(--section-pad-x) calc(var(--section-pad-y) * 0.75);
+    background: var(--bg-primary);
+    position: relative;
+    z-index: 2;
+}
+
+.follow-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+.follow-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(14, 25, 48, 0.75) 0%, rgba(8, 14, 28, 0.9) 100%);
+    border: 1px solid rgba(0, 191, 255, 0.28);
+    border-radius: var(--radius-2xl);
+    padding: 44px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 191, 255, 0.08);
+    transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.follow-card:hover {
+    border-color: rgba(0, 191, 255, 0.45);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 45px rgba(0, 191, 255, 0.15);
+}
+
+.follow-ambient-glow {
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 191, 255, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.follow-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+}
+
+.follow-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 14px;
+    background: rgba(0, 191, 255, 0.08);
+    border: 1px solid rgba(0, 191, 255, 0.25);
+    border-radius: var(--radius-full);
+    color: var(--cyan-bright);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.badge-pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--cyan-bright);
+    box-shadow: 0 0 8px var(--cyan-bright);
+    animation: pulseDot 2s infinite;
+}
+
+.follow-headline {
+    font-size: clamp(24px, 3.2vw, 34px);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+.follow-description {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 20px;
+}
+
+.follow-guarantees {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.guarantee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.guarantee-item svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--cyan-bright);
+    flex-shrink: 0;
+}
+
+.follow-action-box {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.btn-follow-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 36px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    min-width: 200px;
+    transition: all var(--transition-normal);
+}
+
+.btn-follow-trigger svg {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--transition-fast);
+}
+
+.btn-follow-trigger:hover svg {
+    transform: rotate(15deg);
+}
+
+.btn-follow-trigger.following {
+    background: rgba(0, 255, 136, 0.12);
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    color: #4ade80;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.15);
+}
+
+.btn-follow-trigger.following:hover {
+    background: rgba(255, 95, 86, 0.15);
+    border-color: rgba(255, 95, 86, 0.4);
+    color: #ff5f56;
+    box-shadow: 0 0 20px rgba(255, 95, 86, 0.2);
+}
+
+.follow-subtext {
+    font-size: 11.5px;
+    color: var(--text-dim);
+    text-align: center;
+}
+
+/* Follow Modal Specific Styles */
+.follow-dialog {
+    max-width: 560px;
+}
+
+.follow-modal-container {
+    padding: 38px 36px 42px;
+}
+
+.follow-modal-header {
+    text-align: center;
+    margin-bottom: 26px;
+}
+
+.follow-modal-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: rgba(0, 191, 255, 0.1);
+    border: 1px solid rgba(0, 191, 255, 0.3);
+    color: var(--cyan-bright);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+.follow-modal-icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+.follow-modal-icon.active {
+    background: rgba(0, 255, 136, 0.1);
+    border-color: rgba(0, 255, 136, 0.4);
+    color: #4ade80;
+}
+
+.follow-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cyan-bright);
+    margin-bottom: 8px;
+}
+
+.follow-tag.status-active {
+    color: #4ade80;
+}
+
+.follow-modal-header h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.follow-modal-desc {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 440px;
+}
+
+.follow-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.follow-pref-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+}
+
+.pref-group-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.custom-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text-secondary);
+    user-select: none;
+    line-height: 1.5;
+}
+
+.custom-checkbox-label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+}
+
+.checkbox-box {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1px solid var(--border-medium);
+    background: rgba(5, 10, 20, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all var(--transition-fast);
+}
+
+.checkbox-box svg {
+    width: 12px;
+    height: 12px;
+    stroke: #ffffff;
+    stroke-width: 3;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all var(--transition-fast);
+}
+
+.custom-checkbox-label input[type="checkbox"]:checked + .checkbox-box {
+    background: var(--cyan-primary);
+    border-color: var(--cyan-bright);
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
+}
+
+.custom-checkbox-label input[type="checkbox"]:checked + .checkbox-box svg {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.custom-checkbox-label:hover .checkbox-box {
+    border-color: var(--cyan-bright);
+}
+
+.custom-checkbox-label input[type="checkbox"]:focus-visible + .checkbox-box {
+    outline: 2px solid var(--cyan-bright);
+    outline-offset: 2px;
+}
+
+.follow-consent-group {
+    padding: 0 4px;
+}
+
+.follow-consent-group .custom-checkbox-label {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.follow-submit-wrap {
+    margin-top: 6px;
+}
+
+.btn-follow-submit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, var(--cyan-primary), var(--cyan-dark));
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 191, 255, 0.3);
+    transition: all var(--transition-fast);
+}
+
+.btn-follow-submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 191, 255, 0.45);
+}
+
+.btn-follow-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-follow-submit svg {
+    width: 16px;
+    height: 16px;
+    transition: transform var(--transition-fast);
+}
+
+.btn-follow-submit:hover:not(:disabled) svg {
+    transform: translateX(4px);
+}
+
+.follow-status-msg {
+    display: none;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.follow-status-msg.status-success {
+    display: block;
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    color: #4ade80;
+}
+
+.follow-status-msg.status-error {
+    display: block;
+    background: rgba(255, 95, 86, 0.1);
+    border: 1px solid rgba(255, 95, 86, 0.3);
+    color: #ff5f56;
+}
+
+.follow-status-msg.status-loading {
+    display: block;
+    background: rgba(0, 191, 255, 0.08);
+    border: 1px solid rgba(0, 191, 255, 0.25);
+    color: var(--cyan-bright);
+}
+
+.following-badge-email {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: var(--radius-full);
+    background: rgba(0, 191, 255, 0.08);
+    border: 1px solid rgba(0, 191, 255, 0.25);
+    color: var(--cyan-bright);
+    font-family: var(--font-mono, monospace);
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.follow-manage-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.btn-unfollow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 95, 86, 0.08);
+    border: 1px solid rgba(255, 95, 86, 0.3);
+    color: #ff5f56;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-unfollow:hover {
+    background: rgba(255, 95, 86, 0.18);
+    border-color: #ff5f56;
+    transform: translateY(-2px);
+}
+
+.btn-done {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-done:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   17. SCROLL REVEAL UTILITY
    -------------------------------------------------------------------------- */
 .hidden {
     opacity: 0;
@@ -3497,7 +3969,7 @@ body.modal-open {
 }
 
 /* --------------------------------------------------------------------------
-   17. RESPONSIVE BREAKPOINTS (Phase 2 Refinement)
+   18. RESPONSIVE BREAKPOINTS (Phase 2 Refinement)
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
     :root {
@@ -3771,6 +4243,21 @@ body.modal-open {
         flex: 1;
         justify-content: center;
     }
+
+    .follow-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 28px;
+        padding: 36px 28px;
+    }
+
+    .follow-guarantees {
+        justify-content: center;
+    }
+
+    .btn-follow-trigger {
+        width: 100%;
+    }
 }
 
 @media (max-width: 600px) {
@@ -3864,6 +4351,14 @@ body.modal-open {
         height: 160px;
     }
 
+    .follow-card {
+        padding: 26px 18px;
+    }
+
+    .follow-modal-container {
+        padding: 26px 18px 30px;
+    }
+
     .contact-form-wrapper {
         padding: 26px 18px;
     }
@@ -3915,10 +4410,13 @@ body.modal-open {
     }
 
     .footer-legal-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 }
 
 /* --------------------------------------------------------------------------
-   17B. ULTRA-COMPACT MOBILE SAFEGUARDS (<= 360px)
+   18B. ULTRA-COMPACT MOBILE SAFEGUARDS (<= 360px)
    -------------------------------------------------------------------------- */
 @media (max-width: 360px) {
     :root {
@@ -3947,6 +4445,10 @@ body.modal-open {
     .project-card,
     .lab-card,
     .why-card {
+        padding: 20px 14px;
+    }
+
+    .follow-card {
         padding: 20px 14px;
     }
 

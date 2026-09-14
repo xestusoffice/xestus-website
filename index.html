@@ -155,6 +155,7 @@
  <li><a href="#portfolio" class="nav-link">Projects</a></li>
  <li><a href="#lab" class="nav-link">Innovation Lab</a></li>
  <li><a href="#founder" class="nav-link">About</a></li>
+ <li><a href="#updates" class="nav-link">Follow</a></li>
  <li><a href="#contact" class="nav-link">Contact</a></li>
  </ul>
 
@@ -1636,6 +1637,46 @@
 
 </section>
 
+<!-- ==========================================================================
+     FOLLOW XESTUS & UPDATES NOTIFICATION MODULE
+     ========================================================================== -->
+<section class="follow-section" id="updates" aria-labelledby="followSectionTitle">
+    <div class="follow-container">
+        <div class="follow-card">
+            <div class="follow-ambient-glow" aria-hidden="true"></div>
+
+            <div class="follow-content">
+                <div class="follow-pill-badge">
+                    <span class="badge-pulse" aria-hidden="true"></span>
+                    <span>STAY IN THE LOOP</span>
+                </div>
+
+                <h2 id="followSectionTitle" class="follow-headline">
+                    Follow <span class="text-cyan">XESTUS</span> Updates
+                </h2>
+
+                <p class="follow-description">
+                    Be the first to know when we launch meaningful innovations, new AI agent swarms, open-source R&amp;D breakthroughs, and enterprise platforms.
+                </p>
+
+                <div class="follow-guarantees">
+                    <span class="guarantee-item"><i data-lucide="shield-check" aria-hidden="true"></i> 100% Spam-Free</span>
+                    <span class="guarantee-item"><i data-lucide="bell" aria-hidden="true"></i> Meaningful Launches Only</span>
+                    <span class="guarantee-item"><i data-lucide="user-x" aria-hidden="true"></i> 1-Click Unfollow Anytime</span>
+                </div>
+            </div>
+
+            <div class="follow-action-box">
+                <button type="button" class="btn-primary btn-follow-trigger magnetic-btn" id="followXestusBtn" aria-haspopup="dialog" aria-controls="followModal">
+                    <i data-lucide="bell" class="follow-btn-icon" aria-hidden="true"></i>
+                    <span class="follow-btn-text">Follow XESTUS</span>
+                </button>
+                <span class="follow-subtext">Direct notification via Email &amp; Browser</span>
+            </div>
+        </div>
+    </div>
+</section>
+
  </main>
 
 <!-- ==========================================================================
@@ -1741,6 +1782,7 @@
  <li><a href="#founder">Founder &amp; Leadership</a></li>
  <li><a href="#founder">Technology Stack</a></li>
  <li><a href="#founder">Performance Standards</a></li>
+ <li><a href="#updates">Follow XESTUS</a></li>
  <li><a href="#contact">Initiate Consultation</a></li>
  </ul>
  </div>
@@ -1797,6 +1839,111 @@
  </button>
  <div class="modal-content-container" id="modalContentContainer">
  <!-- Dynamically populated by script.js -->
+ </div>
+ </div>
+</div>
+
+<!-- Accessible Follow XESTUS Modal Dialog -->
+<div id="followModal" class="case-study-modal follow-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="followModalTitle">
+ <div class="case-study-backdrop" id="followModalBackdrop"></div>
+ <div class="case-study-dialog follow-dialog" role="document">
+ <button type="button" class="modal-close-btn" id="followModalCloseBtn" aria-label="Close Follow Dialog">
+ <i data-lucide="x"></i>
+ </button>
+ <div class="modal-content-container follow-modal-container">
+ 
+ <!-- View 1: Subscribe Form -->
+ <div id="followSubscribeView" class="follow-view active">
+ <div class="follow-modal-header">
+ <div class="follow-modal-icon">
+ <i data-lucide="bell"></i>
+ </div>
+ <span class="follow-tag">XESTUS DISPATCH</span>
+ <h2 id="followModalTitle">Follow XESTUS Intelligence</h2>
+ <p class="follow-modal-desc">
+ Get instant, high-signal technical dispatches whenever XESTUS releases breakthrough innovations, open-source architectures, or company milestones.
+ </p>
+ </div>
+
+ <form id="followModalForm" class="follow-form" novalidate>
+ <input type="text" name="_bot_filter" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important">
+ <div class="form-group">
+ <label for="followEmail">Work or Personal Email <span class="required" aria-hidden="true">*</span></label>
+ <div class="input-icon-wrapper">
+ <i data-lucide="mail" class="input-icon" aria-hidden="true"></i>
+ <input 
+ type="email" 
+ id="followEmail" 
+ name="email" 
+ placeholder="colleague@enterprise.com" 
+ required 
+ autocomplete="email" 
+ aria-describedby="followEmailError"
+ >
+ </div>
+ <span id="followEmailError" class="field-error-msg" role="alert" aria-live="polite"></span>
+ </div>
+
+ <div class="follow-pref-group">
+ <span class="pref-group-label">Notification Channels:</span>
+ <label class="custom-checkbox-label">
+ <input type="checkbox" id="prefEmail" name="prefEmail" checked>
+ <span class="checkbox-box"><i data-lucide="check"></i></span>
+ <span class="checkbox-text">Email Dispatches (Direct inbox briefing)</span>
+ </label>
+ <label class="custom-checkbox-label">
+ <input type="checkbox" id="prefPush" name="prefPush">
+ <span class="checkbox-box"><i data-lucide="check"></i></span>
+ <span class="checkbox-text">Web Push Alerts (Instant browser notification)</span>
+ </label>
+ </div>
+
+ <div class="follow-consent-group">
+ <label class="custom-checkbox-label">
+ <input type="checkbox" id="followConsent" name="consent" required>
+ <span class="checkbox-box"><i data-lucide="check"></i></span>
+ <span class="checkbox-text">I agree to receive XESTUS updates about new products, innovations, and announcements. Zero spam, strictly confidential, one-click unfollow anytime.</span>
+ </label>
+ <span id="followConsentError" class="field-error-msg" role="alert" aria-live="polite"></span>
+ </div>
+
+ <div class="follow-submit-wrap">
+ <button type="submit" class="btn-follow-submit" id="followSubmitBtn">
+ <span class="btn-text">Confirm &amp; Follow</span>
+ <i data-lucide="arrow-right"></i>
+ </button>
+ </div>
+
+ <div id="followStatusMsg" class="follow-status-msg" role="status" aria-live="polite"></div>
+ </form>
+ </div>
+
+ <!-- View 2: Already Following / Manage State -->
+ <div id="followManageView" class="follow-view" style="display: none;">
+ <div class="follow-modal-header">
+ <div class="follow-modal-icon active">
+ <i data-lucide="check-circle-2"></i>
+ </div>
+ <span class="follow-tag status-active">ACTIVE SUBSCRIPTION</span>
+ <h2>You Are Following XESTUS</h2>
+ <p class="follow-modal-desc">
+ You are currently subscribed to official technical announcements and Innovation Lab updates as:
+ </p>
+ <div class="following-badge-email" id="followingEmailDisplay">subscriber@domain.com</div>
+ </div>
+
+ <div class="follow-manage-actions">
+ <button type="button" class="btn-unfollow" id="btnUnfollow">
+ <i data-lucide="bell-off"></i>
+ <span>Unfollow / Stop Receiving Updates</span>
+ </button>
+ <button type="button" class="btn-done" id="btnFollowDone">
+ <span>Keep Following &amp; Close</span>
+ </button>
+ </div>
+ <div id="unfollowStatusMsg" class="follow-status-msg" role="status" aria-live="polite"></div>
+ </div>
+
  </div>
  </div>
 </div>
