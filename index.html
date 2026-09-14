@@ -64,6 +64,9 @@
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="style.css?v=3.4.0">
 
+    <!-- Preloaded Translations Dictionary -->
+    <script src="js/translations.js?v=1.0.0"></script>
+
     <!-- Unified Structured Data / JSON-LD -->
     <script type="application/ld+json">
     {
@@ -143,105 +146,149 @@
 
  <!-- Sticky Header & Navigation -->
  <header class="site-header" role="banner">
- <nav class="nav-container" aria-label="Main Navigation">
- <a href="#home" class="logo" aria-label="XESTUS Home">
- <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46" fetchpriority="high" decoding="async">
- <span>XESTUS</span>
- </a>
+  <nav class="nav-container" aria-label="Main Navigation">
+    <a href="#home" class="logo" aria-label="XESTUS Home">
+        <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46" fetchpriority="high" decoding="async">
+        <span>XESTUS</span>
+    </a>
 
- <ul class="nav-links" id="primaryNav">
- <li><a href="#services" class="nav-link">Services</a></li>
- <li><a href="#solutions" class="nav-link">Solutions</a></li>
- <li><a href="#portfolio" class="nav-link">Projects</a></li>
- <li><a href="#lab" class="nav-link">Innovation Lab</a></li>
- <li><a href="#founder" class="nav-link">About</a></li>
- <li><a href="#updates" class="nav-link">Follow</a></li>
- <li><a href="#contact" class="nav-link">Contact</a></li>
- </ul>
+    <ul class="nav-links" id="primaryNav">
+        <li><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
+        <li><a href="#solutions" class="nav-link" data-i18n="nav.solutions">Solutions</a></li>
+        <li><a href="#digital-services" class="nav-link" data-i18n="nav.digital_services">Digital Help</a></li>
+        <li><a href="#portfolio" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#lab" class="nav-link" data-i18n="nav.lab">Innovation Lab</a></li>
+        <li><a href="#founder" class="nav-link" data-i18n="nav.about">About</a></li>
+        <li><a href="#updates" class="nav-link" data-i18n="nav.follow">Follow</a></li>
+        <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
 
- <div class="nav-actions">
- <a href="#contact" class="btn-primary btn-nav-cta magnetic-btn">
- <span>Start a Project</span>
- </a>
+        <!-- Mobile Language Selector Strip -->
+        <li class="mobile-lang-strip" aria-label="Select Language">
+            <span class="lang-strip-title"><i data-lucide="globe" aria-hidden="true"></i> Lang:</span>
+            <button type="button" class="mobile-lang-btn active" data-lang="en">EN</button>
+            <button type="button" class="mobile-lang-btn" data-lang="bn">বাংলা</button>
+            <button type="button" class="mobile-lang-btn" data-lang="hi">हिन्दी</button>
+        </li>
+    </ul>
 
- <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
- <span class="hamburger-bar"></span>
- <span class="hamburger-bar"></span>
- <span class="hamburger-bar"></span>
- </button>
- </div>
- </nav>
- </header>
+    <div class="nav-actions">
+        <!-- Language Switcher Dropdown -->
+        <div class="lang-switcher" id="langSwitcher">
+            <button type="button" class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Language" title="Select Website Language">
+                <i data-lucide="globe" aria-hidden="true"></i>
+                <span class="lang-current-label">EN</span>
+                <i data-lucide="chevron-down" class="lang-chevron" aria-hidden="true"></i>
+            </button>
+            <div class="lang-dropdown" id="langDropdown" role="menu" aria-label="Language Options">
+                <button type="button" class="lang-opt active" data-lang="en" role="menuitem">
+                    <span class="lang-native">English</span>
+                    <span class="lang-code">EN</span>
+                </button>
+                <button type="button" class="lang-opt" data-lang="bn" role="menuitem">
+                    <span class="lang-native">বাংলা</span>
+                    <span class="lang-code">BN</span>
+                </button>
+                <button type="button" class="lang-opt" data-lang="hi" role="menuitem">
+                    <span class="lang-native">हिन्दी</span>
+                    <span class="lang-code">HI</span>
+                </button>
+            </div>
+        </div>
 
- <!-- Hero Section -->
- <main id="main-content" role="main">
- <section class="hero" id="home">
- <div class="hero-backdrop" aria-hidden="true">
- <div class="hero-ambient-glow hero-glow-1"></div>
- <div class="hero-ambient-glow hero-glow-2"></div>
- <div class="hero-grid-overlay"></div>
- </div>
+        <!-- Compact Navbar Follow CTA -->
+        <button type="button" class="btn-nav-follow btn-follow-trigger" aria-label="Follow XESTUS" title="Follow XESTUS for technical updates">
+            <i data-lucide="bell" class="follow-btn-icon" aria-hidden="true"></i>
+            <span class="follow-btn-text" data-i18n="common.follow">Follow</span>
+        </button>
 
- <div class="hero-container">
- <div class="hero-content">
- <div class="hero-pill-badge">
- <span class="badge-pulse"></span>
- <span>INTELLIGENCE BEYOND LIMITS</span>
- </div>
+        <a href="#contact" class="btn-primary btn-nav-cta magnetic-btn">
+            <span data-i18n="common.start_project">Start a Project</span>
+        </a>
 
- <h1 class="hero-headline">
- <span class="hero-brand">XESTUS</span>
- <span class="hero-subtitle">Intelligence Beyond Limits</span>
- </h1>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+        </button>
+    </div>
+  </nav>
+  </header>
 
- <p class="hero-description">
- We engineer intelligent software, automation, and digital systems for businesses ready to move beyond limits.
- </p>
+  <!-- Hero Section -->
+  <main id="main-content" role="main">
+  <section class="hero" id="home">
+    <div class="hero-backdrop" aria-hidden="true">
+        <div class="hero-ambient-glow hero-glow-1"></div>
+        <div class="hero-ambient-glow hero-glow-2"></div>
+        <div class="hero-grid-overlay"></div>
+    </div>
 
- <div class="hero-cta-group">
- <a href="#contact" class="btn-primary hero-btn-primary magnetic-btn">
- <span>Start Your Project</span>
- <i data-lucide="arrow-right" class="cta-arrow"></i>
- </a>
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-pill-badge">
+                <span class="badge-pulse"></span>
+                <span data-i18n="hero.badge">INTELLIGENCE BEYOND LIMITS</span>
+            </div>
 
- <a href="#services" class="btn-secondary hero-btn-secondary magnetic-btn">
- <span>Explore Solutions</span>
- </a>
- </div>
+            <h1 class="hero-headline">
+                <span class="hero-brand">XESTUS</span>
+                <span class="hero-subtitle" data-i18n="hero.headline_sub">Intelligence Beyond Limits</span>
+            </h1>
 
- <div class="hero-capability-strip">
- <div class="capability-item">
- <span class="capability-value">AI Software</span>
- <span class="capability-label">Custom Intelligent Apps</span>
- </div>
- <div class="capability-sep"></div>
- <div class="capability-item">
- <span class="capability-value">Automation</span>
- <span class="capability-label">Intelligent Workflows</span>
- </div>
- <div class="capability-sep"></div>
- <div class="capability-item">
- <span class="capability-value">Cloud & Web</span>
- <span class="capability-label">Scalable Systems</span>
- </div>
- </div>
- </div>
+            <p class="hero-description" data-i18n="hero.description">
+                We engineer autonomous AI agent swarms, high-performance web platforms, and mission-critical enterprise automation pipelines.
+            </p>
 
- <!-- XESTUS 3D HERO ORB -->
- <div class="hero-visual-wrapper">
- <div class="xestus-3d-orb" aria-hidden="true">
- <div class="orb-ambient-halo"></div>
- <div class="orb-ring orb-ring-1"></div>
- <div class="orb-ring orb-ring-2"></div>
- <div class="orb-ring orb-ring-3"></div>
- <div class="orb-core">
- <span class="orb-letter">X</span>
- </div>
- </div>
- </div>
- </div>
- </section>
- <!-- Hero -->
+            <div class="hero-cta-group">
+                <a href="#contact" class="btn-primary hero-btn-primary magnetic-btn">
+                    <span data-i18n="common.start_your_project">Start Your Project</span>
+                    <i data-lucide="arrow-right" class="cta-arrow"></i>
+                </a>
+
+                <a href="#services" class="btn-secondary hero-btn-secondary magnetic-btn">
+                    <span data-i18n="hero.explore_solutions">Explore Solutions</span>
+                </a>
+
+                <button type="button" class="btn-secondary hero-btn-follow btn-follow-trigger magnetic-btn" aria-label="Follow XESTUS updates">
+                    <i data-lucide="bell" class="follow-btn-icon" aria-hidden="true"></i>
+                    <span class="follow-btn-text" data-i18n="common.follow_xestus">Follow XESTUS</span>
+                </button>
+            </div>
+            <span class="hero-follow-hint" data-i18n="hero.follow_hint">Get notified when we build something new.</span>
+
+            <div class="hero-capability-strip">
+                <div class="capability-item">
+                    <span class="capability-value" data-i18n="hero.cap1_val">AI Software</span>
+                    <span class="capability-label" data-i18n="hero.cap1_lbl">Custom Intelligent Apps</span>
+                </div>
+                <div class="capability-sep"></div>
+                <div class="capability-item">
+                    <span class="capability-value" data-i18n="hero.cap2_val">Automation</span>
+                    <span class="capability-label" data-i18n="hero.cap2_lbl">Intelligent Workflows</span>
+                </div>
+                <div class="capability-sep"></div>
+                <div class="capability-item">
+                    <span class="capability-value" data-i18n="hero.cap3_val">Cloud &amp; Web</span>
+                    <span class="capability-label" data-i18n="hero.cap3_lbl">Scalable Systems</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- XESTUS 3D HERO ORB -->
+        <div class="hero-visual-wrapper">
+            <div class="xestus-3d-orb" aria-hidden="true">
+                <div class="orb-ambient-halo"></div>
+                <div class="orb-ring orb-ring-1"></div>
+                <div class="orb-ring orb-ring-2"></div>
+                <div class="orb-ring orb-ring-3"></div>
+                <div class="orb-core">
+                    <span class="orb-letter">X</span>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!-- Hero -->
 
  <!-- =========================
  SERVICES SECTION
@@ -577,6 +624,165 @@
  </div>
  </div>
 
+</section>
+
+<!-- ==========================================================================
+     DIGITAL SERVICES FOR EVERYONE SECTION (PRACTICAL & AFFORDABLE ONLINE HELP)
+     ========================================================================== -->
+<section class="digital-services" id="digital-services" aria-labelledby="digitalServicesTitle">
+    <div class="section-title">
+        <span data-i18n="digital.badge">DIGITAL SERVICES FOR EVERYONE</span>
+        <h2 id="digitalServicesTitle" data-i18n="digital.title">Digital Help, Made Simple &amp; Affordable</h2>
+        <p data-i18n="digital.desc">
+            XESTUS is not only building future technology—we also help ordinary people solve everyday digital problems. Simple, accurate, and affordable online assistance.
+        </p>
+    </div>
+
+    <div class="digital-pricing-banner" aria-hidden="true">
+        <div class="digital-pricing-pill">
+            <i data-lucide="sparkles"></i>
+            <span data-i18n="digital.pricing_note">Transparent &amp; Affordable Assistance • Direct Step-by-Step Support • Zero Complicated Pricing</span>
+        </div>
+    </div>
+
+    <div class="digital-container">
+        <!-- Card 1: Online Form Filling & Applications -->
+        <div class="digital-card">
+            <div class="digital-card-top">
+                <div class="digital-icon-frame">
+                    <i data-lucide="file-text"></i>
+                </div>
+                <span class="digital-tag" data-i18n="digital.card1_tag">Accurate &amp; Fast</span>
+            </div>
+            <h3 data-i18n="digital.card1_title">Online Form Filling &amp; Applications</h3>
+            <p data-i18n="digital.card1_desc">
+                Get expert assistance completing online job applications, official registration forms, and web portals accurately and on time.
+            </p>
+            <div class="digital-card-actions">
+                <a href="#contact" class="digital-cta-btn" data-service-select="digital">
+                    <span data-i18n="common.request_assistance">Request Assistance</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 2: Admissions & Exam Registrations -->
+        <div class="digital-card">
+            <div class="digital-card-top">
+                <div class="digital-icon-frame">
+                    <i data-lucide="graduation-cap"></i>
+                </div>
+                <span class="digital-tag" data-i18n="digital.card2_tag">Students &amp; Candidates</span>
+            </div>
+            <h3 data-i18n="digital.card2_title">Admissions &amp; Exam Registrations</h3>
+            <p data-i18n="digital.card2_desc">
+                Hassle-free application support for school/college admissions, competitive entrance exams, hall ticket downloads, and counseling.
+            </p>
+            <div class="digital-card-actions">
+                <a href="#contact" class="digital-cta-btn" data-service-select="digital">
+                    <span data-i18n="common.request_assistance">Request Assistance</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 3: Government & Citizen Portals -->
+        <div class="digital-card">
+            <div class="digital-card-top">
+                <div class="digital-icon-frame">
+                    <i data-lucide="landmark"></i>
+                </div>
+                <span class="digital-tag" data-i18n="digital.card3_tag">Citizen Assistance</span>
+            </div>
+            <h3 data-i18n="digital.card3_title">Government &amp; Citizen Portals</h3>
+            <p data-i18n="digital.card3_desc">
+                Step-by-step guidance navigating public citizen portals, welfare scheme registrations, certificates, and online status inquiries.
+            </p>
+            <div class="digital-card-actions">
+                <a href="#contact" class="digital-cta-btn" data-service-select="digital">
+                    <span data-i18n="common.request_assistance">Request Assistance</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 4: Scholarships & Financial Aid -->
+        <div class="digital-card">
+            <div class="digital-card-top">
+                <div class="digital-icon-frame">
+                    <i data-lucide="award"></i>
+                </div>
+                <span class="digital-tag" data-i18n="digital.card4_tag">Higher Education</span>
+            </div>
+            <h3 data-i18n="digital.card4_title">Scholarships &amp; Financial Aid</h3>
+            <p data-i18n="digital.card4_desc">
+                Complete support for state and national scholarship applications, student grant paperwork, renewal tracking, and document verification.
+            </p>
+            <div class="digital-card-actions">
+                <a href="#contact" class="digital-cta-btn" data-service-select="digital">
+                    <span data-i18n="common.request_assistance">Request Assistance</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 5: Document Formatting & PDF Uploads -->
+        <div class="digital-card">
+            <div class="digital-card-top">
+                <div class="digital-icon-frame">
+                    <i data-lucide="upload-cloud"></i>
+                </div>
+                <span class="digital-tag" data-i18n="digital.card5_tag">Portal Compliant</span>
+            </div>
+            <h3 data-i18n="digital.card5_title">Document Formatting &amp; PDF Uploads</h3>
+            <p data-i18n="digital.card5_desc">
+                Precision document scanning, file compression (KB/MB targets), photo/signature resizing, and format conversion required by online portals.
+            </p>
+            <div class="digital-card-actions">
+                <a href="#contact" class="digital-cta-btn" data-service-select="digital">
+                    <span data-i18n="common.request_assistance">Request Assistance</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 6: Online Appointments & Bookings -->
+        <div class="digital-card">
+            <div class="digital-card-top">
+                <div class="digital-icon-frame">
+                    <i data-lucide="calendar-check"></i>
+                </div>
+                <span class="digital-tag" data-i18n="digital.card6_tag">Timely Slots</span>
+            </div>
+            <h3 data-i18n="digital.card6_title">Online Appointments &amp; Bookings</h3>
+            <p data-i18n="digital.card6_desc">
+                Timely booking of official appointments, slot selection, digital verification appointments, and acknowledgment receipt downloads.
+            </p>
+            <div class="digital-card-actions">
+                <a href="#contact" class="digital-cta-btn" data-service-select="digital">
+                    <span data-i18n="common.request_assistance">Request Assistance</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust & Responsible Assistance Notice -->
+    <div class="digital-trust-box">
+        <div class="digital-trust-icon">
+            <i data-lucide="shield-check"></i>
+        </div>
+        <div class="digital-trust-content">
+            <h4 data-i18n="digital.trust_title">Responsible &amp; Transparent Digital Support</h4>
+            <p data-i18n="digital.trust_text">
+                XESTUS provides practical technical and digital assistance. We do not act as an official government authority. Applicants remain responsible for reviewing all information before final submission.
+            </p>
+        </div>
+        <a href="#contact" class="btn-primary digital-trust-cta" data-service-select="digital">
+            <span data-i18n="digital.banner_cta">Need Help With An Online Form?</span>
+            <i data-lucide="arrow-right"></i>
+        </a>
+    </div>
 </section>
 
 <section class="portfolio" id="portfolio">
@@ -1535,96 +1741,100 @@
 
  <form class="contact-form" id="contactForm" novalidate>
 
- <div class="form-row">
- <div class="form-group">
- <label for="name" class="form-label">
- <span>Your Name / Organization</span>
- <span class="required-star">*</span>
- </label>
- <div class="input-container">
- <i data-lucide="user" class="input-icon"></i>
- <input
- id="name"
- name="name"
- type="text"
- class="form-input"
- placeholder="e.g. Alex Mercer"
- required
- autocomplete="name"
- aria-required="true">
- </div>
- <span class="input-error-msg" id="nameError">Please enter your name (minimum 2 characters).</span>
- </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name" class="form-label">
+                    <span data-i18n="contact.name_label">Your Name / Organization</span>
+                    <span class="required-star">*</span>
+                </label>
+                <div class="input-container">
+                    <i data-lucide="user" class="input-icon"></i>
+                    <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        class="form-input"
+                        placeholder="e.g. Alex Mercer"
+                        data-i18n-placeholder="contact.name_placeholder"
+                        required
+                        autocomplete="name"
+                        aria-required="true">
+                </div>
+                <span class="input-error-msg" id="nameError">Please enter your name (minimum 2 characters).</span>
+            </div>
 
- <div class="form-group">
- <label for="email" class="form-label">
- <span>Business Email</span>
- <span class="required-star">*</span>
- </label>
- <div class="input-container">
- <i data-lucide="mail" class="input-icon"></i>
- <input
- id="email"
- name="email"
- type="email"
- class="form-input"
- placeholder="e.g. alex@company.com"
- required
- autocomplete="email"
- aria-required="true">
- </div>
- <span class="input-error-msg" id="emailError">Please enter a valid email address.</span>
- </div>
- </div>
+            <div class="form-group">
+                <label for="email" class="form-label">
+                    <span data-i18n="contact.email_field_label">Business Email</span>
+                    <span class="required-star">*</span>
+                </label>
+                <div class="input-container">
+                    <i data-lucide="mail" class="input-icon"></i>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        class="form-input"
+                        placeholder="e.g. alex@company.com"
+                        data-i18n-placeholder="contact.email_field_placeholder"
+                        required
+                        autocomplete="email"
+                        aria-required="true">
+                </div>
+                <span class="input-error-msg" id="emailError">Please enter a valid email address.</span>
+            </div>
+        </div>
 
- <div class="form-group">
- <label for="service" class="form-label">
- <span>Project Domain / Architecture Scope</span>
- </label>
- <div class="input-container select-container">
- <i data-lucide="layers" class="input-icon"></i>
- <select id="service" name="service" class="form-input form-select">
- <option value="AI & Autonomous Agents">AI &amp; Autonomous Agent Swarms (RAG / MCP)</option>
- <option value="Full-Stack Web Architecture">Full-Stack Web Architecture &amp; Platforms</option>
- <option value="Workflow Automation">Event-Driven Workflow Automation &amp; Pipelines</option>
- <option value="Cloud & Edge Infrastructure">Cloud Infrastructure, Reverse Proxies &amp; Edge</option>
- <option value="Innovation Lab Collaboration">Innovation Lab R&amp;D / Custom Prototype</option>
- <option value="General Technical Inquiry">General Technical Consultation</option>
- </select>
- <i data-lucide="chevron-down" class="select-chevron"></i>
- </div>
- </div>
+        <div class="form-group">
+            <label for="service" class="form-label">
+                <span data-i18n="contact.service_label">Area of Interest / Service Required</span>
+            </label>
+            <div class="input-container select-container">
+                <i data-lucide="layers" class="input-icon"></i>
+                <select id="service" name="service" class="form-input form-select">
+                    <option value="AI & Autonomous Agents" data-i18n="contact.service_opt_ai">AI &amp; Autonomous Agent Swarms (RAG / MCP)</option>
+                    <option value="Full-Stack Web Architecture" data-i18n="contact.service_opt_web">Full-Stack Web Architecture &amp; Platforms</option>
+                    <option value="Digital Services & Online Form Assistance" data-i18n="contact.service_opt_digital">Digital Help &amp; Online Application Assistance</option>
+                    <option value="Workflow Automation" data-i18n="contact.service_opt_auto">Event-Driven Workflow Automation &amp; Pipelines</option>
+                    <option value="Cloud & Edge Infrastructure" data-i18n="contact.service_opt_cloud">Cloud Infrastructure, Reverse Proxies &amp; Edge</option>
+                    <option value="AutoCAD 2D Technical Drafting" data-i18n="contact.service_opt_cad">AutoCAD 2D Technical Drafting</option>
+                    <option value="General Technical Inquiry" data-i18n="contact.service_opt_other">General Technical Consultation</option>
+                </select>
+                <i data-lucide="chevron-down" class="select-chevron"></i>
+            </div>
+        </div>
 
- <div class="form-group">
- <label for="message" class="form-label">
- <span>Project Brief &amp; Technical Requirements</span>
- <span class="required-star">*</span>
- </label>
- <div class="input-container textarea-container">
- <i data-lucide="message-square" class="input-icon textarea-icon"></i>
- <textarea
- id="message"
- name="message"
- class="form-input form-textarea"
- placeholder="Describe your system requirements, target deliverables, or architectural challenge..."
- rows="4"
- required
- aria-required="true"></textarea>
- </div>
- <span class="input-error-msg" id="messageError">Please provide a brief description (minimum 10 characters).</span>
- </div>
+        <div class="form-group">
+            <label for="message" class="form-label">
+                <span data-i18n="contact.msg_label">Project Brief &amp; Technical Requirements</span>
+                <span class="required-star">*</span>
+            </label>
+            <div class="input-container textarea-container">
+                <i data-lucide="message-square" class="input-icon textarea-icon"></i>
+                <textarea
+                    id="message"
+                    name="message"
+                    class="form-input form-textarea"
+                    placeholder="Describe your system requirements, target deliverables, or architectural challenge..."
+                    data-i18n-placeholder="contact.msg_placeholder"
+                    rows="4"
+                    required
+                    aria-required="true"></textarea>
+            </div>
+            <span class="input-error-msg" id="messageError">Please provide a brief description (minimum 10 characters).</span>
+        </div>
 
- <div class="form-submit-row">
- <button type="submit" class="btn-primary btn-submit-inquiry magnetic-btn" id="submitBtn">
- <span class="btn-text">Submit Inquiry</span>
- <i data-lucide="arrow-right" class="btn-arrow"></i>
- <span class="btn-spinner" aria-hidden="true"></span>
- </button>
- <div class="form-privacy-guarantee">
- <i data-lucide="lock"></i>
- <span>Encrypted transmission • Direct engineering review</span>
- </div>
- </div>
+        <div class="form-submit-row">
+            <button type="submit" class="btn-primary btn-submit-inquiry magnetic-btn" id="submitBtn">
+                <span class="btn-text" data-i18n="contact.submit_btn">Submit Inquiry</span>
+                <i data-lucide="arrow-right" class="btn-arrow"></i>
+                <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+            <div class="form-privacy-guarantee">
+                <i data-lucide="lock"></i>
+                <span>Encrypted transmission • Direct engineering review</span>
+            </div>
+        </div>
 
  <!-- Live Status & Feedback Banner -->
  <div id="form-message" class="form-status-banner" role="status" aria-live="polite"></div>
@@ -1735,59 +1945,59 @@
 
  </div>
 
- <!-- Middle Row: 4-Column Navigation Architecture -->
- <nav class="footer-nav-grid" aria-label="Footer Navigation">
+    <!-- Middle Row: 4-Column Navigation Architecture -->
+    <nav class="footer-nav-grid" aria-label="Footer Navigation">
 
- <!-- Column 1: Capabilities -->
- <div class="footer-nav-col">
- <h3 class="footer-col-title">Capabilities</h3>
- <ul class="footer-links-list">
- <li><a href="#services">AI &amp; Intelligent Agents</a></li>
- <li><a href="#services">Custom Web Platforms</a></li>
- <li><a href="#services">Workflow Automation</a></li>
- <li><a href="#services">Cloud Infrastructure</a></li>
- <li><a href="#services">AutoCAD 2D Drafting</a></li>
- </ul>
- </div>
+    <!-- Column 1: Capabilities -->
+    <div class="footer-nav-col">
+    <h3 class="footer-col-title" data-i18n="nav.services">Capabilities</h3>
+    <ul class="footer-links-list">
+    <li><a href="#services">AI &amp; Intelligent Agents</a></li>
+    <li><a href="#digital-services" data-i18n="nav.digital_services">Digital Help &amp; Form Assistance</a></li>
+    <li><a href="#services">Custom Web Platforms</a></li>
+    <li><a href="#services">Workflow Automation</a></li>
+    <li><a href="#services">Cloud Infrastructure</a></li>
+    <li><a href="#services">AutoCAD 2D Drafting</a></li>
+    </ul>
+    </div>
 
- <!-- Column 2: Solutions & Projects -->
- <div class="footer-nav-col">
- <h3 class="footer-col-title">Solutions</h3>
- <ul class="footer-links-list">
- <li><a href="#solutions">Enterprise Solutions Matrix</a></li>
- <li><a href="#portfolio">Featured Case Studies</a></li>
- <li><a href="#portfolio">Synapse AI Agent</a></li>
- <li><a href="#portfolio">FlowSync Pipeline</a></li>
- <li><a href="#portfolio">XESTUS Web Platform</a></li>
- </ul>
- </div>
+    <!-- Column 2: Solutions & Projects -->
+    <div class="footer-nav-col">
+    <h3 class="footer-col-title" data-i18n="nav.projects">Projects &amp; Solutions</h3>
+    <ul class="footer-links-list">
+    <li><a href="#solutions">Enterprise Solutions Matrix</a></li>
+    <li><a href="#portfolio">Featured Case Studies</a></li>
+    <li><a href="#portfolio">Synapse AI Agent</a></li>
+    <li><a href="#portfolio">FlowSync Pipeline</a></li>
+    <li><a href="#portfolio">XESTUS Web Platform</a></li>
+    </ul>
+    </div>
 
- <!-- Column 3: Innovation Lab -->
- <div class="footer-nav-col">
- <h3 class="footer-col-title">Innovation Lab</h3>
- <ul class="footer-links-list">
- <li><a href="#lab">R&amp;D Tracks Overview</a></li>
- <li><a href="#lab">Model Context Protocol (MCP)</a></li>
- <li><a href="#lab">Multi-Agent Swarm DAG</a></li>
- <li><a href="#lab">Edge SLMs &amp; On-Device AI</a></li>
- <li><a href="#lab">ARM64 Hardware Cluster</a></li>
- </ul>
- </div>
+    <!-- Column 3: Innovation Lab -->
+    <div class="footer-nav-col">
+    <h3 class="footer-col-title" data-i18n="nav.lab">Innovation Lab</h3>
+    <ul class="footer-links-list">
+    <li><a href="#lab">R&amp;D Tracks Overview</a></li>
+    <li><a href="#lab">Model Context Protocol (MCP)</a></li>
+    <li><a href="#lab">Multi-Agent Swarm DAG</a></li>
+    <li><a href="#lab">Edge SLMs &amp; On-Device AI</a></li>
+    <li><a href="#lab">ARM64 Hardware Cluster</a></li>
+    </ul>
+    </div>
 
- <!-- Column 4: Company & Engagement -->
- <div class="footer-nav-col">
- <h3 class="footer-col-title">Company</h3>
- <ul class="footer-links-list">
- <li><a href="#about">Why XESTUS &amp; Pillars</a></li>
- <li><a href="#founder">Founder &amp; Leadership</a></li>
- <li><a href="#founder">Technology Stack</a></li>
- <li><a href="#founder">Performance Standards</a></li>
- <li><a href="#updates">Follow XESTUS</a></li>
- <li><a href="#contact">Initiate Consultation</a></li>
- </ul>
- </div>
+    <!-- Column 4: Company & Engagement -->
+    <div class="footer-nav-col">
+    <h3 class="footer-col-title" data-i18n="nav.about">Company</h3>
+    <ul class="footer-links-list">
+    <li><a href="#about">Why XESTUS &amp; Pillars</a></li>
+    <li><a href="#founder">Founder &amp; Leadership</a></li>
+    <li><a href="#digital-services">Digital Services for Everyone</a></li>
+    <li><a href="#updates">Follow XESTUS</a></li>
+    <li><a href="#contact">Initiate Consultation</a></li>
+    </ul>
+    </div>
 
- </nav>
+    </nav>
 
  <!-- Bottom Row: Copyright, Legal & Back-To-Top -->
  <div class="footer-bottom-bar">
@@ -1953,6 +2163,9 @@
 
 <!-- Lucide Icons -->
 <script defer src="https://unpkg.com/lucide@latest"></script>
+
+<!-- Translations Engine -->
+<script defer src="js/translations.js?v=1.0.0"></script>
 
 <!-- Your Script -->
 <script defer src="script.js?v=3.4.0"></script>

@@ -19,37 +19,44 @@ The **Follow XESTUS** system enables developers, clients, enterprise partners, a
 
 ---
 
-## 2. Core Architecture & Design Principles
+## 2. Multi-Point CTA Architecture & Design Principles
 
 ```
 +-------------------------------------------------------------------------------+
-|                             CLIENT-SIDE ARCHITECTURE                          |
+|                      MULTI-POINT FOLLOW CTA ARCHITECTURE                      |
 +-------------------------------------------------------------------------------+
 |                                                                               |
-|  [ Follow Section / #updates ] -----> [ #followModal Dialog ]                 |
-|                                            |                                  |
-|            +-------------------------------+------------------------------+   |
-|            |                                                              |   |
-|     (Not Following)                                                (Following)|
-|     - Subscribe View                                               - Manage / |
-|     - Work/Personal Email Input                                      Unfollow |
-|     - Channel Opt-Ins (Email, Web Push)                            - One-Click|
-|     - Explicit GDPR Consent Check                                    Revoke   |
-|            |                                                              |   |
-|            v                                                              v   |
-|  [ Form Validation & Consent Check ]                           [ Clear Local] |
-|            |                                                   [ Storage ]    |
-|            +-----------------------+-----------------------+                  |
-|            |                       |                       |                  |
-|            v                       v                       v                  |
-|  [ Web Push Opt-in ]     [ Secure EmailJS Dispatch ]   [ Local Device State ] |
-|  - Request Permission    - Send encrypted payload      - Store subscriber     |
-|  - Service Worker (sw.js)  to admin inbox                record locally       |
-|  - Instant Welcome Push  - [Follower Subscription]     - Toggle button UI     |
-|                            Scope                                              |
-|                                                                               |
+|  [ 1. Compact Navbar CTA ]   [ 2. Hero Secondary CTA ]   [ 3. Follow Section ]|
+|             \                         |                         /             |
+|              +------------------------+------------------------+              |
+|                                       v                                       |
+|                         [ Shared #followModal Dialog ]                        |
+|                                       |                                       |
+|            +--------------------------+---------------------------+           |
+|            |                                                      |           |
+|     (Not Following)                                        (Following)        |
+|     - Subscribe View                                       - Manage /         |
+|     - Work/Personal Email Input                              Unfollow         |
+|     - Channel Opt-Ins (Email, Web Push)                    - 1-Click Revoke   |
+|     - Explicit GDPR Consent Check                                 |           |
+|            |                                                      v           |
+|            v                                              [ Clear Local ]     |
+|  [ Form Validation & Consent Check ]                      [ Storage ]         |
+|            |                                                      |           |
+|            +--------------------------+---------------------------+           |
+|            |                          |                           |           |
+|            v                          v                           v           |
+|  [ Web Push Opt-in ]        [ Secure Dispatch ]        [ Synchronized State ] |
+|  - Request Permission       - EmailJS payload          - All 3 buttons update |
+|  - Welcome Notification     - Optional API forward       to "Followed ✓"      |
 +-------------------------------------------------------------------------------+
 ```
+
+### Multi-Point Entry Points:
+1. **Desktop Navbar**: Compact `.btn-nav-follow` in `.nav-actions` with bell icon.
+2. **Hero Section**: Secondary `.hero-btn-follow` alongside the primary exploration CTA with supporting microcopy.
+3. **Dedicated Follow Section (`#updates`)**: Complete explanatory card with guarantees and 1-click subscription trigger.
+4. **State Synchronization**: Subscribing or unfollowing automatically syncs all 3 buttons simultaneously across the DOM in the active user language.
 
 ### Key Architectural Constraints
 1. **GitHub Pages Static Compatibility**: The client does not require an active backend server to operate. In static mode, it securely leverages EmailJS with scope `[Follower Subscription]` to notify the admin mailbox (`xestus.office@gmail.com`).

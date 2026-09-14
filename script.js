@@ -1053,16 +1053,23 @@ document.addEventListener("DOMContentLoaded", () => {
     function syncFollowUI() {
         const state = getFollowState();
         const triggerBtns = document.querySelectorAll(".btn-follow-trigger");
+        const currentLang = localStorage.getItem("xestus_user_language") || "en";
+        const dict = (window.XESTUS_TRANSLATIONS && window.XESTUS_TRANSLATIONS[currentLang]) ? window.XESTUS_TRANSLATIONS[currentLang] : null;
+
+        const followedText = dict && dict["common.followed"] ? dict["common.followed"] : "Followed ✓";
+        const followText = dict && dict["common.follow_xestus"] ? dict["common.follow_xestus"] : "Follow XESTUS";
+        const compactFollowText = dict && dict["common.follow"] ? dict["common.follow"] : "Follow";
 
         triggerBtns.forEach((btn) => {
             const iconWrap = btn.querySelector(".follow-btn-icon");
             const textWrap = btn.querySelector(".follow-btn-text");
+            const isCompact = btn.classList.contains("btn-nav-follow");
 
             if (state && state.email) {
                 btn.classList.add("following");
                 btn.setAttribute("title", `Following as ${state.email} (Click to manage or unfollow)`);
                 btn.setAttribute("aria-label", `Following as ${state.email}. Click to manage or unfollow.`);
-                if (textWrap) textWrap.textContent = "Followed ✓";
+                if (textWrap) textWrap.textContent = followedText;
                 if (iconWrap) {
                     iconWrap.setAttribute("data-lucide", "check-circle-2");
                 }
@@ -1070,7 +1077,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 btn.classList.remove("following");
                 btn.setAttribute("title", "Follow XESTUS for technical updates");
                 btn.setAttribute("aria-label", "Follow XESTUS updates");
-                if (textWrap) textWrap.textContent = "Follow XESTUS";
+                if (textWrap) textWrap.textContent = isCompact ? compactFollowText : followText;
                 if (iconWrap) {
                     iconWrap.setAttribute("data-lucide", "bell");
                 }
@@ -1424,6 +1431,172 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     }
+
+    // --------------------------------------------------------------------------
+    // 13. Multilingual Translation Controller (i18n)
+    // --------------------------------------------------------------------------
+    const LANG_STORAGE_KEY = "xestus_user_language";
+    const langSwitcher = document.getElementById("langSwitcher");
+    const langBtn = document.getElementById("langBtn");
+    const langDropdown = document.getElementById("langDropdown");
+    const langOpts = document.querySelectorAll(".lang-opt");
+    const mobileLangBtns = document.querySelectorAll(".mobile-lang-btn");
+    const currentLangLabel = document.querySelector(".lang-current-label");
+
+    function setLanguage(lang) {
+        if (!window.XESTUS_TRANSLATIONS) {
+            return;
+        }
+        if (!window.XESTUS_TRANSLATIONS[lang]) {
+            lang = "en";
+        }
+
+        const dict = window.XESTUS_TRANSLATIONS[lang];
+        if (!dict) return;
+
+        document.documentElement.setAttribute("lang", lang);
+        try {
+            localStorage.setItem(LANG_STORAGE_KEY, lang);
+        } catch (e) {}
+
+        // Update current indicator in navbar
+        if (currentLangLabel) {
+            currentLangLabel.textContent = lang.toUpperCase();
+        }
+
+        // Update active classes on dropdown options
+        langOpts.forEach((opt) => {
+            const optLang = opt.getAttribute("data-lang");
+            opt.classList.toggle("active", optLang === lang);
+        });
+
+        // Update active classes on mobile strip buttons
+        mobileLangBtns.forEach((btn) => {
+            const btnLang = btn.getAttribute("data-lang");
+            btn.classList.toggle("active", btnLang === lang);
+        });
+
+        // Translate data-i18n elements
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+            const key = el.getAttribute("data-i18n");
+            if (dict[key]) {
+                el.textContent = dict[key];
+            }
+        });
+
+        // Translate placeholders
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+            const key = el.getAttribute("data-i18n-placeholder");
+            if (dict[key]) {
+                el.placeholder = dict[key];
+            }
+        });
+
+        // Translate titles
+        document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+            const key = el.getAttribute("data-i18n-title");
+            if (dict[key]) {
+                el.title = dict[key];
+            }
+        });
+
+        // Translate aria-labels
+        document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
+            const key = el.getAttribute("data-i18n-aria-label");
+            if (dict[key]) {
+                el.setAttribute("aria-label", dict[key]);
+            }
+        });
+
+        // Synchronize Follow UI button texts in active language
+        if (typeof syncFollowUI === "function") {
+            syncFollowUI();
+        }
+
+        if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+            lucide.createIcons();
+        }
+    }
+
+    // Toggle language dropdown
+    if (langBtn && langSwitcher) {
+        langBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = langSwitcher.classList.toggle("is-open");
+            langBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!langSwitcher.contains(e.target)) {
+                langSwitcher.classList.remove("is-open");
+                langBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && langSwitcher.classList.contains("is-open")) {
+                langSwitcher.classList.remove("is-open");
+                langBtn.setAttribute("aria-expanded", "false");
+                langBtn.focus();
+            }
+        });
+    }
+
+    // Dropdown option clicks
+    langOpts.forEach((opt) => {
+        opt.addEventListener("click", () => {
+            const selectedLang = opt.getAttribute("data-lang");
+            if (selectedLang) {
+                setLanguage(selectedLang);
+            }
+            if (langSwitcher) {
+                langSwitcher.classList.remove("is-open");
+                if (langBtn) langBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+    });
+
+    // Mobile lang button clicks
+    mobileLangBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const selectedLang = btn.getAttribute("data-lang");
+            if (selectedLang) {
+                setLanguage(selectedLang);
+            }
+        });
+    });
+
+    // --------------------------------------------------------------------------
+    // 14. Digital Services Assistance Form Pre-Selection
+    // --------------------------------------------------------------------------
+    document.querySelectorAll("[data-service-select]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const serviceSelect = document.getElementById("service");
+            const messageInput = document.getElementById("message");
+            if (serviceSelect) {
+                const targetValue = (btn.getAttribute("data-service-select") || "").toLowerCase();
+                for (let i = 0; i < serviceSelect.options.length; i++) {
+                    const optVal = serviceSelect.options[i].value.toLowerCase();
+                    if (optVal === targetValue || optVal.includes("digital")) {
+                        serviceSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            if (messageInput) {
+                setTimeout(() => {
+                    messageInput.focus();
+                }, 300);
+            }
+        });
+    });
+
+    // Initialize stored or default language
+    let initialLang = "en";
+    try {
+        initialLang = localStorage.getItem(LANG_STORAGE_KEY) || "en";
+    } catch (e) {}
+    setLanguage(initialLang);
 });
 
 window.addEventListener("load", () => {

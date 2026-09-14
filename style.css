@@ -4473,6 +4473,532 @@ body.modal-open {
 }
 
 /* --------------------------------------------------------------------------
+   17B. LANGUAGE SWITCHER & MULTILINGUAL CONTROLS
+   -------------------------------------------------------------------------- */
+.lang-switcher {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 38px;
+    padding: 0 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.12));
+    border-radius: var(--radius-full, 9999px);
+    color: var(--text-primary, #ffffff);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast, 0.2s ease);
+    user-select: none;
+}
+
+.lang-btn svg {
+    width: 15px;
+    height: 15px;
+    color: var(--cyan-bright, #00ffff);
+}
+
+.lang-chevron {
+    width: 12px !important;
+    height: 12px !important;
+    transition: transform var(--transition-fast, 0.2s ease);
+}
+
+.lang-switcher.is-open .lang-chevron {
+    transform: rotate(180deg);
+}
+
+.lang-btn:hover,
+.lang-switcher.is-open .lang-btn {
+    background: rgba(0, 191, 255, 0.12);
+    border-color: var(--cyan-primary, #00bfff);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(0, 191, 255, 0.25);
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 140px;
+    background: rgba(5, 12, 24, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 191, 255, 0.28);
+    border-radius: 12px;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(0, 191, 255, 0.15);
+    padding: 6px;
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 1050;
+    animation: fadeInDown 0.2s ease-out;
+}
+
+.lang-switcher.is-open .lang-dropdown {
+    display: flex;
+}
+
+.lang-opt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-secondary, #cbd5e1);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: all var(--transition-fast, 0.15s ease);
+}
+
+.lang-opt .lang-native {
+    font-weight: 600;
+}
+
+.lang-opt .lang-code {
+    font-size: 11px;
+    color: var(--text-muted, #64748b);
+    font-weight: 700;
+}
+
+.lang-opt:hover {
+    background: rgba(0, 191, 255, 0.12);
+    color: var(--cyan-bright, #00ffff);
+}
+
+.lang-opt.active {
+    background: rgba(0, 191, 255, 0.2);
+    color: var(--cyan-bright, #00ffff);
+    font-weight: 700;
+}
+
+.lang-opt.active .lang-code {
+    color: var(--cyan-bright, #00ffff);
+}
+
+/* Mobile Language Switcher Strip */
+.mobile-lang-strip {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(0, 191, 255, 0.05);
+    border: 1px solid rgba(0, 191, 255, 0.15);
+    border-radius: 12px;
+    margin: 10px 16px;
+}
+
+.mobile-lang-strip .lang-strip-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cyan-bright, #00ffff);
+    margin-right: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.mobile-lang-btn {
+    flex: 1;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-secondary, #cbd5e1);
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast, 0.15s ease);
+}
+
+.mobile-lang-btn.active {
+    background: rgba(0, 191, 255, 0.25);
+    border-color: var(--cyan-bright, #00ffff);
+    color: var(--cyan-bright, #00ffff);
+}
+
+/* --------------------------------------------------------------------------
+   17C. NAVBAR & HERO MULTI-POINT FOLLOW CTAS
+   -------------------------------------------------------------------------- */
+.btn-nav-follow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 38px;
+    padding: 0 14px;
+    background: rgba(0, 191, 255, 0.08);
+    border: 1px solid rgba(0, 191, 255, 0.28);
+    border-radius: var(--radius-full, 9999px);
+    color: var(--cyan-bright, #00ffff);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast, 0.2s ease);
+    text-decoration: none;
+    user-select: none;
+}
+
+.btn-nav-follow:hover {
+    background: rgba(0, 191, 255, 0.2);
+    border-color: var(--cyan-bright, #00ffff);
+    color: #ffffff;
+    box-shadow: 0 0 14px rgba(0, 191, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-nav-follow.following {
+    background: rgba(0, 255, 136, 0.1);
+    border-color: rgba(0, 255, 136, 0.45);
+    color: #4ade80;
+}
+
+.btn-nav-follow svg {
+    width: 14px;
+    height: 14px;
+}
+
+.hero-btn-follow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: var(--radius-full, 9999px);
+    cursor: pointer;
+    border: 1px solid rgba(0, 191, 255, 0.35);
+    background: rgba(10, 20, 35, 0.6);
+    color: var(--cyan-bright, #00ffff);
+    transition: all var(--transition-normal, 0.25s ease);
+}
+
+.hero-btn-follow:hover {
+    background: rgba(0, 191, 255, 0.16);
+    border-color: var(--cyan-bright, #00ffff);
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 191, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.hero-btn-follow.following {
+    background: rgba(0, 255, 136, 0.12);
+    border-color: rgba(0, 255, 136, 0.5);
+    color: #4ade80;
+}
+
+.hero-btn-follow svg {
+    width: 16px;
+    height: 16px;
+}
+
+.hero-follow-hint {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted, #94a3b8);
+    margin-top: 6px;
+    font-style: italic;
+    letter-spacing: 0.2px;
+}
+
+/* --------------------------------------------------------------------------
+   17D. DIGITAL SERVICES FOR EVERYONE SECTION
+   -------------------------------------------------------------------------- */
+.digital-services {
+    padding: var(--section-pad-y, 80px) var(--section-pad-x, 24px);
+    background: linear-gradient(180deg, var(--bg-primary, #070c18) 0%, rgba(10, 20, 38, 0.8) 50%, var(--bg-primary, #070c18) 100%);
+    position: relative;
+    z-index: 2;
+}
+
+.digital-pricing-banner {
+    display: flex;
+    justify-content: center;
+    margin: -10px auto 36px;
+    max-width: var(--container-max, 1200px);
+}
+
+.digital-pricing-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    background: rgba(0, 255, 136, 0.06);
+    border: 1px solid rgba(0, 255, 136, 0.28);
+    border-radius: var(--radius-full, 9999px);
+    color: #4ade80;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.digital-pricing-pill svg {
+    width: 14px;
+    height: 14px;
+    color: #4ade80;
+}
+
+.digital-container {
+    max-width: var(--container-max, 1200px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.digital-card {
+    background: rgba(10, 20, 35, 0.65);
+    border: 1px solid rgba(0, 191, 255, 0.18);
+    border-radius: var(--radius-lg, 16px);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+    transition: all var(--transition-normal, 0.3s ease);
+    position: relative;
+    overflow: hidden;
+}
+
+.digital-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 191, 255, 0.4), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-normal, 0.3s ease);
+}
+
+.digital-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 191, 255, 0.4);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45), 0 0 24px rgba(0, 191, 255, 0.14);
+}
+
+.digital-card:hover::before {
+    opacity: 1;
+}
+
+.digital-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.digital-icon-frame {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(0, 191, 255, 0.15), rgba(0, 255, 136, 0.1));
+    border: 1px solid rgba(0, 191, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cyan-bright, #00ffff);
+    box-shadow: 0 4px 14px rgba(0, 191, 255, 0.15);
+}
+
+.digital-icon-frame svg {
+    width: 22px;
+    height: 22px;
+}
+
+.digital-tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--radius-full, 9999px);
+    background: rgba(0, 191, 255, 0.08);
+    border: 1px solid rgba(0, 191, 255, 0.22);
+    color: var(--cyan-primary, #00bfff);
+    letter-spacing: 0.4px;
+}
+
+.digital-card h3 {
+    font-size: 18.5px;
+    font-weight: 700;
+    color: var(--text-primary, #ffffff);
+    margin: 0 0 10px;
+    line-height: 1.35;
+}
+
+.digital-card p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-secondary, #cbd5e1);
+    margin: 0 0 20px;
+    flex-grow: 1;
+}
+
+.digital-card-actions {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.digital-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--cyan-bright, #00ffff);
+    text-decoration: none;
+    transition: all var(--transition-fast, 0.2s ease);
+}
+
+.digital-cta-btn svg {
+    width: 14px;
+    height: 14px;
+    transition: transform var(--transition-fast, 0.2s ease);
+}
+
+.digital-cta-btn:hover {
+    color: #ffffff;
+    gap: 10px;
+}
+
+.digital-cta-btn:hover svg {
+    transform: translateX(3px);
+}
+
+/* Digital Trust & Safety Banner */
+.digital-trust-box {
+    max-width: var(--container-max, 1200px);
+    margin: 36px auto 0;
+    padding: 24px 32px;
+    background: rgba(6, 14, 28, 0.85);
+    border: 1px solid rgba(0, 255, 136, 0.25);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.digital-trust-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 255, 136, 0.12);
+    border: 1px solid rgba(0, 255, 136, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4ade80;
+}
+
+.digital-trust-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.digital-trust-content {
+    flex: 1 1 320px;
+}
+
+.digital-trust-content h4 {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--text-primary, #ffffff);
+    margin: 0 0 4px;
+}
+
+.digital-trust-content p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-secondary, #cbd5e1);
+    margin: 0;
+}
+
+.digital-trust-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: var(--radius-full, 9999px);
+    white-space: nowrap;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   17E. MULTILINGUAL TYPOGRAPHY NORMALIZATION (BENGALI & HINDI)
+   -------------------------------------------------------------------------- */
+html[lang="bn"],
+html[lang="hi"] {
+    line-height: 1.7;
+}
+
+html[lang="bn"] body,
+html[lang="hi"] body {
+    font-family: 'Poppins', 'Noto Sans Bengali', 'Hind', system-ui, -apple-system, sans-serif;
+}
+
+html[lang="bn"] .hero-headline,
+html[lang="hi"] .hero-headline {
+    line-height: 1.25;
+}
+
+html[lang="bn"] .section-title h2,
+html[lang="hi"] .section-title h2 {
+    line-height: 1.35;
+}
+
+html[lang="bn"] .founder-quote-box p,
+html[lang="hi"] .founder-quote-box p {
+    line-height: 1.75;
+}
+
+@media (max-width: 992px) {
+    .digital-trust-box {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 20px;
+        gap: 16px;
+    }
+
+    .digital-trust-cta {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .btn-nav-follow {
+        display: none;
+    }
+
+    .mobile-lang-strip {
+        display: flex;
+    }
+
+    .digital-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --------------------------------------------------------------------------
    18. PRINT MEDIA STYLES
    -------------------------------------------------------------------------- */
 @media print {
