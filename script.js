@@ -1479,6 +1479,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 13. Multilingual Translation Controller (i18n)
     // --------------------------------------------------------------------------
     const LANG_STORAGE_KEY = "xestus_user_language";
+    const SUPPORTED_LANGS = ["en", "bn", "hi"];
     const langSwitcher = document.getElementById("langSwitcher");
     const langBtn = document.getElementById("langBtn");
     const langDropdown = document.getElementById("langDropdown");
@@ -1486,22 +1487,74 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileLangBtns = document.querySelectorAll(".mobile-lang-btn");
     const currentLangLabel = document.querySelector(".lang-current-label");
 
-    function setLanguage(lang) {
+    function detectPreferredLanguage() {
+        try {
+            // 1. URL search parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramLang = (urlParams.get("lang") || "").toLowerCase().trim();
+            if (paramLang && SUPPORTED_LANGS.includes(paramLang)) {
+                return paramLang;
+            }
+
+            // 2. User LocalStorage preference
+            const storedLang = localStorage.getItem(LANG_STORAGE_KEY);
+            if (storedLang && SUPPORTED_LANGS.includes(storedLang)) {
+                return storedLang;
+            }
+
+            // 3. Browser Navigator detection
+            const browserLangs = navigator.languages ? Array.from(navigator.languages) : [navigator.language || ""];
+            for (const bLang of browserLangs) {
+                const norm = (bLang || "").toLowerCase();
+                if (norm.startsWith("bn")) return "bn";
+                if (norm.startsWith("hi")) return "hi";
+            }
+        } catch (e) {}
+
+        // 4. Default canonical fallback
+        return "en";
+    }
+
+    function setLanguage(lang, updateUrl = true) {
         const allTrans = window.XESTUS_TRANSLATIONS || window.translations;
         if (!allTrans) {
             return;
         }
-        if (!allTrans[lang]) {
+        if (!SUPPORTED_LANGS.includes(lang) || !allTrans[lang]) {
             lang = "en";
         }
 
-        const dict = allTrans[lang];
-        if (!dict) return;
+        const dict = allTrans[lang] || {};
+        const fallbackDict = allTrans["en"] || {};
 
         document.documentElement.setAttribute("lang", lang);
         try {
             localStorage.setItem(LANG_STORAGE_KEY, lang);
         } catch (e) {}
+
+        // Update URL query parameter without page reload
+        if (updateUrl && window.history && window.history.replaceState) {
+            try {
+                const url = new URL(window.location.href);
+                if (lang !== "en") {
+                    url.searchParams.set("lang", lang);
+                } else {
+                    url.searchParams.delete("lang");
+                }
+                window.history.replaceState({}, "", url.toString());
+            } catch (e) {}
+        }
+
+        // Dynamic Document Title and Meta Description Updates
+        const pageTitle = dict["meta.title"] || fallbackDict["meta.title"];
+        if (pageTitle) {
+            document.title = pageTitle;
+        }
+        const metaDescEl = document.querySelector('meta[name="description"]');
+        const pageDesc = dict["meta.description"] || fallbackDict["meta.description"];
+        if (metaDescEl && pageDesc) {
+            metaDescEl.setAttribute("content", pageDesc);
+        }
 
         // Update current indicator in navbar
         if (currentLangLabel) {
@@ -1520,35 +1573,39 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.classList.toggle("active", btnLang === lang);
         });
 
-        // Translate data-i18n elements
+        // Translate data-i18n elements with zero-failure English fallback
         document.querySelectorAll("[data-i18n]").forEach((el) => {
             const key = el.getAttribute("data-i18n");
-            if (dict[key]) {
-                el.textContent = dict[key];
+            const val = dict[key] || fallbackDict[key];
+            if (val) {
+                el.textContent = val;
             }
         });
 
         // Translate placeholders
         document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
             const key = el.getAttribute("data-i18n-placeholder");
-            if (dict[key]) {
-                el.placeholder = dict[key];
+            const val = dict[key] || fallbackDict[key];
+            if (val) {
+                el.placeholder = val;
             }
         });
 
         // Translate titles
         document.querySelectorAll("[data-i18n-title]").forEach((el) => {
             const key = el.getAttribute("data-i18n-title");
-            if (dict[key]) {
-                el.title = dict[key];
+            const val = dict[key] || fallbackDict[key];
+            if (val) {
+                el.title = val;
             }
         });
 
         // Translate aria-labels
         document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
             const key = el.getAttribute("data-i18n-aria-label");
-            if (dict[key]) {
-                el.setAttribute("aria-label", dict[key]);
+            const val = dict[key] || fallbackDict[key];
+            if (val) {
+                el.setAttribute("aria-label", val);
             }
         });
 
@@ -1903,12 +1960,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initLiveStats();
 
-    // Initialize stored or default language
-    let initialLang = "en";
-    try {
-        initialLang = localStorage.getItem(LANG_STORAGE_KEY) || "en";
-    } catch (e) {}
-    setLanguage(initialLang);
+    // Initialize language with multi-layer detection (URL param -> LocalStorage -> Browser locale -> English default)
+    const initialLang = detectPreferredLanguage();
+    setLanguage(initialLang, false);
 });
 
 window.addEventListener("load", () => {

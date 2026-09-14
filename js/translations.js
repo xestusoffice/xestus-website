@@ -9,6 +9,8 @@
 window.XESTUS_TRANSLATIONS = {
   en: {
     // Meta / Common
+    "meta.title": "XESTUS | Intelligence Beyond Limits — AI Software, Autonomous Systems & Web Development",
+    "meta.description": "XESTUS engineers autonomous AI agent swarms, Model Context Protocol (MCP) integrations, high-performance web platforms, and mission-critical enterprise workflow automation.",
     "common.brand": "XESTUS",
     "common.tagline": "Intelligence Beyond Limits",
     "common.start_project": "Start a Project",
@@ -259,6 +261,8 @@ window.XESTUS_TRANSLATIONS = {
 
   bn: {
     // Meta / Common
+    "meta.title": "XESTUS | কৃত্রিম বুদ্ধিমত্তা ও আধুনিক ওয়েব ইঞ্জিনিয়ারিং — সীমার ঊর্ধ্বে বুদ্ধিমত্তা",
+    "meta.description": "XESTUS তৈরি করে স্বায়ত্তশাসিত AI এজেন্ট, আধুনিক ওয়েব প্ল্যাটফর্ম ও এন্টারপ্রাইজ অটোমেশন পাইপলাইন।",
     "common.brand": "XESTUS",
     "common.tagline": "সীমার ঊর্ধ্বে বুদ্ধিমত্তা",
     "common.start_project": "প্রজেক্ট শুরু করুন",
@@ -509,6 +513,8 @@ window.XESTUS_TRANSLATIONS = {
 
   hi: {
     // Meta / Common
+    "meta.title": "XESTUS | कृत्रिम बुद्धिमत्ता एवं आधुनिक वेब इंजीनियरिंग — सीमाओं से परे बुद्धिमत्ता",
+    "meta.description": "XESTUS स्वायत्त AI एजेंट, आधुनिक वेब प्लेटफ़ॉर्म और मिशन-क्रिटिकल एंटरप्राइज ऑटोमेशन समाधान तैयार करता है।",
     "common.brand": "XESTUS",
     "common.tagline": "सीमाओं से परे बुद्धिमत्ता",
     "common.start_project": "प्रोजेक्ट शुरू करें",
