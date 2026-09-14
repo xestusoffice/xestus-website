@@ -15,6 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com;">
 
     <!-- Primary Page Metadata -->
     <title>XESTUS | Intelligence Beyond Limits — AI Software, Autonomous Systems &amp; Web Development</title>
@@ -1783,6 +1785,7 @@
  <div class="contact-form-wrapper">
 
  <form class="contact-form" id="contactForm" novalidate>
+        <input type="text" name="_gotcha_filter" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important">
 
         <div class="form-row">
             <div class="form-group">
@@ -1799,6 +1802,7 @@
                         class="form-input"
                         placeholder="e.g. Alex Mercer"
                         data-i18n-placeholder="contact.name_placeholder"
+                        maxlength="100"
                         required
                         autocomplete="name"
                         aria-required="true">
@@ -1820,6 +1824,7 @@
                         class="form-input"
                         placeholder="e.g. alex@company.com"
                         data-i18n-placeholder="contact.email_field_placeholder"
+                        maxlength="150"
                         required
                         autocomplete="email"
                         aria-required="true">
@@ -1861,6 +1866,7 @@
                     placeholder="Describe your system requirements, target deliverables, or architectural challenge..."
                     data-i18n-placeholder="contact.msg_placeholder"
                     rows="4"
+                    maxlength="2500"
                     required
                     aria-required="true"></textarea>
             </div>
@@ -1928,81 +1934,6 @@
             </div>
         </div>
     </div>
-
-<!-- =========================
-     XESTUS LIVE STATS MODAL
-========================= -->
-<div id="statsModal" class="case-study-modal stats-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="statsModalTitle">
-    <div class="case-study-backdrop" id="statsModalBackdrop"></div>
-    <div class="case-study-dialog stats-modal-dialog">
-        <button type="button" class="modal-close-btn" id="statsModalCloseBtn" aria-label="Close Live Activity Dialog">
-            <i data-lucide="x" aria-hidden="true"></i>
-        </button>
-
-        <div class="stats-modal-header">
-            <div class="stats-modal-badge">
-                <span class="pulse-dot" aria-hidden="true"></span>
-                <span data-i18n="stats.live_telemetry">REAL-TIME ACTIVITY TELEMETRY</span>
-            </div>
-            <h2 id="statsModalTitle" data-i18n="stats.modal_title">XESTUS Live Activity</h2>
-            <p class="stats-modal-sub" data-i18n="stats.modal_sub">
-                Verified aggregate platform engagement and active follower metrics across rolling timeframes.
-            </p>
-        </div>
-
-        <div class="stats-modal-body">
-            <!-- Telemetry Matrix Table -->
-            <div class="stats-table-wrapper" role="region" aria-label="Activity Table" tabindex="0">
-                <table class="stats-table">
-                    <thead>
-                        <tr>
-                            <th scope="col" data-i18n="stats.period_header">Time Window</th>
-                            <th scope="col" id="colWebsiteHeader" data-i18n="stats.website_header">Website Visits</th>
-                            <th scope="col" id="colFollowersHeader" data-i18n="stats.followers_header">Confirmed Followers</th>
-                        </tr>
-                    </thead>
-                    <tbody id="statsTableBody">
-                        <tr>
-                            <th scope="row" class="period-cell" data-i18n="stats.period_24h">Last 24 Hours</th>
-                            <td class="val-cell" id="statWeb24h"><span class="table-fallback-dash">--</span></td>
-                            <td class="val-cell" id="statFollow24h"><span class="table-fallback-dash">--</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="period-cell" data-i18n="stats.period_7d">Last 7 Days</th>
-                            <td class="val-cell" id="statWeb7d"><span class="table-fallback-dash">--</span></td>
-                            <td class="val-cell" id="statFollow7d"><span class="table-fallback-dash">--</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="period-cell" data-i18n="stats.period_30d">Last 30 Days</th>
-                            <td class="val-cell" id="statWeb30d"><span class="table-fallback-dash">--</span></td>
-                            <td class="val-cell" id="statFollow30d"><span class="table-fallback-dash">--</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="period-cell" data-i18n="stats.period_12m">Last 12 Months</th>
-                            <td class="val-cell" id="statWeb12m"><span class="table-fallback-dash">--</span></td>
-                            <td class="val-cell" id="statFollow12m"><span class="table-fallback-dash">--</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Syncing notice / privacy guarantee -->
-            <div class="stats-telemetry-notice" id="statsTelemetryNotice">
-                <i data-lucide="shield-check" class="notice-icon" aria-hidden="true"></i>
-                <div class="notice-content">
-                    <strong data-i18n="stats.privacy_title">Privacy &amp; Data Integrity Guarantee:</strong>
-                    <span data-i18n="stats.privacy_note">All statistics represent verified aggregate metrics. We never track individual IP addresses, cookies, or expose subscriber identities.</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="stats-modal-footer">
-            <button type="button" class="btn-primary stats-modal-done magnetic-btn" id="btnStatsDone">
-                <span data-i18n="stats.close">Close Breakdown</span>
-            </button>
-        </div>
-    </div>
-</div>
 </section>
 
  </main>
@@ -2356,9 +2287,6 @@
 
 <!-- Lucide Icons -->
 <script defer src="https://unpkg.com/lucide@latest"></script>
-
-<!-- Translations Engine -->
-<script defer src="js/translations.js?v=1.1.0"></script>
 
 <!-- Your Script -->
 <script defer src="script.js?v=3.5.0"></script>

@@ -15,6 +15,17 @@ window.XESTUS_CONFIG = window.XESTUS_CONFIG || {
     statsRefreshIntervalMs: 300000 // 5 minutes cache TTL
 };
 
+// Security sanitization utility against XSS/HTML injection
+function escapeHTML(str) {
+    if (typeof str !== "string") return "";
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 // --------------------------------------------------------------------------
 // 1. EmailJS Client Initialization (Preserved Configuration)
 // --------------------------------------------------------------------------
@@ -740,10 +751,32 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
+        let lastContactSubmissionTime = 0;
+
         contactForm.addEventListener("submit", function (e) {
             e.preventDefault();
 
             if (isSubmitting) return;
+
+            // Honeypot spam defense
+            const botFilter = contactForm.querySelector('input[name="_gotcha_filter"]');
+            if (botFilter && botFilter.value.trim() !== "") {
+                // Silently trap and drop automated bot submissions
+                formMessage.className = "form-status-banner status-success";
+                formMessage.innerHTML = '<i data-lucide="check-circle-2"></i> <span>Inquiry received. We will review your requirements.</span>';
+                contactForm.reset();
+                if (window.lucide) lucide.createIcons();
+                return;
+            }
+
+            // Client-side rate limiting / cooldown protection (5 seconds)
+            const now = Date.now();
+            if (lastContactSubmissionTime && (now - lastContactSubmissionTime < 5000)) {
+                formMessage.className = "form-status-banner status-error";
+                formMessage.innerHTML = '<i data-lucide="alert-circle"></i> <span>Please wait a few seconds before submitting another inquiry.</span>';
+                if (window.lucide) lucide.createIcons();
+                return;
+            }
 
             const name = nameInput.value.trim();
             const email = emailInput.value.trim();
@@ -825,6 +858,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             sendPromise
                 .then(() => {
+                    lastContactSubmissionTime = Date.now();
                     formMessage.className = "form-status-banner status-success";
                     formMessage.innerHTML = '<i data-lucide="check-circle-2"></i> <span>Inquiry received. Sudip Khatua and the XESTUS team will review your requirements and respond within 24 business hours.</span>';
                     contactForm.reset();
