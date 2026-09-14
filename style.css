@@ -30,8 +30,8 @@
     /* Text & Content Hierarchy */
     --text-primary: #ffffff;
     --text-secondary: #d1d8e6;
-    --text-muted: #8c98ad;
-    --text-dim: #546178;
+    --text-muted: #94a3b8;
+    --text-dim: #8494ab;
 
     /* Outlines & Borders */
     --border-subtle: rgba(255, 255, 255, 0.08);
@@ -4125,6 +4125,7 @@ body.modal-open {
     }
 
     .hero-container {
+        grid-template-columns: 1fr;
         gap: 30px;
     }
 
@@ -5012,6 +5013,8 @@ html[lang="hi"] .founder-quote-box p {
     .digital-container {
         grid-template-columns: 1fr;
     }
+}
+
 /* --------------------------------------------------------------------------
    17E. XESTUS LIVE STATS & TELEMETRY MODAL STYLES
    -------------------------------------------------------------------------- */
