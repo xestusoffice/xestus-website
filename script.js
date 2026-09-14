@@ -1683,7 +1683,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const targetValue = (btn.getAttribute("data-service-select") || "").toLowerCase();
                 for (let i = 0; i < serviceSelect.options.length; i++) {
                     const optVal = serviceSelect.options[i].value.toLowerCase();
-                    if (optVal === targetValue || optVal.includes("digital")) {
+                    if (targetValue && (optVal === targetValue || optVal.includes(targetValue) || (targetValue === "digital" && optVal.includes("digital")))) {
                         serviceSelect.selectedIndex = i;
                         break;
                     }
@@ -1695,6 +1695,286 @@ document.addEventListener("DOMContentLoaded", () => {
                 }, 300);
             }
         });
+    });
+
+    // --------------------------------------------------------------------------
+    // 14b. Interactive Project Estimator & Scope Builder Controller
+    // --------------------------------------------------------------------------
+    const ESTIMATOR_DATA = {
+        ai: {
+            title: "Autonomous AI & Agent Swarms",
+            desc: "Custom retrieval-augmented LLM reasoning, Model Context Protocol integration, and high-performance vector retrieval.",
+            selectValue: "AI & Autonomous Agents",
+            starter: {
+                turnaround: "1–2 Weeks",
+                deliverables: [
+                    "Single-Agent Task Pipeline & Prompt System",
+                    "Knowledge Base Ingestion & Vector Search",
+                    "100% Code Ownership & Documentation"
+                ]
+            },
+            pro: {
+                turnaround: "2–3 Weeks",
+                deliverables: [
+                    "Multi-Agent LangGraph Swarm with Critic Verification",
+                    "Bidirectional MCP Tool Discovery & Execution",
+                    "Custom Retrieval-Augmented Generation (RAG) Architecture",
+                    "100% Code Ownership & Deployment CI/CD"
+                ]
+            },
+            enterprise: {
+                turnaround: "3–5 Weeks",
+                deliverables: [
+                    "Distributed Multi-Agent Cluster with Custom Tool Mesh",
+                    "On-Premise / Sovereign Quantized Model Inference",
+                    "Enterprise Role-Based Access Control (RBAC) & Audit Logs",
+                    "24/7 Priority Architecture Support & SLA"
+                ]
+            }
+        },
+        web: {
+            title: "Custom Web Platforms & Portals",
+            desc: "Ultra-fast digital platforms and customer portals engineered with modern frontend architecture and cloud infrastructure.",
+            selectValue: "Full-Stack Web Architecture",
+            starter: {
+                turnaround: "3–5 Days",
+                deliverables: [
+                    "High-Speed Responsive Web Experience",
+                    "Tokenized Design System & Accessibility Compliance",
+                    "SEO Optimization & Social Media Cards"
+                ]
+            },
+            pro: {
+                turnaround: "1–2 Weeks",
+                deliverables: [
+                    "Full-Stack Web Portal with Dynamic Routing",
+                    "FastAPI / Node.js Microservices Integration",
+                    "Interactive Data Visualizations & Analytics Dashboard",
+                    "Edge CDN Deployment with A+ SSL Security"
+                ]
+            },
+            enterprise: {
+                turnaround: "2–4 Weeks",
+                deliverables: [
+                    "Multi-Tenant SaaS Portal Architecture",
+                    "High-Throughput Database Clustering & Caching",
+                    "Enterprise Authentication & SSO Integration",
+                    "Global Edge Reverse Proxy & Dedicated Cloud SLA"
+                ]
+            }
+        },
+        auto: {
+            title: "Event-Driven Workflow Automation",
+            desc: "Autonomous pipelines that connect CRMs, databases, messaging channels, and payment systems with zero event loss.",
+            selectValue: "Workflow Automation",
+            starter: {
+                turnaround: "2–4 Days",
+                deliverables: [
+                    "Omnichannel Lead Notification & CRM Sync",
+                    "Webhook Integration with Error Recovery",
+                    "Workflow Documentation & Runbook"
+                ]
+            },
+            pro: {
+                turnaround: "1–2 Weeks",
+                deliverables: [
+                    "Complex Multi-App Event Mesh (n8n / Python)",
+                    "Self-Healing Webhook Queue & Data Reconciliation",
+                    "Automated Invoicing & Transaction Reconciliation",
+                    "Real-Time Telemetry & Alerting System"
+                ]
+            },
+            enterprise: {
+                turnaround: "2–3 Weeks",
+                deliverables: [
+                    "Enterprise-Wide Distributed Event Hub",
+                    "High-Throughput Redis Queue Clusters",
+                    "Custom API Adapters & Legacy System Bridges",
+                    "Dedicated SLA & 24/7 Pipeline Monitoring"
+                ]
+            }
+        },
+        digital: {
+            title: "Digital Help & Online Form Assistance",
+            desc: "Step-by-step guidance for admissions, scholarships, job applications, and government citizen portal registrations.",
+            selectValue: "Digital Services & Online Form Assistance",
+            starter: {
+                turnaround: "24–48 Hours",
+                deliverables: [
+                    "Accurate Online Form Completion & Submission",
+                    "Document Scanning, Compression & Target Resizing",
+                    "Acknowledgment Receipt & Application Tracking"
+                ]
+            },
+            pro: {
+                turnaround: "2–3 Days",
+                deliverables: [
+                    "Multi-Portal Application Assistance (Scholarships & Grants)",
+                    "Complete Document Portfolio Verification & PDF Formatting",
+                    "Application Status Monitoring & Follow-Up Guidance",
+                    "Direct Support via WhatsApp / Phone"
+                ]
+            },
+            enterprise: {
+                turnaround: "3–5 Days",
+                deliverables: [
+                    "Comprehensive Institutional Batch Application Support",
+                    "Structured Document Archive & Verification Log",
+                    "Dedicated Personal Digital Concierge",
+                    "Priority Submission & Slot Booking Support"
+                ]
+            }
+        },
+        cad: {
+            title: "AutoCAD 2D Technical Drafting",
+            desc: "Layer-standardized 2D architectural blueprints, geometric dimensioning, and fabrication-ready drafting solutions.",
+            selectValue: "AutoCAD 2D Technical Drafting",
+            starter: {
+                turnaround: "2–3 Days",
+                deliverables: [
+                    "Standardized 2D Layout or Part Schematic",
+                    "Dimension Verification & Title Block Setup",
+                    "Plot-Ready PDF & DWG Deliverables"
+                ]
+            },
+            pro: {
+                turnaround: "4–7 Days",
+                deliverables: [
+                    "Multi-Sheet Technical Blueprint Suite",
+                    "Layer Standard Compliance (AIA / ISO)",
+                    "Parametric Dimensioning & Fabrication Details",
+                    "Full DWG, DXF & High-Resolution Vector PDFs"
+                ]
+            },
+            enterprise: {
+                turnaround: "1–2 Weeks",
+                deliverables: [
+                    "Complete Architectural / Engineering Plan Set",
+                    "Custom AutoCAD Template Suite & Dynamic Blocks",
+                    "Comprehensive Bill of Materials (BOM) Integration",
+                    "Dedicated Drafting Lead & Unlimited Revision Passes"
+                ]
+            }
+        }
+    };
+
+    let currentEstimatorService = "ai";
+    let currentEstimatorScale = "starter";
+
+    function updateEstimatorUI() {
+        const data = ESTIMATOR_DATA[currentEstimatorService];
+        if (!data) return;
+        const scaleData = data[currentEstimatorScale] || data.starter;
+
+        const titleEl = document.getElementById("summaryDomainTitle");
+        const descEl = document.getElementById("summaryDomainDesc");
+        const turnaroundEl = document.getElementById("summaryTurnaroundVal");
+        const deliverablesListEl = document.getElementById("summaryDeliverablesList");
+
+        if (titleEl) titleEl.textContent = data.title;
+        if (descEl) descEl.textContent = data.desc;
+        if (turnaroundEl) turnaroundEl.textContent = scaleData.turnaround;
+
+        if (deliverablesListEl) {
+            deliverablesListEl.innerHTML = "";
+            scaleData.deliverables.forEach((item) => {
+                const li = document.createElement("li");
+                li.innerHTML = '<i data-lucide="check"></i> <span>' + item + '</span>';
+                deliverablesListEl.appendChild(li);
+            });
+            if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+                lucide.createIcons();
+            }
+        }
+    }
+
+    const serviceOptBtns = document.querySelectorAll("#estimatorServiceOptions .estimator-opt-btn");
+    serviceOptBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            serviceOptBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentEstimatorService = btn.getAttribute("data-service-key") || "ai";
+            updateEstimatorUI();
+        });
+    });
+
+    const scaleOptBtns = document.querySelectorAll("#estimatorScaleOptions .estimator-opt-btn");
+    scaleOptBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            scaleOptBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentEstimatorScale = btn.getAttribute("data-scale-key") || "starter";
+            updateEstimatorUI();
+        });
+    });
+
+    const btnTransferToInquiry = document.getElementById("btnTransferToInquiry");
+    if (btnTransferToInquiry) {
+        btnTransferToInquiry.addEventListener("click", () => {
+            const data = ESTIMATOR_DATA[currentEstimatorService];
+            const scaleData = data ? data[currentEstimatorScale] : null;
+            const serviceSelect = document.getElementById("service");
+            const messageInput = document.getElementById("message");
+            const contactSection = document.getElementById("contact");
+
+            if (serviceSelect && data) {
+                for (let i = 0; i < serviceSelect.options.length; i++) {
+                    if (serviceSelect.options[i].value === data.selectValue || serviceSelect.options[i].value.includes(data.selectValue)) {
+                        serviceSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            if (messageInput && data && scaleData) {
+                const scaleLabel = currentEstimatorScale.toUpperCase();
+                messageInput.value = `[Scope Builder Specification]\nService Domain: ${data.title}\nComplexity Tier: ${scaleLabel}\nTarget Turnaround: ${scaleData.turnaround}\n\nKey Requirements:\n- ${scaleData.deliverables.join("\n- ")}\n\nAdditional Project Details / Specific Goals: `;
+            }
+
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: "smooth" });
+                if (messageInput) {
+                    setTimeout(() => messageInput.focus(), 600);
+                }
+            }
+        });
+    }
+
+    // --------------------------------------------------------------------------
+    // 14c. FAQ Accordion & Category Filter Controller
+    // --------------------------------------------------------------------------
+    const faqTabBtns = document.querySelectorAll(".faq-tab-btn");
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqTabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            faqTabBtns.forEach((b) => {
+                b.classList.remove("active");
+                b.setAttribute("aria-selected", "false");
+            });
+            btn.classList.add("active");
+            btn.setAttribute("aria-selected", "true");
+
+            const category = btn.getAttribute("data-faq-cat");
+            faqItems.forEach((item) => {
+                const itemCat = item.getAttribute("data-faq-cat");
+                if (category === "all" || itemCat === category) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        });
+    });
+
+    faqItems.forEach((item) => {
+        const questionBtn = item.querySelector(".faq-question");
+        if (questionBtn) {
+            questionBtn.addEventListener("click", () => {
+                const isOpen = item.classList.toggle("is-open");
+                questionBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            });
+        }
     });
 
     // --------------------------------------------------------------------------
@@ -1958,6 +2238,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    updateEstimatorUI();
     initLiveStats();
 
     // Initialize language with multi-layer detection (URL param -> LocalStorage -> Browser locale -> English default)

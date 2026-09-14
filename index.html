@@ -160,12 +160,13 @@
 
     <ul class="nav-links" id="primaryNav">
         <li><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
-        <li><a href="#solutions" class="nav-link" data-i18n="nav.solutions">Solutions</a></li>
         <li><a href="#digital-services" class="nav-link" data-i18n="nav.digital_services">Digital Help</a></li>
         <li><a href="#portfolio" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#products" class="nav-link" data-i18n="nav.products">Products</a></li>
         <li><a href="#lab" class="nav-link" data-i18n="nav.lab">Innovation Lab</a></li>
+        <li><a href="#roadmap" class="nav-link" data-i18n="nav.roadmap">Roadmap</a></li>
         <li><a href="#founder" class="nav-link" data-i18n="nav.about">About</a></li>
-        <li><a href="#updates" class="nav-link" data-i18n="nav.follow">Follow</a></li>
+        <li><a href="#faq" class="nav-link" data-i18n="nav.faq">FAQ</a></li>
         <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
 
         <!-- Mobile Language Selector Strip -->
@@ -1202,6 +1203,129 @@
 </section>
 
 <!-- ==========================================================================
+     FUTURE PRODUCTS FOUNDATION SHOWCASE
+     ========================================================================== -->
+<section class="products" id="products" aria-labelledby="productsTitle">
+    <div class="section-title">
+        <span data-i18n="products.badge">PRODUCT PIPELINE</span>
+        <h2 id="productsTitle" data-i18n="products.title">Upcoming Flagship Systems</h2>
+        <p data-i18n="products.desc">
+            Architectural space for next-generation autonomous software products currently undergoing research, alpha engineering, and private benchmarking.
+        </p>
+    </div>
+
+    <div class="products-container">
+        <!-- Product 1: XESTUS FlowAgent -->
+        <div class="product-card tilt-card">
+            <div class="product-card-header">
+                <div class="product-icon-frame">
+                    <i data-lucide="bot"></i>
+                </div>
+                <span class="product-status-pill status-alpha" data-i18n="products.p1_status">Alpha / Active R&amp;D</span>
+            </div>
+            <h3>XESTUS FlowAgent</h3>
+            <div class="product-tagline" data-i18n="products.p1_tagline">Autonomous Multi-Step Reasoning Engine</div>
+            <p data-i18n="products.p1_desc">
+                An intelligent multi-agent orchestration runtime combining Model Context Protocol (MCP) dynamic tool execution with structured DAG verification loops for enterprise problem solving.
+            </p>
+            <ul class="product-features-list">
+                <li><i data-lucide="check"></i> <span data-i18n="products.p1_f1">Dynamic MCP Tool Discovery &amp; Execution</span></li>
+                <li><i data-lucide="check"></i> <span data-i18n="products.p1_f2">Token-Efficient Context Compaction</span></li>
+                <li><i data-lucide="check"></i> <span data-i18n="products.p1_f3">Self-Correcting Critic-in-the-Loop Architecture</span></li>
+            </ul>
+            <div class="product-specs-box">
+                <div class="spec-line">
+                    <span class="spec-name" data-i18n="products.target_runtime">Target Runtime:</span>
+                    <span class="spec-val">Python / FastAPI / LangGraph</span>
+                </div>
+                <div class="spec-line">
+                    <span class="spec-name" data-i18n="products.access_tier">Access Tier:</span>
+                    <span class="spec-val">Private Developer Preview</span>
+                </div>
+            </div>
+            <div class="product-card-actions">
+                <a href="#contact" class="btn-primary btn-product-waitlist" data-service-select="AI & Autonomous Agents">
+                    <span data-i18n="products.waitlist_btn">Request Early Access / Waitlist</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Product 2: XESTUS DataSync -->
+        <div class="product-card tilt-card">
+            <div class="product-card-header">
+                <div class="product-icon-frame">
+                    <i data-lucide="refresh-cw"></i>
+                </div>
+                <span class="product-status-pill status-beta" data-i18n="products.p2_status">Private Beta</span>
+            </div>
+            <h3>XESTUS DataSync</h3>
+            <div class="product-tagline" data-i18n="products.p2_tagline">Zero-Loss Event Mesh &amp; Webhook Router</div>
+            <p data-i18n="products.p2_desc">
+                High-throughput distributed webhook ingestion engine and omnichannel data synchronization pipeline engineered for real-time CRM and ERP consistency.
+            </p>
+            <ul class="product-features-list">
+                <li><i data-lucide="check"></i> <span data-i18n="products.p2_f1">Sub-10ms Payload Deduplication &amp; Routing</span></li>
+                <li><i data-lucide="check"></i> <span data-i18n="products.p2_f2">Automated Schema Reconciliation &amp; Fallback</span></li>
+                <li><i data-lucide="check"></i> <span data-i18n="products.p2_f3">Zero-Loss Redis Queue Architecture</span></li>
+            </ul>
+            <div class="product-specs-box">
+                <div class="spec-line">
+                    <span class="spec-name" data-i18n="products.target_runtime">Target Runtime:</span>
+                    <span class="spec-val">Node.js / Redis / Cloudflare Workers</span>
+                </div>
+                <div class="spec-line">
+                    <span class="spec-name" data-i18n="products.access_tier">Access Tier:</span>
+                    <span class="spec-val">Closed Enterprise Testing</span>
+                </div>
+            </div>
+            <div class="product-card-actions">
+                <a href="#contact" class="btn-primary btn-product-waitlist" data-service-select="Workflow Automation">
+                    <span data-i18n="products.waitlist_btn">Request Early Access / Waitlist</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Product 3: XESTUS EdgeNode -->
+        <div class="product-card tilt-card">
+            <div class="product-card-header">
+                <div class="product-icon-frame">
+                    <i data-lucide="server"></i>
+                </div>
+                <span class="product-status-pill status-concept" data-i18n="products.p3_status">Hardware Lab</span>
+            </div>
+            <h3>XESTUS EdgeNode</h3>
+            <div class="product-tagline" data-i18n="products.p3_tagline">Headless ARM64 Micro-Server OS</div>
+            <p data-i18n="products.p3_desc">
+                Ultra-compact, low-power Linux runtime and container stack designed to convert surplus ARM hardware (including Galaxy F41 test nodes) into edge micro-servers and IoT hubs.
+            </p>
+            <ul class="product-features-list">
+                <li><i data-lucide="check"></i> <span data-i18n="products.p3_f1">Zero-Cloud Egress On-Device AI Inference</span></li>
+                <li><i data-lucide="check"></i> <span data-i18n="products.p3_f2">Tailscale Encrypted Mesh Networking</span></li>
+                <li><i data-lucide="check"></i> <span data-i18n="products.p3_f3">24/7 Low-Power Thermal Throttling Safety</span></li>
+            </ul>
+            <div class="product-specs-box">
+                <div class="spec-line">
+                    <span class="spec-name" data-i18n="products.target_runtime">Target Runtime:</span>
+                    <span class="spec-val">ARM64 Linux / Docker / WebAssembly</span>
+                </div>
+                <div class="spec-line">
+                    <span class="spec-name" data-i18n="products.access_tier">Access Tier:</span>
+                    <span class="spec-val">Open Hardware Blueprint</span>
+                </div>
+            </div>
+            <div class="product-card-actions">
+                <a href="#contact" class="btn-primary btn-product-waitlist" data-service-select="Cloud & Edge Infrastructure">
+                    <span data-i18n="products.waitlist_btn">Request Early Access / Waitlist</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
  INNOVATION LAB & R&D SECTION
  ========================================================================== -->
 <section class="lab" id="lab">
@@ -1435,6 +1559,101 @@
  <i data-lucide="arrow-right"></i>
  </a>
  </div>
+</section>
+
+<!-- ==========================================================================
+     INTERACTIVE TECHNOLOGY ROADMAP & COMPANY VISION
+     ========================================================================== -->
+<section class="roadmap" id="roadmap" aria-labelledby="roadmapTitle">
+    <div class="section-title">
+        <span data-i18n="roadmap.badge">STRATEGIC TRAJECTORY</span>
+        <h2 id="roadmapTitle" data-i18n="roadmap.title">Technology &amp; Company Roadmap</h2>
+        <p data-i18n="roadmap.desc">
+            A transparent architectural timeline detailing our multi-phase evolution from core foundations to global autonomous agent clusters and distributed edge computing.
+        </p>
+    </div>
+
+    <div class="roadmap-timeline">
+        <!-- Epoch 01: Core Architecture & Foundations -->
+        <div class="roadmap-epoch">
+            <div class="epoch-node" aria-hidden="true"><div class="epoch-node-inner"></div></div>
+            <div class="epoch-card">
+                <div class="epoch-header">
+                    <span class="epoch-badge" data-i18n="roadmap.ep1_badge">EPOCH 01 • ESTABLISHED</span>
+                    <span class="epoch-status current" data-i18n="roadmap.ep1_status">Completed / Active</span>
+                </div>
+                <h3 data-i18n="roadmap.ep1_title">Architectural Foundation &amp; Digital Services</h3>
+                <p data-i18n="roadmap.ep1_desc">
+                    Deploying ultra-fast static edge delivery on GitHub Pages, establishing the tokenized design system, launching dual-track client engineering, and delivering accessible digital assistance for ordinary citizens.
+                </p>
+                <ul class="epoch-milestones">
+                    <li><i data-lucide="check-circle-2"></i> <span data-i18n="roadmap.ep1_m1">Decoupled static edge CDN platform with sub-second rendering</span></li>
+                    <li><i data-lucide="check-circle-2"></i> <span data-i18n="roadmap.ep1_m2">Trilingual internationalization (English, Bengali, Hindi)</span></li>
+                    <li><i data-lucide="check-circle-2"></i> <span data-i18n="roadmap.ep1_m3">Zero-compromise privacy-first aggregate live telemetry</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Epoch 02: Autonomous Intelligence & Lab -->
+        <div class="roadmap-epoch">
+            <div class="epoch-node" aria-hidden="true"><div class="epoch-node-inner"></div></div>
+            <div class="epoch-card">
+                <div class="epoch-header">
+                    <span class="epoch-badge" data-i18n="roadmap.ep2_badge">EPOCH 02 • ACTIVE R&amp;D</span>
+                    <span class="epoch-status current" data-i18n="roadmap.ep2_status">In Progress (2026)</span>
+                </div>
+                <h3 data-i18n="roadmap.ep2_title">Autonomous Agent Swarms &amp; Edge Lab</h3>
+                <p data-i18n="roadmap.ep2_desc">
+                    Pioneering Model Context Protocol (MCP) tool meshes, multi-agent hierarchical DAGs with LangGraph, and deploying the Samsung Galaxy F41 ARM64 Linux personal development server cluster.
+                </p>
+                <ul class="epoch-milestones">
+                    <li><i data-lucide="check-circle-2"></i> <span data-i18n="roadmap.ep2_m1">Bidirectional JSON-RPC MCP server mesh integration</span></li>
+                    <li><i data-lucide="check-circle-2"></i> <span data-i18n="roadmap.ep2_m2">On-device 4-bit quantized SLM inference prototypes</span></li>
+                    <li><i data-lucide="check-circle-2"></i> <span data-i18n="roadmap.ep2_m3">Persistent ARM64 Linux node with Tailscale mesh security</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Epoch 03: Productization & Scaled Cloud -->
+        <div class="roadmap-epoch">
+            <div class="epoch-node" aria-hidden="true"><div class="epoch-node-inner"></div></div>
+            <div class="epoch-card">
+                <div class="epoch-header">
+                    <span class="epoch-badge" data-i18n="roadmap.ep3_badge">EPOCH 03 • UPCOMING</span>
+                    <span class="epoch-status" data-i18n="roadmap.ep3_status">Target: Q3-Q4 2026</span>
+                </div>
+                <h3 data-i18n="roadmap.ep3_title">Product Launches &amp; Dedicated API Backend</h3>
+                <p data-i18n="roadmap.ep3_desc">
+                    Rolling out XESTUS FlowAgent Alpha, XESTUS DataSync Beta, and transitioning the public website to connect with an authenticated FastAPI microservices cluster and automated subscriber dispatch engines.
+                </p>
+                <ul class="epoch-milestones">
+                    <li><i data-lucide="circle-dashed"></i> <span data-i18n="roadmap.ep3_m1">Public launch of FlowAgent reasoning workbench</span></li>
+                    <li><i data-lucide="circle-dashed"></i> <span data-i18n="roadmap.ep3_m2">Production FastAPI backend with PostgreSQL &amp; Redis</span></li>
+                    <li><i data-lucide="circle-dashed"></i> <span data-i18n="roadmap.ep3_m3">Automated email &amp; browser web push dispatch pipeline</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Epoch 04: Global Ecosystem & Hardware Mesh -->
+        <div class="roadmap-epoch">
+            <div class="epoch-node" aria-hidden="true"><div class="epoch-node-inner"></div></div>
+            <div class="epoch-card">
+                <div class="epoch-header">
+                    <span class="epoch-badge" data-i18n="roadmap.ep4_badge">EPOCH 04 • VISION</span>
+                    <span class="epoch-status" data-i18n="roadmap.ep4_status">Future Horizon</span>
+                </div>
+                <h3 data-i18n="roadmap.ep4_title">Global Intelligent Mesh &amp; Enterprise AI</h3>
+                <p data-i18n="roadmap.ep4_desc">
+                    Building a decentralized network of autonomous software systems, IoT telemetry hubs, and edge micro-servers serving global clients and enterprise organizations.
+                </p>
+                <ul class="epoch-milestones">
+                    <li><i data-lucide="circle-dashed"></i> <span data-i18n="roadmap.ep4_m1">Multi-region distributed agent cluster deployments</span></li>
+                    <li><i data-lucide="circle-dashed"></i> <span data-i18n="roadmap.ep4_m2">Enterprise on-premise AI sovereignty appliances</span></li>
+                    <li><i data-lucide="circle-dashed"></i> <span data-i18n="roadmap.ep4_m3">Open-source developer toolkits and community plugins</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- ==========================================================================
@@ -1692,6 +1911,215 @@
 
  </div>
 
+</section>
+
+<!-- ==========================================================================
+     ENTERPRISE & DIGITAL ASSISTANCE FAQ KNOWLEDGE BASE
+     ========================================================================== -->
+<section class="faq-section" id="faq" aria-labelledby="faqTitle">
+    <div class="section-title">
+        <span data-i18n="faq.badge">KNOWLEDGE BASE</span>
+        <h2 id="faqTitle" data-i18n="faq.title">Frequently Asked Questions</h2>
+        <p data-i18n="faq.desc">
+            Clear, transparent answers regarding our engineering standards, intellectual property ownership, security protocols, and practical digital assistance.
+        </p>
+    </div>
+
+    <div class="faq-container">
+        <!-- Category Filter Tabs -->
+        <div class="faq-category-tabs" role="tablist" aria-label="FAQ Categories">
+            <button type="button" class="faq-tab-btn active" data-faq-cat="all" role="tab" aria-selected="true" data-i18n="faq.tab_all">All Questions</button>
+            <button type="button" class="faq-tab-btn" data-faq-cat="engineering" role="tab" aria-selected="false" data-i18n="faq.tab_engineering">Software &amp; AI Engineering</button>
+            <button type="button" class="faq-tab-btn" data-faq-cat="digital" role="tab" aria-selected="false" data-i18n="faq.tab_digital">Digital Help &amp; Form Assistance</button>
+            <button type="button" class="faq-tab-btn" data-faq-cat="trust" role="tab" aria-selected="false" data-i18n="faq.tab_trust">Security &amp; Confidentiality</button>
+        </div>
+
+        <div class="faq-accordion" id="faqAccordion">
+            <!-- FAQ 1: Code Ownership & IP -->
+            <div class="faq-item" data-faq-cat="engineering">
+                <button type="button" class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq.q1">Who owns the intellectual property and source code of custom projects?</span>
+                    <i data-lucide="chevron-down" class="faq-chevron" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq.a1">
+                        You do. Upon project completion and final settlement, 100% of the custom source code, documentation, architectural schemas, and deployed assets belong exclusively to you or your organization under clear contractual ownership.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 2: Project Delivery Timeline -->
+            <div class="faq-item" data-faq-cat="engineering">
+                <button type="button" class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq.q2">What is the typical turnaround timeline for custom software or automation?</span>
+                    <i data-lucide="chevron-down" class="faq-chevron" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq.a2">
+                        Turnaround times depend on system complexity: focused automation workflows and landing platforms typically take 3–7 business days, while custom AI agent swarms and enterprise RAG systems take 2–4 weeks with continuous milestone demos.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 3: How Digital Assistance Works -->
+            <div class="faq-item" data-faq-cat="digital">
+                <button type="button" class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq.q3">How does XESTUS help ordinary people with online form filling and applications?</span>
+                    <i data-lucide="chevron-down" class="faq-chevron" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq.a3">
+                        We provide personalized, step-by-step assistance in accurately filling college admissions, scholarship forms, job applications, document compression/formatting, and exam registrations. You review all details before final submission.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 4: Digital Pricing Transparency -->
+            <div class="faq-item" data-faq-cat="digital">
+                <button type="button" class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq.q4">Is digital form assistance affordable for students and individuals?</span>
+                    <i data-lucide="chevron-down" class="faq-chevron" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq.a4">
+                        Yes. Our digital assistance services are intentionally priced at accessible, transparent rates with zero hidden fees. We believe practical digital help should be easily reachable for everyone.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 5: Data Confidentiality & NDA -->
+            <div class="faq-item" data-faq-cat="trust">
+                <button type="button" class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq.q5">How do you ensure data confidentiality and privacy?</span>
+                    <i data-lucide="chevron-down" class="faq-chevron" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq.a5">
+                        We treat all client briefs, technical schemas, and personal application documents under strict confidentiality. We are ready to execute Non-Disclosure Agreements (NDAs) before discussing sensitive enterprise architectures.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 6: Home Server & Production Independence -->
+            <div class="faq-item" data-faq-cat="engineering">
+                <button type="button" class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq.q6">How does the XESTUS development lab and edge hardware operate?</span>
+                    <i data-lucide="chevron-down" class="faq-chevron" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq.a6">
+                        Our public website runs with 99.98% reliability on global edge CDNs, completely decoupled from local experiments. Our Samsung Galaxy F41 ARM64 Linux node serves strictly as an internal development, micro-server, and cybersecurity research lab.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     INTERACTIVE PROJECT ESTIMATOR & SCOPE BUILDER
+     ========================================================================== -->
+<section class="estimator" id="estimator" aria-labelledby="estimatorTitle">
+    <div class="section-title">
+        <span data-i18n="estimator.badge">INTERACTIVE SCOPE BUILDER</span>
+        <h2 id="estimatorTitle" data-i18n="estimator.title">Project Estimator &amp; Scope Builder</h2>
+        <p data-i18n="estimator.desc">
+            Configure your technical requirements or digital assistance needs to generate an architectural scope and automatically populate your inquiry.
+        </p>
+    </div>
+
+    <div class="estimator-wrapper">
+        <div class="estimator-builder">
+            <!-- Step 1: Service Category -->
+            <div class="estimator-step">
+                <div class="step-header">
+                    <span class="step-num">1</span>
+                    <h3 class="step-title" data-i18n="estimator.step1_title">Select Service Domain</h3>
+                </div>
+                <div class="estimator-options-grid" id="estimatorServiceOptions">
+                    <button type="button" class="estimator-opt-btn active" data-service-key="ai" data-service-label="AI &amp; Autonomous Agents">
+                        <span class="opt-title" data-i18n="estimator.opt_ai_title">AI &amp; Autonomous Agents</span>
+                        <span class="opt-desc" data-i18n="estimator.opt_ai_desc">RAG, MCP Tools &amp; LangGraph</span>
+                    </button>
+                    <button type="button" class="estimator-opt-btn" data-service-key="web" data-service-label="Full-Stack Web Architecture">
+                        <span class="opt-title" data-i18n="estimator.opt_web_title">Web Platform / Portal</span>
+                        <span class="opt-desc" data-i18n="estimator.opt_web_desc">High-Speed Modern Architecture</span>
+                    </button>
+                    <button type="button" class="estimator-opt-btn" data-service-key="auto" data-service-label="Workflow Automation">
+                        <span class="opt-title" data-i18n="estimator.opt_auto_title">Workflow Automation</span>
+                        <span class="opt-desc" data-i18n="estimator.opt_auto_desc">Event Pipelines, n8n &amp; APIs</span>
+                    </button>
+                    <button type="button" class="estimator-opt-btn" data-service-key="digital" data-service-label="Digital Services &amp; Online Form Assistance">
+                        <span class="opt-title" data-i18n="estimator.opt_digital_title">Digital Help / Online Forms</span>
+                        <span class="opt-desc" data-i18n="estimator.opt_digital_desc">Admissions, Schemes &amp; Forms</span>
+                    </button>
+                    <button type="button" class="estimator-opt-btn" data-service-key="cad" data-service-label="AutoCAD 2D Technical Drafting">
+                        <span class="opt-title" data-i18n="estimator.opt_cad_title">AutoCAD 2D Drafting</span>
+                        <span class="opt-desc" data-i18n="estimator.opt_cad_desc">Precision Engineering Schematics</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: System Scale / Complexity -->
+            <div class="estimator-step">
+                <div class="step-header">
+                    <span class="step-num">2</span>
+                    <h3 class="step-title" data-i18n="estimator.step2_title">Project Scale &amp; Complexity</h3>
+                </div>
+                <div class="estimator-options-grid" id="estimatorScaleOptions">
+                    <button type="button" class="estimator-opt-btn active" data-scale-key="starter">
+                        <span class="opt-title" data-i18n="estimator.scale_starter_title">Starter / Essential</span>
+                        <span class="opt-desc" data-i18n="estimator.scale_starter_desc">Single module, focused deliverable</span>
+                    </button>
+                    <button type="button" class="estimator-opt-btn" data-scale-key="pro">
+                        <span class="opt-title" data-i18n="estimator.scale_pro_title">Professional / Multi-Step</span>
+                        <span class="opt-desc" data-i18n="estimator.scale_pro_desc">Integrated multi-service system</span>
+                    </button>
+                    <button type="button" class="estimator-opt-btn" data-scale-key="enterprise">
+                        <span class="opt-title" data-i18n="estimator.scale_ent_title">Enterprise / Full Cluster</span>
+                        <span class="opt-desc" data-i18n="estimator.scale_ent_desc">High-throughput, custom SLA</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estimator Live Output / Summary Panel -->
+        <div class="estimator-summary-panel">
+            <div class="summary-badge">
+                <i data-lucide="zap"></i>
+                <span data-i18n="estimator.summary_badge">DYNAMIC SCOPE SPECIFICATION</span>
+            </div>
+            <h3 class="summary-title" id="summaryDomainTitle">Autonomous AI &amp; Agent Swarm</h3>
+            <p class="summary-subtitle" id="summaryDomainDesc">
+                Custom retrieval-augmented LLM reasoning, Model Context Protocol integration, and high-performance vector retrieval.
+            </p>
+
+            <div class="summary-metrics-box">
+                <div class="summary-metric-row">
+                    <span class="summary-metric-label" data-i18n="estimator.metric_turnaround">Estimated Turnaround:</span>
+                    <span class="summary-metric-val" id="summaryTurnaroundVal">2–3 Weeks</span>
+                </div>
+                <div class="summary-metric-row">
+                    <span class="summary-metric-label" data-i18n="estimator.metric_sla">Engineering Review:</span>
+                    <span class="summary-metric-val" data-i18n="estimator.metric_sla_val">&lt; 24 Hours SLA</span>
+                </div>
+            </div>
+
+            <div class="summary-deliverables-box">
+                <div class="deliverables-title" data-i18n="estimator.deliverables_title">Core Architectural Deliverables:</div>
+                <ul class="deliverables-list" id="summaryDeliverablesList">
+                    <li><i data-lucide="check"></i> <span>Custom Vector Database &amp; Chunking Pipeline</span></li>
+                    <li><i data-lucide="check"></i> <span>MCP Tool Discovery &amp; JSON-RPC Integration</span></li>
+                    <li><i data-lucide="check"></i> <span>100% Code Ownership &amp; Deployment Documentation</span></li>
+                </ul>
+            </div>
+
+            <button type="button" class="btn-primary btn-transfer-inquiry magnetic-btn" id="btnTransferToInquiry">
+                <span data-i18n="estimator.transfer_btn">Transfer Scope to Inquiry Form</span>
+                <i data-lucide="arrow-down"></i>
+            </button>
+        </div>
+    </div>
 </section>
 
 <!-- ==========================================================================

@@ -1,84 +1,45 @@
 # XESTUS Engineering & Product Roadmap
 
-**Project**: XESTUS Platform Evolution  
-**Target Delivery Period**: 2026  
-**Status**: Active Execution (Phase 1 Complete)
+**Project**: XESTUS Platform & Master Product Evolution
+**Target Delivery Period**: 2026–2027
+**Status**: Active Production & Master Evolution Complete
 
 ---
 
-## 1. Roadmap Phases Overview
+## 1. Multi-Epoch Roadmap Architecture
 
 ```
-PHASE 0: Audit & Risk Assessment (COMPLETE)
+EPOCH 01: Core Architecture & Foundations (ESTABLISHED)
+   │  • High-performance static edge delivery on GitHub Pages
+   │  • Trilingual internationalization (EN, BN, HI) with 100% parity
+   │  • Dual-track service matrix (Enterprise AI + Practical Digital Help)
+   │  • Privacy-first live telemetry & Follow XESTUS system
    │
-PHASE 1: Isolated Branch & Design System Foundation (COMPLETE)
+EPOCH 02: Autonomous Intelligence & Lab (ACTIVE 2026)
+   │  • Model Context Protocol (MCP) tool broker integration
+   │  • Multi-agent swarm orchestration on DAGs (LangGraph)
+   │  • On-device quantized SLM inference prototypes
+   │  • Samsung Galaxy F41 ARM64 Linux personal development server
    │
-PHASE 2: Premium Navigation & Hero Section Overhaul
+EPOCH 03: Productization & Scaled Cloud (UPCOMING Q3-Q4 2026)
+   │  • XESTUS FlowAgent Alpha developer release
+   │  • XESTUS DataSync Beta event router release
+   │  • Dedicated FastAPI microservices backend with PostgreSQL & Redis
+   │  • Automated subscriber dispatch notification pipeline
    │
-PHASE 3: Services & Business Solutions Matrix
-   │
-PHASE 4: Featured Projects & Case Studies Showcase
-   │
-PHASE 5: XESTUS Innovation Lab (AI Agents, RAG, MCP)
-   │
-PHASE 6: About, Founder & Trust Architecture
-   │
-PHASE 7: High-Conversion Contact & Inquiry System
-   │
-PHASE 8: Motion, Micro-Interactions & Animation Refinement
-   │
-PHASE 9: Performance, Asset Hygiene & Core Web Vitals Optimization
-   │
-PHASE 10: Accessibility (a11y) & Reduced-Motion Audit
-   │
-PHASE 11: SEO, Schema.org & Social Metadata Overhaul
-   │
-PHASE 12: Security Hardening & SRI Dependency Pinning
-   │
-PHASE 13: Cross-Device & Viewport Verification
-   │
-PHASE 14: Production Deployment Preparation & Staging
-   │
-PHASES 15–22: Future Backend API, Database, Galaxy F41 Lab & IoT Integration
+EPOCH 04: Global Ecosystem & Hardware Mesh (VISION 2027+)
+      • Decentralized multi-region autonomous agent clusters
+      • Enterprise on-premise sovereign AI appliances
+      • Open-source developer toolkits and community integrations
 ```
 
 ---
 
-## 2. Phase Breakdown & Deliverables
+## 2. Master Feature Deliverables Summary
 
-### Phase 0: Audit & Assessment (Done)
-- Comprehensive audit of HTML, CSS, JS, assets, CNAME, SEO files, and dependencies.
-- Zero breaking changes to production.
-
-### Phase 1: Isolated Branch & Design System Foundation (Done)
-- Creation of branch `revamp/xestus-premium-v1`.
-- Tokenized CSS design system (`style.css`), removing 3,180 lines of duplicate bloat.
-- Documentation suite in `/docs`.
-
-### Phase 2: Navigation & Hero Section
-- Glassmorphic sticky header with smooth mobile drawer navigation.
-- High-impact cinematic typography, value proposition, and dual CTAs.
-- Optimized 3D Hero Orb with bounded GPU coordinates.
-
-### Phase 3: Services & Solutions Matrix
-- Structured service cards (AI Software, Automation, Web Dev, Cloud, UI/UX, AI Consulting, Training, AutoCAD).
-- Business problem definition, typical deliverables, and technology tags.
-
-### Phase 4: Case Studies & Projects
-- Premium project presentation with lifecycle tags (`LIVE`, `IN DEVELOPMENT`, `PLANNED`, `CONCEPT`).
-- Interactive demo triggers, GitHub repository links, and inquiry CTAs.
-
-### Phase 5: XESTUS Innovation Lab
-- Active experimentation showcase: AI Agents, RAG systems, Model Context Protocol (MCP), Edge AI, and Computer Vision.
-
-### Phase 6: Founder & Trust Architecture
-- Verified founder profile (Sudip Khatua, CEO & Founder), mission, core competencies, and LinkedIn connection.
-
-### Phase 7: Contact & Lead Generation
-- Multi-field inquiry form with project categorization, budget selectors, honeypot spam protection, and EmailJS integration.
-
-### Phase 8–14: Optimization, Security, a11y, SEO & Deployment Prep
-- Subresource integrity (SRI) on CDNs, complete JSON-LD Schema.org, Lighthouse performance scoring > 95, and pre-deployment verification.
-
-### Phase 15+: Future Backend & Lab Expansion
-- XESTUS FastAPI/Node.js API, PostgreSQL database, and Samsung Galaxy F41 home lab development server integration.
+1. **Dual-Track Service Gateway**: High-end AI & software engineering alongside accessible digital form assistance.
+2. **Interactive Project Estimator**: Real-time scope, complexity, and turnaround calculator with 1-click contact brief auto-fill.
+3. **Future Products Showcase**: Dedicated foundation for upcoming products (*FlowAgent*, *DataSync*, *EdgeNode*).
+4. **Interactive Timeline**: 4-Epoch visual roadmap tracing company progress.
+5. **Knowledge Base FAQ**: Transparent accordions addressing code ownership, NDAs, and digital help.
+6. **Samsung Galaxy F41 Edge Node**: Documented personal testing lab with complete production isolation.

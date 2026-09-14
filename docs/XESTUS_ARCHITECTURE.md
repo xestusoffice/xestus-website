@@ -1,99 +1,70 @@
 # XESTUS System Architecture Documentation
 
-**Company**: XESTUS  
-**Tagline**: *Intelligence Beyond Limits*  
-**Domain**: [https://xestus.in](https://xestus.in)  
-**Status**: Production (GitHub Pages Static Frontend)
+**Company**: XESTUS
+**Tagline**: *Intelligence Beyond Limits*
+**Domain**: [https://xestus.in](https://xestus.in)
+**Status**: Production & Master Evolution Platform
 
 ---
 
 ## 1. Architectural Overview
 
-XESTUS is architected with a decoupled, high-performance static frontend at its public entry point, designed for global edge delivery, zero server maintenance overhead for static assets, and seamless future integration with the XESTUS Backend API.
+XESTUS is engineered with a decoupled, high-performance static frontend at its public entry point, delivering zero layout shift, sub-second global CDN asset loading, dual-track business services (enterprise AI & practical digital help), an interactive product pipeline, and seamless readiness for future microservices backends.
 
 ```
-+-------------------------------------------------------------------------+
-|                                                                         |
-|                          XESTUS PUBLIC CLIENT                           |
-|                       https://xestus.in (Edge)                          |
-|                                                                         |
-|   +-------------------+  +--------------------+  +------------------+   |
-|   |    index.html     |  |     style.css      |  |    script.js     |   |
-|   |  Semantic HTML5   |  |   Design Tokens    |  |  UI & Controller |   |
-|   +-------------------+  +--------------------+  +------------------+   |
-|                                                                         |
-+------------------------------------+------------------------------------+
-                                     |
-                                     | Form Dispatches / Inquiries
-                                     v
-+------------------------------------+------------------------------------+
-|                                                                         |
-|                        CURRENT DISPATCH ADAPTER                         |
-|                             EmailJS Cloud                               |
-|                                                                         |
-+------------------------------------+------------------------------------+
-                                     |
-                                     v (Future Evolution)
-+------------------------------------+------------------------------------+
-|                                                                         |
-|                       FUTURE XESTUS API LAYER                           |
-|                 FastAPI / Node.js Microservices Layer                   |
-|                                                                         |
-|   +-------------------+  +--------------------+  +------------------+   |
-|   |    Auth & RBAC    |  |  Inquiry & Lead CRM|  |  AI Agents & RAG |   |
-|   +-------------------+  +--------------------+  +------------------+   |
-|                                                                         |
-+------------------------------------+------------------------------------+
-                                     |
-                                     v
-+-------------------------------------------------------------------------+
-|                                                                         |
-|                           DATA PERSISTENCE                              |
-|                         PostgreSQL / Redis                              |
-|                                                                         |
-+-------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
+|                                  XESTUS PUBLIC CLIENT                                   |
+|                                https://xestus.in (Global Edge)                          |
+|                                                                                         |
+|   +---------------------+  +----------------------+  +-------------------------------+  |
+|   |     index.html      |  |      style.css       |  |           script.js           |  |
+|   |   Semantic HTML5    |  |  Token Design System |  | Dynamic Controllers & i18n    |  |
+|   |   & SEO Microdata   |  |  & 3D Perspective    |  | Estimator, Live Stats, Modals |  |
+|   +---------------------+  +----------------------+  +-------------------------------+  |
+|                                                                                         |
++--------------------------------------------+--------------------------------------------+
+                                             |
+                         +-------------------+-------------------+
+                         |                                       |
+                         v                                       v
++--------------------------------------------+   +----------------------------------------+
+|          CLIENT DISPATCH ADAPTER           |   |       FUTURE TELEMETRY / CRM API       |
+|               EmailJS Cloud                |   |          api.xestus.in (FastAPI)       |
+|    - Instant inquiry dispatch              |   |    - Live visits & follower counts     |
+|    - SLA-backed engineering routing        |   |    - Automated newsletter delivery     |
++--------------------------------------------+   +----------------------------------------+
+                                                                 |
+                                                                 v
++-----------------------------------------------------------------------------------------+
+|                     ISOLATED RESEARCH LAB: SAMSUNG GALAXY F41                           |
+|                               (ARM64 Linux Test Node)                                   |
+|   - Internal API prototyping & local quantized SLMs                                     |
+|   - Tailscale encrypted WireGuard mesh networking                                       |
+|   - 100% decoupled from public production uptime                                        |
++-----------------------------------------------------------------------------------------+
 ```
 
 ---
 
-## 2. Current Production Components
+## 2. Production Component Breakdown
 
-### 2.1 Static Delivery Layer
-- **Hosting Provider**: GitHub Pages (Edge CDN).
-- **Deployment Source**: Branch `main`, root `/` path.
-- **Custom Domain**: `xestus.in` configured via DNS CNAME pointer.
-- **TLS/SSL**: Automated HTTPS certificates provisioned and managed by GitHub Pages.
+### 2.1 Public Frontend Experience Layer
+1. **Interactive Hero & 3D Orb**: CSS perspective and GPU-accelerated 3D coordinate tracking with zero layout shifts.
+2. **Dual-Track Service Matrix**: High-end AI & software engineering alongside accessible digital form assistance for ordinary citizens.
+3. **Interactive Project Estimator**: Dynamic scope generator with real-time turnaround calculations and 1-click inquiry transfer.
+4. **Future Products Showcase**: Dedicated architectural foundation for *XESTUS FlowAgent*, *XESTUS DataSync*, and *XESTUS EdgeNode*.
+5. **Interactive Technology Roadmap**: 4-Epoch vision timeline documenting foundational progress to global edge computing.
+6. **Enterprise & Digital FAQ**: Accessible accordion answering client questions on IP ownership, NDAs, turnarounds, and pricing.
+7. **Follow XESTUS & Live Stats**: Privacy-first aggregate telemetry with rolling-window breakdown modals.
 
-### 2.2 Client-Side Codebase
-1. **`index.html`**:
-   - Single-page application architecture.
-   - Semantic HTML5 structure (`<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`).
-   - Integrated Open Graph, Twitter cards, and Schema.org JSON-LD microdata.
-2. **`style.css`**:
-   - Centralized Design System tokens (`--bg-*`, `--cyan-*`, `--text-*`, `--space-*`, `--radius-*`).
-   - Pure CSS glassmorphism, responsive grid systems, and GPU-accelerated transforms.
-   - `@media (prefers-reduced-motion: reduce)` accessibility compliance.
-3. **`script.js`**:
-   - Single controller pattern for client interactions.
-   - `IntersectionObserver` for performant scroll-triggered animations.
-   - Custom pointer/cursor tracking and CSS 3D orb coordinate interpolation.
-   - Offline detection and connection monitor overlay.
-   - Inquiry submission handling via EmailJS client SDK.
+### 2.2 Multilingual Engine (i18n)
+- Preloaded dictionary (`js/translations.js`) supporting **English (`en`)**, **Bengali (`bn`)**, and **Hindi (`hi`)** with 100% key parity across 319 unique translation keys.
+- 4-tier waterfall detection: URL query param $\rightarrow$ localStorage $\rightarrow$ browser locale $\rightarrow$ English canonical default.
 
 ---
 
-## 3. Data & Communication Flow
+## 3. Security, Privacy & Integrity Standards
 
-### Inquiry Submission Pipeline (Current):
-1. Visitor fills out inquiry form on `https://xestus.in#contact`.
-2. Client-side validation verifies required fields, email syntax, and honeypot field.
-3. `script.js` dispatches payload via EmailJS SDK (`emailjs.send("service_rumjowb", "template_malid0j", {...})`).
-4. Instant user feedback delivered via UI state indicators (`formMessage`).
-5. Email delivered to `xestus.office@gmail.com`.
-
----
-
-## 4. Staging vs Production Separation
-
-- **Production**: `main` branch deployed to `xestus.in`.
-- **Development**: Feature branches (e.g., `revamp/xestus-premium-v1`) tested locally and in staging environments before merge review.
+1. **Zero Fake Metrics**: All social proof and live stats represent honest aggregate data or display graceful syncing states.
+2. **IP & Source Code Sovereignty**: Clients retain 100% ownership of custom software upon project settlement.
+3. **Defense-in-Depth**: Strict honeypot spam protection, CSP-compliant markup, Subresource Integrity, and encrypted HTTPS.
