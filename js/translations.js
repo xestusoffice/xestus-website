@@ -47,6 +47,17 @@ window.XESTUS_TRANSLATIONS = {
     "hero.cap2_lbl": "Intelligent Workflows",
     "hero.cap3_val": "Cloud & Web",
     "hero.cap3_lbl": "Scalable Systems",
+    "hero.trusted": "Trusted by innovators",
+
+    // Floating HUD Tags
+    "hud.aiml": "AI & ML",
+    "hud.aiml_sub": "Smarter Solutions",
+    "hud.cloud": "Cloud",
+    "hud.cloud_sub": "Scalable & Secure",
+    "hud.dev": "Development",
+    "hud.dev_sub": "Build What Matters",
+    "hud.iot": "IoT",
+    "hud.iot_sub": "Connected Future",
 
     // Live Stats & Telemetry Modal
     "stats.live_badge": "LIVE STATS",
@@ -223,6 +234,8 @@ window.XESTUS_TRANSLATIONS = {
     "follow.registered_as": "Registered Email:",
     "follow.keep_btn": "Keep Following & Close",
     "follow.unfollow_btn": "Unfollow / Stop Receiving Updates",
+    "follow.toast_followed": "You are now following XESTUS updates!",
+    "follow.toast_unfollowed": "You have unfollowed XESTUS.",
 
     // Contact Section
     "contact.badge": "DIRECT CONSULTATION & INQUIRY",
@@ -413,6 +426,17 @@ window.XESTUS_TRANSLATIONS = {
     "hero.cap2_lbl": "স্বয়ংক্রিয় কাজের ধারা",
     "hero.cap3_val": "ক্লাউড ও ওয়েব",
     "hero.cap3_lbl": "গতিশীল সিস্টেম",
+    "hero.trusted": "উদ্ভাবকদের আস্থাভাজন",
+
+    // Floating HUD Tags
+    "hud.aiml": "AI & ML",
+    "hud.aiml_sub": "স্মার্টার সলিউশন",
+    "hud.cloud": "ক্লাউড",
+    "hud.cloud_sub": "স্কেলেবল ও নিরাপদ",
+    "hud.dev": "ডেভেলপমেন্ট",
+    "hud.dev_sub": "কার্যকর প্রযুক্তি",
+    "hud.iot": "IoT",
+    "hud.iot_sub": "সংযুক্ত ভবিষ্যৎ",
 
     // Live Stats & Telemetry Modal
     "stats.live_badge": "লাইভ স্ট্যাটস",
@@ -589,6 +613,8 @@ window.XESTUS_TRANSLATIONS = {
     "follow.registered_as": "নিবন্ধিত ইমেইল:",
     "follow.keep_btn": "যুক্ত থাকুন ও বন্ধ করুন",
     "follow.unfollow_btn": "আনফলো করুন / আপডেট বন্ধ করুন",
+    "follow.toast_followed": "আপনি এখন XESTUS-এর আপডেট অনুসরণ করছেন!",
+    "follow.toast_unfollowed": "আপনি XESTUS আনফলো করেছেন।",
 
     // Contact Section
     "contact.badge": "সরাসরি পরামর্শ ও যোগাযোগ",
@@ -779,6 +805,17 @@ window.XESTUS_TRANSLATIONS = {
     "hero.cap2_lbl": "स्वचालित वर्कफ़्लो",
     "hero.cap3_val": "क्लाउड व वेब",
     "hero.cap3_lbl": "स्केलेबल सिस्टम",
+    "hero.trusted": "इनोवेटर्स का भरोसा",
+
+    // Floating HUD Tags
+    "hud.aiml": "AI & ML",
+    "hud.aiml_sub": "स्मार्ट सॉल्यूशंस",
+    "hud.cloud": "क्लाउड",
+    "hud.cloud_sub": "स्केलेबल व सुरक्षित",
+    "hud.dev": "डेवलपमेंट",
+    "hud.dev_sub": "सार्थक निर्माण",
+    "hud.iot": "IoT",
+    "hud.iot_sub": "कनेक्टेड भविष्य",
 
     // Live Stats & Telemetry Modal
     "stats.live_badge": "लाइव स्टैट्स",
@@ -955,6 +992,8 @@ window.XESTUS_TRANSLATIONS = {
     "follow.registered_as": "पंजीकृत ईमेल:",
     "follow.keep_btn": "जुड़े रहें व बंद करें",
     "follow.unfollow_btn": "अनफ़ॉलो करें / अपडेट बंद करें",
+    "follow.toast_followed": "अब आप XESTUS के अपडेट्स फ़ॉलो कर रहे हैं!",
+    "follow.toast_unfollowed": "आपने XESTUS को अनफ़ॉलो कर दिया है।",
 
     // Contact Section
     "contact.badge": "प्रत्यक्ष परामर्श व पूछताछ",

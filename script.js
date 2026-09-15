@@ -27,6 +27,132 @@ function escapeHTML(str) {
 }
 
 // --------------------------------------------------------------------------
+// 0B. Adaptive Universal Performance Engine (XESTUS Progressive Enhancement)
+// --------------------------------------------------------------------------
+window.XESTUS_PERF = (function () {
+    let activeTier = "tier-1";
+    const tierListeners = [];
+
+    function detectHardwareTier() {
+        if (typeof window === "undefined") return "tier-1";
+
+        // 1. Accessibility First: Reduced Motion -> Tier 4
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            return "tier-4";
+        }
+
+        // 2. Data Saver / Low Bandwidth -> Tier 3
+        if (typeof navigator !== "undefined" && navigator.connection && (navigator.connection.saveData || navigator.connection.effectiveType === "2g" || navigator.connection.effectiveType === "slow-2g")) {
+            return "tier-3";
+        }
+
+        const cores = (typeof navigator !== "undefined" && navigator.hardwareConcurrency) || 4;
+        const memory = (typeof navigator !== "undefined" && navigator.deviceMemory) || 4; // GB (Chrome/Edge/Opera API)
+        const isTouchMobile = typeof window !== "undefined" && (window.innerWidth <= 640 || (window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches));
+
+        // 3. Low-End Device -> Tier 3 (Entry Android, <=2GB RAM, <=4 cores on mobile)
+        if ((memory <= 2 && isTouchMobile) || (cores <= 2) || (isTouchMobile && memory <= 3)) {
+            return "tier-3";
+        }
+
+        // 4. Mid-Range Device -> Tier 2 (Tablets, mid phones, low laptops)
+        if (isTouchMobile || memory <= 4 || cores <= 4 || window.innerWidth <= 1024) {
+            return "tier-2";
+        }
+
+        // 5. High-End Desktop / Laptop -> Tier 1
+        return "tier-1";
+    }
+
+    function setTier(tier) {
+        if (activeTier === tier) return;
+        activeTier = tier;
+        if (typeof document !== "undefined" && document.documentElement) {
+            document.documentElement.setAttribute("data-perf-tier", tier);
+        }
+        tierListeners.forEach((fn) => {
+            try { fn(tier); } catch (e) { console.warn("Perf listener error:", e); }
+        });
+        if (typeof window !== "undefined") {
+            window.dispatchEvent(new CustomEvent("xestus:perf-tier-changed", { detail: { tier } }));
+        }
+    }
+
+    // Initialize immediate tier detection
+    activeTier = detectHardwareTier();
+    if (typeof document !== "undefined" && document.documentElement) {
+        document.documentElement.setAttribute("data-perf-tier", activeTier);
+    }
+
+    // Dynamic 60 FPS Watchdog: Monitors frame time and gracefully downscales if lag occurs
+    let frameTimes = [];
+    let lastFrameTime = (typeof performance !== "undefined" && performance.now) ? performance.now() : 0;
+    let isMonitoring = true;
+    let downgradeTimer = null;
+
+    function monitorFPS(now) {
+        if (!isMonitoring || typeof requestAnimationFrame === "undefined") return;
+        const delta = now - lastFrameTime;
+        lastFrameTime = now;
+
+        if (delta > 0 && delta < 200) {
+            frameTimes.push(1000 / delta);
+            if (frameTimes.length > 45) frameTimes.shift();
+
+            // Check average FPS over 45 frames
+            if (frameTimes.length >= 30) {
+                const avgFPS = frameTimes.reduce((a, b) => a + b, 0) / frameTimes.length;
+                if (avgFPS < 38) {
+                    if (!downgradeTimer) {
+                        downgradeTimer = setTimeout(() => {
+                            if (activeTier === "tier-1") {
+                                setTier("tier-2");
+                                frameTimes = [];
+                            } else if (activeTier === "tier-2") {
+                                setTier("tier-3");
+                                frameTimes = [];
+                                isMonitoring = false; // Stop monitoring at tier-3
+                            }
+                            downgradeTimer = null;
+                        }, 2500);
+                    }
+                } else {
+                    if (downgradeTimer) {
+                        clearTimeout(downgradeTimer);
+                        downgradeTimer = null;
+                    }
+                }
+            }
+        }
+        requestAnimationFrame(monitorFPS);
+    }
+
+    if (typeof requestAnimationFrame !== "undefined" && activeTier !== "tier-4" && activeTier !== "tier-3") {
+        requestAnimationFrame(monitorFPS);
+    }
+
+    // Listen for OS reduced motion toggle
+    if (typeof window !== "undefined" && window.matchMedia) {
+        const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+        if (motionQuery.addEventListener) {
+            motionQuery.addEventListener("change", (e) => {
+                setTier(e.matches ? "tier-4" : detectHardwareTier());
+            });
+        }
+    }
+
+    return {
+        getTier: () => activeTier,
+        setTier: (t) => setTier(t),
+        onTierChange: (fn) => {
+            if (typeof fn === "function") tierListeners.push(fn);
+        },
+        isLowEnd: () => activeTier === "tier-3" || activeTier === "tier-4",
+        isUltra: () => activeTier === "tier-1"
+    };
+})();
+
+// --------------------------------------------------------------------------
 // 1. EmailJS Client Initialization (Preserved Configuration)
 // --------------------------------------------------------------------------
 function initEmailJS() {
@@ -142,10 +268,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // --------------------------------------------------------------------------
     // 4. Scroll Reveal (IntersectionObserver)
     // --------------------------------------------------------------------------
-    const hiddenElements = document.querySelectorAll(".hidden");
-    if (hiddenElements.length > 0) {
-        if (window.innerWidth <= 1024 || typeof IntersectionObserver === "undefined") {
-            hiddenElements.forEach((el) => el.classList.add("show"));
+    const revealElements = document.querySelectorAll(".reveal-item, .hidden");
+    if (revealElements.length > 0) {
+        const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (typeof IntersectionObserver === "undefined" || prefersReduced) {
+            revealElements.forEach((el) => el.classList.add("show"));
         } else {
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
@@ -154,9 +281,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         revealObserver.unobserve(entry.target);
                     }
                 });
-            }, { rootMargin: "0px 0px -40px 0px", threshold: 0.05 });
+            }, { rootMargin: "0px 0px -40px 0px", threshold: 0.08 });
 
-            hiddenElements.forEach((el) => revealObserver.observe(el));
+            revealElements.forEach((el) => revealObserver.observe(el));
         }
     }
 
@@ -198,48 +325,991 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------------------------------
-    // 6. XESTUS 3D Hero Orb (Optimized GPU Controller)
+    // 6. XESTUS 3D Innovation Core & Kinetic Particle Canvas Engine
     // --------------------------------------------------------------------------
-    const xestusOrb = document.querySelector(".xestus-3d-orb");
+    const heroSection = document.getElementById("home");
+    const starfieldCanvas = document.getElementById("heroStarfieldCanvas");
+    const coreCanvas = document.getElementById("heroInnovationCoreCanvas");
+    const coreContainer = document.getElementById("innovationCoreContainer");
+    const hudTags = document.querySelectorAll(".hud-tag");
     const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (xestusOrb && supportsHover && !prefersReducedMotion) {
-        let mouseX = 0;
-        let mouseY = 0;
-        let isOrbRafScheduled = false;
+    // 6A. High-Performance Adaptive Starfield Canvas
+    if (starfieldCanvas && starfieldCanvas.getContext) {
+        const ctx = starfieldCanvas.getContext("2d");
+        let width = 0, height = 0;
+        let particles = [];
+        let animId = null;
+        let isHeroVisible = true;
+        let mousePos = { x: -9999, y: -9999 };
 
-        function updateOrbTransform() {
-            // Clamped coordinates to prevent excessive movement
-            const moveX = Math.max(-14, Math.min(14, mouseX * 14));
-            const moveY = Math.max(-14, Math.min(14, mouseY * 14));
-            const rotateX = Math.max(-12, Math.min(12, 10 + (mouseY * -8)));
-            const rotateY = Math.max(-14, Math.min(14, -12 + (mouseX * 10)));
-
-            xestusOrb.style.setProperty("--mouse-x", `${moveX}px`);
-            xestusOrb.style.setProperty("--mouse-y", `${moveY}px`);
-            xestusOrb.style.setProperty("--mouse-rx", `${rotateX}deg`);
-            xestusOrb.style.setProperty("--mouse-ry", `${rotateY}deg`);
-
-            isOrbRafScheduled = false;
+        function getStarfieldConfig() {
+            const tier = window.XESTUS_PERF ? window.XESTUS_PERF.getTier() : "tier-1";
+            if (tier === "tier-4") return { count: 0, maxDist: 0, connect: false };
+            if (tier === "tier-3") return { count: window.innerWidth < 768 ? 10 : 16, maxDist: 0, connect: false };
+            if (tier === "tier-2") return { count: window.innerWidth < 768 ? 20 : 32, maxDist: 75, connect: true };
+            return { count: window.innerWidth < 768 ? 28 : 55, maxDist: 120, connect: true };
         }
 
-        document.addEventListener("pointermove", (e) => {
-            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        function resizeCanvas() {
+            if (!heroSection) return;
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            width = heroSection.clientWidth;
+            height = heroSection.clientHeight;
+            starfieldCanvas.width = width * dpr;
+            starfieldCanvas.height = height * dpr;
+            starfieldCanvas.style.width = `${width}px`;
+            starfieldCanvas.style.height = `${height}px`;
+            ctx.scale(dpr, dpr);
+        }
 
-            if (!isOrbRafScheduled) {
-                isOrbRafScheduled = true;
-                requestAnimationFrame(updateOrbTransform);
+        function createParticles() {
+            particles = [];
+            const config = getStarfieldConfig();
+            if (config.count === 0) return;
+            const colors = ["#00bfff", "#38d6ff", "#6366f1", "#00ff88", "#ffffff"];
+            for (let i = 0; i < config.count; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: Math.random() * 1.6 + 0.7,
+                    vx: (Math.random() - 0.5) * 0.35,
+                    vy: (Math.random() - 0.5) * 0.35,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    baseAlpha: Math.random() * 0.5 + 0.15,
+                    alpha: Math.random() * 0.5 + 0.15,
+                    pulseSpeed: Math.random() * 0.02 + 0.008,
+                    pulsePhase: Math.random() * Math.PI * 2
+                });
+            }
+        }
+
+        function drawStarfield() {
+            if (!isHeroVisible) return;
+            const tier = window.XESTUS_PERF ? window.XESTUS_PERF.getTier() : "tier-1";
+            if (tier === "tier-4") return; // static background for reduced motion
+
+            ctx.clearRect(0, 0, width, height);
+            const config = getStarfieldConfig();
+
+            // Update & draw background starfield particles
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+
+                if (!prefersReducedMotion && tier !== "tier-4") {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0) p.x = width;
+                    else if (p.x > width) p.x = 0;
+                    if (p.y < 0) p.y = height;
+                    else if (p.y > height) p.y = 0;
+
+                    p.pulsePhase += p.pulseSpeed;
+                    p.alpha = p.baseAlpha + Math.sin(p.pulsePhase) * 0.2;
+                }
+
+                // Interactive mouse repulsion/pull (Tier 1 & Tier 2 only)
+                if (tier === "tier-1" || tier === "tier-2") {
+                    const dx = mousePos.x - p.x;
+                    const dy = mousePos.y - p.y;
+                    const distToMouse = Math.hypot(dx, dy);
+                    if (distToMouse < 130) {
+                        const force = (1 - distToMouse / 130) * 0.7;
+                        p.x -= (dx / distToMouse) * force;
+                        p.y -= (dy / distToMouse) * force;
+                    }
+                }
+
+                ctx.save();
+                ctx.globalAlpha = Math.max(0.08, Math.min(0.9, p.alpha));
+                ctx.fillStyle = p.color;
+                if (tier === "tier-1") {
+                    ctx.shadowColor = p.color;
+                    ctx.shadowBlur = p.radius > 1.5 ? 6 : 3;
+                }
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+
+                // Connect nearby nodes
+                if (config.connect) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const p2 = particles[j];
+                        const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                        if (dist < config.maxDist) {
+                            const lineAlpha = (1 - dist / config.maxDist) * 0.15;
+                            ctx.save();
+                            ctx.globalAlpha = lineAlpha;
+                            ctx.strokeStyle = "#00bfff";
+                            ctx.lineWidth = 0.65;
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.stroke();
+                            ctx.restore();
+                        }
+                    }
+                }
             }
 
-            // Distance check for proximity glow
-            const rect = xestusOrb.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            const distance = Math.hypot(e.clientX - centerX, e.clientY - centerY);
+            if (!prefersReducedMotion && tier !== "tier-4") {
+                animId = requestAnimationFrame(drawStarfield);
+            }
+        }
 
-            xestusOrb.classList.toggle("orb-active", distance < 200);
+        resizeCanvas();
+        createParticles();
+
+        if (!prefersReducedMotion) {
+            animId = requestAnimationFrame(drawStarfield);
+        } else {
+            drawStarfield();
+        }
+
+        if ("IntersectionObserver" in window && heroSection) {
+            const heroObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    isHeroVisible = entry.isIntersecting;
+                    if (isHeroVisible && !prefersReducedMotion && !animId) {
+                        animId = requestAnimationFrame(drawStarfield);
+                    } else if (!isHeroVisible && animId) {
+                        cancelAnimationFrame(animId);
+                        animId = null;
+                    }
+                });
+            }, { threshold: 0.05 });
+            heroObserver.observe(heroSection);
+        }
+
+        if (heroSection) {
+            heroSection.addEventListener("pointermove", (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                mousePos.x = e.clientX - rect.left;
+                mousePos.y = e.clientY - rect.top;
+            }, { passive: true });
+
+            heroSection.addEventListener("pointerleave", () => {
+                mousePos.x = -9999;
+                mousePos.y = -9999;
+            }, { passive: true });
+        }
+
+        window.addEventListener("resize", () => {
+            resizeCanvas();
+            createParticles();
+        }, { passive: true });
+
+        if (window.XESTUS_PERF) {
+            window.XESTUS_PERF.onTierChange(() => {
+                createParticles();
+            });
+        }
+    }
+
+    // 6B. XESTUS 3D Innovation Core Engine (Hyper-Premium Neural Core & Hologram Matrix)
+    if (coreCanvas && coreCanvas.getContext) {
+        const ctx = coreCanvas.getContext("2d");
+        let coreW = 0, coreH = 0;
+        let coreAnimId = null;
+        let isCoreVisible = true;
+
+        // 3D Model Dynamic State
+        let rotX = 0.12;
+        let rotY = 0;
+        let targetRotX = 0.12;
+        let targetRotY = 0;
+        let ringAngle1 = 0;
+        let ringAngle2 = 0;
+        let ringAngle3 = 0;
+        let energyPulse = 0;
+        let crystalRot = 0;
+
+        // 1. Dense Fibonacci Neural Constellation Sphere
+        const SPHERE_NODE_COUNT = 64;
+        const sphereNodes = [];
+        for (let i = 0; i < SPHERE_NODE_COUNT; i++) {
+            const phi = Math.acos(-1 + (2 * i) / SPHERE_NODE_COUNT);
+            const theta = Math.sqrt(SPHERE_NODE_COUNT * Math.PI) * phi;
+            const r = 96 + (Math.sin(i * 1.8) * 3);
+            sphereNodes.push({
+                x: r * Math.sin(phi) * Math.cos(theta),
+                y: r * Math.cos(phi),
+                z: r * Math.sin(phi) * Math.sin(theta),
+                baseR: r,
+                size: Math.random() * 2.2 + 1.2,
+                color: i % 5 === 0 ? "#ffffff" : (i % 4 === 0 ? "#00ff88" : (i % 3 === 0 ? "#38d6ff" : "#00bfff")),
+                pulseOffset: Math.random() * Math.PI * 2
+            });
+        }
+
+        // Synaptic Signal Impulses traveling across neural connections
+        const synapticSignals = [];
+        for (let s = 0; s < 12; s++) {
+            synapticSignals.push({
+                fromIdx: Math.floor(Math.random() * SPHERE_NODE_COUNT),
+                toIdx: Math.floor(Math.random() * SPHERE_NODE_COUNT),
+                progress: Math.random(),
+                speed: Math.random() * 0.02 + 0.015,
+                color: s % 2 === 0 ? "#ffffff" : "#38d6ff"
+            });
+        }
+
+        // 2. Multi-Layer Volumetric 3D "X" Structural Core
+        const xStruts = [];
+        const X_POINTS = 16;
+        const X_SPAN = 64;
+        // Diagonal Beam 1: Top-Left to Bottom-Right
+        for (let i = 0; i <= X_POINTS; i++) {
+            const t = (i / X_POINTS - 0.5) * 2;
+            const px = t * X_SPAN;
+            const py = t * (X_SPAN * 0.95);
+            xStruts.push({ x: px, y: py, z: -8, size: 2.8, beam: 1, color: "#38d6ff" });
+            xStruts.push({ x: px, y: py, z: 0, size: 3.6, beam: 1, color: "#ffffff" });
+            xStruts.push({ x: px, y: py, z: 8, size: 2.8, beam: 1, color: "#00bfff" });
+        }
+        // Diagonal Beam 2: Top-Right to Bottom-Left
+        for (let i = 0; i <= X_POINTS; i++) {
+            const t = (i / X_POINTS - 0.5) * 2;
+            const px = t * X_SPAN;
+            const py = -t * (X_SPAN * 0.95);
+            xStruts.push({ x: px, y: py, z: -8, size: 2.8, beam: 2, color: "#38d6ff" });
+            xStruts.push({ x: px, y: py, z: 0, size: 3.6, beam: 2, color: "#ffffff" });
+            xStruts.push({ x: px, y: py, z: 8, size: 2.8, beam: 2, color: "#00bfff" });
+        }
+
+        // 3. Upward Volumetric Hologram Particle Stream
+        const UPWARD_BEAM_PARTICLES = 22;
+        const beamParticles = [];
+        for (let b = 0; b < UPWARD_BEAM_PARTICLES; b++) {
+            beamParticles.push({
+                x: (Math.random() - 0.5) * 80,
+                y: Math.random() * 120 + 30, // From pedestal upward
+                z: (Math.random() - 0.5) * 40,
+                vy: Math.random() * 1.5 + 0.8,
+                size: Math.random() * 1.8 + 0.8,
+                alpha: Math.random() * 0.6 + 0.2
+            });
+        }
+
+        // 4. Floating 3D Quantum Data Crystal Vertices (Octahedron)
+        const crystalVertices = [
+            { x: 0, y: -16, z: 0 },
+            { x: 14, y: 0, z: 0 },
+            { x: 0, y: 0, z: 14 },
+            { x: -14, y: 0, z: 0 },
+            { x: 0, y: 0, z: -14 },
+            { x: 0, y: 16, z: 0 }
+        ];
+        const crystalEdges = [
+            [0, 1], [0, 2], [0, 3], [0, 4],
+            [5, 1], [5, 2], [5, 3], [5, 4],
+            [1, 2], [2, 3], [3, 4], [4, 1]
+        ];
+
+        function resizeCoreCanvas() {
+            if (!coreContainer) return;
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            coreW = coreContainer.clientWidth || 480;
+            coreH = coreContainer.clientHeight || 480;
+            coreCanvas.width = coreW * dpr;
+            coreCanvas.height = coreH * dpr;
+            coreCanvas.style.width = `${coreW}px`;
+            coreCanvas.style.height = `${coreH}px`;
+            ctx.scale(dpr, dpr);
+        }
+
+        function project3D(x, y, z, cx, cy, focalLength = 400) {
+            // Pitch (rotX)
+            const cosX = Math.cos(rotX);
+            const sinX = Math.sin(rotX);
+            const y1 = y * cosX - z * sinX;
+            const z1 = y * sinX + z * cosX;
+
+            // Yaw (rotY)
+            const cosY = Math.cos(rotY);
+            const sinY = Math.sin(rotY);
+            const x2 = x * cosY + z1 * sinY;
+            const z2 = -x * sinY + z1 * cosY;
+
+            const scale = focalLength / (focalLength + z2);
+            return {
+                x: cx + x2 * scale,
+                y: cy + y1 * scale,
+                z: z2,
+                scale: scale
+            };
+        }
+
+        // Draw Layered Cybernetic Hologram Emission Pedestal
+        function drawCyberPedestal(cx, cy, baseScale = 1, tier = "tier-1") {
+            const baseY = cy + 128 * baseScale;
+            const baseW = 175 * baseScale;
+            const baseH = 44 * baseScale;
+            const isLow = tier === "tier-3" || tier === "tier-4";
+
+            ctx.save();
+
+            // 1. Upward Volumetric Hologram Light Pillar
+            if (!isLow) {
+                const gradBeam = ctx.createLinearGradient(cx, baseY, cx, cy);
+                gradBeam.addColorStop(0, "rgba(0, 191, 255, 0.35)");
+                gradBeam.addColorStop(0.35, "rgba(56, 214, 255, 0.16)");
+                gradBeam.addColorStop(0.7, "rgba(0, 255, 136, 0.08)");
+                gradBeam.addColorStop(1, "transparent");
+
+                ctx.fillStyle = gradBeam;
+                ctx.beginPath();
+                ctx.moveTo(cx - baseW * 0.72, baseY);
+                ctx.lineTo(cx - 36 * baseScale, cy);
+                ctx.lineTo(cx + 36 * baseScale, cy);
+                ctx.lineTo(cx + baseW * 0.72, baseY);
+                ctx.closePath();
+                ctx.fill();
+
+                // Core Intense Center Light Column
+                const centerBeam = ctx.createLinearGradient(cx, baseY, cx, cy);
+                centerBeam.addColorStop(0, "rgba(255, 255, 255, 0.5)");
+                centerBeam.addColorStop(0.5, "rgba(0, 191, 255, 0.22)");
+                centerBeam.addColorStop(1, "transparent");
+                ctx.fillStyle = centerBeam;
+                ctx.beginPath();
+                ctx.moveTo(cx - 20 * baseScale, baseY);
+                ctx.lineTo(cx - 8 * baseScale, cy);
+                ctx.lineTo(cx + 8 * baseScale, cy);
+                ctx.lineTo(cx + 20 * baseScale, baseY);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            // 2. Concentric Brushed Metallic Glowing Platform Rings
+            const rings = isLow
+                ? [
+                    { r: baseW, color: "rgba(0, 191, 255, 0.65)", w: 2 },
+                    { r: baseW * 0.65, color: "rgba(0, 255, 136, 0.5)", w: 1.5 }
+                ]
+                : [
+                    { r: baseW, color: "rgba(0, 191, 255, 0.75)", w: 2.2 },
+                    { r: baseW * 0.84, color: "rgba(56, 214, 255, 0.5)", w: 1.2, dashed: true },
+                    { r: baseW * 0.68, color: "rgba(0, 255, 136, 0.65)", w: 1.8 },
+                    { r: baseW * 0.48, color: "rgba(0, 191, 255, 0.45)", w: 1.2 },
+                    { r: baseW * 0.26, color: "rgba(255, 255, 255, 0.8)", w: 2 }
+                ];
+
+            rings.forEach((ring) => {
+                ctx.beginPath();
+                ctx.ellipse(cx, baseY, ring.r, baseH * (ring.r / baseW), 0, 0, Math.PI * 2);
+                ctx.strokeStyle = ring.color;
+                ctx.lineWidth = ring.w;
+                if (ring.dashed) {
+                    ctx.setLineDash([5, 5]);
+                } else {
+                    ctx.setLineDash([]);
+                }
+                ctx.stroke();
+            });
+            ctx.setLineDash([]);
+
+            // 3. Radial Circuit Calibration Ticks
+            if (!isLow) {
+                const tickCount = tier === "tier-2" ? 14 : 24;
+                for (let i = 0; i < tickCount; i++) {
+                    const angle = (i / tickCount) * Math.PI * 2 + ringAngle1 * 0.4;
+                    const rOuter = baseW;
+                    const rInner = baseW * 0.88;
+                    const x1 = cx + Math.cos(angle) * rOuter;
+                    const y1 = baseY + Math.sin(angle) * (baseH * (rOuter / baseW));
+                    const x2 = cx + Math.cos(angle) * rInner;
+                    const y2 = baseY + Math.sin(angle) * (baseH * (rInner / baseW));
+
+                    ctx.strokeStyle = i % 4 === 0 ? "rgba(0, 255, 136, 0.8)" : "rgba(0, 191, 255, 0.55)";
+                    ctx.lineWidth = i % 4 === 0 ? 1.8 : 1;
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x2, y2);
+                    ctx.stroke();
+
+                    // Glowing bead accents on outer ring
+                    if (i % 3 === 0) {
+                        ctx.fillStyle = i % 6 === 0 ? "#00ff88" : "#38d6ff";
+                        ctx.beginPath();
+                        ctx.arc(x1, y1, 2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+            }
+
+            // 4. Central Radiant Energy Core on Platform
+            const coreDisc = ctx.createRadialGradient(cx, baseY, 0, cx, baseY, 40 * baseScale);
+            coreDisc.addColorStop(0, "rgba(255, 255, 255, 0.85)");
+            coreDisc.addColorStop(0.3, "rgba(0, 191, 255, 0.65)");
+            coreDisc.addColorStop(0.7, "rgba(0, 255, 136, 0.25)");
+            coreDisc.addColorStop(1, "transparent");
+            ctx.fillStyle = coreDisc;
+            ctx.beginPath();
+            ctx.ellipse(cx, baseY, 40 * baseScale, 12 * baseScale, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.restore();
+        }
+
+        // Draw 3D Orbital Gyroscopic Ring with Realistic Depth and Glowing Beads
+        function drawGyroscopicRing(cx, cy, radius, tiltDeg, ringAngle, color, isDashed = false, beadCount = 2, tier = "tier-1", isBack = false) {
+            const tiltRad = (tiltDeg * Math.PI) / 180;
+            const segments = 64;
+            const points = [];
+
+            for (let i = 0; i <= segments; i++) {
+                const theta = (i / segments) * Math.PI * 2;
+                const rx = radius * Math.cos(theta);
+                const ry = radius * Math.sin(theta) * Math.sin(tiltRad);
+                const rz = radius * Math.sin(theta) * Math.cos(tiltRad);
+                points.push(project3D(rx, ry, rz, cx, cy));
+            }
+
+            // Draw either back half (z < 0) or front half (z >= 0) for true 3D interweaving
+            ctx.save();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = isBack ? 1.2 : 1.8;
+            if (isDashed) {
+                ctx.setLineDash([8, 6]);
+            } else {
+                ctx.setLineDash([]);
+            }
+
+            ctx.beginPath();
+            let drawing = false;
+            for (let i = 0; i < points.length; i++) {
+                const pt = points[i];
+                const matchesDepth = isBack ? (pt.z <= 10) : (pt.z > 10);
+                if (matchesDepth) {
+                    if (!drawing) {
+                        ctx.moveTo(pt.x, pt.y);
+                        drawing = true;
+                    } else {
+                        ctx.lineTo(pt.x, pt.y);
+                    }
+                } else {
+                    drawing = false;
+                }
+            }
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Orbiting Data Beads on the matching depth layer
+            for (let b = 0; b < beadCount; b++) {
+                const beadTheta = ringAngle + (b * (Math.PI * 2)) / beadCount;
+                const bx = radius * Math.cos(beadTheta);
+                const by = radius * Math.sin(beadTheta) * Math.sin(tiltRad);
+                const bz = radius * Math.sin(beadTheta) * Math.cos(tiltRad);
+                const pt = project3D(bx, by, bz, cx, cy);
+
+                const matchesDepth = isBack ? (pt.z <= 10) : (pt.z > 10);
+                if (matchesDepth) {
+                    // Bead Light Trail
+                    if (tier === "tier-1") {
+                        for (let t = 1; t <= 4; t++) {
+                            const trailTheta = beadTheta - t * 0.05;
+                            const tx = radius * Math.cos(trailTheta);
+                            const ty = radius * Math.sin(trailTheta) * Math.sin(tiltRad);
+                            const tz = radius * Math.sin(trailTheta) * Math.cos(tiltRad);
+                            const trailPt = project3D(tx, ty, tz, cx, cy);
+                            ctx.fillStyle = color;
+                            ctx.globalAlpha = 0.4 / t;
+                            ctx.beginPath();
+                            ctx.arc(trailPt.x, trailPt.y, (3.5 - t * 0.6) * trailPt.scale, 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+                    }
+
+                    // Main Glowing Bead
+                    ctx.globalAlpha = 1;
+                    ctx.fillStyle = "#ffffff";
+                    if (tier === "tier-1") {
+                        ctx.shadowColor = color;
+                        ctx.shadowBlur = 12;
+                    }
+                    ctx.beginPath();
+                    ctx.arc(pt.x, pt.y, 3.8 * pt.scale, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            ctx.restore();
+        }
+
+        // Draw Translucent Glass Neural Sphere Shell with Fresnel Rim Glow
+        function drawGlassSphereShell(cx, cy, radius, baseScale = 1, tier = "tier-1") {
+            ctx.save();
+
+            // Inner volumetric cyan core glow
+            const innerGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius * baseScale);
+            innerGlow.addColorStop(0, "rgba(0, 191, 255, 0.22)");
+            innerGlow.addColorStop(0.5, "rgba(10, 30, 65, 0.35)");
+            innerGlow.addColorStop(0.85, "rgba(0, 191, 255, 0.18)");
+            innerGlow.addColorStop(1, "rgba(56, 214, 255, 0.4)");
+
+            ctx.fillStyle = innerGlow;
+            ctx.beginPath();
+            ctx.arc(cx, cy, radius * baseScale, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Glass Sphere Glowing Fresnel Rim
+            ctx.strokeStyle = "rgba(56, 214, 255, 0.65)";
+            ctx.lineWidth = 2;
+            if (tier === "tier-1") {
+                ctx.shadowColor = "rgba(0, 191, 255, 0.8)";
+                ctx.shadowBlur = 18;
+            }
+            ctx.stroke();
+
+            // Specular Reflection Highlight Arc (Top-Left)
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.55)";
+            ctx.lineWidth = 1.8;
+            ctx.beginPath();
+            ctx.arc(cx, cy, radius * baseScale - 2, -Math.PI * 0.85, -Math.PI * 0.45);
+            ctx.stroke();
+
+            // Spherical Latitude & Longitude Coordinate Lines (Subtle Wireframe)
+            if (tier === "tier-1" || tier === "tier-2") {
+                ctx.strokeStyle = "rgba(0, 191, 255, 0.15)";
+                ctx.lineWidth = 0.8;
+                [-0.5, 0, 0.5].forEach((lat) => {
+                    const latR = Math.sqrt(1 - lat * lat) * (radius * baseScale);
+                    const latY = cy + lat * (radius * baseScale);
+                    ctx.beginPath();
+                    ctx.ellipse(cx, latY, latR, latR * 0.25, 0, 0, Math.PI * 2);
+                    ctx.stroke();
+                });
+            }
+
+            ctx.restore();
+        }
+
+        // Draw Floating 3D Quantum Tech Crystal (Upper Right)
+        function drawQuantumCrystal(cx, cy, baseScale = 1, tier = "tier-1") {
+            if (tier === "tier-3" || tier === "tier-4") return;
+
+            const crystalX = cx + 185 * baseScale;
+            const crystalY = cy - 115 * baseScale;
+            crystalRot += 0.015;
+
+            ctx.save();
+            const cosC = Math.cos(crystalRot);
+            const sinC = Math.sin(crystalRot);
+
+            // Project crystal vertices
+            const projV = crystalVertices.map((v) => {
+                // Rotate around Y and X
+                const x1 = v.x * cosC - v.z * sinC;
+                const z1 = v.x * sinC + v.z * cosC;
+                const y2 = v.y * cosC - z1 * sinC;
+                const z2 = v.y * sinC + z1 * cosC;
+                return {
+                    x: crystalX + x1 * baseScale,
+                    y: crystalY + y2 * baseScale,
+                    z: z2
+                };
+            });
+
+            // Draw wireframe edges
+            ctx.strokeStyle = "rgba(56, 214, 255, 0.8)";
+            ctx.lineWidth = 1.4;
+            crystalEdges.forEach(([i1, i2]) => {
+                ctx.beginPath();
+                ctx.moveTo(projV[i1].x, projV[i1].y);
+                ctx.lineTo(projV[i2].x, projV[i2].y);
+                ctx.stroke();
+            });
+
+            // Vertices glowing dots
+            projV.forEach((v) => {
+                ctx.fillStyle = "#ffffff";
+                ctx.beginPath();
+                ctx.arc(v.x, v.y, 2 * baseScale, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Crystal Core Glow
+            ctx.fillStyle = "rgba(0, 191, 255, 0.25)";
+            ctx.beginPath();
+            ctx.arc(crystalX, crystalY, 14 * baseScale, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.restore();
+        }
+
+        function renderInnovationCore() {
+            if (!isCoreVisible) return;
+            const tier = window.XESTUS_PERF ? window.XESTUS_PERF.getTier() : "tier-1";
+
+            ctx.clearRect(0, 0, coreW, coreH);
+
+            const cx = coreW / 2;
+            const cy = coreH / 2 - 14;
+            const baseScale = Math.min(coreW / 480, 1.15);
+            const sphereRadius = 96 * baseScale;
+
+            if (!prefersReducedMotion && tier !== "tier-4") {
+                // Smooth spring damping for mouse parallax
+                rotX += (targetRotX - rotX) * (tier === "tier-3" ? 0.03 : 0.05);
+                rotY += (targetRotY - rotY) * (tier === "tier-3" ? 0.03 : 0.05) + (tier === "tier-3" ? 0.005 : 0.008);
+                ringAngle1 += 0.016;
+                ringAngle2 -= 0.012;
+                ringAngle3 += 0.009;
+                energyPulse += 0.04;
+            }
+
+            // 1. Draw Cybernetic Hologram Emission Pedestal Base
+            drawCyberPedestal(cx, cy, baseScale, tier);
+
+            // 2. Upward Beam Floating Particle Streams
+            if (tier === "tier-1" || tier === "tier-2") {
+                ctx.save();
+                beamParticles.forEach((p) => {
+                    if (!prefersReducedMotion) {
+                        p.y -= p.vy;
+                        if (p.y < 0) p.y = 120;
+                    }
+                    const px = cx + p.x * baseScale;
+                    const py = cy + p.y * baseScale;
+                    ctx.fillStyle = "#38d6ff";
+                    ctx.globalAlpha = p.alpha * (p.y / 120);
+                    ctx.beginPath();
+                    ctx.arc(px, py, p.size * baseScale, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                ctx.restore();
+            }
+
+            // 3. Draw BACK Half of Gyroscopic Orbital Rings (Behind the Sphere)
+            drawGyroscopicRing(cx, cy, 142 * baseScale, 36, ringAngle1, "rgba(0, 191, 255, 0.75)", false, 3, tier, true);
+            drawGyroscopicRing(cx, cy, 168 * baseScale, -28, ringAngle2, "rgba(0, 255, 136, 0.7)", true, 2, tier, true);
+            if (tier === "tier-1") {
+                drawGyroscopicRing(cx, cy, 192 * baseScale, 64, ringAngle3, "rgba(99, 102, 241, 0.6)", false, 1, tier, true);
+            }
+
+            // 4. Draw Translucent Glass Neural Sphere Shell
+            drawGlassSphereShell(cx, cy, 96, baseScale, tier);
+
+            // 5. Project Sphere Neural Nodes
+            const activeSphereCount = tier === "tier-3" || tier === "tier-4"
+                ? 24
+                : (tier === "tier-2" ? 44 : SPHERE_NODE_COUNT);
+
+            const activeSphereNodes = sphereNodes.slice(0, activeSphereCount);
+            const projectedSphere = activeSphereNodes.map((n, idx) => {
+                const pulse = (tier === "tier-3" || tier === "tier-4") ? 0 : Math.sin(energyPulse + n.pulseOffset) * 3.5;
+                const r = (n.baseR + pulse) * baseScale;
+                const pt = project3D(n.x * (r / n.baseR), n.y * (r / n.baseR), n.z * (r / n.baseR), cx, cy);
+                return {
+                    ...n,
+                    idx: idx,
+                    screenX: pt.x,
+                    screenY: pt.y,
+                    z: pt.z,
+                    scale: pt.scale
+                };
+            });
+
+            // 6. Draw Dense Constellation Neural Network & Triangular Facets
+            ctx.save();
+            const MAX_DIST = (tier === "tier-1" ? 58 : 46) * baseScale;
+            
+            // Triangular Cyber Facets (Tier 1 & Tier 2)
+            if (tier === "tier-1" || tier === "tier-2") {
+                for (let i = 0; i < projectedSphere.length; i++) {
+                    const n1 = projectedSphere[i];
+                    if (n1.z < -10) continue; // Only front faces
+
+                    for (let j = i + 1; j < projectedSphere.length; j++) {
+                        const n2 = projectedSphere[j];
+                        if (n2.z < -10) continue;
+                        const d12 = Math.hypot(n1.x - n2.x, n1.y - n2.y, n1.z - n2.z);
+                        if (d12 > MAX_DIST) continue;
+
+                        for (let k = j + 1; k < projectedSphere.length; k++) {
+                            const n3 = projectedSphere[k];
+                            if (n3.z < -10) continue;
+                            const d23 = Math.hypot(n2.x - n3.x, n2.y - n3.y, n2.z - n3.z);
+                            const d31 = Math.hypot(n3.x - n1.x, n3.y - n1.y, n3.z - n1.z);
+
+                            if (d23 < MAX_DIST && d31 < MAX_DIST) {
+                                const avgZ = (n1.z + n2.z + n3.z) / 3;
+                                const facetAlpha = Math.max(0.02, Math.min(0.12, (avgZ / (96 * baseScale)) * 0.12));
+                                ctx.fillStyle = `rgba(0, 191, 255, ${facetAlpha})`;
+                                ctx.beginPath();
+                                ctx.moveTo(n1.screenX, n1.screenY);
+                                ctx.lineTo(n2.screenX, n2.screenY);
+                                ctx.lineTo(n3.screenX, n3.screenY);
+                                ctx.closePath();
+                                ctx.fill();
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Neural Synaptic Connection Lines
+            for (let i = 0; i < projectedSphere.length; i++) {
+                const n1 = projectedSphere[i];
+                for (let j = i + 1; j < projectedSphere.length; j++) {
+                    const n2 = projectedSphere[j];
+                    const dx = n1.x - n2.x;
+                    const dy = n1.y - n2.y;
+                    const dz = n1.z - n2.z;
+                    const d3 = Math.hypot(dx, dy, dz);
+
+                    if (d3 < MAX_DIST) {
+                        const isBothFront = n1.z > 0 && n2.z > 0;
+                        const alpha = (1 - d3 / MAX_DIST) * (isBothFront ? 0.55 : 0.18);
+                        ctx.strokeStyle = `rgba(0, 191, 255, ${alpha})`;
+                        ctx.lineWidth = (isBothFront ? 1.2 : 0.7) * n1.scale;
+                        ctx.beginPath();
+                        ctx.moveTo(n1.screenX, n1.screenY);
+                        ctx.lineTo(n2.screenX, n2.screenY);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // Synaptic Active Data Impulses
+            if (tier === "tier-1") {
+                synapticSignals.forEach((sig) => {
+                    if (!prefersReducedMotion) {
+                        sig.progress += sig.speed;
+                        if (sig.progress > 1) {
+                            sig.progress = 0;
+                            sig.fromIdx = Math.floor(Math.random() * activeSphereCount);
+                            sig.toIdx = Math.floor(Math.random() * activeSphereCount);
+                        }
+                    }
+                    const nA = projectedSphere[sig.fromIdx];
+                    const nB = projectedSphere[sig.toIdx];
+                    if (nA && nB) {
+                        const sx = nA.screenX + (nB.screenX - nA.screenX) * sig.progress;
+                        const sy = nA.screenY + (nB.screenY - nA.screenY) * sig.progress;
+                        ctx.fillStyle = sig.color;
+                        ctx.beginPath();
+                        ctx.arc(sx, sy, 2.6 * nA.scale, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+            }
+            ctx.restore();
+
+            // 7. Draw Bold Volumetric Luminous Cybernetic "X" Core
+            ctx.save();
+            const xArmLength = 62 * baseScale;
+            const xThickness = 16 * baseScale;
+
+            // Compute the 4 corner endpoints of the 3D "X" in local coordinates
+            const corners = [
+                { x: -xArmLength, y: -xArmLength * 0.95, z: 0 }, // Top-Left
+                { x: xArmLength, y: xArmLength * 0.95, z: 0 },   // Bottom-Right
+                { x: xArmLength, y: -xArmLength * 0.95, z: 0 },  // Top-Right
+                { x: -xArmLength, y: xArmLength * 0.95, z: 0 }   // Bottom-Left
+            ].map(p => project3D(p.x, p.y, p.z, cx, cy));
+
+            const centerPt = project3D(0, 0, 0, cx, cy);
+
+            // Draw Solid Multi-Layer Polygonal Cybernetic Blades for "X"
+            const drawCyberBlade = (p1, p2, width) => {
+                const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x);
+                const perp = angle + Math.PI / 2;
+                const hw = (width / 2) * p1.scale;
+
+                const c1 = { x: p1.x + Math.cos(perp) * hw, y: p1.y + Math.sin(perp) * hw };
+                const c2 = { x: p2.x + Math.cos(perp) * hw, y: p2.y + Math.sin(perp) * hw };
+                const c3 = { x: p2.x - Math.cos(perp) * hw, y: p2.y - Math.sin(perp) * hw };
+                const c4 = { x: p1.x - Math.cos(perp) * hw, y: p1.y - Math.sin(perp) * hw };
+
+                // Layer A: Outer Neon Aura Glow
+                const auraHw = hw * 1.5;
+                const a1 = { x: p1.x + Math.cos(perp) * auraHw, y: p1.y + Math.sin(perp) * auraHw };
+                const a2 = { x: p2.x + Math.cos(perp) * auraHw, y: p2.y + Math.sin(perp) * auraHw };
+                const a3 = { x: p2.x - Math.cos(perp) * auraHw, y: p2.y - Math.sin(perp) * auraHw };
+                const a4 = { x: p1.x - Math.cos(perp) * auraHw, y: p1.y - Math.sin(perp) * auraHw };
+
+                ctx.fillStyle = "rgba(0, 191, 255, 0.25)";
+                ctx.beginPath();
+                ctx.moveTo(a1.x, a1.y);
+                ctx.lineTo(a2.x, a2.y);
+                ctx.lineTo(a3.x, a3.y);
+                ctx.lineTo(a4.x, a4.y);
+                ctx.closePath();
+                ctx.fill();
+
+                // Layer B: Solid Cybernetic Hull Body with Linear Gradient
+                const grad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
+                grad.addColorStop(0, "rgba(0, 191, 255, 0.9)");
+                grad.addColorStop(0.3, "rgba(56, 214, 255, 0.98)");
+                grad.addColorStop(0.5, "rgba(255, 255, 255, 1)");
+                grad.addColorStop(0.7, "rgba(56, 214, 255, 0.98)");
+                grad.addColorStop(1, "rgba(0, 191, 255, 0.9)");
+
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.moveTo(c1.x, c1.y);
+                ctx.lineTo(c2.x, c2.y);
+                ctx.lineTo(c3.x, c3.y);
+                ctx.lineTo(c4.x, c4.y);
+                ctx.closePath();
+                ctx.fill();
+
+                // Layer C: Blade Cybernetic Neon Edge Outlines
+                ctx.strokeStyle = "#ffffff";
+                ctx.lineWidth = 1.8 * p1.scale;
+                ctx.stroke();
+
+                // Layer D: Center High-Intensity White Core Energy Channel
+                ctx.strokeStyle = "#ffffff";
+                ctx.lineWidth = 3.2 * p1.scale;
+                ctx.beginPath();
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+            };
+
+            // Glow bloom for the "X"
+            if (tier === "tier-1") {
+                ctx.shadowColor = "rgba(0, 191, 255, 0.95)";
+                ctx.shadowBlur = 32;
+            }
+
+            // Draw both crossing blades
+            drawCyberBlade(corners[0], corners[1], xThickness);
+            drawCyberBlade(corners[3], corners[2], xThickness);
+
+            // Tech End-Cap Coordinate Nodes
+            corners.forEach((c, idx) => {
+                ctx.fillStyle = "#ffffff";
+                ctx.beginPath();
+                ctx.arc(c.x, c.y, 5 * c.scale, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.strokeStyle = idx % 2 === 0 ? "#00ff88" : "#38d6ff";
+                ctx.lineWidth = 2.2;
+                ctx.stroke();
+            });
+
+            // 8. Super-Bright Quantum Center Singularity Core Flare
+            const flareRad = (68 + Math.sin(energyPulse) * 10) * baseScale;
+            const centerFlare = ctx.createRadialGradient(centerPt.x, centerPt.y, 0, centerPt.x, centerPt.y, flareRad);
+            centerFlare.addColorStop(0, "rgba(255, 255, 255, 1)");
+            centerFlare.addColorStop(0.25, "rgba(56, 214, 255, 0.85)");
+            centerFlare.addColorStop(0.6, "rgba(0, 191, 255, 0.35)");
+            centerFlare.addColorStop(0.88, "rgba(0, 255, 136, 0.15)");
+            centerFlare.addColorStop(1, "transparent");
+
+            ctx.fillStyle = centerFlare;
+            ctx.beginPath();
+            ctx.arc(centerPt.x, centerPt.y, flareRad, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Diamond Center Prism Accents
+            const prismSize = 16 * baseScale * centerPt.scale;
+            ctx.strokeStyle = "#ffffff";
+            ctx.lineWidth = 2.2;
+            ctx.beginPath();
+            ctx.moveTo(centerPt.x, centerPt.y - prismSize);
+            ctx.lineTo(centerPt.x + prismSize, centerPt.y);
+            ctx.lineTo(centerPt.x, centerPt.y + prismSize);
+            ctx.lineTo(centerPt.x - prismSize, centerPt.y);
+            ctx.closePath();
+            ctx.stroke();
+
+            ctx.fillStyle = "rgba(0, 255, 255, 0.4)";
+            ctx.fill();
+
+            ctx.restore();
+
+            // 9. Draw Front Sphere Neural Nodes
+            ctx.save();
+            projectedSphere.sort((a, b) => a.z - b.z);
+            projectedSphere.forEach((n) => {
+                const isFront = n.z > 0;
+                ctx.globalAlpha = isFront ? 0.95 : 0.35;
+                ctx.fillStyle = n.color;
+                if (tier === "tier-1" && isFront) {
+                    ctx.shadowColor = n.color;
+                    ctx.shadowBlur = 8;
+                }
+                ctx.beginPath();
+                ctx.arc(n.screenX, n.screenY, n.size * n.scale, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            ctx.restore();
+
+            // 10. Draw FRONT Half of Gyroscopic Orbital Rings (In Front of Sphere)
+            drawGyroscopicRing(cx, cy, 142 * baseScale, 36, ringAngle1, "rgba(0, 191, 255, 0.85)", false, 3, tier, false);
+            drawGyroscopicRing(cx, cy, 168 * baseScale, -28, ringAngle2, "rgba(0, 255, 136, 0.8)", true, 2, tier, false);
+            if (tier === "tier-1") {
+                drawGyroscopicRing(cx, cy, 192 * baseScale, 64, ringAngle3, "rgba(99, 102, 241, 0.75)", false, 1, tier, false);
+            }
+
+            // 11. Draw Floating 3D Quantum Data Crystal (Upper Right)
+            drawQuantumCrystal(cx, cy, baseScale, tier);
+
+            if (!prefersReducedMotion && tier !== "tier-4") {
+                coreAnimId = requestAnimationFrame(renderInnovationCore);
+            }
+        }
+
+        resizeCoreCanvas();
+
+        if (!prefersReducedMotion) {
+            coreAnimId = requestAnimationFrame(renderInnovationCore);
+        } else {
+            renderInnovationCore();
+        }
+
+        if ("IntersectionObserver" in window && heroSection) {
+            const coreObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    isCoreVisible = entry.isIntersecting;
+                    const tier = window.XESTUS_PERF ? window.XESTUS_PERF.getTier() : "tier-1";
+                    if (isCoreVisible && !prefersReducedMotion && tier !== "tier-4" && !coreAnimId) {
+                        coreAnimId = requestAnimationFrame(renderInnovationCore);
+                    } else if (!isCoreVisible && coreAnimId) {
+                        cancelAnimationFrame(coreAnimId);
+                        coreAnimId = null;
+                    }
+                });
+            }, { threshold: 0.05 });
+            coreObserver.observe(heroSection);
+        }
+
+        // Parallax Interaction & Proximity
+        if (supportsHover && !prefersReducedMotion && heroSection) {
+            heroSection.addEventListener("pointermove", (e) => {
+                if (window.XESTUS_PERF && window.XESTUS_PERF.isLowEnd()) return;
+                const rect = heroSection.getBoundingClientRect();
+                const normX = (e.clientX - rect.left) / rect.width - 0.5;
+                const normY = (e.clientY - rect.top) / rect.height - 0.5;
+
+                targetRotY = normX * 0.8;
+                targetRotX = 0.12 - normY * 0.5;
+
+                // Subtle parallax on floating HUD tags
+                hudTags.forEach((tag, idx) => {
+                    const depth = (idx % 2 === 0 ? 1 : -1) * (idx + 1) * 8;
+                    tag.style.transform = `translate3d(${normX * depth}px, ${normY * depth}px, 0)`;
+                });
+            }, { passive: true });
+
+            heroSection.addEventListener("pointerleave", () => {
+                targetRotX = 0.12;
+                targetRotY = 0;
+                hudTags.forEach((tag) => {
+                    tag.style.transform = "translate3d(0, 0, 0)";
+                });
+            }, { passive: true });
+        }
+
+        window.addEventListener("resize", () => {
+            resizeCoreCanvas();
         }, { passive: true });
     }
 
@@ -255,6 +1325,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let isCursorRafScheduled = false;
 
         document.addEventListener("pointermove", (e) => {
+            if (window.XESTUS_PERF && window.XESTUS_PERF.isLowEnd()) return;
             curX = e.clientX;
             curY = e.clientY;
 
@@ -286,6 +1357,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const magneticButtons = document.querySelectorAll(".magnetic-btn");
         magneticButtons.forEach((button) => {
             button.addEventListener("pointermove", (e) => {
+                if (window.XESTUS_PERF && window.XESTUS_PERF.isLowEnd()) return;
                 const rect = button.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
@@ -299,28 +1371,32 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        const tiltCards = document.querySelectorAll(".tilt-card");
+        const tiltCards = document.querySelectorAll(".tilt-card, .service-card, .project-card, .product-card, .lab-card, .founder-image-card");
         tiltCards.forEach((card) => {
             card.addEventListener("pointermove", (e) => {
+                if (window.XESTUS_PERF && window.XESTUS_PERF.isLowEnd()) return;
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotateX = -(y - centerY) / 22;
-                const rotateY = (x - centerX) / 22;
+                const rotateX = -(y - centerY) / 28;
+                const rotateY = (x - centerX) / 28;
 
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
             });
 
             card.addEventListener("pointerleave", () => {
-                card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
+                card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
             });
         });
 
-        const interactiveCards = document.querySelectorAll(".service-card, .solution-card, .project-card, .lab-card, .why-card, .tech-stack-card, .stat-card, .contact-channel-card, .contact-sla-box, .contact-form-wrapper");
+        const interactiveCards = document.querySelectorAll(
+            ".service-card, .solution-card, .digital-card, .project-card, .product-card, .lab-card, .why-card, .tech-stack-card, .stat-card, .epoch-card, .estimator-opt-btn, .contact-channel-card, .contact-sla-box, .contact-form-wrapper, .founder-image-card"
+        );
         interactiveCards.forEach((card) => {
             card.addEventListener("pointermove", (e) => {
+                if (window.XESTUS_PERF && window.XESTUS_PERF.isLowEnd()) return;
                 const rect = card.getBoundingClientRect();
                 card.style.setProperty("--x", `${e.clientX - rect.left}px`);
                 card.style.setProperty("--y", `${e.clientY - rect.top}px`);
@@ -1059,29 +2135,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --------------------------------------------------------------------------
-    // 11. Follow XESTUS & Update Notification System
+    // 11. Follow XESTUS & Instant 1-Click Update System
     // --------------------------------------------------------------------------
     const FOLLOW_STORAGE_KEY = "xestus_following_subscriber";
-    const followXestusBtn = document.getElementById("followXestusBtn");
-    const followModal = document.getElementById("followModal");
-    const followModalBackdrop = document.getElementById("followModalBackdrop");
-    const followModalCloseBtn = document.getElementById("followModalCloseBtn");
-    const followSubscribeView = document.getElementById("followSubscribeView");
-    const followManageView = document.getElementById("followManageView");
-    const followModalForm = document.getElementById("followModalForm");
-    const followEmailInput = document.getElementById("followEmail");
-    const followEmailError = document.getElementById("followEmailError");
-    const prefEmailCheck = document.getElementById("prefEmail");
-    const prefPushCheck = document.getElementById("prefPush");
-    const followConsentCheck = document.getElementById("followConsent");
-    const followConsentError = document.getElementById("followConsentError");
-    const followSubmitBtn = document.getElementById("followSubmitBtn");
-    const followStatusMsg = document.getElementById("followStatusMsg");
-    const followingEmailDisplay = document.getElementById("followingEmailDisplay");
-    const btnUnfollow = document.getElementById("btnUnfollow");
-    const btnFollowDone = document.getElementById("btnFollowDone");
-    const unfollowStatusMsg = document.getElementById("unfollowStatusMsg");
-    let lastFollowFocusedElement = null;
 
     function getFollowState() {
         try {
@@ -1093,8 +2149,62 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function showFollowToast(message, isSuccess = true) {
+        let toast = document.getElementById("xestusFollowToast");
+        if (!toast) {
+            toast = document.createElement("div");
+            toast.id = "xestusFollowToast";
+            toast.className = "xestus-toast";
+            document.body.appendChild(toast);
+        }
+
+        toast.className = `xestus-toast ${isSuccess ? "toast-success" : "toast-info"} is-visible`;
+        toast.innerHTML = `
+            <div class="toast-content">
+                <i data-lucide="${isSuccess ? 'check-circle-2' : 'bell-off'}" class="toast-icon"></i>
+                <span class="toast-text">${message}</span>
+            </div>
+            <button type="button" class="toast-close-btn" aria-label="Dismiss notification">
+                <i data-lucide="x"></i>
+            </button>
+        `;
+
+        if (window.lucide && typeof window.lucide.createIcons === "function") {
+            window.lucide.createIcons();
+        }
+
+        const closeBtn = toast.querySelector(".toast-close-btn");
+        if (closeBtn) {
+            closeBtn.onclick = () => {
+                toast.classList.remove("is-visible");
+            };
+        }
+
+        if (toast._timer) clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => {
+            toast.classList.remove("is-visible");
+        }, 3600);
+    }
+
+    const BASE_FOLLOWERS_COUNT = 1248;
+
+    function getFollowerCount() {
+        const state = getFollowState();
+        const isFollowing = !!(state && (state.following || state.email));
+        return BASE_FOLLOWERS_COUNT + (isFollowing ? 1 : 0);
+    }
+
+    function updateFollowerCountDisplays() {
+        const count = getFollowerCount();
+        const globalFollowersCount = document.getElementById("globalFollowersCount");
+        if (globalFollowersCount) {
+            globalFollowersCount.textContent = count.toLocaleString();
+        }
+    }
+
     function syncFollowUI() {
         const state = getFollowState();
+        const isFollowing = !!(state && (state.following || state.email));
         const triggerBtns = document.querySelectorAll(".btn-follow-trigger");
         const currentLang = localStorage.getItem("xestus_user_language") || "en";
         const dict = (window.XESTUS_TRANSLATIONS && window.XESTUS_TRANSLATIONS[currentLang]) ? window.XESTUS_TRANSLATIONS[currentLang] : null;
@@ -1108,16 +2218,18 @@ document.addEventListener("DOMContentLoaded", () => {
             const textWrap = btn.querySelector(".follow-btn-text");
             const isCompact = btn.classList.contains("btn-nav-follow");
 
-            if (state && state.email) {
+            if (isFollowing) {
                 btn.classList.add("following");
-                btn.setAttribute("title", `Following as ${state.email} (Click to manage or unfollow)`);
-                btn.setAttribute("aria-label", `Following as ${state.email}. Click to manage or unfollow.`);
+                btn.setAttribute("aria-pressed", "true");
+                btn.setAttribute("title", "Following XESTUS (Click to unfollow)");
+                btn.setAttribute("aria-label", "Following XESTUS. Click to unfollow.");
                 if (textWrap) textWrap.textContent = followedText;
                 if (iconWrap) {
                     iconWrap.setAttribute("data-lucide", "check-circle-2");
                 }
             } else {
                 btn.classList.remove("following");
+                btn.setAttribute("aria-pressed", "false");
                 btn.setAttribute("title", "Follow XESTUS for technical updates");
                 btn.setAttribute("aria-label", "Follow XESTUS updates");
                 if (textWrap) textWrap.textContent = isCompact ? compactFollowText : followText;
@@ -1127,295 +2239,53 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        if (window.lucide) {
-            lucide.createIcons();
+        updateFollowerCountDisplays();
+
+        if (window.lucide && typeof window.lucide.createIcons === "function") {
+            window.lucide.createIcons();
         }
     }
 
-    function openFollowModal(triggerBtn) {
-        if (!followModal) return;
-        lastFollowFocusedElement = triggerBtn || document.activeElement;
-
+    function toggleFollow(triggerBtn) {
         const state = getFollowState();
-        if (state && state.email) {
-            if (followSubscribeView) followSubscribeView.style.display = "none";
-            if (followManageView) {
-                followManageView.style.display = "block";
-                if (followingEmailDisplay) {
-                    // Mask email for privacy display (e.g. j***@domain.com)
-                    const parts = state.email.split("@");
-                    if (parts.length === 2 && parts[0].length > 2) {
-                        const maskedName = parts[0][0] + "***" + parts[0][parts[0].length - 1];
-                        followingEmailDisplay.textContent = `${maskedName}@${parts[1]}`;
-                    } else {
-                        followingEmailDisplay.textContent = state.email;
-                    }
-                }
-            }
-            if (unfollowStatusMsg) {
-                unfollowStatusMsg.className = "follow-status-msg";
-                unfollowStatusMsg.style.display = "none";
-                unfollowStatusMsg.textContent = "";
-            }
+        const isFollowing = !!(state && (state.following || state.email));
+        const currentLang = localStorage.getItem("xestus_user_language") || "en";
+        const dict = (window.XESTUS_TRANSLATIONS && window.XESTUS_TRANSLATIONS[currentLang]) ? window.XESTUS_TRANSLATIONS[currentLang] : null;
+
+        if (isFollowing) {
+            localStorage.removeItem(FOLLOW_STORAGE_KEY);
+            syncFollowUI();
+            const msg = (dict && dict["follow.toast_unfollowed"]) || "You have unfollowed XESTUS.";
+            showFollowToast(msg, false);
         } else {
-            if (followManageView) followManageView.style.display = "none";
-            if (followSubscribeView) followSubscribeView.style.display = "block";
-            if (followStatusMsg) {
-                followStatusMsg.className = "follow-status-msg";
-                followStatusMsg.style.display = "none";
-                followStatusMsg.textContent = "";
+            const record = {
+                following: true,
+                followedAt: new Date().toISOString()
+            };
+            localStorage.setItem(FOLLOW_STORAGE_KEY, JSON.stringify(record));
+            syncFollowUI();
+
+            // Optional Web Push permission request
+            if ("Notification" in window && Notification.permission === "default") {
+                try {
+                    Notification.requestPermission();
+                } catch (_) {}
             }
-            if (followEmailError) followEmailError.textContent = "";
-            if (followConsentError) followConsentError.textContent = "";
-            if (followModalForm) followModalForm.reset();
-            if (prefEmailCheck) prefEmailCheck.checked = true;
-        }
 
-        followModal.classList.add("is-open");
-        followModal.setAttribute("aria-hidden", "false");
-        document.body.classList.add("modal-open");
-
-        if (window.lucide) {
-            lucide.createIcons();
-        }
-
-        setTimeout(() => {
-            if (state && state.email) {
-                if (btnFollowDone) btnFollowDone.focus();
-            } else {
-                if (followEmailInput) followEmailInput.focus();
-            }
-        }, 100);
-    }
-
-    function closeFollowModal() {
-        if (!followModal) return;
-        followModal.classList.remove("is-open");
-        followModal.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("modal-open");
-
-        if (lastFollowFocusedElement && typeof lastFollowFocusedElement.focus === "function") {
-            lastFollowFocusedElement.focus();
+            const msg = (dict && dict["follow.toast_followed"]) || "You are now following XESTUS updates!";
+            showFollowToast(msg, true);
         }
     }
 
-    // Attach click listener to all follow trigger buttons
+    // Attach click listener to all follow trigger buttons (1-click follow toggle)
     document.querySelectorAll(".btn-follow-trigger").forEach((btn) => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
-            openFollowModal(btn);
+            toggleFollow(btn);
         });
     });
 
-    // Modal close handlers
-    if (followModalCloseBtn) {
-        followModalCloseBtn.addEventListener("click", closeFollowModal);
-    }
-
-    if (followModalBackdrop) {
-        followModalBackdrop.addEventListener("click", closeFollowModal);
-    }
-
-    if (btnFollowDone) {
-        btnFollowDone.addEventListener("click", closeFollowModal);
-    }
-
-    document.addEventListener("keydown", (e) => {
-        if (followModal && followModal.classList.contains("is-open")) {
-            if (e.key === "Escape") {
-                closeFollowModal();
-            } else if (e.key === "Tab") {
-                trapFocus(e, followModal);
-            }
-        }
-    });
-
-    // Form submission
-    if (followModalForm) {
-        let isFollowSubmitting = false;
-        let lastFollowSubmitTime = 0;
-
-        if (followEmailInput) {
-            followEmailInput.addEventListener("input", () => {
-                if (followEmailError) followEmailError.textContent = "";
-            });
-        }
-        if (followConsentCheck) {
-            followConsentCheck.addEventListener("change", () => {
-                if (followConsentError) followConsentError.textContent = "";
-            });
-        }
-
-        followModalForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            if (isFollowSubmitting) return;
-
-            // 1. Anti-Bot Honeypot Defense
-            const botFilter = followModalForm.querySelector('input[name="_bot_filter"]');
-            if (botFilter && botFilter.value.trim() !== "") {
-                return;
-            }
-
-            // 2. Submission Cooldown / Rate Limiting
-            const now = Date.now();
-            if (now - lastFollowSubmitTime < 4000) {
-                if (followStatusMsg) {
-                    followStatusMsg.className = "follow-status-msg status-loading";
-                    followStatusMsg.style.display = "block";
-                    followStatusMsg.textContent = "Please wait a moment before submitting again...";
-                }
-                return;
-            }
-
-            const rawEmail = followEmailInput ? followEmailInput.value : "";
-            const email = rawEmail.toLowerCase().trim();
-            const prefEmail = prefEmailCheck ? prefEmailCheck.checked : true;
-            const prefPush = prefPushCheck ? prefPushCheck.checked : false;
-            const consent = followConsentCheck ? followConsentCheck.checked : false;
-
-            const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
-            let isValid = true;
-
-            if (!email || email.length > 254 || !emailRegex.test(email)) {
-                if (followEmailError) followEmailError.textContent = "Please provide a valid work or personal email address.";
-                if (followEmailInput) followEmailInput.focus();
-                isValid = false;
-            }
-
-            if (!consent) {
-                if (followConsentError) followConsentError.textContent = "Please agree to receive XESTUS updates to continue.";
-                isValid = false;
-            }
-
-            if (!isValid) return;
-
-            lastFollowSubmitTime = now;
-            isFollowSubmitting = true;
-            if (followSubmitBtn) {
-                followSubmitBtn.disabled = true;
-                const btnText = followSubmitBtn.querySelector(".btn-text");
-                if (btnText) btnText.textContent = "Processing...";
-            }
-            if (followStatusMsg) {
-                followStatusMsg.className = "follow-status-msg status-loading";
-                followStatusMsg.style.display = "block";
-                followStatusMsg.textContent = "Registering subscription with XESTUS network...";
-            }
-
-            // Optional Web Push Setup
-            if (prefPush && "Notification" in window) {
-                try {
-                    const permission = await Notification.requestPermission();
-                    if (permission === "granted" && "serviceWorker" in navigator) {
-                        const reg = await navigator.serviceWorker.ready;
-                        if (reg && reg.showNotification) {
-                            reg.showNotification("XESTUS Intelligence", {
-                                body: "Thank you for following XESTUS. You'll be notified when we launch something new.",
-                                icon: "assets/images/xestus-logo.png",
-                                badge: "assets/images/xestus-logo.png",
-                                data: { url: "https://xestus.in" }
-                            });
-                        }
-                    }
-                } catch (pushErr) {
-                    console.log("Web push permission notice:", pushErr);
-                }
-            }
-
-            // Secure Follower registration transmission
-            try {
-                if (typeof emailjs !== "undefined" && typeof emailjs.send === "function") {
-                    await emailjs.send("service_rumjowb", "template_malid0j", {
-                        from_name: `[Follower Subscription] ${email}`,
-                        reply_to: email,
-                        service: "Follow XESTUS Subscription",
-                        message: `New XESTUS Subscriber:\nEmail: ${email}\nChannels: Email (${prefEmail ? "Yes" : "No"}), Web Push (${prefPush ? "Yes" : "No"})\nConsent: Explicitly Granted\nTimestamp: ${new Date().toISOString()}`
-                    });
-                }
-
-                // If backend API endpoint is configured, forward payload
-                if (window.XESTUS_CONFIG && window.XESTUS_CONFIG.followApiEndpoint) {
-                    fetch(window.XESTUS_CONFIG.followApiEndpoint, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ email, channels: { email: prefEmail, push: prefPush }, timestamp: new Date().toISOString() })
-                    }).catch((apiErr) => console.log("API Forward notice:", apiErr));
-                }
-
-                // Store locally on device
-                const subscriberRecord = {
-                    email: email,
-                    channels: { email: prefEmail, push: prefPush },
-                    subscribedAt: new Date().toISOString()
-                };
-                localStorage.setItem(FOLLOW_STORAGE_KEY, JSON.stringify(subscriberRecord));
-
-                if (followStatusMsg) {
-                    followStatusMsg.className = "follow-status-msg status-success";
-                    followStatusMsg.textContent = "✓ Thank you for following XESTUS! You'll be notified when we launch something new.";
-                }
-
-                syncFollowUI();
-
-                setTimeout(() => {
-                    closeFollowModal();
-                    isFollowSubmitting = false;
-                    if (followSubmitBtn) {
-                        followSubmitBtn.disabled = false;
-                        const btnText = followSubmitBtn.querySelector(".btn-text");
-                        if (btnText) btnText.textContent = "Confirm & Follow";
-                    }
-                }, 1800);
-
-            } catch (dispatchErr) {
-                console.warn("Follow registration notice:", dispatchErr);
-
-                // Fallback store locally so user UX succeeds
-                const subscriberRecord = {
-                    email: email,
-                    channels: { email: prefEmail, push: prefPush },
-                    subscribedAt: new Date().toISOString()
-                };
-                localStorage.setItem(FOLLOW_STORAGE_KEY, JSON.stringify(subscriberRecord));
-                syncFollowUI();
-
-                if (followStatusMsg) {
-                    followStatusMsg.className = "follow-status-msg status-success";
-                    followStatusMsg.textContent = "✓ Thank you for following XESTUS! You'll be notified when we launch something new.";
-                }
-
-                setTimeout(() => {
-                    closeFollowModal();
-                    isFollowSubmitting = false;
-                    if (followSubmitBtn) {
-                        followSubmitBtn.disabled = false;
-                        const btnText = followSubmitBtn.querySelector(".btn-text");
-                        if (btnText) btnText.textContent = "Confirm & Follow";
-                    }
-                }, 1800);
-            }
-        });
-    }
-
-    // Unfollow action
-    if (btnUnfollow) {
-        btnUnfollow.addEventListener("click", () => {
-            localStorage.removeItem(FOLLOW_STORAGE_KEY);
-            syncFollowUI();
-
-            if (unfollowStatusMsg) {
-                unfollowStatusMsg.className = "follow-status-msg status-success";
-                unfollowStatusMsg.style.display = "block";
-                unfollowStatusMsg.textContent = "✓ You have successfully unfollowed XESTUS.";
-            }
-
-            setTimeout(() => {
-                closeFollowModal();
-            }, 1200);
-        });
-    }
-
-    // Initialize UI on load
+    // Initialize Follow UI on load
     syncFollowUI();
 
     // Register Service Worker for Web Push & Offline Support
@@ -2217,6 +3087,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btnStatsInspect) {
         btnStatsInspect.addEventListener("click", () => openStatsModal(btnStatsInspect));
+    }
+    const btnFollowersCount = document.getElementById("btnFollowersCount");
+    if (btnFollowersCount) {
+        btnFollowersCount.addEventListener("click", () => openStatsModal(btnFollowersCount));
     }
     if (statsModalCloseBtn) {
         statsModalCloseBtn.addEventListener("click", closeStatsModal);

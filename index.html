@@ -163,7 +163,7 @@
         <li><a href="#digital-services" class="nav-link" data-i18n="nav.digital_services">Digital Help</a></li>
         <li><a href="#portfolio" class="nav-link" data-i18n="nav.projects">Projects</a></li>
         <li><a href="#products" class="nav-link" data-i18n="nav.products">Products</a></li>
-        <li><a href="#lab" class="nav-link" data-i18n="nav.lab">Innovation Lab</a></li>
+        <li><a href="#lab" class="nav-link"><span data-i18n="nav.lab">Innovation</span> <span class="nav-lab-badge">Lab</span></a></li>
         <li><a href="#roadmap" class="nav-link" data-i18n="nav.roadmap">Roadmap</a></li>
         <li><a href="#founder" class="nav-link" data-i18n="nav.about">About</a></li>
         <li><a href="#faq" class="nav-link" data-i18n="nav.faq">FAQ</a></li>
@@ -225,6 +225,7 @@
   <main id="main-content" role="main">
   <section class="hero" id="home">
     <div class="hero-backdrop" aria-hidden="true">
+        <canvas id="heroStarfieldCanvas" class="hero-starfield-canvas"></canvas>
         <div class="hero-ambient-glow hero-glow-1"></div>
         <div class="hero-ambient-glow hero-glow-2"></div>
         <div class="hero-grid-overlay"></div>
@@ -308,31 +309,77 @@
 
             <div class="hero-capability-strip">
                 <div class="capability-item">
-                    <span class="capability-value" data-i18n="hero.cap1_val">AI Software</span>
-                    <span class="capability-label" data-i18n="hero.cap1_lbl">Custom Intelligent Apps</span>
+                    <div class="capability-icon"><i data-lucide="brain" aria-hidden="true"></i></div>
+                    <div class="capability-text">
+                        <span class="capability-value" data-i18n="hero.cap1_val">AI Software</span>
+                        <span class="capability-label" data-i18n="hero.cap1_lbl">Custom Intelligent Apps</span>
+                    </div>
                 </div>
                 <div class="capability-sep"></div>
                 <div class="capability-item">
-                    <span class="capability-value" data-i18n="hero.cap2_val">Automation</span>
-                    <span class="capability-label" data-i18n="hero.cap2_lbl">Intelligent Workflows</span>
+                    <div class="capability-icon"><i data-lucide="cpu" aria-hidden="true"></i></div>
+                    <div class="capability-text">
+                        <span class="capability-value" data-i18n="hero.cap2_val">Automation</span>
+                        <span class="capability-label" data-i18n="hero.cap2_lbl">Intelligent Workflows</span>
+                    </div>
                 </div>
                 <div class="capability-sep"></div>
                 <div class="capability-item">
-                    <span class="capability-value" data-i18n="hero.cap3_val">Cloud &amp; Web</span>
-                    <span class="capability-label" data-i18n="hero.cap3_lbl">Scalable Systems</span>
+                    <div class="capability-icon"><i data-lucide="cloud" aria-hidden="true"></i></div>
+                    <div class="capability-text">
+                        <span class="capability-value" data-i18n="hero.cap3_val">Cloud &amp; Web</span>
+                        <span class="capability-label" data-i18n="hero.cap3_lbl">Scalable Systems</span>
+                    </div>
+                </div>
+                <div class="capability-trusted">
+                    <span class="trusted-text" data-i18n="hero.trusted">Trusted by innovators</span>
+                    <div class="trusted-glow-bar"><span class="trusted-glow-dot"></span></div>
                 </div>
             </div>
         </div>
 
-        <!-- XESTUS 3D HERO ORB -->
+        <!-- XESTUS 3D INNOVATION CORE -->
         <div class="hero-visual-wrapper">
-            <div class="xestus-3d-orb" aria-hidden="true">
-                <div class="orb-ambient-halo"></div>
-                <div class="orb-ring orb-ring-1"></div>
-                <div class="orb-ring orb-ring-2"></div>
-                <div class="orb-ring orb-ring-3"></div>
-                <div class="orb-core">
-                    <span class="orb-letter">X</span>
+            <div class="innovation-core-container" id="innovationCoreContainer">
+                <canvas id="heroInnovationCoreCanvas" class="hero-innovation-core-canvas"></canvas>
+
+                <!-- Floating 3D Ambient HUD Tags -->
+                <div class="hero-hud-tags" aria-hidden="true">
+                    <!-- HUD Tag 1: AI & ML (Top Left) -->
+                    <div class="hud-tag hud-tag-1">
+                        <div class="hud-tag-icon"><i data-lucide="brain"></i></div>
+                        <div class="hud-tag-info">
+                            <span class="hud-tag-title" data-i18n="hud.aiml">AI &amp; ML</span>
+                            <span class="hud-tag-sub" data-i18n="hud.aiml_sub">Smarter Solutions</span>
+                        </div>
+                    </div>
+
+                    <!-- HUD Tag 2: Cloud (Top Right) -->
+                    <div class="hud-tag hud-tag-2">
+                        <div class="hud-tag-icon"><i data-lucide="cloud"></i></div>
+                        <div class="hud-tag-info">
+                            <span class="hud-tag-title" data-i18n="hud.cloud">Cloud</span>
+                            <span class="hud-tag-sub" data-i18n="hud.cloud_sub">Scalable &amp; Secure</span>
+                        </div>
+                    </div>
+
+                    <!-- HUD Tag 3: Development (Bottom Left) -->
+                    <div class="hud-tag hud-tag-3">
+                        <div class="hud-tag-icon"><i data-lucide="code-2"></i></div>
+                        <div class="hud-tag-info">
+                            <span class="hud-tag-title" data-i18n="hud.dev">Development</span>
+                            <span class="hud-tag-sub" data-i18n="hud.dev_sub">Build What Matters</span>
+                        </div>
+                    </div>
+
+                    <!-- HUD Tag 4: IoT (Bottom Right) -->
+                    <div class="hud-tag hud-tag-4">
+                        <div class="hud-tag-icon"><i data-lucide="network"></i></div>
+                        <div class="hud-tag-info">
+                            <span class="hud-tag-title" data-i18n="hud.iot">IoT</span>
+                            <span class="hud-tag-sub" data-i18n="hud.iot_sub">Connected Future</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -345,7 +392,7 @@
 ========================= -->
 <section class="services" id="services">
 
- <div class="section-title">
+ <div class="section-title reveal-item">
  <span data-i18n="services.badge">CORE CAPABILITIES</span>
  <h2 data-i18n="services.title">Specialized Engineering Services</h2>
  <p data-i18n="services.desc">
@@ -355,7 +402,7 @@
 
  <div class="services-container">
  <!-- Service 1: AI Software -->
- <div class="service-card">
+ <div class="service-card reveal-item">
  <div class="service-icon">
  <i data-lucide="brain"></i>
  </div>
@@ -380,7 +427,7 @@
  </div>
 
  <!-- Service 2: Automation -->
- <div class="service-card">
+ <div class="service-card reveal-item">
  <div class="service-icon">
  <i data-lucide="cpu"></i>
  </div>
@@ -403,7 +450,7 @@
  </div>
 
  <!-- Service 3: Web Development -->
- <div class="service-card">
+ <div class="service-card reveal-item">
  <div class="service-icon">
  <i data-lucide="globe"></i>
  </div>
@@ -426,7 +473,7 @@
  </div>
 
  <!-- Service 4: Cloud Solutions -->
- <div class="service-card">
+ <div class="service-card reveal-item">
  <div class="service-icon">
  <i data-lucide="cloud"></i>
  </div>
@@ -449,7 +496,7 @@
  </div>
 
  <!-- Service 5: UI/UX Design -->
- <div class="service-card">
+ <div class="service-card reveal-item">
  <div class="service-icon">
  <i data-lucide="palette"></i>
  </div>
@@ -471,7 +518,7 @@
  </div>
 
  <!-- Service 6: AI Consulting -->
- <div class="service-card">
+ <div class="service-card reveal-item">
  <div class="service-icon">
  <i data-lucide="chart-column"></i>
  </div>
@@ -492,7 +539,7 @@
  </div>
 
  <!-- Service 7: Training & Internship -->
- <div class="service-card">
+ <div class="service-card reveal-item">
  <div class="service-icon">
  <i data-lucide="graduation-cap"></i>
  </div>
@@ -515,7 +562,7 @@
  </div>
 
  <!-- Service 8: AutoCAD & Technical Design -->
- <div class="service-card">
+ <div class="service-card reveal-item">
  <div class="service-icon">
  <i data-lucide="ruler"></i>
  </div>
@@ -544,7 +591,7 @@
 ========================= -->
 <section class="solutions" id="solutions">
 
- <div class="section-title">
+ <div class="section-title reveal-item">
  <span data-i18n="solutions.badge">ENTERPRISE SOLUTIONS</span>
  <h2 data-i18n="solutions.title">Tailored Systems for Modern Enterprises</h2>
  <p data-i18n="solutions.desc">
@@ -554,7 +601,7 @@
 
  <div class="solutions-container">
  <!-- Solution 1: AI Business Systems -->
- <div class="solution-card">
+ <div class="solution-card reveal-item">
  <div class="solution-header">
  <div class="solution-icon">
  <i data-lucide="bot"></i>
@@ -584,7 +631,7 @@
  </div>
 
  <!-- Solution 2: Workflow Automation -->
- <div class="solution-card">
+ <div class="solution-card reveal-item">
  <div class="solution-header">
  <div class="solution-icon">
  <i data-lucide="workflow"></i>
@@ -614,7 +661,7 @@
  </div>
 
  <!-- Solution 3: Custom Web Platforms -->
- <div class="solution-card">
+ <div class="solution-card reveal-item">
  <div class="solution-header">
  <div class="solution-icon">
  <i data-lucide="layout"></i>
@@ -644,7 +691,7 @@
  </div>
 
  <!-- Solution 4: Intelligent Dashboards -->
- <div class="solution-card">
+ <div class="solution-card reveal-item">
  <div class="solution-header">
  <div class="solution-icon">
  <i data-lucide="gauge"></i>
@@ -680,7 +727,7 @@
      DIGITAL SERVICES FOR EVERYONE SECTION (PRACTICAL & AFFORDABLE ONLINE HELP)
      ========================================================================== -->
 <section class="digital-services" id="digital-services" aria-labelledby="digitalServicesTitle">
-    <div class="section-title">
+    <div class="section-title reveal-item">
         <span data-i18n="digital.badge">DIGITAL SERVICES FOR EVERYONE</span>
         <h2 id="digitalServicesTitle" data-i18n="digital.title">Digital Help, Made Simple &amp; Affordable</h2>
         <p data-i18n="digital.desc">
@@ -697,8 +744,8 @@
 
     <div class="digital-container">
         <!-- Card 1: Online Form Filling & Applications -->
-        <div class="digital-card">
-            <div class="digital-card-top">
+        <div class="digital-card reveal-item">
+            <div class="digital-card-top reveal-item">
                 <div class="digital-icon-frame">
                     <i data-lucide="file-text"></i>
                 </div>
@@ -708,7 +755,7 @@
             <p data-i18n="digital.card1_desc">
                 Get expert assistance completing online job applications, official registration forms, and web portals accurately and on time.
             </p>
-            <div class="digital-card-actions">
+            <div class="digital-card-actions reveal-item">
                 <a href="#contact" class="digital-cta-btn" data-service-select="digital">
                     <span data-i18n="common.request_assistance">Request Assistance</span>
                     <i data-lucide="arrow-right"></i>
@@ -717,8 +764,8 @@
         </div>
 
         <!-- Card 2: Admissions & Exam Registrations -->
-        <div class="digital-card">
-            <div class="digital-card-top">
+        <div class="digital-card reveal-item">
+            <div class="digital-card-top reveal-item">
                 <div class="digital-icon-frame">
                     <i data-lucide="graduation-cap"></i>
                 </div>
@@ -728,7 +775,7 @@
             <p data-i18n="digital.card2_desc">
                 Hassle-free application support for school/college admissions, competitive entrance exams, hall ticket downloads, and counseling.
             </p>
-            <div class="digital-card-actions">
+            <div class="digital-card-actions reveal-item">
                 <a href="#contact" class="digital-cta-btn" data-service-select="digital">
                     <span data-i18n="common.request_assistance">Request Assistance</span>
                     <i data-lucide="arrow-right"></i>
@@ -737,8 +784,8 @@
         </div>
 
         <!-- Card 3: Government & Citizen Portals -->
-        <div class="digital-card">
-            <div class="digital-card-top">
+        <div class="digital-card reveal-item">
+            <div class="digital-card-top reveal-item">
                 <div class="digital-icon-frame">
                     <i data-lucide="landmark"></i>
                 </div>
@@ -748,7 +795,7 @@
             <p data-i18n="digital.card3_desc">
                 Step-by-step guidance navigating public citizen portals, welfare scheme registrations, certificates, and online status inquiries.
             </p>
-            <div class="digital-card-actions">
+            <div class="digital-card-actions reveal-item">
                 <a href="#contact" class="digital-cta-btn" data-service-select="digital">
                     <span data-i18n="common.request_assistance">Request Assistance</span>
                     <i data-lucide="arrow-right"></i>
@@ -757,8 +804,8 @@
         </div>
 
         <!-- Card 4: Scholarships & Financial Aid -->
-        <div class="digital-card">
-            <div class="digital-card-top">
+        <div class="digital-card reveal-item">
+            <div class="digital-card-top reveal-item">
                 <div class="digital-icon-frame">
                     <i data-lucide="award"></i>
                 </div>
@@ -768,7 +815,7 @@
             <p data-i18n="digital.card4_desc">
                 Complete support for state and national scholarship applications, student grant paperwork, renewal tracking, and document verification.
             </p>
-            <div class="digital-card-actions">
+            <div class="digital-card-actions reveal-item">
                 <a href="#contact" class="digital-cta-btn" data-service-select="digital">
                     <span data-i18n="common.request_assistance">Request Assistance</span>
                     <i data-lucide="arrow-right"></i>
@@ -777,8 +824,8 @@
         </div>
 
         <!-- Card 5: Document Formatting & PDF Uploads -->
-        <div class="digital-card">
-            <div class="digital-card-top">
+        <div class="digital-card reveal-item">
+            <div class="digital-card-top reveal-item">
                 <div class="digital-icon-frame">
                     <i data-lucide="upload-cloud"></i>
                 </div>
@@ -788,7 +835,7 @@
             <p data-i18n="digital.card5_desc">
                 Precision document scanning, file compression (KB/MB targets), photo/signature resizing, and format conversion required by online portals.
             </p>
-            <div class="digital-card-actions">
+            <div class="digital-card-actions reveal-item">
                 <a href="#contact" class="digital-cta-btn" data-service-select="digital">
                     <span data-i18n="common.request_assistance">Request Assistance</span>
                     <i data-lucide="arrow-right"></i>
@@ -797,8 +844,8 @@
         </div>
 
         <!-- Card 6: Online Appointments & Bookings -->
-        <div class="digital-card">
-            <div class="digital-card-top">
+        <div class="digital-card reveal-item">
+            <div class="digital-card-top reveal-item">
                 <div class="digital-icon-frame">
                     <i data-lucide="calendar-check"></i>
                 </div>
@@ -808,7 +855,7 @@
             <p data-i18n="digital.card6_desc">
                 Timely booking of official appointments, slot selection, digital verification appointments, and acknowledgment receipt downloads.
             </p>
-            <div class="digital-card-actions">
+            <div class="digital-card-actions reveal-item">
                 <a href="#contact" class="digital-cta-btn" data-service-select="digital">
                     <span data-i18n="common.request_assistance">Request Assistance</span>
                     <i data-lucide="arrow-right"></i>
@@ -837,7 +884,7 @@
 
 <section class="portfolio" id="portfolio">
 
- <div class="section-title">
+ <div class="section-title reveal-item">
  <span data-i18n="portfolio.badge">CASE STUDIES &amp; PORTFOLIO</span>
  <h2 data-i18n="portfolio.title">Featured Engineering Projects</h2>
  <p data-i18n="portfolio.desc">
@@ -870,7 +917,7 @@
  <div class="portfolio-container" id="projectsGrid">
 
  <!-- Project 1: Synapse AI -->
- <article class="project-card tilt-card" data-category="ai" data-project-id="synapse-ai">
+ <article class="project-card tilt-card reveal-item" data-category="ai" data-project-id="synapse-ai">
  <div class="project-header-bar">
  <span class="project-category-badge">AI &amp; Agents</span>
  <span class="project-status-badge status-lab">Lab Architecture</span>
@@ -925,7 +972,7 @@
  </article>
 
  <!-- Project 2: FlowSync Automation -->
- <article class="project-card tilt-card" data-category="automation" data-project-id="flowsync-automation">
+ <article class="project-card tilt-card reveal-item" data-category="automation" data-project-id="flowsync-automation">
  <div class="project-header-bar">
  <span class="project-category-badge">Automation</span>
  <span class="project-status-badge status-prod">Production Engine</span>
@@ -980,7 +1027,7 @@
  </article>
 
  <!-- Project 3: XESTUS Platform -->
- <article class="project-card tilt-card" data-category="web" data-project-id="nexus-platform">
+ <article class="project-card tilt-card reveal-item" data-category="web" data-project-id="nexus-platform">
  <div class="project-header-bar">
  <span class="project-category-badge">Web Platforms</span>
  <span class="project-status-badge status-prod">Production Platform</span>
@@ -1035,7 +1082,7 @@
  </article>
 
  <!-- Project 4: PulseMetrics -->
- <article class="project-card tilt-card" data-category="data" data-project-id="pulse-metrics">
+ <article class="project-card tilt-card reveal-item" data-category="data" data-project-id="pulse-metrics">
  <div class="project-header-bar">
  <span class="project-category-badge">Data &amp; Analytics</span>
  <span class="project-status-badge status-sys">System Architecture</span>
@@ -1090,7 +1137,7 @@
  </article>
 
  <!-- Project 5: CloudGate Infrastructure -->
- <article class="project-card tilt-card" data-category="data" data-project-id="cloudgate-infra">
+ <article class="project-card tilt-card reveal-item" data-category="data" data-project-id="cloudgate-infra">
  <div class="project-header-bar">
  <span class="project-category-badge">Cloud Infrastructure</span>
  <span class="project-status-badge status-devops">DevOps Architecture</span>
@@ -1145,7 +1192,7 @@
  </article>
 
  <!-- Project 6: AeroPlan CAD Drafting -->
- <article class="project-card tilt-card" data-category="cad" data-project-id="aeroplan-cad">
+ <article class="project-card tilt-card reveal-item" data-category="cad" data-project-id="aeroplan-cad">
  <div class="project-header-bar">
  <span class="project-category-badge">Technical Design</span>
  <span class="project-status-badge status-cad">Engineering Portfolio</span>
@@ -1206,7 +1253,7 @@
      FUTURE PRODUCTS FOUNDATION SHOWCASE
      ========================================================================== -->
 <section class="products" id="products" aria-labelledby="productsTitle">
-    <div class="section-title">
+    <div class="section-title reveal-item">
         <span data-i18n="products.badge">PRODUCT PIPELINE</span>
         <h2 id="productsTitle" data-i18n="products.title">Upcoming Flagship Systems</h2>
         <p data-i18n="products.desc">
@@ -1216,8 +1263,8 @@
 
     <div class="products-container">
         <!-- Product 1: XESTUS FlowAgent -->
-        <div class="product-card tilt-card">
-            <div class="product-card-header">
+        <div class="product-card tilt-card reveal-item">
+            <div class="product-card-header reveal-item">
                 <div class="product-icon-frame">
                     <i data-lucide="bot"></i>
                 </div>
@@ -1243,7 +1290,7 @@
                     <span class="spec-val">Private Developer Preview</span>
                 </div>
             </div>
-            <div class="product-card-actions">
+            <div class="product-card-actions reveal-item">
                 <a href="#contact" class="btn-primary btn-product-waitlist" data-service-select="AI & Autonomous Agents">
                     <span data-i18n="products.waitlist_btn">Request Early Access / Waitlist</span>
                     <i data-lucide="arrow-right"></i>
@@ -1252,8 +1299,8 @@
         </div>
 
         <!-- Product 2: XESTUS DataSync -->
-        <div class="product-card tilt-card">
-            <div class="product-card-header">
+        <div class="product-card tilt-card reveal-item">
+            <div class="product-card-header reveal-item">
                 <div class="product-icon-frame">
                     <i data-lucide="refresh-cw"></i>
                 </div>
@@ -1279,7 +1326,7 @@
                     <span class="spec-val">Closed Enterprise Testing</span>
                 </div>
             </div>
-            <div class="product-card-actions">
+            <div class="product-card-actions reveal-item">
                 <a href="#contact" class="btn-primary btn-product-waitlist" data-service-select="Workflow Automation">
                     <span data-i18n="products.waitlist_btn">Request Early Access / Waitlist</span>
                     <i data-lucide="arrow-right"></i>
@@ -1288,8 +1335,8 @@
         </div>
 
         <!-- Product 3: XESTUS EdgeNode -->
-        <div class="product-card tilt-card">
-            <div class="product-card-header">
+        <div class="product-card tilt-card reveal-item">
+            <div class="product-card-header reveal-item">
                 <div class="product-icon-frame">
                     <i data-lucide="server"></i>
                 </div>
@@ -1315,7 +1362,7 @@
                     <span class="spec-val">Open Hardware Blueprint</span>
                 </div>
             </div>
-            <div class="product-card-actions">
+            <div class="product-card-actions reveal-item">
                 <a href="#contact" class="btn-primary btn-product-waitlist" data-service-select="Cloud & Edge Infrastructure">
                     <span data-i18n="products.waitlist_btn">Request Early Access / Waitlist</span>
                     <i data-lucide="arrow-right"></i>
@@ -1329,7 +1376,7 @@
  INNOVATION LAB & R&D SECTION
  ========================================================================== -->
 <section class="lab" id="lab">
- <div class="section-title">
+ <div class="section-title reveal-item">
  <span class="badge-pulsing"><i data-lucide="flask-conical"></i> R&amp;D &amp; EXPERIMENTAL ARCHITECTURE</span>
  <h2>XESTUS Innovation Lab</h2>
  <p>
@@ -1393,12 +1440,12 @@
  <!-- Active Research Tracks Grid -->
  <div class="lab-grid">
  <!-- Track 1: MCP & Dynamic Tool Routing -->
- <div class="lab-card">
- <div class="lab-card-header">
+ <div class="lab-card reveal-item">
+ <div class="lab-card-header reveal-item">
  <span class="lab-track-badge">MCP PROTOCOL</span>
  <span class="lab-status-pill status-active">Active R&amp;D</span>
  </div>
- <div class="lab-card-icon">
+ <div class="lab-card-icon reveal-item">
  <i data-lucide="plug-zap"></i>
  </div>
  <h3>Model Context Protocol (MCP) Mesh</h3>
@@ -1418,12 +1465,12 @@
  </div>
 
  <!-- Track 2: Autonomous Agent Swarms -->
- <div class="lab-card">
- <div class="lab-card-header">
+ <div class="lab-card reveal-item">
+ <div class="lab-card-header reveal-item">
  <span class="lab-track-badge">AGENTIC AI</span>
  <span class="lab-status-pill status-active">Active R&amp;D</span>
  </div>
- <div class="lab-card-icon">
+ <div class="lab-card-icon reveal-item">
  <i data-lucide="network"></i>
  </div>
  <h3>Multi-Agent Swarm Orchestration</h3>
@@ -1443,12 +1490,12 @@
  </div>
 
  <!-- Track 3: Edge AI & Quantized SLMs -->
- <div class="lab-card">
- <div class="lab-card-header">
+ <div class="lab-card reveal-item">
+ <div class="lab-card-header reveal-item">
  <span class="lab-track-badge">EDGE AI</span>
  <span class="lab-status-pill status-alpha">Alpha Prototype</span>
  </div>
- <div class="lab-card-icon">
+ <div class="lab-card-icon reveal-item">
  <i data-lucide="cpu"></i>
  </div>
  <h3>On-Device Quantized SLMs</h3>
@@ -1468,12 +1515,12 @@
  </div>
 
  <!-- Track 4: Self-Healing Automation -->
- <div class="lab-card">
- <div class="lab-card-header">
+ <div class="lab-card reveal-item">
+ <div class="lab-card-header reveal-item">
  <span class="lab-track-badge">AUTOMATION R&amp;D</span>
  <span class="lab-status-pill status-alpha">Alpha Prototype</span>
  </div>
- <div class="lab-card-icon">
+ <div class="lab-card-icon reveal-item">
  <i data-lucide="shield-alert"></i>
  </div>
  <h3>Self-Healing Closed-Loop Pipelines</h3>
@@ -1493,12 +1540,12 @@
  </div>
 
  <!-- Track 5: Neural Code Auditing -->
- <div class="lab-card">
- <div class="lab-card-header">
+ <div class="lab-card reveal-item">
+ <div class="lab-card-header reveal-item">
  <span class="lab-track-badge">STATIC ANALYSIS</span>
  <span class="lab-status-pill status-concept">Concept &amp; POC</span>
  </div>
- <div class="lab-card-icon">
+ <div class="lab-card-icon reveal-item">
  <i data-lucide="file-code-2"></i>
  </div>
  <h3>Neural Code &amp; Security Auditing</h3>
@@ -1518,12 +1565,12 @@
  </div>
 
  <!-- Track 6: Galaxy F41 Edge Lab Cluster -->
- <div class="lab-card">
- <div class="lab-card-header">
+ <div class="lab-card reveal-item">
+ <div class="lab-card-header reveal-item">
  <span class="lab-track-badge">HARDWARE LAB</span>
  <span class="lab-status-pill status-active">Active R&amp;D</span>
  </div>
- <div class="lab-card-icon">
+ <div class="lab-card-icon reveal-item">
  <i data-lucide="server"></i>
  </div>
  <h3>ARM64 Edge Server Infrastructure</h3>
@@ -1565,7 +1612,7 @@
      INTERACTIVE TECHNOLOGY ROADMAP & COMPANY VISION
      ========================================================================== -->
 <section class="roadmap" id="roadmap" aria-labelledby="roadmapTitle">
-    <div class="section-title">
+    <div class="section-title reveal-item">
         <span data-i18n="roadmap.badge">STRATEGIC TRAJECTORY</span>
         <h2 id="roadmapTitle" data-i18n="roadmap.title">Technology &amp; Company Roadmap</h2>
         <p data-i18n="roadmap.desc">
@@ -1577,7 +1624,7 @@
         <!-- Epoch 01: Core Architecture & Foundations -->
         <div class="roadmap-epoch">
             <div class="epoch-node" aria-hidden="true"><div class="epoch-node-inner"></div></div>
-            <div class="epoch-card">
+            <div class="epoch-card reveal-item">
                 <div class="epoch-header">
                     <span class="epoch-badge" data-i18n="roadmap.ep1_badge">EPOCH 01 • ESTABLISHED</span>
                     <span class="epoch-status current" data-i18n="roadmap.ep1_status">Completed / Active</span>
@@ -1597,7 +1644,7 @@
         <!-- Epoch 02: Autonomous Intelligence & Lab -->
         <div class="roadmap-epoch">
             <div class="epoch-node" aria-hidden="true"><div class="epoch-node-inner"></div></div>
-            <div class="epoch-card">
+            <div class="epoch-card reveal-item">
                 <div class="epoch-header">
                     <span class="epoch-badge" data-i18n="roadmap.ep2_badge">EPOCH 02 • ACTIVE R&amp;D</span>
                     <span class="epoch-status current" data-i18n="roadmap.ep2_status">In Progress (2026)</span>
@@ -1617,7 +1664,7 @@
         <!-- Epoch 03: Productization & Scaled Cloud -->
         <div class="roadmap-epoch">
             <div class="epoch-node" aria-hidden="true"><div class="epoch-node-inner"></div></div>
-            <div class="epoch-card">
+            <div class="epoch-card reveal-item">
                 <div class="epoch-header">
                     <span class="epoch-badge" data-i18n="roadmap.ep3_badge">EPOCH 03 • UPCOMING</span>
                     <span class="epoch-status" data-i18n="roadmap.ep3_status">Target: Q3-Q4 2026</span>
@@ -1637,7 +1684,7 @@
         <!-- Epoch 04: Global Ecosystem & Hardware Mesh -->
         <div class="roadmap-epoch">
             <div class="epoch-node" aria-hidden="true"><div class="epoch-node-inner"></div></div>
-            <div class="epoch-card">
+            <div class="epoch-card reveal-item">
                 <div class="epoch-header">
                     <span class="epoch-badge" data-i18n="roadmap.ep4_badge">EPOCH 04 • VISION</span>
                     <span class="epoch-status" data-i18n="roadmap.ep4_status">Future Horizon</span>
@@ -1661,7 +1708,7 @@
  ========================================================================== -->
 <section class="why-us" id="about">
 
- <div class="section-title">
+ <div class="section-title reveal-item">
  <span data-i18n="why.badge">WHY XESTUS</span>
  <h2 data-i18n="why.title">Engineered for Operational Superiority</h2>
  <p data-i18n="why.desc">
@@ -1672,7 +1719,7 @@
  <div class="why-container">
 
  <!-- Pillar 1: Speed & Architecture -->
- <div class="why-card">
+ <div class="why-card reveal-item">
  <div class="why-icon">
  <i data-lucide="zap"></i>
  </div>
@@ -1683,7 +1730,7 @@
  </div>
 
  <!-- Pillar 2: Autonomous Intelligence -->
- <div class="why-card">
+ <div class="why-card reveal-item">
  <div class="why-icon">
  <i data-lucide="brain"></i>
  </div>
@@ -1694,7 +1741,7 @@
  </div>
 
  <!-- Pillar 3: Reliability & Defense -->
- <div class="why-card">
+ <div class="why-card reveal-item">
  <div class="why-icon">
  <i data-lucide="shield-check"></i>
  </div>
@@ -1705,7 +1752,7 @@
  </div>
 
  <!-- Pillar 4: Direct Leadership & Craftsmanship -->
- <div class="why-card">
+ <div class="why-card reveal-item">
  <div class="why-icon">
  <i data-lucide="handshake"></i>
  </div>
@@ -1724,7 +1771,7 @@
  ========================================================================== -->
 <section class="founder" id="founder">
 
- <div class="section-title">
+ <div class="section-title reveal-item">
  <span data-i18n="founder.badge">FOUNDER &amp; LEADERSHIP</span>
  <h2 data-i18n="founder.title">The Vision Driving XESTUS</h2>
  <p data-i18n="founder.desc">
@@ -1801,9 +1848,9 @@
 <!-- ==========================================================================
  ENTERPRISE TECHNOLOGY STACK & STANDARDS
  ========================================================================== -->
-<section class="technologies">
+<section class="technologies" id="technologies">
 
- <div class="section-title">
+ <div class="section-title reveal-item">
  <span>ENGINEERING STANDARDS</span>
  <h2>Enterprise Technology Stack</h2>
  <p>
@@ -1814,7 +1861,7 @@
  <div class="tech-stack-grid">
 
  <!-- Stack 1: AI & Reasoning -->
- <div class="tech-stack-card">
+ <div class="tech-stack-card reveal-item">
  <div class="tech-stack-header">
  <i data-lucide="brain"></i>
  <h3>AI &amp; Reasoning</h3>
@@ -1831,7 +1878,7 @@
  </div>
 
  <!-- Stack 2: Web & Edge Delivery -->
- <div class="tech-stack-card">
+ <div class="tech-stack-card reveal-item">
  <div class="tech-stack-header">
  <i data-lucide="globe"></i>
  <h3>Web &amp; Modern Edge</h3>
@@ -1847,7 +1894,7 @@
  </div>
 
  <!-- Stack 3: Workflow Automation -->
- <div class="tech-stack-card">
+ <div class="tech-stack-card reveal-item">
  <div class="tech-stack-header">
  <i data-lucide="workflow"></i>
  <h3>Workflow Automation</h3>
@@ -1863,7 +1910,7 @@
  </div>
 
  <!-- Stack 4: Cloud & Infrastructure -->
- <div class="tech-stack-card">
+ <div class="tech-stack-card reveal-item">
  <div class="tech-stack-header">
  <i data-lucide="server"></i>
  <h3>Cloud &amp; Infrastructure</h3>
@@ -1885,26 +1932,26 @@
 <!-- ==========================================================================
  PERFORMANCE COMMITMENTS & STANDARDS
  ========================================================================== -->
-<section class="stats">
+<section class="stats" id="stats">
 
  <div class="stats-container">
 
- <div class="stat-card">
+ <div class="stat-card reveal-item">
  <h2>100%</h2>
  <p>Code Ownership &amp; Custom Architecture</p>
  </div>
 
- <div class="stat-card">
+ <div class="stat-card reveal-item">
  <h2>&lt; 50ms</h2>
  <p>Target Edge SLM &amp; Proxy Latency</p>
  </div>
 
- <div class="stat-card">
+ <div class="stat-card reveal-item">
  <h2>99.98%</h2>
  <p>Architecture Uptime SLA Standard</p>
  </div>
 
- <div class="stat-card">
+ <div class="stat-card reveal-item">
  <h2>24/7</h2>
  <p>System Telemetry &amp; Support</p>
  </div>
@@ -1917,7 +1964,7 @@
      ENTERPRISE & DIGITAL ASSISTANCE FAQ KNOWLEDGE BASE
      ========================================================================== -->
 <section class="faq-section" id="faq" aria-labelledby="faqTitle">
-    <div class="section-title">
+    <div class="section-title reveal-item">
         <span data-i18n="faq.badge">KNOWLEDGE BASE</span>
         <h2 id="faqTitle" data-i18n="faq.title">Frequently Asked Questions</h2>
         <p data-i18n="faq.desc">
@@ -1936,7 +1983,7 @@
 
         <div class="faq-accordion" id="faqAccordion">
             <!-- FAQ 1: Code Ownership & IP -->
-            <div class="faq-item" data-faq-cat="engineering">
+            <div class="faq-item reveal-item" data-faq-cat="engineering">
                 <button type="button" class="faq-question" aria-expanded="false">
                     <span data-i18n="faq.q1">Who owns the intellectual property and source code of custom projects?</span>
                     <i data-lucide="chevron-down" class="faq-chevron" aria-hidden="true"></i>
@@ -1949,7 +1996,7 @@
             </div>
 
             <!-- FAQ 2: Project Delivery Timeline -->
-            <div class="faq-item" data-faq-cat="engineering">
+            <div class="faq-item reveal-item" data-faq-cat="engineering">
                 <button type="button" class="faq-question" aria-expanded="false">
                     <span data-i18n="faq.q2">What is the typical turnaround timeline for custom software or automation?</span>
                     <i data-lucide="chevron-down" class="faq-chevron" aria-hidden="true"></i>
@@ -1962,7 +2009,7 @@
             </div>
 
             <!-- FAQ 3: How Digital Assistance Works -->
-            <div class="faq-item" data-faq-cat="digital">
+            <div class="faq-item reveal-item" data-faq-cat="digital">
                 <button type="button" class="faq-question" aria-expanded="false">
                     <span data-i18n="faq.q3">How does XESTUS help ordinary people with online form filling and applications?</span>
                     <i data-lucide="chevron-down" class="faq-chevron" aria-hidden="true"></i>
@@ -1975,7 +2022,7 @@
             </div>
 
             <!-- FAQ 4: Digital Pricing Transparency -->
-            <div class="faq-item" data-faq-cat="digital">
+            <div class="faq-item reveal-item" data-faq-cat="digital">
                 <button type="button" class="faq-question" aria-expanded="false">
                     <span data-i18n="faq.q4">Is digital form assistance affordable for students and individuals?</span>
                     <i data-lucide="chevron-down" class="faq-chevron" aria-hidden="true"></i>
@@ -1988,7 +2035,7 @@
             </div>
 
             <!-- FAQ 5: Data Confidentiality & NDA -->
-            <div class="faq-item" data-faq-cat="trust">
+            <div class="faq-item reveal-item" data-faq-cat="trust">
                 <button type="button" class="faq-question" aria-expanded="false">
                     <span data-i18n="faq.q5">How do you ensure data confidentiality and privacy?</span>
                     <i data-lucide="chevron-down" class="faq-chevron" aria-hidden="true"></i>
@@ -2001,7 +2048,7 @@
             </div>
 
             <!-- FAQ 6: Home Server & Production Independence -->
-            <div class="faq-item" data-faq-cat="engineering">
+            <div class="faq-item reveal-item" data-faq-cat="engineering">
                 <button type="button" class="faq-question" aria-expanded="false">
                     <span data-i18n="faq.q6">How does the XESTUS development lab and edge hardware operate?</span>
                     <i data-lucide="chevron-down" class="faq-chevron" aria-hidden="true"></i>
@@ -2020,7 +2067,7 @@
      INTERACTIVE PROJECT ESTIMATOR & SCOPE BUILDER
      ========================================================================== -->
 <section class="estimator" id="estimator" aria-labelledby="estimatorTitle">
-    <div class="section-title">
+    <div class="section-title reveal-item">
         <span data-i18n="estimator.badge">INTERACTIVE SCOPE BUILDER</span>
         <h2 id="estimatorTitle" data-i18n="estimator.title">Project Estimator &amp; Scope Builder</h2>
         <p data-i18n="estimator.desc">
@@ -2127,7 +2174,7 @@
  ========================================================================== -->
 <section class="contact" id="contact">
 
- <div class="section-title">
+ <div class="section-title reveal-item">
  <span class="badge-pulsing"><i data-lucide="send"></i> <span data-i18n="contact.badge">INITIATE CONSULTATION</span></span>
  <h2 data-i18n="contact.title">Architect Your Next Breakthrough</h2>
  <p data-i18n="contact.desc">
@@ -2143,7 +2190,7 @@
  <div class="contact-card-group">
 
  <!-- Direct Email Channel with Copy Action -->
- <div class="contact-channel-card">
+ <div class="contact-channel-card reveal-item">
  <div class="channel-icon">
  <i data-lucide="mail"></i>
  </div>
@@ -2158,7 +2205,7 @@
  </div>
 
  <!-- Executive Leadership Channel -->
- <div class="contact-channel-card">
+ <div class="contact-channel-card reveal-item">
  <div class="channel-icon">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
  </div>
@@ -2214,7 +2261,7 @@
  </div>
 
  <!-- Right Column: Glassmorphic Inquiry Form -->
- <div class="contact-form-wrapper">
+ <div class="contact-form-wrapper reveal-item">
 
  <form class="contact-form" id="contactForm" novalidate>
         <input type="text" name="_gotcha_filter" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important">
@@ -2333,7 +2380,7 @@
      ========================================================================== -->
 <section class="follow-section" id="updates" aria-labelledby="followSectionTitle">
     <div class="follow-container">
-        <div class="follow-card">
+        <div class="follow-card reveal-item">
             <div class="follow-ambient-glow" aria-hidden="true"></div>
 
             <div class="follow-content">
@@ -2358,11 +2405,21 @@
             </div>
 
             <div class="follow-action-box">
-                <button type="button" class="btn-primary btn-follow-trigger magnetic-btn" id="followXestusBtn" aria-haspopup="dialog" aria-controls="followModal">
+                <button type="button" class="btn-primary btn-follow-trigger magnetic-btn" id="followXestusBtn" aria-label="Follow XESTUS updates">
                     <i data-lucide="bell" class="follow-btn-icon" aria-hidden="true"></i>
                     <span class="follow-btn-text" data-i18n="common.follow_xestus">Follow XESTUS</span>
                 </button>
-                <span class="follow-subtext" data-i18n="follow.subtext">Direct notification via Email &amp; Browser</span>
+
+                <!-- Interactive Followers Counting Button -->
+                <button type="button" class="btn-followers-count" id="btnFollowersCount" aria-haspopup="dialog" aria-controls="statsModal" aria-label="View verified followers statistics" title="Click to view verified followers breakdown">
+                    <span class="count-pulse-dot" aria-hidden="true"></span>
+                    <i data-lucide="users" class="count-icon" aria-hidden="true"></i>
+                    <span class="count-num" id="globalFollowersCount">1,248</span>
+                    <span class="count-text" data-i18n="stats.followers_header">Confirmed Followers</span>
+                    <i data-lucide="arrow-up-right" class="count-arrow" aria-hidden="true"></i>
+                </button>
+
+                <span class="follow-subtext" data-i18n="follow.subtext">Direct notification via Browser &amp; Network</span>
             </div>
         </div>
     </div>
@@ -2530,112 +2587,6 @@
  </button>
  <div class="modal-content-container" id="modalContentContainer">
  <!-- Dynamically populated by script.js -->
- </div>
- </div>
-</div>
-
-<!-- Accessible Follow XESTUS Modal Dialog -->
-<div id="followModal" class="case-study-modal follow-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="followModalTitle">
- <div class="case-study-backdrop" id="followModalBackdrop"></div>
- <div class="case-study-dialog follow-dialog" role="document">
- <button type="button" class="modal-close-btn" id="followModalCloseBtn" aria-label="Close Follow Dialog">
- <i data-lucide="x"></i>
- </button>
- <div class="modal-content-container follow-modal-container">
- 
- <!-- View 1: Subscribe Form -->
- <div id="followSubscribeView" class="follow-view active">
- <div class="follow-modal-header">
- <div class="follow-modal-icon">
- <i data-lucide="bell"></i>
- </div>
- <span class="follow-tag" data-i18n="follow.badge">XESTUS DISPATCH</span>
- <h2 id="followModalTitle" data-i18n="follow.modal_title">Follow XESTUS Intelligence</h2>
- <p class="follow-modal-desc" data-i18n="follow.modal_sub">
- Get instant, high-signal technical dispatches whenever XESTUS releases breakthrough innovations, open-source architectures, or company milestones.
- </p>
- </div>
-
- <form id="followModalForm" class="follow-form" novalidate>
- <input type="text" name="_bot_filter" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important">
- <div class="form-group">
- <label for="followEmail"><span data-i18n="follow.email_label">Work or Personal Email</span> <span class="required" aria-hidden="true">*</span></label>
- <div class="input-icon-wrapper">
- <i data-lucide="mail" class="input-icon" aria-hidden="true"></i>
- <input 
- type="email" 
- id="followEmail" 
- name="email" 
- placeholder="colleague@enterprise.com" 
- data-i18n-placeholder="follow.email_placeholder"
- required 
- autocomplete="email" 
- aria-describedby="followEmailError"
- >
- </div>
- <span id="followEmailError" class="field-error-msg" role="alert" aria-live="polite"></span>
- </div>
-
- <div class="follow-pref-group">
- <span class="pref-group-label" data-i18n="follow.channels_label">Notification Channels:</span>
- <label class="custom-checkbox-label">
- <input type="checkbox" id="prefEmail" name="prefEmail" checked>
- <span class="checkbox-box"><i data-lucide="check"></i></span>
- <span class="checkbox-text" data-i18n="follow.pref_email">Email Dispatches (Direct inbox briefing)</span>
- </label>
- <label class="custom-checkbox-label">
- <input type="checkbox" id="prefPush" name="prefPush">
- <span class="checkbox-box"><i data-lucide="check"></i></span>
- <span class="checkbox-text" data-i18n="follow.pref_push">Web Push Alerts (Instant browser notification)</span>
- </label>
- </div>
-
- <div class="follow-consent-group">
- <label class="custom-checkbox-label">
- <input type="checkbox" id="followConsent" name="consent" required>
- <span class="checkbox-box"><i data-lucide="check"></i></span>
- <span class="checkbox-text" data-i18n="follow.consent">I agree to receive XESTUS updates about new products, innovations, and announcements. Zero spam, strictly confidential, one-click unfollow anytime.</span>
- </label>
- <span id="followConsentError" class="field-error-msg" role="alert" aria-live="polite"></span>
- </div>
-
- <div class="follow-submit-wrap">
- <button type="submit" class="btn-follow-submit" id="followSubmitBtn">
- <span class="btn-text" data-i18n="follow.submit_btn">Confirm &amp; Follow</span>
- <i data-lucide="arrow-right"></i>
- </button>
- </div>
-
- <div id="followStatusMsg" class="follow-status-msg" role="status" aria-live="polite"></div>
- </form>
- </div>
-
- <!-- View 2: Already Following / Manage State -->
- <div id="followManageView" class="follow-view" style="display: none;">
- <div class="follow-modal-header">
- <div class="follow-modal-icon active">
- <i data-lucide="check-circle-2"></i>
- </div>
- <span class="follow-tag status-active">ACTIVE SUBSCRIPTION</span>
- <h2 data-i18n="follow.active_title">You Are Following XESTUS</h2>
- <p class="follow-modal-desc" data-i18n="follow.active_sub">
- You are currently subscribed to official technical announcements and Innovation Lab updates as:
- </p>
- <div class="following-badge-email" id="followingEmailDisplay">subscriber@domain.com</div>
- </div>
-
- <div class="follow-manage-actions">
- <button type="button" class="btn-unfollow" id="btnUnfollow">
- <i data-lucide="bell-off"></i>
- <span data-i18n="follow.unfollow_btn">Unfollow / Stop Receiving Updates</span>
- </button>
- <button type="button" class="btn-done" id="btnFollowDone">
- <span data-i18n="follow.keep_btn">Keep Following &amp; Close</span>
- </button>
- </div>
- <div id="unfollowStatusMsg" class="follow-status-msg" role="status" aria-live="polite"></div>
- </div>
-
  </div>
  </div>
 </div>
