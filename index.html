@@ -2,6 +2,22 @@
 <html lang="en">
 
 <head>
+    <!-- Immediate Theme Initialization (Prevents Flash of Unstyled Theme) -->
+    <script>
+        (function() {
+            try {
+                var storedTheme = localStorage.getItem('xestus_theme');
+                if (storedTheme && ['night', 'day', 'eye-protect'].indexOf(storedTheme) !== -1) {
+                    document.documentElement.setAttribute('data-theme', storedTheme);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'day');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'night');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
     <!-- Google Analytics (gtag.js) - Deferred Initialization -->
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -70,8 +86,9 @@
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="style.css?v=3.5.1">
 
-    <!-- Preloaded Translations Dictionary -->
+    <!-- Preloaded Translations Dictionary & Central Service Registry -->
     <script src="js/translations.js?v=1.1.0"></script>
+    <script src="js/digital-seva-data.js?v=1.0.0"></script>
 
     <!-- Unified Structured Data / JSON-LD -->
     <script type="application/ld+json">
@@ -159,15 +176,40 @@
     </a>
 
     <ul class="nav-links" id="primaryNav">
-        <li><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
-        <li><a href="#digital-services" class="nav-link" data-i18n="nav.digital_services">Digital Help</a></li>
-        <li><a href="#portfolio" class="nav-link" data-i18n="nav.projects">Projects</a></li>
-        <li><a href="#products" class="nav-link" data-i18n="nav.products">Products</a></li>
-        <li><a href="#lab" class="nav-link"><span data-i18n="nav.lab">Innovation</span> <span class="nav-lab-badge">Lab</span></a></li>
-        <li><a href="#roadmap" class="nav-link" data-i18n="nav.roadmap">Roadmap</a></li>
-        <li><a href="#founder" class="nav-link" data-i18n="nav.about">About</a></li>
-        <li><a href="#faq" class="nav-link" data-i18n="nav.faq">FAQ</a></li>
-        <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+        <!-- Desktop Primary Navigation (Clean Hierarchy) -->
+        <li class="desktop-nav-item"><a href="#digital-services" class="nav-link" data-i18n="nav.digital_services">Digital Help</a></li>
+        <li class="desktop-nav-item"><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
+        <li class="desktop-nav-item"><a href="#portfolio" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+        <li class="desktop-nav-item"><a href="#lab" class="nav-link" data-i18n="nav.lab">Innovation</a></li>
+        <li class="desktop-nav-item"><a href="#tools" class="nav-link">Tools</a></li>
+
+        <!-- Desktop More Dropdown -->
+        <li class="nav-item-dropdown desktop-nav-item" id="navMoreDropdown">
+            <button type="button" class="nav-link nav-dropdown-btn" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" aria-label="More Navigation Options">
+                <span data-i18n="nav.more">More</span>
+                <i data-lucide="chevron-down" class="nav-dropdown-chevron" aria-hidden="true"></i>
+            </button>
+            <div class="nav-dropdown-menu" id="navMoreMenu" role="menu" aria-label="More Navigation">
+                <a href="#about" class="nav-dropdown-item" role="menuitem" data-i18n="nav.about">About</a>
+                <a href="#faq" class="nav-dropdown-item" role="menuitem" data-i18n="nav.faq">FAQ</a>
+                <a href="#internship" class="nav-dropdown-item" role="menuitem">Internship &amp; Training</a>
+                <a href="#roadmap" class="nav-dropdown-item" role="menuitem" data-i18n="nav.roadmap">Roadmap</a>
+                <a href="#products" class="nav-dropdown-item" role="menuitem" data-i18n="nav.products">Products Pipeline</a>
+                <a href="#contact" class="nav-dropdown-item" role="menuitem" data-i18n="nav.contact">Contact</a>
+            </div>
+        </li>
+
+        <!-- Mobile Drawer Direct Links (Hidden on Desktop) -->
+        <li class="mobile-nav-item"><a href="#digital-services" class="nav-link" data-i18n="nav.digital_services">Digital Help</a></li>
+        <li class="mobile-nav-item"><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
+        <li class="mobile-nav-item"><a href="#portfolio" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+        <li class="mobile-nav-item"><a href="#lab" class="nav-link" data-i18n="nav.lab">Innovation Lab</a></li>
+        <li class="mobile-nav-item"><a href="#tools" class="nav-link">Tools Directory</a></li>
+        <li class="mobile-nav-item"><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+        <li class="mobile-nav-item"><a href="#faq" class="nav-link" data-i18n="nav.faq">FAQ</a></li>
+        <li class="mobile-nav-item"><a href="#internship" class="nav-link">Internship &amp; Training</a></li>
+        <li class="mobile-nav-item"><a href="#roadmap" class="nav-link" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li class="mobile-nav-item"><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
 
         <!-- Mobile Language Selector Strip -->
         <li class="mobile-lang-strip" aria-label="Select Language">
@@ -176,9 +218,40 @@
             <button type="button" class="mobile-lang-btn" data-lang="bn">বাংলা</button>
             <button type="button" class="mobile-lang-btn" data-lang="hi">हिन्दी</button>
         </li>
+
+        <!-- Mobile Theme Selector Strip -->
+        <li class="mobile-theme-strip" aria-label="Select Theme Mode">
+            <span class="theme-strip-title"><i data-lucide="palette" aria-hidden="true"></i> Theme:</span>
+            <button type="button" class="mobile-theme-btn" data-theme="day">Day</button>
+            <button type="button" class="mobile-theme-btn active" data-theme="night">Night</button>
+            <button type="button" class="mobile-theme-btn" data-theme="eye-protect">Eye Protect</button>
+        </li>
     </ul>
 
     <div class="nav-actions">
+        <!-- 3-Theme Switcher Dropdown (Day / Night / Eye Protection) -->
+        <div class="theme-switcher" id="themeSwitcher">
+            <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Website Theme Mode" title="Select Theme (Day, Night, Eye Protection)">
+                <i data-lucide="moon" class="theme-active-icon" aria-hidden="true"></i>
+                <span class="theme-current-label">Night</span>
+                <i data-lucide="chevron-down" class="theme-chevron" aria-hidden="true"></i>
+            </button>
+            <div class="theme-dropdown" id="themeDropdown" role="menu" aria-label="Theme Options">
+                <button type="button" class="theme-opt" data-theme="day" role="menuitem">
+                    <i data-lucide="sun" aria-hidden="true"></i>
+                    <span>Day</span>
+                </button>
+                <button type="button" class="theme-opt active" data-theme="night" role="menuitem">
+                    <i data-lucide="moon" aria-hidden="true"></i>
+                    <span>Night</span>
+                </button>
+                <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem">
+                    <i data-lucide="glasses" aria-hidden="true"></i>
+                    <span>Eye Protect</span>
+                </button>
+            </div>
+        </div>
+
         <!-- Language Switcher Dropdown -->
         <div class="lang-switcher" id="langSwitcher">
             <button type="button" class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Language" title="Select Website Language">
@@ -201,12 +274,6 @@
                 </button>
             </div>
         </div>
-
-        <!-- Compact Navbar Follow CTA -->
-        <button type="button" class="btn-nav-follow btn-follow-trigger" aria-label="Follow XESTUS" title="Follow XESTUS for technical updates">
-            <i data-lucide="bell" class="follow-btn-icon" aria-hidden="true"></i>
-            <span class="follow-btn-text" data-i18n="common.follow">Follow</span>
-        </button>
 
         <a href="#contact" class="btn-primary btn-nav-cta magnetic-btn">
             <span data-i18n="common.start_project">Start a Project</span>
@@ -244,7 +311,7 @@
             </h1>
 
             <p class="hero-description" data-i18n="hero.description">
-                We engineer autonomous AI agent swarms, high-performance web platforms, and mission-critical enterprise automation pipelines.
+                We engineer autonomous AI agent swarms, high-performance web platforms, and mission-critical enterprise automation pipelines. Where high-caliber engineering meets human utility.
             </p>
 
             <div class="hero-cta-group">
@@ -256,13 +323,23 @@
                 <a href="#services" class="btn-secondary hero-btn-secondary magnetic-btn">
                     <span data-i18n="hero.explore_solutions">Explore Solutions</span>
                 </a>
-
-                <button type="button" class="btn-secondary hero-btn-follow btn-follow-trigger magnetic-btn" aria-label="Follow XESTUS updates">
-                    <i data-lucide="bell" class="follow-btn-icon" aria-hidden="true"></i>
-                    <span class="follow-btn-text" data-i18n="common.follow_xestus">Follow XESTUS</span>
-                </button>
             </div>
-            <span class="hero-follow-hint" data-i18n="hero.follow_hint">Get notified when we build something new.</span>
+
+            <!-- Truthful Core Commitments Cards -->
+            <div class="stitch-kpi-grid" aria-label="XESTUS Core Commitments">
+                <div class="stitch-kpi-card">
+                    <span class="stitch-kpi-val">Client-Side</span>
+                    <span class="stitch-kpi-lbl">Privacy-First In-Browser Utilities</span>
+                </div>
+                <div class="stitch-kpi-card">
+                    <span class="stitch-kpi-val">Edge CDN</span>
+                    <span class="stitch-kpi-lbl">Resilient Global Infrastructure</span>
+                </div>
+                <div class="stitch-kpi-card kpi-accent">
+                    <span class="stitch-kpi-val">Direct SLA</span>
+                    <span class="stitch-kpi-lbl">Senior Engineering Collaboration</span>
+                </div>
+            </div>
 
             <!-- XESTUS Live Stats / Social Proof Component -->
             <div class="hero-live-stats" id="heroLiveStats" aria-label="XESTUS Live Activity and Follower Stats">
@@ -387,203 +464,685 @@
   </section>
   <!-- Hero -->
 
- <!-- =========================
- SERVICES SECTION
-========================= -->
+<!-- ==========================================================================
+     DIGITAL SERVICES FOR EVERYONE SECTION (PRACTICAL & AFFORDABLE ONLINE HELP)
+     ========================================================================== -->
+<!-- ==========================================================================
+     DIGITAL SEVA COMMAND CENTER — SERVICE DISCOVERY & GUIDANCE PLATFORM
+     ========================================================================== -->
+<section class="digital-services" id="digital-services" aria-labelledby="digitalServicesTitle">
+    <div class="stitch-section-header reveal-item">
+        <span class="stitch-tag-mono">SECTION 01 // XESTUS DIGITAL SEVA COMMAND CENTER</span>
+        <h2 class="stitch-section-title" id="digitalServicesTitle">XESTUS DIGITAL SEVA COMMAND CENTER (ডিজিটাল সেবা কমান্ড সেন্টার)</h2>
+        <p class="stitch-section-desc" data-i18n="digital.desc">
+            Your Gateway to Essential Digital Services — Find the service you need. Understand the process. Prepare your documents. Open the authentic official portal.
+        </p>
+    </div>
+
+    <!-- 4-Item Public Trust & Integrity Strip -->
+    <div class="seva-trust-strip reveal-item" aria-label="XESTUS Trust and Transparency Commitments">
+        <div class="trust-strip-item">
+            <div class="trust-strip-icon"><i data-lucide="shield-check" aria-hidden="true"></i></div>
+            <div class="trust-strip-text">
+                <strong>Verified Official Destinations</strong>
+                <span>Statutory .gov.in, .nic.in &amp; authentic portals</span>
+            </div>
+        </div>
+        <div class="trust-strip-item">
+            <div class="trust-strip-icon"><i data-lucide="compass" aria-hidden="true"></i></div>
+            <div class="trust-strip-text">
+                <strong>Independent XESTUS Guidance</strong>
+                <span>Document checklists &amp; step-by-step preparation</span>
+            </div>
+        </div>
+        <div class="trust-strip-item">
+            <div class="trust-strip-icon"><i data-lucide="lock" aria-hidden="true"></i></div>
+            <div class="trust-strip-text">
+                <strong>Zero Credential Collection</strong>
+                <span>Logins &amp; payments stay 100% on official servers</span>
+            </div>
+        </div>
+        <div class="trust-strip-item">
+            <div class="trust-strip-icon"><i data-lucide="scale" aria-hidden="true"></i></div>
+            <div class="trust-strip-text">
+                <strong>Independent Platform</strong>
+                <span>Discovery &amp; navigation — no govt representation</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security & Official Trust Advisory Banner -->
+    <div class="stitch-alert-box reveal-item" role="alert">
+        <div class="stitch-alert-content">
+            <i data-lucide="shield-alert" aria-hidden="true"></i>
+            <span><strong>SAFETY FIRST:</strong> Always verify you are on the authentic official statutory portal (.gov.in / .nic.in) before entering sensitive personal, identity, or financial details. XESTUS is an independent discovery and guidance platform and never asks for your OTP, passwords, or payment PINs.</span>
+        </div>
+        <button type="button" class="stitch-alert-btn" id="btnStitchScamLink" onclick="document.getElementById('btnOpenScamCenter').click()">
+            <span>SCAM DEFENSE HUB ↗</span>
+        </button>
+    </div>
+
+    <!-- Large Smart Intent Search Box -->
+    <div class="seva-search-wrapper reveal-item">
+        <div class="seva-search-box-large">
+            <i data-lucide="search" class="search-icon" aria-hidden="true"></i>
+            <input type="search" id="sevaSearchInput" placeholder="What do you need help with? (e.g. Caste Certificate, Scholarship, Land Record, Driving Licence, Passport, Job, Health)" aria-label="Search Digital Help Services">
+            <button type="button" class="btn-seva-clear-search" id="btnSevaClearSearch" aria-label="Clear Search" style="display: none;">
+                <i data-lucide="x" aria-hidden="true"></i>
+            </button>
+            <span class="seva-result-badge" id="sevaResultCount">Loading Services...</span>
+        </div>
+        <!-- Search Suggestion Chips -->
+        <div class="seva-search-chips" aria-label="Popular Search Suggestions">
+            <span class="search-chips-label"><i data-lucide="sparkles" aria-hidden="true"></i> Suggestions:</span>
+            <button type="button" class="search-chip-btn" data-query="Caste Certificate">Caste Certificate</button>
+            <button type="button" class="search-chip-btn" data-query="Scholarship">Scholarship</button>
+            <button type="button" class="search-chip-btn" data-query="Land Record">Land Record</button>
+            <button type="button" class="search-chip-btn" data-query="Driving Licence">Driving Licence</button>
+            <button type="button" class="search-chip-btn" data-query="Passport">Passport</button>
+            <button type="button" class="search-chip-btn" data-query="Government Scheme">Government Scheme</button>
+            <button type="button" class="search-chip-btn" data-query="Job">Job</button>
+            <button type="button" class="search-chip-btn" data-query="Health Service">Health Service</button>
+            <button type="button" class="search-chip-btn" data-query="Lakshmir Bhandar">Lakshmir Bhandar</button>
+            <button type="button" class="search-chip-btn" data-query="PM-KISAN">PM-KISAN</button>
+        </div>
+        <div class="seva-active-filters" id="sevaActiveFilterTags"></div>
+    </div>
+
+    <!-- Task-First Discovery: "I NEED HELP WITH..." (12 Key Pillars) -->
+    <div class="seva-task-discovery-section reveal-item">
+        <div class="seva-section-label">
+            <i data-lucide="layout-grid" aria-hidden="true"></i>
+            <span data-i18n="seva.task_discovery_title">I NEED HELP WITH... (কিসে সাহায্য চান?)</span>
+        </div>
+        <div class="seva-task-grid" id="sevaTaskGrid">
+            <!-- 1. Documents & Identity -->
+            <button type="button" class="seva-task-card" data-category="identity-docs" data-task="documents">
+                <span class="task-card-icon">🪪</span>
+                <div class="task-card-content">
+                    <h4 class="task-card-title">Documents &amp; Identity</h4>
+                    <span class="task-card-sub">Aadhaar, Voter, PAN, Passport, Birth/Death</span>
+                </div>
+            </button>
+
+            <!-- 2. Government Schemes -->
+            <button type="button" class="seva-task-card" data-category="welfare-schemes" data-task="schemes">
+                <span class="task-card-icon">🏛️</span>
+                <div class="task-card-content">
+                    <h4 class="task-card-title">Government Schemes</h4>
+                    <span class="task-card-sub">Lakshmir Bhandar, Kanyashree, Rupashree, Jai Bangla</span>
+                </div>
+            </button>
+
+            <!-- 3. Scholarships & Education -->
+            <button type="button" class="seva-task-card" data-category="scholarships" data-task="scholarships">
+                <span class="task-card-icon">🎓</span>
+                <div class="task-card-content">
+                    <h4 class="task-card-title">Scholarships &amp; Education</h4>
+                    <span class="task-card-sub">SVMCM, Oasis, NSP, Student Credit Card, WBCAP</span>
+                </div>
+            </button>
+
+            <!-- 4. Jobs & Careers -->
+            <button type="button" class="seva-task-card" data-category="jobs" data-task="jobs">
+                <span class="task-card-icon">💼</span>
+                <div class="task-card-content">
+                    <h4 class="task-card-title">Jobs &amp; Recruitment</h4>
+                    <span class="task-card-sub">SSC, UPSC, WBPSC, WBP Police, RRB, Private</span>
+                </div>
+            </button>
+
+            <!-- 5. Land & Property Records -->
+            <button type="button" class="seva-task-card" data-category="land-property" data-task="land">
+                <span class="task-card-icon">🏠</span>
+                <div class="task-card-content">
+                    <h4 class="task-card-title">Land &amp; Property Records</h4>
+                    <span class="task-card-sub">Banglarbhumi, Khatian, Mutation, Deeds, Stamps</span>
+                </div>
+            </button>
+
+            <!-- 6. Transport & Driving -->
+            <button type="button" class="seva-task-card" data-category="driving-vehicles" data-task="transport">
+                <span class="task-card-icon">🚗</span>
+                <div class="task-card-content">
+                    <h4 class="task-card-title">Transport &amp; Driving</h4>
+                    <span class="task-card-sub">Driving Licence, Vehicle RC, eChallan, IRCTC</span>
+                </div>
+            </button>
+
+            <!-- 7. Health & Medical -->
+            <button type="button" class="seva-task-card" data-category="healthcare" data-task="health">
+                <span class="task-card-icon">🏥</span>
+                <div class="task-card-content">
+                    <h4 class="task-card-title">Health &amp; Medical</h4>
+                    <span class="task-card-sub">Swasthya Sathi, Ayushman Bharat, ABHA, Telemedicine</span>
+                </div>
+            </button>
+
+            <!-- 8. Business & MSME -->
+            <button type="button" class="seva-task-card" data-category="business-startup" data-task="business">
+                <span class="task-card-icon">🏢</span>
+                <div class="task-card-content">
+                    <h4 class="task-card-title">Business &amp; MSME</h4>
+                    <span class="task-card-sub">Udyam, GST, MCA21, SilpaSathi, GeM Portal</span>
+                </div>
+            </button>
+
+            <!-- 9. Finance & Tax -->
+            <button type="button" class="seva-task-card" data-category="tax-gst" data-task="finance">
+                <span class="task-card-icon">🧾</span>
+                <div class="task-card-content">
+                    <h4 class="task-card-title">Finance &amp; Tax</h4>
+                    <span class="task-card-sub">Income Tax ITR, e-Way Bill, PFMS, DBT Bharat</span>
+                </div>
+            </button>
+
+            <!-- 10. Utilities & Electricity -->
+            <button type="button" class="seva-task-card" data-category="utilities" data-task="utilities">
+                <span class="task-card-icon">⚡</span>
+                <div class="task-card-content">
+                    <h4 class="task-card-title">Utilities &amp; Energy</h4>
+                    <span class="task-card-sub">WBSEDCL, CESC, LPG Gas, Solar Muft Bijli</span>
+                </div>
+            </button>
+
+            <!-- 11. Farmers & Agriculture -->
+            <button type="button" class="seva-task-card" data-category="agriculture" data-task="farmers">
+                <span class="task-card-icon">🌾</span>
+                <div class="task-card-content">
+                    <h4 class="task-card-title">Farmers &amp; Agriculture</h4>
+                    <span class="task-card-sub">PM-KISAN, Krishak Bandhu, Matir Katha, e-NAM</span>
+                </div>
+            </button>
+
+            <!-- 12. Banking & Private Platforms -->
+            <button type="button" class="seva-task-card" data-category="banking-finance" data-task="banking">
+                <span class="task-card-icon">🏦</span>
+                <div class="task-card-content">
+                    <h4 class="task-card-title">Banking &amp; Private Services</h4>
+                    <span class="task-card-sub">SBI, HDFC, NPCI BHIM UPI, PhonePe, Telecom</span>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hierarchical Filter Bar (Jurisdiction & Category Chips) -->
+    <div class="digital-filter-bar reveal-item" role="tablist" aria-label="Digital Seva Categories and Jurisdictions">
+        <button type="button" class="digital-filter-btn seva-filter-pill active" data-filter-type="all" data-value="all" role="tab" aria-selected="true">
+            <i data-lucide="layout-grid" aria-hidden="true"></i>
+            <span data-i18n="digital.filter_all">All Services</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="govLevel" data-value="Central" role="tab" aria-selected="false">
+            <i data-lucide="landmark" aria-hidden="true"></i>
+            <span>Central Govt (GoI)</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="govLevel" data-value="State" role="tab" aria-selected="false">
+            <i data-lucide="building" aria-hidden="true"></i>
+            <span>West Bengal Govt (WB)</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="wb-edistrict" role="tab" aria-selected="false">
+            <i data-lucide="map-pin" aria-hidden="true"></i>
+            <span>Local / District (e-District)</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="master" data-value="master" role="tab" aria-selected="false">
+            <i data-lucide="shield-check" aria-hidden="true"></i>
+            <span>Master Gateways</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="identity-docs" role="tab" aria-selected="false">
+            <i data-lucide="file-badge" aria-hidden="true"></i>
+            <span>Documents &amp; Identity</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="education" role="tab" aria-selected="false">
+            <i data-lucide="graduation-cap" aria-hidden="true"></i>
+            <span>Education &amp; Admissions</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="scholarships" role="tab" aria-selected="false">
+            <i data-lucide="award" aria-hidden="true"></i>
+            <span>Scholarships</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="jobs" role="tab" aria-selected="false">
+            <i data-lucide="briefcase" aria-hidden="true"></i>
+            <span>Jobs &amp; Careers</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="healthcare" role="tab" aria-selected="false">
+            <i data-lucide="heart-pulse" aria-hidden="true"></i>
+            <span>Health &amp; Medical</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="driving-vehicles" role="tab" aria-selected="false">
+            <i data-lucide="car" aria-hidden="true"></i>
+            <span>Transport &amp; Driving</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="land-property" role="tab" aria-selected="false">
+            <i data-lucide="home" aria-hidden="true"></i>
+            <span>Land &amp; Property</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="agriculture" role="tab" aria-selected="false">
+            <i data-lucide="sprout" aria-hidden="true"></i>
+            <span>Agriculture</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="welfare-schemes" role="tab" aria-selected="false">
+            <i data-lucide="gift" aria-hidden="true"></i>
+            <span>Welfare &amp; Schemes</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="women-girls" role="tab" aria-selected="false">
+            <i data-lucide="users" aria-hidden="true"></i>
+            <span>Women &amp; Child</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="skill-development" role="tab" aria-selected="false">
+            <i data-lucide="award" aria-hidden="true"></i>
+            <span>Youth &amp; Skills</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="tax-gst" role="tab" aria-selected="false">
+            <i data-lucide="receipt" aria-hidden="true"></i>
+            <span>Finance &amp; Tax</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="business-startup" role="tab" aria-selected="false">
+            <i data-lucide="building-2" aria-hidden="true"></i>
+            <span>Business &amp; MSME</span>
+        </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="govLevel" data-value="Private" role="tab" aria-selected="false">
+            <i data-lucide="zap" aria-hidden="true"></i>
+            <span>Private Services</span>
+        </button>
+        <button type="button" class="digital-filter-btn btn-catalog-trigger" id="btnViewAllCategories">
+            <i data-lucide="grid" aria-hidden="true"></i>
+            <span data-i18n="seva.all_categories_btn">All 59 Categories ↗</span>
+        </button>
+        <button type="button" class="digital-filter-btn btn-scam-trigger" id="btnOpenScamCenter">
+            <i data-lucide="shield-alert" aria-hidden="true"></i>
+            <span data-i18n="seva.scam_center_btn">Scam Defense Hub ↗</span>
+        </button>
+    </div>
+
+    <!-- Master Verified Government Gateways -->
+    <div class="seva-master-portals-section reveal-item" id="sevaMasterGatewaysSection">
+        <div class="seva-section-header">
+            <h3><i data-lucide="shield-check"></i> <span data-i18n="seva.master_portals_title">Direct Access to Verified Government Portals</span></h3>
+            <p data-i18n="seva.master_portals_sub">Authentic statutory gateways for direct citizen services (BSK, e-District 2.0, UMANG, India.gov.in, Duare Sarkar, ServicePlus).</p>
+        </div>
+        <div class="seva-master-portals-grid" id="sevaMasterPortalsGrid">
+            <!-- Dynamically populated by js/digital-seva-hub.js -->
+        </div>
+    </div>
+
+    <!-- Dynamic Filtered Services Grid -->
+    <div class="seva-services-section">
+        <div class="seva-services-grid" id="sevaServicesGrid"></div>
+
+        <!-- Fallback Suggestions when 0 exact results match -->
+        <div class="seva-fallback-suggestions" id="sevaFallbackSuggestions" style="display: none;">
+            <div class="fallback-header">
+                <i data-lucide="compass" aria-hidden="true"></i>
+                <h4>No exact match found — Try these related services:</h4>
+            </div>
+            <div class="fallback-cards-row" id="sevaFallbackCardsRow"></div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="seva-empty-state" id="sevaEmptyState" style="display: none;">
+            <i data-lucide="search-x"></i>
+            <h4>No matching services found</h4>
+            <p>Try searching for a different keyword (e.g. Caste Certificate, Scholarship, Banglarbhumi, Parivahan, Aadhaar) or explore our 59-category catalog.</p>
+            <button type="button" class="btn-secondary" id="btnClearAllFilters">Reset All Filters</button>
+        </div>
+    </div>
+
+    <!-- Separated Private Services & Digital Utilities Section -->
+    <div class="private-services-section" id="privateServicesSection">
+        <div class="private-services-banner">
+            <div class="private-banner-content">
+                <div class="private-banner-badge">
+                    <span class="badge-dot-private" aria-hidden="true"></span>
+                    <span>COMMERCIAL &amp; PRIVATE DIGITAL PLATFORMS</span>
+                </div>
+                <h3>Private Services, Banking &amp; Digital Utilities</h3>
+                <p>
+                    Verified links to legitimate private platforms for net banking, UPI payments, e-commerce, career portals, and telecom. These are independent commercial entities and are strictly separated from government portals.
+                </p>
+            </div>
+        </div>
+        <div class="private-services-grid" id="sevaPrivateServicesGrid">
+            <!-- Dynamically populated by js/digital-seva-hub.js for Private platforms -->
+        </div>
+    </div>
+
+    <!-- Trust & Responsible Assistance Notice -->
+    <div class="digital-trust-box reveal-item">
+        <div class="digital-trust-icon">
+            <i data-lucide="shield-check"></i>
+        </div>
+        <div class="digital-trust-content">
+            <h4 data-i18n="digital.trust_title">Independent Discovery &amp; Guidance Platform</h4>
+            <p data-i18n="digital.trust_text">
+                XESTUS acts as a discovery and guided navigation layer to authentic official portals. We do not act as a government authority. Always verify your information on the official portal before final submission.
+            </p>
+        </div>
+        <button type="button" class="btn-primary digital-trust-cta" id="btnOpenAssistanceModal" data-service-select="General Digital Assistance">
+            <span data-i18n="digital.banner_cta">Request Form Filling Assistance</span>
+            <i data-lucide="arrow-right"></i>
+        </button>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     FOUNDER & LEADERSHIP PROFILE SECTION (DIRECTLY AFTER DIGITAL SEVA)
+     ========================================================================== -->
+<section class="founder" id="founder">
+    <div class="section-title reveal-item">
+        <span data-i18n="founder.badge">FOUNDER &amp; LEADERSHIP</span>
+        <h2 data-i18n="founder.title">The Vision Driving XESTUS</h2>
+        <p data-i18n="founder.desc">
+            Dedicated to engineering intelligent software systems that empower organizations, automate complexity, and build future-proof technology.
+        </p>
+    </div>
+
+    <div class="founder-container">
+        <!-- Founder Portrait Frame -->
+        <div class="founder-image-wrapper">
+            <div class="founder-image-card">
+                <img
+                    src="assets/images/founder.jpg"
+                    alt="Sudip Khatua - Founder, CEO & Lead Product Architect at XESTUS"
+                    width="400"
+                    height="500"
+                    fetchpriority="high"
+                    decoding="async">
+                <div class="founder-verified-badge">
+                    <i data-lucide="check-circle-2"></i>
+                    <span data-i18n="founder.verified">Verified Founder &amp; CEO</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Founder Details & Philosophy -->
+        <div class="founder-info">
+            <div class="founder-role-badge" data-i18n="founder.profile_badge">LEADERSHIP PROFILE</div>
+            <h3>Sudip Khatua</h3>
+            <h4>Founder, CEO &amp; Lead Product Architect</h4>
+
+            <div class="founder-quote-box">
+                <i data-lucide="quote" class="quote-icon"></i>
+                <p data-i18n="founder.quote">
+                    "At XESTUS, our philosophy is simple: Technology should not merely support a business—it should multiply its intelligence. We engineer high-leverage software architectures that bridge cutting-edge AI research with real-world enterprise execution."
+                </p>
+            </div>
+
+            <p class="founder-bio" data-i18n="founder.bio">
+                Leading product strategy, full-stack architecture, and autonomous AI systems at XESTUS. Dedicated to engineering fast, resilient, and intelligent software that solves operational bottlenecks and scales businesses globally.
+            </p>
+
+            <div class="founder-competencies">
+                <span class="competency-title" data-i18n="founder.domain_mastery">Domain Mastery:</span>
+                <div class="founder-skills">
+                    <span>Autonomous AI &amp; RAG</span>
+                    <span>Full-Stack Web Systems</span>
+                    <span>Event-Driven Automation</span>
+                    <span>Cloud &amp; Micro-Servers</span>
+                    <span>AutoCAD Technical Design</span>
+                </div>
+            </div>
+
+            <div class="founder-actions">
+                <a href="https://www.linkedin.com/in/sudip-khatua-16bb07354"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn-primary magnetic-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    <span data-i18n="founder.connect_linkedin">Connect on LinkedIn</span>
+                </a>
+                <a href="#contact" class="btn-secondary">
+                    <i data-lucide="mail"></i>
+                    <span data-i18n="founder.direct_consultation">Direct Consultation</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     SECTION 02 // AI SOFTWARE & CONSULTING
+     ========================================================================== -->
 <section class="services" id="services">
+    <div class="stitch-section-header reveal-item">
+        <span class="stitch-tag-mono">SECTION 02 // AI SOFTWARE &amp; CONSULTING</span>
+        <h2 class="stitch-section-title">AI SOFTWARE &amp; CONSULTING</h2>
+        <p class="stitch-section-desc">
+            End-to-end engineering for enterprise intelligent automation, autonomous agents, custom agentic workflows, and mission-critical knowledge infrastructure.
+        </p>
+    </div>
 
- <div class="section-title reveal-item">
- <span data-i18n="services.badge">CORE CAPABILITIES</span>
- <h2 data-i18n="services.title">Specialized Engineering Services</h2>
- <p data-i18n="services.desc">
- End-to-end technical solutions designed to automate operations, modernize digital platforms, and deploy custom artificial intelligence.
- </p>
- </div>
+    <!-- 3 Featured Stitch Architecture Cards -->
+    <div class="stitch-cards-row reveal-item" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 42px;">
+        <!-- Card 1: Custom Autonomous Agent Swarms -->
+        <div class="stitch-card">
+            <div class="stitch-card-top">
+                <span class="stitch-card-tag">AGENTIC AI</span>
+                <span class="stitch-card-status"><i data-lucide="zap"></i> ACTIVE ENGINE</span>
+            </div>
+            <h3 class="stitch-card-title">Custom Autonomous Agent Swarms</h3>
+            <p class="stitch-card-desc">
+                Multi-agent networks orchestrated on directed acyclic graphs with self-correcting validation loops for autonomous enterprise execution.
+            </p>
+            <div class="stitch-card-checklist">
+                <span><i data-lucide="check"></i> Multi-Agent LangGraph Orchestration</span>
+                <span><i data-lucide="check"></i> Model Context Protocol (MCP) Tool Integration</span>
+            </div>
+            <div class="stitch-card-actions">
+                <a href="#contact" class="btn-stitch-primary" data-service-select="AI & Autonomous Agents">
+                    <span>Explore Architecture →</span>
+                </a>
+            </div>
+        </div>
 
- <div class="services-container">
- <!-- Service 1: AI Software -->
- <div class="service-card reveal-item">
- <div class="service-icon">
- <i data-lucide="brain"></i>
- </div>
- <h3 data-i18n="services.s1_title">AI Software</h3>
- <p data-i18n="services.s1_desc">
- Custom AI-powered software, intelligent assistants, and custom LLM applications tailored to streamline business decision-making.
- </p>
- <div class="service-tags">
- <span>Python</span>
- <span>OpenAI</span>
- <span>Gemini API</span>
- <span>Claude</span>
- <span>FastAPI</span>
- <span>LangChain</span>
- <span>RAG</span>
- <span>AI Agents</span>
- </div>
- <a href="#contact" class="service-cta">
- <span data-i18n="services.s1_cta">Discuss AI Project</span>
- <i data-lucide="arrow-right"></i>
- </a>
- </div>
+        <!-- Card 2: Autonomous Workflow Automation -->
+        <div class="stitch-card">
+            <div class="stitch-card-top">
+                <span class="stitch-card-tag">AUTOMATION</span>
+                <span class="stitch-card-status"><i data-lucide="zap"></i> ZERO LATENCY</span>
+            </div>
+            <h3 class="stitch-card-title">Autonomous Workflow Automation</h3>
+            <p class="stitch-card-desc">
+                Event-driven distributed webhook ingestion pipelines syncing CRMs, databases, and microservices with automated schema reconciliation.
+            </p>
+            <div class="stitch-card-checklist">
+                <span><i data-lucide="check"></i> Zero-Loss Webhook Queue Clusters</span>
+                <span><i data-lucide="check"></i> Multi-App Enterprise Data Sync</span>
+            </div>
+            <div class="stitch-card-actions">
+                <a href="#contact" class="btn-stitch-primary" data-service-select="Workflow Automation">
+                    <span>Automate Workflows →</span>
+                </a>
+            </div>
+        </div>
 
- <!-- Service 2: Automation -->
- <div class="service-card reveal-item">
- <div class="service-icon">
- <i data-lucide="cpu"></i>
- </div>
- <h3 data-i18n="services.s2_title">Automation</h3>
- <p data-i18n="services.s2_desc">
- Eliminate repetitive manual bottlenecks and synchronize enterprise workflows across platforms with automated pipelines.
- </p>
- <div class="service-tags">
- <span>n8n</span>
- <span>Make</span>
- <span>Zapier</span>
- <span>REST APIs</span>
- <span>Python</span>
- <span>Webhooks</span>
- </div>
- <a href="#contact" class="service-cta">
- <span data-i18n="services.s2_cta">Automate Workflows</span>
- <i data-lucide="arrow-right"></i>
- </a>
- </div>
+        <!-- Card 3: Enterprise Document Intelligence -->
+        <div class="stitch-card">
+            <div class="stitch-card-top">
+                <span class="stitch-card-tag">RAG &amp; SEARCH</span>
+                <span class="stitch-card-status"><i data-lucide="zap"></i> ZERO HALLUCINATION</span>
+            </div>
+            <h3 class="stitch-card-title">Enterprise Document Intelligence</h3>
+            <p class="stitch-card-desc">
+                Hybrid vector RAG neural search engines connecting multi-source corporate documentation with verified citation grounding.
+            </p>
+            <div class="stitch-card-checklist">
+                <span><i data-lucide="check"></i> Sub-Second Vector Retrieval (pgvector)</span>
+                <span><i data-lucide="check"></i> Strict Verifiable Citation Linking</span>
+            </div>
+            <div class="stitch-card-actions">
+                <a href="#contact" class="btn-stitch-primary" data-service-select="AI & Autonomous Agents">
+                    <span>Deploy Neural Search →</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
- <!-- Service 3: Web Development -->
- <div class="service-card reveal-item">
- <div class="service-icon">
- <i data-lucide="globe"></i>
- </div>
- <h3 data-i18n="services.s3_title">Web Development</h3>
- <p data-i18n="services.s3_desc">
- Modern, high-performance web applications and responsive corporate websites engineered for speed, conversion, and global scale.
- </p>
- <div class="service-tags">
- <span>HTML5</span>
- <span>CSS3</span>
- <span>JavaScript</span>
- <span>React</span>
- <span>Node.js</span>
- <span>SEO Architecture</span>
- </div>
- <a href="#contact" class="service-cta">
- <span data-i18n="services.s3_cta">Build Web Platform</span>
- <i data-lucide="arrow-right"></i>
- </a>
- </div>
+    <!-- Core Engineering Capabilities Grid -->
+    <div class="services-container">
+        <!-- Service 1: AI Software -->
+        <div class="service-card reveal-item">
+            <div class="service-icon"><i data-lucide="brain"></i></div>
+            <h3 data-i18n="services.s1_title">AI Software</h3>
+            <p data-i18n="services.s1_desc">
+                Custom AI-powered software, intelligent assistants, and custom LLM applications tailored to streamline business decision-making.
+            </p>
+            <div class="service-tags">
+                <span>Python</span><span>OpenAI</span><span>Gemini API</span><span>Claude</span><span>FastAPI</span><span>LangChain</span><span>RAG</span><span>AI Agents</span>
+            </div>
+            <a href="#contact" class="service-cta">
+                <span data-i18n="services.s1_cta">Discuss AI Project</span>
+                <i data-lucide="arrow-right"></i>
+            </a>
+        </div>
 
- <!-- Service 4: Cloud Solutions -->
- <div class="service-card reveal-item">
- <div class="service-icon">
- <i data-lucide="cloud"></i>
- </div>
- <h3 data-i18n="services.s4_title">Cloud Solutions</h3>
- <p data-i18n="services.s4_desc">
- Secure, containerized infrastructure, reverse proxy configurations, and cloud deployment pipelines for modern applications.
- </p>
- <div class="service-tags">
- <span>AWS</span>
- <span>Azure</span>
- <span>Docker</span>
- <span>Linux</span>
- <span>Nginx</span>
- <span>Firebase</span>
- </div>
- <a href="#contact" class="service-cta">
- <span data-i18n="services.s4_cta">Deploy Infrastructure</span>
- <i data-lucide="arrow-right"></i>
- </a>
- </div>
+        <!-- Service 2: Automation -->
+        <div class="service-card reveal-item">
+            <div class="service-icon"><i data-lucide="cpu"></i></div>
+            <h3 data-i18n="services.s2_title">Automation</h3>
+            <p data-i18n="services.s2_desc">
+                Eliminate repetitive manual bottlenecks and synchronize enterprise workflows across platforms with automated pipelines.
+            </p>
+            <div class="service-tags">
+                <span>n8n</span><span>Make</span><span>Zapier</span><span>REST APIs</span><span>Python</span><span>Webhooks</span>
+            </div>
+            <a href="#contact" class="service-cta">
+                <span data-i18n="services.s2_cta">Automate Workflows</span>
+                <i data-lucide="arrow-right"></i>
+            </a>
+        </div>
 
- <!-- Service 5: UI/UX Design -->
- <div class="service-card reveal-item">
- <div class="service-icon">
- <i data-lucide="palette"></i>
- </div>
- <h3 data-i18n="services.s5_title">UI / UX Design</h3>
- <p data-i18n="services.s5_desc">
- Futuristic, intuitive interface designs and design systems that maximize user engagement and elevate digital brand presence.
- </p>
- <div class="service-tags">
- <span>Figma</span>
- <span>Design Systems</span>
- <span>Wireframing</span>
- <span>Prototypes</span>
- <span>Branding</span>
- </div>
- <a href="#contact" class="service-cta">
- <span data-i18n="services.s5_cta">Design Interface</span>
- <i data-lucide="arrow-right"></i>
- </a>
- </div>
+        <!-- Service 3: Web Development -->
+        <div class="service-card reveal-item">
+            <div class="service-icon"><i data-lucide="globe"></i></div>
+            <h3 data-i18n="services.s3_title">Web Development</h3>
+            <p data-i18n="services.s3_desc">
+                Modern, high-performance web applications and responsive corporate websites engineered for speed, conversion, and global scale.
+            </p>
+            <div class="service-tags">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>Node.js</span><span>SEO Architecture</span>
+            </div>
+            <a href="#contact" class="service-cta">
+                <span data-i18n="services.s3_cta">Build Web Platform</span>
+                <i data-lucide="arrow-right"></i>
+            </a>
+        </div>
 
- <!-- Service 6: AI Consulting -->
- <div class="service-card reveal-item">
- <div class="service-icon">
- <i data-lucide="chart-column"></i>
- </div>
- <h3 data-i18n="services.s6_title">AI Consulting</h3>
- <p data-i18n="services.s6_desc">
- Strategic technical audits and feasibility roadmaps to identify high-ROI AI integration points across business operations.
- </p>
- <div class="service-tags">
- <span>AI Readiness Audit</span>
- <span>Solution Roadmap</span>
- <span>Data Architecture</span>
- <span>Scaling Strategy</span>
- </div>
- <a href="#contact" class="service-cta">
- <span data-i18n="services.s6_cta">Request AI Audit</span>
- <i data-lucide="arrow-right"></i>
- </a>
- </div>
+        <!-- Service 4: Cloud Solutions -->
+        <div class="service-card reveal-item">
+            <div class="service-icon"><i data-lucide="cloud"></i></div>
+            <h3 data-i18n="services.s4_title">Cloud Solutions</h3>
+            <p data-i18n="services.s4_desc">
+                Secure, containerized infrastructure, reverse proxy configurations, and cloud deployment pipelines for modern applications.
+            </p>
+            <div class="service-tags">
+                <span>AWS</span><span>Azure</span><span>Docker</span><span>Linux</span><span>Nginx</span><span>Firebase</span>
+            </div>
+            <a href="#contact" class="service-cta">
+                <span data-i18n="services.s4_cta">Deploy Infrastructure</span>
+                <i data-lucide="arrow-right"></i>
+            </a>
+        </div>
 
- <!-- Service 7: Training & Internship -->
- <div class="service-card reveal-item">
- <div class="service-icon">
- <i data-lucide="graduation-cap"></i>
- </div>
- <h3 data-i18n="services.s7_title">Internship & Training</h3>
- <p data-i18n="services.s7_desc">
- Practical technical mentorship programs designed to build real-world software engineering, AI, and cloud competency.
- </p>
- <div class="service-tags">
- <span>Python</span>
- <span>AI/ML</span>
- <span>Web Dev</span>
- <span>Automation</span>
- <span>Real Projects</span>
- <span>Mentorship</span>
- </div>
- <a href="#contact" class="service-cta">
- <span data-i18n="services.s7_cta">Apply / Inquire</span>
- <i data-lucide="arrow-right"></i>
- </a>
- </div>
+        <!-- Service 5: UI/UX Design -->
+        <div class="service-card reveal-item">
+            <div class="service-icon"><i data-lucide="palette"></i></div>
+            <h3 data-i18n="services.s5_title">UI / UX Design</h3>
+            <p data-i18n="services.s5_desc">
+                Futuristic, intuitive interface designs and design systems that maximize user engagement and elevate digital brand presence.
+            </p>
+            <div class="service-tags">
+                <span>Figma</span><span>Design Systems</span><span>Wireframing</span><span>Prototypes</span><span>Branding</span>
+            </div>
+            <a href="#contact" class="service-cta">
+                <span data-i18n="services.s5_cta">Design Interface</span>
+                <i data-lucide="arrow-right"></i>
+            </a>
+        </div>
 
- <!-- Service 8: AutoCAD & Technical Design -->
- <div class="service-card reveal-item">
- <div class="service-icon">
- <i data-lucide="ruler"></i>
- </div>
- <h3 data-i18n="services.s8_title">AutoCAD & Technical Design</h3>
- <p data-i18n="services.s8_desc">
- Professional 2D drafting, CAD drawings, and technical drafting solutions for engineering and architectural specifications.
- </p>
- <div class="service-tags">
- <span>AutoCAD</span>
- <span>2D Drafting</span>
- <span>Technical Drawings</span>
- <span>CAD Schematics</span>
- <span>Engineering Plans</span>
- </div>
- <a href="#contact" class="service-cta">
- <span data-i18n="services.s8_cta">Discuss CAD Project</span>
- <i data-lucide="arrow-right"></i>
- </a>
- </div>
- </div>
+        <!-- Service 6: AI Consulting -->
+        <div class="service-card reveal-item">
+            <div class="service-icon"><i data-lucide="chart-column"></i></div>
+            <h3 data-i18n="services.s6_title">AI Consulting</h3>
+            <p data-i18n="services.s6_desc">
+                Strategic technical audits and feasibility roadmaps to identify high-ROI AI integration points across business operations.
+            </p>
+            <div class="service-tags">
+                <span>AI Readiness Audit</span><span>Solution Roadmap</span><span>Data Architecture</span><span>Scaling Strategy</span>
+            </div>
+            <a href="#contact" class="service-cta">
+                <span data-i18n="services.s6_cta">Request AI Audit</span>
+                <i data-lucide="arrow-right"></i>
+            </a>
+        </div>
 
+        <!-- Service 7: Training & Internship -->
+        <div class="service-card reveal-item">
+            <div class="service-icon"><i data-lucide="graduation-cap"></i></div>
+            <h3 data-i18n="services.s7_title">Internship &amp; Training</h3>
+            <p data-i18n="services.s7_desc">
+                Practical technical mentorship programs designed to build real-world software engineering, AI, and cloud competency.
+            </p>
+            <div class="service-tags">
+                <span>Python</span><span>AI/ML</span><span>Web Dev</span><span>Automation</span><span>Real Projects</span><span>Mentorship</span>
+            </div>
+            <a href="#internship" class="service-cta">
+                <span data-i18n="services.s7_cta">Apply / Inquire</span>
+                <i data-lucide="arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Service 8: AutoCAD & Technical Design -->
+        <div class="service-card reveal-item">
+            <div class="service-icon"><i data-lucide="ruler"></i></div>
+            <h3 data-i18n="services.s8_title">AutoCAD &amp; Technical Design</h3>
+            <p data-i18n="services.s8_desc">
+                Professional 2D drafting, CAD drawings, and technical drafting solutions for engineering and architectural specifications.
+            </p>
+            <div class="service-tags">
+                <span>AutoCAD</span><span>2D Drafting</span><span>Technical Drawings</span><span>CAD Schematics</span><span>Engineering Plans</span>
+            </div>
+            <a href="#contact" class="service-cta">
+                <span data-i18n="services.s8_cta">Discuss CAD Project</span>
+                <i data-lucide="arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- 5-Step AI Consulting & Delivery Roadmap Pipeline -->
+    <div class="stitch-pipeline-section reveal-item">
+        <div class="stitch-pipeline-header">
+            <h3>AI CONSULTING &amp; DELIVERY ROADMAP</h3>
+            <a href="#contact" class="btn-stitch-primary" style="flex: initial;" data-service-select="AI Consulting">
+                <span>Book Consultation →</span>
+            </a>
+        </div>
+        <div class="stitch-pipeline-grid">
+            <div class="stitch-pipeline-step">
+                <span class="stitch-step-num">01 / DISCOVER</span>
+                <h4 class="stitch-step-title">Discover</h4>
+                <p class="stitch-step-desc">Audit operational workflows, evaluate data readiness, and establish ROI metrics.</p>
+            </div>
+            <div class="stitch-pipeline-step">
+                <span class="stitch-step-num">02 / PLAN</span>
+                <h4 class="stitch-step-title">Plan</h4>
+                <p class="stitch-step-desc">Design custom agent topologies, model selection blueprints, and privacy architecture.</p>
+            </div>
+            <div class="stitch-pipeline-step">
+                <span class="stitch-step-num">03 / BUILD</span>
+                <h4 class="stitch-step-title">Build</h4>
+                <p class="stitch-step-desc">Develop production-grade DAG pipelines, vector stores, and custom MCP tool bridges.</p>
+            </div>
+            <div class="stitch-pipeline-step">
+                <span class="stitch-step-num">04 / INTEGRATE</span>
+                <h4 class="stitch-step-title">Integrate</h4>
+                <p class="stitch-step-desc">Connect enterprise API mesh, webhook queues, and cloud container infrastructure.</p>
+            </div>
+            <div class="stitch-pipeline-step">
+                <span class="stitch-step-num">05 / OPTIMIZE</span>
+                <h4 class="stitch-step-title">Optimize</h4>
+                <p class="stitch-step-desc">Continuous token efficiency profiling, evaluation metrics, and latency reduction.</p>
+            </div>
+    </div>
 </section>
 
 <!-- =========================
@@ -723,174 +1282,15 @@
 
 </section>
 
-<!-- ==========================================================================
-     DIGITAL SERVICES FOR EVERYONE SECTION (PRACTICAL & AFFORDABLE ONLINE HELP)
-     ========================================================================== -->
-<section class="digital-services" id="digital-services" aria-labelledby="digitalServicesTitle">
-    <div class="section-title reveal-item">
-        <span data-i18n="digital.badge">DIGITAL SERVICES FOR EVERYONE</span>
-        <h2 id="digitalServicesTitle" data-i18n="digital.title">Digital Help, Made Simple &amp; Affordable</h2>
-        <p data-i18n="digital.desc">
-            XESTUS is not only building future technology—we also help ordinary people solve everyday digital problems. Simple, accurate, and affordable online assistance.
-        </p>
-    </div>
-
-    <div class="digital-pricing-banner" aria-hidden="true">
-        <div class="digital-pricing-pill">
-            <i data-lucide="sparkles"></i>
-            <span data-i18n="digital.pricing_note">Transparent &amp; Affordable Assistance • Direct Step-by-Step Support • Zero Complicated Pricing</span>
-        </div>
-    </div>
-
-    <div class="digital-container">
-        <!-- Card 1: Online Form Filling & Applications -->
-        <div class="digital-card reveal-item">
-            <div class="digital-card-top reveal-item">
-                <div class="digital-icon-frame">
-                    <i data-lucide="file-text"></i>
-                </div>
-                <span class="digital-tag" data-i18n="digital.card1_tag">Accurate &amp; Fast</span>
-            </div>
-            <h3 data-i18n="digital.card1_title">Online Form Filling &amp; Applications</h3>
-            <p data-i18n="digital.card1_desc">
-                Get expert assistance completing online job applications, official registration forms, and web portals accurately and on time.
-            </p>
-            <div class="digital-card-actions reveal-item">
-                <a href="#contact" class="digital-cta-btn" data-service-select="digital">
-                    <span data-i18n="common.request_assistance">Request Assistance</span>
-                    <i data-lucide="arrow-right"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Card 2: Admissions & Exam Registrations -->
-        <div class="digital-card reveal-item">
-            <div class="digital-card-top reveal-item">
-                <div class="digital-icon-frame">
-                    <i data-lucide="graduation-cap"></i>
-                </div>
-                <span class="digital-tag" data-i18n="digital.card2_tag">Students &amp; Candidates</span>
-            </div>
-            <h3 data-i18n="digital.card2_title">Admissions &amp; Exam Registrations</h3>
-            <p data-i18n="digital.card2_desc">
-                Hassle-free application support for school/college admissions, competitive entrance exams, hall ticket downloads, and counseling.
-            </p>
-            <div class="digital-card-actions reveal-item">
-                <a href="#contact" class="digital-cta-btn" data-service-select="digital">
-                    <span data-i18n="common.request_assistance">Request Assistance</span>
-                    <i data-lucide="arrow-right"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Card 3: Government & Citizen Portals -->
-        <div class="digital-card reveal-item">
-            <div class="digital-card-top reveal-item">
-                <div class="digital-icon-frame">
-                    <i data-lucide="landmark"></i>
-                </div>
-                <span class="digital-tag" data-i18n="digital.card3_tag">Citizen Assistance</span>
-            </div>
-            <h3 data-i18n="digital.card3_title">Government &amp; Citizen Portals</h3>
-            <p data-i18n="digital.card3_desc">
-                Step-by-step guidance navigating public citizen portals, welfare scheme registrations, certificates, and online status inquiries.
-            </p>
-            <div class="digital-card-actions reveal-item">
-                <a href="#contact" class="digital-cta-btn" data-service-select="digital">
-                    <span data-i18n="common.request_assistance">Request Assistance</span>
-                    <i data-lucide="arrow-right"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Card 4: Scholarships & Financial Aid -->
-        <div class="digital-card reveal-item">
-            <div class="digital-card-top reveal-item">
-                <div class="digital-icon-frame">
-                    <i data-lucide="award"></i>
-                </div>
-                <span class="digital-tag" data-i18n="digital.card4_tag">Higher Education</span>
-            </div>
-            <h3 data-i18n="digital.card4_title">Scholarships &amp; Financial Aid</h3>
-            <p data-i18n="digital.card4_desc">
-                Complete support for state and national scholarship applications, student grant paperwork, renewal tracking, and document verification.
-            </p>
-            <div class="digital-card-actions reveal-item">
-                <a href="#contact" class="digital-cta-btn" data-service-select="digital">
-                    <span data-i18n="common.request_assistance">Request Assistance</span>
-                    <i data-lucide="arrow-right"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Card 5: Document Formatting & PDF Uploads -->
-        <div class="digital-card reveal-item">
-            <div class="digital-card-top reveal-item">
-                <div class="digital-icon-frame">
-                    <i data-lucide="upload-cloud"></i>
-                </div>
-                <span class="digital-tag" data-i18n="digital.card5_tag">Portal Compliant</span>
-            </div>
-            <h3 data-i18n="digital.card5_title">Document Formatting &amp; PDF Uploads</h3>
-            <p data-i18n="digital.card5_desc">
-                Precision document scanning, file compression (KB/MB targets), photo/signature resizing, and format conversion required by online portals.
-            </p>
-            <div class="digital-card-actions reveal-item">
-                <a href="#contact" class="digital-cta-btn" data-service-select="digital">
-                    <span data-i18n="common.request_assistance">Request Assistance</span>
-                    <i data-lucide="arrow-right"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Card 6: Online Appointments & Bookings -->
-        <div class="digital-card reveal-item">
-            <div class="digital-card-top reveal-item">
-                <div class="digital-icon-frame">
-                    <i data-lucide="calendar-check"></i>
-                </div>
-                <span class="digital-tag" data-i18n="digital.card6_tag">Timely Slots</span>
-            </div>
-            <h3 data-i18n="digital.card6_title">Online Appointments &amp; Bookings</h3>
-            <p data-i18n="digital.card6_desc">
-                Timely booking of official appointments, slot selection, digital verification appointments, and acknowledgment receipt downloads.
-            </p>
-            <div class="digital-card-actions reveal-item">
-                <a href="#contact" class="digital-cta-btn" data-service-select="digital">
-                    <span data-i18n="common.request_assistance">Request Assistance</span>
-                    <i data-lucide="arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Trust & Responsible Assistance Notice -->
-    <div class="digital-trust-box">
-        <div class="digital-trust-icon">
-            <i data-lucide="shield-check"></i>
-        </div>
-        <div class="digital-trust-content">
-            <h4 data-i18n="digital.trust_title">Responsible &amp; Transparent Digital Support</h4>
-            <p data-i18n="digital.trust_text">
-                XESTUS provides practical technical and digital assistance. We do not act as an official government authority. Applicants remain responsible for reviewing all information before final submission.
-            </p>
-        </div>
-        <a href="#contact" class="btn-primary digital-trust-cta" data-service-select="digital">
-            <span data-i18n="digital.banner_cta">Need Help With An Online Form?</span>
-            <i data-lucide="arrow-right"></i>
-        </a>
-    </div>
-</section>
-
 <section class="portfolio" id="portfolio">
 
- <div class="section-title reveal-item">
- <span data-i18n="portfolio.badge">CASE STUDIES &amp; PORTFOLIO</span>
- <h2 data-i18n="portfolio.title">Featured Engineering Projects</h2>
- <p data-i18n="portfolio.desc">
- Explore our specialized work in autonomous AI agents, enterprise workflow automation, high-performance web platforms, and telemetry architectures.
- </p>
- </div>
+    <div class="stitch-section-header reveal-item">
+        <span class="stitch-tag-mono">SECTION 03 // FEATURED PROJECTS &amp; PROTOTYPES</span>
+        <h2 class="stitch-section-title">FEATURED PROJECTS &amp; PROTOTYPES</h2>
+        <p class="stitch-section-desc" data-i18n="portfolio.desc">
+            Explore our specialized work in autonomous AI agents, enterprise workflow automation, high-performance web platforms, and telemetry architectures.
+        </p>
+    </div>
 
  <!-- Category Filter Controls -->
  <div class="project-filters" role="tablist" aria-label="Filter Projects by Category">
@@ -1373,16 +1773,352 @@
 </section>
 
 <!-- ==========================================================================
+     SECTION 04 // XESTUS TOOLS DIRECTORY
+     ========================================================================== -->
+<section class="stitch-tools-section" id="tools" aria-labelledby="toolsTitle">
+    <div class="stitch-section-header reveal-item">
+        <span class="stitch-tag-mono">SECTION 04 // XESTUS TOOLS DIRECTORY</span>
+        <h2 class="stitch-section-title" id="toolsTitle">DEVELOPER &amp; UTILITY TOOLS</h2>
+        <p class="stitch-section-desc">
+            Ultra-fast, privacy-first, client-side developer and productivity utilities. Zero server logs, zero cloud egress, and 100% in-browser processing.
+        </p>
+    </div>
+
+    <!-- Category Filter Bar -->
+    <div class="stitch-tools-filter-bar reveal-item" role="tablist" aria-label="Tools Filter Tabs">
+        <button type="button" class="stitch-tool-filter-btn active" data-tool-filter="all" role="tab" aria-selected="true">All Tools</button>
+        <button type="button" class="stitch-tool-filter-btn" data-tool-filter="developer" role="tab" aria-selected="false">Developer</button>
+        <button type="button" class="stitch-tool-filter-btn" data-tool-filter="security" role="tab" aria-selected="false">Security</button>
+        <button type="button" class="stitch-tool-filter-btn" data-tool-filter="productivity" role="tab" aria-selected="false">Productivity</button>
+        <button type="button" class="stitch-tool-filter-btn" data-tool-filter="upcoming" role="tab" aria-selected="false">Coming Soon</button>
+    </div>
+
+    <!-- Tools Grid -->
+    <div class="stitch-tools-grid reveal-item" id="stitchToolsGrid">
+        <!-- Tool 1: JSON Formatter & Minifier (Live) -->
+        <div class="stitch-tool-card" data-category="developer">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">DEV UTILITY</span>
+                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">JSON Formatter &amp; Minifier</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Format, minify, validate, and inspect nested JSON objects with real-time syntax tree error highlighting and instant copy.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <a href="tools/developer/json-formatter/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
+                    <span>Launch JSON Formatter ↗</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tool 2: JSON Schema & Syntax Validator (Live) -->
+        <div class="stitch-tool-card" data-category="developer">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">DEV UTILITY</span>
+                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">JSON Schema &amp; Validator</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Validate JSON syntax with line-and-column error highlighting, structure metrics, and tree inspection in real time.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <a href="tools/developer/json-validator/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
+                    <span>Launch Validator ↗</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tool 3: Base64 Encoder & Decoder (Live) -->
+        <div class="stitch-tool-card" data-category="developer">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">DATA ENCODING</span>
+                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">Base64 Encoder &amp; Decoder</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Convert raw strings, binary buffers, and data URLs to and from standard Base64 with full UTF-8 Unicode support.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <a href="tools/developer/base64-encode-decode/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
+                    <span>Launch Base64 Tool ↗</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tool 4: JWT Debugger & Token Decoder (Live) -->
+        <div class="stitch-tool-card" data-category="developer security">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">SECURITY / AUTH</span>
+                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">JWT Debugger &amp; Decoder</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Inspect JSON Web Tokens (JWT), decode header algorithms, expiration claims, and payload properties securely client-side.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <a href="tools/developer/jwt-decoder/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
+                    <span>Launch JWT Debugger ↗</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tool 5: UUID / GUID Generator (Live) -->
+        <div class="stitch-tool-card" data-category="developer security">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">IDENTIFIERS</span>
+                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">UUID / GUID Generator</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Batch generate cryptographically secure RFC 4122 Version 4 UUIDs (1 to 100) with uppercase and hyphen customization.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <a href="tools/developer/uuid-generator/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
+                    <span>Launch UUID Generator ↗</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tool 6: Regex Tester & Matcher (Live) -->
+        <div class="stitch-tool-card" data-category="developer">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">DEV UTILITY</span>
+                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">Regex Tester &amp; Matcher</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Test regular expressions with real-time match highlighting, capture group extraction, substitution, and flags.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <a href="tools/developer/regex-tester/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
+                    <span>Launch Regex Tester ↗</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tool 7: Cryptographic Hash Generator (Live) -->
+        <div class="stitch-tool-card" data-category="developer security">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">CRYPTOGRAPHY</span>
+                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">Cryptographic Hash Generator</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Calculate SHA-256, SHA-512, SHA-1, and MD5 cryptographic checksums instantly using native Web Crypto API.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <a href="tools/developer/hash-generator/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
+                    <span>Launch Hash Generator ↗</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tool 8: Secure Password Generator (Live) -->
+        <div class="stitch-tool-card" data-category="security">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">SECURITY / TOKENS</span>
+                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">Password &amp; Token Generator</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Generate high-entropy random passwords and API tokens with customizable character sets and strength meters.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <a href="tools/developer/password-generator/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
+                    <span>Launch Password Tool ↗</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tool 9: Unix Timestamp Converter (Live) -->
+        <div class="stitch-tool-card" data-category="productivity">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">PRODUCTIVITY</span>
+                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">Unix Timestamp Converter</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Convert Unix Epoch timestamps to human-readable UTC and Local time, and parse dates to timestamps in real time.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <a href="tools/developer/timestamp-converter/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
+                    <span>Launch Timestamp Tool ↗</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tool 10: Text & Code Diff Checker (Live) -->
+        <div class="stitch-tool-card" data-category="productivity developer">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">PRODUCTIVITY</span>
+                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">Text &amp; Code Diff Checker</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Compare two text blocks or code snippets side-by-side or unified with character-level additions and deletions.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <a href="tools/developer/text-diff/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
+                    <span>Launch Diff Checker ↗</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tool 11: URL Encoder & Decoder (Live) -->
+        <div class="stitch-tool-card" data-category="developer">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">DEV UTILITY</span>
+                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">URL Encoder &amp; Decoder</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Encode and decode standard URLs, URI components, and query parameters with full RFC 3986 compliance.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <a href="tools/developer/url-encode-decode/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
+                    <span>Launch URL Tool ↗</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tool 12: Model Context Protocol (MCP) Builder (Coming Soon) -->
+        <div class="stitch-tool-card" data-category="upcoming developer">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">MCP PROTOCOL</span>
+                    <span class="stitch-tool-badge-coming-soon">COMING SOON</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">Model Context Protocol (MCP) Builder</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Visual JSON schema generator and live inspector for testing custom MCP tools, resources, and prompt endpoints.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <button type="button" class="btn-stitch-outline" style="padding: 10px 16px; font-size: 12px; width: 100%;" onclick="openContactModalWithSubject('MCP Tool Builder Access')">
+                    <span>Notify on Release</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tool 13: Token Compactor & Cost Estimator (Coming Soon) -->
+        <div class="stitch-tool-card" data-category="upcoming">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">LLM COST</span>
+                    <span class="stitch-tool-badge-coming-soon">COMING SOON</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">Token Compactor &amp; Cost Estimator</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Estimate token counts across OpenAI tiktoken, Claude, and Gemini with automated whitespace context compression.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <button type="button" class="btn-stitch-outline" style="padding: 10px 16px; font-size: 12px; width: 100%;" onclick="openContactModalWithSubject('Token Estimator Access')">
+                    <span>Notify on Release</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tool 14: PDF & Document Suite (Coming Soon) -->
+        <div class="stitch-tool-card" data-category="upcoming">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">DOCUMENTS</span>
+                    <span class="stitch-tool-badge-coming-soon">COMING SOON</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">PDF Compressor &amp; Tools</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Client-side PDF page extractor, image-to-PDF compiler, and document size optimization targeting portal limits.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <button type="button" class="btn-stitch-outline" style="padding: 10px 16px; font-size: 12px; width: 100%;" onclick="openContactModalWithSubject('PDF Tools Access')">
+                    <span>Notify on Release</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tool 15: Image Optimizer & Resizer (Coming Soon) -->
+        <div class="stitch-tool-card" data-category="upcoming">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">MEDIA / GRAPHICS</span>
+                    <span class="stitch-tool-badge-coming-soon">COMING SOON</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">Image Resizer &amp; Converter</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Convert PNG, JPEG, WebP, SVG and resize passport photos/signatures to exact KB thresholds in-browser.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <button type="button" class="btn-stitch-outline" style="padding: 10px 16px; font-size: 12px; width: 100%;" onclick="openContactModalWithSubject('Image Tools Access')">
+                    <span>Notify on Release</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tool 16: CSS Glassmorphism Studio (Coming Soon) -->
+        <div class="stitch-tool-card" data-category="upcoming developer">
+            <div>
+                <div class="stitch-card-top" style="margin-bottom: 12px;">
+                    <span class="stitch-card-tag">UI / CSS</span>
+                    <span class="stitch-tool-badge-coming-soon">COMING SOON</span>
+                </div>
+                <h3 class="stitch-card-title" style="font-size: 18px;">CSS Glassmorphism &amp; Shadow Studio</h3>
+                <p class="stitch-card-desc" style="font-size: 13px;">
+                    Interactive backdrop-filter, border gradient, and ambient glow code generator with cross-browser CSS export.
+                </p>
+            </div>
+            <div style="margin-top: 18px;">
+                <button type="button" class="btn-stitch-outline" style="padding: 10px 16px; font-size: 12px; width: 100%;" onclick="openContactModalWithSubject('CSS Studio Access')">
+                    <span>Notify on Release</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Master Suite CTA -->
+    <div style="text-align: center; margin-top: 36px;" class="reveal-item">
+        <a href="tools/index.html" class="btn-stitch-primary" style="display: inline-flex; padding: 14px 28px; font-size: 14px;">
+            <span>Explore Complete Tools Suite (24+ Utilities) ↗</span>
+        </a>
+    </div>
+</section>
+
+<!-- ==========================================================================
  INNOVATION LAB & R&D SECTION
  ========================================================================== -->
-<section class="lab" id="lab">
- <div class="section-title reveal-item">
- <span class="badge-pulsing"><i data-lucide="flask-conical"></i> R&amp;D &amp; EXPERIMENTAL ARCHITECTURE</span>
- <h2>XESTUS Innovation Lab</h2>
- <p>
- Pioneering the frontiers of autonomous agent swarms, Model Context Protocol (MCP), on-device Edge AI, and distributed micro-servers.
- </p>
- </div>
+<section class="lab" id="lab" aria-labelledby="labTitle">
+    <div class="stitch-section-header reveal-item">
+        <span class="stitch-tag-mono">SECTION 05 // INNOVATION LAB &amp; NEUROCODE</span>
+        <h2 class="stitch-section-title" id="labTitle">INNOVATION LAB &amp; NEUROCODE RESEARCH</h2>
+        <p class="stitch-section-desc">
+            Pioneering the frontiers of autonomous agent swarms, Model Context Protocol (MCP), on-device Edge SLMs, neural code auditing, and distributed micro-server infrastructure.
+        </p>
+    </div>
 
  <!-- Lab Telemetry Ribbon -->
  <div class="lab-metrics-ribbon">
@@ -1609,6 +2345,124 @@
 </section>
 
 <!-- ==========================================================================
+     SECTION 06 // INTERNSHIP & TECHNICAL MENTORSHIP (LEARN. BUILD. GROW.)
+     ========================================================================== -->
+<section class="stitch-internship-section" id="internship" aria-labelledby="internshipTitle">
+    <div class="stitch-section-header reveal-item">
+        <span class="stitch-tag-mono">SECTION 06 // INTERNSHIP &amp; MENTORSHIP</span>
+        <h2 class="stitch-section-title" id="internshipTitle">LEARN. BUILD. GROW.</h2>
+        <p class="stitch-section-desc">
+            Practical engineering mentorship designed to transform passionate students and developers into world-class software and AI practitioners through real-world production projects.
+        </p>
+    </div>
+
+    <div class="stitch-internship-grid reveal-item">
+        <!-- Phase 1: Learn -->
+        <div class="stitch-internship-card">
+            <span class="stitch-step-num">01 / LEARN</span>
+            <h3 class="stitch-step-title">Engineering Foundations</h3>
+            <p class="stitch-step-desc">
+                Master Python, modern async JavaScript, LLM reasoning, RAG architectures, and scalable API design through rigorous guided blueprints.
+            </p>
+            <div style="margin-top: 14px; font-family: var(--stitch-mono); font-size: 11px; color: var(--stitch-yellow);">
+                <span>✓ CORE PRINCIPLES</span>
+            </div>
+        </div>
+
+        <!-- Phase 2: Build -->
+        <div class="stitch-internship-card">
+            <span class="stitch-step-num">02 / BUILD</span>
+            <h3 class="stitch-step-title">Production Systems</h3>
+            <p class="stitch-step-desc">
+                Build real-world multi-agent DAGs, pgvector neural search pipelines, event-driven webhooks, and modern glassmorphic web portals.
+            </p>
+            <div style="margin-top: 14px; font-family: var(--stitch-mono); font-size: 11px; color: var(--stitch-yellow);">
+                <span>✓ LIVE REPOSITORIES</span>
+            </div>
+        </div>
+
+        <!-- Phase 3: Deploy -->
+        <div class="stitch-internship-card">
+            <span class="stitch-step-num">03 / DEPLOY</span>
+            <h3 class="stitch-step-title">Edge &amp; Infrastructure</h3>
+            <p class="stitch-step-desc">
+                Ship to global edge CDNs, manage Docker containers, configure Nginx reverse proxies, and deploy on ARM64 Linux micro-server clusters.
+            </p>
+            <div style="margin-top: 14px; font-family: var(--stitch-mono); font-size: 11px; color: var(--stitch-yellow);">
+                <span>✓ DEVOPS MASTERY</span>
+            </div>
+        </div>
+
+        <!-- Phase 4: Grow -->
+        <div class="stitch-internship-card">
+            <span class="stitch-step-num">04 / GROW</span>
+            <h3 class="stitch-step-title">Career Acceleration</h3>
+            <p class="stitch-step-desc">
+                Direct 1-on-1 mentorship with senior leadership, resume and portfolio code audits, interview mastery, and verified recommendation credentials.
+            </p>
+            <div style="margin-top: 14px; font-family: var(--stitch-mono); font-size: 11px; color: var(--stitch-yellow);">
+                <span>✓ INDUSTRY IMPACT</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Internship Application Action -->
+    <div style="text-align: center; margin-top: 36px;" class="reveal-item">
+        <a href="#contact" class="btn-stitch-primary" data-service-select="Training & Internship" style="display: inline-flex; padding: 14px 28px; font-size: 14px;">
+            <span>Apply for Technical Internship →</span>
+        </a>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     SECTION 07 // HOW WE HELP (ENGAGEMENT WORKFLOW)
+     ========================================================================== -->
+<section class="stitch-how-section" id="how-we-help" aria-labelledby="howWeHelpTitle">
+    <div class="stitch-section-header reveal-item">
+        <span class="stitch-tag-mono">SECTION 07 // ENGAGEMENT WORKFLOW</span>
+        <h2 class="stitch-section-title" id="howWeHelpTitle">HOW WE HELP</h2>
+        <p class="stitch-section-desc">
+            A transparent, collaborative, and friction-free process designed to turn complex business needs and individual requirements into delivered reality.
+        </p>
+    </div>
+
+    <div class="stitch-how-grid reveal-item">
+        <!-- Step 1 -->
+        <div class="stitch-how-card">
+            <span class="how-step-badge">STEP 01 // SELECT &amp; INITIATE</span>
+            <h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 0 0 10px 0;">Discovery &amp; Scope</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                Select your service domain, use our interactive project estimator, or explore verified citizen digital assistance. Submit a brief in under 60 seconds.
+            </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="stitch-how-card">
+            <span class="how-step-badge">STEP 02 // ARCHITECT &amp; EXECUTE</span>
+            <h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 0 0 10px 0;">Rapid Technical Review</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                Direct review by senior engineering leadership within 24 hours. Clear contractual NDA, milestones, and rapid agile development sprints.
+            </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="stitch-how-card">
+            <span class="how-step-badge">STEP 03 // DELIVER &amp; SUPPORT</span>
+            <h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 0 0 10px 0;">Production Deployment</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                Receive 100% intellectual property ownership, zero vendor lock-in, hardened edge deployment, and continuous telemetry monitoring.
+            </p>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 36px;" class="reveal-item">
+        <a href="#contact" class="btn-stitch-primary" style="display: inline-flex; padding: 14px 28px; font-size: 14px;">
+            <span>Initiate Project Consultation →</span>
+        </a>
+    </div>
+</section>
+
+<!-- ==========================================================================
      INTERACTIVE TECHNOLOGY ROADMAP & COMPANY VISION
      ========================================================================== -->
 <section class="roadmap" id="roadmap" aria-labelledby="roadmapTitle">
@@ -1767,85 +2621,6 @@
 </section>
 
 <!-- ==========================================================================
- FOUNDER & LEADERSHIP PROFILE SECTION
- ========================================================================== -->
-<section class="founder" id="founder">
-
- <div class="section-title reveal-item">
- <span data-i18n="founder.badge">FOUNDER &amp; LEADERSHIP</span>
- <h2 data-i18n="founder.title">The Vision Driving XESTUS</h2>
- <p data-i18n="founder.desc">
- Dedicated to engineering intelligent software systems that empower organizations, automate complexity, and build future-proof technology.
- </p>
- </div>
-
- <div class="founder-container">
-
- <!-- Founder Portrait Frame -->
- <div class="founder-image-wrapper">
- <div class="founder-image-card">
- <img
- src="assets/images/founder.jpg"
- alt="Sudip Khatua - Founder, CEO & Lead Product Architect at XESTUS"
- width="400"
- height="500"
- loading="lazy"
- decoding="async">
- <div class="founder-verified-badge">
- <i data-lucide="check-circle-2"></i>
- <span data-i18n="founder.verified">Verified Founder &amp; CEO</span>
- </div>
- </div>
- </div>
-
- <!-- Founder Details & Philosophy -->
- <div class="founder-info">
- <div class="founder-role-badge" data-i18n="founder.profile_badge">LEADERSHIP PROFILE</div>
- <h3>Sudip Khatua</h3>
- <h4>Founder, CEO &amp; Lead Product Architect</h4>
-
- <div class="founder-quote-box">
- <i data-lucide="quote" class="quote-icon"></i>
- <p data-i18n="founder.quote">
-"At XESTUS, our philosophy is simple: Technology should not merely support a business—it should multiply its intelligence. We engineer high-leverage software architectures that bridge cutting-edge AI research with real-world enterprise execution."
- </p>
- </div>
-
- <p class="founder-bio" data-i18n="founder.bio">
- Leading product strategy, full-stack architecture, and autonomous AI systems at XESTUS. Dedicated to engineering fast, resilient, and intelligent software that solves operational bottlenecks and scales businesses globally.
- </p>
-
- <div class="founder-competencies">
- <span class="competency-title" data-i18n="founder.domain_mastery">Domain Mastery:</span>
- <div class="founder-skills">
- <span>Autonomous AI &amp; RAG</span>
- <span>Full-Stack Web Systems</span>
- <span>Event-Driven Automation</span>
- <span>Cloud &amp; Micro-Servers</span>
- <span>AutoCAD Technical Design</span>
- </div>
- </div>
-
- <div class="founder-actions">
- <a href="https://www.linkedin.com/in/sudip-khatua-16bb07354"
- target="_blank"
- rel="noopener noreferrer"
- class="btn-primary magnetic-btn">
- <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
- <span data-i18n="founder.connect_linkedin">Connect on LinkedIn</span>
- </a>
- <a href="#contact" class="btn-secondary">
- <i data-lucide="mail"></i>
- <span data-i18n="founder.direct_consultation">Direct Consultation</span>
- </a>
- </div>
- </div>
-
- </div>
-
-</section>
-
-<!-- ==========================================================================
  ENTERPRISE TECHNOLOGY STACK & STANDARDS
  ========================================================================== -->
 <section class="technologies" id="technologies">
@@ -1964,10 +2739,10 @@
      ENTERPRISE & DIGITAL ASSISTANCE FAQ KNOWLEDGE BASE
      ========================================================================== -->
 <section class="faq-section" id="faq" aria-labelledby="faqTitle">
-    <div class="section-title reveal-item">
-        <span data-i18n="faq.badge">KNOWLEDGE BASE</span>
-        <h2 id="faqTitle" data-i18n="faq.title">Frequently Asked Questions</h2>
-        <p data-i18n="faq.desc">
+    <div class="stitch-section-header reveal-item">
+        <span class="stitch-tag-mono">SECTION 08 // FREQUENTLY ASKED QUESTIONS</span>
+        <h2 class="stitch-section-title" id="faqTitle">FREQUENTLY ASKED QUESTIONS</h2>
+        <p class="stitch-section-desc" data-i18n="faq.desc">
             Clear, transparent answers regarding our engineering standards, intellectual property ownership, security protocols, and practical digital assistance.
         </p>
     </div>
@@ -2172,15 +2947,15 @@
 <!-- ==========================================================================
  CONTACT & INQUIRY SYSTEM SECTION
  ========================================================================== -->
-<section class="contact" id="contact">
+<section class="contact" id="contact" aria-labelledby="contactTitle">
 
- <div class="section-title reveal-item">
- <span class="badge-pulsing"><i data-lucide="send"></i> <span data-i18n="contact.badge">INITIATE CONSULTATION</span></span>
- <h2 data-i18n="contact.title">Architect Your Next Breakthrough</h2>
- <p data-i18n="contact.desc">
- Whether you require an autonomous AI agent swarm, a high-throughput microservice architecture, or an enterprise workflow automation pipeline, our engineering team is ready to architect your solution.
- </p>
- </div>
+    <div class="stitch-section-header reveal-item">
+        <span class="stitch-tag-mono">SECTION 09 // CONTACT &amp; CONSULTATION</span>
+        <h2 class="stitch-section-title" id="contactTitle">HAVE AN IDEA? <span class="stitch-highlight-box">LET'S BUILD IT.</span></h2>
+        <p class="stitch-section-desc" data-i18n="contact.desc">
+            Whether you require an autonomous AI agent swarm, a high-throughput microservice architecture, an enterprise workflow automation pipeline, or practical digital assistance—our engineering team is ready to architect your solution.
+        </p>
+    </div>
 
  <div class="contact-container">
 
@@ -2262,6 +3037,14 @@
 
  <!-- Right Column: Glassmorphic Inquiry Form -->
  <div class="contact-form-wrapper reveal-item">
+
+        <!-- Stitch 4-Category Quick Inquiry Tabs -->
+        <div class="stitch-inquiry-tabs" role="tablist" aria-label="Inquiry Service Quick Selector">
+            <button type="button" class="stitch-inquiry-tab active" data-inquiry-service="AI &amp; Autonomous Agents" role="tab" aria-selected="true">AI Software</button>
+            <button type="button" class="stitch-inquiry-tab" data-inquiry-service="Workflow Automation" role="tab" aria-selected="false">Automation</button>
+            <button type="button" class="stitch-inquiry-tab" data-inquiry-service="Full-Stack Web Architecture" role="tab" aria-selected="false">Web Platform</button>
+            <button type="button" class="stitch-inquiry-tab" data-inquiry-service="Digital Services &amp; Online Form Assistance" role="tab" aria-selected="false">Digital Help</button>
+        </div>
 
  <form class="contact-form" id="contactForm" novalidate>
         <input type="text" name="_gotcha_filter" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important">
@@ -2410,12 +3193,11 @@
                     <span class="follow-btn-text" data-i18n="common.follow_xestus">Follow XESTUS</span>
                 </button>
 
-                <!-- Interactive Followers Counting Button -->
-                <button type="button" class="btn-followers-count" id="btnFollowersCount" aria-haspopup="dialog" aria-controls="statsModal" aria-label="View verified followers statistics" title="Click to view verified followers breakdown">
+                <!-- Truthful Telemetry / Activity Dialog Trigger -->
+                <button type="button" class="btn-followers-count" id="btnFollowersCount" aria-haspopup="dialog" aria-controls="statsModal" aria-label="View verified system telemetry" title="Click to view verified activity breakdown">
                     <span class="count-pulse-dot" aria-hidden="true"></span>
-                    <i data-lucide="users" class="count-icon" aria-hidden="true"></i>
-                    <span class="count-num" id="globalFollowersCount">1,248</span>
-                    <span class="count-text" data-i18n="stats.followers_header">Confirmed Followers</span>
+                    <i data-lucide="activity" class="count-icon" aria-hidden="true"></i>
+                    <span class="count-text">Telemetry &amp; Activity</span>
                     <i data-lucide="arrow-up-right" class="count-arrow" aria-hidden="true"></i>
                 </button>
 
@@ -2488,9 +3270,9 @@
 
     <!-- Column 1: Capabilities -->
     <div class="footer-nav-col">
-    <h3 class="footer-col-title" data-i18n="nav.services">Capabilities</h3>
+    <h3 class="footer-col-title" data-i18n="nav.services">// 01 CAPABILITIES</h3>
     <ul class="footer-links-list">
-    <li><a href="#services">AI &amp; Intelligent Agents</a></li>
+    <li><a href="#services">AI &amp; Autonomous Agents</a></li>
     <li><a href="#digital-services" data-i18n="nav.digital_services">Digital Help &amp; Form Assistance</a></li>
     <li><a href="#services">Custom Web Platforms</a></li>
     <li><a href="#services">Workflow Automation</a></li>
@@ -2499,37 +3281,40 @@
     </ul>
     </div>
 
-    <!-- Column 2: Solutions & Projects -->
+    <!-- Column 2: Projects & Solutions -->
     <div class="footer-nav-col">
-    <h3 class="footer-col-title" data-i18n="nav.projects">Projects &amp; Solutions</h3>
+    <h3 class="footer-col-title" data-i18n="nav.projects">// 02 PROJECTS &amp; SOLUTIONS</h3>
     <ul class="footer-links-list">
-    <li><a href="#solutions">Enterprise Solutions Matrix</a></li>
     <li><a href="#portfolio">Featured Case Studies</a></li>
+    <li><a href="#solutions">Enterprise Solutions Matrix</a></li>
+    <li><a href="#products">Product Pipeline &amp; FlowAgent</a></li>
     <li><a href="#portfolio">Synapse AI Agent</a></li>
     <li><a href="#portfolio">FlowSync Pipeline</a></li>
-    <li><a href="#portfolio">XESTUS Web Platform</a></li>
+    <li><a href="#estimator">Interactive Scope Estimator</a></li>
     </ul>
     </div>
 
-    <!-- Column 3: Innovation Lab -->
+    <!-- Column 3: Innovation Lab & Tools -->
     <div class="footer-nav-col">
-    <h3 class="footer-col-title" data-i18n="nav.lab">Innovation Lab</h3>
+    <h3 class="footer-col-title" data-i18n="nav.lab">// 03 LAB &amp; TOOLS</h3>
     <ul class="footer-links-list">
-    <li><a href="#lab">R&amp;D Tracks Overview</a></li>
+    <li><a href="#tools">XESTUS Tools Directory</a></li>
+    <li><a href="tools/index.html">Complete Tools Hub (24+)</a></li>
+    <li><a href="#lab">Innovation Lab &amp; R&amp;D</a></li>
     <li><a href="#lab">Model Context Protocol (MCP)</a></li>
-    <li><a href="#lab">Multi-Agent Swarm DAG</a></li>
-    <li><a href="#lab">Edge SLMs &amp; On-Device AI</a></li>
-    <li><a href="#lab">ARM64 Hardware Cluster</a></li>
+    <li><a href="#internship">Learn. Build. Grow. Internship</a></li>
+    <li><a href="#roadmap">Strategic Technology Roadmap</a></li>
     </ul>
     </div>
 
     <!-- Column 4: Company & Engagement -->
     <div class="footer-nav-col">
-    <h3 class="footer-col-title" data-i18n="nav.about">Company</h3>
+    <h3 class="footer-col-title" data-i18n="nav.about">// 04 COMPANY &amp; ENGAGEMENT</h3>
     <ul class="footer-links-list">
     <li><a href="#about">Why XESTUS &amp; Pillars</a></li>
     <li><a href="#founder">Founder &amp; Leadership</a></li>
-    <li><a href="#digital-services">Digital Services for Everyone</a></li>
+    <li><a href="#how-we-help">How We Help Workflow</a></li>
+    <li><a href="#faq">Frequently Asked Questions</a></li>
     <li><a href="#updates">Follow XESTUS</a></li>
     <li><a href="#contact">Initiate Consultation</a></li>
     </ul>
@@ -2566,29 +3351,45 @@
 </footer>
 
 <!-- Accessible Legal / Policy Modal Dialog -->
-<div id="legalModal" class="case-study-modal legal-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="legalModalTitle">
+<div id="legalModal" class="case-study-modal legal-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Legal and Privacy Policy" aria-labelledby="legalModalTitle">
  <div class="case-study-backdrop" id="legalModalBackdrop"></div>
  <div class="case-study-dialog legal-dialog" role="document">
  <button type="button" class="modal-close-btn" id="legalModalCloseBtn" aria-label="Close Legal Information">
  <i data-lucide="x"></i>
  </button>
  <div class="modal-content-container legal-content-container" id="legalModalContent">
+ <h3 class="modal-title sr-only" id="legalModalTitle">Legal and Privacy Policy</h3>
  <!-- Dynamically populated by script.js -->
  </div>
  </div>
 </div>
 
 <!-- Accessible Case Study Modal Dialog -->
-<div id="caseStudyModal" class="case-study-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalProjectTitle">
+<div id="caseStudyModal" class="case-study-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Case Study and Technical Details" aria-labelledby="modalProjectTitle">
  <div class="case-study-backdrop" id="modalBackdrop"></div>
  <div class="case-study-dialog" role="document">
  <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close Case Study Details">
  <i data-lucide="x"></i>
  </button>
  <div class="modal-content-container" id="modalContentContainer">
+ <h3 class="modal-title sr-only" id="modalProjectTitle">Case Study &amp; Technical Architecture</h3>
  <!-- Dynamically populated by script.js -->
  </div>
  </div>
+</div>
+
+<!-- Accessible Digital Seva Service Modal Dialog -->
+<div id="digitalSevaModal" class="case-study-modal digital-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Digital Seva Service Details" aria-labelledby="digitalModalTitle">
+    <div class="case-study-backdrop" id="digitalModalBackdrop"></div>
+    <div class="case-study-dialog digital-dialog" role="document">
+        <button type="button" class="modal-close-btn" id="digitalModalCloseBtn" aria-label="Close Service Details">
+            <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+        <div class="modal-content-container digital-modal-container" id="digitalModalContent">
+            <h3 class="modal-title sr-only" id="digitalModalTitle">Digital Seva Service Details</h3>
+            <!-- Dynamically populated by script.js -->
+        </div>
+    </div>
 </div>
 
 <!-- =========================
@@ -2666,14 +3467,251 @@
     </div>
 </div>
 
+<!-- ==========================================================================
+     COMMUNITY & FOLLOW MODAL DIALOG
+     ========================================================================== -->
+<div id="communityModal" class="case-study-modal community-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="communityModalTitle">
+    <div class="case-study-backdrop" id="communityModalBackdrop"></div>
+    <div class="case-study-dialog community-dialog" role="document">
+        <button type="button" class="modal-close-btn" id="communityModalCloseBtn" aria-label="Close Community Dialog">
+            <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+        <div class="modal-content-container community-content">
+            <div class="community-header">
+                <div class="modal-badges">
+                    <span class="badge badge-accent">OFFICIAL COMMUNITY</span>
+                    <span class="digital-tag">CONNECT &amp; ENGAGE</span>
+                </div>
+                <h3 class="modal-title" id="communityModalTitle" data-i18n="community.title">Join the XESTUS Community</h3>
+                <p class="modal-summary" data-i18n="community.sub">Follow our verified engineering updates, open-source releases, and digital empowerment initiatives across official channels.</p>
+            </div>
+            <div class="community-channels-grid">
+                <a href="https://github.com/xestusoffice" target="_blank" rel="noopener noreferrer" class="community-channel-card">
+                    <div class="channel-icon github-icon"><i data-lucide="github"></i></div>
+                    <div class="channel-info">
+                        <h4>GitHub</h4>
+                        <p data-i18n="community.github_desc">Explore open-source repositories, agent architectures &amp; tools.</p>
+                    </div>
+                    <i data-lucide="arrow-up-right" class="channel-arrow"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sudip-khatua-16bb07354" target="_blank" rel="noopener noreferrer" class="community-channel-card">
+                    <div class="channel-icon linkedin-icon"><i data-lucide="linkedin"></i></div>
+                    <div class="channel-info">
+                        <h4>LinkedIn</h4>
+                        <p data-i18n="community.linkedin_desc">Executive updates, company milestones &amp; technical insights.</p>
+                    </div>
+                    <i data-lucide="arrow-up-right" class="channel-arrow"></i>
+                </a>
+                <a href="#contact" class="community-channel-card" id="btnCommunityInquire">
+                    <div class="channel-icon mail-icon"><i data-lucide="mail"></i></div>
+                    <div class="channel-info">
+                        <h4>Direct Consultation</h4>
+                        <p data-i18n="community.consult_desc">Speak directly with our solutions engineering team.</p>
+                    </div>
+                    <i data-lucide="arrow-right" class="channel-arrow"></i>
+                </a>
+            </div>
+            <div class="community-footer-note">
+                <i data-lucide="shield-check"></i>
+                <span>All updates represent authentic development milestones. Zero spam or third-party tracking.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     DIGITAL SEVA HUB MODALS
+     ========================================================================== -->
+<!-- Digital Seva Hub Master Detail Modal -->
+<div id="sevaDetailModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sevaModalTitle">
+    <div class="case-study-backdrop seva-modal-close-btn"></div>
+    <div class="case-study-dialog seva-modal-dialog" role="document">
+        <button type="button" class="modal-close-btn seva-modal-close-btn" aria-label="Close Service Guide">
+            <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+        <div class="modal-content-container">
+            <h3 class="modal-title" id="sevaModalTitle">Service Guide</h3>
+            <div id="sevaModalBody" class="seva-modal-body"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 59-Category Taxonomy Explorer Modal -->
+<div id="sevaCategoryModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sevaCategoryModalTitle">
+    <div class="case-study-backdrop seva-modal-close-btn"></div>
+    <div class="case-study-dialog seva-modal-dialog category-explorer-dialog" role="document">
+        <button type="button" class="modal-close-btn seva-modal-close-btn" aria-label="Close Category Catalog">
+            <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+        <div class="modal-content-container">
+            <div class="category-modal-header">
+                <h3 class="modal-title" id="sevaCategoryModalTitle" data-i18n="seva.all_categories_btn">All 59 Digital Seva Categories</h3>
+                <p class="modal-summary">Explore our complete catalog of verified citizen and student digital assistance services.</p>
+                <div class="category-search-bar">
+                    <i data-lucide="search"></i>
+                    <input type="search" id="sevaCategorySearchInput" placeholder="Filter categories (e.g. ration, college, pension, tax)..." aria-label="Filter categories">
+                </div>
+            </div>
+            <div class="category-modal-grid" id="sevaCategoryModalGrid"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Scam Defense & Cyber Protection Hub Modal -->
+<div id="sevaScamModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sevaScamModalTitle">
+    <div class="case-study-backdrop seva-modal-close-btn"></div>
+    <div class="case-study-dialog seva-modal-dialog scam-center-dialog" role="document">
+        <button type="button" class="modal-close-btn seva-modal-close-btn" aria-label="Close Scam Defense Center">
+            <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+        <div class="modal-content-container">
+            <div class="scam-modal-header">
+                <div class="scam-badge-row">
+                    <span class="badge badge-accent">CRITICAL PUBLIC NOTICE</span>
+                    <span class="scam-live-badge"><i data-lucide="shield-alert"></i> Helpline 1930 Active</span>
+                </div>
+                <h3 class="modal-title" id="sevaScamModalTitle">Citizen Scam Defense &amp; Cyber Protection Center</h3>
+                <p class="modal-summary">Essential safety guidelines to protect your identity, bank account, and official documents from digital fraud.</p>
+            </div>
+            <div id="sevaScamModalBody" class="scam-modal-body"></div>
+        </div>
+    </div>
+</div>
+
+<!-- XESTUS Assisted Inquiry & Application Guidance Modal -->
+<div id="sevaAssistModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sevaAssistModalTitle">
+    <div class="case-study-backdrop seva-modal-close-btn"></div>
+    <div class="case-study-dialog seva-modal-dialog assist-modal-dialog" role="document">
+        <button type="button" class="modal-close-btn seva-modal-close-btn" aria-label="Close Assistance Form">
+            <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+        <div class="modal-content-container">
+            <div class="assist-modal-header">
+                <div class="assist-badge-row">
+                    <span class="badge badge-accent"><i data-lucide="handshake" aria-hidden="true"></i> XESTUS ASSISTANCE</span>
+                    <span class="assist-privacy-badge"><i data-lucide="shield-check" aria-hidden="true"></i> Zero Credential Collection</span>
+                </div>
+                <h3 class="modal-title" id="sevaAssistModalTitle">Request XESTUS Form &amp; Checklist Assistance</h3>
+                <p class="modal-summary">Need help preparing documents or navigating the portal? Our team provides independent typing, formatting, and checklist preparation guidance.</p>
+            </div>
+            
+            <form id="sevaAssistForm" class="seva-assist-form" onsubmit="event.preventDefault();">
+                <div class="form-group">
+                    <label for="assistServiceName">Selected Service / Task:</label>
+                    <input type="text" id="assistServiceName" readonly class="form-control-readonly">
+                </div>
+                <div class="form-row-2col">
+                    <div class="form-group">
+                        <label for="assistApplicantName">Your Name (আপনার নাম) *</label>
+                        <input type="text" id="assistApplicantName" required placeholder="Enter full name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="assistContactInfo">WhatsApp / Mobile / Email *</label>
+                        <input type="text" id="assistContactInfo" required placeholder="+91 9876543210 or email" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="assistHelpType">Type of Assistance Needed (কী ধরনের সাহায্য চান?):</label>
+                    <select id="assistHelpType" class="form-control">
+                        <option value="checklist_prep">Document Checklist &amp; Eligibility Preparation</option>
+                        <option value="form_typing">Application Form Typing &amp; PDF Compression Guidance</option>
+                        <option value="portal_nav">Official Portal Navigation &amp; Appointment Booking</option>
+                        <option value="status_inquiry">Application Status Tracking &amp; Query Resolution</option>
+                        <option value="general">General Guidance / Other Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="assistNotes">Additional Details / Questions (optional):</label>
+                    <textarea id="assistNotes" rows="3" placeholder="Tell us if you have any specific difficulties (e.g., photo resize, missing certificate, rejection query)..." class="form-control"></textarea>
+                </div>
+                
+                <div class="assist-security-notice">
+                    <i data-lucide="shield-alert" aria-hidden="true"></i>
+                    <span><strong>Strict Privacy Notice:</strong> XESTUS never asks for your passwords, OTP, bank PIN, or payment credentials. We only provide independent typing, formatting, and preparation assistance.</span>
+                </div>
+
+                <div class="assist-form-actions">
+                    <button type="submit" class="btn-primary btn-submit-assist" id="btnSubmitAssist">
+                        <i data-lucide="send" aria-hidden="true"></i>
+                        <span>Submit Assistance Request</span>
+                    </button>
+                    <button type="button" class="btn-secondary seva-modal-close-btn">Cancel</button>
+                </div>
+                <div id="assistSubmitFeedback" class="assist-feedback" style="display: none;"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     XESTUS UNIFIED FLOATING ASSISTANT & ATTACHED FOLLOW WIDGET
+     ========================================================================== -->
+<div class="xestus-floating-assistant" id="floatingAssistantContainer" role="region" aria-label="XESTUS AI Assistant and Follow">
+    <!-- Attached Follow Button (Directly ABOVE the AI Launcher) -->
+    <button type="button" class="floating-follow-btn" id="floatingFollowBtn" aria-label="Follow XESTUS on Official Channels" aria-pressed="false">
+        <i data-lucide="user-plus" class="follow-icon" aria-hidden="true"></i>
+        <span data-i18n="assistant.follow_btn">Follow XESTUS</span>
+    </button>
+
+    <!-- AI Assistant Launcher Button -->
+    <button type="button" class="ai-launcher-btn" id="aiLauncherBtn" aria-label="Open XESTUS AI Assistant" aria-expanded="false" aria-haspopup="dialog">
+        <div class="ai-launcher-icon-wrap">
+            <i data-lucide="bot" class="ai-main-icon" aria-hidden="true"></i>
+            <span class="ai-status-pulse" aria-hidden="true"></span>
+        </div>
+        <span class="ai-launcher-text" data-i18n="assistant.launcher">Ask XESTUS AI</span>
+    </button>
+
+    <!-- Expandable AI Chat Panel -->
+    <div class="ai-chat-panel" id="aiChatPanel" role="dialog" aria-modal="false" aria-hidden="true" aria-labelledby="aiChatTitle">
+        <div class="ai-chat-header">
+            <div class="ai-header-info">
+                <div class="ai-header-avatar">
+                    <i data-lucide="bot" aria-hidden="true"></i>
+                    <span class="ai-header-status-dot" aria-hidden="true"></span>
+                </div>
+                <div class="ai-header-text">
+                    <h3 id="aiChatTitle" data-i18n="assistant.title">XESTUS AI Assistant</h3>
+                    <span class="ai-header-sub" data-i18n="assistant.status">Online • Digital Concierge</span>
+                </div>
+            </div>
+            <div class="ai-header-controls">
+                <button type="button" class="ai-control-btn" id="aiChatClearBtn" aria-label="Clear Chat History" title="Clear Chat" data-i18n-title="assistant.clear">
+                    <i data-lucide="trash-2" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="ai-control-btn" id="aiChatCloseBtn" aria-label="Close AI Assistant" title="Minimize" data-i18n-title="assistant.close">
+                    <i data-lucide="x" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Message Stream -->
+        <div class="ai-chat-messages" id="aiChatMessages" role="log" aria-live="polite" tabindex="0">
+            <!-- Dynamically populated by js/ai-assistant.js -->
+        </div>
+
+        <!-- Chat Input Form -->
+        <div class="ai-chat-input-area">
+            <label for="aiChatInput" class="sr-only">Type your question for XESTUS AI</label>
+            <textarea id="aiChatInput" rows="1" placeholder="Ask about services, Digital Seva, projects..." aria-label="Type your message" data-i18n-placeholder="assistant.input_placeholder"></textarea>
+            <button type="button" class="ai-send-btn" id="aiChatSendBtn" aria-label="Send message" disabled>
+                <i data-lucide="send" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
 <!-- EmailJS -->
 <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <!-- Lucide Icons -->
 <script defer src="https://unpkg.com/lucide@latest"></script>
 
-<!-- Your Script -->
-<script defer src="script.js?v=3.5.1"></script>
+<!-- Core App Script -->
+<!-- Core Script & Interactive Controllers -->
+<script defer src="script.js?v=3.5.2"></script>
+<script defer src="js/digital-seva-hub.js?v=1.0.0"></script>
+<script defer src="js/ai-assistant.js?v=1.0.0"></script>
 
 <!-- XESTUS Connection Lost Overlay -->
 <div id="connectionOverlay" class="connection-overlay">
