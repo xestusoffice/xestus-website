@@ -227,6 +227,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------------------------------
+    // 2B. Desktop "More ▾" Navigation Dropdown Controller
+    // --------------------------------------------------------------------------
+    const navMoreDropdown = document.getElementById("navMoreDropdown");
+    const navMoreBtn = document.getElementById("navMoreBtn");
+
+    if (navMoreDropdown && navMoreBtn) {
+        navMoreBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = navMoreDropdown.classList.toggle("is-open");
+            navMoreBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        // Close dropdown when clicking any dropdown item
+        const navDropdownItems = navMoreDropdown.querySelectorAll(".nav-dropdown-item");
+        navDropdownItems.forEach((item) => {
+            item.addEventListener("click", () => {
+                navMoreDropdown.classList.remove("is-open");
+                navMoreBtn.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!navMoreDropdown.contains(e.target)) {
+                navMoreDropdown.classList.remove("is-open");
+                navMoreBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        // Close on Escape key press
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && navMoreDropdown.classList.contains("is-open")) {
+                navMoreDropdown.classList.remove("is-open");
+                navMoreBtn.setAttribute("aria-expanded", "false");
+                navMoreBtn.focus();
+            }
+        });
+    }
+
+    // --------------------------------------------------------------------------
     // 3. Consolidated Scroll State & Progress Bar (rAF Throttled)
     // --------------------------------------------------------------------------
     const progressBar = document.getElementById("progress-bar");
@@ -281,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         revealObserver.unobserve(entry.target);
                     }
                 });
-            }, { rootMargin: "0px 0px -40px 0px", threshold: 0.08 });
+            }, { rootMargin: "0px 0px -20px 0px", threshold: 0.02 });
 
             revealElements.forEach((el) => revealObserver.observe(el));
         }
@@ -1705,7 +1746,400 @@ document.addEventListener("DOMContentLoaded", () => {
                 trapFocus(e, caseStudyModal);
             }
         }
+        if (digitalSevaModal && digitalSevaModal.classList.contains("is-open")) {
+            if (e.key === "Escape") {
+                closeDigitalSevaModal();
+            } else if (e.key === "Tab") {
+                trapFocus(e, digitalSevaModal);
+            }
+        }
     });
+
+    // --------------------------------------------------------------------------
+    // 8C. Digital Seva Interactive Gateway & Service Modal Controller
+    // --------------------------------------------------------------------------
+    const digitalSevaServices = {
+        "service-form-filling": {
+            id: "service-form-filling",
+            title: "Online Form Filling & Applications",
+            category: "Applications",
+            categoryKey: "forms",
+            icon: "file-text",
+            summary: "Precision digital form submission, data validation, and verified document alignment for public and private examinations, recruitments, and certifications.",
+            whoFor: "Job aspirants, students, competitive exam candidates, and citizens seeking error-free online submissions.",
+            whatWeHelp: [
+                "Official job application form filling & data verification",
+                "State & Central competitive examination registrations",
+                "Error-checking biographical and educational details",
+                "Application fee payment gateway assistance & receipt download",
+                "Acknowledgement slips and confirmation tracking"
+            ],
+            requiredDocs: [
+                "Active Mobile Number & Email ID for OTP verification",
+                "Government Photo ID (Aadhaar / Voter ID / Passport)",
+                "Educational Certificates & Marksheets (Class 10, 12, Graduation)",
+                "Recent Passport Size Photograph & Signature Scan"
+            ],
+            processSteps: [
+                { title: "Consultation & Requirement Check", desc: "We review your target application, eligibility criteria, and critical deadlines." },
+                { title: "Data Verification & Document Optimization", desc: "All certificates and images are formatted to exact pixel/KB requirements." },
+                { title: "Live Form Entry & Review", desc: "Detailed draft review with the applicant before final gateway submission." },
+                { title: "Final Receipt & Confirmation Slip", desc: "Instant download of verified submission slips and application references." }
+            ],
+            officialResource: {
+                name: "National Career Service (NCS) Portal",
+                url: "https://www.ncs.gov.in/",
+                note: "Official national portal for employment opportunities and verified government job notifications."
+            },
+            disclaimer: "XESTUS is a private digital assistance consultancy. We provide technical and submission guidance; we do not issue government jobs or represent official examination boards."
+        },
+        "service-admissions": {
+            id: "service-admissions",
+            title: "Admissions & Exam Registrations",
+            category: "Admissions & Exams",
+            categoryKey: "admissions",
+            icon: "graduation-cap",
+            summary: "End-to-end guidance for university admissions, college counseling portals, entrance test registrations, and seat allotment tracking.",
+            whoFor: "Undergraduate, postgraduate, diploma applicants, school leavers, and parents navigating complex admission portals.",
+            whatWeHelp: [
+                "Entrance examination registrations (JEE, NEET, CUET, WBJEE, State CETs)",
+                "Centralized college admission portal profile setup & preference choice filling",
+                "Merit list tracking and counseling round step-by-step guidance",
+                "Seat allotment acceptance fee processing and document upload",
+                "Hostel / quota reservation verification assistance"
+            ],
+            requiredDocs: [
+                "Class 10 & 12 Admit Cards, Marksheets & Passing Certificates",
+                "Entrance Examination Roll Number & Score Card (if applicable)",
+                "Category / Caste / EWS / PwD Certificate (if claiming reservation)",
+                "Domicile / Residential & Character Certificates"
+            ],
+            processSteps: [
+                { title: "Eligibility & College Mapping", desc: "Identify top candidate choices based on scores, preferences, and cut-off trends." },
+                { title: "Profile Creation & Document Upload", desc: "Create secure applicant profiles with properly resized certificates." },
+                { title: "Choice Locking & Counseling Verification", desc: "Review and lock academic stream preferences before counseling windows close." },
+                { title: "Allotment Verification & Admission Formalities", desc: "Complete provisional admission fees and download confirmation letters." }
+            ],
+            officialResource: {
+                name: "National Testing Agency (NTA)",
+                url: "https://nta.ac.in/",
+                note: "Premier autonomous testing organization conducting national entrance tests across India."
+            },
+            disclaimer: "XESTUS provides digital workflow and registration support. Admissions and seat allocations are determined solely by respective university/board authorities."
+        },
+        "service-govt-portals": {
+            id: "service-govt-portals",
+            title: "Government & Citizen Portals",
+            category: "Government Services",
+            categoryKey: "govt",
+            icon: "landmark",
+            summary: "Authorized navigation, appointment booking, and citizen service assistance across central and state e-governance platforms.",
+            whoFor: "Citizens, senior citizens, rural residents, and small business owners needing hassle-free access to public welfare portals.",
+            whatWeHelp: [
+                "Digital Ration Card status checks and member updation guidance",
+                "Voter ID / EPIC online corrections and new registration guidance",
+                "e-District / Citizen portal service applications (Income, Domicile certificates)",
+                "Electricity, water, and municipality online billing and consumer services",
+                "Consumer grievance & public feedback portal submissions"
+            ],
+            requiredDocs: [
+                "Aadhaar Card linked with active mobile number for OTP",
+                "Proof of Address (Utility bill, Land records, or Bank Passbook)",
+                "Existing Certificate / Application reference number (for tracking/modifications)",
+                "Passport photograph (if required by the specific service portal)"
+            ],
+            processSteps: [
+                { title: "Service Identification", desc: "Select the specific citizen service or municipal department needed." },
+                { title: "Document Checklist Verification", desc: "Ensure all statutory proofs comply with state government requirements." },
+                { title: "Portal Application Submission", desc: "File application through the legitimate state or national e-governance portal." },
+                { title: "Tracking Reference & Acknowledgement", desc: "Provide application tracking ID and SMS status tracking instructions." }
+            ],
+            officialResource: {
+                name: "National Government Services Portal (India.gov.in)",
+                url: "https://services.india.gov.in/",
+                note: "Single-window access to online services provided by Central and State Governments."
+            },
+            disclaimer: "XESTUS is an independent digital assistance service. We are not a government agency. All certificates and approvals are granted exclusively by the respective competent statutory authorities."
+        },
+        "service-scholarships": {
+            id: "service-scholarships",
+            title: "Scholarships & Financial Aid",
+            category: "Scholarships",
+            categoryKey: "scholarships",
+            icon: "award",
+            summary: "Systematic assistance for national and state scholarship schemes, merit fellowships, minority grants, and institutional education aid.",
+            whoFor: "School, college, and university students seeking merit or financial scholarship support.",
+            whatWeHelp: [
+                "National Scholarship Portal (NSP) student registration & renewal",
+                "State scholarship schemes (e.g. Oasis, SVMCM, Pre/Post-Matric schemes)",
+                "Income certificate and bonafide student document formatting",
+                "Bank account validation (Aadhaar Seeded / DBT enabled verification)",
+                "Application renewal tracking and defect resolution"
+            ],
+            requiredDocs: [
+                "Aadhaar Card linked to an active bank account (DBT/NPCI enabled)",
+                "Current Academic Year Bonafide Student Certificate / Admission Fee Receipt",
+                "Valid Family Annual Income Certificate issued by competent authority",
+                "Previous Year Marksheet with minimum qualifying percentage"
+            ],
+            processSteps: [
+                { title: "Scheme Eligibility Check", desc: "Evaluate eligible central/state schemes matching the student's background." },
+                { title: "Bank DBT & Aadhaar Seeding Check", desc: "Verify that the candidate's bank account is enabled for Direct Benefit Transfer." },
+                { title: "Online Application & Document Upload", desc: "Submit the scholarship application with all supporting institutional verifications." },
+                { title: "Institutional Verification Follow-up", desc: "Track application progress through institute, district, and state verification tiers." }
+            ],
+            officialResource: {
+                name: "National Scholarship Portal (NSP)",
+                url: "https://scholarships.gov.in/",
+                note: "Official Government of India portal for all Central, UGC, AICTE, and State scholarship schemes."
+            },
+            disclaimer: "XESTUS assists applicants with digital registration and document verification. Scholarship sanctioning and disbursements are strictly handled by government departments."
+        },
+        "service-documents": {
+            id: "service-documents",
+            title: "Document Formatting & PDF Uploads",
+            category: "Documents",
+            categoryKey: "documents",
+            icon: "file-check",
+            summary: "Standard-compliant scanning, DPI scaling, multi-page PDF compilation, file size reduction, and photo-signature dimension calibration.",
+            whoFor: "Applicants encountering portal rejection due to file size limits, incorrect DPI, or invalid PDF formats.",
+            whatWeHelp: [
+                "Precision PDF compression to exact portal size limits (e.g., < 100 KB, < 200 KB)",
+                "Photo and signature resizing to exact pixel/millimeter portal specifications",
+                "Multi-page PDF merge, split, and optical rotation corrections",
+                "High-contrast document cleanup from phone photos or old scans",
+                "Self-attestation layout formatting and clear watermarking"
+            ],
+            requiredDocs: [
+                "Digital photos or scans of the original physical documents",
+                "Target portal guidelines specifying file format, max size (KB/MB), and DPI",
+                "Signature sample written on clean white unruled paper with blue/black ink"
+            ],
+            processSteps: [
+                { title: "Image Capture & Quality Inspection", desc: "Analyze source files for blurriness, lighting, skew, and resolution issues." },
+                { title: "Digital Optimization & Sizing", desc: "Calibrate aspect ratio, color depth, and lossless compression algorithms." },
+                { title: "Specification Compliance Check", desc: "Validate target parameters against the strict requirements of the official portal." },
+                { title: "Ready-to-Upload Delivery", desc: "Provide properly named, verified files ready for immediate upload." }
+            ],
+            officialResource: {
+                name: "DigiLocker Platform",
+                url: "https://www.digilocker.gov.in/",
+                note: "Official Government of India platform for issuance and verification of authentic digital documents."
+            },
+            disclaimer: "XESTUS processes files strictly with client consent for legitimate portal compliance. We do not alter, forge, or manipulate original biographical or academic data."
+        },
+        "service-appointments": {
+            id: "service-appointments",
+            title: "Online Appointments & Bookings",
+            category: "Appointments",
+            categoryKey: "appointments",
+            icon: "calendar-check",
+            summary: "Convenient slot booking assistance for regional passport offices, vehicle driving tests, healthcare centers, and citizen facilitation counters.",
+            whoFor: "Citizens needing urgent or scheduled appointments at regional service facilitation centers.",
+            whatWeHelp: [
+                "Passport Seva Kendra (PSK / POPSK) online appointment slot booking",
+                "Regional Transport Office (RTO / Parivahan) driving license test slot booking",
+                "State hospital and specialist OPD online token/appointment booking",
+                "Appointment rescheduling and cancellation management",
+                "Appointment receipt and mandatory document checklist printing"
+            ],
+            requiredDocs: [
+                "Valid identity proof (Aadhaar / Voter ID / Birth Certificate)",
+                "Existing application / token reference number",
+                "Active mobile phone for OTP confirmation during slot booking",
+                "Online payment method for statutory appointment fee (if applicable)"
+            ],
+            processSteps: [
+                { title: "Service & Center Selection", desc: "Identify the nearest facilitation center with available operational slots." },
+                { title: "Slot Availability Monitoring", desc: "Find the earliest suitable date and time window fitting the applicant's schedule." },
+                { title: "Booking Confirmation & Payment", desc: "Finalize booking and securely process official portal facilitation fees." },
+                { title: "Appointment Receipt & Prep Guide", desc: "Generate printable appointment slip with a tailored checklist of required originals." }
+            ],
+            officialResource: {
+                name: "Passport Seva Online Portal",
+                url: "https://www.passportindia.gov.in/",
+                note: "Official portal of the Ministry of External Affairs for passport services across India."
+            },
+            disclaimer: "XESTUS assists citizens with online scheduling navigation. Slot availability, appointments, and service approvals are governed strictly by the respective government authorities."
+        }
+    };
+
+    const digitalSevaModal = document.getElementById("digitalSevaModal");
+    const digitalModalBackdrop = document.getElementById("digitalModalBackdrop");
+    const digitalModalCloseBtn = document.getElementById("digitalModalCloseBtn");
+    const digitalModalContent = document.getElementById("digitalModalContent");
+    let lastDigitalFocusedEl = null;
+
+    function openDigitalSevaModal(serviceId, triggerEl) {
+        const service = digitalSevaServices[serviceId];
+        if (!service || !digitalSevaModal || !digitalModalContent) return;
+
+        lastDigitalFocusedEl = triggerEl || document.activeElement;
+
+        digitalModalContent.innerHTML = `
+            <div class="digital-modal-header">
+                <div class="modal-badges">
+                    <span class="badge badge-accent">${service.category}</span>
+                    <span class="digital-tag">ASSISTED SERVICE</span>
+                </div>
+                <h3 class="digital-modal-title" id="digitalModalTitle">${service.title}</h3>
+                <p class="digital-modal-tagline">${service.summary}</p>
+            </div>
+            
+            <div class="digital-modal-sections">
+                <!-- Target Audience -->
+                <div class="digital-info-card">
+                    <h4><i data-lucide="users"></i> Who This Service Is For</h4>
+                    <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--text-secondary);">${service.whoFor}</p>
+                </div>
+                
+                <!-- What XESTUS Helps With -->
+                <div class="digital-info-card">
+                    <h4><i data-lucide="check-circle-2"></i> What XESTUS Helps With</h4>
+                    <ul>
+                        ${service.whatWeHelp.map(item => `<li><i data-lucide="check"></i> <span>${item}</span></li>`).join('')}
+                    </ul>
+                </div>
+                
+                <!-- Required Information / Documents -->
+                <div class="digital-info-card">
+                    <h4><i data-lucide="file-text"></i> What You Need to Provide</h4>
+                    <ul>
+                        ${service.requiredDocs.map(item => `<li><i data-lucide="arrow-right"></i> <span>${item}</span></li>`).join('')}
+                    </ul>
+                </div>
+                
+                <!-- General Process Workflow -->
+                <div class="digital-info-card">
+                    <h4><i data-lucide="list-ordered"></i> Step-by-Step Workflow</h4>
+                    <div class="digital-process-steps">
+                        ${service.processSteps.map((step, idx) => `
+                            <div class="digital-step-item">
+                                <span class="digital-step-num">${idx + 1}</span>
+                                <div class="digital-step-text">
+                                    <strong>${step.title}:</strong> ${step.desc}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <!-- Official External Resource Link -->
+                ${service.officialResource ? `
+                    <div class="digital-official-box">
+                        <div class="digital-official-info">
+                            <div class="digital-official-title">
+                                <i data-lucide="external-link"></i>
+                                <span>Verified Official Resource</span>
+                            </div>
+                            <p class="digital-official-desc">
+                                <strong>${service.officialResource.name}:</strong> ${service.officialResource.note}
+                            </p>
+                        </div>
+                        <a href="${service.officialResource.url}" target="_blank" rel="noopener noreferrer" class="digital-official-btn">
+                            <span>Open Official Portal</span>
+                            <i data-lucide="arrow-up-right"></i>
+                        </a>
+                    </div>
+                ` : ''}
+                
+                <!-- Transparency & Statutory Disclaimer -->
+                <div class="digital-disclaimer-box">
+                    <i data-lucide="shield-alert"></i>
+                    <p><strong>Transparency Notice:</strong> ${service.disclaimer}</p>
+                </div>
+            </div>
+            
+            <div class="digital-modal-actions">
+                <button type="button" class="btn-secondary magnetic-btn" id="digitalModalCancelBtn">
+                    <span>Close</span>
+                </button>
+                <button type="button" class="btn-primary magnetic-btn" id="digitalModalRequestBtn" data-service-id="${service.id}">
+                    <span>Request XESTUS Assistance</span>
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
+        `;
+
+        if (window.lucide) {
+            try { window.lucide.createIcons({ scope: digitalModalContent }); } catch (e) {}
+        }
+
+        const cancelBtn = document.getElementById("digitalModalCancelBtn");
+        if (cancelBtn) cancelBtn.addEventListener("click", closeDigitalSevaModal);
+
+        const requestBtn = document.getElementById("digitalModalRequestBtn");
+        if (requestBtn) {
+            requestBtn.addEventListener("click", () => {
+                requestDigitalService(service.id);
+            });
+        }
+
+        digitalSevaModal.classList.add("is-open");
+        digitalSevaModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+
+        setTimeout(() => {
+            if (digitalModalCloseBtn) digitalModalCloseBtn.focus();
+        }, 50);
+    }
+
+    function closeDigitalSevaModal() {
+        if (!digitalSevaModal) return;
+        digitalSevaModal.classList.remove("is-open");
+        digitalSevaModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+
+        if (lastDigitalFocusedEl && typeof lastDigitalFocusedEl.focus === "function") {
+            lastDigitalFocusedEl.focus();
+        }
+    }
+
+    function requestDigitalService(serviceId) {
+        const service = digitalSevaServices[serviceId];
+        if (!service) return;
+
+        closeDigitalSevaModal();
+
+        const serviceSelect = document.getElementById("service");
+        if (serviceSelect) {
+            serviceSelect.value = "digital";
+        }
+
+        const messageTextarea = document.getElementById("message");
+        if (messageTextarea) {
+            messageTextarea.value = `[Service Request: ${service.title}]\n\nHello XESTUS Team, I would like assistance with: ${service.title}.\n\nPlease let me know the required next steps.`;
+            messageTextarea.dispatchEvent(new Event("input", { bubbles: true }));
+        }
+
+        const contactSection = document.getElementById("contact");
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+            setTimeout(() => {
+                if (messageTextarea) messageTextarea.focus();
+            }, 600);
+        }
+    }
+
+    // Modal click triggers
+    document.addEventListener("click", (e) => {
+        const digitalTrigger = e.target.closest("[data-digital-modal]");
+        if (digitalTrigger) {
+            e.preventDefault();
+            const serviceId = digitalTrigger.getAttribute("data-digital-modal");
+            openDigitalSevaModal(serviceId, digitalTrigger);
+        }
+    });
+
+    if (digitalModalCloseBtn) {
+        digitalModalCloseBtn.addEventListener("click", closeDigitalSevaModal);
+    }
+
+    if (digitalModalBackdrop) {
+        digitalModalBackdrop.addEventListener("click", closeDigitalSevaModal);
+    }
+
+    // Digital Seva Category Filtering is managed reactively by js/digital-seva-hub.js
 
     // --------------------------------------------------------------------------
     // 8D. Innovation Lab Interactive Terminal Controller
@@ -2186,19 +2620,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 3600);
     }
 
-    const BASE_FOLLOWERS_COUNT = 1248;
-
-    function getFollowerCount() {
-        const state = getFollowState();
-        const isFollowing = !!(state && (state.following || state.email));
-        return BASE_FOLLOWERS_COUNT + (isFollowing ? 1 : 0);
-    }
-
     function updateFollowerCountDisplays() {
-        const count = getFollowerCount();
         const globalFollowersCount = document.getElementById("globalFollowersCount");
         if (globalFollowersCount) {
-            globalFollowersCount.textContent = count.toLocaleString();
+            globalFollowersCount.style.display = "none";
         }
     }
 
@@ -2538,6 +2963,136 @@ document.addEventListener("DOMContentLoaded", () => {
             const selectedLang = btn.getAttribute("data-lang");
             if (selectedLang) {
                 setLanguage(selectedLang);
+            }
+        });
+    });
+
+    // --------------------------------------------------------------------------
+    // 13B. Accessible 3-Theme Engine (Day, Night, Eye Protection)
+    // --------------------------------------------------------------------------
+    const THEME_STORAGE_KEY = "xestus_theme";
+    const SUPPORTED_THEMES = ["night", "day", "eye-protect"];
+    const themeSwitcher = document.getElementById("themeSwitcher");
+    const themeBtn = document.getElementById("themeBtn");
+    const themeDropdown = document.getElementById("themeDropdown");
+    const themeOpts = document.querySelectorAll(".theme-opt");
+    const mobileThemeBtns = document.querySelectorAll(".mobile-theme-btn");
+    const currentThemeLabel = document.querySelector(".theme-current-label");
+    const activeThemeIcon = document.querySelector(".theme-active-icon");
+
+    const THEME_METADATA = {
+        night: { label: "Night", icon: "moon" },
+        day: { label: "Day", icon: "sun" },
+        "eye-protect": { label: "Eye Protect", icon: "glasses" }
+    };
+
+    function detectPreferredTheme() {
+        try {
+            const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+            if (storedTheme && SUPPORTED_THEMES.includes(storedTheme)) {
+                return storedTheme;
+            }
+            if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+                return "day";
+            }
+        } catch (e) {}
+        return "night";
+    }
+
+    function setTheme(theme, persist = true) {
+        if (!SUPPORTED_THEMES.includes(theme)) {
+            theme = "night";
+        }
+
+        document.documentElement.setAttribute("data-theme", theme);
+
+        if (persist) {
+            try {
+                localStorage.setItem(THEME_STORAGE_KEY, theme);
+            } catch (e) {}
+        }
+
+        // Update Desktop UI label & icon
+        const meta = THEME_METADATA[theme] || THEME_METADATA.night;
+        if (currentThemeLabel) {
+            currentThemeLabel.textContent = meta.label;
+        }
+
+        if (activeThemeIcon && window.lucide) {
+            activeThemeIcon.setAttribute("data-lucide", meta.icon);
+            try { window.lucide.createIcons({ scope: themeBtn }); } catch (e) {}
+        }
+
+        // Update active class on dropdown options
+        themeOpts.forEach((opt) => {
+            const optTheme = opt.getAttribute("data-theme");
+            opt.classList.toggle("active", optTheme === theme);
+        });
+
+        // Update active class on mobile theme strip buttons
+        mobileThemeBtns.forEach((btn) => {
+            const btnTheme = btn.getAttribute("data-theme");
+            btn.classList.toggle("active", btnTheme === theme);
+        });
+
+        if (typeof window !== "undefined") {
+            window.dispatchEvent(new CustomEvent("xestus:theme-changed", { detail: { theme } }));
+        }
+    }
+
+    // Initialize immediate theme preference
+    const initialTheme = detectPreferredTheme();
+    setTheme(initialTheme, false);
+
+    // Toggle theme dropdown
+    if (themeBtn && themeSwitcher) {
+        themeBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = themeSwitcher.classList.toggle("is-open");
+            themeBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            // Close language switcher if open
+            if (langSwitcher) {
+                langSwitcher.classList.remove("is-open");
+                if (langBtn) langBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!themeSwitcher.contains(e.target)) {
+                themeSwitcher.classList.remove("is-open");
+                themeBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && themeSwitcher.classList.contains("is-open")) {
+                themeSwitcher.classList.remove("is-open");
+                themeBtn.setAttribute("aria-expanded", "false");
+                themeBtn.focus();
+            }
+        });
+    }
+
+    // Dropdown option clicks
+    themeOpts.forEach((opt) => {
+        opt.addEventListener("click", () => {
+            const selectedTheme = opt.getAttribute("data-theme");
+            if (selectedTheme) {
+                setTheme(selectedTheme);
+            }
+            if (themeSwitcher) {
+                themeSwitcher.classList.remove("is-open");
+                if (themeBtn) themeBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+    });
+
+    // Mobile theme button clicks
+    mobileThemeBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const selectedTheme = btn.getAttribute("data-theme");
+            if (selectedTheme) {
+                setTheme(selectedTheme);
             }
         });
     });
@@ -3111,6 +3666,78 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+
+    // --------------------------------------------------------------------------
+    // 31. Stitch Tools Directory Filter Controller
+    // --------------------------------------------------------------------------
+    const toolFilterBtns = document.querySelectorAll(".stitch-tool-filter-btn");
+    const toolCards = document.querySelectorAll(".stitch-tool-card");
+
+    if (toolFilterBtns.length > 0 && toolCards.length > 0) {
+        toolFilterBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const filter = btn.getAttribute("data-tool-filter") || "all";
+                toolFilterBtns.forEach((b) => {
+                    b.classList.remove("active");
+                    b.setAttribute("aria-selected", "false");
+                });
+                btn.classList.add("active");
+                btn.setAttribute("aria-selected", "true");
+
+                toolCards.forEach((card) => {
+                    const categories = (card.getAttribute("data-category") || "").split(" ");
+                    if (filter === "all" || categories.includes(filter)) {
+                        card.style.display = "flex";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            });
+        });
+    }
+
+    // --------------------------------------------------------------------------
+    // 32. Stitch Contact Inquiry Category Quick Selector
+    // --------------------------------------------------------------------------
+    const inquiryTabs = document.querySelectorAll(".stitch-inquiry-tab");
+    const inquiryServiceSelect = document.getElementById("service");
+
+    if (inquiryTabs.length > 0) {
+        inquiryTabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                const targetService = tab.getAttribute("data-inquiry-service");
+                inquiryTabs.forEach((t) => {
+                    t.classList.remove("active");
+                    t.setAttribute("aria-selected", "false");
+                });
+                tab.classList.add("active");
+                tab.setAttribute("aria-selected", "true");
+
+                if (inquiryServiceSelect && targetService) {
+                    for (let i = 0; i < inquiryServiceSelect.options.length; i++) {
+                        if (inquiryServiceSelect.options[i].value === targetService || inquiryServiceSelect.options[i].text.includes(targetService)) {
+                            inquiryServiceSelect.selectedIndex = i;
+                            inquiryServiceSelect.dispatchEvent(new Event("change"));
+                            break;
+                        }
+                    }
+                }
+            });
+        });
+    }
+
+    // Global helper to open contact form with pre-populated subject
+    window.openContactModalWithSubject = function(subject) {
+        const contactSection = document.getElementById("contact");
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: "smooth" });
+        }
+        const messageField = document.getElementById("message");
+        if (messageField) {
+            messageField.value = `Inquiry regarding: ${subject}\n\n`;
+            messageField.focus();
+        }
+    };
 
     updateEstimatorUI();
     initLiveStats();

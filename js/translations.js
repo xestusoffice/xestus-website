@@ -29,11 +29,15 @@ window.XESTUS_TRANSLATIONS = {
     "nav.solutions": "Solutions",
     "nav.digital_services": "Digital Help",
     "nav.projects": "Projects",
+    "nav.products": "Products",
     "nav.lab": "Innovation Lab",
+    "nav.roadmap": "Roadmap",
     "nav.about": "About",
     "nav.founder": "Founder",
     "nav.follow": "Follow",
+    "nav.faq": "FAQ",
     "nav.contact": "Contact",
+    "nav.more": "More",
 
     // Hero Section
     "hero.badge": "INTELLIGENCE BEYOND LIMITS",
@@ -165,6 +169,34 @@ window.XESTUS_TRANSLATIONS = {
     "digital.trust_title": "Responsible & Transparent Digital Support",
     "digital.trust_text": "XESTUS provides practical technical and digital assistance. We do not act as an official government authority. Applicants remain responsible for reviewing all information before final submission.",
     "digital.banner_cta": "Need Help With An Online Form?",
+
+    // Digital Services Filters & Modal
+    "digital.filter_all": "All Services",
+    "digital.filter_forms": "Applications & Forms",
+    "digital.filter_admissions": "Admissions & Exams",
+    "digital.filter_govt": "Government Portals",
+    "digital.filter_scholarships": "Scholarships",
+    "digital.filter_documents": "Documents & PDFs",
+    "digital.filter_appointments": "Appointments",
+    "digital.card_badge_help": "XESTUS Guidance",
+    "digital.card_view_details": "View Details & Apply",
+    "digital.modal_title": "Digital Seva Assistance & Guidelines",
+    "digital.modal_what_we_help": "What XESTUS Helps You With",
+    "digital.modal_who_for": "Who This Service Is For",
+    "digital.modal_req_docs": "Required Information & Documents",
+    "digital.modal_process": "Step-by-Step Application Workflow",
+    "digital.modal_disclaimer_title": "Important Statutory & Transparency Notice",
+    "digital.modal_disclaimer_text": "XESTUS provides professional digital typing, scanning, and form assistance. We are NOT a government portal or statutory authority. All applications are submitted onto authorized official servers.",
+    "digital.modal_req_cta": "Request XESTUS Assistance",
+    "digital.modal_open_portal": "Open Official Portal",
+    "digital.modal_close": "Close Details",
+
+    // Digital Seva Command Center Keys
+    "seva.task_discovery_title": "I NEED HELP WITH...",
+    "seva.all_categories_btn": "All 59 Categories ↗",
+    "seva.scam_center_btn": "Scam Defense Hub ↗",
+    "seva.master_portals_title": "Direct Access to Verified Government Portals",
+    "seva.master_portals_sub": "Authentic statutory gateways for direct citizen services (BSK, e-District 2.0, UMANG, India.gov.in, Duare Sarkar, ServicePlus).",
 
     // Projects Section
     "portfolio.badge": "CASE STUDIES & PORTFOLIO",
@@ -380,6 +412,29 @@ window.XESTUS_TRANSLATIONS = {
     "estimator.deliverables_title": "Core Architectural Deliverables:",
     "estimator.transfer_btn": "Transfer Scope to Inquiry Form",
 
+    // Floating Assistant & Community Widget
+    "assistant.launcher": "Ask XESTUS AI",
+    "assistant.title": "XESTUS AI Assistant",
+    "assistant.status": "Online • Digital Concierge",
+    "assistant.clear": "Clear Chat",
+    "assistant.close": "Minimize",
+    "assistant.input_placeholder": "Ask about services, Digital Seva, projects...",
+    "assistant.follow_btn": "Follow XESTUS",
+    "assistant.following_btn": "Following ✓",
+    "community.title": "Join the XESTUS Community",
+    "community.sub": "Follow our verified engineering updates, open-source releases, and digital empowerment initiatives across official channels.",
+    "community.github_desc": "Explore open-source repositories, agent architectures & tools.",
+    "community.linkedin_desc": "Executive updates, company milestones & technical insights.",
+    "community.consult_desc": "Speak directly with our solutions engineering team.",
+
+    // Digital Seva Hub
+    "seva.iwant_title": "What do you need help with?",
+    "seva.search_placeholder": "Search services (e.g. passport, scholarship, admission, ration, driving licence, PDF)...",
+    "seva.master_portals_title": "Direct Access to Verified Government Portals",
+    "seva.master_portals_sub": "Authentic statutory gateways for direct citizen services.",
+    "seva.all_categories_btn": "View All 59 Categories",
+    "seva.scam_center_btn": "Scam Defense Center",
+
     // Footer
     "footer.tagline": "Enterprise technology and AI software engineering company developing autonomous agent swarms, web platforms, and digital assistance.",
     "footer.rights": "All Rights Reserved.",
@@ -408,11 +463,15 @@ window.XESTUS_TRANSLATIONS = {
     "nav.solutions": "সলিউশন",
     "nav.digital_services": "ডিজিটাল সহায়তা",
     "nav.projects": "প্রজেক্টসমূহ",
+    "nav.products": "প্রোডাক্টস",
     "nav.lab": "ইনোভেশন ল্যাব",
+    "nav.roadmap": "রোডম্যাপ",
     "nav.about": "পরিচিতি",
     "nav.founder": "প্রতিষ্ঠাতা",
     "nav.follow": "অনুসরণ",
+    "nav.faq": "প্রশ্নোত্তর (FAQ)",
     "nav.contact": "যোগাযোগ",
+    "nav.more": "আরও",
 
     // Hero Section
     "hero.badge": "সীমার ঊর্ধ্বে বুদ্ধিমত্তা",
@@ -544,6 +603,34 @@ window.XESTUS_TRANSLATIONS = {
     "digital.trust_title": "দায়িত্বশীল ও স্বচ্ছ ডিজিটাল সহায়তা",
     "digital.trust_text": "XESTUS সাধারণ মানুষকে প্রযুক্তিগত ও ফর্ম পূরণের সহায়তা প্রদান করে। আমরা কোনো সরকারি সংস্থা নই। চূড়ান্ত সাবমিশনের আগে সকল তথ্য যাচাই করার দায়িত্ব আবেদনকারীর।",
     "digital.banner_cta": "কোনো অনলাইন ফর্ম বা ডিজিটাল কাজে সাহায্য দরকার?",
+
+    // Digital Services Filters & Modal
+    "digital.filter_all": "সকল পরিষেবা",
+    "digital.filter_forms": "আবেদন ও ফর্ম পূরণ",
+    "digital.filter_admissions": "ভর্তি ও পরীক্ষা",
+    "digital.filter_govt": "সরকারি পোর্টাল",
+    "digital.filter_scholarships": "স্কলারশিপ",
+    "digital.filter_documents": "নথি ও PDF",
+    "digital.filter_appointments": "অ্যাপয়েন্টমেন্ট",
+    "digital.card_badge_help": "XESTUS গাইডেন্স",
+    "digital.card_view_details": "বিস্তারিত দেখুন ও আবেদন",
+    "digital.modal_title": "ডিজিটাল সেবা নির্দেশিকা ও সহায়তা",
+    "digital.modal_what_we_help": "XESTUS যেভাবে সাহায্য করে",
+    "digital.modal_who_for": "কাদের জন্য এই পরিষেবা",
+    "digital.modal_req_docs": "প্রয়োজনীয় তথ্য ও নথিপত্র",
+    "digital.modal_process": "আবেদনের ধারাবাহিক ধাপ",
+    "digital.modal_disclaimer_title": "গুরুত্বপূর্ণ বিধিবদ্ধ ও স্বচ্ছতা বিজ্ঞপ্তি",
+    "digital.modal_disclaimer_text": "XESTUS একটি স্বাধীন প্রযুক্তিগত ও ডিজিটাল সহায়তা প্ল্যাটফর্ম। আমরা কোনো সরকারি কর্তৃপক্ষ নই। সমস্ত আবেদন অনুমোদিত সরকারি পোর্টালের মাধ্যমে জমা দেওয়া হয়।",
+    "digital.modal_req_cta": "সহায়তার আবেদন করুন",
+    "digital.modal_open_portal": "অফিশিয়াল পোর্টাল খুলুন",
+    "digital.modal_close": "বন্ধ করুন",
+
+    // Digital Seva Command Center Keys (Bengali)
+    "seva.task_discovery_title": "কিসে সাহায্য চান?",
+    "seva.all_categories_btn": "সকল ৫৯টি ক্যাটাগরি ↗",
+    "seva.scam_center_btn": "সাইবার স্ক্যাম সুরক্ষা কেন্দ্র ↗",
+    "seva.master_portals_title": "যাচাইকৃত সরকারি পোর্টাল ডিরেক্টরি",
+    "seva.master_portals_sub": "সরাসরি নাগরিক সেবার জন্য আসল সরকারি ওয়েবসাইট (BSK, e-District 2.0, UMANG, India.gov.in, দুয়ারে সরকার, ServicePlus)।",
 
     // Projects Section
     "portfolio.badge": "কেস স্টাডি ও পোর্টফোলিও",
@@ -759,6 +846,29 @@ window.XESTUS_TRANSLATIONS = {
     "estimator.deliverables_title": "মূল আর্কিটেকচারাল ডেলিভারেবল:",
     "estimator.transfer_btn": "এই বিবরণ ইনকোয়ারি ফর্মে যুক্ত করুন",
 
+    // Floating Assistant & Community Widget
+    "assistant.launcher": "XESTUS AI-কে জিজ্ঞাসা করুন",
+    "assistant.title": "XESTUS AI অ্যাসিস্ট্যান্ট",
+    "assistant.status": "অনলাইন • ডিজিটাল সহায়ক",
+    "assistant.clear": "চ্যাট মুছুন",
+    "assistant.close": "মিনিমাইজ",
+    "assistant.input_placeholder": "পরিষেবা, ডিজিটাল সেবা, প্রজেক্ট সম্পর্কে জিজ্ঞাসা করুন...",
+    "assistant.follow_btn": "XESTUS অনুসরণ করুন",
+    "assistant.following_btn": "অনুসরণ করছেন ✓",
+    "community.title": "XESTUS কমিউনিটিতে যোগ দিন",
+    "community.sub": "আমাদের অফিসিয়াল চ্যানেলগুলির মাধ্যমে যাচাইকৃত ইঞ্জিনিয়ারিং আপডেট, ওপেন-সোর্স প্রজেক্ট এবং প্রযুক্তিগত উদ্যোগের সাথে যুক্ত থাকুন।",
+    "community.github_desc": "ওপেন-সোর্স রিপোজিটরি, AI এজেন্ট ও টুলস অন্বেষণ করুন।",
+    "community.linkedin_desc": "কোম্পানি আপডেট, কারিগরি অগ্রগতি ও গুরুত্বপূর্ণ তথ্য।",
+    "community.consult_desc": "সরাসরি আমাদের ইঞ্জিনিয়ারিং দলের সাথে কথা বলুন।",
+
+    // Digital Seva Hub
+    "seva.iwant_title": "আপনার কী ধরনের সহায়তা প্রয়োজন?",
+    "seva.search_placeholder": "সেবা খুঁজুন (যেমন: পাসপোর্ট, স্কলারশিপ, ভর্তি, রেশন, ড্রাইভিং লাইসেন্স, PDF)...",
+    "seva.master_portals_title": "যাচাইকৃত সরকারি পোর্টালে সরাসরি প্রবেশ",
+    "seva.master_portals_sub": "সরাসরি নাগরিক সেবার জন্য নির্ভরযোগ্য আনুষ্ঠানিক সরকারি পোর্টাল।",
+    "seva.all_categories_btn": "সকল ৫৯টি ক্যাটাগরি দেখুন",
+    "seva.scam_center_btn": "সাইবার সুরক্ষা কেন্দ্র",
+
     // Footer
     "footer.tagline": "অটোনোমাস AI সিস্টেম, আধুনিক ওয়েব প্ল্যাটফর্ম এবং সবার জন্য ব্যবহারিক ডিজিটাল সহায়তার নির্ভরযোগ্য প্রতিষ্ঠান।",
     "footer.rights": "সর্বস্বত্ব সংরক্ষিত।",
@@ -787,11 +897,15 @@ window.XESTUS_TRANSLATIONS = {
     "nav.solutions": "सॉल्यूशंस",
     "nav.digital_services": "डिजिटल सहायता",
     "nav.projects": "प्रोजेक्ट्स",
+    "nav.products": "उत्पाद (Products)",
     "nav.lab": "इनोवेशन लैब",
+    "nav.roadmap": "रोडमैप",
     "nav.about": "परिचय",
     "nav.founder": "संस्थापक",
     "nav.follow": "फ़ॉलो",
+    "nav.faq": "सामान्य प्रश्न (FAQ)",
     "nav.contact": "संपर्क",
+    "nav.more": "और अधिक",
 
     // Hero Section
     "hero.badge": "सीमाओं से परे बुद्धिमत्ता",
@@ -923,6 +1037,34 @@ window.XESTUS_TRANSLATIONS = {
     "digital.trust_title": "ज़िम्मेदार और पारदर्शी डिजिटल सहयोग",
     "digital.trust_text": "XESTUS आम जनता को तकनीकी और फॉर्म भरने में सहायता प्रदान करता है। हम कोई आधिकारिक सरकारी संस्था नहीं हैं। अंतिम सबमिशन से पहले सभी विवरणों की जांच करने की ज़िम्मेदारी आवेदक की है।",
     "digital.banner_cta": "क्या आपको किसी ऑनलाइन फॉर्म या काम में मदद चाहिए?",
+
+    // Digital Services Filters & Modal
+    "digital.filter_all": "सभी सेवाएं",
+    "digital.filter_forms": "आवेदन व फॉर्म",
+    "digital.filter_admissions": "प्रवेश व परीक्षाएं",
+    "digital.filter_govt": "सरकारी पोर्टल",
+    "digital.filter_scholarships": "छात्रवृत्ति",
+    "digital.filter_documents": "दस्तावेज व PDF",
+    "digital.filter_appointments": "अपॉइंटमेंट्स",
+    "digital.card_badge_help": "XESTUS मार्गदर्शन",
+    "digital.card_view_details": "विवरण देखें व आवेदन",
+    "digital.modal_title": "डिजिटल सेवा सहायता व दिशानिर्देश",
+    "digital.modal_what_we_help": "XESTUS किस प्रकार मदद करता है",
+    "digital.modal_who_for": "यह सेवा किसके लिए है",
+    "digital.modal_req_docs": "आवश्यक दस्तावेज व जानकारी",
+    "digital.modal_process": "आवेदन की चरणबद्ध प्रक्रिया",
+    "digital.modal_disclaimer_title": "महत्वपूर्ण वैधानिक व पारदर्शिता सूचना",
+    "digital.modal_disclaimer_text": "XESTUS एक स्वतंत्र डिजिटल व तकनीकी सहायता मंच है। हम कोई सरकारी प्राधिकरण नहीं हैं। सभी आवेदन अधिकृत आधिकारिक पोर्टलों पर ही जमा किए जाते हैं।",
+    "digital.modal_req_cta": "सहायता का अनुरोध करें",
+    "digital.modal_open_portal": "आधिकारिक पोर्टल खोलें",
+    "digital.modal_close": "बंद करें",
+
+    // Digital Seva Command Center Keys (Hindi)
+    "seva.task_discovery_title": "आपको किसमें सहायता चाहिए?",
+    "seva.all_categories_btn": "सभी 59 श्रेणियां ↗",
+    "seva.scam_center_btn": "स्कैम सुरक्षा केंद्र ↗",
+    "seva.master_portals_title": "सत्यापित सरकारी पोर्टल डायरेक्टरी",
+    "seva.master_portals_sub": "प्रत्यक्ष नागरिक सेवाओं के लिए आधिकारिक सरकारी पोर्टल (BSK, e-District 2.0, UMANG, India.gov.in, दुआरे सरकार, ServicePlus)।",
 
     // Projects Section
     "portfolio.badge": "केस स्टडी व पोर्टफोलियो",
@@ -1137,6 +1279,29 @@ window.XESTUS_TRANSLATIONS = {
     "estimator.metric_sla_val": "24 घंटे में SLA",
     "estimator.deliverables_title": "मुख्य आर्किटेक्चरल परिणाम:",
     "estimator.transfer_btn": "यह विवरण पूछताछ फॉर्म में जोड़ें",
+
+    // Floating Assistant & Community Widget
+    "assistant.launcher": "XESTUS AI से पूछें",
+    "assistant.title": "XESTUS AI सहायक",
+    "assistant.status": "ऑनलाइन • डिजिटल सहायक",
+    "assistant.clear": "चैट साफ़ करें",
+    "assistant.close": "छोटा करें",
+    "assistant.input_placeholder": "सेवाओं, डिजिटल सेवा, प्रोजेक्ट्स के बारे में पूछें...",
+    "assistant.follow_btn": "XESTUS फ़ॉलो करें",
+    "assistant.following_btn": "फ़ॉलो कर रहे हैं ✓",
+    "community.title": "XESTUS कम्युनिटी से जुड़ें",
+    "community.sub": "हमारे आधिकारिक चैनलों के माध्यम से सत्यापित इंजीनियरिंग अपडेट, ओपन-सोर्स प्रोजेक्ट्स और डिजिटल पहलों से जुड़े रहें।",
+    "community.github_desc": "ओपन-सोर्स रिपॉजिटरी, AI एजेंट और टूल्स देखें।",
+    "community.linkedin_desc": "कंपनी अपडेट, तकनीकी प्रगति और महत्वपूर्ण घोषणाएं।",
+    "community.consult_desc": "सीधे हमारी इंजीनियरिंग टीम से संपर्क करें।",
+
+    // Digital Seva Hub
+    "seva.iwant_title": "आपको किस प्रकार की सहायता चाहिए?",
+    "seva.search_placeholder": "सेवा खोजें (जैसे: पासपोर्ट, छात्रवृत्ति, प्रवेश, राशन, ड्राइविंग लाइसेंस, PDF)...",
+    "seva.master_portals_title": "सत्यापित सरकारी पोर्टल्स तक सीधी पहुंच",
+    "seva.master_portals_sub": "प्रत्यक्ष नागरिक सेवाओं के लिए प्रामाणिक आधिकारिक सरकारी पोर्टल।",
+    "seva.all_categories_btn": "सभी 59 श्रेणियां देखें",
+    "seva.scam_center_btn": "साइबर सुरक्षा केंद्र",
 
     // Footer
     "footer.tagline": "स्वायत्त AI सिस्टम, आधुनिक वेब प्लेटफ़ॉर्म और सभी के लिए व्यावहारिक डिजिटल सहायता प्रदान करने वाली अग्रणी संस्था।",
