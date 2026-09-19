@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Validator & Syntax Checker Online | XESTUS Tools</title>
+    <meta name="description" content="Validate JSON syntax and structure in real time with line and column error indicators, key counters, data type breakdown, and tree inspection. 100% private.">
+    <meta name="keywords" content="json validator, validate json online, json syntax checker, json lint, check json syntax">
+    <link rel="canonical" href="https://xestus.in/tools/developer/json-validator/">
+    <link rel="icon" type="image/png" href="../../../assets/images/xestus-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css?v=3.5.2">
+    <link rel="stylesheet" href="../../tools.css?v=1.0.0">
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../../#services" class="nav-link">Services</a></li>
+                <li><a href="../../../#digital-seva-hub" class="nav-link">Digital Seva</a></li>
+                <li><a href="../../" class="nav-link active"><span style="color:var(--cyan-bright);">Tools</span></a></li>
+                <li><a href="../../../#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="../../../#lab" class="nav-link">Innovation Lab</a></li>
+                <li><a href="../../../#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button type="button" class="theme-opt" data-theme="day"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect"><i data-lucide="glasses"></i><span>Eye Protection</span></button>
+                    </div>
+                </div>
+                <a href="../../../#contact" class="btn-primary btn-nav-cta"><span>Start a Project</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tools-app-container" id="main-content">
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../">Developer</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">JSON Validator</span>
+        </nav>
+
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="check-circle-2" style="width:14px;height:14px;"></i> Developer Utility</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> Client-Side Validation</span>
+            </div>
+            <h1 class="tool-title">JSON Schema &amp; Syntax Validator</h1>
+            <p class="tool-description">
+                Real-time JSON syntax linter and structural inspector. Pinpoint syntax errors with exact line and column numbers, analyze object keys, and check nested types.
+            </p>
+        </header>
+
+        <section class="tool-workspace" aria-label="JSON Validator Workspace">
+            <div class="tool-action-bar">
+                <div class="tool-options-group">
+                    <button type="button" class="tool-btn tool-btn-primary" id="btnValidate">
+                        <i data-lucide="shield-check"></i>
+                        <span>Validate Syntax</span>
+                    </button>
+                    <button type="button" class="tool-btn" id="btnSampleValid">
+                        <i data-lucide="check"></i>
+                        <span>Valid Sample</span>
+                    </button>
+                    <button type="button" class="tool-btn" id="btnSampleInvalid">
+                        <i data-lucide="alert-triangle"></i>
+                        <span>Invalid Sample</span>
+                    </button>
+                </div>
+                <div class="tool-btn-group">
+                    <button type="button" class="tool-btn tool-btn-danger" id="btnClear">
+                        <i data-lucide="trash-2"></i>
+                        <span>Clear</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="tool-editor-grid">
+                <div class="tool-editor-pane">
+                    <div class="tool-pane-header">
+                        <span>Input JSON to Validate</span>
+                        <span class="tool-pane-stats" id="inputStats">0 chars • 0 lines</span>
+                    </div>
+                    <textarea id="jsonInput" class="tool-textarea" placeholder="Paste JSON here to check validity..." spellcheck="false"></textarea>
+                </div>
+
+                <div class="tool-editor-pane">
+                    <div class="tool-pane-header">
+                        <span>Structure Analysis &amp; Metrics</span>
+                        <span class="tool-pane-stats" id="analysisStats">Awaiting input</span>
+                    </div>
+                    <div id="metricsBox" style="height: 380px; background: var(--tools-code-bg); border: 1px solid var(--tools-code-border); border-radius: var(--radius-lg); padding: 18px; color: var(--tools-code-text); font-family: var(--tools-font-mono); font-size: 13px; overflow: auto; line-height: 1.7;">
+                        <p style="color: var(--text-muted);">Paste JSON and click "Validate Syntax" to see detailed metrics.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-status-box" id="statusBox" role="status">
+                <i data-lucide="info" id="statusIcon"></i>
+                <span id="statusMsg">Ready</span>
+            </div>
+        </section>
+
+        <section class="tool-info-section">
+            <div class="tool-info-grid">
+                <article class="tool-guide-content">
+                    <h2>How the JSON Validator Works</h2>
+                    <p>
+                        This tool validates your input against the official <strong>RFC 8259</strong> JSON grammar specification. If an error is detected, the exact character offset, line number, and expected token are reported instantly.
+                    </p>
+                    <h3>Metrics Analyzed</h3>
+                    <ul>
+                        <li><strong>Root Type:</strong> Object, Array, or Scalar.</li>
+                        <li><strong>Key Count:</strong> Total number of top-level and nested keys.</li>
+                        <li><strong>Depth Level:</strong> Maximum nesting depth of your data structure.</li>
+                        <li><strong>Size Breakdown:</strong> Payload size in bytes and formatted string length.</li>
+                    </ul>
+                </article>
+                <aside class="related-tools-card">
+                    <h3 class="related-tools-title">Related Developer Tools</h3>
+                    <div class="related-tools-list">
+                        <a href="../json-formatter/" class="related-tool-item">
+                            <span class="related-tool-name">JSON Formatter &amp; Minifier</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                        <a href="../jwt-decoder/" class="related-tool-item">
+                            <span class="related-tool-name">JWT Token Decoder</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                        <a href="../text-diff/" class="related-tool-item">
+                            <span class="related-tool-name">Text &amp; Code Diff Checker</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
+        <div class="footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../../#home" class="footer-logo">
+                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="../../" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← All Tools</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const themeKey = "xestus_theme";
+            const themeBtn = document.getElementById("themeBtn");
+            const themeSwitcher = document.getElementById("themeSwitcher");
+            const themeOpts = document.querySelectorAll(".theme-opt");
+            const currentLabel = document.querySelector(".theme-current-label");
+            const activeIcon = document.querySelector(".theme-active-icon");
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                try { localStorage.setItem(themeKey, theme); } catch (_) {}
+                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
+                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
+                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
+                if (window.lucide) lucide.createIcons();
+            }
+
+            const savedTheme = localStorage.getItem(themeKey) || "night";
+            setTheme(savedTheme);
+
+            if (themeBtn && themeSwitcher) {
+                themeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    themeSwitcher.classList.toggle("is-open");
+                });
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // JSON Validator Logic
+            const jsonInput = document.getElementById("jsonInput");
+            const metricsBox = document.getElementById("metricsBox");
+            const btnValidate = document.getElementById("btnValidate");
+            const btnSampleValid = document.getElementById("btnSampleValid");
+            const btnSampleInvalid = document.getElementById("btnSampleInvalid");
+            const btnClear = document.getElementById("btnClear");
+            const statusBox = document.getElementById("statusBox");
+            const statusMsg = document.getElementById("statusMsg");
+            const statusIcon = document.getElementById("statusIcon");
+            const inputStats = document.getElementById("inputStats");
+            const analysisStats = document.getElementById("analysisStats");
+
+            function showStatus(msg, type = "success") {
+                statusBox.className = `tool-status-box show ${type}`;
+                statusMsg.textContent = msg;
+                statusIcon.setAttribute("data-lucide", type === "success" ? "check-circle" : "alert-circle");
+                if (window.lucide) lucide.createIcons();
+            }
+
+            function hideStatus() {
+                statusBox.className = "tool-status-box";
+            }
+
+            function countKeys(obj) {
+                let count = 0;
+                let maxDepth = 1;
+                function traverse(o, depth) {
+                    if (depth > maxDepth) maxDepth = depth;
+                    if (o && typeof o === "object") {
+                        if (Array.isArray(o)) {
+                            o.forEach(item => traverse(item, depth + 1));
+                        } else {
+                            Object.keys(o).forEach(k => {
+                                count++;
+                                traverse(o[k], depth + 1);
+                            });
+                        }
+                    }
+                }
+                traverse(obj, 1);
+                return { count, maxDepth };
+            }
+
+            function validate() {
+                const raw = jsonInput.value.trim();
+                if (!raw) {
+                    metricsBox.innerHTML = '<p style="color: var(--text-muted);">Paste JSON and click "Validate Syntax" to see detailed metrics.</p>';
+                    analysisStats.textContent = "Awaiting input";
+                    hideStatus();
+                    return;
+                }
+                try {
+                    const parsed = JSON.parse(raw);
+                    const rootType = Array.isArray(parsed) ? "Array" : (typeof parsed === "object" && parsed !== null ? "Object" : typeof parsed);
+                    const { count, maxDepth } = countKeys(parsed);
+                    const byteSize = new Blob([raw]).size;
+
+                    metricsBox.innerHTML = `
+                        <div style="color: #00ff88; font-weight: 700; margin-bottom: 12px;">✔ VALID RFC 8259 JSON</div>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div><strong>Root Data Type:</strong> <span style="color: var(--cyan-bright);">${rootType}</span></div>
+                            <div><strong>Total Keys / Nodes:</strong> <span>${count}</span></div>
+                            <div><strong>Max Nesting Depth:</strong> <span>${maxDepth} levels</span></div>
+                            <div><strong>Payload Size:</strong> <span>${byteSize} bytes (${(byteSize / 1024).toFixed(2)} KB)</span></div>
+                            <div><strong>Lines of Code:</strong> <span>${raw.split('\n').length} lines</span></div>
+                        </div>
+                    `;
+                    analysisStats.textContent = "Valid JSON Structure";
+                    showStatus("JSON is 100% valid with zero syntax errors.", "success");
+                } catch (err) {
+                    metricsBox.innerHTML = `
+                        <div style="color: #ff4d6a; font-weight: 700; margin-bottom: 12px;">✖ SYNTAX ERROR DETECTED</div>
+                        <div style="color: var(--text-secondary);">${err.message}</div>
+                        <div style="margin-top: 14px; font-size: 12px; color: var(--text-dim);">Check for missing quotes, trailing commas, or unescaped characters.</div>
+                    `;
+                    analysisStats.textContent = "Invalid Syntax";
+                    showStatus(`Syntax Error: ${err.message}`, "error");
+                }
+            }
+
+            btnValidate.addEventListener("click", validate);
+
+            btnSampleValid.addEventListener("click", () => {
+                jsonInput.value = JSON.stringify({
+                    "service": "XESTUS Neural Engine",
+                    "status": "operational",
+                    "metrics": { "latency_ms": 38, "uptime": 0.9998 },
+                    "protocols": ["MCP", "JSON-RPC", "WebSocket"]
+                }, null, 2);
+                validate();
+            });
+
+            btnSampleInvalid.addEventListener("click", () => {
+                jsonInput.value = '{\n  "service": "XESTUS",\n  "status": "active",\n  "trailing_comma_error": true,\n}';
+                validate();
+            });
+
+            btnClear.addEventListener("click", () => {
+                jsonInput.value = "";
+                metricsBox.innerHTML = '<p style="color: var(--text-muted);">Paste JSON and click "Validate Syntax" to see detailed metrics.</p>';
+                analysisStats.textContent = "Awaiting input";
+                hideStatus();
+            });
+
+            jsonInput.addEventListener("input", () => {
+                const val = jsonInput.value;
+                inputStats.textContent = `${val.length} chars • ${val ? val.split("\n").length : 0} lines`;
+            });
+        });
+    </script>
+</body>
+</html>

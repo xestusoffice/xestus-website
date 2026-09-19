@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text & Code Diff Checker Online - Side-by-Side & Unified | XESTUS Tools</title>
+    <meta name="description" content="Compare two text blocks or code files side-by-side or unified online. Highlights added, modified, and deleted lines with zero server uploads. 100% private.">
+    <meta name="keywords" content="diff checker, compare text online, code diff viewer, text difference finder, file diff online">
+    <link rel="canonical" href="https://xestus.in/tools/developer/text-diff/">
+    <link rel="icon" type="image/png" href="../../../assets/images/xestus-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css?v=3.5.2">
+    <link rel="stylesheet" href="../../tools.css?v=1.0.0">
+    <style>
+        .diff-split-view {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            background: var(--tools-code-bg);
+            border: 1px solid var(--tools-code-border);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            font-family: var(--tools-font-mono);
+            font-size: 13px;
+            min-height: 280px;
+            max-height: 480px;
+            overflow: auto;
+        }
+        @media (max-width: 768px) {
+            .diff-split-view {
+                grid-template-columns: 1fr;
+            }
+        }
+        .diff-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .diff-line-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .diff-num {
+            color: var(--tools-gutter-text);
+            font-size: 11px;
+            user-select: none;
+            width: 24px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .diff-line-added {
+            background: var(--tools-diff-add-bg);
+            color: var(--tools-diff-add-text);
+        }
+        .diff-line-removed {
+            background: var(--tools-diff-del-bg);
+            color: var(--tools-diff-del-text);
+        }
+        .diff-line-unchanged {
+            color: var(--tools-code-text);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../../#services" class="nav-link">Services</a></li>
+                <li><a href="../../../#digital-seva-hub" class="nav-link">Digital Seva</a></li>
+                <li><a href="../../" class="nav-link active"><span style="color:var(--cyan-bright);">Tools</span></a></li>
+                <li><a href="../../../#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="../../../#lab" class="nav-link">Innovation Lab</a></li>
+                <li><a href="../../../#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button type="button" class="theme-opt" data-theme="day"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect"><i data-lucide="glasses"></i><span>Eye Protection</span></button>
+                    </div>
+                </div>
+                <a href="../../../#contact" class="btn-primary btn-nav-cta"><span>Start a Project</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tools-app-container" id="main-content">
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../">Developer</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Text &amp; Code Diff Checker</span>
+        </nav>
+
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="split" style="width:14px;height:14px;"></i> Developer Utility</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser</span>
+            </div>
+            <h1 class="tool-title">Text &amp; Code Diff Checker</h1>
+            <p class="tool-description">
+                Compare two pieces of text, source code files, or JSON schemas side-by-side. Highlights additions, deletions, and line-by-line differences instantly.
+            </p>
+        </header>
+
+        <section class="tool-workspace" aria-label="Diff Checker Workspace">
+            <div class="tool-action-bar">
+                <div class="tool-options-group">
+                    <button type="button" class="tool-btn tool-btn-primary" id="btnCompare">
+                        <i data-lucide="split"></i>
+                        <span>Compare Differences</span>
+                    </button>
+                    <button type="button" class="tool-btn" id="btnSampleDiff">
+                        <i data-lucide="file-code"></i>
+                        <span>Sample Diff</span>
+                    </button>
+                    <label class="tool-toggle-label">
+                        <input type="checkbox" id="chkIgnoreCase">
+                        <span>Ignore Case</span>
+                    </label>
+                </div>
+
+                <div class="tool-btn-group">
+                    <button type="button" class="tool-btn tool-btn-danger" id="btnClear">
+                        <i data-lucide="trash-2"></i>
+                        <span>Clear</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Input Blocks -->
+            <div class="tool-editor-grid">
+                <div class="tool-editor-pane">
+                    <div class="tool-pane-header">
+                        <span>Original Text (Before)</span>
+                    </div>
+                    <textarea id="textOriginal" class="tool-textarea" style="height: 200px;" placeholder="Paste original text here..." spellcheck="false"></textarea>
+                </div>
+
+                <div class="tool-editor-pane">
+                    <div class="tool-pane-header">
+                        <span>Modified Text (After)</span>
+                    </div>
+                    <textarea id="textModified" class="tool-textarea" style="height: 200px;" placeholder="Paste modified text here..." spellcheck="false"></textarea>
+                </div>
+            </div>
+
+            <!-- Diff Output Section -->
+            <div style="margin-top: 24px;">
+                <div class="tool-pane-header" style="margin-bottom: 8px;">
+                    <span>Side-by-Side Comparison</span>
+                    <span class="tool-pane-stats" id="diffStats">Ready</span>
+                </div>
+                <div id="diffResultContainer" class="diff-split-view">
+                    <div style="grid-column: 1 / -1; text-align: center; color: var(--text-dim); padding: 40px 0;">
+                        Enter or paste text into both panels above and click "Compare Differences".
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tool-info-section">
+            <div class="tool-info-grid">
+                <article class="tool-guide-content">
+                    <h2>How the Online Diff Checker Works</h2>
+                    <p>
+                        This tool computes the Longest Common Subsequence (LCS) line-by-line between the Original and Modified inputs entirely inside your browser. Lines present in the original but missing in modified are marked as <span style="color:#ff4d6a;">removed</span>, while new lines are marked as <span style="color:#00ff88;">added</span>.
+                    </p>
+                </article>
+                <aside class="related-tools-card">
+                    <h3 class="related-tools-title">Related Developer Tools</h3>
+                    <div class="related-tools-list">
+                        <a href="../json-validator/" class="related-tool-item">
+                            <span class="related-tool-name">JSON Schema Validator</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                        <a href="../regex-tester/" class="related-tool-item">
+                            <span class="related-tool-name">Regex Tester &amp; Matcher</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
+        <div class="footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../../#home" class="footer-logo">
+                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="../../" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← All Tools</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const themeKey = "xestus_theme";
+            const themeBtn = document.getElementById("themeBtn");
+            const themeSwitcher = document.getElementById("themeSwitcher");
+            const themeOpts = document.querySelectorAll(".theme-opt");
+            const currentLabel = document.querySelector(".theme-current-label");
+            const activeIcon = document.querySelector(".theme-active-icon");
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                try { localStorage.setItem(themeKey, theme); } catch (_) {}
+                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
+                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
+                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
+                if (window.lucide) lucide.createIcons();
+            }
+
+            const savedTheme = localStorage.getItem(themeKey) || "night";
+            setTheme(savedTheme);
+
+            if (themeBtn && themeSwitcher) {
+                themeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    themeSwitcher.classList.toggle("is-open");
+                });
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // LCS Diff Algorithm
+            const textOriginal = document.getElementById("textOriginal");
+            const textModified = document.getElementById("textModified");
+            const btnCompare = document.getElementById("btnCompare");
+            const btnSampleDiff = document.getElementById("btnSampleDiff");
+            const btnClear = document.getElementById("btnClear");
+            const chkIgnoreCase = document.getElementById("chkIgnoreCase");
+            const diffResultContainer = document.getElementById("diffResultContainer");
+            const diffStats = document.getElementById("diffStats");
+
+            function escapeHtml(str) {
+                return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }
+
+            function computeDiff() {
+                const orig = textOriginal.value;
+                const mod = textModified.value;
+                const ignoreCase = chkIgnoreCase.checked;
+
+                const origLines = orig ? orig.split("\n") : [];
+                const modLines = mod ? mod.split("\n") : [];
+
+                if (origLines.length === 0 && modLines.length === 0) {
+                    diffResultContainer.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--text-dim); padding: 40px 0;">Both inputs are empty.</div>';
+                    diffStats.textContent = "Empty";
+                    return;
+                }
+
+                // Simple Myers/LCS Line Matcher
+                const N = origLines.length;
+                const M = modLines.length;
+                const dp = Array.from({ length: N + 1 }, () => Array(M + 1).fill(0));
+
+                for (let i = 1; i <= N; i++) {
+                    for (let j = 1; j <= M; j++) {
+                        const s1 = ignoreCase ? origLines[i - 1].toLowerCase() : origLines[i - 1];
+                        const s2 = ignoreCase ? modLines[j - 1].toLowerCase() : modLines[j - 1];
+                        if (s1 === s2) {
+                            dp[i][j] = dp[i - 1][j - 1] + 1;
+                        } else {
+                            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                        }
+                    }
+                }
+
+                let i = N, j = M;
+                const origResult = [];
+                const modResult = [];
+                let addedCount = 0;
+                let removedCount = 0;
+
+                while (i > 0 || j > 0) {
+                    if (i > 0 && j > 0 && (ignoreCase ? origLines[i - 1].toLowerCase() === modLines[j - 1].toLowerCase() : origLines[i - 1] === modLines[j - 1])) {
+                        origResult.unshift({ type: "same", line: origLines[i - 1], num: i });
+                        modResult.unshift({ type: "same", line: modLines[j - 1], num: j });
+                        i--; j--;
+                    } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+                        origResult.unshift({ type: "empty", line: "", num: "" });
+                        modResult.unshift({ type: "added", line: modLines[j - 1], num: j });
+                        addedCount++;
+                        j--;
+                    } else if (i > 0 && (j === 0 || dp[i][j - 1] < dp[i - 1][j])) {
+                        origResult.unshift({ type: "removed", line: origLines[i - 1], num: i });
+                        modResult.unshift({ type: "empty", line: "", num: "" });
+                        removedCount++;
+                        i--;
+                    }
+                }
+
+                const leftColHtml = origResult.map(r => `
+                    <div class="diff-line-row ${r.type === 'removed' ? 'diff-line-removed' : (r.type === 'empty' ? '' : 'diff-line-unchanged')}">
+                        <span class="diff-num">${r.num || '&nbsp;'}</span>
+                        <span>${r.type === 'removed' ? '- ' : ''}${escapeHtml(r.line) || '&nbsp;'}</span>
+                    </div>
+                `).join("");
+
+                const rightColHtml = modResult.map(r => `
+                    <div class="diff-line-row ${r.type === 'added' ? 'diff-line-added' : (r.type === 'empty' ? '' : 'diff-line-unchanged')}">
+                        <span class="diff-num">${r.num || '&nbsp;'}</span>
+                        <span>${r.type === 'added' ? '+ ' : ''}${escapeHtml(r.line) || '&nbsp;'}</span>
+                    </div>
+                `).join("");
+
+                diffResultContainer.innerHTML = `
+                    <div class="diff-column">${leftColHtml}</div>
+                    <div class="diff-column">${rightColHtml}</div>
+                `;
+
+                diffStats.textContent = `+${addedCount} lines added • -${removedCount} lines removed`;
+            }
+
+            btnCompare.addEventListener("click", computeDiff);
+
+            btnSampleDiff.addEventListener("click", () => {
+                textOriginal.value = `function initializeServer() {\n  const port = 3000;\n  console.log("Server starting on port " + port);\n  connectDatabase();\n}`;
+                textModified.value = `function initializeServer() {\n  const port = process.env.PORT || 8080;\n  console.log(\`XESTUS Edge Server listening on port \${port}\`);\n  connectDatabase();\n  enableTelemetry();\n}`;
+                computeDiff();
+            });
+
+            btnClear.addEventListener("click", () => {
+                textOriginal.value = "";
+                textModified.value = "";
+                diffResultContainer.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--text-dim); padding: 40px 0;">Enter or paste text into both panels above and click "Compare Differences".</div>';
+                diffStats.textContent = "Ready";
+            });
+        });
+    </script>
+</body>
+</html>

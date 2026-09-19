@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unix Timestamp & Epoch Converter Online | XESTUS Tools</title>
+    <meta name="description" content="Convert Unix Epoch timestamps in seconds and milliseconds to human-readable UTC and Local ISO dates. Live clock, relative time, and date-to-epoch converter. 100% private.">
+    <meta name="keywords" content="epoch converter, unix timestamp converter, current unix timestamp, timestamp to date, convert date to epoch">
+    <link rel="canonical" href="https://xestus.in/tools/developer/timestamp-converter/">
+    <link rel="icon" type="image/png" href="../../../assets/images/xestus-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css?v=3.5.2">
+    <link rel="stylesheet" href="../../tools.css?v=1.0.0">
+    <style>
+        .timestamp-live-card {
+            background: linear-gradient(135deg, rgba(0, 191, 255, 0.1), rgba(0, 255, 136, 0.05));
+            border: 1px solid var(--cyan-border);
+            border-radius: var(--radius-lg);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .live-epoch-num {
+            font-family: var(--tools-font-mono);
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--cyan-bright);
+        }
+        .timestamp-converter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 768px) {
+            .timestamp-converter-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .converter-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .converter-box h3 {
+            font-size: 16px;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        .output-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .output-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .output-val {
+            font-family: var(--tools-font-mono);
+            font-size: 13.5px;
+            color: var(--text-primary);
+            background: var(--tools-code-bg);
+            border: 1px solid var(--tools-code-border);
+            border-radius: var(--radius-md);
+            padding: 8px 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../../#services" class="nav-link">Services</a></li>
+                <li><a href="../../../#digital-seva-hub" class="nav-link">Digital Seva</a></li>
+                <li><a href="../../" class="nav-link active"><span style="color:var(--cyan-bright);">Tools</span></a></li>
+                <li><a href="../../../#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="../../../#lab" class="nav-link">Innovation Lab</a></li>
+                <li><a href="../../../#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button type="button" class="theme-opt" data-theme="day"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect"><i data-lucide="glasses"></i><span>Eye Protection</span></button>
+                    </div>
+                </div>
+                <a href="../../../#contact" class="btn-primary btn-nav-cta"><span>Start a Project</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tools-app-container" id="main-content">
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../">Developer</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Timestamp Converter</span>
+        </nav>
+
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="clock" style="width:14px;height:14px;"></i> Time &amp; Epoch Utility</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> Real-Time Calculation</span>
+            </div>
+            <h1 class="tool-title">Unix Epoch Timestamp Converter</h1>
+            <p class="tool-description">
+                Convert Unix epoch timestamps to UTC, ISO-8601, and local timezone dates, or calculate timestamps from dates and relative time strings.
+            </p>
+        </header>
+
+        <!-- Live Clock Banner -->
+        <div class="timestamp-live-card">
+            <div>
+                <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 2px;">Current Unix Epoch Time:</span>
+                <span class="live-epoch-num" id="liveEpochNum">0000000000</span>
+            </div>
+            <button type="button" class="tool-btn tool-btn-primary" id="btnUseCurrent">
+                <i data-lucide="clock"></i>
+                <span>Use Current Time</span>
+            </button>
+        </div>
+
+        <section class="tool-workspace" aria-label="Timestamp Converter Workspace">
+            <div class="timestamp-converter-grid">
+                <!-- Converter 1: Timestamp to Date -->
+                <div class="converter-box">
+                    <h3>Timestamp to Human Date</h3>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" id="inputTimestamp" class="tool-input" style="flex:1;" placeholder="e.g. 1773820800 or 1773820800000" value="1773820800">
+                        <button type="button" class="tool-btn tool-btn-primary" id="btnConvertTs">Convert</button>
+                    </div>
+
+                    <div class="output-row">
+                        <span class="output-label">UTC / GMT Date String:</span>
+                        <div class="output-val" id="outUtc">--</div>
+                    </div>
+                    <div class="output-row">
+                        <span class="output-label">Local Timezone Date:</span>
+                        <div class="output-val" id="outLocal">--</div>
+                    </div>
+                    <div class="output-row">
+                        <span class="output-label">ISO 8601 Format:</span>
+                        <div class="output-val" id="outIso">--</div>
+                    </div>
+                    <div class="output-row">
+                        <span class="output-label">Relative Time:</span>
+                        <div class="output-val" id="outRelative" style="color: var(--cyan-bright);">--</div>
+                    </div>
+                </div>
+
+                <!-- Converter 2: Human Date to Timestamp -->
+                <div class="converter-box">
+                    <h3>Human Date to Timestamp</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <input type="datetime-local" id="inputDate" class="tool-input" style="width: 100%;">
+                        <button type="button" class="tool-btn tool-btn-primary" id="btnConvertDate">Calculate Epoch</button>
+                    </div>
+
+                    <div class="output-row">
+                        <span class="output-label">Epoch Timestamp (Seconds):</span>
+                        <div class="output-val" id="outEpochSec" style="color: #00ff88; font-weight: 700;">--</div>
+                    </div>
+                    <div class="output-row">
+                        <span class="output-label">Epoch Timestamp (Milliseconds):</span>
+                        <div class="output-val" id="outEpochMs">--</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tool-info-section">
+            <div class="tool-info-grid">
+                <article class="tool-guide-content">
+                    <h2>What is Unix Epoch Time?</h2>
+                    <p>
+                        The <strong>Unix Epoch</strong> (also known as POSIX time) is the number of seconds that have elapsed since <code>00:00:00 UTC on 1 January 1970</code>, minus leap seconds. It is the universal standard for logging events, database record timestamps, and JWT token expirations across all computer systems.
+                    </p>
+                </article>
+                <aside class="related-tools-card">
+                    <h3 class="related-tools-title">Related Developer Tools</h3>
+                    <div class="related-tools-list">
+                        <a href="../jwt-decoder/" class="related-tool-item">
+                            <span class="related-tool-name">JWT Token Decoder</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                        <a href="../json-formatter/" class="related-tool-item">
+                            <span class="related-tool-name">JSON Formatter &amp; Minifier</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
+        <div class="footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../../#home" class="footer-logo">
+                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="../../" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← All Tools</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const themeKey = "xestus_theme";
+            const themeBtn = document.getElementById("themeBtn");
+            const themeSwitcher = document.getElementById("themeSwitcher");
+            const themeOpts = document.querySelectorAll(".theme-opt");
+            const currentLabel = document.querySelector(".theme-current-label");
+            const activeIcon = document.querySelector(".theme-active-icon");
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                try { localStorage.setItem(themeKey, theme); } catch (_) {}
+                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
+                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
+                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
+                if (window.lucide) lucide.createIcons();
+            }
+
+            const savedTheme = localStorage.getItem(themeKey) || "night";
+            setTheme(savedTheme);
+
+            if (themeBtn && themeSwitcher) {
+                themeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    themeSwitcher.classList.toggle("is-open");
+                });
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // Timestamp Logic
+            const liveEpochNum = document.getElementById("liveEpochNum");
+            const btnUseCurrent = document.getElementById("btnUseCurrent");
+            const inputTimestamp = document.getElementById("inputTimestamp");
+            const btnConvertTs = document.getElementById("btnConvertTs");
+            const outUtc = document.getElementById("outUtc");
+            const outLocal = document.getElementById("outLocal");
+            const outIso = document.getElementById("outIso");
+            const outRelative = document.getElementById("outRelative");
+
+            const inputDate = document.getElementById("inputDate");
+            const btnConvertDate = document.getElementById("btnConvertDate");
+            const outEpochSec = document.getElementById("outEpochSec");
+            const outEpochMs = document.getElementById("outEpochMs");
+
+            // Live clock ticker
+            function tickLiveClock() {
+                liveEpochNum.textContent = Math.floor(Date.now() / 1000);
+            }
+            setInterval(tickLiveClock, 1000);
+            tickLiveClock();
+
+            function getRelativeTime(d) {
+                const deltaSec = Math.round((d.getTime() - Date.now()) / 1000);
+                const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+                if (Math.abs(deltaSec) < 60) return rtf.format(deltaSec, "second");
+                const deltaMin = Math.round(deltaSec / 60);
+                if (Math.abs(deltaMin) < 60) return rtf.format(deltaMin, "minute");
+                const deltaHour = Math.round(deltaMin / 60);
+                if (Math.abs(deltaHour) < 24) return rtf.format(deltaHour, "hour");
+                const deltaDay = Math.round(deltaHour / 24);
+                return rtf.format(deltaDay, "day");
+            }
+
+            function convertTimestamp() {
+                let val = inputTimestamp.value.trim();
+                if (!val) return;
+                let num = Number(val);
+                if (isNaN(num)) {
+                    outUtc.textContent = "Invalid Number";
+                    return;
+                }
+                // Handle seconds vs milliseconds
+                if (val.length <= 11) {
+                    num = num * 1000;
+                }
+                const date = new Date(num);
+                if (isNaN(date.getTime())) {
+                    outUtc.textContent = "Invalid Timestamp Date";
+                    return;
+                }
+                outUtc.textContent = date.toUTCString();
+                outLocal.textContent = date.toString();
+                outIso.textContent = date.toISOString();
+                outRelative.textContent = getRelativeTime(date);
+            }
+
+            btnConvertTs.addEventListener("click", convertTimestamp);
+            inputTimestamp.addEventListener("input", convertTimestamp);
+
+            btnUseCurrent.addEventListener("click", () => {
+                inputTimestamp.value = Math.floor(Date.now() / 1000);
+                convertTimestamp();
+            });
+
+            function convertDateToEpoch() {
+                const val = inputDate.value;
+                if (!val) return;
+                const d = new Date(val);
+                if (isNaN(d.getTime())) return;
+                const ms = d.getTime();
+                outEpochSec.textContent = Math.floor(ms / 1000);
+                outEpochMs.textContent = ms;
+            }
+
+            btnConvertDate.addEventListener("click", convertDateToEpoch);
+            inputDate.addEventListener("change", convertDateToEpoch);
+
+            // Set default date input to now
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            inputDate.value = now.toISOString().slice(0, 16);
+
+            convertTimestamp();
+            convertDateToEpoch();
+        });
+    </script>
+</body>
+</html>

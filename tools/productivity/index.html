@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Productivity & Text Utilities Online | XESTUS Tools</title>
+    <meta name="description" content="Fast, private productivity utilities. Compare text diffs, convert Unix epoch timestamps, format documents, and process strings without ads or limits.">
+    <link rel="canonical" href="https://xestus.in/tools/productivity/">
+    <link rel="icon" type="image/png" href="../../assets/images/xestus-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css?v=3.5.2">
+    <link rel="stylesheet" href="../tools.css?v=1.0.0">
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../#services" class="nav-link">Services</a></li>
+                <li><a href="../../#digital-seva-hub" class="nav-link">Digital Seva</a></li>
+                <li><a href="../" class="nav-link active"><span style="color:var(--cyan-bright);">Tools</span></a></li>
+                <li><a href="../../#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="../../#lab" class="nav-link">Innovation Lab</a></li>
+                <li><a href="../../#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button type="button" class="theme-opt" data-theme="day"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect"><i data-lucide="glasses"></i><span>Eye Protection</span></button>
+                    </div>
+                </div>
+                <a href="../../#contact" class="btn-primary btn-nav-cta"><span>Start a Project</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tools-app-container" id="main-content">
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Productivity Tools</span>
+        </nav>
+
+        <section class="tools-hub-hero" style="text-align: left; padding: 20px 0 30px;">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="file-text" style="width:14px;height:14px;"></i> Productivity Category</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser</span>
+            </div>
+            <h1 class="tool-title">Productivity &amp; Text Utilities</h1>
+            <p class="tool-description">
+                Fast, ad-free utilities to speed up daily engineering workflows. Check text diffs, convert timestamp epochs, and format strings with instantaneous local execution.
+            </p>
+        </section>
+
+        <section class="tools-catalog-grid" id="productivityToolsGrid">
+            <!-- Populated via script -->
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
+        <div class="footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../#home" class="footer-logo">
+                        <img src="../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="../" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← All Tools</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../tools-registry.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const themeKey = "xestus_theme";
+            const themeBtn = document.getElementById("themeBtn");
+            const themeSwitcher = document.getElementById("themeSwitcher");
+            const themeOpts = document.querySelectorAll(".theme-opt");
+            const currentLabel = document.querySelector(".theme-current-label");
+            const activeIcon = document.querySelector(".theme-active-icon");
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                try { localStorage.setItem(themeKey, theme); } catch (_) {}
+                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
+                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
+                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
+                if (window.lucide) lucide.createIcons();
+            }
+
+            const savedTheme = localStorage.getItem(themeKey) || "night";
+            setTheme(savedTheme);
+
+            if (themeBtn && themeSwitcher) {
+                themeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    themeSwitcher.classList.toggle("is-open");
+                });
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            const grid = document.getElementById("productivityToolsGrid");
+            if (window.XESTUS_TOOLS_REGISTRY && grid) {
+                const tools = window.XESTUS_TOOLS_REGISTRY.tools.filter(t => t.category === "productivity" || t.slug === "json-formatter" || t.slug === "url-encode-decode");
+                grid.innerHTML = tools.map(t => `
+                    <a href="..${t.url.replace('/tools', '')}" class="tool-card">
+                        <div class="tool-card-top">
+                            <div class="tool-card-icon"><i data-lucide="${t.icon}"></i></div>
+                            <span class="tool-card-badge">${t.badge}</span>
+                        </div>
+                        <h3 class="tool-card-title">${t.title}</h3>
+                        <p class="tool-card-desc">${t.description}</p>
+                        <div class="tool-card-action">
+                            <span>Open Tool</span>
+                            <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                        </div>
+                    </a>
+                `).join("");
+                if (window.lucide) lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
