@@ -12073,3 +12073,217 @@ html[data-theme="eye-protect"] .contact-channel-card .channel-value,
 [data-theme="eye-protect"] .contact-channel-card .channel-value {
     color: #2c241b !important;
 }
+
+/* ==========================================================================
+   WHATSAPP ASSISTANCE DISPATCH & FEEDBACK UI STYLES
+   ========================================================================== */
+.btn-whatsapp-action {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35) !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
+}
+
+.btn-whatsapp-action:hover {
+    background: linear-gradient(135deg, #2bf075 0%, #15a392 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5) !important;
+}
+
+.feedback-success-box.whatsapp-success-theme {
+    background: rgba(18, 140, 126, 0.14) !important;
+    border: 1px solid rgba(37, 211, 102, 0.45) !important;
+    border-radius: 12px !important;
+    padding: 18px 20px !important;
+    margin-top: 16px !important;
+    color: var(--text-primary, #ffffff) !important;
+    animation: fadeIn 0.3s ease-out !important;
+}
+
+.feedback-header-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.feedback-header-row .success-icon {
+    width: 24px;
+    height: 24px;
+    color: #25d366;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.feedback-header-row strong {
+    font-size: 1.05rem;
+    color: #25d366;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.feedback-header-row p {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.45;
+    color: var(--text-secondary, #d1d8e6);
+}
+
+.whatsapp-dispatch-card {
+    background: rgba(8, 12, 22, 0.75);
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+.wa-status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.86rem;
+    color: var(--text-secondary, #cbd5e1);
+}
+
+.wa-live-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #25d366;
+    box-shadow: 0 0 10px #25d366;
+    display: inline-block;
+    animation: pulse 1.8s infinite;
+}
+
+.btn-whatsapp-direct {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #25d366;
+    color: #05070c !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 11px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-whatsapp-direct:hover {
+    background: #2bf075;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    color: #05070c !important;
+}
+
+.privacy-note {
+    display: block;
+    font-size: 0.78rem;
+    opacity: 0.8;
+    margin-top: 4px;
+    line-height: 1.35;
+}
+
+/* Day Mode Theme Adaptations */
+html[data-theme="day"] .feedback-success-box.whatsapp-success-theme,
+[data-theme="day"] .feedback-success-box.whatsapp-success-theme {
+    background: #e8f8f0 !important;
+    border-color: #86efac !important;
+    color: #064e3b !important;
+}
+
+html[data-theme="day"] .feedback-header-row strong,
+[data-theme="day"] .feedback-header-row strong {
+    color: #047857 !important;
+}
+
+html[data-theme="day"] .feedback-header-row p,
+[data-theme="day"] .feedback-header-row p {
+    color: #1e293b !important;
+}
+
+html[data-theme="day"] .feedback-header-row .success-icon,
+[data-theme="day"] .feedback-header-row .success-icon {
+    color: #059669 !important;
+}
+
+html[data-theme="day"] .whatsapp-dispatch-card,
+[data-theme="day"] .whatsapp-dispatch-card {
+    background: #ffffff !important;
+    border-color: #bbf7d0 !important;
+}
+
+html[data-theme="day"] .wa-status-pill,
+[data-theme="day"] .wa-status-pill {
+    color: #065f46 !important;
+}
+
+html[data-theme="day"] .btn-whatsapp-direct,
+[data-theme="day"] .btn-whatsapp-direct {
+    background: #059669 !important;
+    color: #ffffff !important;
+}
+
+html[data-theme="day"] .btn-whatsapp-direct:hover,
+[data-theme="day"] .btn-whatsapp-direct:hover {
+    background: #047857 !important;
+    color: #ffffff !important;
+}
+
+/* Eye Protect Theme Adaptations */
+html[data-theme="eye-protect"] .feedback-success-box.whatsapp-success-theme,
+[data-theme="eye-protect"] .feedback-success-box.whatsapp-success-theme {
+    background: #edf7f0 !important;
+    border-color: #a7dcb8 !important;
+    color: #1e3a2b !important;
+}
+
+html[data-theme="eye-protect"] .feedback-header-row strong,
+[data-theme="eye-protect"] .feedback-header-row strong {
+    color: #166534 !important;
+}
+
+html[data-theme="eye-protect"] .feedback-header-row p,
+[data-theme="eye-protect"] .feedback-header-row p {
+    color: #2c241b !important;
+}
+
+html[data-theme="eye-protect"] .feedback-header-row .success-icon,
+[data-theme="eye-protect"] .feedback-header-row .success-icon {
+    color: #16a34a !important;
+}
+
+html[data-theme="eye-protect"] .whatsapp-dispatch-card,
+[data-theme="eye-protect"] .whatsapp-dispatch-card {
+    background: #fdfbf7 !important;
+    border-color: #c4e5cf !important;
+}
+
+html[data-theme="eye-protect"] .wa-status-pill,
+[data-theme="eye-protect"] .wa-status-pill {
+    color: #14532d !important;
+}
+
+html[data-theme="eye-protect"] .btn-whatsapp-direct,
+[data-theme="eye-protect"] .btn-whatsapp-direct {
+    background: #15803d !important;
+    color: #ffffff !important;
+}
+
+html[data-theme="eye-protect"] .btn-whatsapp-direct:hover,
+[data-theme="eye-protect"] .btn-whatsapp-direct:hover {
+    background: #166534 !important;
+    color: #ffffff !important;
+}

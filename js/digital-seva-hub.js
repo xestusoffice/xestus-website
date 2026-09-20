@@ -1063,22 +1063,73 @@
                 return;
             }
 
+            const helpTypeLabels = {
+                "checklist_prep": "Document Checklist & Eligibility Preparation",
+                "form_typing": "Application Form Typing & PDF Compression Guidance",
+                "portal_nav": "Official Portal Navigation & Appointment Booking",
+                "status_inquiry": "Application Status Tracking & Query Resolution",
+                "general": "General Guidance / Other Inquiry"
+            };
+            const helpLabel = helpTypeLabels[helpType] || helpType;
+
+            // XESTUS Official Business WhatsApp
+            const whatsappNumber = "918145338006";
+
+            // Format clean, professional WhatsApp structured inquiry message
+            const now = new Date();
+            const timeStr = now.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" });
+            const messageLines = [
+                "🏛️ *XESTUS DIGITAL SEVA — ASSISTANCE REQUEST*",
+                "━━━━━━━━━━━━━━━━━━━━━━━━━",
+                `👤 *Applicant Name:* ${name}`,
+                `📞 *Contact / Mobile:* ${contact}`,
+                `📋 *Service / Scheme:* ${serviceName}`,
+                `🛠️ *Assistance Needed:* ${helpLabel}`,
+                notes ? `📝 *Additional Details:* ${notes}` : null,
+                "━━━━━━━━━━━━━━━━━━━━━━━━━",
+                `📅 *Timestamp:* ${timeStr}`,
+                "🌐 *Source:* https://xestus.in/#digital-services"
+            ].filter(Boolean).join("\n");
+
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(messageLines)}`;
+
             if (feedback) {
                 feedback.style.display = "block";
                 feedback.className = "assist-feedback success";
                 feedback.innerHTML = `
-                    <div class="feedback-success-box">
-                        <i data-lucide="check-circle"></i>
-                        <div>
-                            <strong>Request Received!</strong>
-                            <p>Thank you ${escapeHTML(name)}. Our team has logged your guidance request for <em>${escapeHTML(serviceName)}</em>. We will connect with you shortly on ${escapeHTML(contact)} with checklist and document preparation guidance.</p>
-                            <small>Remember: XESTUS will never ask for your passwords, OTP, bank PIN, or payment details.</small>
+                    <div class="feedback-success-box whatsapp-success-theme">
+                        <div class="feedback-header-row">
+                            <i data-lucide="check-circle-2" class="success-icon"></i>
+                            <div>
+                                <strong>Request Formatted Successfully!</strong>
+                                <p>Thank you <strong>${escapeHTML(name)}</strong>. Your request for <em>${escapeHTML(serviceName)}</em> is ready to send to our business WhatsApp.</p>
+                            </div>
                         </div>
+                        <div class="whatsapp-dispatch-card">
+                            <div class="wa-status-pill">
+                                <span class="wa-live-dot"></span> Sending to XESTUS Business WhatsApp: <strong>+91 8145338006</strong>
+                            </div>
+                            <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-direct" id="directWhatsAppBtn">
+                                <i data-lucide="message-circle"></i>
+                                <span>Open WhatsApp &amp; Send Message</span>
+                            </a>
+                        </div>
+                        <small class="privacy-note">🔒 XESTUS strictly protects your privacy and never requests passwords, OTPs, or financial PINs.</small>
                     </div>
                 `;
                 if (window.lucide && typeof window.lucide.createIcons === "function") {
                     window.lucide.createIcons();
                 }
+            }
+
+            // Automatically open WhatsApp in a new tab/app window
+            try {
+                const waWindow = window.open(whatsappUrl, "_blank");
+                if (waWindow) {
+                    waWindow.focus();
+                }
+            } catch (err) {
+                console.warn("Auto-popup prevented by browser; user can click direct button.", err);
             }
 
             form.reset();
