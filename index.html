@@ -84,11 +84,12 @@
     </noscript>
 
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=3.5.1">
+    <link rel="stylesheet" href="style.css?v=3.8.0">
 
-    <!-- Preloaded Translations Dictionary & Central Service Registry -->
-    <script src="js/translations.js?v=1.1.0"></script>
-    <script src="js/digital-seva-data.js?v=1.0.0"></script>
+    <!-- Preloaded Translations Dictionary & Central Service Registry & Security Shield -->
+    <script src="js/translations.js?v=3.8.0"></script>
+    <script src="js/digital-seva-data.js?v=3.8.0"></script>
+    <script src="js/security-shield.js?v=3.8.0"></script>
 
     <!-- Unified Structured Data / JSON-LD -->
     <script type="application/ld+json">
@@ -535,15 +536,15 @@
         <!-- Search Suggestion Chips -->
         <div class="seva-search-chips" aria-label="Popular Search Suggestions">
             <span class="search-chips-label"><i data-lucide="sparkles" aria-hidden="true"></i> Suggestions:</span>
+            <button type="button" class="search-chip-btn" data-query="Annapurna Bhandar">🔥 Annapurna Bhandar</button>
+            <button type="button" class="search-chip-btn" data-query="Yuva Shakti">🔥 Yuva Shakti (যুবশক্তি)</button>
             <button type="button" class="search-chip-btn" data-query="Caste Certificate">Caste Certificate</button>
             <button type="button" class="search-chip-btn" data-query="Scholarship">Scholarship</button>
             <button type="button" class="search-chip-btn" data-query="Land Record">Land Record</button>
             <button type="button" class="search-chip-btn" data-query="Driving Licence">Driving Licence</button>
             <button type="button" class="search-chip-btn" data-query="Passport">Passport</button>
-            <button type="button" class="search-chip-btn" data-query="Government Scheme">Government Scheme</button>
             <button type="button" class="search-chip-btn" data-query="Job">Job</button>
             <button type="button" class="search-chip-btn" data-query="Health Service">Health Service</button>
-            <button type="button" class="search-chip-btn" data-query="Lakshmir Bhandar">Lakshmir Bhandar</button>
             <button type="button" class="search-chip-btn" data-query="PM-KISAN">PM-KISAN</button>
         </div>
         <div class="seva-active-filters" id="sevaActiveFilterTags"></div>
@@ -570,7 +571,7 @@
                 <span class="task-card-icon">🏛️</span>
                 <div class="task-card-content">
                     <h4 class="task-card-title">Government Schemes</h4>
-                    <span class="task-card-sub">Lakshmir Bhandar, Kanyashree, Rupashree, Jai Bangla</span>
+                    <span class="task-card-sub">Annapurna Bhandar, Yuva Shakti, Kanyashree, Rupashree</span>
                 </div>
             </button>
 
@@ -588,7 +589,7 @@
                 <span class="task-card-icon">💼</span>
                 <div class="task-card-content">
                     <h4 class="task-card-title">Jobs &amp; Recruitment</h4>
-                    <span class="task-card-sub">SSC, UPSC, WBPSC, WBP Police, RRB, Private</span>
+                    <span class="task-card-sub">Yuva Shakti, Employment Bank, SSC, WBPSC, Police, RRB</span>
                 </div>
             </button>
 
@@ -3046,7 +3047,7 @@
             <button type="button" class="stitch-inquiry-tab" data-inquiry-service="Digital Services &amp; Online Form Assistance" role="tab" aria-selected="false">Digital Help</button>
         </div>
 
- <form class="contact-form" id="contactForm" novalidate>
+    <form class="contact-form" id="contactForm" novalidate autocomplete="off">
         <input type="text" name="_gotcha_filter" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important">
 
         <div class="form-row">
@@ -3066,7 +3067,7 @@
                         data-i18n-placeholder="contact.name_placeholder"
                         maxlength="100"
                         required
-                        autocomplete="name"
+                        autocomplete="off"
                         aria-required="true">
                 </div>
                 <span class="input-error-msg" id="nameError">Please enter your name (minimum 2 characters).</span>
@@ -3088,7 +3089,7 @@
                         data-i18n-placeholder="contact.email_field_placeholder"
                         maxlength="150"
                         required
-                        autocomplete="email"
+                        autocomplete="off"
                         aria-required="true">
                 </div>
                 <span class="input-error-msg" id="emailError">Please enter a valid email address.</span>
@@ -3595,19 +3596,19 @@
                 <p class="modal-summary">Need help preparing documents or navigating the portal? Our team provides independent typing, formatting, and checklist preparation guidance.</p>
             </div>
             
-            <form id="sevaAssistForm" class="seva-assist-form" onsubmit="event.preventDefault();">
+            <form id="sevaAssistForm" class="seva-assist-form" autocomplete="off" onsubmit="event.preventDefault();">
                 <div class="form-group">
                     <label for="assistServiceName">Selected Service / Task:</label>
-                    <input type="text" id="assistServiceName" readonly class="form-control-readonly">
+                    <input type="text" id="assistServiceName" readonly class="form-control-readonly" autocomplete="off">
                 </div>
                 <div class="form-row-2col">
                     <div class="form-group">
                         <label for="assistApplicantName">Your Name (আপনার নাম) *</label>
-                        <input type="text" id="assistApplicantName" required placeholder="Enter full name" class="form-control">
+                        <input type="text" id="assistApplicantName" required placeholder="Enter full name" class="form-control" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="assistContactInfo">WhatsApp / Mobile / Email *</label>
-                        <input type="text" id="assistContactInfo" required placeholder="+91 9876543210 or email" class="form-control">
+                        <input type="text" id="assistContactInfo" required placeholder="+91 9876543210 or email" class="form-control" autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group">
@@ -3622,7 +3623,7 @@
                 </div>
                 <div class="form-group">
                     <label for="assistNotes">Additional Details / Questions (optional):</label>
-                    <textarea id="assistNotes" rows="3" placeholder="Tell us if you have any specific difficulties (e.g., photo resize, missing certificate, rejection query)..." class="form-control"></textarea>
+                    <textarea id="assistNotes" rows="3" placeholder="Tell us if you have any specific difficulties (e.g., photo resize, missing certificate, rejection query)..." class="form-control" autocomplete="off"></textarea>
                 </div>
                 
                 <div class="assist-security-notice">
@@ -3709,9 +3710,9 @@
 
 <!-- Core App Script -->
 <!-- Core Script & Interactive Controllers -->
-<script defer src="script.js?v=3.5.2"></script>
-<script defer src="js/digital-seva-hub.js?v=1.0.0"></script>
-<script defer src="js/ai-assistant.js?v=1.0.0"></script>
+<script defer src="script.js?v=3.8.0"></script>
+<script defer src="js/digital-seva-hub.js?v=3.8.0"></script>
+<script defer src="js/ai-assistant.js?v=3.8.0"></script>
 
 <!-- XESTUS Connection Lost Overlay -->
 <div id="connectionOverlay" class="connection-overlay">

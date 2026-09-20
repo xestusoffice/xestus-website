@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Regex Tester & Matcher | Real-Time JS Regular Expression Debugger | XESTUS Tools</title>
+    <meta name="description" content="Test, debug, and evaluate regular expressions in real time. Instant match highlighting, capture group extraction, flags (g, i, m, s), and regex cheatsheet. 100% private.">
+    <meta name="keywords" content="regex tester, regular expression tester, online regex, regex debugger, regex match online">
+    <link rel="canonical" href="https://xestus.in/tools/developer/regex-tester/">
+    <link rel="icon" type="image/png" href="../../../assets/images/xestus-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css?v=3.5.2">
+    <link rel="stylesheet" href="../../tools.css?v=1.0.0">
+    <style>
+        .regex-pattern-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-md);
+            padding: 8px 14px;
+            margin-bottom: 20px;
+        }
+        .regex-slash {
+            color: var(--cyan-bright);
+            font-family: var(--tools-font-mono);
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .regex-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-primary);
+            font-family: var(--tools-font-mono);
+            font-size: 15px;
+        }
+        .regex-flags-wrap {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .regex-flag-label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: var(--tools-font-mono);
+            cursor: pointer;
+        }
+        .match-highlight {
+            background: rgba(0, 191, 255, 0.35);
+            color: #ffffff;
+            border-radius: 3px;
+            padding: 0 2px;
+            border-bottom: 2px solid var(--cyan-bright);
+        }
+        .match-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            font-family: var(--tools-font-mono);
+            font-size: 12.5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../../#services" class="nav-link">Services</a></li>
+                <li><a href="../../../#digital-seva-hub" class="nav-link">Digital Seva</a></li>
+                <li><a href="../../" class="nav-link active"><span style="color:var(--cyan-bright);">Tools</span></a></li>
+                <li><a href="../../../#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="../../../#lab" class="nav-link">Innovation Lab</a></li>
+                <li><a href="../../../#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button type="button" class="theme-opt" data-theme="day"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect"><i data-lucide="glasses"></i><span>Eye Protection</span></button>
+                    </div>
+                </div>
+                <a href="../../../#contact" class="btn-primary btn-nav-cta"><span>Start a Project</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tools-app-container" id="main-content">
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../">Developer</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Regex Tester &amp; Matcher</span>
+        </nav>
+
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="search-code" style="width:14px;height:14px;"></i> Developer Utility</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser</span>
+            </div>
+            <h1 class="tool-title">Regex Tester &amp; Debugger</h1>
+            <p class="tool-description">
+                Test JavaScript regular expressions in real time. Highlight pattern matches, inspect capture groups, test multi-line edge cases, and view common regex cheat sheets.
+            </p>
+        </header>
+
+        <section class="tool-workspace" aria-label="Regex Tester Workspace">
+            <!-- Pattern Bar -->
+            <div class="regex-pattern-bar">
+                <span class="regex-slash">/</span>
+                <input type="text" id="regexPattern" class="regex-input" placeholder="e.g. ([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})" value="([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})" spellcheck="false" aria-label="Regular Expression Pattern">
+                <span class="regex-slash">/</span>
+                <div class="regex-flags-wrap">
+                    <label class="regex-flag-label"><input type="checkbox" id="flagG" checked> g</label>
+                    <label class="regex-flag-label"><input type="checkbox" id="flagI" checked> i</label>
+                    <label class="regex-flag-label"><input type="checkbox" id="flagM"> m</label>
+                    <label class="regex-flag-label"><input type="checkbox" id="flagS"> s</label>
+                </div>
+            </div>
+
+            <!-- Editor Grid -->
+            <div class="tool-editor-grid">
+                <div class="tool-editor-pane">
+                    <div class="tool-pane-header">
+                        <span>Test String</span>
+                        <span class="tool-pane-stats" id="testStats">0 chars</span>
+                    </div>
+                    <textarea id="testString" class="tool-textarea" placeholder="Paste test string here..." spellcheck="false">Contact our architecture team at xestus.office@gmail.com or inquiry@xestus.in for enterprise AI consulting.</textarea>
+                </div>
+
+                <div class="tool-editor-pane">
+                    <div class="tool-pane-header">
+                        <span>Match Preview &amp; Capture Groups</span>
+                        <span class="tool-pane-stats" id="matchStats">Calculating...</span>
+                    </div>
+                    <div id="matchOutput" style="height: 380px; background: var(--tools-code-bg); border: 1px solid var(--tools-code-border); border-radius: var(--radius-lg); padding: 16px; color: var(--tools-code-text); font-family: var(--tools-font-mono); font-size: 13.5px; overflow: auto; line-height: 1.7; white-space: pre-wrap; word-break: break-word;">
+                        <!-- Matches rendered here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-status-box" id="statusBox" role="status">
+                <i data-lucide="info" id="statusIcon"></i>
+                <span id="statusMsg">Ready</span>
+            </div>
+        </section>
+
+        <!-- Regex Cheat Sheet -->
+        <section class="tool-info-section">
+            <div class="tool-info-grid">
+                <article class="tool-guide-content">
+                    <h2>Regular Expression Quick Reference</h2>
+                    <ul>
+                        <li><code>\d</code>: Any digit <code>[0-9]</code> | <code>\D</code>: Non-digit</li>
+                        <li><code>\w</code>: Word character <code>[a-zA-Z0-9_]</code> | <code>\W</code>: Non-word character</li>
+                        <li><code>\s</code>: Whitespace (space, tab, newline) | <code>\S</code>: Non-whitespace</li>
+                        <li><code>^</code>: Start of string / line | <code>$</code>: End of string / line</li>
+                        <li><code>+</code>: 1 or more times | <code>*</code>: 0 or more times | <code>?</code>: Optional (0 or 1)</li>
+                        <li><code>{min,max}</code>: Specified quantifier range (e.g. <code>{2,4}</code>)</li>
+                        <li><code>(?&lt;name&gt;...)</code>: Named capture group</li>
+                    </ul>
+                </article>
+                <aside class="related-tools-card">
+                    <h3 class="related-tools-title">Related Developer Tools</h3>
+                    <div class="related-tools-list">
+                        <a href="../text-diff/" class="related-tool-item">
+                            <span class="related-tool-name">Text &amp; Code Diff Checker</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                        <a href="../json-formatter/" class="related-tool-item">
+                            <span class="related-tool-name">JSON Formatter &amp; Minifier</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
+        <div class="footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../../#home" class="footer-logo">
+                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="../../" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← All Tools</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const themeKey = "xestus_theme";
+            const themeBtn = document.getElementById("themeBtn");
+            const themeSwitcher = document.getElementById("themeSwitcher");
+            const themeOpts = document.querySelectorAll(".theme-opt");
+            const currentLabel = document.querySelector(".theme-current-label");
+            const activeIcon = document.querySelector(".theme-active-icon");
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                try { localStorage.setItem(themeKey, theme); } catch (_) {}
+                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
+                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
+                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
+                if (window.lucide) lucide.createIcons();
+            }
+
+            const savedTheme = localStorage.getItem(themeKey) || "night";
+            setTheme(savedTheme);
+
+            if (themeBtn && themeSwitcher) {
+                themeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    themeSwitcher.classList.toggle("is-open");
+                });
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // Regex Logic
+            const patternInput = document.getElementById("regexPattern");
+            const testString = document.getElementById("testString");
+            const flagG = document.getElementById("flagG");
+            const flagI = document.getElementById("flagI");
+            const flagM = document.getElementById("flagM");
+            const flagS = document.getElementById("flagS");
+            const matchOutput = document.getElementById("matchOutput");
+            const matchStats = document.getElementById("matchStats");
+            const testStats = document.getElementById("testStats");
+            const statusBox = document.getElementById("statusBox");
+            const statusMsg = document.getElementById("statusMsg");
+            const statusIcon = document.getElementById("statusIcon");
+
+            function escapeHtml(str) {
+                return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }
+
+            function testRegex() {
+                const pat = patternInput.value;
+                const text = testString.value;
+                testStats.textContent = `${text.length} chars`;
+
+                if (!pat) {
+                    matchOutput.innerHTML = `<span style="color: var(--text-dim);">${escapeHtml(text)}</span>`;
+                    matchStats.textContent = "No pattern";
+                    statusBox.className = "tool-status-box";
+                    return;
+                }
+
+                let flags = "";
+                if (flagG.checked) flags += "g";
+                if (flagI.checked) flags += "i";
+                if (flagM.checked) flags += "m";
+                if (flagS.checked) flags += "s";
+
+                try {
+                    const re = new RegExp(pat, flags);
+                    let matchesCount = 0;
+                    let lastIndex = 0;
+                    let html = "";
+                    let groupsSummary = [];
+
+                    if (flags.includes("g")) {
+                        let match;
+                        while ((match = re.exec(text)) !== null) {
+                            matchesCount++;
+                            // Text before match
+                            html += escapeHtml(text.substring(lastIndex, match.index));
+                            // Highlighted match
+                            html += `<mark class="match-highlight">${escapeHtml(match[0])}</mark>`;
+                            lastIndex = match.index + match[0].length;
+
+                            if (match.length > 1) {
+                                groupsSummary.push(`Match #${matchesCount}: ` + match.slice(1).map((g, i) => `Group ${i+1}: "${g}"`).join(", "));
+                            }
+                            if (match.index === re.lastIndex) re.lastIndex++; // prevent zero-length infinite loop
+                        }
+                        html += escapeHtml(text.substring(lastIndex));
+                    } else {
+                        const match = re.exec(text);
+                        if (match) {
+                            matchesCount = 1;
+                            html += escapeHtml(text.substring(0, match.index));
+                            html += `<mark class="match-highlight">${escapeHtml(match[0])}</mark>`;
+                            html += escapeHtml(text.substring(match.index + match[0].length));
+                            if (match.length > 1) {
+                                groupsSummary.push(`Match #1: ` + match.slice(1).map((g, i) => `Group ${i+1}: "${g}"`).join(", "));
+                            }
+                        } else {
+                            html = escapeHtml(text);
+                        }
+                    }
+
+                    let groupsHtml = "";
+                    if (groupsSummary.length > 0) {
+                        groupsHtml = `
+                            <div style="margin-top: 16px; border-top: 1px solid var(--border-subtle); padding-top: 12px;">
+                                <strong style="color: var(--cyan-bright); font-size: 12px; text-transform: uppercase;">Capture Groups:</strong>
+                                ${groupsSummary.map(g => `<div class="match-card">${escapeHtml(g)}</div>`).join("")}
+                            </div>
+                        `;
+                    }
+
+                    matchOutput.innerHTML = `<div>${html}</div>${groupsHtml}`;
+                    matchStats.textContent = `${matchesCount} match${matchesCount !== 1 ? 'es' : ''} found`;
+                    statusBox.className = `tool-status-box show ${matchesCount > 0 ? 'success' : 'info'}`;
+                    statusMsg.textContent = matchesCount > 0 ? `Found ${matchesCount} match(es) in test string.` : 'Pattern is valid, but no matches were found.';
+                    statusIcon.setAttribute("data-lucide", matchesCount > 0 ? "check-circle" : "info");
+                } catch (e) {
+                    matchOutput.innerHTML = `<div style="color: #ff4d6a;">Invalid Regular Expression: ${escapeHtml(e.message)}</div>`;
+                    matchStats.textContent = "Regex Error";
+                    statusBox.className = "tool-status-box show error";
+                    statusMsg.textContent = `Regex Error: ${e.message}`;
+                    statusIcon.setAttribute("data-lucide", "alert-circle");
+                }
+                if (window.lucide) lucide.createIcons();
+            }
+
+            patternInput.addEventListener("input", testRegex);
+            testString.addEventListener("input", testRegex);
+            flagG.addEventListener("change", testRegex);
+            flagI.addEventListener("change", testRegex);
+            flagM.addEventListener("change", testRegex);
+            flagS.addEventListener("change", testRegex);
+
+            testRegex();
+        });
+    </script>
+</body>
+</html>

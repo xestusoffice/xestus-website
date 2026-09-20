@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strong Password & API Token Generator Online | XESTUS Tools</title>
+    <meta name="description" content="Generate high-entropy, cryptographically random passwords and API tokens online. Customizable length (8–128), character sets, entropy score, and copy button. 100% private.">
+    <meta name="keywords" content="password generator, random token generator, secure password generator, api token generator, password entropy checker">
+    <link rel="canonical" href="https://xestus.in/tools/developer/password-generator/">
+    <link rel="icon" type="image/png" href="../../../assets/images/xestus-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css?v=3.5.2">
+    <link rel="stylesheet" href="../../tools.css?v=1.0.0">
+    <style>
+        .password-display-card {
+            background: var(--tools-code-bg);
+            border: 2px solid var(--cyan-border);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .password-display-text {
+            font-family: var(--tools-font-mono);
+            font-size: clamp(18px, 3vw, 24px);
+            color: var(--cyan-bright);
+            word-break: break-all;
+            flex: 1;
+            user-select: all;
+        }
+        .entropy-bar-wrap {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            margin-top: 14px;
+            overflow: hidden;
+        }
+        .entropy-bar-fill {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .slider-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .slider-input {
+            flex: 1;
+            accent-color: var(--cyan-primary);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../../#services" class="nav-link">Services</a></li>
+                <li><a href="../../../#digital-seva-hub" class="nav-link">Digital Seva</a></li>
+                <li><a href="../../" class="nav-link active"><span style="color:var(--cyan-bright);">Tools</span></a></li>
+                <li><a href="../../../#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="../../../#lab" class="nav-link">Innovation Lab</a></li>
+                <li><a href="../../../#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button type="button" class="theme-opt" data-theme="day"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect"><i data-lucide="glasses"></i><span>Eye Protection</span></button>
+                    </div>
+                </div>
+                <a href="../../../#contact" class="btn-primary btn-nav-cta"><span>Start a Project</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tools-app-container" id="main-content">
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../">Developer</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Password Generator</span>
+        </nav>
+
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="lock" style="width:14px;height:14px;"></i> Security Utility</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> WebCrypto CSPRNG</span>
+            </div>
+            <h1 class="tool-title">Secure Password &amp; Token Generator</h1>
+            <p class="tool-description">
+                Generate cryptographically strong passwords and API secret tokens with high entropy. Tailor length, include symbols, numbers, and uppercase letters.
+            </p>
+        </header>
+
+        <section class="tool-workspace" aria-label="Password Generator Workspace">
+            <!-- Output Display Card -->
+            <div class="password-display-card">
+                <div style="flex: 1; min-width: 240px;">
+                    <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">Generated Token / Password</span>
+                    <div class="password-display-text" id="passwordOutput">Generating...</div>
+                    <div class="entropy-bar-wrap">
+                        <div class="entropy-bar-fill" id="entropyBar"></div>
+                    </div>
+                </div>
+                <div class="tool-btn-group">
+                    <button type="button" class="tool-btn tool-btn-primary" id="btnRegenerate">
+                        <i data-lucide="refresh-cw"></i>
+                        <span>New Password</span>
+                    </button>
+                    <button type="button" class="tool-btn" id="btnCopy">
+                        <i data-lucide="copy"></i>
+                        <span id="copyBtnText">Copy</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Configuration Controls -->
+            <div class="controls-grid">
+                <!-- Length Slider -->
+                <div>
+                    <label style="font-size: 13px; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 8px;">
+                        Password Length: <span id="lengthVal" style="color: var(--cyan-bright);">24</span> characters
+                    </label>
+                    <div class="slider-row">
+                        <span style="font-size: 12px; color: var(--text-dim);">8</span>
+                        <input type="range" id="sliderLength" class="slider-input" min="8" max="128" value="24">
+                        <span style="font-size: 12px; color: var(--text-dim);">128</span>
+                    </div>
+                </div>
+
+                <!-- Toggles -->
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <label class="tool-toggle-label">
+                        <input type="checkbox" id="chkUpper" checked>
+                        <span>Uppercase Letters (A-Z)</span>
+                    </label>
+                    <label class="tool-toggle-label">
+                        <input type="checkbox" id="chkLower" checked>
+                        <span>Lowercase Letters (a-z)</span>
+                    </label>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <label class="tool-toggle-label">
+                        <input type="checkbox" id="chkNumbers" checked>
+                        <span>Numbers (0-9)</span>
+                    </label>
+                    <label class="tool-toggle-label">
+                        <input type="checkbox" id="chkSymbols" checked>
+                        <span>Special Symbols (!@#$%^&amp;*)</span>
+                    </label>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <label class="tool-toggle-label">
+                        <input type="checkbox" id="chkAvoidAmbiguous">
+                        <span>Exclude Ambiguous (l, 1, I, O, 0)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="tool-status-box show success" id="statusBox">
+                <i data-lucide="shield-check"></i>
+                <span id="entropyText">Entropy: 142 bits (Very Strong)</span>
+            </div>
+        </section>
+
+        <section class="tool-info-section">
+            <div class="tool-info-grid">
+                <article class="tool-guide-content">
+                    <h2>How Password Entropy Works</h2>
+                    <p>
+                        Password entropy measures the unpredictable randomness of a password in bits. A 24-character password combining uppercase, lowercase, numbers, and symbols contains approximately <strong>140+ bits of entropy</strong>, requiring trillions of years to brute-force with modern supercomputers.
+                    </p>
+                </article>
+                <aside class="related-tools-card">
+                    <h3 class="related-tools-title">Related Developer Tools</h3>
+                    <div class="related-tools-list">
+                        <a href="../uuid-generator/" class="related-tool-item">
+                            <span class="related-tool-name">UUID v4 Generator</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                        <a href="../hash-generator/" class="related-tool-item">
+                            <span class="related-tool-name">Hash Generator (SHA-256)</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
+        <div class="footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../../#home" class="footer-logo">
+                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="../../" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← All Tools</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const themeKey = "xestus_theme";
+            const themeBtn = document.getElementById("themeBtn");
+            const themeSwitcher = document.getElementById("themeSwitcher");
+            const themeOpts = document.querySelectorAll(".theme-opt");
+            const currentLabel = document.querySelector(".theme-current-label");
+            const activeIcon = document.querySelector(".theme-active-icon");
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                try { localStorage.setItem(themeKey, theme); } catch (_) {}
+                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
+                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
+                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
+                if (window.lucide) lucide.createIcons();
+            }
+
+            const savedTheme = localStorage.getItem(themeKey) || "night";
+            setTheme(savedTheme);
+
+            if (themeBtn && themeSwitcher) {
+                themeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    themeSwitcher.classList.toggle("is-open");
+                });
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // Password Generator Logic
+            const passwordOutput = document.getElementById("passwordOutput");
+            const sliderLength = document.getElementById("sliderLength");
+            const lengthVal = document.getElementById("lengthVal");
+            const chkUpper = document.getElementById("chkUpper");
+            const chkLower = document.getElementById("chkLower");
+            const chkNumbers = document.getElementById("chkNumbers");
+            const chkSymbols = document.getElementById("chkSymbols");
+            const chkAvoidAmbiguous = document.getElementById("chkAvoidAmbiguous");
+            const btnRegenerate = document.getElementById("btnRegenerate");
+            const btnCopy = document.getElementById("btnCopy");
+            const copyBtnText = document.getElementById("copyBtnText");
+            const entropyBar = document.getElementById("entropyBar");
+            const entropyText = document.getElementById("entropyText");
+
+            const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const LOWER = "abcdefghijklmnopqrstuvwxyz";
+            const NUMS = "0123456789";
+            const SYMBOLS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+            const AMBIGUOUS = /[l1IO0]/g;
+
+            function generatePassword() {
+                const len = parseInt(sliderLength.value, 10);
+                lengthVal.textContent = len;
+
+                let pool = "";
+                if (chkUpper.checked) pool += UPPER;
+                if (chkLower.checked) pool += LOWER;
+                if (chkNumbers.checked) pool += NUMS;
+                if (chkSymbols.checked) pool += SYMBOLS;
+
+                if (chkAvoidAmbiguous.checked) {
+                    pool = pool.replace(AMBIGUOUS, "");
+                }
+
+                if (!pool) {
+                    passwordOutput.textContent = "Select at least one character set!";
+                    entropyBar.style.width = "0%";
+                    entropyText.textContent = "Entropy: 0 bits";
+                    return;
+                }
+
+                const bytes = new Uint32Array(len);
+                crypto.getRandomValues(bytes);
+                let pwd = "";
+                for (let i = 0; i < len; i++) {
+                    pwd += pool[bytes[i] % pool.length];
+                }
+
+                passwordOutput.textContent = pwd;
+
+                // Calculate Entropy
+                const poolSize = pool.length;
+                const entropy = Math.round(len * Math.log2(poolSize));
+                let rating = "Weak";
+                let color = "#ff4d6a";
+                let pct = Math.min(100, Math.round((entropy / 128) * 100));
+
+                if (entropy >= 80) { rating = "Very Strong"; color = "#00ff88"; }
+                else if (entropy >= 60) { rating = "Strong"; color = "#00bfff"; }
+                else if (entropy >= 40) { rating = "Moderate"; color = "#ffaa00"; }
+
+                entropyBar.style.width = `${pct}%`;
+                entropyBar.style.background = color;
+                entropyText.textContent = `Entropy: ~${entropy} bits (${rating}) • Generated via CSPRNG`;
+            }
+
+            sliderLength.addEventListener("input", generatePassword);
+            chkUpper.addEventListener("change", generatePassword);
+            chkLower.addEventListener("change", generatePassword);
+            chkNumbers.addEventListener("change", generatePassword);
+            chkSymbols.addEventListener("change", generatePassword);
+            chkAvoidAmbiguous.addEventListener("change", generatePassword);
+            btnRegenerate.addEventListener("click", generatePassword);
+
+            btnCopy.addEventListener("click", () => {
+                const pwd = passwordOutput.textContent;
+                if (!pwd || pwd.startsWith("Select")) return;
+                navigator.clipboard.writeText(pwd).then(() => {
+                    copyBtnText.textContent = "Copied!";
+                    setTimeout(() => { copyBtnText.textContent = "Copy"; }, 2000);
+                });
+            });
+
+            generatePassword();
+        });
+    </script>
+</body>
+</html>

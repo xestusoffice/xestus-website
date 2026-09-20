@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 Encode & Decode Online - UTF-8 & URL-Safe | XESTUS Tools</title>
+    <meta name="description" content="Encode and decode text strings or files to/from Base64 online. Full UTF-8 Unicode support, URL-safe base64 encoding mode, copy, and download. 100% private.">
+    <meta name="keywords" content="base64 encode, base64 decode, base64 converter, url safe base64, utf8 base64 online">
+    <link rel="canonical" href="https://xestus.in/tools/developer/base64-encode-decode/">
+    <link rel="icon" type="image/png" href="../../../assets/images/xestus-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css?v=3.5.2">
+    <link rel="stylesheet" href="../../tools.css?v=1.0.0">
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../../#services" class="nav-link">Services</a></li>
+                <li><a href="../../../#digital-seva-hub" class="nav-link">Digital Seva</a></li>
+                <li><a href="../../" class="nav-link active"><span style="color:var(--cyan-bright);">Tools</span></a></li>
+                <li><a href="../../../#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="../../../#lab" class="nav-link">Innovation Lab</a></li>
+                <li><a href="../../../#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button type="button" class="theme-opt" data-theme="day"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect"><i data-lucide="glasses"></i><span>Eye Protection</span></button>
+                    </div>
+                </div>
+                <a href="../../../#contact" class="btn-primary btn-nav-cta"><span>Start a Project</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tools-app-container" id="main-content">
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../">Developer</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Base64 Encode &amp; Decode</span>
+        </nav>
+
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="binary" style="width:14px;height:14px;"></i> Developer Utility</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> UTF-8 Safe • 100% In-Browser</span>
+            </div>
+            <h1 class="tool-title">Base64 Encoder &amp; Decoder</h1>
+            <p class="tool-description">
+                Convert plain text or binary data into Base64 format and decode Base64 back into human-readable text. Features full UTF-8 emoji and international character support, plus URL-safe mode.
+            </p>
+        </header>
+
+        <section class="tool-workspace" aria-label="Base64 Workspace">
+            <div class="tool-action-bar">
+                <div class="tool-options-group">
+                    <button type="button" class="tool-btn tool-btn-primary" id="btnEncode">
+                        <i data-lucide="arrow-right-left"></i>
+                        <span>Encode to Base64</span>
+                    </button>
+                    <button type="button" class="tool-btn tool-btn-primary" id="btnDecode">
+                        <i data-lucide="code-2"></i>
+                        <span>Decode from Base64</span>
+                    </button>
+                    <label class="tool-toggle-label">
+                        <input type="checkbox" id="chkUrlSafe">
+                        <span>URL-Safe (- and _ instead of + and /)</span>
+                    </label>
+                </div>
+
+                <div class="tool-btn-group">
+                    <button type="button" class="tool-btn" id="btnCopy">
+                        <i data-lucide="copy"></i>
+                        <span id="copyBtnText">Copy Output</span>
+                    </button>
+                    <button type="button" class="tool-btn" id="btnDownload">
+                        <i data-lucide="download"></i>
+                        <span>Download</span>
+                    </button>
+                    <button type="button" class="tool-btn tool-btn-danger" id="btnClear">
+                        <i data-lucide="trash-2"></i>
+                        <span>Clear</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="tool-editor-grid">
+                <div class="tool-editor-pane">
+                    <div class="tool-pane-header">
+                        <span>Input Data</span>
+                        <span class="tool-pane-stats" id="inputStats">0 chars</span>
+                    </div>
+                    <textarea id="baseInput" class="tool-textarea" placeholder="Enter text to encode, or paste Base64 to decode..." spellcheck="false"></textarea>
+                </div>
+
+                <div class="tool-editor-pane">
+                    <div class="tool-pane-header">
+                        <span>Result</span>
+                        <span class="tool-pane-stats" id="outputStats">0 chars</span>
+                    </div>
+                    <textarea id="baseOutput" class="tool-textarea" placeholder="Encoded / decoded output will appear here..." readonly spellcheck="false"></textarea>
+                </div>
+            </div>
+
+            <div class="tool-status-box" id="statusBox" role="status">
+                <i data-lucide="info" id="statusIcon"></i>
+                <span id="statusMsg">Ready</span>
+            </div>
+        </section>
+
+        <section class="tool-info-section">
+            <div class="tool-info-grid">
+                <article class="tool-guide-content">
+                    <h2>What is Base64 Encoding?</h2>
+                    <p>
+                        Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format by translating it into a radix-64 representation. It is widely used for embedding images in HTML/CSS, transferring data in email via MIME, and transmitting data in JSON Web Tokens (JWT).
+                    </p>
+                    <h3>Standard vs. URL-Safe Base64</h3>
+                    <ul>
+                        <li><strong>Standard Base64:</strong> Uses <code>+</code> and <code>/</code> with <code>=</code> padding.</li>
+                        <li><strong>URL-Safe Base64 (RFC 4648 §5):</strong> Replaces <code>+</code> with <code>-</code>, <code>/</code> with <code>_</code>, and often omits padding so the string can be placed safely in URL query parameters without percent-encoding.</li>
+                    </ul>
+                </article>
+                <aside class="related-tools-card">
+                    <h3 class="related-tools-title">Related Developer Tools</h3>
+                    <div class="related-tools-list">
+                        <a href="../jwt-decoder/" class="related-tool-item">
+                            <span class="related-tool-name">JWT Token Decoder</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                        <a href="../url-encode-decode/" class="related-tool-item">
+                            <span class="related-tool-name">URL Encoder &amp; Decoder</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                        <a href="../hash-generator/" class="related-tool-item">
+                            <span class="related-tool-name">Hash Generator (SHA/MD5)</span>
+                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
+        <div class="footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../../#home" class="footer-logo">
+                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="../../" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← All Tools</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const themeKey = "xestus_theme";
+            const themeBtn = document.getElementById("themeBtn");
+            const themeSwitcher = document.getElementById("themeSwitcher");
+            const themeOpts = document.querySelectorAll(".theme-opt");
+            const currentLabel = document.querySelector(".theme-current-label");
+            const activeIcon = document.querySelector(".theme-active-icon");
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                try { localStorage.setItem(themeKey, theme); } catch (_) {}
+                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
+                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
+                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
+                if (window.lucide) lucide.createIcons();
+            }
+
+            const savedTheme = localStorage.getItem(themeKey) || "night";
+            setTheme(savedTheme);
+
+            if (themeBtn && themeSwitcher) {
+                themeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    themeSwitcher.classList.toggle("is-open");
+                });
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // Base64 Logic with Robust UTF-8 Encoding
+            const inputEl = document.getElementById("baseInput");
+            const outputEl = document.getElementById("baseOutput");
+            const btnEncode = document.getElementById("btnEncode");
+            const btnDecode = document.getElementById("btnDecode");
+            const chkUrlSafe = document.getElementById("chkUrlSafe");
+            const btnCopy = document.getElementById("btnCopy");
+            const copyBtnText = document.getElementById("copyBtnText");
+            const btnDownload = document.getElementById("btnDownload");
+            const btnClear = document.getElementById("btnClear");
+            const statusBox = document.getElementById("statusBox");
+            const statusMsg = document.getElementById("statusMsg");
+            const statusIcon = document.getElementById("statusIcon");
+            const inputStats = document.getElementById("inputStats");
+            const outputStats = document.getElementById("outputStats");
+
+            function showStatus(msg, type = "success") {
+                statusBox.className = `tool-status-box show ${type}`;
+                statusMsg.textContent = msg;
+                statusIcon.setAttribute("data-lucide", type === "success" ? "check-circle" : "alert-circle");
+                if (window.lucide) lucide.createIcons();
+            }
+
+            function updateStats() {
+                inputStats.textContent = `${inputEl.value.length} chars`;
+                outputStats.textContent = `${outputEl.value.length} chars`;
+            }
+
+            // UTF-8 string to base64
+            function utf8ToBase64(str) {
+                const bytes = new TextEncoder().encode(str);
+                const binString = Array.from(bytes, (byte) => String.fromCodePoint(byte)).join("");
+                let b64 = btoa(binString);
+                if (chkUrlSafe.checked) {
+                    b64 = b64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+                }
+                return b64;
+            }
+
+            // Base64 to UTF-8 string
+            function base64ToUtf8(b64) {
+                let norm = b64.trim();
+                if (chkUrlSafe.checked || norm.includes("-") || norm.includes("_")) {
+                    norm = norm.replace(/-/g, "+").replace(/_/g, "/");
+                    while (norm.length % 4) norm += "=";
+                }
+                const binString = atob(norm);
+                const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0));
+                return new TextDecoder().decode(bytes);
+            }
+
+            btnEncode.addEventListener("click", () => {
+                const text = inputEl.value;
+                if (!text) return;
+                try {
+                    outputEl.value = utf8ToBase64(text);
+                    showStatus("Successfully encoded to Base64 (UTF-8 safe).", "success");
+                } catch (e) {
+                    showStatus(`Encoding error: ${e.message}`, "error");
+                }
+                updateStats();
+            });
+
+            btnDecode.addEventListener("click", () => {
+                const b64 = inputEl.value;
+                if (!b64) return;
+                try {
+                    outputEl.value = base64ToUtf8(b64);
+                    showStatus("Successfully decoded Base64 string.", "success");
+                } catch (e) {
+                    showStatus(`Decoding error: Invalid Base64 string. ${e.message}`, "error");
+                }
+                updateStats();
+            });
+
+            btnCopy.addEventListener("click", () => {
+                if (!outputEl.value) return;
+                navigator.clipboard.writeText(outputEl.value).then(() => {
+                    copyBtnText.textContent = "Copied!";
+                    setTimeout(() => { copyBtnText.textContent = "Copy Output"; }, 2000);
+                });
+            });
+
+            btnDownload.addEventListener("click", () => {
+                if (!outputEl.value) return;
+                const blob = new Blob([outputEl.value], { type: "text/plain;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "base64-output.txt";
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+
+            btnClear.addEventListener("click", () => {
+                inputEl.value = "";
+                outputEl.value = "";
+                statusBox.className = "tool-status-box";
+                updateStats();
+            });
+
+            inputEl.addEventListener("input", updateStats);
+        });
+    </script>
+</body>
+</html>
