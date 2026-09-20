@@ -109,17 +109,19 @@
         const allIntentStr = intentTags.join(" ");
 
         let score = 0;
+        let matchedCount = 0;
 
         // Exact query match in title or intent tags (highest priority)
         if (nameEn.includes(qNorm) || nameBn.includes(qNorm) || nameHi.includes(qNorm)) {
-            score += 100;
+            score += 120;
+            matchedCount++;
         }
         if (allIntentStr.includes(qNorm)) {
-            score += 80;
+            score += 90;
+            matchedCount++;
         }
 
         // Token scoring
-        let matchedCount = 0;
         for (const token of qTokens) {
             let tokenHit = false;
 
@@ -131,8 +133,8 @@
                 score += 30;
                 tokenHit = true;
             }
-            // Substring stem check (e.g. "জাতি" in "জাতিগত")
-            if (token.length >= 3 && (nameBn.includes(token.slice(0, 4)) || allIntentStr.includes(token.slice(0, 4)))) {
+            // Substring stem check (e.g. "জাতি" in "জাতিগত" or "অন্ন" in "অন্নপূর্ণা")
+            if (token.length >= 3 && (nameBn.includes(token.slice(0, 4)) || allIntentStr.includes(token.slice(0, 4)) || nameEn.includes(token.slice(0, 4)))) {
                 score += 20;
                 tokenHit = true;
             }
@@ -157,7 +159,7 @@
             score += 5;
         }
 
-        return matchedCount >= 1 ? score : 0;
+        return (matchedCount >= 1 || score > 0) ? score : 0;
     }
 
     // -------------------------------------------------------------------------
@@ -279,10 +281,18 @@
 
             // Gov Level Filter (Central, State, Private)
             if (state.activeGovLevel !== "all") {
-                if (state.activeGovLevel === "State" || state.activeGovLevel === "West Bengal") {
-                    if (service.government_level !== "State" && service.government_level !== "West Bengal") {
-                        continue;
-                    }
+                const sGov = String(service.government_level || "").toLowerCase();
+                const sState = String(service.state || "").toLowerCase();
+                const isWB = sGov === "west bengal" || sGov === "state" || sGov === "wb" || sState === "west bengal";
+                const isCentral = sGov === "central" || sGov === "all india" || sGov === "national";
+                const isPrivate = sGov === "private";
+
+                if (state.activeGovLevel === "State" || state.activeGovLevel === "West Bengal" || state.activeGovLevel === "wb") {
+                    if (!isWB) continue;
+                } else if (state.activeGovLevel === "Central" || state.activeGovLevel === "central") {
+                    if (!isCentral) continue;
+                } else if (state.activeGovLevel === "Private" || state.activeGovLevel === "private") {
+                    if (!isPrivate) continue;
                 } else if (service.government_level !== state.activeGovLevel) {
                     continue;
                 }
@@ -386,14 +396,23 @@
         const isGov = s.government_level !== "Private";
         const officialLink = s.official_apply_url || s.official_homepage || "";
 
-        let levelBadgeText = "🟢 Central Govt";
-        let levelBadgeClass = "badge-central";
-        if (s.government_level === "State") {
-            levelBadgeText = "🟢 State Govt (WB)";
-            levelBadgeClass = "badge-wb";
-        } else if (s.government_level === "Private") {
-            levelBadgeText = "🔵 Private Platform";
+        const sGov = String(s.government_level || "").toLowerCase();
+        const sState = String(s.state || "").toLowerCase();
+        const isWB = sGov === "west bengal" || sGov === "state" || sGov === "wb" || sState === "west bengal";
+        const isPrivate = sGov === "private";
+
+        let levelBadgeText = "🟢 State Govt (WB)";
+        let levelBadgeClass = "badge-wb";
+
+        if (isPrivate) {
             levelBadgeClass = "badge-private";
+            levelBadgeText = (lang === "bn") ? "🔵 প্রাইভেট প্ল্যাটফর্ম" : (lang === "hi") ? "🔵 प्राइवेट प्लेटफॉर्म" : "🔵 Private Platform";
+        } else if (isWB) {
+            levelBadgeClass = "badge-wb";
+            levelBadgeText = (lang === "bn") ? "🟢 পশ্চিমবঙ্গ সরকার" : (lang === "hi") ? "🟢 पश्चिम बंगाल सरकार" : "🟢 State Govt (WB)";
+        } else {
+            levelBadgeClass = "badge-central";
+            levelBadgeText = (lang === "bn") ? "🟢 কেন্দ্রীয় সরকার" : (lang === "hi") ? "🟢 केंद्र सरकार" : "🟢 Central Govt";
         }
 
         const docsSummary = (s.required_documents && s.required_documents.en && s.required_documents.en.length > 0)
@@ -456,7 +475,7 @@
     }
 
     // Render Main Services Cards Grid & Separated Private Directory
-    function renderServicesGrid() {
+    function renderServicesGrid(triggerHighlight = false) {
         const grid = document.getElementById("sevaServicesGrid");
         const countBadge = document.getElementById("sevaResultCount");
         const emptyState = document.getElementById("sevaEmptyState");
@@ -513,11 +532,12 @@
                         } else if (type === "category") {
                             state.activeCategory = null;
                             syncFilterButtons("category", "all");
+                            syncTaskCards(null);
                         } else if (type === "govLevel") {
                             state.activeGovLevel = "all";
                             syncFilterButtons("govLevel", "all");
                         }
-                        renderServicesGrid();
+                        renderServicesGrid(false);
                     });
                 });
 
@@ -583,6 +603,35 @@
         if (window.lucide && typeof window.lucide.createIcons === "function") {
             window.lucide.createIcons();
         }
+
+        if (triggerHighlight) {
+            highlightServicesCards();
+        }
+    }
+
+    // Highlight Matching Service Cards (Slow 3-second 3-times blink animation)
+    let highlightCardsTimeout = null;
+    function highlightServicesCards() {
+        clearTimeout(highlightCardsTimeout);
+        const cards = document.querySelectorAll("#sevaServicesGrid .seva-service-card");
+        if (!cards || cards.length === 0) return;
+
+        // Highlight up to first 6 matching cards in the grid
+        const count = Math.min(cards.length, 6);
+        for (let i = 0; i < count; i++) {
+            const card = cards[i];
+            card.classList.remove("card-blink-highlight");
+            // Force DOM reflow to cleanly restart the 3s 3-blink keyframe animation
+            void card.offsetWidth;
+            card.classList.add("card-blink-highlight");
+        }
+
+        // Clean up animation class after 3050ms (3 complete slow pulses)
+        highlightCardsTimeout = setTimeout(() => {
+            cards.forEach((card) => {
+                card.classList.remove("card-blink-highlight");
+            });
+        }, 3050);
     }
 
     // Attach click handlers to cards inside any container
@@ -641,6 +690,15 @@
         });
     }
 
+    function syncTaskCards(activeCat) {
+        document.querySelectorAll("#sevaTaskGrid .seva-task-card").forEach((card) => {
+            const cat = card.getAttribute("data-category");
+            const isMatch = Boolean(activeCat && (cat === activeCat));
+            card.classList.toggle("active", isMatch);
+            card.setAttribute("aria-selected", isMatch ? "true" : "false");
+        });
+    }
+
     function resetAllFilters() {
         state.searchQuery = "";
         state.activeCategory = null;
@@ -658,13 +716,23 @@
             btn.setAttribute("aria-selected", isAll ? "true" : "false");
         });
 
-        renderServicesGrid();
+        syncTaskCards(null);
+        renderServicesGrid(false);
     }
 
     function scrollServicesIntoView() {
         const el = document.getElementById("sevaServicesGrid");
         if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
+            const firstCard = el.querySelector(".seva-service-card") || el;
+            const headerHeight = document.querySelector(".site-header")?.offsetHeight || 80;
+            const targetY = firstCard.getBoundingClientRect().top + window.pageYOffset - headerHeight - 25;
+            window.scrollTo({
+                top: Math.max(0, targetY),
+                behavior: "smooth"
+            });
+            setTimeout(() => {
+                highlightServicesCards();
+            }, 120);
         }
     }
 
@@ -706,12 +774,28 @@
             titleEl.textContent = name;
         }
 
+        const sGov = String(service.government_level || "").toLowerCase();
+        const sState = String(service.state || "").toLowerCase();
+        const isWB = sGov === "west bengal" || sGov === "state" || sGov === "wb" || sState === "west bengal";
+        const isPrivate = sGov === "private";
+
+        let modalBadgeClass = "badge-wb";
+        let modalBadgeText = (lang === "bn") ? "🟢 পশ্চিমবঙ্গ সরকার" : (lang === "hi") ? "🟢 पश्चिम बंगाल सरकार" : "🟢 West Bengal Govt";
+
+        if (isPrivate) {
+            modalBadgeClass = "badge-private";
+            modalBadgeText = (lang === "bn") ? "🔵 প্রাইভেট প্ল্যাটফর্ম" : (lang === "hi") ? "🔵 प्राइवेट प्लेटफॉर्म" : "🔵 Private Platform";
+        } else if (!isWB) {
+            modalBadgeClass = "badge-central";
+            modalBadgeText = (lang === "bn") ? "🟢 কেন্দ্রীয় সরকার" : (lang === "hi") ? "🟢 केंद्र सरकार" : "🟢 Central Govt";
+        }
+
         if (bodyEl) {
             bodyEl.innerHTML = `
                 <div class="modal-detail-header">
                     <div class="modal-meta-row">
-                        <span class="seva-authority-pill ${service.government_level === 'Central' ? 'badge-central' : service.government_level === 'State' ? 'badge-wb' : 'badge-private'}">
-                            ${escapeHTML(service.government_level)} Government
+                        <span class="seva-authority-pill ${modalBadgeClass}">
+                            ${escapeHTML(modalBadgeText)}
                         </span>
                         <span class="seva-category-tag">${escapeHTML(catName)}</span>
                         ${getVerificationBadgeHTML(service.verification_status, service.last_verified)}
@@ -1159,8 +1243,36 @@
                 clearTimeout(debounceTimer);
                 debounceTimer = setTimeout(() => {
                     state.searchQuery = val;
-                    renderServicesGrid();
-                }, 180);
+                    if (val.length > 0) {
+                        // Searching clears restrictive category filter to search full database
+                        state.activeCategory = null;
+                        state.activeGovLevel = "all";
+                        syncFilterButtons("category", "all");
+                        syncTaskCards(null);
+                    }
+                    renderServicesGrid(Boolean(val.length > 0));
+                    if (val.length > 0) {
+                        scrollServicesIntoView();
+                    }
+                }, 200);
+            });
+
+            // Enter key trigger for immediate search, scroll, and 3-second 3-pulse blink highlight
+            searchInput.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    clearTimeout(debounceTimer);
+                    const val = searchInput.value.trim();
+                    state.searchQuery = val;
+                    if (val.length > 0) {
+                        state.activeCategory = null;
+                        state.activeGovLevel = "all";
+                        syncFilterButtons("category", "all");
+                        syncTaskCards(null);
+                    }
+                    renderServicesGrid(true);
+                    scrollServicesIntoView();
+                }
             });
         }
 
@@ -1169,7 +1281,7 @@
                 if (searchInput) searchInput.value = "";
                 clearSearchBtn.style.display = "none";
                 state.searchQuery = "";
-                renderServicesGrid();
+                renderServicesGrid(false);
             });
         }
 
@@ -1182,7 +1294,12 @@
                     if (clearSearchBtn) clearSearchBtn.style.display = "flex";
                 }
                 state.searchQuery = q;
-                renderServicesGrid();
+                state.activeCategory = null;
+                state.activeGovLevel = "all";
+                syncFilterButtons("category", "all");
+                syncTaskCards(null);
+                renderServicesGrid(true);
+                scrollServicesIntoView();
             });
         });
 
@@ -1194,7 +1311,9 @@
                     state.activeCategory = cat;
                     state.activeGovLevel = "all";
                     syncFilterButtons("category", cat);
-                    renderServicesGrid();
+                    syncTaskCards(cat);
+                    renderServicesGrid(true);
+                    scrollServicesIntoView();
                 }
             });
         });
@@ -1211,12 +1330,16 @@
                     state.activeGovLevel = val;
                     state.activeCategory = null;
                     syncFilterButtons("govLevel", val);
-                    renderServicesGrid();
+                    syncTaskCards(null);
+                    renderServicesGrid(true);
+                    scrollServicesIntoView();
                 } else if (filterType === "category") {
                     state.activeCategory = val;
                     state.activeGovLevel = "all";
                     syncFilterButtons("category", val);
-                    renderServicesGrid();
+                    syncTaskCards(val);
+                    renderServicesGrid(true);
+                    scrollServicesIntoView();
                 } else if (filterType === "master") {
                     const masterSection = document.getElementById("sevaMasterGatewaysSection");
                     if (masterSection) {
@@ -1283,7 +1406,7 @@
         // Language Changes Listener
         const syncLanguage = () => {
             renderMasterPortals();
-            renderServicesGrid();
+            renderServicesGrid(false);
         };
 
         window.addEventListener("xestus:language-changed", syncLanguage);
@@ -1315,7 +1438,7 @@
             return;
         }
         renderMasterPortals();
-        renderServicesGrid();
+        renderServicesGrid(false);
         initEvents();
     }
 
@@ -1335,8 +1458,12 @@
             state.searchQuery = query;
             const input = document.getElementById("sevaSearchInput");
             if (input) input.value = query;
-            renderServicesGrid();
+            const clearBtn = document.getElementById("btnSevaClearSearch");
+            if (clearBtn) clearBtn.style.display = query ? "flex" : "none";
+            renderServicesGrid(true);
+            scrollServicesIntoView();
         },
+        highlightCards: highlightServicesCards,
         reset: resetAllFilters
     };
 

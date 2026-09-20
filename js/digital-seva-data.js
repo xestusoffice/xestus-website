@@ -726,9 +726,9 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                         "hi": "द्वारे सरकार पोर्टल"
                 },
                 "desc": {
-                        "en": "Official camp schedules, scheme enrollments (Lakshmir Bhandar, Swasthya Sathi, Kanyashree) and status.",
-                        "bn": "দুয়ারে সরকার ক্যাম্পের সময়সূচি, স্কিম আবেদন ও স্ট্যাটাস ট্র্যাকিং পোর্টাল।",
-                        "hi": "द्वारे सरकार कैंप का समय, योजना आवेदन और स्थिति जांच।"
+                        "en": "Official camp schedules, scheme enrollments (Annapurna Bhandar, Swasthya Sathi, Kanyashree) and status.",
+                        "bn": "দুয়ারে সরকার ক্যাম্পের সময়সূচি, স্কিম আবেদন (অন্নপূর্ণা ভাণ্ডার, স্বাস্থ্য সাথী, কন্যাশ্রী) ও স্ট্যাটাস ট্র্যাকিং পোর্টাল।",
+                        "hi": "द्वारे सरकार कैंप का समय, योजना आवेदन (अन्नपूर्णा भंडार, स्वास्थ्य साथी) और स्थिति जांच।"
                 },
                 "url": "https://ds.wb.gov.in/",
                 "badge": "🟢 Officially Verified",
@@ -1756,6 +1756,303 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
     // 6. MASTER VERIFIED SERVICES DIRECTORY (94+ Services)
     // =========================================================================
     const SERVICES = [
+        {
+                "service_id": "wb-annapurna-bhandar-scheme",
+                "service_name": {
+                        "en": "Annapurna Bhandar Scheme (West Bengal)",
+                        "bn": "অন্নপূর্ণা ভাণ্ডার প্রকল্প (পশ্চিমবঙ্গ সরকার)",
+                        "hi": "अन्नपूर्णा भंडार योजना (पश्चिम बंगाल सरकार)"
+                },
+                "short_description": {
+                        "en": "West Bengal Government flagship women empowerment financial support scheme providing ₹1,000 per month for General category and ₹1,200 per month for SC/ST women directly via DBT.",
+                        "bn": "পশ্চিমবঙ্গ সরকারের অন্যতম জনপ্রিয় নারী ক্ষমতায়ন প্রকল্প: সাধারণ শ্রেণির মহিলাদের প্রতি মাসে ₹১,০০০ এবং তফশিলি জাতি/উপজাতির মহিলাদের প্রতি মাসে ₹১,২০০ সরাসরি ব্যাংক অ্যাকাউন্টে আর্থিক সহায়তা।",
+                        "hi": "पश्चिम बंगाल सरकार की महिला सशक्तिकरण योजना: सामान्य वर्ग की महिलाओं को ₹1,000/माह और एससी/एसटी महिलाओं को ₹1,200/माह।"
+                },
+                "category": "welfare-schemes",
+                "category_name": {
+                        "en": "Government Welfare Schemes",
+                        "bn": "নারী ও সামাজিক কল্যাণ প্রকল্প",
+                        "hi": "महिला व कल्याण योजनाएं"
+                },
+                "subcategory": "Women Direct Support",
+                "authority": "Department of Women & Child Development and Social Welfare, Govt of West Bengal",
+                "government_level": "West Bengal",
+                "service_type": "Scheme",
+                "target_users": [
+                        "Woman"
+                ],
+                "eligibility": {
+                        "en": [
+                                "Female resident of West Bengal aged between 25 and 60 years.",
+                                "Not receiving regular government salary/pension."
+                        ],
+                        "bn": [
+                                "পশ্চিমবঙ্গের স্থায়ী বাসিন্দা ২৫ থেকে ৬০ বছর বয়সী নারী।",
+                                "সরকারি কর্মচারী বা স্থায়ী সরকারি পেনশন প্রাপক নন এমন যে কেউ।"
+                        ],
+                        "hi": [
+                                "पश्चिम बंगाल की 25 से 60 वर्ष आयु की महिलाएं।"
+                        ]
+                },
+                "required_documents": {
+                        "en": [
+                                "Swasthya Sathi Card (Mandatory)",
+                                "Aadhaar Card",
+                                "SC/ST Certificate (if applying for ₹1,200 higher benefit)",
+                                "Bank Passbook (Single account linked with Aadhaar)",
+                                "Passport Size Photograph."
+                        ],
+                        "bn": [
+                                "স্বাস্থ্য সাথী কার্ড (বাধ্যতামূলক)",
+                                "আধার কার্ড",
+                                "এসসি/এসটি শংসাপত্র (উচ্চতর সহায়তার জন্য)",
+                                "আধার সংযুক্ত নিজস্ব ব্যাংক পাসবুক",
+                                "পাসপোর্ট সাইজ ছবি।"
+                        ],
+                        "hi": [
+                                "स्वास्थ्य साथी कार्ड",
+                                "आधार कार्ड",
+                                "जाति प्रमाण पत्र",
+                                "बैंक पासबुक।"
+                        ]
+                },
+                "application_fee": {
+                        "en": "100% Free of Cost. Forms available free at Duare Sarkar camps.",
+                        "bn": "সম্পূর্ণ বিনামূল্যে আবেদন। দুয়ারে সরকার ক্যাম্প থেকে বিনামূল্যে ফর্ম দেওয়া হয়।",
+                        "hi": "पूर्णतः निःशुल्क।"
+                },
+                "benefits": {
+                        "en": [
+                                "Direct monthly financial assistance of ₹1,000 (General) or ₹1,200 (SC/ST) directly credited to the beneficiary bank account."
+                        ],
+                        "bn": [
+                                "প্রতি মাসে সরাসরি ব্যাংক অ্যাকাউন্টে ₹১,০০০ (সাধারণ) বা ₹১,২০০ (এসসি/এসটি) জমা।"
+                        ],
+                        "hi": [
+                                "प्रति माह ₹1,000 या ₹1,200 सीधे बैंक खाते में।"
+                        ]
+                },
+                "process_steps": {
+                        "en": [
+                                "Collect free application form during official 'Duare Sarkar' camps.",
+                                "Fill applicant details and attach photocopies of Swasthya Sathi, Aadhaar, and Bank Passbook.",
+                                "Submit form at camp counter and obtain physical counter-signed receipt.",
+                                "Track application and payment status online at socialsecurity.wb.gov.in using Aadhaar/Mobile number."
+                        ],
+                        "bn": [
+                                "'দুয়ারে সরকার' ক্যাম্প থেকে অন্নপূর্ণা ভাণ্ডারের ফর্ম সংগ্রহ করুন।",
+                                "ফর্ম পূরণ করে স্বাস্থ্যসাথী, আধার, কাস্ট সার্টিফিকেট ও ব্যাংক বইয়ের জেরক্স জুড়ে জমা দিন।",
+                                "কাউন্টার থেকে সিলযুক্ত জমা রসিদ সংগ্রহ করুন।",
+                                "socialsecurity.wb.gov.in পোর্টালে আধার নম্বর বা মোবাইল নম্বর দিয়ে আবেদনের স্থিতি চেক করুন।"
+                        ],
+                        "hi": [
+                                "दुआरे सरकार शिविर से फॉर्म प्राप्त कर जमा करें।",
+                                "रसीद सुरक्षित रखें।",
+                                "socialsecurity.wb.gov.in पर आवेदन की स्थिति जांचें।"
+                        ]
+                },
+                "official_homepage": "https://socialsecurity.wb.gov.in/",
+                "official_apply_url": "https://socialsecurity.wb.gov.in/",
+                "official_status_url": "https://socialsecurity.wb.gov.in/track-applicant-status",
+                "official_helpline": "033 2334 1563 / District Social Welfare Helpdesk",
+                "official_email": "wcd@wb.gov.in",
+                "state": "West Bengal",
+                "availability": "Duare Sarkar Camps + BDO/Municipality",
+                "active_status": true,
+                "verification_status": "officially_verified",
+                "source_url": "https://socialsecurity.wb.gov.in/",
+                "last_verified": "15 Sep 2026",
+                "is_popular": true,
+                "intent_tags": [
+                        "annapurna bhandar",
+                        "annapurna vandar",
+                        "annapurna bhander",
+                        "annapurna scheme",
+                        "lakshmir bhandar",
+                        "laxmi bhandar",
+                        "wb women scheme",
+                        "annapurna bhandar status",
+                        "lakshmir bhandar status",
+                        "duare sarkar annapurna bhandar",
+                        "duare sarkar lakshmi bhandar",
+                        "social security wb",
+                        "অন্নপূর্ণা ভাণ্ডার",
+                        "অন্নপূর্ণা ভান্ডার",
+                        "লক্ষ্মীর ভাণ্ডার",
+                        "লক্ষ্মী ভাণ্ডার",
+                        "মহিলা প্রকল্প",
+                        "অন্নপূর্ণা ভাণ্ডার স্ট্যাটাস",
+                        "দুয়ারে সরকার",
+                        "अन्नपूर्णा भंडार",
+                        "लक्ष्मी भंडार",
+                        "पश्चिम बंगाल महिला योजना",
+                        "अन्नपूर्णा भंडार स्टेटस",
+                        "लक्ष्मी भंडार स्टेटस"
+                ],
+                "scam_warning": {
+                        "en": "Annapurna Bhandar forms are strictly distributed FREE at Government Duare Sarkar camps. Never buy forms from private shops.",
+                        "bn": "অন্নপূর্ণা ভাণ্ডারের ফর্ম দুয়ারে সরকার ক্যাম্পে বিনামূল্যে পাওয়া যায়। কোনো দোকান থেকে চড়া দামে ফর্ম কিনবেন না।",
+                        "hi": "अन्नपूर्णा भंडार फॉर्म सरकारी शिविरों में निःशुल्क मिलता है। पैसे देकर न खरीदें।"
+                }
+        },
+        {
+                "service_id": "wb-yuva-shakti-scheme",
+                "service_name": {
+                        "en": "Yuva Shakti Scheme & Portal (West Bengal)",
+                        "bn": "যুবশক্তি প্রকল্প ও এমপ্লয়মেন্ট পোর্টাল (পশ্চিমবঙ্গ সরকার)",
+                        "hi": "युवा शक्ति योजना व पोर्टल (पश्चिम बंगाल सरकार)"
+                },
+                "short_description": {
+                        "en": "West Bengal Government flagship youth empowerment initiative providing ₹1,500 monthly financial assistance, career skill training, and direct job placement for registered jobseekers.",
+                        "bn": "পশ্চিমবঙ্গ সরকারের অন্যতম জনপ্রিয় যুব সহায়তা প্রকল্প: এমপ্লয়মেন্ট ব্যাংকে নথিবদ্ধ কর্মপ্রার্থীদের প্রতি মাসে ₹১,৫০০ আর্থিক অনুদান, কারিগরি প্রশিক্ষণ ও চাকরির সুযোগ।",
+                        "hi": "पश्चिम बंगाल सरकार की युवा कल्याण योजना: पंजीकृत युवाओं को ₹1,500 मासिक वित्तीय सहायता, कौशल प्रशिक्षण और रोजगार सहायता।"
+                },
+                "category": "welfare-schemes",
+                "category_name": {
+                        "en": "Youth & Welfare Schemes",
+                        "bn": "যুব ও সামাজিক কল্যাণ প্রকল্প",
+                        "hi": "युवा व कल्याण योजनाएं"
+                },
+                "subcategory": "Employment Bank & Youth Support",
+                "authority": "Labour Department & Employment Bank, Government of West Bengal",
+                "government_level": "West Bengal",
+                "service_type": "Scheme",
+                "target_users": [
+                        "Youth",
+                        "Jobseeker",
+                        "Student"
+                ],
+                "eligibility": {
+                        "en": [
+                                "Unemployed youth resident of West Bengal aged between 18 and 45 years.",
+                                "Enrolled on Employment Bank portal (employmentbankwb.gov.in).",
+                                "Minimum educational qualification: Passed 8th standard or higher.",
+                                "Only one member per family is eligible for financial allowance."
+                        ],
+                        "bn": [
+                                "পশ্চিমবঙ্গের স্থায়ী বাসিন্দা ১৮ থেকে ৪৫ বছর বয়সী কর্মপ্রার্থী যুব-যুবতী।",
+                                "এমপ্লয়মেন্ট ব্যাংক পোর্টালে (employmentbankwb.gov.in) নথিবদ্ধ থাকতে হবে।",
+                                "ন্যূনতম অষ্টম শ্রেণী বা তদূর্ধ্ব পরীক্ষায় উত্তীর্ণ।",
+                                "পরিবারের একজন সদস্য এই আর্থিক সহায়তা পাবেন।"
+                        ],
+                        "hi": [
+                                "पश्चिम बंगाल के 18 से 45 वर्ष आयु के बेरोजगार युवा।",
+                                "एंप्लॉयमेंट बैंक पोर्टल पर पंजीकृत।",
+                                "न्यूनतम 8वीं पास या उच्चतर।"
+                        ]
+                },
+                "required_documents": {
+                        "en": [
+                                "Aadhaar Card / Voter ID",
+                                "Employment Bank Registration ID / Acknowledgement",
+                                "Madhyamik / 8th Pass Certificate & Marksheet",
+                                "Caste Certificate (if SC/ST/OBC)",
+                                "Bank Passbook (Single account linked with Aadhaar)",
+                                "Passport Size Photograph"
+                        ],
+                        "bn": [
+                                "আধার কার্ড / ভোটার কার্ড",
+                                "এমপ্লয়মেন্ট ব্যাংক এনরোলমেন্ট রসিদ",
+                                "মাধ্যমিক বা অষ্টম শ্রেণী পাশের সার্টিফিকেট ও মার্কশিট",
+                                "কাস্ট সার্টিফিকেট (প্রযোজ্য হলে)",
+                                "আধার লিংকযুক্ত নিজস্ব ব্যাংক পাসবুক",
+                                "পাসপোর্ট সাইজ রঙিন ছবি"
+                        ],
+                        "hi": [
+                                "आधार कार्ड / वोटर आईडी",
+                                "एंप्लॉयमेंट बैंक पंजीकरण पर्ची",
+                                "शैक्षणिक योग्यता प्रमाण पत्र",
+                                "बैंक पासबुक",
+                                "पासपोर्ट फोटो"
+                        ]
+                },
+                "application_fee": {
+                        "en": "100% Free of Cost. Official Employment Bank portal registration.",
+                        "bn": "সম্পূর্ণ বিনামূল্যে আবেদন ও রেজিস্ট্রেশন।",
+                        "hi": "पूर्णतः निःशुल्क।"
+                },
+                "benefits": {
+                        "en": [
+                                "Direct monthly financial allowance of ₹1,500 credited via DBT.",
+                                "Free vocational skill development & computer training.",
+                                "Direct notifications for government & private job fairs."
+                        ],
+                        "bn": [
+                                "প্রতি মাসে ₹১,৫০০ টাকা সরাসরি ব্যাংক অ্যাকাউন্টে আর্থিক অনুদান।",
+                                "বিনামূল্যে বৃত্তিমূলক ও কম্পিউটার প্রশিক্ষণ।",
+                                "চাকরির মেলা ও সরাসরি নিয়োগ বিজ্ঞপ্তির অগ্রাধিকার।"
+                        ],
+                        "hi": [
+                                "प्रति माह ₹1,500 की वित्तीय सहायता।",
+                                "निःशुल्क कौशल विकास प्रशिक्षण।",
+                                "रोजगार सूचनाएं।"
+                        ]
+                },
+                "process_steps": {
+                        "en": [
+                                "Visit the official Employment Bank portal (employmentbankwb.gov.in) and click 'JobSeeker New Enrolment'.",
+                                "Fill in personal, educational, and contact details and generate JobSeeker Registration ID.",
+                                "Visit your local Employment Exchange within 60 days with original documents for physical verification.",
+                                "After verification, submit Yuva Shakti Annexure application form to activate monthly financial allowance.",
+                                "Track application status and DBT credit online at employmentbankwb.gov.in."
+                        ],
+                        "bn": [
+                                "employmentbankwb.gov.in পোর্টালে গিয়ে 'JobSeeker New Enrolment' এ ক্লিক করে রেজিস্ট্রেশন করুন।",
+                                "শিক্ষাগত যোগ্যতা ও ব্যক্তিগত তথ্য দিয়ে এনরোলমেন্ট স্লিপ প্রিন্ট করুন।",
+                                "৬০ দিনের মধ্যে স্থানীয় এমপ্লয়মেন্ট এক্সচেঞ্জে আসল নথি নিয়ে গিয়ে ভেরিফাই করান।",
+                                "ভেরিফিকেশন সম্পন্ন হলে অ্যানক্সার ফর্ম জমা দিয়ে যুবশক্তি স্কিম চালু করুন।",
+                                "পোর্টালে ইউজারনেম ও পাসওয়ার্ড দিয়ে আবেদনের স্ট্যাটাস ও অনুদান ট্র্যাক করুন।"
+                        ],
+                        "hi": [
+                                "employmentbankwb.gov.in पर जाकर JobSeeker New Enrolment करें।",
+                                "स्थानीय रोजगार कार्यालय में दस्तावेज सत्यापन करवाएं।",
+                                "युवा शक्ति फॉर्म जमा कर स्थिति ट्रैक करें।"
+                        ]
+                },
+                "official_homepage": "https://employmentbankwb.gov.in/",
+                "official_apply_url": "https://employmentbankwb.gov.in/",
+                "official_status_url": "https://employmentbankwb.gov.in/",
+                "official_helpline": "033 2237 6300 / 1800-345-3333",
+                "official_email": "employmentbank@wb.gov.in",
+                "state": "West Bengal",
+                "availability": "Online Portal + Local Employment Exchange",
+                "active_status": true,
+                "verification_status": "officially_verified",
+                "source_url": "https://employmentbankwb.gov.in/",
+                "last_verified": "18 Sep 2026",
+                "is_popular": true,
+                "intent_tags": [
+                        "yuva shakti",
+                        "yuba sakti",
+                        "yuvasree",
+                        "yubashree",
+                        "yubasree",
+                        "jubosree",
+                        "yuva shakti scheme",
+                        "yuba sakti portal",
+                        "employment bank",
+                        "employment bank wb",
+                        "wb employment bank",
+                        "youth scheme",
+                        "unemployed allowance wb",
+                        "যুবশক্তি",
+                        "যুবশক্তি প্রকল্প",
+                        "যুবশ্রী",
+                        "যুবশ্রী প্রকল্প",
+                        "এমপ্লয়মেন্ট ব্যাংক",
+                        "কর্মসংস্থান",
+                        "কর্মশ্রী",
+                        "যুব শক্তি",
+                        "युवा शक्ति",
+                        "युवा शक्ति योजना",
+                        "युवाश्री"
+                ],
+                "scam_warning": {
+                        "en": "Employment Bank and Yuva Shakti applications are 100% FREE. Never pay touts or unofficial agencies for registration.",
+                        "bn": "এমপ্লয়মেন্ট ব্যাংক ও যুবশক্তি রেজিস্ট্রেশন সম্পূর্ণ বিনামূল্যে সরকারি পোর্টালেই হয়। কোনো দালাল বা প্রতারককে টাকা দেবেন না।",
+                        "hi": "एंप्लॉयमेंट बैंक और युवा शक्ति पंजीकरण पूरी तरह निःशुल्क है। किसी को पैसे न दें।"
+                }
+        },
         {
                 "service_id": "aadhaar-myaadhaar-update",
                 "service_name": {
@@ -4004,135 +4301,6 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                         "en": "Install rooftop solar ONLY through vendors empaneled on pmsuryaghar.gov.in. Do not pay unverified solar canvassers.",
                         "bn": "শুধুমাত্র pmsuryaghar.gov.in এর নথিভুক্ত সোলার ভেন্ডরের মাধ্যমেই আবেদন করুন। ভুয়া কোম্পানি থেকে সাবধান।",
                         "hi": "केवल अधिकृत वेंडर के माध्यम से ही सोलर लगवाएं। धोखाधड़ी से बचें।"
-                }
-        },
-        {
-                "service_id": "wb-lakshmir-bhandar-scheme",
-                "service_name": {
-                        "en": "Lakshmir Bhandar Scheme (West Bengal)",
-                        "bn": "লক্ষ্মীর ভাণ্ডার প্রকল্প (পশ্চিমবঙ্গ সরকার)",
-                        "hi": "लक्ष्मी भंडार योजना (पश्चिम बंगाल सरकार)"
-                },
-                "short_description": {
-                        "en": "West Bengal Government flagship women empowerment financial support scheme providing ₹1,000 per month for General category and ₹1,200 per month for SC/ST women directly via DBT.",
-                        "bn": "পশ্চিমবঙ্গ সরকারের অন্যতম জনপ্রিয় নারী ক্ষমতায়ন প্রকল্প: সাধারণ শ্রেণির মহিলাদের প্রতি মাসে ₹১,০০০ এবং তফশিলি জাতি/উপজাতির মহিলাদের প্রতি মাসে ₹১,২০০ সরাসরি ব্যাংক অ্যাকাউন্টে আর্থিক সহায়তা।",
-                        "hi": "पश्चिम बंगाल सरकार की महिला सशक्तिकरण योजना: सामान्य वर्ग की महिलाओं को ₹1,000/माह और एससी/एसटी महिलाओं को ₹1,200/माह।"
-                },
-                "category": "women-girls",
-                "category_name": {
-                        "en": "Women & Girls Schemes",
-                        "bn": "নারী ও কন্যাশ্রী প্রকল্প",
-                        "hi": "महिला और बालिका योजनाएं"
-                },
-                "subcategory": "Women Direct Support",
-                "authority": "Department of Women & Child Development and Social Welfare, Govt of West Bengal",
-                "government_level": "West Bengal",
-                "service_type": "Scheme",
-                "target_users": [
-                        "Woman"
-                ],
-                "eligibility": {
-                        "en": [
-                                "Female resident of West Bengal aged between 25 and 60 years.",
-                                "Not receiving regular government salary/pension."
-                        ],
-                        "bn": [
-                                "পশ্চিমবঙ্গের স্থায়ী বাসিন্দা ২৫ থেকে ৬০ বছর বয়সী নারী।",
-                                "সরকারি কর্মচারী বা স্থায়ী সরকারি পেনশন প্রাপক নন এমন যে কেউ।"
-                        ],
-                        "hi": [
-                                "पश्चिम बंगाल की 25 से 60 वर्ष आयु की महिलाएं।"
-                        ]
-                },
-                "required_documents": {
-                        "en": [
-                                "Swasthya Sathi Card (Mandatory)",
-                                "Aadhaar Card",
-                                "SC/ST Certificate (if applying for ₹1,200 higher benefit)",
-                                "Bank Passbook (Single account linked with Aadhaar)",
-                                "Passport Size Photograph."
-                        ],
-                        "bn": [
-                                "স্বাস্থ্য সাথী কার্ড (বাধ্যতামূলক)",
-                                "আধার কার্ড",
-                                "এসসি/এসটি শংসাপত্র (উচ্চতর সহায়তার জন্য)",
-                                "আধার সংযুক্ত নিজস্ব ব্যাংক পাসবুক",
-                                "পাসপোর্ট সাইজ ছবি।"
-                        ],
-                        "hi": [
-                                "स्वास्थ्य साथी कार्ड",
-                                "आधार कार्ड",
-                                "जाति प्रमाण पत्र",
-                                "बैंक पासबुक।"
-                        ]
-                },
-                "application_fee": {
-                        "en": "100% Free of Cost. Forms available free at Duare Sarkar camps.",
-                        "bn": "সম্পূর্ণ বিনামূল্যে আবেদন। দুয়ারে সরকার ক্যাম্প থেকে বিনামূল্যে ফর্ম দেওয়া হয়।",
-                        "hi": "पूर्णतः निःशुल्क।"
-                },
-                "benefits": {
-                        "en": [
-                                "Direct monthly financial assistance of ₹1,000 (General) or ₹1,200 (SC/ST) directly credited to the beneficiary bank account."
-                        ],
-                        "bn": [
-                                "প্রতি মাসে সরাসরি ব্যাংক অ্যাকাউন্টে ₹১,০০০ (সাধারণ) বা ₹১,২০০ (এসসি/এসটি) জমা।"
-                        ],
-                        "hi": [
-                                "प्रति माह ₹1,000 या ₹1,200 सीधे बैंक खाते में।"
-                        ]
-                },
-                "process_steps": {
-                        "en": [
-                                "Collect free application form during official 'Duare Sarkar' camps.",
-                                "Fill applicant details and attach photocopies of Swasthya Sathi, Aadhaar, and Bank Passbook.",
-                                "Submit form at camp counter and obtain physical counter-signed receipt.",
-                                "Track application and payment status online at socialsecurity.wb.gov.in using Aadhaar/Mobile number."
-                        ],
-                        "bn": [
-                                "'দুয়ারে সরকার' ক্যাম্প থেকে লক্ষ্মীর ভাণ্ডারের ফর্ম সংগ্রহ করুন।",
-                                "ফর্ম পূরণ করে স্বাস্থ্যসাথী, আধার, কাস্ট সার্টিফিকেট ও ব্যাংক বইয়ের জেরক্স জুড়ে জমা দিন।",
-                                "কাউন্টার থেকে সিলযুক্ত জমা রসিদ সংগ্রহ করুন।",
-                                "socialsecurity.wb.gov.in পোর্টালে আধার নম্বর বা মোবাইল নম্বর দিয়ে আবেদনের স্থিতি চেক করুন।"
-                        ],
-                        "hi": [
-                                "दुआरे सरकार शिविर से फॉर्म प्राप्त कर जमा करें।",
-                                "रसीद सुरक्षित रखें।",
-                                "socialsecurity.wb.gov.in पर आवेदन की स्थिति जांचें।"
-                        ]
-                },
-                "official_homepage": "https://socialsecurity.wb.gov.in/",
-                "official_apply_url": "https://socialsecurity.wb.gov.in/",
-                "official_status_url": "https://socialsecurity.wb.gov.in/track-applicant-status",
-                "official_helpline": "033 2334 1563 / District Social Welfare Helpdesk",
-                "official_email": "wcd@wb.gov.in",
-                "state": "West Bengal",
-                "availability": "Duare Sarkar Camps + BDO/Municipality",
-                "active_status": true,
-                "verification_status": "officially_verified",
-                "source_url": "https://socialsecurity.wb.gov.in/",
-                "last_verified": "15 Sep 2026",
-                "is_popular": true,
-                "intent_tags": [
-                        "lakshmir bhandar",
-                        "laxmi bhandar",
-                        "wb women scheme",
-                        "lakshmir bhandar status",
-                        "duare sarkar lakshmi bhandar",
-                        "social security wb",
-                        "লক্ষ্মীর ভাণ্ডার",
-                        "লক্ষ্মী ভাণ্ডার",
-                        "মহিলা প্রকল্প",
-                        "লক্ষ্মীর ভাণ্ডার স্ট্যাটাস",
-                        "দুয়ারে সরকার",
-                        "लक्ष्मी भंडार",
-                        "पश्चिम बंगाल महिला योजना",
-                        "लक्ष्मी भंडार स्टेटस"
-                ],
-                "scam_warning": {
-                        "en": "Lakshmir Bhandar forms are strictly distributed FREE at Government Duare Sarkar camps. Never buy forms from private shops.",
-                        "bn": "লক্ষ্মীর ভাণ্ডারের ফর্ম দুয়ারে সরকার ক্যাম্পে বিনামূল্যে পাওয়া যায়। কোনো দোকান থেকে চড়া দামে ফর্ম কিনবেন না।",
-                        "hi": "लक्ष्मी भंडार फॉर्म सरकारी शिविरों में निःशुल्क मिलता है। पैसे देकर न खरीदें।"
                 }
         },
         {
@@ -8114,9 +8282,9 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                         "hi": "दुआरे सरकार कैंप व योजना पोर्टल"
                 },
                 "short_description": {
-                        "en": "Government of West Bengal mass outreach initiative delivering 35+ major flagship schemes (Lakshmir Bhandar, Swasthya Sathi, Krishak Bandhu, Caste Certificate) directly at community neighbourhood camps.",
-                        "bn": "পশ্চিমবঙ্গ সরকারের উদ্যোগ যেখানে লক্ষ্মীর ভাণ্ডার, স্বাস্থ্য সাথী, কৃষক বন্ধু, কাস্ট সার্টিফিকেট সহ ৩৫+ প্রকল্পের সুবিধা বাড়ি সংলগ্ন ক্যাম্পে সরাসরি প্রদান করা হয়।",
-                        "hi": "पश्चिम बंगाल सरकार का प्रमुख जनसंपर्क अभियान जहां स्थानीय कैंपों में 35+ से अधिक योजनाओं का लाभ दिया जाता है।"
+                        "en": "Government of West Bengal mass outreach initiative delivering 35+ major flagship schemes (Annapurna Bhandar, Swasthya Sathi, Krishak Bandhu, Caste Certificate) directly at community neighbourhood camps.",
+                        "bn": "পশ্চিমবঙ্গ সরকারের উদ্যোগ যেখানে অন্নপূর্ণা ভাণ্ডার, স্বাস্থ্য সাথী, কৃষক বন্ধু, কাস্ট সার্টিফিকেট সহ ৩৫+ প্রকল্পের সুবিধা বাড়ি সংলগ্ন ক্যাম্পে সরাসরি প্রদান করা হয়।",
+                        "hi": "पश्चिम बंगाल सरकार का प्रमुख जनसंपर्क अभियान जहां स्थानीय कैंपों में 35+ से अधिक योजनाओं (अन्नपूर्णा भंडार, स्वास्थ्य साथी) का लाभ दिया जाता है।"
                 },
                 "category": "welfare-schemes",
                 "category_name": {
@@ -8212,6 +8380,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                         "duare sarkar",
                         "duare sarkar camp",
                         "ds portal",
+                        "annapurna bhandar camp",
                         "lakshmir bhandar camp",
                         "দুয়ারে সরকার",
                         "দুয়ারে সরকার ক্যাম্প",
@@ -8222,128 +8391,6 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                         "en": "Duare Sarkar application forms are strictly FREE and distributed only at official camp premises. Never buy forms from outside shops.",
                         "bn": "দুয়ারে সরকারের ফর্ম সম্পূর্ণ বিনামূল্যে সরকারি ক্যাম্প থেকেই দেওয়া হয়। বাইরে থেকে ফর্ম কিনবেন না।",
                         "hi": "दुआरे सरकार के फॉर्म केवल आधिकारिक कैंप से निःशुल्क प्राप्त करें।"
-                }
-        },
-        {
-                "service_id": "wb-yuvasree-employment-bank",
-                "service_name": {
-                        "en": "Yuvasree Unemployment Assistance (Employment Bank)",
-                        "bn": "যুবশ্রী বেকার ভাতা ও এমপ্লয়মেন্ট ব্যাঙ্ক",
-                        "hi": "युवाश्री बेरोजगारी सहायता (रोजगार बैंक)"
-                },
-                "short_description": {
-                        "en": "West Bengal Government financial assistance scheme providing ₹1,500 monthly stipend to enrolled unemployed youth to enhance employability and skill acquisition.",
-                        "bn": "পশ্চিমবঙ্গ সরকারের যুবশ্রী প্রকল্প যার মাধ্যমে এমপ্লয়মেন্ট ব্যাঙ্কে নথিভুক্ত বেকার যুবক-যুবতীদের মাসে ₹১,৫০০ টাকা আর্থিক অনুদান প্রদান করা হয়।",
-                        "hi": "पश्चिम बंगाल सरकार की युवाश्री योजना जिसके तहत पंजीकृत बेरोजगार युवाओं को ₹1,500 मासिक वित्तीय सहायता दी जाती है।"
-                },
-                "category": "wb-govt-jobs",
-                "category_name": {
-                        "en": "West Bengal Govt Jobs (WBPSC/WBP)",
-                        "bn": "পশ্চিমবঙ্গ সরকারি চাকরি (WBPSC/WBP)",
-                        "hi": "पश्चिम बंगाल सरकारी नौकरियां"
-                },
-                "subcategory": "Labour Dept WB",
-                "authority": "Department of Labour, Government of West Bengal",
-                "government_level": "State",
-                "service_type": "Employment",
-                "target_users": [
-                        "Unemployed Youth",
-                        "Student",
-                        "Job Seeker"
-                ],
-                "eligibility": {
-                        "en": [
-                                "Permanent resident of West Bengal aged 18 to 45 years.",
-                                "Enrolled in Employment Bank with minimum Class 8 pass qualification.",
-                                "Only one member per family eligible, not employed in govt/private sector."
-                        ],
-                        "bn": [
-                                "পশ্চিমবঙ্গের ১৮ থেকে ৪৫ বছর বয়সী স্থায়ী বাসিন্দা।",
-                                "ন্যূনতম অষ্টম শ্রেণী পাস এবং এমপ্লয়মেন্ট ব্যাঙ্কে নাম নথিভুক্ত।",
-                                "পরিবারের একজন সদস্যই এই সুবিধা পাবেন।"
-                        ],
-                        "hi": [
-                                "पश्चिम बंगाल के 18-45 वर्ष के निवासी, न्यूनतम 8वीं पास।"
-                        ]
-                },
-                "required_documents": {
-                        "en": [
-                                "Employment Bank Enrolment Slip (EB number)",
-                                "Madhyamik / Educational Qualification Certificates",
-                                "Aadhaar Card / Voter ID / Ration Card",
-                                "Bank Passbook with single account in applicant's name"
-                        ],
-                        "bn": [
-                                "এমপ্লয়মেন্ট ব্যাঙ্ক রেজিস্ট্রেশন স্লিপ (EB নম্বর)",
-                                "শিক্ষাগত যোগ্যতার প্রমাণপত্র",
-                                "আধার কার্ড ও ভোটার কার্ড",
-                                "আবেদনকারীর নিজস্ব ব্যাংক পাসবুক।"
-                        ],
-                        "hi": [
-                                "एंप्लॉयमेंट बैंक पंजीकरण पर्ची, शैक्षणिक प्रमाण पत्र, आधार कार्ड और बैंक पासबुक।"
-                        ]
-                },
-                "application_fee": {
-                        "en": "100% Free Government Enrolment.",
-                        "bn": "সম্পূর্ণ বিনামূল্যে আবেদন।",
-                        "hi": "निःशुल्क आवेदन।"
-                },
-                "benefits": {
-                        "en": [
-                                "₹1,500 monthly direct bank transfer (DBT).",
-                                "Access to state skill development courses and job vacancy alerts."
-                        ],
-                        "bn": [
-                                "প্রতি মাসে ₹১,৫০০ টাকা সরাসরি ব্যাংক অ্যাকাউন্টে জমা।",
-                                "সরকারি দক্ষতা উন্নয়ন ও চাকরির খবরের অগ্রাধিকার।"
-                        ],
-                        "hi": [
-                                "₹1,500 मासिक सीधा बैंक ट्रांसफर और कौशल प्रशिक्षण।"
-                        ]
-                },
-                "process_steps": {
-                        "en": [
-                                "Visit the official Employment Bank portal (employmentbankwb.gov.in).",
-                                "Click 'New Enrolment (Job Seeker)' and fill the online registration form.",
-                                "Visit your local Employment Exchange within 60 days with original documents for physical validation.",
-                                "Check the published Yuvasree beneficiary list on the portal and submit Annexure-I and Annexure-II."
-                        ],
-                        "bn": [
-                                "employmentbankwb.gov.in পোর্টালে গিয়ে 'Job Seeker' রেজিস্ট্রেশন করুন।",
-                                "অরিজিনাল নথি নিয়ে স্থানীয় এমপ্লয়মেন্ট এক্সচেঞ্জে গিয়ে ভেরিফাই করান।",
-                                "তালিকা প্রকাশের পর Annexure-I ও II জমা দিয়ে ভাতা চালু করুন।"
-                        ],
-                        "hi": [
-                                "employmentbankwb.gov.in पर पंजीकरण करें और स्थानीय एक्सचेंज में सत्यापित कराएं।"
-                        ]
-                },
-                "official_homepage": "https://employmentbankwb.gov.in/",
-                "official_apply_url": "https://employmentbankwb.gov.in/",
-                "official_status_url": "https://employmentbankwb.gov.in/",
-                "official_helpline": "033-2237-6300 (Employment Bank Helpline)",
-                "official_email": "employmentbank.wb@gmail.com",
-                "state": "West Bengal",
-                "availability": "Online + Employment Exchange",
-                "active_status": true,
-                "verification_status": "officially_verified",
-                "source_url": "https://employmentbankwb.gov.in/",
-                "last_verified": "15 Sep 2026",
-                "is_popular": true,
-                "intent_tags": [
-                        "yuvasree",
-                        "employment bank",
-                        "bekar bhata",
-                        "wb unemployment stipend",
-                        "যুবশ্রী",
-                        "বেকার ভাতা",
-                        "এমপ্লয়মেন্ট ব্যাঙ্ক",
-                        "युवाश्री",
-                        "बेरोजगारी भत्ता"
-                ],
-                "scam_warning": {
-                        "en": "Never pay money to agents claiming guaranteed Yuvasree selection. Enrolment and beneficiary selection follow strict transparent seniority.",
-                        "bn": "যুবশ্রীতে নাম তোলার নামে দালালদের টাকা দেবেন না। নির্বাচন সম্পূর্ণ সরকারি নিয়মে হয়।",
-                        "hi": "युवाश्री चयन के नाम पर किसी को पैसे न दें।"
                 }
         },
         {
