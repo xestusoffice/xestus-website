@@ -1221,19 +1221,22 @@ button, input, textarea {
     transition: width 0.1s linear;
 }
 
+/* ==========================================================================
+   INTERACTIVE FROSTED GLASS MOUSE SPOTLIGHT & LUMINOUS CURSOR SYSTEM
+   ========================================================================== */
 .cursor-dot {
     position: fixed;
     top: 0;
     left: 0;
-    width: 6px;
-    height: 6px;
-    margin-left: -3px;
-    margin-top: -3px;
-    background: var(--cyan-bright);
+    width: 7px;
+    height: 7px;
+    margin-left: -3.5px;
+    margin-top: -3.5px;
+    background: #ffffff;
     border-radius: 50%;
     pointer-events: none;
-    z-index: var(--z-cursor);
-    box-shadow: 0 0 10px var(--cyan-primary);
+    z-index: 10001;
+    box-shadow: 0 0 10px #ffffff, 0 0 20px var(--cyan-bright, #38d6ff);
     will-change: transform;
 }
 
@@ -1241,39 +1244,53 @@ button, input, textarea {
     position: fixed;
     top: 0;
     left: 0;
-    width: 32px;
-    height: 32px;
-    margin-left: -16px;
-    margin-top: -16px;
-    border: 1px solid rgba(0, 191, 255, 0.65);
+    width: 44px;
+    height: 44px;
+    margin-left: -22px;
+    margin-top: -22px;
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border-radius: 50%;
     pointer-events: none;
-    z-index: calc(var(--z-cursor) - 1);
-    transition: width 0.2s cubic-bezier(0.25, 1, 0.5, 1), height 0.2s cubic-bezier(0.25, 1, 0.5, 1), margin 0.2s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.2s ease, background 0.2s ease;
+    z-index: 10000;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.35), inset 0 0 10px rgba(255, 255, 255, 0.25);
+    transition: width 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), margin 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     will-change: transform;
 }
 
 .cursor-outline.cursor-hover {
-    width: 48px;
-    height: 48px;
-    margin-left: -24px;
-    margin-top: -24px;
-    border-color: rgba(56, 214, 255, 0.85);
-    background: rgba(0, 191, 255, 0.08);
+    width: 68px;
+    height: 68px;
+    margin-left: -34px;
+    margin-top: -34px;
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6), 0 0 45px rgba(0, 191, 255, 0.35), inset 0 0 15px rgba(255, 255, 255, 0.45);
 }
 
+/* Luminous Soft White Ambient Spotlight Orb following the mouse */
 .cursor-glow {
     position: fixed;
     top: 0;
     left: 0;
-    width: 260px;
-    height: 260px;
-    margin-left: -130px;
-    margin-top: -130px;
+    width: 380px;
+    height: 380px;
+    margin-left: -190px;
+    margin-top: -190px;
     pointer-events: none;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 191, 255, 0.12) 0%, rgba(0, 191, 255, 0.03) 45%, transparent 70%);
-    z-index: calc(var(--z-nav) - 10);
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.24) 0%,
+        rgba(255, 255, 255, 0.12) 20%,
+        rgba(56, 214, 255, 0.08) 42%,
+        rgba(0, 191, 255, 0.02) 65%,
+        transparent 75%
+    );
+    z-index: 9999;
+    mix-blend-mode: screen;
     will-change: transform;
 }
 
@@ -1282,6 +1299,204 @@ button, input, textarea {
         display: none !important;
     }
 }
+
+/* ==========================================================================
+   COMPREHENSIVE WEBSITE-WIDE GLASSMORPHISM (Frosted Glass Aesthetics)
+   ========================================================================== */
+.service-card,
+.solution-card,
+.digital-card,
+.project-card,
+.product-card,
+.lab-card,
+.why-card,
+.tech-stack-card,
+.stat-card,
+.epoch-card,
+.contact-channel-card,
+.contact-form-wrapper,
+.seva-task-card,
+.tool-card,
+.faq-item {
+    background: rgba(14, 22, 40, 0.58) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, background 0.3s ease !important;
+}
+
+/* Dynamic Glass Spotlight Hover Reflection */
+.service-card::before,
+.solution-card::before,
+.digital-card::before,
+.project-card::before,
+.product-card::before,
+.lab-card::before,
+.why-card::before,
+.tech-stack-card::before,
+.stat-card::before,
+.epoch-card::before,
+.contact-channel-card::before,
+.contact-form-wrapper::before,
+.seva-task-card::before,
+.tool-card::before,
+.faq-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        450px circle at var(--x, 50%) var(--y, 50%),
+        rgba(255, 255, 255, 0.16),
+        rgba(56, 214, 255, 0.08) 35%,
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.service-card:hover::before,
+.solution-card:hover::before,
+.digital-card:hover::before,
+.project-card:hover::before,
+.product-card:hover::before,
+.lab-card:hover::before,
+.why-card:hover::before,
+.tech-stack-card:hover::before,
+.stat-card:hover::before,
+.epoch-card:hover::before,
+.contact-channel-card:hover::before,
+.contact-form-wrapper:hover::before,
+.seva-task-card:hover::before,
+.tool-card:hover::before,
+.faq-item:hover::before {
+    opacity: 1;
+}
+
+.service-card:hover,
+.solution-card:hover,
+.digital-card:hover,
+.project-card:hover,
+.product-card:hover,
+.lab-card:hover,
+.why-card:hover,
+.tech-stack-card:hover,
+.stat-card:hover,
+.epoch-card:hover,
+.seva-task-card:hover,
+.tool-card:hover {
+    background: rgba(20, 32, 58, 0.72) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 191, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
+    transform: translateY(-4px);
+}
+
+/* Frosted Glass Navigation Header */
+.site-header {
+    background: rgba(8, 12, 22, 0.68) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Frosted Glass Search Box & Filter Bar */
+.digital-search-box,
+.digital-filter-bar,
+.search-chips-wrapper,
+.security-badge-capsule,
+.seva-directory-trigger {
+    background: rgba(12, 18, 34, 0.65) !important;
+    backdrop-filter: blur(18px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.search-chip-btn {
+    background: rgba(255, 255, 255, 0.06) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+    transition: all 0.2s ease !important;
+}
+
+.search-chip-btn:hover {
+    background: rgba(0, 191, 255, 0.18) !important;
+    border-color: rgba(56, 214, 255, 0.5) !important;
+    box-shadow: 0 0 18px rgba(0, 191, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Frosted Glass Modals & Dialogs */
+.case-study-dialog,
+.seva-modal-dialog,
+.ai-chat-panel {
+    background: rgba(10, 16, 30, 0.85) !important;
+    backdrop-filter: blur(28px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.65), 0 0 35px rgba(0, 191, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Day Mode Glass Parity */
+html[data-theme="day"] .service-card,
+html[data-theme="day"] .solution-card,
+html[data-theme="day"] .digital-card,
+html[data-theme="day"] .project-card,
+html[data-theme="day"] .product-card,
+html[data-theme="day"] .lab-card,
+html[data-theme="day"] .why-card,
+html[data-theme="day"] .tech-stack-card,
+html[data-theme="day"] .stat-card,
+html[data-theme="day"] .epoch-card,
+html[data-theme="day"] .contact-channel-card,
+html[data-theme="day"] .contact-form-wrapper,
+html[data-theme="day"] .seva-task-card,
+html[data-theme="day"] .tool-card,
+html[data-theme="day"] .faq-item {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(226, 232, 240, 0.9) !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+html[data-theme="day"] .site-header {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+/* Eye Protect Mode Glass Parity */
+html[data-theme="eye-protect"] .service-card,
+html[data-theme="eye-protect"] .solution-card,
+html[data-theme="eye-protect"] .digital-card,
+html[data-theme="eye-protect"] .project-card,
+html[data-theme="eye-protect"] .product-card,
+html[data-theme="eye-protect"] .lab-card,
+html[data-theme="eye-protect"] .why-card,
+html[data-theme="eye-protect"] .tech-stack-card,
+html[data-theme="eye-protect"] .stat-card,
+html[data-theme="eye-protect"] .epoch-card,
+html[data-theme="eye-protect"] .contact-channel-card,
+html[data-theme="eye-protect"] .contact-form-wrapper,
+html[data-theme="eye-protect"] .seva-task-card,
+html[data-theme="eye-protect"] .tool-card,
+html[data-theme="eye-protect"] .faq-item {
+    background: rgba(253, 251, 247, 0.8) !important;
+    backdrop-filter: blur(16px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+    border: 1px solid rgba(216, 204, 188, 0.8) !important;
+    box-shadow: 0 10px 30px rgba(60, 40, 20, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
 
 /* --------------------------------------------------------------------------
    5. REUSABLE UI COMPONENTS (Buttons, Badges, Titles)
