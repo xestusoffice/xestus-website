@@ -434,7 +434,31 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.clearRect(0, 0, width, height);
             const config = getStarfieldConfig();
 
-            // Update & draw background starfield particles
+            // 1. Draw connection lines in a single fast path
+            if (config.connect && particles.length > 1) {
+                ctx.beginPath();
+                ctx.strokeStyle = "rgba(0, 191, 255, 0.12)";
+                ctx.lineWidth = 0.75;
+                const maxDistSq = config.maxDist * config.maxDist;
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const p2 = particles[j];
+                        const dx = p.x - p2.x;
+                        const dy = p.y - p2.y;
+                        if (Math.abs(dx) < config.maxDist && Math.abs(dy) < config.maxDist) {
+                            const distSq = dx * dx + dy * dy;
+                            if (distSq < maxDistSq) {
+                                ctx.moveTo(p.x, p.y);
+                                ctx.lineTo(p2.x, p2.y);
+                            }
+                        }
+                    }
+                }
+                ctx.stroke();
+            }
+
+            // 2. Update and draw particles in lightweight batches without save/restore overhead
             for (let i = 0; i < particles.length; i++) {
                 const p = particles[i];
 
@@ -451,50 +475,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     p.alpha = p.baseAlpha + Math.sin(p.pulsePhase) * 0.2;
                 }
 
-                // Interactive mouse repulsion/pull (Tier 1 & Tier 2 only)
-                if (tier === "tier-1" || tier === "tier-2") {
+                // Interactive mouse repulsion
+                if (mousePos.x > -1000 && (tier === "tier-1" || tier === "tier-2")) {
                     const dx = mousePos.x - p.x;
                     const dy = mousePos.y - p.y;
-                    const distToMouse = Math.hypot(dx, dy);
-                    if (distToMouse < 130) {
-                        const force = (1 - distToMouse / 130) * 0.7;
-                        p.x -= (dx / distToMouse) * force;
-                        p.y -= (dy / distToMouse) * force;
+                    const distSq = dx * dx + dy * dy;
+                    if (distSq < 16900) { // 130^2
+                        const dist = Math.sqrt(distSq) || 1;
+                        const force = (1 - dist / 130) * 0.6;
+                        p.x -= (dx / dist) * force;
+                        p.y -= (dy / dist) * force;
                     }
                 }
 
-                ctx.save();
-                ctx.globalAlpha = Math.max(0.08, Math.min(0.9, p.alpha));
+                ctx.globalAlpha = Math.max(0.1, Math.min(0.9, p.alpha));
                 ctx.fillStyle = p.color;
-                if (tier === "tier-1") {
-                    ctx.shadowColor = p.color;
-                    ctx.shadowBlur = p.radius > 1.5 ? 6 : 3;
-                }
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.restore();
-
-                // Connect nearby nodes
-                if (config.connect) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const p2 = particles[j];
-                        const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                        if (dist < config.maxDist) {
-                            const lineAlpha = (1 - dist / config.maxDist) * 0.15;
-                            ctx.save();
-                            ctx.globalAlpha = lineAlpha;
-                            ctx.strokeStyle = "#00bfff";
-                            ctx.lineWidth = 0.65;
-                            ctx.beginPath();
-                            ctx.moveTo(p.x, p.y);
-                            ctx.lineTo(p2.x, p2.y);
-                            ctx.stroke();
-                            ctx.restore();
-                        }
-                    }
-                }
             }
+
+            ctx.globalAlpha = 1.0;
 
             if (!prefersReducedMotion && tier !== "tier-4") {
                 animId = requestAnimationFrame(drawStarfield);
@@ -1355,93 +1356,141 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------------------------------
-    // 7. Desktop Custom Cursor System
+    // --------------------------------------------------------------------------
+    // 7. Desktop Ultra-Smooth High-Framerate Custom Cursor System (Zero Lag)
     // --------------------------------------------------------------------------
     const cursorDot = document.querySelector(".cursor-dot");
     const cursorOutline = document.querySelector(".cursor-outline");
     const cursorGlow = document.querySelector(".cursor-glow");
 
     if (supportsHover && !prefersReducedMotion && (cursorDot || cursorOutline || cursorGlow)) {
-        let curX = 0, curY = 0;
-        let isCursorRafScheduled = false;
+        let mouseX = -100, mouseY = -100;
+        let outlineX = -100, outlineY = -100;
+        let isMoving = false;
 
         document.addEventListener("pointermove", (e) => {
-            if (window.XESTUS_PERF && window.XESTUS_PERF.isLowEnd()) return;
-            curX = e.clientX;
-            curY = e.clientY;
+            mouseX = e.clientX;
+            mouseY = e.clientY;
 
-            if (!isCursorRafScheduled) {
-                isCursorRafScheduled = true;
-                requestAnimationFrame(() => {
-                    if (cursorDot) {
-                        cursorDot.style.left = `${curX}px`;
-                        cursorDot.style.top = `${curY}px`;
-                    }
-                    if (cursorOutline) {
-                        cursorOutline.style.left = `${curX}px`;
-                        cursorOutline.style.top = `${curY}px`;
-                    }
-                    if (cursorGlow) {
-                        cursorGlow.style.left = `${curX}px`;
-                        cursorGlow.style.top = `${curY}px`;
-                    }
-                    isCursorRafScheduled = false;
-                });
+            // Direct zero-latency hardware-accelerated transform for the center dot
+            if (cursorDot) {
+                cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+            }
+
+            if (!isMoving) {
+                isMoving = true;
+                requestAnimationFrame(updateCursorFollower);
+            }
+        }, { passive: true });
+
+        function updateCursorFollower() {
+            if (!isMoving) return;
+
+            // Silky smooth interpolation (0.4 factor) for responsive trailing without sluggish drag
+            outlineX += (mouseX - outlineX) * 0.4;
+            outlineY += (mouseY - outlineY) * 0.4;
+
+            if (cursorOutline) {
+                cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0)`;
+            }
+            if (cursorGlow) {
+                cursorGlow.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0)`;
+            }
+
+            if (Math.abs(mouseX - outlineX) > 0.2 || Math.abs(mouseY - outlineY) > 0.2) {
+                requestAnimationFrame(updateCursorFollower);
+            } else {
+                isMoving = false;
+            }
+        }
+
+        // Interactive hover states (expand outline smoothly over interactive elements)
+        const interactiveSelector = "a, button, input, select, textarea, .service-card, .digital-card, .project-card, .btn-primary, .btn-secondary, .filter-btn, .theme-toggle-btn, .search-chip-btn, .seva-task-card, .tool-card";
+        document.addEventListener("pointerover", (e) => {
+            if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
+                if (cursorOutline) cursorOutline.classList.add("cursor-hover");
+            }
+        }, { passive: true });
+
+        document.addEventListener("pointerout", (e) => {
+            if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
+                if (cursorOutline) cursorOutline.classList.remove("cursor-hover");
             }
         }, { passive: true });
     }
 
     // --------------------------------------------------------------------------
-    // 8. Magnetic Buttons & Card 3D Tilt Micro-Interactions
+    // 8. High-Performance Card Spotlight & Micro-Interactions (Zero-Reflow Engine)
     // --------------------------------------------------------------------------
     if (supportsHover && !prefersReducedMotion) {
-        const magneticButtons = document.querySelectorAll(".magnetic-btn");
-        magneticButtons.forEach((button) => {
-            button.addEventListener("pointermove", (e) => {
-                if (window.XESTUS_PERF && window.XESTUS_PERF.isLowEnd()) return;
-                const rect = button.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const moveX = (x - rect.width / 2) / 6;
-                const moveY = (y - rect.height / 2) / 6;
-                button.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.04)`;
-            });
+        // Cached Bounding Rect Spotlight (Eliminates getBoundingClientRect on mousemove)
+        const cardSelectors = ".service-card, .solution-card, .digital-card, .project-card, .product-card, .lab-card, .why-card, .tech-stack-card, .stat-card, .epoch-card, .estimator-opt-btn, .contact-channel-card, .contact-sla-box, .contact-form-wrapper, .founder-image-card, .seva-task-card";
+        const interactiveCards = document.querySelectorAll(cardSelectors);
 
-            button.addEventListener("pointerleave", () => {
-                button.style.transform = "translate(0px, 0px) scale(1)";
-            });
-        });
+        interactiveCards.forEach((card) => {
+            let cardRect = null;
+            let rafId = null;
 
-        const tiltCards = document.querySelectorAll(".tilt-card, .service-card, .project-card, .product-card, .lab-card, .founder-image-card");
-        tiltCards.forEach((card) => {
+            card.addEventListener("pointerenter", () => {
+                cardRect = card.getBoundingClientRect();
+            }, { passive: true });
+
             card.addEventListener("pointermove", (e) => {
-                if (window.XESTUS_PERF && window.XESTUS_PERF.isLowEnd()) return;
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = -(y - centerY) / 28;
-                const rotateY = (x - centerX) / 28;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-            });
+                if (!cardRect) cardRect = card.getBoundingClientRect();
+                if (rafId) return;
+                rafId = requestAnimationFrame(() => {
+                    if (cardRect) {
+                        const x = e.clientX - cardRect.left;
+                        const y = e.clientY - cardRect.top;
+                        card.style.setProperty("--x", `${x}px`);
+                        card.style.setProperty("--y", `${y}px`);
+                    }
+                    rafId = null;
+                });
+            }, { passive: true });
 
             card.addEventListener("pointerleave", () => {
-                card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
-            });
+                cardRect = null;
+                if (rafId) {
+                    cancelAnimationFrame(rafId);
+                    rafId = null;
+                }
+            }, { passive: true });
         });
 
-        const interactiveCards = document.querySelectorAll(
-            ".service-card, .solution-card, .digital-card, .project-card, .product-card, .lab-card, .why-card, .tech-stack-card, .stat-card, .epoch-card, .estimator-opt-btn, .contact-channel-card, .contact-sla-box, .contact-form-wrapper, .founder-image-card"
-        );
-        interactiveCards.forEach((card) => {
-            card.addEventListener("pointermove", (e) => {
-                if (window.XESTUS_PERF && window.XESTUS_PERF.isLowEnd()) return;
-                const rect = card.getBoundingClientRect();
-                card.style.setProperty("--x", `${e.clientX - rect.left}px`);
-                card.style.setProperty("--y", `${e.clientY - rect.top}px`);
-            });
+        // Optimized Magnetic Buttons
+        const magneticButtons = document.querySelectorAll(".magnetic-btn");
+        magneticButtons.forEach((button) => {
+            let btnRect = null;
+            let btnRaf = null;
+
+            button.addEventListener("pointerenter", () => {
+                btnRect = button.getBoundingClientRect();
+            }, { passive: true });
+
+            button.addEventListener("pointermove", (e) => {
+                if (!btnRect) btnRect = button.getBoundingClientRect();
+                if (btnRaf) return;
+                btnRaf = requestAnimationFrame(() => {
+                    if (btnRect) {
+                        const x = e.clientX - btnRect.left;
+                        const y = e.clientY - btnRect.top;
+                        const moveX = (x - btnRect.width / 2) / 6;
+                        const moveY = (y - btnRect.height / 2) / 6;
+                        button.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) scale(1.03)`;
+                    }
+                    btnRaf = null;
+                });
+            }, { passive: true });
+
+            button.addEventListener("pointerleave", () => {
+                btnRect = null;
+                if (btnRaf) {
+                    cancelAnimationFrame(btnRaf);
+                    btnRaf = null;
+                }
+                button.style.transform = "translate3d(0, 0, 0) scale(1)";
+            }, { passive: true });
         });
     }
 

@@ -1223,42 +1223,58 @@ button, input, textarea {
 
 .cursor-dot {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 6px;
     height: 6px;
+    margin-left: -3px;
+    margin-top: -3px;
     background: var(--cyan-bright);
     border-radius: 50%;
     pointer-events: none;
     z-index: var(--z-cursor);
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 12px var(--cyan-primary);
-    will-change: left, top;
+    box-shadow: 0 0 10px var(--cyan-primary);
+    will-change: transform;
 }
 
 .cursor-outline {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 32px;
     height: 32px;
-    border: 1px solid rgba(0, 191, 255, 0.6);
+    margin-left: -16px;
+    margin-top: -16px;
+    border: 1px solid rgba(0, 191, 255, 0.65);
     border-radius: 50%;
     pointer-events: none;
     z-index: calc(var(--z-cursor) - 1);
-    transform: translate(-50%, -50%);
-    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
-    will-change: left, top;
+    transition: width 0.2s cubic-bezier(0.25, 1, 0.5, 1), height 0.2s cubic-bezier(0.25, 1, 0.5, 1), margin 0.2s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.2s ease, background 0.2s ease;
+    will-change: transform;
+}
+
+.cursor-outline.cursor-hover {
+    width: 48px;
+    height: 48px;
+    margin-left: -24px;
+    margin-top: -24px;
+    border-color: rgba(56, 214, 255, 0.85);
+    background: rgba(0, 191, 255, 0.08);
 }
 
 .cursor-glow {
     position: fixed;
-    width: 380px;
-    height: 380px;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 260px;
+    margin-left: -130px;
+    margin-top: -130px;
     pointer-events: none;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 191, 255, 0.16) 0%, rgba(0, 191, 255, 0.04) 45%, transparent 70%);
-    filter: blur(50px);
-    transform: translate(-50%, -50%);
-    mix-blend-mode: screen;
+    background: radial-gradient(circle, rgba(0, 191, 255, 0.12) 0%, rgba(0, 191, 255, 0.03) 45%, transparent 70%);
     z-index: calc(var(--z-nav) - 10);
-    will-change: left, top;
+    will-change: transform;
 }
 
 @media (hover: none) and (pointer: coarse) {
