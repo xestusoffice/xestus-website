@@ -8681,16 +8681,18 @@ html[lang="hi"] .founder-quote-box p {
 .seva-services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 22px;
+    gap: 28px;
+    row-gap: 36px;
     align-items: stretch;
 }
 
 .digital-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 22px;
+    gap: 28px;
+    row-gap: 36px;
     max-width: var(--container-max);
-    margin: 22px auto 0;
+    margin: 24px auto 0;
     align-items: stretch;
 }
 
@@ -8699,7 +8701,7 @@ html[lang="hi"] .founder-quote-box p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 26px;
+    padding: 26px 22px;
     border-radius: var(--radius-xl);
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
@@ -8711,8 +8713,8 @@ html[lang="hi"] .founder-quote-box p {
     cursor: pointer;
     isolation: isolate;
     box-sizing: border-box;
-    height: 100%;
-    min-height: 280px;
+    height: auto;
+    min-height: 100%;
 }
 
 .digital-card:hover,
@@ -11422,37 +11424,44 @@ html[lang="hi"] .founder-quote-box p {
     text-overflow: ellipsis;
 }
 
-/* 3-Column Card Actions */
+/* 3-Column / Responsive Card Actions */
 .seva-card-actions-3col {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 8px;
-    margin-top: 14px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .btn-card-action {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 8px 10px;
-    border-radius: var(--radius-sm);
-    font-size: 11.5px;
+    padding: 9px 12px;
+    border-radius: var(--radius-sm, 8px);
+    font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     text-decoration: none;
     transition: all var(--transition-fast);
     border: none;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
 .btn-card-action svg {
-    width: 13px;
-    height: 13px;
+    width: 14px;
+    height: 14px;
     flex-shrink: 0;
 }
 
 .btn-card-guide {
+    flex: 1 1 100%;
     background: rgba(0, 191, 255, 0.15);
     border: 1px solid var(--cyan-border);
     color: var(--cyan-bright);
@@ -11464,6 +11473,8 @@ html[lang="hi"] .founder-quote-box p {
 }
 
 .btn-card-portal {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 110px;
     background: rgba(16, 185, 129, 0.15);
     border: 1px solid rgba(16, 185, 129, 0.35);
     color: #34d399;
@@ -11475,6 +11486,8 @@ html[lang="hi"] .founder-quote-box p {
 }
 
 .btn-card-assist {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 110px;
     background: rgba(255, 204, 0, 0.12);
     border: 1px solid rgba(255, 204, 0, 0.35);
     color: #ffcc00;
@@ -11566,7 +11579,9 @@ html[lang="hi"] .founder-quote-box p {
 .private-services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
+    gap: 28px;
+    row-gap: 36px;
+    align-items: stretch;
 }
 
 /* Progressive Disclosure Tab Navigation in Modal */
@@ -12010,8 +12025,8 @@ html[lang="hi"] .founder-quote-box p {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .seva-card-actions-3col {
-        grid-template-columns: 1fr;
+    .seva-card-actions-3col .btn-card-action {
+        flex: 1 1 100% !important;
     }
     .form-row-2col {
         grid-template-columns: 1fr;
