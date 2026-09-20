@@ -356,7 +356,11 @@
             .join("");
 
         if (window.lucide && typeof window.lucide.createIcons === "function") {
-            window.lucide.createIcons();
+            try {
+                window.lucide.createIcons({ root: container });
+            } catch (_) {
+                window.lucide.createIcons();
+            }
         }
     }
 
@@ -601,7 +605,14 @@
         }
 
         if (window.lucide && typeof window.lucide.createIcons === "function") {
-            window.lucide.createIcons();
+            try {
+                window.lucide.createIcons({ root: grid });
+                if (privateGrid && privateSection.style.display !== "none") {
+                    window.lucide.createIcons({ root: privateGrid });
+                }
+            } catch (_) {
+                window.lucide.createIcons();
+            }
         }
 
         if (triggerHighlight) {
@@ -1012,7 +1023,11 @@
         state.activeModal = modal;
 
         if (window.lucide && typeof window.lucide.createIcons === "function") {
-            window.lucide.createIcons();
+            try {
+                window.lucide.createIcons({ root: modal });
+            } catch (_) {
+                window.lucide.createIcons();
+            }
         }
     }
 
@@ -1037,7 +1052,11 @@
         state.activeModal = modal;
 
         if (window.lucide && typeof window.lucide.createIcons === "function") {
-            window.lucide.createIcons();
+            try {
+                window.lucide.createIcons({ root: modal });
+            } catch (_) {
+                window.lucide.createIcons();
+            }
         }
     }
 
@@ -1118,7 +1137,11 @@
                     </div>
                 `;
                 if (window.lucide && typeof window.lucide.createIcons === "function") {
-                    window.lucide.createIcons();
+                    try {
+                        window.lucide.createIcons({ root: feedback });
+                    } catch (_) {
+                        window.lucide.createIcons();
+                    }
                 }
             }
 
@@ -1186,7 +1209,11 @@
             });
 
             if (window.lucide && typeof window.lucide.createIcons === "function") {
-                window.lucide.createIcons();
+                try {
+                    window.lucide.createIcons({ root: grid });
+                } catch (_) {
+                    window.lucide.createIcons();
+                }
             }
         }
 
@@ -1262,7 +1289,11 @@
         state.activeModal = modal;
 
         if (window.lucide && typeof window.lucide.createIcons === "function") {
-            window.lucide.createIcons();
+            try {
+                window.lucide.createIcons({ root: modal });
+            } catch (_) {
+                window.lucide.createIcons();
+            }
         }
     }
 

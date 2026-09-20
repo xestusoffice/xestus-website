@@ -2588,8 +2588,8 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                         ]
                 },
                 "official_homepage": "https://food.wb.gov.in/",
-                "official_apply_url": "https://rcms.wb.gov.in/",
-                "official_status_url": "https://food.wb.gov.in/food/check-ration-card-status.aspx",
+                "official_apply_url": "https://food.wb.gov.in/",
+                "official_status_url": "https://food.wb.gov.in/",
                 "official_helpline": "1967 / 1800 345 5505 (Toll Free Food Helpline)",
                 "official_email": "food-wb@nic.in",
                 "state": "West Bengal",
@@ -3133,7 +3133,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                 },
                 "process_steps": {
                         "en": [
-                                "Visit the official portal svmcm.wbhed.gov.in.",
+                                "Visit the official portal svmcm.wb.gov.in.",
                                 "Click 'Registration' -> Select Directorate (DSE / DPI / DTE / DPMU).",
                                 "Enter qualifying board details, roll number, year of passing, and current admission info.",
                                 "Generate Applicant ID and set a secure password.",
@@ -3142,7 +3142,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                                 "Submit application and submit physical copy to your school/college for HOI verification."
                         ],
                         "bn": [
-                                "অফিসিয়াল svmcm.wbhed.gov.in পোর্টালে যান।",
+                                "অফিসিয়াল svmcm.wb.gov.in পোর্টালে যান।",
                                 "'Registration' এ ক্লিক করে সংশ্লিষ্ট ডিরেক্টরেট বেছে নিন।",
                                 "পূর্ববর্তী বোর্ডের রোল নম্বর, পাশের সাল ও বর্তমান ভর্তির তথ্য দিন।",
                                 "Applicant ID ও পাসওয়ার্ড তৈরি করে লগইন করুন।",
@@ -3151,7 +3151,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                                 "আবেদন সাবমিট করে প্রিন্টআউট ও নথিপত্র স্কুল বা কলেজে ভেরিফিকেশনের জন্য জমা দিন।"
                         ],
                         "hi": [
-                                "svmcm.wbhed.gov.in पोर्टल पर जाएं।",
+                                "svmcm.wb.gov.in पोर्टल पर जाएं।",
                                 "'Registration' पर क्लिक करके आवश्यक विवरण भरें।",
                                 "आवेदक आईडी बनाकर लॉगिन करें।",
                                 "व्यक्तिगत, शैक्षणिक और बैंक विवरण भरें।",
@@ -3159,16 +3159,16 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                                 "आवेदन सबमिट करें और कॉलेज/स्कूल में सत्यापन के लिए रसीद जमा करें।"
                         ]
                 },
-                "official_homepage": "https://svmcm.wbhed.gov.in/",
-                "official_apply_url": "https://svmcm.wbhed.gov.in/rest/registration",
-                "official_status_url": "https://svmcm.wbhed.gov.in/rest/login",
+                "official_homepage": "https://svmcm.wb.gov.in/",
+                "official_apply_url": "https://svmcm.wb.gov.in/",
+                "official_status_url": "https://svmcm.wb.gov.in/",
                 "official_helpline": "1800 102 8014 (Toll Free Higher Education Helpdesk)",
                 "official_email": "helpdesk.svmcm-wb@gov.in",
                 "state": "West Bengal",
                 "availability": "Online + HOI Institution",
                 "active_status": true,
                 "verification_status": "officially_verified",
-                "source_url": "https://svmcm.wbhed.gov.in/",
+                "source_url": "https://svmcm.wb.gov.in/",
                 "last_verified": "15 Sep 2026",
                 "is_popular": true,
                 "intent_tags": [
@@ -3187,7 +3187,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                         "एसवीएमसीएम"
                 ],
                 "scam_warning": {
-                        "en": "SVMCM scholarship applications are 100% FREE on svmcm.wbhed.gov.in. Never share bank OTPs with anyone.",
+                        "en": "SVMCM scholarship applications are 100% FREE on svmcm.wb.gov.in. Never share bank OTPs with anyone.",
                         "bn": "SVMCM স্কলারশিপের আবেদন সম্পূর্ণ বিনামূল্যে। ব্যাংক ওটিপি বা পাসওয়ার্ড কাউকে শেয়ার করবেন না।",
                         "hi": "SVMCM छात्रवृत्ति आवेदन पूरी तरह से मुफ्त है। बैंक ओटीपी किसी से साझा न करें।"
                 }
@@ -4674,16 +4674,16 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                                 "नए कनेक्शन के लिए ऑनलाइन आवेदन कर दस्तावेज अपलोड करें।"
                         ]
                 },
-                "official_homepage": "https://www.wbsedcl.in/",
-                "official_apply_url": "https://www.wbsedcl.in/irj/go/km/docs/internet/webpage/new_connection.html",
-                "official_status_url": "https://www.wbsedcl.in/irj/go/km/docs/internet/webpage/Quick_Pay.html",
+                "official_homepage": "https://www.wbsedcl.in/irj/go/km/docs/internet/new_website/Home.html",
+                "official_apply_url": "https://www.wbsedcl.in/irj/go/km/docs/internet/new_website/Home.html",
+                "official_status_url": "https://www.wbsedcl.in/irj/go/km/docs/internet/new_website/Home.html",
                 "official_helpline": "19121 (WBSEDCL 24x7 Toll Free Electricity Helpline)",
                 "official_email": "customercare@wbsedcl.in",
                 "state": "West Bengal",
                 "availability": "Online + Customer Care Centre (CCC)",
                 "active_status": true,
                 "verification_status": "officially_verified",
-                "source_url": "https://www.wbsedcl.in/",
+                "source_url": "https://www.wbsedcl.in/irj/go/km/docs/internet/new_website/Home.html",
                 "last_verified": "15 Sep 2026",
                 "is_popular": true,
                 "intent_tags": [
@@ -4786,7 +4786,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                 },
                 "process_steps": {
                         "en": [
-                                "Visit the official Janma-Mrityu Tathya portal (janmamrityutathya.wb.gov.in).",
+                                "Visit the official Janma-Mrityu Tathya portal (janma-mrityutathya.wb.gov.in).",
                                 "Click on 'Citizen Services' -> Select 'Birth' or 'Death' -> 'Apply for New Registration' or 'Download Certificate'.",
                                 "Enter mobile number to receive OTP and verify session.",
                                 "Fill details of Child/Deceased, Date of Event, Place of Birth/Death, and Parents' details.",
@@ -4794,7 +4794,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                                 "Submit application and note Acknowledgement Number for status tracking."
                         ],
                         "bn": [
-                                "অফিসিয়াল janmamrityutathya.wb.gov.in পোর্টালে যান।",
+                                "অফিসিয়াল janma-mrityutathya.wb.gov.in পোর্টালে যান।",
                                 "'Citizen Services' এ গিয়ে 'Birth' বা 'Death' নির্বাচন করুন এবং 'Apply' বা 'Download' এ ক্লিক করুন।",
                                 "মোবাইল নম্বর দিয়ে ওটিপি ভেরিফিকেশন সম্পন্ন করুন।",
                                 "শিশু বা মৃত ব্যক্তির বিবরণ, ঘটনার স্থান ও তারিখ এবং পিতা-মাতার বিবরণ লিখুন।",
@@ -4802,21 +4802,21 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                                 "ফর্ম সাবমিট করে একনলেজমেন্ট নম্বর সংরক্ষণ করুন।"
                         ],
                         "hi": [
-                                "janmamrityutathya.wb.gov.in पर जाएं।",
+                                "janma-mrityutathya.wb.gov.in पर जाएं।",
                                 "सिटिजन सर्विसेज में जाकर जन्म या मृत्यु का चयन करें।",
                                 "ओटीपी सत्यापन के बाद विवरण भरें और दस्तावेज अपलोड करें।"
                         ]
                 },
-                "official_homepage": "https://janmamrityutathya.wb.gov.in/",
-                "official_apply_url": "https://janmamrityutathya.wb.gov.in/",
-                "official_status_url": "https://janmamrityutathya.wb.gov.in/",
+                "official_homepage": "https://janma-mrityutathya.wb.gov.in/",
+                "official_apply_url": "https://janma-mrityutathya.wb.gov.in/",
+                "official_status_url": "https://janma-mrityutathya.wb.gov.in/verifycertificate",
                 "official_helpline": "1800-345-5555 (Health Dept WB Toll Free)",
                 "official_email": "health-wb@nic.in",
                 "state": "West Bengal",
                 "availability": "Online + Hospitals + Municipalities / BDO",
                 "active_status": true,
                 "verification_status": "officially_verified",
-                "source_url": "https://janmamrityutathya.wb.gov.in/",
+                "source_url": "https://janma-mrityutathya.wb.gov.in/",
                 "last_verified": "15 Sep 2026",
                 "is_popular": true,
                 "intent_tags": [
@@ -4917,7 +4917,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                 },
                 "process_steps": {
                         "en": [
-                                "Visit castecertificatewb.gov.in.",
+                                "Visit castcertificatewb.gov.in.",
                                 "Click on 'Application for SC/ST/OBC Certificate'.",
                                 "Select District, Sub-Division, Municipality/Block and apply for SC, ST, OBC-A, or OBC-B.",
                                 "Fill applicant personal details, parents' details, and blood relative certificate info.",
@@ -4926,7 +4926,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                                 "Submit hard copy with self-attested documents at Duare Sarkar camp, BDO Office, or SDO Office for physical verification."
                         ],
                         "bn": [
-                                "castecertificatewb.gov.in ওয়েবসাইটে যান।",
+                                "castcertificatewb.gov.in ওয়েবসাইটে যান।",
                                 "'Application for SC/ST/OBC Certificate' অপশনে ক্লিক করুন।",
                                 "জেলা, মহকুমা, ব্লক নির্বাচন করে SC/ST/OBC ক্যাটাগরি বেছে নিন।",
                                 "ব্যক্তিগত তথ্য, পিতা-মাতার নাম ও রক্তের সম্পর্কের আত্মীয়ের সার্টিফিকেটের বিবরণ দিন।",
@@ -4934,21 +4934,21 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                                 "আবেদনপত্র ও রসিদটি প্রিন্ট করে নথিপত্র সহ দুয়ারে সরকার বা বিডিও অফিসে জমা দিন।"
                         ],
                         "hi": [
-                                "castecertificatewb.gov.in पर जाएं।",
+                                "castcertificatewb.gov.in पर जाएं।",
                                 "फॉर्म भरकर विवरण दर्ज करें और फोटो अपलोड करें।",
                                 "आवेदन पत्र प्रिंट कर आवश्यक दस्तावेजों के साथ बीडीओ या एसडीओ कार्यालय में जमा करें।"
                         ]
                 },
-                "official_homepage": "https://castecertificatewb.gov.in/",
-                "official_apply_url": "https://castecertificatewb.gov.in/",
-                "official_status_url": "https://castecertificatewb.gov.in/check-status",
+                "official_homepage": "https://castcertificatewb.gov.in/",
+                "official_apply_url": "https://castcertificatewb.gov.in/",
+                "official_status_url": "https://castcertificatewb.gov.in/",
                 "official_helpline": "033-2337-4051 (BCW Dept Kolkata)",
                 "official_email": "bcw.wb@nic.in",
                 "state": "West Bengal",
                 "availability": "Online + Duare Sarkar + BDO / SDO Offices",
                 "active_status": true,
                 "verification_status": "officially_verified",
-                "source_url": "https://castecertificatewb.gov.in/",
+                "source_url": "https://castcertificatewb.gov.in/",
                 "last_verified": "15 Sep 2026",
                 "is_popular": true,
                 "intent_tags": [
@@ -10281,7 +10281,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                         ]
                 },
                 "official_homepage": "https://wbregistration.gov.in/",
-                "official_apply_url": "https://wbregistration.gov.in/(S(0w4r2j2e4a4z4k55z5x5a555))/Index.aspx",
+                "official_apply_url": "https://wbregistration.gov.in/Index.aspx",
                 "official_status_url": "https://wbregistration.gov.in/",
                 "official_helpline": "033-2223 0150 / 033-2223 0151",
                 "official_email": "grievance.registration-wb@gov.in",

@@ -497,8 +497,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             ctx.globalAlpha = 1.0;
 
-            if (!prefersReducedMotion && tier !== "tier-4") {
+            if (isHeroVisible && !prefersReducedMotion && tier !== "tier-4") {
                 animId = requestAnimationFrame(drawStarfield);
+            } else {
+                animId = null;
             }
         }
 
@@ -1294,8 +1296,10 @@ document.addEventListener("DOMContentLoaded", () => {
             // 11. Draw Floating 3D Quantum Data Crystal (Upper Right)
             drawQuantumCrystal(cx, cy, baseScale, tier);
 
-            if (!prefersReducedMotion && tier !== "tier-4") {
+            if (isCoreVisible && !prefersReducedMotion && tier !== "tier-4") {
                 coreAnimId = requestAnimationFrame(renderInnovationCore);
+            } else {
+                coreAnimId = null;
             }
         }
 
