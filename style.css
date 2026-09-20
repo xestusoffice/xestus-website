@@ -535,22 +535,46 @@
     color: #92400e;
 }
 
-[data-theme="day"] .digital-filter-btn {
-    background: #ffffff;
-    border-color: #cbd5e1;
-    color: #475569;
+[data-theme="day"] .digital-filter-btn,
+[data-theme="day"] .seva-filter-pill {
+    background: #ffffff !important;
+    border: 1.5px solid #0284c7 !important;
+    color: #0f172a !important;
+    font-weight: 600 !important;
+    box-shadow: 0 3px 12px rgba(2, 132, 199, 0.12) !important;
 }
 
-[data-theme="day"] .digital-filter-btn:hover {
-    background: #f1f5f9;
-    border-color: #0284c7;
-    color: #0284c7;
+[data-theme="day"] .digital-filter-btn:hover,
+[data-theme="day"] .seva-filter-pill:hover {
+    background: rgba(2, 132, 199, 0.1) !important;
+    border-color: #0369a1 !important;
+    color: #0284c7 !important;
+    box-shadow: 0 5px 18px rgba(2, 132, 199, 0.25) !important;
+    transform: translateY(-2px);
 }
 
-[data-theme="day"] .digital-filter-btn.active {
-    background: #0284c7;
-    border-color: #0284c7;
-    color: #ffffff;
+[data-theme="day"] .digital-filter-btn.active,
+[data-theme="day"] .seva-filter-pill.active {
+    background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+    border-color: #0284c7 !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35) !important;
+}
+
+[data-theme="day"] .search-chip-btn {
+    background: #ffffff !important;
+    border: 1.5px solid #38bdf8 !important;
+    color: #0f172a !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.1) !important;
+}
+
+[data-theme="day"] .search-chip-btn:hover {
+    background: #0284c7 !important;
+    border-color: #0284c7 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3) !important;
+    transform: translateY(-2px);
 }
 
 /* Day Mode: Contact Form & Inquiry System High-Contrast Styling */
@@ -694,16 +718,62 @@
 }
 
 [data-theme="day"] .nav-links {
-    background: rgba(255, 255, 255, 0.98);
+    background: transparent !important;
 }
 
-[data-theme="day"] .nav-links a {
-    color: #334155;
+[data-theme="day"] .nav-container {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border: 1.5px solid #cbd5e1 !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+}
+
+[data-theme="day"] .logo span {
+    color: #0f172a !important;
+}
+
+[data-theme="day"] .nav-links a,
+[data-theme="day"] .nav-dropdown-btn {
+    color: #1e293b !important;
+    font-weight: 600 !important;
 }
 
 [data-theme="day"] .nav-links a:hover,
-[data-theme="day"] .nav-link.active {
-    color: #0284c7;
+[data-theme="day"] .nav-link.active,
+[data-theme="day"] .nav-dropdown-btn:hover {
+    color: #0284c7 !important;
+}
+
+[data-theme="day"] .theme-btn,
+[data-theme="day"] .lang-btn {
+    background: #f1f5f9 !important;
+    border: 1.5px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    font-weight: 600 !important;
+}
+
+[data-theme="day"] .theme-btn:hover,
+[data-theme="day"] .lang-btn:hover {
+    background: #e2e8f0 !important;
+    border-color: #0284c7 !important;
+    color: #0284c7 !important;
+}
+
+[data-theme="day"] .theme-dropdown,
+[data-theme="day"] .lang-dropdown {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.15) !important;
+}
+
+[data-theme="day"] .theme-opt,
+[data-theme="day"] .lang-opt {
+    color: #0f172a !important;
+}
+
+[data-theme="day"] .theme-opt:hover,
+[data-theme="day"] .lang-opt:hover {
+    background: #f1f5f9 !important;
+    color: #0284c7 !important;
 }
 
 /* Eye Protection Theme Specific Overrides */
@@ -889,22 +959,46 @@
     color: #78350f;
 }
 
-[data-theme="eye-protect"] .digital-filter-btn {
-    background: #fdfbf7;
-    border-color: #d8ccbc;
-    color: #4a3e31;
+[data-theme="eye-protect"] .digital-filter-btn,
+[data-theme="eye-protect"] .seva-filter-pill {
+    background: #fdfbf7 !important;
+    border: 1.5px solid #0e7490 !important;
+    color: #2c241b !important;
+    font-weight: 600 !important;
+    box-shadow: 0 3px 12px rgba(14, 116, 144, 0.12) !important;
 }
 
-[data-theme="eye-protect"] .digital-filter-btn:hover {
-    background: #ede6da;
-    border-color: #0e7490;
-    color: #0e7490;
+[data-theme="eye-protect"] .digital-filter-btn:hover,
+[data-theme="eye-protect"] .seva-filter-pill:hover {
+    background: rgba(14, 116, 144, 0.1) !important;
+    border-color: #155e75 !important;
+    color: #0e7490 !important;
+    box-shadow: 0 5px 18px rgba(14, 116, 144, 0.25) !important;
+    transform: translateY(-2px);
 }
 
-[data-theme="eye-protect"] .digital-filter-btn.active {
-    background: #0e7490;
-    border-color: #0e7490;
-    color: #ffffff;
+[data-theme="eye-protect"] .digital-filter-btn.active,
+[data-theme="eye-protect"] .seva-filter-pill.active {
+    background: linear-gradient(135deg, #0e7490, #164e63) !important;
+    border-color: #0e7490 !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(14, 116, 144, 0.35) !important;
+}
+
+[data-theme="eye-protect"] .search-chip-btn {
+    background: #fdfbf7 !important;
+    border: 1.5px solid #0e7490 !important;
+    color: #2c241b !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 8px rgba(14, 116, 144, 0.1) !important;
+}
+
+[data-theme="eye-protect"] .search-chip-btn:hover {
+    background: #0e7490 !important;
+    border-color: #0e7490 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(14, 116, 144, 0.3) !important;
+    transform: translateY(-2px);
 }
 
 /* Eye-Protect Mode: Contact Form & Inquiry System High-Contrast Styling */
@@ -1048,16 +1142,62 @@
 }
 
 [data-theme="eye-protect"] .nav-links {
-    background: rgba(245, 239, 230, 0.98);
+    background: transparent !important;
 }
 
-[data-theme="eye-protect"] .nav-links a {
-    color: #2c241b;
+[data-theme="eye-protect"] .nav-container {
+    background: rgba(253, 251, 247, 0.94) !important;
+    border: 1.5px solid #d8ccbc !important;
+    box-shadow: 0 10px 30px rgba(60, 40, 20, 0.08) !important;
+}
+
+[data-theme="eye-protect"] .logo span {
+    color: #2c241b !important;
+}
+
+[data-theme="eye-protect"] .nav-links a,
+[data-theme="eye-protect"] .nav-dropdown-btn {
+    color: #2c241b !important;
+    font-weight: 600 !important;
 }
 
 [data-theme="eye-protect"] .nav-links a:hover,
-[data-theme="eye-protect"] .nav-link.active {
-    color: #0e7490;
+[data-theme="eye-protect"] .nav-link.active,
+[data-theme="eye-protect"] .nav-dropdown-btn:hover {
+    color: #0e7490 !important;
+}
+
+[data-theme="eye-protect"] .theme-btn,
+[data-theme="eye-protect"] .lang-btn {
+    background: #ede6da !important;
+    border: 1.5px solid #d8ccbc !important;
+    color: #2c241b !important;
+    font-weight: 600 !important;
+}
+
+[data-theme="eye-protect"] .theme-btn:hover,
+[data-theme="eye-protect"] .lang-btn:hover {
+    background: #e5dacb !important;
+    border-color: #0e7490 !important;
+    color: #0e7490 !important;
+}
+
+[data-theme="eye-protect"] .theme-dropdown,
+[data-theme="eye-protect"] .lang-dropdown {
+    background: #fdfbf7 !important;
+    border: 1.5px solid #d8ccbc !important;
+    box-shadow: 0 12px 35px rgba(60, 40, 20, 0.12) !important;
+}
+
+[data-theme="eye-protect"] .theme-opt,
+[data-theme="eye-protect"] .lang-opt {
+    color: #2c241b !important;
+}
+
+[data-theme="eye-protect"] .theme-opt:hover,
+[data-theme="eye-protect"] .lang-opt:hover {
+    background: #ede6da !important;
+    color: #0e7490 !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -1323,6 +1463,64 @@ button, input, textarea {
     will-change: transform;
 }
 
+/* Day Mode Cursor Adaptations (High Visibility & Interactive Sky Spotlight) */
+[data-theme="day"] .cursor-dot {
+    background: #0284c7 !important;
+    box-shadow: 0 0 10px #0284c7, 0 0 20px rgba(2, 132, 199, 0.6) !important;
+}
+
+[data-theme="day"] .cursor-outline {
+    border: 2px solid #0284c7 !important;
+    background: rgba(2, 132, 199, 0.08) !important;
+    box-shadow: 0 0 16px rgba(2, 132, 199, 0.35) !important;
+}
+
+[data-theme="day"] .cursor-outline.cursor-hover {
+    border-color: #0369a1 !important;
+    background: rgba(2, 132, 199, 0.18) !important;
+    box-shadow: 0 0 25px rgba(2, 132, 199, 0.5) !important;
+}
+
+[data-theme="day"] .cursor-glow {
+    background: radial-gradient(
+        circle,
+        rgba(2, 132, 199, 0.22) 0%,
+        rgba(2, 132, 199, 0.12) 25%,
+        rgba(56, 189, 248, 0.06) 50%,
+        transparent 70%
+    ) !important;
+    mix-blend-mode: multiply !important;
+}
+
+/* Eye Protect Mode Cursor Adaptations (Warm Teal Spotlight) */
+[data-theme="eye-protect"] .cursor-dot {
+    background: #0e7490 !important;
+    box-shadow: 0 0 10px #0e7490, 0 0 20px rgba(14, 116, 144, 0.6) !important;
+}
+
+[data-theme="eye-protect"] .cursor-outline {
+    border: 2px solid #0e7490 !important;
+    background: rgba(14, 116, 144, 0.08) !important;
+    box-shadow: 0 0 16px rgba(14, 116, 144, 0.35) !important;
+}
+
+[data-theme="eye-protect"] .cursor-outline.cursor-hover {
+    border-color: #155e75 !important;
+    background: rgba(14, 116, 144, 0.18) !important;
+    box-shadow: 0 0 25px rgba(14, 116, 144, 0.5) !important;
+}
+
+[data-theme="eye-protect"] .cursor-glow {
+    background: radial-gradient(
+        circle,
+        rgba(14, 116, 144, 0.22) 0%,
+        rgba(14, 116, 144, 0.12) 25%,
+        rgba(217, 119, 6, 0.06) 50%,
+        transparent 70%
+    ) !important;
+    mix-blend-mode: multiply !important;
+}
+
 @media (hover: none) and (pointer: coarse) {
     .cursor-dot, .cursor-outline, .cursor-glow {
         display: none !important;
@@ -1425,18 +1623,34 @@ button, input, textarea {
     transform: translateY(-4px);
 }
 
-/* Frosted Glass Navigation Header */
+/* Frosted Glass Navigation Header Container */
 .site-header {
-    background: rgba(8, 12, 22, 0.68) !important;
-    backdrop-filter: blur(20px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+    background: transparent !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
-/* Frosted Glass Search Box & Filter Bar */
+.nav-container {
+    background: rgba(8, 12, 22, 0.85) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 191, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Category Filter Bar (Clean, Borderless, Box-Free Layout) */
+.digital-filter-bar {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Frosted Glass Search Box & Security Capsules */
 .digital-search-box,
-.digital-filter-bar,
 .search-chips-wrapper,
 .security-badge-capsule,
 .seva-directory-trigger {
@@ -1447,19 +1661,51 @@ button, input, textarea {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
+/* Stylish Colored Outline Filter Buttons & Search Chips */
+.digital-filter-btn,
+.seva-filter-pill {
+    background: rgba(14, 22, 40, 0.75) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1.5px solid rgba(0, 191, 255, 0.38) !important;
+    color: #e2e8f0 !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), 0 0 12px rgba(0, 191, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.digital-filter-btn:hover,
+.seva-filter-pill:hover {
+    background: rgba(0, 191, 255, 0.16) !important;
+    border-color: #00f2fe !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.35), 0 0 20px rgba(0, 191, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+.digital-filter-btn.active,
+.seva-filter-pill.active {
+    background: linear-gradient(135deg, #00bfff, #0077cc) !important;
+    border-color: #38d6ff !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: 0 6px 24px rgba(0, 191, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
 .search-chip-btn {
-    background: rgba(255, 255, 255, 0.06) !important;
+    background: rgba(14, 22, 40, 0.65) !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.14) !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
-    transition: all 0.2s ease !important;
+    border: 1.5px solid rgba(0, 191, 255, 0.32) !important;
+    color: #d1d8e6 !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 191, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .search-chip-btn:hover {
     background: rgba(0, 191, 255, 0.18) !important;
-    border-color: rgba(56, 214, 255, 0.5) !important;
-    box-shadow: 0 0 18px rgba(0, 191, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+    border-color: #00f2fe !important;
+    color: #ffffff !important;
+    box-shadow: 0 5px 16px rgba(0, 242, 254, 0.35), 0 0 15px rgba(0, 191, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
     transform: translateY(-2px) !important;
 }
 
@@ -1498,9 +1744,9 @@ html[data-theme="day"] .faq-item {
 }
 
 html[data-theme="day"] .site-header {
-    background: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(20px) saturate(180%) !important;
-    border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+    background: transparent !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
 }
 
 /* Eye Protect Mode Glass Parity */
@@ -9758,26 +10004,64 @@ html[lang="hi"] .founder-quote-box p {
     pointer-events: none;
 }
 
-/* Attached Floating Follow Button (Directly ABOVE AI Launcher) */
+/* Attached Floating Follow Button (With Rotating Glowing Colorful Border) */
 .floating-follow-btn {
     pointer-events: auto;
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     height: 38px;
-    padding: 0 16px;
+    padding: 0 18px;
     border-radius: var(--radius-full);
-    background: rgba(13, 19, 34, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(0, 191, 255, 0.35);
+    border: none !important;
     color: var(--text-primary);
     font-size: 12.5px;
     font-weight: 600;
     font-family: inherit;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 191, 255, 0.15);
-    transition: all var(--transition-fast);
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 191, 255, 0.25);
+    transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s ease;
+}
+
+.floating-follow-btn::before {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 400%;
+    height: 400%;
+    background: conic-gradient(
+        from 0deg,
+        #00f2fe,
+        #38d6ff,
+        #a855f7,
+        #ec4899,
+        #eab308,
+        #00f2fe
+    );
+    animation: rotateConicBorder 4s linear infinite;
+    z-index: 0;
+}
+
+.floating-follow-btn::after {
+    content: '';
+    position: absolute;
+    inset: 1.5px;
+    border-radius: inherit;
+    background: rgba(13, 19, 34, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.floating-follow-btn .follow-icon,
+.floating-follow-btn span {
+    position: relative;
+    z-index: 2;
 }
 
 .floating-follow-btn .follow-icon {
@@ -9788,57 +10072,90 @@ html[lang="hi"] .founder-quote-box p {
 }
 
 .floating-follow-btn:hover {
-    background: rgba(16, 25, 45, 0.98);
-    border-color: var(--cyan-bright);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(0, 191, 255, 0.25);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(0, 191, 255, 0.45), 0 0 20px rgba(0, 242, 254, 0.4);
 }
 
 .floating-follow-btn:hover .follow-icon {
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
-.floating-follow-btn.is-following {
-    background: rgba(34, 197, 94, 0.15);
-    border-color: rgba(34, 197, 94, 0.5);
-    color: #4ade80;
+.floating-follow-btn.is-following::after {
+    background: rgba(15, 35, 25, 0.95);
 }
 
+.floating-follow-btn.is-following span,
 .floating-follow-btn.is-following .follow-icon {
     color: #4ade80;
 }
 
-/* AI Launcher Button */
+/* AI Launcher Button (With Rotating Glowing Colorful Border) */
 .ai-launcher-btn {
     pointer-events: auto;
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    height: 48px;
-    padding: 0 20px 0 14px;
+    height: 50px;
+    padding: 0 22px 0 14px;
     border-radius: var(--radius-full);
-    background: linear-gradient(135deg, rgba(8, 12, 22, 0.96), rgba(16, 25, 45, 0.96));
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1.5px solid var(--cyan-primary);
+    border: none !important;
     color: #ffffff;
     font-size: 13.5px;
     font-weight: 600;
     font-family: inherit;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 191, 255, 0.35);
-    transition: all var(--transition-fast);
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55), 0 0 25px rgba(0, 191, 255, 0.4);
+    transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s ease;
+}
+
+.ai-launcher-btn::before {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 400%;
+    height: 400%;
+    background: conic-gradient(
+        from 0deg,
+        #00f2fe 0%,
+        #0077cc 25%,
+        #c084fc 50%,
+        #ff007f 75%,
+        #00f2fe 100%
+    );
+    animation: rotateConicBorder 3.5s linear infinite;
+    z-index: 0;
+}
+
+.ai-launcher-btn::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(8, 12, 22, 0.96), rgba(16, 25, 45, 0.96));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.ai-launcher-icon-wrap,
+.ai-launcher-text {
+    position: relative;
+    z-index: 2;
 }
 
 .ai-launcher-icon-wrap {
-    position: relative;
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(0, 191, 255, 0.15);
+    background: rgba(0, 191, 255, 0.18);
 }
 
 .ai-main-icon {
@@ -9859,6 +10176,15 @@ html[lang="hi"] .founder-quote-box p {
     animation: aiPulse 2s infinite;
 }
 
+@keyframes rotateConicBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @keyframes aiPulse {
     0%, 100% {
         transform: scale(1);
@@ -9872,13 +10198,11 @@ html[lang="hi"] .founder-quote-box p {
 
 .ai-launcher-btn:hover {
     transform: translateY(-3px) scale(1.02);
-    border-color: var(--cyan-bright);
-    box-shadow: 0 14px 40px rgba(0, 191, 255, 0.45);
+    box-shadow: 0 16px 45px rgba(0, 191, 255, 0.55), 0 0 30px rgba(0, 242, 254, 0.5);
 }
 
-.ai-launcher-btn[aria-expanded="true"] {
-    background: rgba(0, 191, 255, 0.2);
-    border-color: var(--cyan-bright);
+.ai-launcher-btn[aria-expanded="true"]::after {
+    background: rgba(14, 25, 48, 0.98);
 }
 
 /* Expandable AI Chat Panel */
@@ -10211,23 +10535,29 @@ html[lang="hi"] .founder-quote-box p {
    27. THEME OVERRIDES FOR DAY & EYE-PROTECTION MODES
    -------------------------------------------------------------------------- */
 :root[data-theme="day"] .floating-follow-btn {
-    background: rgba(255, 255, 255, 0.94);
-    border-color: #cbd5e1;
-    color: #0f172a;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+    color: #0f172a !important;
+    box-shadow: 0 8px 24px rgba(2, 132, 199, 0.25), 0 0 15px rgba(0, 242, 254, 0.3) !important;
 }
 
-:root[data-theme="day"] .floating-follow-btn:hover {
-    background: #ffffff;
-    border-color: var(--cyan-primary);
-    color: var(--cyan-primary);
+:root[data-theme="day"] .floating-follow-btn::after {
+    background: rgba(255, 255, 255, 0.96) !important;
 }
 
 :root[data-theme="day"] .ai-launcher-btn {
-    background: linear-gradient(135deg, #0284c7, #0369a1);
-    border-color: #0284c7;
-    color: #ffffff;
-    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.35);
+    color: #0f172a !important;
+    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.3), 0 0 25px rgba(0, 242, 254, 0.35) !important;
+}
+
+:root[data-theme="day"] .ai-launcher-btn::after {
+    background: rgba(255, 255, 255, 0.96) !important;
+}
+
+:root[data-theme="day"] .ai-launcher-icon-wrap {
+    background: rgba(2, 132, 199, 0.12) !important;
+}
+
+:root[data-theme="day"] .ai-main-icon {
+    color: #0284c7 !important;
 }
 
 :root[data-theme="day"] .ai-chat-panel {
@@ -10271,15 +10601,29 @@ html[lang="hi"] .founder-quote-box p {
 
 /* Eye Protection Mode Overrides */
 :root[data-theme="eye-protect"] .floating-follow-btn {
-    background: rgba(253, 251, 247, 0.94);
-    border-color: #d8ccbc;
-    color: #2c241b;
+    color: #2c241b !important;
+    box-shadow: 0 8px 24px rgba(14, 116, 144, 0.2), 0 0 15px rgba(0, 242, 254, 0.25) !important;
+}
+
+:root[data-theme="eye-protect"] .floating-follow-btn::after {
+    background: rgba(253, 251, 247, 0.96) !important;
 }
 
 :root[data-theme="eye-protect"] .ai-launcher-btn {
-    background: linear-gradient(135deg, #0e7490, #155e75);
-    border-color: #0e7490;
-    color: #ffffff;
+    color: #2c241b !important;
+    box-shadow: 0 10px 30px rgba(14, 116, 144, 0.25), 0 0 25px rgba(0, 242, 254, 0.3) !important;
+}
+
+:root[data-theme="eye-protect"] .ai-launcher-btn::after {
+    background: rgba(253, 251, 247, 0.96) !important;
+}
+
+:root[data-theme="eye-protect"] .ai-launcher-icon-wrap {
+    background: rgba(14, 116, 144, 0.12) !important;
+}
+
+:root[data-theme="eye-protect"] .ai-main-icon {
+    color: #0e7490 !important;
 }
 
 :root[data-theme="eye-protect"] .ai-chat-panel {
