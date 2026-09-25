@@ -1062,8 +1062,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.save();
             const MAX_DIST = (tier === "tier-1" ? 58 : 46) * baseScale;
             
-            // Triangular Cyber Facets (Tier 1 & Tier 2)
-            if (tier === "tier-1" || tier === "tier-2") {
+            // Triangular Cyber Facets (Tier 1 Desktop only to maintain 60-120fps on mobile/tablets)
+            if (tier === "tier-1" && window.innerWidth >= 1024) {
                 for (let i = 0; i < projectedSphere.length; i++) {
                     const n1 = projectedSphere[i];
                     if (n1.z < -10) continue; // Only front faces

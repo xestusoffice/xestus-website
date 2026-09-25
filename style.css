@@ -14444,4 +14444,59 @@ img, video, iframe, canvas, svg {
         padding: 16px 12px;
     }
 }
+
+/* ==========================================================================
+   32. ULTRA-SMOOTH RENDERING & HARDWARE ACCELERATION ENGINE
+   - content-visibility for instant DOM parsing & 60-120fps scrolling
+   - GPU subpixel antialiasing & compositing
+   - Touch inertia & pan-y optimization
+   ========================================================================== */
+.services,
+.solutions,
+.portfolio,
+.products,
+.lab,
+.stitch-internship-section,
+.stitch-how-section,
+.roadmap,
+.why-us,
+.faq,
+.contact,
+.footer,
+.site-footer,
+.policy-page-container {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 700px;
+}
+
+/* GPU Composite Optimization for Active Interactive Elements */
+.site-header,
+.modal-container,
+.seva-guide-modal-container,
+.xestus-cookie-banner,
+.xestus-toast {
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* Smooth Scrolling with Accessibility Reduced-Motion Support */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Eliminate tap delay and ghost clicks on all touch screens */
+button,
+a,
+input,
+select,
+textarea,
+.seva-task-card,
+.digital-filter-btn,
+.search-chip-btn,
+.btn-card-action {
+    touch-action: manipulation;
+}
 
