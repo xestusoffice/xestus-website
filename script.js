@@ -388,9 +388,10 @@ document.addEventListener("DOMContentLoaded", () => {
         function getStarfieldConfig() {
             const tier = window.XESTUS_PERF ? window.XESTUS_PERF.getTier() : "tier-1";
             if (tier === "tier-4") return { count: 0, maxDist: 0, connect: false };
-            if (tier === "tier-3") return { count: window.innerWidth < 768 ? 10 : 16, maxDist: 0, connect: false };
-            if (tier === "tier-2") return { count: window.innerWidth < 768 ? 20 : 32, maxDist: 75, connect: true };
-            return { count: window.innerWidth < 768 ? 28 : 55, maxDist: 120, connect: true };
+            if (window.innerWidth < 768) return { count: 12, maxDist: 0, connect: false };
+            if (tier === "tier-3") return { count: 16, maxDist: 0, connect: false };
+            if (tier === "tier-2") return { count: 28, maxDist: 75, connect: true };
+            return { count: 48, maxDist: 110, connect: true };
         }
 
         function resizeCanvas() {

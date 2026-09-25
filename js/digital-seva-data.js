@@ -8938,6 +8938,157 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                 ]
         },
         {
+                "service_id": "national-anti-ragging-portal",
+                "service_name": {
+                        "en": "National Anti-Ragging Portal & Undertaking / 24x7 Helpline",
+                        "bn": "জাতীয় অ্যান্টি-র‌্যাগিং পোর্টাল, অনলাইন এফিডেভিট ও ২৪x৭ হেল্পলাইন",
+                        "hi": "राष्ट्रीय एंटी-रैगिंग पोर्टल, ऑनलाइन शपथ पत्र और 24x7 हेल्पलाइन"
+                },
+                "short_description": {
+                        "en": "Official UGC & Ministry of Education Anti-Ragging portal for mandatory student/parent anti-ragging undertakings/affidavits, 24x7 toll-free emergency helpline (1800-180-5522), and confidential complaint registration.",
+                        "bn": "ইউজিসি এবং শিক্ষা মন্ত্রকের অফিশিয়াল অ্যান্টি-র‌্যাগিং পোর্টাল। প্রতিটি কলেজ/বিশ্ববিদ্যালয় ভর্তির জন্য বাধ্যতামূলক অ্যান্টি-র‌্যাগিং আন্ডারটেকিং (হলফনামা) জমা, ২৪x৭ টোল-ফ্রি হেল্পলাইন (১৮০০-১৮০-৫৫২২) ও গোপন অভিযোগ দায়ের।",
+                        "hi": "यूजीसी और शिक्षा मंत्रालय का आधिकारिक एंटी-रैगिंग पोर्टल। कॉलेज प्रवेश हेतु अनिवार्य एंटी-रैगिंग शपथ पत्र (Undertaking), 24x7 टोल-फ्री हेल्पलाइन (1800-180-5522) और गोपनीय शिकायत निवारण।"
+                },
+                "category": "college-admission",
+                "category_name": {
+                        "en": "College & University Admission",
+                        "bn": "কলেজ ও বিশ্ববিদ্যালয়ে ভর্তি",
+                        "hi": "कॉलेज और विश्वविद्यालय प्रवेश"
+                },
+                "subcategory": "Student Safety & Higher Education",
+                "authority": "University Grants Commission (UGC) & Ministry of Education, Govt. of India",
+                "government_level": "Central",
+                "service_type": "Student Protection & Compliance",
+                "target_users": [
+                        "College Students",
+                        "University Students",
+                        "Parents / Guardians",
+                        "Freshers & Higher Education Applicants"
+                ],
+                "eligibility": {
+                        "en": [
+                                "All students enrolled or enrolling in higher education institutions, colleges, and universities across India.",
+                                "Parents/Guardians of college and university students.",
+                                "Any victim or witness of ragging incidents."
+                        ],
+                        "bn": [
+                                "ভারতের যেকোনো কলেজ বা বিশ্ববিদ্যালয়ে অধ্যয়নরত বা নতুন ভর্তি হওয়া সকল শিক্ষার্থী।",
+                                "শিক্ষার্থীদের পিতা-মাতা বা অভিভাবকবৃন্দ।",
+                                "র‌্যাগিং-এর শিকার বা প্রত্যক্ষদর্শী যে কেউ।"
+                        ],
+                        "hi": [
+                                "भारत के किसी भी कॉलेज या विश्वविद्यालय में नामांकित या प्रवेश लेने वाले सभी छात्र।",
+                                "छात्रों के माता-पिता या अभिभावक।",
+                                "रैगिंग के शिकार या प्रत्यक्षदर्शी कोई भी व्यक्ति।"
+                        ]
+                },
+                "required_documents": {
+                        "en": [
+                                "College / University Name, State & City",
+                                "Name of the Principal / Director / Dean & College Phone Number",
+                                "Course / Degree Name (e.g. B.Tech, B.Sc, BA, MBBS, MBA)",
+                                "Student Registration / Roll / Admission Reference Number",
+                                "Valid Student Email Address & Mobile Number",
+                                "Valid Parent / Guardian Email Address & Mobile Number"
+                        ],
+                        "bn": [
+                                "কলেজ বা বিশ্ববিদ্যালয়ের নাম, রাজ্য ও জেলা",
+                                "অধ্যক্ষ (Principal) বা ডিরেক্টরের নাম ও যোগাযোগ নম্বর",
+                                "কোর্সের নাম (যেমন: B.Tech, BA, B.Sc, B.Com, MBBS ইত্যাদি)",
+                                "ভর্তি / রোল নম্বর",
+                                "শিক্ষার্থী ও অভিভাবকের সক্রিয় মোবাইল নম্বর এবং ইমেল আইডি"
+                        ],
+                        "hi": [
+                                "कॉलेज या विश्वविद्यालय का नाम, राज्य और शहर",
+                                "प्राचार्य / निदेशक का नाम और संपर्क विवरण",
+                                "कोर्स / डिग्री का नाम",
+                                "प्रवेश / रोल नंबर",
+                                "छात्र और अभिभावक का सक्रिय मोबाइल नंबर और ईमेल आईडी"
+                        ]
+                },
+                "application_fee": {
+                        "en": "100% Free of Cost. No stamp paper or notary required for online undertaking / affidavit.",
+                        "bn": "১০০% বিনামূল্যে। অনলাইন আন্ডারটেকিং বা এফিডেভিটের জন্য কোনো স্ট্যাম্প পেপার বা নোটারির প্রয়োজন নেই।",
+                        "hi": "100% निःशुल्क। ऑनलाइन शपथ पत्र हेतु किसी स्टाम्प पेपर या नोटरी की आवश्यकता नहीं है।"
+                },
+                "benefits": {
+                        "en": [
+                                "Instant generation of statutory Anti-Ragging Undertaking Reference Number & signed PDF for college admission submission.",
+                                "24x7 Toll-Free National Emergency Anti-Ragging Helpline (1800-180-5522) with zero charges.",
+                                "Strictly confidential reporting with fast-track escalation to Vice Chancellors, Police, and UGC monitoring committee.",
+                                "Free compliance tracking and complaint resolution tracking."
+                        ],
+                        "bn": [
+                                "কলেজ ভর্তির জন্য তাৎক্ষণিক অ্যান্টি-র‌্যাগিং রেফারেন্স নম্বর ও সাইন করা পিডিএফ ডাউনলোড।",
+                                "২৪x৭ টোল-ফ্রি জাতীয় জরুরি হেল্পলাইন (১৮০০-১৮০-৫৫২২)।",
+                                "সম্পূর্ণ গোপনীয়তার সাথে অভিযোগ দায়ের এবং দ্রুত পদক্ষেপ গ্রহণ।",
+                                "বিনামূল্যে কমপ্লায়েন্স ও রেজোলিউশন ট্র্যাকিং।"
+                        ],
+                        "hi": [
+                                "कॉलेज प्रवेश हेतु तत्काल एंटी-रैगिंग संदर्भ संख्या और पीडीएफ पावती।",
+                                "24x7 टोल-फ्री राष्ट्रीय आपातकालीन हेल्पलाइन (1800-180-5522)।",
+                                "गोपनीय शिकायत पंजीकरण और यूजीसी द्वारा त्वरित कार्रवाई।",
+                                "निःशुल्क अनुपालन और समाधान ट्रैकिंग।"
+                        ]
+                },
+                "process_steps": {
+                        "en": [
+                                "Step 1: Open the official portal at antiragging.in and click on 'Fill Undertaking / Affidavit'.",
+                                "Step 2: Choose your College type (Affiliated College / Standalone / University).",
+                                "Step 3: Enter student details, parent details, and college details accurately.",
+                                "Step 4: Confirm declaration and submit the online form.",
+                                "Step 5: Receive your Reference Number via SMS/Email and download the signed Anti-Ragging Undertaking PDF to submit to your college."
+                        ],
+                        "bn": [
+                                "ধাপ ১: antiragging.in অফিসিয়াল পোর্টালে যান এবং 'Fill Undertaking' অপশনে ক্লিক করুন।",
+                                "ধাপ ২: আপনার কলেজ বা বিশ্ববিদ্যালয়ের ধরন নির্বাচন করুন।",
+                                "ধাপ ৩: শিক্ষার্থী, অভিভাবক এবং কলেজের সঠিক তথ্য ও ফোন নম্বর পূরণ করুন।",
+                                "ধাপ ৪: ঘোষণাপত্র নিশ্চিত করে ফর্ম জমা দিন।",
+                                "ধাপ ৫: এসএমএস/ইমেলের মাধ্যমে রেফারেন্স নম্বর পান এবং ডাউনলোড করা পিডিএফ কপি কলেজে জমা দিন।"
+                        ],
+                        "hi": [
+                                "चरण 1: antiragging.in आधिकारिक पोर्टल पर जाएं और 'Fill Undertaking' पर क्लिक करें।",
+                                "चरण 2: अपने कॉलेज या विश्वविद्यालय का प्रकार चुनें।",
+                                "चरण 3: छात्र, अभिभावक और कॉलेज का सही विवरण दर्ज करें।",
+                                "चरण 4: घोषणा की पुष्टि करें और ऑनलाइन फॉर्म जमा करें।",
+                                "चरण 5: एसएमएस/ईमेल से संदर्भ संख्या प्राप्त करें और हस्ताक्षरित शपथ पत्र पीडीएफ डाउनलोड कर कॉलेज में जमा करें।"
+                        ]
+                },
+                "official_homepage": "https://www.antiragging.in/",
+                "official_apply_url": "https://www.antiragging.in/affidavit_registration_disclaimer.html",
+                "official_status_url": "https://www.antiragging.in/complaint_register_form.html",
+                "official_helpline": "1800-180-5522 (24x7 Toll-Free)",
+                "official_email": "helpline@antiragging.in",
+                "state": "All India",
+                "availability": "Online",
+                "active_status": true,
+                "verification_status": "officially_verified",
+                "source_url": "https://www.antiragging.in/",
+                "last_verified": "25 Sep 2026",
+                "is_popular": true,
+                "intent_tags": [
+                        "anti-ragging",
+                        "antiragging",
+                        "antiragging.in",
+                        "ragging",
+                        "anti ragging affidavit",
+                        "anti ragging undertaking",
+                        "ragging complaint",
+                        "ugc anti ragging",
+                        "anti ragging helpline",
+                        "18001805522",
+                        "college admission undertaking",
+                        "অ্যান্টি র‍্যাগিং",
+                        "র‌্যাগিং",
+                        "র‌্যাগিং অভিযোগ",
+                        "অ্যান্টি র‍্যাগিং হলফনামা",
+                        "एंटी रैगिंग",
+                        "रैगिंग",
+                        "रैगिंग शिकायत",
+                        "एंटी रैगिंग शपथ पत्र"
+                ]
+        },
+        {
                 "service_id": "ugc-higher-education-portal",
                 "service_name": {
                         "en": "University Grants Commission (UGC Portal & Scholarships)",

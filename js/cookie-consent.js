@@ -152,40 +152,36 @@
         const prefAnalytics = document.getElementById("prefAnalyticsToggle");
         const prefAds = document.getElementById("prefAdsToggle");
 
-        if (btnAcceptAll) {
-            btnAcceptAll.addEventListener("click", () => {
-                saveConsent(true, true);
-            });
+        function addListener(el, fn) {
+            if (!el) return;
+            el.addEventListener("click", fn);
+            el.addEventListener("touchend", function (e) {
+                e.preventDefault();
+                fn(e);
+            }, { passive: false });
         }
 
-        if (btnReject) {
-            btnReject.addEventListener("click", () => {
-                saveConsent(false, false);
-            });
-        }
-
-        if (btnManage && prefsPanel) {
-            btnManage.addEventListener("click", () => {
+        addListener(btnAcceptAll, () => saveConsent(true, true));
+        addListener(btnReject, () => saveConsent(false, false));
+        addListener(btnManage, () => {
+            if (prefsPanel) {
                 prefsPanel.style.display = prefsPanel.style.display === "none" ? "block" : "none";
-            });
-        }
-
-        if (btnPrefsClose && prefsPanel) {
-            btnPrefsClose.addEventListener("click", () => {
-                prefsPanel.style.display = "none";
-            });
-        }
-
-        if (btnSaveCustom && prefAnalytics && prefAds) {
-            btnSaveCustom.addEventListener("click", () => {
+            }
+        });
+        addListener(btnPrefsClose, () => {
+            if (prefsPanel) prefsPanel.style.display = "none";
+        });
+        addListener(btnSaveCustom, () => {
+            if (prefAnalytics && prefAds) {
                 saveConsent(prefAnalytics.checked, prefAds.checked);
-            });
-        }
+            }
+        });
     }
 
     function removeBanner() {
         const banner = document.getElementById("xestusCookieBanner");
         if (banner) {
+            banner.style.pointerEvents = "none";
             banner.classList.add("cookie-banner-fadeout");
             setTimeout(() => {
                 if (banner.parentNode) banner.parentNode.removeChild(banner);
