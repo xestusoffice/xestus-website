@@ -1,0 +1,8 @@
+# ==============================================================================
+# XESTUS (xestus.in) - Authorized Digital Sellers (ads.txt)
+# Google AdSense Policy Compliance Specification
+# ==============================================================================
+# Instructions:
+# Replace 'pub-XXXXXXXXXXXXXXXX' below with your verified Google AdSense Publisher ID
+# (e.g. pub-1234567890123456) once your Google AdSense account is approved.
+google.com, pub-1489572262543869, DIRECT, f08c47fec0942fa0

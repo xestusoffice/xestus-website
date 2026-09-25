@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var storedTheme = localStorage.getItem('xestus_theme');
+                if (storedTheme && ['night', 'day', 'eye-protect'].indexOf(storedTheme) !== -1) {
+                    document.documentElement.setAttribute('data-theme', storedTheme);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'day');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'night');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Analytics -->
+    <script src="js/cookie-consent.js"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+
+    <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869"
+     crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
+    <!-- Primary Metadata -->
+    <title>Cookie Policy | XESTUS — Cookies, Tracking &amp; Consent Management</title>
+    <meta name="description" content="Official Cookie Policy for XESTUS (xestus.in). Learn how we use essential, analytics, and advertising cookies (Google AdSense) with full Consent Mode v2 controls.">
+    <meta name="author" content="Sudip Khatua, XESTUS">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://xestus.in/cookie-policy.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="XESTUS">
+    <meta property="og:url" content="https://xestus.in/cookie-policy.html">
+    <meta property="og:title" content="Cookie Policy | XESTUS">
+    <meta property="og:description" content="Detailed Cookie Policy explaining essential cookies, analytics, Google AdSense cookies, and user consent controls.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/xestus-logo.png">
+    <link rel="apple-touch-icon" href="assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="style.css?v=3.9.6">
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <li class="desktop-nav-item"><a href="index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="tools/index.html" class="nav-link">Tools</a></li>
+                <li class="desktop-nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="btn-primary btn-nav-cta magnetic-btn">
+                    <span>Contact Us</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="policy-page-container" id="main-content">
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 24px;">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Cookie Policy</span>
+        </nav>
+
+        <header class="policy-header">
+            <div class="policy-badge-row">
+                <span class="badge badge-accent"><i data-lucide="cookie" style="width:14px;height:14px;"></i> COOKIE TRANSPARENCY</span>
+                <span class="digital-tag">CONSENT MODE V2</span>
+                <span class="tool-privacy-badge">USER CONTROLLED</span>
+            </div>
+            <h1 class="policy-title">Cookie Policy</h1>
+            <div class="policy-meta-bar">
+                <span><strong>Effective Date:</strong> January 1, 2026</span>
+                <span>•</span>
+                <span><strong>Entity:</strong> XESTUS (xestus.in)</span>
+            </div>
+        </header>
+
+        <div class="policy-content-card">
+            <div class="policy-section">
+                <h2><i data-lucide="info"></i> 1. What Are Cookies?</h2>
+                <p>
+                    Cookies are small text files that are placed on your computer or mobile device by websites that you visit. They are widely used in order to make websites work properly, provide custom features (such as dark/light theme persistence), ensure cyber defense, and provide anonymous analytical insights to website owners.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="list"></i> 2. Categories of Cookies We Use</h2>
+                
+                <h3 style="font-size:16px;color:var(--text-primary);margin:16px 0 8px;">A. Strictly Necessary Cookies (Always Active)</h3>
+                <p>
+                    These cookies and local storage tokens are essential for the operation of XESTUS. They include:
+                </p>
+                <ul>
+                    <li><code>xestus_theme</code>: Remembers your selected theme mode (Day, Night, or Eye-Protect).</li>
+                    <li><code>xestus_cookie_consent_v2</code>: Records your consent choices for GDPR &amp; Consent Mode v2 compliance.</li>
+                    <li><code>xestus_security_shield</code>: Client-side integrity tokens to prevent malicious automated scraping and script injection.</li>
+                </ul>
+
+                <h3 style="font-size:16px;color:var(--text-primary);margin:20px 0 8px;">B. Performance &amp; Analytics Cookies (Optional)</h3>
+                <p>
+                    We use Google Analytics (gtag.js ID: <code>G-EF3ZRR55YY</code>) to understand aggregate metrics like traffic volume, top viewed tools, and bounce rates. This data is entirely aggregated and anonymized.
+                </p>
+                <ul>
+                    <li><code>_ga</code>, <code>_ga_*</code>: Google Analytics cookies to distinguish unique anonymous sessions.</li>
+                </ul>
+
+                <h3 style="font-size:16px;color:var(--text-primary);margin:20px 0 8px;">C. Advertising &amp; DoubleClick Cookies (Google AdSense)</h3>
+                <p>
+                    Google and its advertising partners use cookies (such as the DoubleClick DART cookie) to serve relevant advertisements to visitors based on visits to XESTUS and other websites across the internet.
+                </p>
+                <ul>
+                    <li><code>__gads</code>, <code>__gpi</code>, <code>IDE</code>: Google AdSense and DoubleClick measurement and ad delivery cookies.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="sliders"></i> 3. How to Manage and Revoke Your Cookie Consent</h2>
+                <p>
+                    You have complete authority over your cookie preferences on XESTUS:
+                </p>
+                <div class="policy-highlight-box">
+                    <p style="margin-bottom:10px;"><strong>Change Cookie Preferences Now:</strong></p>
+                    <button type="button" class="btn-primary" onclick="if(window.XESTUS_COOKIE_CONSENT)window.XESTUS_COOKIE_CONSENT.openPreferences();" style="font-size:13px;padding:8px 20px;">
+                        <span>Open Cookie Preferences Panel</span>
+                    </button>
+                </div>
+                <p>
+                    Alternatively, you can manage or opt out of third-party advertising cookies through standard consumer choice portals:
+                </p>
+                <ul>
+                    <li><a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color:var(--cyan-bright);font-weight:600;">Google Ads Settings (Personalization Controls)</a></li>
+                    <li><a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener" style="color:var(--cyan-bright);font-weight:600;">Digital Advertising Alliance (DAA) Opt-Out</a></li>
+                    <li><a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener" style="color:var(--cyan-bright);font-weight:600;">European Interactive Digital Advertising Alliance (EDAA)</a></li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="mail"></i> 4. Contact Us</h2>
+                <p>
+                    If you have questions about our Cookie Policy, please email <a href="mailto:xestus.office@gmail.com" style="color:var(--cyan-bright);font-weight:600;">xestus.office@gmail.com</a>.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
+        <div class="footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="index.html#home" class="footer-logo">
+                        <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="privacy-policy.html" class="legal-link-btn">Privacy Policy</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="terms.html" class="legal-link-btn">Terms of Service</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="disclaimer.html" class="legal-link-btn">Disclaimer</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="cookie-policy.html" class="legal-link-btn" style="color:var(--cyan-bright);font-weight:600;">Cookie Policy</a>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="index.html" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) lucide.createIcons();
+
+            const themeKey = "xestus_theme";
+            const themeBtn = document.getElementById("themeBtn");
+            const themeSwitcher = document.getElementById("themeSwitcher");
+            const themeOpts = document.querySelectorAll(".theme-opt");
+            const currentLabel = document.querySelector(".theme-current-label");
+            const activeIcon = document.querySelector(".theme-active-icon");
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                try { localStorage.setItem(themeKey, theme); } catch (_) {}
+                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
+                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
+                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
+                if (window.lucide) lucide.createIcons();
+            }
+
+            const savedTheme = localStorage.getItem(themeKey) || "night";
+            setTheme(savedTheme);
+
+            if (themeBtn && themeSwitcher) {
+                themeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    themeSwitcher.classList.toggle("is-open");
+                });
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+        });
+    </script>
+    <script src="js/security-shield.js?v=3.9.5"></script>
+</body>
+</html>

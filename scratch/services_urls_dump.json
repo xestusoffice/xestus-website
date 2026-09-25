@@ -1,0 +1,848 @@
+[
+  {
+    "idx": 1,
+    "id": "wb-annapurna-bhandar-scheme",
+    "name": "Annapurna Bhandar Scheme (West Bengal)",
+    "apply": "https://socialsecurity.wb.gov.in/",
+    "home": "https://socialsecurity.wb.gov.in/",
+    "status": "https://socialsecurity.wb.gov.in/track-applicant-status",
+    "authority": "Department of Women & Child Development and Social Welfare, Govt of West Bengal"
+  },
+  {
+    "idx": 2,
+    "id": "wb-yuva-shakti-scheme",
+    "name": "Yuva Shakti Scheme & Portal (West Bengal)",
+    "apply": "https://employmentbankwb.gov.in/",
+    "home": "https://employmentbankwb.gov.in/",
+    "status": "https://employmentbankwb.gov.in/",
+    "authority": "Labour Department & Employment Bank, Government of West Bengal"
+  },
+  {
+    "idx": 3,
+    "id": "aadhaar-myaadhaar-update",
+    "name": "Aadhaar Services & Online Update (myAadhaar)",
+    "apply": "https://myaadhaar.uidai.gov.in/",
+    "home": "https://uidai.gov.in/",
+    "status": "https://myaadhaar.uidai.gov.in/check-aadhaar-status",
+    "authority": "Unique Identification Authority of India (UIDAI)"
+  },
+  {
+    "idx": 4,
+    "id": "voter-services-eci",
+    "name": "Voters' Service Portal (ECI — Form 6, 7, 8)",
+    "apply": "https://voters.eci.gov.in/",
+    "home": "https://voters.eci.gov.in/",
+    "status": "https://voters.eci.gov.in/home/track",
+    "authority": "Election Commission of India (ECI)"
+  },
+  {
+    "idx": 5,
+    "id": "pan-card-incometax-apply",
+    "name": "PAN Card Application & Instant e-PAN",
+    "apply": "https://eportal.incometax.gov.in/iec/foservices/#/pre-login/instant-e-pan",
+    "home": "https://www.incometax.gov.in/",
+    "status": "https://eportal.incometax.gov.in/iec/foservices/#/pre-login/instant-e-pan/check-status-download-pan",
+    "authority": "Income Tax Department (CBDT / Ministry of Finance)"
+  },
+  {
+    "idx": 6,
+    "id": "wb-ration-card-food-dept",
+    "name": "West Bengal Ration Card Services (Food & Supplies Dept)",
+    "apply": "https://rcms.wb.gov.in/",
+    "home": "https://food.wb.gov.in/",
+    "status": "https://food.wb.gov.in/food/check-ration-card-status.aspx",
+    "authority": "Department of Food & Supplies, Government of West Bengal"
+  },
+  {
+    "idx": 7,
+    "id": "wb-banglarbhumi-land-records",
+    "name": "Banglarbhumi Land Records & Mutation (West Bengal)",
+    "apply": "https://banglarbhumi.gov.in/BanglarBhumi/Home",
+    "home": "https://banglarbhumi.gov.in/",
+    "status": "https://banglarbhumi.gov.in/BanglarBhumi/KnowYourProperty",
+    "authority": "Land & Land Reforms and Refugee Relief & Rehabilitation Department, Govt of West Bengal"
+  },
+  {
+    "idx": 8,
+    "id": "passport-seva-portal",
+    "name": "Passport Seva Portal (Ministry of External Affairs)",
+    "apply": "https://portal2.passportindia.gov.in/AppOnlineProject/welcomeLink",
+    "home": "https://www.passportindia.gov.in/",
+    "status": "https://portal2.passportindia.gov.in/AppOnlineProject/statusTracker/trackStatusInpNew",
+    "authority": "Consular, Passport & Visa Division, Ministry of External Affairs, Govt of India"
+  },
+  {
+    "idx": 9,
+    "id": "parivahan-driving-licence-sarathi",
+    "name": "Driving Licence & Parivahan Sarathi Services",
+    "apply": "https://sarathi.parivahan.gov.in/sarathiservice/stateSelection.do",
+    "home": "https://parivahan.gov.in/",
+    "status": "https://sarathi.parivahan.gov.in/sarathiservice/applViewStatus.do",
+    "authority": "Ministry of Road Transport and Highways (MoRTH), Govt of India"
+  },
+  {
+    "idx": 10,
+    "id": "wb-svmcm-scholarship",
+    "name": "Swami Vivekananda Merit-cum-Means Scholarship (SVMCM / Bikash Bhavan)",
+    "apply": "https://svmcm.wbhed.gov.in/rest/registration",
+    "home": "https://svmcm.wbhed.gov.in/",
+    "status": "https://svmcm.wbhed.gov.in/rest/login",
+    "authority": "Department of Higher Education, Government of West Bengal"
+  },
+  {
+    "idx": 11,
+    "id": "nsp-national-scholarship-portal",
+    "name": "National Scholarship Portal (NSP 2.0 / One-Otr)",
+    "apply": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+    "home": "https://scholarships.gov.in/",
+    "status": "https://scholarships.gov.in/login",
+    "authority": "Ministry of Electronics & Information Technology / Ministry of Education, Govt of India"
+  },
+  {
+    "idx": 12,
+    "id": "ssc-recruitment-cgl-chsl-gd",
+    "name": "Staff Selection Commission (SSC — CGL, CHSL, MTS, GD)",
+    "apply": "https://ssc.gov.in/login",
+    "home": "https://ssc.gov.in/",
+    "status": "https://ssc.gov.in/candidate-portal/application-status",
+    "authority": "Staff Selection Commission, Department of Personnel and Training (DoPT), Govt of India"
+  },
+  {
+    "idx": 13,
+    "id": "wb-swasthya-sathi-scheme",
+    "name": "Swasthya Sathi Health Card (West Bengal)",
+    "apply": "https://swasthyasathi.gov.in/",
+    "home": "https://swasthyasathi.gov.in/",
+    "status": "https://swasthyasathi.gov.in/Home/FindYourName",
+    "authority": "Department of Health & Family Welfare, Government of West Bengal"
+  },
+  {
+    "idx": 14,
+    "id": "pm-kisan-krishak-bandhu",
+    "name": "PM-KISAN Samman Nidhi & Krishak Bandhu (WB)",
+    "apply": "https://pmkisan.gov.in/RegistrationFormNew.aspx",
+    "home": "https://pmkisan.gov.in/",
+    "status": "https://pmkisan.gov.in/BeneficiaryStatus_New.aspx",
+    "authority": "Ministry of Agriculture (Govt of India) / Agriculture Dept (Govt of WB)"
+  },
+  {
+    "idx": 15,
+    "id": "national-cyber-crime-portal-1930",
+    "name": "National Cyber Crime Reporting Portal & Helpline 1930",
+    "apply": "https://cybercrime.gov.in/Webform/Crime_AuthoLogin.aspx",
+    "home": "https://cybercrime.gov.in/",
+    "status": "https://cybercrime.gov.in/Webform/CheckStatus.aspx",
+    "authority": "Indian Cyber Crime Coordination Centre (I4C), Ministry of Home Affairs, Govt of India"
+  },
+  {
+    "idx": 16,
+    "id": "wbcap-centralized-admission",
+    "name": "WB Centralized UG Admission Portal (WBCAP)",
+    "apply": "https://wbcap.in/",
+    "home": "https://wbcap.in/",
+    "status": "https://wbcap.in/",
+    "authority": "Department of Higher Education, Government of West Bengal"
+  },
+  {
+    "idx": 17,
+    "id": "aicte-internship-portal-india",
+    "name": "AICTE National Internship Portal & PM Internships",
+    "apply": "https://internship.aicte-india.org/register_new.php",
+    "home": "https://internship.aicte-india.org/",
+    "status": "https://internship.aicte-india.org/login_student.php",
+    "authority": "All India Council for Technical Education (AICTE), Ministry of Education, Govt of India"
+  },
+  {
+    "idx": 18,
+    "id": "pm-surya-ghar-muft-bijli",
+    "name": "PM Surya Ghar: Muft Bijli Yojana (Rooftop Solar)",
+    "apply": "https://pmsuryaghar.gov.in/consumerRegistration",
+    "home": "https://pmsuryaghar.gov.in/",
+    "status": "https://pmsuryaghar.gov.in/consumerLogin",
+    "authority": "Ministry of New and Renewable Energy (MNRE), Govt of India"
+  },
+  {
+    "idx": 19,
+    "id": "wb-student-credit-card-wbscc",
+    "name": "West Bengal Student Credit Card Scheme (WBSCC)",
+    "apply": "https://wbscc.wb.gov.in/Student_Registration",
+    "home": "https://wbscc.wb.gov.in/",
+    "status": "https://wbscc.wb.gov.in/Student_Login",
+    "authority": "Department of Higher Education, Government of West Bengal"
+  },
+  {
+    "idx": 20,
+    "id": "udyam-msme-business-registration",
+    "name": "Udyam Registration Portal (MSME / Business)",
+    "apply": "https://udyamregistration.gov.in/Udyam_Registration.aspx",
+    "home": "https://udyamregistration.gov.in/",
+    "status": "https://udyamregistration.gov.in/Print_Certificate.aspx",
+    "authority": "Ministry of Micro, Small and Medium Enterprises, Govt of India"
+  },
+  {
+    "idx": 21,
+    "id": "wbsedcl-electricity-services",
+    "name": "WBSEDCL Electricity Services & Bill Payment",
+    "apply": "https://www.wbsedcl.in/irj/go/km/docs/internet/webpage/new_connection.html",
+    "home": "https://www.wbsedcl.in/",
+    "status": "https://www.wbsedcl.in/irj/go/km/docs/internet/webpage/Quick_Pay.html",
+    "authority": "West Bengal State Electricity Distribution Company Limited (WBSEDCL)"
+  },
+  {
+    "idx": 22,
+    "id": "wb-janma-mrityu-birth-cert",
+    "name": "Birth & Death Certificate Services (Janma-Mrityu Tathya WB)",
+    "apply": "https://janmamrityutathya.wb.gov.in/",
+    "home": "https://janmamrityutathya.wb.gov.in/",
+    "status": "https://janmamrityutathya.wb.gov.in/",
+    "authority": "Department of Health & Family Welfare, Government of West Bengal"
+  },
+  {
+    "idx": 23,
+    "id": "wb-caste-certificate-sc-st-obc",
+    "name": "Caste Certificate Application (SC, ST & OBC — West Bengal)",
+    "apply": "https://castecertificatewb.gov.in/",
+    "home": "https://castecertificatewb.gov.in/",
+    "status": "https://castecertificatewb.gov.in/check-status",
+    "authority": "Backward Classes Welfare Department, Government of West Bengal"
+  },
+  {
+    "idx": 24,
+    "id": "wb-edistrict-income-domicile",
+    "name": "Income, Domicile & Residential Certificates (WB e-District 2.0)",
+    "apply": "https://edistrict.wb.gov.in/",
+    "home": "https://edistrict.wb.gov.in/",
+    "status": "https://edistrict.wb.gov.in/",
+    "authority": "Department of Personnel & Administrative Reforms, Government of West Bengal"
+  },
+  {
+    "idx": 25,
+    "id": "wb-kanyashree-prakalpa",
+    "name": "Kanyashree Prakalpa (K1, K2 & K3 Schemes — West Bengal)",
+    "apply": "https://www.wbkanyashree.gov.in/",
+    "home": "https://www.wbkanyashree.gov.in/",
+    "status": "https://www.wbkanyashree.gov.in/track_application",
+    "authority": "Department of Women & Child Development and Social Welfare, Government of West Bengal"
+  },
+  {
+    "idx": 26,
+    "id": "wb-rupashree-prakalpa",
+    "name": "Rupashree Prakalpa (One-Time Marriage Grant of ₹25,000 — West Bengal)",
+    "apply": "https://wbrupashree.gov.in/",
+    "home": "https://wbrupashree.gov.in/",
+    "status": "https://wbrupashree.gov.in/track_status",
+    "authority": "Department of Women & Child Development and Social Welfare, Government of West Bengal"
+  },
+  {
+    "idx": 27,
+    "id": "wb-jai-bangla-pension",
+    "name": "Jai Bangla Pension Scheme (Old Age, Widow & Disability — West Bengal)",
+    "apply": "https://jaibangla.wb.gov.in/",
+    "home": "https://jaibangla.wb.gov.in/",
+    "status": "https://jaibangla.wb.gov.in/",
+    "authority": "Department of Women & Child Development and Social Welfare / BCW / Tribal Development, Government of West Bengal"
+  },
+  {
+    "idx": 28,
+    "id": "eshram-national-unorganized-workers",
+    "name": "e-Shram Portal (National Database of Unorganized Workers — eShram Card)",
+    "apply": "https://register.eshram.gov.in/",
+    "home": "https://eshram.gov.in/",
+    "status": "https://register.eshram.gov.in/",
+    "authority": "Ministry of Labour & Employment, Government of India"
+  },
+  {
+    "idx": 29,
+    "id": "epfo-uan-member-passbook",
+    "name": "EPFO UAN Member Portal & PF Passbook / Claims",
+    "apply": "https://unifiedportal-mem.epfindia.gov.in/memberinterface/",
+    "home": "https://www.epfindia.gov.in/",
+    "status": "https://passbook.epfindia.gov.in/MemberPassBook/Login",
+    "authority": "Employees' Provident Fund Organisation, Ministry of Labour & Employment, Government of India"
+  },
+  {
+    "idx": 30,
+    "id": "irctc-indian-railway-train-booking",
+    "name": "IRCTC Official Train Ticket Booking & Live PNR Status",
+    "apply": "https://www.irctc.co.in/nget/train-search",
+    "home": "https://www.irctc.co.in/",
+    "status": "https://www.indianrail.gov.in/enquiry/PNR/PnrEnquiry.html",
+    "authority": "Indian Railway Catering and Tourism Corporation (IRCTC) / Ministry of Railways"
+  },
+  {
+    "idx": 31,
+    "id": "wbtc-wb-government-bus-services",
+    "name": "West Bengal Transport Corporation (WBTC Official Bus Booking & Schedules)",
+    "apply": "https://online.wbtc.co.in/",
+    "home": "https://wbtc.co.in/",
+    "status": "https://online.wbtc.co.in/",
+    "authority": "West Bengal Transport Corporation (WBTC) / Transport Department, Government of West Bengal"
+  },
+  {
+    "idx": 32,
+    "id": "upsc-civil-services-nda-cds",
+    "name": "Union Public Service Commission (UPSC Civil Services, NDA, CDS & OTR)",
+    "apply": "https://upsconline.nic.in/",
+    "home": "https://upsc.gov.in/",
+    "status": "https://upsconline.nic.in/",
+    "authority": "Union Public Service Commission (UPSC), Government of India"
+  },
+  {
+    "idx": 33,
+    "id": "wbpsc-recruitment-wbcs-clerkship",
+    "name": "West Bengal Public Service Commission (WBPSC — WBCS, Clerkship & Misc)",
+    "apply": "https://psc.wb.gov.in/",
+    "home": "https://psc.wb.gov.in/",
+    "status": "https://psc.wb.gov.in/",
+    "authority": "Public Service Commission, West Bengal"
+  },
+  {
+    "idx": 34,
+    "id": "wbp-police-recruitment-constable-si",
+    "name": "West Bengal Police Recruitment Board (WBPRB — Constable, SI & Kolkata Police)",
+    "apply": "https://prb.wb.gov.in/",
+    "home": "https://prb.wb.gov.in/",
+    "status": "https://prb.wb.gov.in/",
+    "authority": "West Bengal Police Recruitment Board (WBPRB), Government of West Bengal"
+  },
+  {
+    "idx": 35,
+    "id": "rrb-indian-railway-recruitment-board",
+    "name": "Railway Recruitment Boards (RRB Centralized — ALP, Technician, NTPC & Group D)",
+    "apply": "https://www.rrbapply.gov.in/",
+    "home": "https://www.rrbapply.gov.in/",
+    "status": "https://www.rrbapply.gov.in/",
+    "authority": "Railway Recruitment Control Board, Ministry of Railways, Government of India"
+  },
+  {
+    "idx": 36,
+    "id": "lpg-cylinder-booking-ujjwala",
+    "name": "LPG Gas Services (Indane, Bharat Gas, HP Gas & PM Ujjwala Yojana)",
+    "apply": "https://pmuy.gov.in/",
+    "home": "https://mylpg.in/",
+    "status": "https://mylpg.in/",
+    "authority": "Ministry of Petroleum & Natural Gas / IOCL, BPCL, HPCL"
+  },
+  {
+    "idx": 37,
+    "id": "ayushman-bharat-pmjay-abha",
+    "name": "Ayushman Bharat PM-JAY & ABHA Digital Health Card (Ayushman Card)",
+    "apply": "https://abha.abdm.gov.in/",
+    "home": "https://abdm.gov.in/",
+    "status": "https://beneficiary.nha.gov.in/",
+    "authority": "National Health Authority (NHA), Ministry of Health & Family Welfare, Government of India"
+  },
+  {
+    "idx": 38,
+    "id": "ecourts-services-case-status",
+    "name": "e-Courts Services (Case Status, Cause Lists & Judgments — Supreme Court to District Courts)",
+    "apply": "https://services.ecourts.gov.in/ecourtindia_v6/",
+    "home": "https://ecourts.gov.in/",
+    "status": "https://services.ecourts.gov.in/ecourtindia_v6/",
+    "authority": "e-Committee, Supreme Court of India & Department of Justice, Government of India"
+  },
+  {
+    "idx": 39,
+    "id": "rti-online-portal-india",
+    "name": "RTI Online Portal (Right to Information Application & First Appeal)",
+    "apply": "https://rtionline.gov.in/RTI/index.php",
+    "home": "https://rtionline.gov.in/",
+    "status": "https://rtionline.gov.in/request/status.php",
+    "authority": "Department of Personnel & Training, Government of India"
+  },
+  {
+    "idx": 40,
+    "id": "ncs-national-career-service",
+    "name": "National Career Service Portal (NCS — Free Job Match & Career Centers)",
+    "apply": "https://www.ncs.gov.in/",
+    "home": "https://www.ncs.gov.in/",
+    "status": "https://www.ncs.gov.in/",
+    "authority": "Ministry of Labour & Employment, Government of India"
+  },
+  {
+    "idx": 41,
+    "id": "private-makemytrip-cleartrip-travel",
+    "name": "Private Multi-Modal Travel Portals (MakeMyTrip, RedBus & ClearTrip)",
+    "apply": "https://www.makemytrip.com/",
+    "home": "https://www.makemytrip.com/",
+    "status": "https://www.redbus.in/",
+    "authority": "MakeMyTrip India / RedBus / ClearTrip Private Limited"
+  },
+  {
+    "idx": 42,
+    "id": "private-naukri-linkedin-jobs",
+    "name": "Verified Private Careers & Job Portals (LinkedIn Jobs & Naukri.com)",
+    "apply": "https://www.linkedin.com/jobs/",
+    "home": "https://www.linkedin.com/jobs/",
+    "status": "https://www.naukri.com/",
+    "authority": "LinkedIn Corporation / Info Edge India Ltd (Naukri)"
+  },
+  {
+    "idx": 43,
+    "id": "incometax-efiling-itr",
+    "name": "Income Tax e-Filing & ITR Portal",
+    "apply": "https://www.incometax.gov.in/iec/foposervices/",
+    "home": "https://www.incometax.gov.in/",
+    "status": "https://eportal.incometax.gov.in/iec/foservices/#/pre-login/itrStatus",
+    "authority": "Income Tax Department, Ministry of Finance, Govt of India"
+  },
+  {
+    "idx": 44,
+    "id": "digilocker-digital-documents",
+    "name": "DigiLocker Digital Document Wallet",
+    "apply": "https://www.digilocker.gov.in/",
+    "home": "https://www.digilocker.gov.in/",
+    "status": "https://www.digilocker.gov.in/",
+    "authority": "Ministry of Electronics and Information Technology (MeitY), Govt of India"
+  },
+  {
+    "idx": 45,
+    "id": "parivahan-vahan-vehicle-rc",
+    "name": "Vehicle Registration & RC Services (Vahan)",
+    "apply": "https://vahan.parivahan.gov.in/vahanservice/",
+    "home": "https://parivahan.gov.in/",
+    "status": "https://vahan.parivahan.gov.in/vahanservice/vahan/ui/appl_status/form_Status_Check.xhtml",
+    "authority": "Ministry of Road Transport and Highways (MoRTH), Govt of India"
+  },
+  {
+    "idx": 46,
+    "id": "parivahan-echallan-traffic",
+    "name": "Traffic eChallan Payment Portal",
+    "apply": "https://echallan.parivahan.gov.in/index/accused-challan",
+    "home": "https://echallan.parivahan.gov.in/",
+    "status": "https://echallan.parivahan.gov.in/index/accused-challan",
+    "authority": "Ministry of Road Transport and Highways (MoRTH), Govt of India"
+  },
+  {
+    "idx": 47,
+    "id": "gst-portal-goods-services-tax",
+    "name": "GST Portal (Goods and Services Tax)",
+    "apply": "https://reg.gst.gov.in/registration/",
+    "home": "https://www.gst.gov.in/",
+    "status": "https://services.gst.gov.in/services/arnstatus",
+    "authority": "Goods and Services Tax Network (GSTN) / CBIC, Govt of India"
+  },
+  {
+    "idx": 48,
+    "id": "swayam-nptel-free-learning",
+    "name": "SWAYAM & NPTEL Free Learning & Credits",
+    "apply": "https://swayam.gov.in/",
+    "home": "https://swayam.gov.in/",
+    "status": "https://swayam.gov.in/",
+    "authority": "Ministry of Education (MoE) / IIT Madras / AICTE, Govt of India"
+  },
+  {
+    "idx": 49,
+    "id": "wb-bsk-bangla-sahayata-kendra",
+    "name": "Bangla Sahayata Kendra (BSK) Master Gateway",
+    "apply": "https://bsk.wb.gov.in/",
+    "home": "https://bsk.wb.gov.in/",
+    "status": "https://bsk.wb.gov.in/",
+    "authority": "Personnel & Administrative Reforms Department, Government of West Bengal"
+  },
+  {
+    "idx": 50,
+    "id": "wb-duare-sarkar-camps",
+    "name": "Duare Sarkar Outreach & Camps Portal",
+    "apply": "https://ds.wb.gov.in/",
+    "home": "https://ds.wb.gov.in/",
+    "status": "https://ds.wb.gov.in/",
+    "authority": "Government of West Bengal"
+  },
+  {
+    "idx": 51,
+    "id": "wb-banglar-yuva-sathi",
+    "name": "Banglar Yuva Sathi Scheme Portal",
+    "apply": "https://wb.gov.in/",
+    "home": "https://wb.gov.in/",
+    "status": "https://wb.gov.in/",
+    "authority": "Department of Youth Services and Sports, Government of West Bengal"
+  },
+  {
+    "idx": 52,
+    "id": "pvt-sbi-online-banking",
+    "name": "State Bank of India (SBI Online Banking)",
+    "apply": "https://www.onlinesbi.sbi/",
+    "home": "https://www.sbi.co.in/",
+    "status": "https://www.onlinesbi.sbi/",
+    "authority": "State Bank of India (Corporate Entity)"
+  },
+  {
+    "idx": 53,
+    "id": "pvt-npci-bhim-upi",
+    "name": "BHIM & NPCI Digital Payments Portal",
+    "apply": "https://www.npci.org.in/what-we-do/upi/dispute-redressal-mechanism",
+    "home": "https://www.npci.org.in/",
+    "status": "https://www.npci.org.in/",
+    "authority": "National Payments Corporation of India (NPCI)"
+  },
+  {
+    "idx": 54,
+    "id": "esic-medical-portal",
+    "name": "ESIC Insured Person Portal & Health Benefits",
+    "apply": "https://www.esic.gov.in/",
+    "home": "https://www.esic.gov.in/",
+    "status": "https://www.esic.gov.in/",
+    "authority": "Employees' State Insurance Corporation (Ministry of Labour & Employment)"
+  },
+  {
+    "idx": 55,
+    "id": "national-apprenticeship-portal",
+    "name": "National Apprenticeship Training Scheme (NAPS / NATS)",
+    "apply": "https://www.apprenticeshipindia.gov.in/",
+    "home": "https://www.apprenticeshipindia.gov.in/",
+    "status": "https://www.apprenticeshipindia.gov.in/",
+    "authority": "Ministry of Skill Development & Entrepreneurship (MSDE)"
+  },
+  {
+    "idx": 56,
+    "id": "ugc-higher-education-portal",
+    "name": "University Grants Commission (UGC Portal & Scholarships)",
+    "apply": "https://www.ugc.gov.in/",
+    "home": "https://www.ugc.gov.in/",
+    "status": "https://www.ugc.gov.in/",
+    "authority": "University Grants Commission (Ministry of Education)"
+  },
+  {
+    "idx": 57,
+    "id": "aicte-technical-education-portal",
+    "name": "AICTE Technical Education & Pragati / Saksham Scholarships",
+    "apply": "https://scholarships.gov.in/",
+    "home": "https://www.aicte-india.org/",
+    "status": "https://www.aicte-india.org/",
+    "authority": "All India Council for Technical Education (AICTE)"
+  },
+  {
+    "idx": 58,
+    "id": "abc-academic-bank-credits",
+    "name": "Academic Bank of Credits (ABC ID / APAAR Digital Identity)",
+    "apply": "https://www.abc.gov.in/",
+    "home": "https://www.abc.gov.in/",
+    "status": "https://www.abc.gov.in/",
+    "authority": "Ministry of Education & DigiLocker (NeGD)"
+  },
+  {
+    "idx": 59,
+    "id": "nta-entrance-examinations-portal",
+    "name": "National Testing Agency (NTA Exams — CUET, JEE Main, NEET UG)",
+    "apply": "https://exams.nta.ac.in/",
+    "home": "https://nta.ac.in/",
+    "status": "https://exams.nta.ac.in/",
+    "authority": "National Testing Agency (Department of Higher Education)"
+  },
+  {
+    "idx": 60,
+    "id": "enam-national-agriculture-market",
+    "name": "e-NAM (National Agriculture Market Portal)",
+    "apply": "https://www.enam.gov.in/",
+    "home": "https://www.enam.gov.in/",
+    "status": "https://www.enam.gov.in/",
+    "authority": "Small Farmers' Agribusiness Consortium (Ministry of Agriculture & Farmers Welfare)"
+  },
+  {
+    "idx": 61,
+    "id": "soil-health-card-portal",
+    "name": "Soil Health Card Scheme Portal",
+    "apply": "https://soilhealth.dac.gov.in/",
+    "home": "https://soilhealth.dac.gov.in/",
+    "status": "https://soilhealth.dac.gov.in/",
+    "authority": "Department of Agriculture & Farmers Welfare"
+  },
+  {
+    "idx": 62,
+    "id": "mca21-company-incorporation",
+    "name": "MCA21 Portal (Company & LLP Incorporation / Filings)",
+    "apply": "https://www.mca.gov.in/content/mca/global/en/home.html",
+    "home": "https://www.mca.gov.in/",
+    "status": "https://www.mca.gov.in/content/mca/global/en/mca/master-data/MDS.html",
+    "authority": "Ministry of Corporate Affairs (MCA)"
+  },
+  {
+    "idx": 63,
+    "id": "startup-india-hub-portal",
+    "name": "Startup India Portal (DPIIT Recognition & Seed Fund)",
+    "apply": "https://www.startupindia.gov.in/",
+    "home": "https://www.startupindia.gov.in/",
+    "status": "https://www.startupindia.gov.in/",
+    "authority": "Department for Promotion of Industry and Internal Trade (DPIIT)"
+  },
+  {
+    "idx": 64,
+    "id": "gem-government-emarketplace",
+    "name": "GeM Portal (Government e-Marketplace Seller Onboarding)",
+    "apply": "https://gem.gov.in/",
+    "home": "https://gem.gov.in/",
+    "status": "https://gem.gov.in/",
+    "authority": "GeM SPV (Ministry of Commerce and Industry)"
+  },
+  {
+    "idx": 65,
+    "id": "esanjeevani-teleconsultation",
+    "name": "eSanjeevani National Telemedicine Service (Free Doctor Consultation)",
+    "apply": "https://esanjeevani.in/",
+    "home": "https://esanjeevani.in/",
+    "status": "https://esanjeevani.in/",
+    "authority": "Ministry of Health and Family Welfare & C-DAC Mohali"
+  },
+  {
+    "idx": 66,
+    "id": "pfms-public-financial-management",
+    "name": "PFMS Portal (Direct Benefit Transfer DBT & Payment Status)",
+    "apply": "https://pfms.nic.in/static/NewLayout_KnowYourPayments.aspx",
+    "home": "https://pfms.nic.in/",
+    "status": "https://pfms.nic.in/",
+    "authority": "Controller General of Accounts (Ministry of Finance)"
+  },
+  {
+    "idx": 67,
+    "id": "pmjdy-financial-inclusion",
+    "name": "Pradhan Mantri Jan Dhan Yojana (PMJDY Zero Balance Account)",
+    "apply": "https://pmjdy.gov.in/",
+    "home": "https://pmjdy.gov.in/",
+    "status": "https://pmjdy.gov.in/",
+    "authority": "Department of Financial Services (Ministry of Finance)"
+  },
+  {
+    "idx": 68,
+    "id": "wb-edeed-property-registration",
+    "name": "West Bengal e-Deed & Property Registration (wbregistration.gov.in)",
+    "apply": "https://wbregistration.gov.in/(S(0w4r2j2e4a4z4k55z5x5a555))/Index.aspx",
+    "home": "https://wbregistration.gov.in/",
+    "status": "https://wbregistration.gov.in/",
+    "authority": "Directorate of Registration and Stamp Revenue (Finance Department, Govt of West Bengal)"
+  },
+  {
+    "idx": 69,
+    "id": "wb-annapurna-yojana-food",
+    "name": "Annapurna Scheme (Free Foodgrain for Indigent Senior Citizens — WB)",
+    "apply": "https://food.wb.gov.in/",
+    "home": "https://food.wb.gov.in/",
+    "status": "https://food.wb.gov.in/",
+    "authority": "Department of Food & Supplies (Government of West Bengal)"
+  },
+  {
+    "idx": 70,
+    "id": "wb-krishak-bandhu-scheme",
+    "name": "Krishak Bandhu (Assured Financial Assistance & ₹2 Lakh Death Benefit)",
+    "apply": "https://krishakbandhu.wb.gov.in/",
+    "home": "https://krishakbandhu.wb.gov.in/",
+    "status": "https://krishakbandhu.wb.gov.in/check_status",
+    "authority": "Department of Agriculture (Government of West Bengal)"
+  },
+  {
+    "idx": 71,
+    "id": "wb-matir-katha-agriculture",
+    "name": "Matir Katha (Agriculture Technology & Crop Advisory Portal — WB)",
+    "apply": "https://matirkatha.net/",
+    "home": "https://matirkatha.net/",
+    "status": "https://matirkatha.net/",
+    "authority": "Department of Agriculture (Government of West Bengal)"
+  },
+  {
+    "idx": 72,
+    "id": "wb-bmssy-social-security",
+    "name": "Bina Mulya Samajik Suraksha Yojana (BMSSY Unorganized Workers Scheme)",
+    "apply": "https://bmssy.wblabour.gov.in/",
+    "home": "https://bmssy.wblabour.gov.in/",
+    "status": "https://bmssy.wblabour.gov.in/",
+    "authority": "Labour Department (Government of West Bengal)"
+  },
+  {
+    "idx": 73,
+    "id": "pvt-hdfc-netbanking",
+    "name": "HDFC Bank NetBanking Portal",
+    "apply": "https://netbanking.hdfcbank.com/netbanking/",
+    "home": "https://www.hdfcbank.com/",
+    "status": "https://netbanking.hdfcbank.com/",
+    "authority": "HDFC Bank Limited (Corporate Entity)"
+  },
+  {
+    "idx": 74,
+    "id": "pvt-icici-netbanking",
+    "name": "ICICI Bank Internet Banking Portal",
+    "apply": "https://www.icicibank.com/",
+    "home": "https://www.icicibank.com/",
+    "status": "https://www.icicibank.com/",
+    "authority": "ICICI Bank Limited (Corporate Entity)"
+  },
+  {
+    "idx": 75,
+    "id": "pvt-axis-netbanking",
+    "name": "Axis Bank Internet Banking Portal",
+    "apply": "https://www.axisbank.com/",
+    "home": "https://www.axisbank.com/",
+    "status": "https://www.axisbank.com/",
+    "authority": "Axis Bank Limited (Corporate Entity)"
+  },
+  {
+    "idx": 76,
+    "id": "pvt-pnb-netbanking",
+    "name": "Punjab National Bank (PNB Internet Banking & PNB One)",
+    "apply": "https://netpnb.com/",
+    "home": "https://www.pnbindia.in/",
+    "status": "https://netpnb.com/",
+    "authority": "Punjab National Bank (Public Sector Undertaking)"
+  },
+  {
+    "idx": 77,
+    "id": "pvt-bob-netbanking",
+    "name": "Bank of Baroda (bob World & Baroda Connect)",
+    "apply": "https://www.bobibanking.com/",
+    "home": "https://www.bankofbaroda.in/",
+    "status": "https://www.bobibanking.com/",
+    "authority": "Bank of Baroda (Public Sector Undertaking)"
+  },
+  {
+    "idx": 78,
+    "id": "pvt-phonepe-payments",
+    "name": "PhonePe UPI & Digital Payments Portal",
+    "apply": "https://www.phonepe.com/",
+    "home": "https://www.phonepe.com/",
+    "status": "https://www.phonepe.com/",
+    "authority": "PhonePe Private Limited (NPCI Regulated)"
+  },
+  {
+    "idx": 79,
+    "id": "pvt-google-pay-payments",
+    "name": "Google Pay India (GPay UPI Payments)",
+    "apply": "https://pay.google.com/about/",
+    "home": "https://pay.google.com/about/",
+    "status": "https://pay.google.com/about/",
+    "authority": "Google India Digital Services Private Limited"
+  },
+  {
+    "idx": 80,
+    "id": "pvt-amazon-india-shopping",
+    "name": "Amazon India (E-Commerce & Digital Marketplace)",
+    "apply": "https://www.amazon.in/",
+    "home": "https://www.amazon.in/",
+    "status": "https://www.amazon.in/",
+    "authority": "Amazon Seller Services Private Limited"
+  },
+  {
+    "idx": 81,
+    "id": "pvt-flipkart-shopping",
+    "name": "Flipkart Online Shopping Marketplace",
+    "apply": "https://www.flipkart.com/",
+    "home": "https://www.flipkart.com/",
+    "status": "https://www.flipkart.com/",
+    "authority": "Flipkart Internet Private Limited"
+  },
+  {
+    "idx": 82,
+    "id": "pvt-meesho-shopping",
+    "name": "Meesho (Affordable Fashion & Reselling Marketplace)",
+    "apply": "https://www.meesho.com/",
+    "home": "https://www.meesho.com/",
+    "status": "https://www.meesho.com/",
+    "authority": "Fashnear Technologies Private Limited"
+  },
+  {
+    "idx": 83,
+    "id": "pvt-myntra-fashion",
+    "name": "Myntra (Fashion & Lifestyle E-Commerce)",
+    "apply": "https://www.myntra.com/",
+    "home": "https://www.myntra.com/",
+    "status": "https://www.myntra.com/",
+    "authority": "Myntra Designs Private Limited"
+  },
+  {
+    "idx": 84,
+    "id": "pvt-ajio-shopping",
+    "name": "AJIO (Reliance Digital Fashion Marketplace)",
+    "apply": "https://www.ajio.com/",
+    "home": "https://www.ajio.com/",
+    "status": "https://www.ajio.com/",
+    "authority": "Reliance Retail Limited"
+  },
+  {
+    "idx": 85,
+    "id": "pvt-linkedin-careers",
+    "name": "LinkedIn (Professional Network & Career Search)",
+    "apply": "https://www.linkedin.com/jobs/",
+    "home": "https://www.linkedin.com/",
+    "status": "https://www.linkedin.com/",
+    "authority": "LinkedIn Corporation (Microsoft)"
+  },
+  {
+    "idx": 86,
+    "id": "pvt-naukri-portal",
+    "name": "Naukri.com (India's Largest Job Portal)",
+    "apply": "https://www.naukri.com/",
+    "home": "https://www.naukri.com/",
+    "status": "https://www.naukri.com/",
+    "authority": "Info Edge (India) Limited"
+  },
+  {
+    "idx": 87,
+    "id": "pvt-indeed-india-jobs",
+    "name": "Indeed India (Global Job Search Engine)",
+    "apply": "https://in.indeed.com/",
+    "home": "https://in.indeed.com/",
+    "status": "https://in.indeed.com/",
+    "authority": "Indeed India Operations Private Limited"
+  },
+  {
+    "idx": 88,
+    "id": "pvt-internshala-internships",
+    "name": "Internshala (Paid Student Internships & Entry-Level Jobs)",
+    "apply": "https://internshala.com/internships/",
+    "home": "https://internshala.com/",
+    "status": "https://internshala.com/",
+    "authority": "Scholiverse Educare Private Limited (AICTE Partner)"
+  },
+  {
+    "idx": 89,
+    "id": "pvt-apna-career-app",
+    "name": "Apna (Local City Jobs & Skill Community)",
+    "apply": "https://apna.co/",
+    "home": "https://apna.co/",
+    "status": "https://apna.co/",
+    "authority": "Apna Technologies Private Limited"
+  },
+  {
+    "idx": 90,
+    "id": "pvt-foundit-career-search",
+    "name": "Foundit India (Formerly Monster India Careers)",
+    "apply": "https://www.foundit.in/",
+    "home": "https://www.foundit.in/",
+    "status": "https://www.foundit.in/",
+    "authority": "Monster.com India Private Limited (Foundit)"
+  },
+  {
+    "idx": 91,
+    "id": "pvt-jio-telecom-services",
+    "name": "Reliance Jio (Jio Prepaid, Postpaid & JioFiber Broadband)",
+    "apply": "https://www.jio.com/selfcare/recharge/mobility/",
+    "home": "https://www.jio.com/",
+    "status": "https://www.jio.com/",
+    "authority": "Reliance Jio Infocomm Limited"
+  },
+  {
+    "idx": 92,
+    "id": "pvt-airtel-telecom-services",
+    "name": "Bharti Airtel (Airtel Prepaid, Postpaid & Xstream Fiber)",
+    "apply": "https://www.airtel.in/recharge-online",
+    "home": "https://www.airtel.in/",
+    "status": "https://www.airtel.in/",
+    "authority": "Bharti Airtel Limited"
+  },
+  {
+    "idx": 93,
+    "id": "pvt-vi-telecom-services",
+    "name": "Vodafone Idea (Vi Prepaid & Postpaid Services)",
+    "apply": "https://www.myvi.in/prepaid/online-mobile-recharge",
+    "home": "https://www.myvi.in/",
+    "status": "https://www.myvi.in/",
+    "authority": "Vodafone Idea Limited"
+  },
+  {
+    "idx": 94,
+    "id": "pvt-bsnl-telecom-services",
+    "name": "BSNL (Bharat Sanchar Nigam Limited — Mobile & Bharat Fibre)",
+    "apply": "https://portal.bsnl.in/",
+    "home": "https://www.bsnl.co.in/",
+    "status": "https://portal.bsnl.in/",
+    "authority": "Bharat Sanchar Nigam Limited (Government of India Enterprise)"
+  }
+]

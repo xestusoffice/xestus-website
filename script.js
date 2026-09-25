@@ -1360,68 +1360,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------------------------------
+    // 7. Standard System Native Cursor (Custom cursor follower disabled per user preference)
     // --------------------------------------------------------------------------
-    // 7. Desktop Ultra-Smooth High-Framerate Custom Cursor System (Zero Lag)
-    // --------------------------------------------------------------------------
-    const cursorDot = document.querySelector(".cursor-dot");
-    const cursorOutline = document.querySelector(".cursor-outline");
-    const cursorGlow = document.querySelector(".cursor-glow");
-
-    if (supportsHover && !prefersReducedMotion && (cursorDot || cursorOutline || cursorGlow)) {
-        let mouseX = -100, mouseY = -100;
-        let outlineX = -100, outlineY = -100;
-        let isMoving = false;
-
-        document.addEventListener("pointermove", (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-
-            // Direct zero-latency hardware-accelerated transform for the center dot
-            if (cursorDot) {
-                cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-            }
-
-            if (!isMoving) {
-                isMoving = true;
-                requestAnimationFrame(updateCursorFollower);
-            }
-        }, { passive: true });
-
-        function updateCursorFollower() {
-            if (!isMoving) return;
-
-            // Silky smooth interpolation (0.4 factor) for responsive trailing without sluggish drag
-            outlineX += (mouseX - outlineX) * 0.4;
-            outlineY += (mouseY - outlineY) * 0.4;
-
-            if (cursorOutline) {
-                cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0)`;
-            }
-            if (cursorGlow) {
-                cursorGlow.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0)`;
-            }
-
-            if (Math.abs(mouseX - outlineX) > 0.2 || Math.abs(mouseY - outlineY) > 0.2) {
-                requestAnimationFrame(updateCursorFollower);
-            } else {
-                isMoving = false;
-            }
-        }
-
-        // Interactive hover states (expand outline smoothly over interactive elements)
-        const interactiveSelector = "a, button, input, select, textarea, .service-card, .digital-card, .project-card, .btn-primary, .btn-secondary, .filter-btn, .theme-toggle-btn, .search-chip-btn, .seva-task-card, .tool-card";
-        document.addEventListener("pointerover", (e) => {
-            if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
-                if (cursorOutline) cursorOutline.classList.add("cursor-hover");
-            }
-        }, { passive: true });
-
-        document.addEventListener("pointerout", (e) => {
-            if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
-                if (cursorOutline) cursorOutline.classList.remove("cursor-hover");
-            }
-        }, { passive: true });
-    }
 
     // --------------------------------------------------------------------------
     // 8. High-Performance Card Spotlight & Micro-Interactions (Zero-Reflow Engine)

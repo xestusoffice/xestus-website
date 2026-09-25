@@ -1,4 +1,20 @@
+# ==============================================================================
+# XESTUS (xestus.in) - Robots Exclusion Protocol
+# Search Engine & Google AdSense Crawler Authorization
+# ==============================================================================
+
 User-agent: *
 Allow: /
 
+# Explicit rules for Google AdSense & Search Crawlers
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Sitemap Index
 Sitemap: https://xestus.in/sitemap.xml

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var storedTheme = localStorage.getItem('xestus_theme');
+                if (storedTheme && ['night', 'day', 'eye-protect'].indexOf(storedTheme) !== -1) {
+                    document.documentElement.setAttribute('data-theme', storedTheme);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'day');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'night');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Analytics -->
+    <script src="js/cookie-consent.js"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+
+    
+    
+
+        <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869"
+     crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
+    <!-- Primary Metadata -->
+    <title>Terms of Service | XESTUS — Platform &amp; Engineering Agreement</title>
+    <meta name="description" content="Official Terms of Service and Conditions of Use for XESTUS (xestus.in). Details client engagements, IP ownership transfer, browser tool usage terms, and warranties.">
+    <meta name="author" content="Sudip Khatua, XESTUS">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://xestus.in/terms.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="XESTUS">
+    <meta property="og:url" content="https://xestus.in/terms.html">
+    <meta property="og:title" content="Terms of Service | XESTUS">
+    <meta property="og:description" content="Official Terms of Service and Conditions governing XESTUS engineering consultations, tools, and digital platforms.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/xestus-logo.png">
+    <link rel="apple-touch-icon" href="assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="style.css?v=3.9.6">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <li class="desktop-nav-item"><a href="index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="tools/index.html" class="nav-link">Tools</a></li>
+                <li class="desktop-nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="btn-primary btn-nav-cta magnetic-btn">
+                    <span>Contact Us</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="policy-page-container" id="main-content">
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 24px;">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Terms of Service</span>
+        </nav>
+
+        <header class="policy-header">
+            <div class="policy-badge-row">
+                <span class="badge badge-accent"><i data-lucide="file-check-2" style="width:14px;height:14px;"></i> USER AGREEMENT</span>
+                <span class="digital-tag">LEGAL CONTRACT</span>
+                <span class="tool-privacy-badge">100% TRANSPARENT</span>
+            </div>
+            <h1 class="policy-title">Terms of Service &amp; Conditions</h1>
+            <div class="policy-meta-bar">
+                <span><strong>Effective Date:</strong> January 1, 2026</span>
+                <span>•</span>
+                <span><strong>Version:</strong> 3.2.0</span>
+                <span>•</span>
+                <span><strong>Entity:</strong> XESTUS (xestus.in)</span>
+            </div>
+        </header>
+
+        <div class="policy-content-card">
+            <div class="policy-section">
+                <h2><i data-lucide="book-open"></i> 1. Acceptance of Terms</h2>
+                <p>
+                    By accessing or using the website located at <a href="https://xestus.in" style="color:var(--cyan-bright);">https://xestus.in</a>, our suite of in-browser developer utilities, or any consultation services provided by <strong>XESTUS</strong>, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="layers"></i> 2. Scope of Engineering Services &amp; Consultation</h2>
+                <p>
+                    XESTUS provides elite custom software engineering, autonomous AI agent swarm architectures (LangGraph, MCP, Vector RAG), enterprise workflow automation pipelines, high-performance web platform development, and technical AutoCAD drafting.
+                </p>
+                <p>
+                    All bespoke engineering projects, milestones, timelines, and commercial terms are formally governed by executed bilateral Statements of Work (SOW) or written client agreements.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="code-2"></i> 3. 100% Code &amp; Intellectual Property Ownership Transfer</h2>
+                <div class="policy-highlight-box">
+                    <p>
+                        <strong>Zero Vendor Lock-In:</strong> Upon successful milestone delivery and final financial settlement for bespoke client engagements, full intellectual property rights, source code, deployment scripts, Dockerfiles, and architectural blueprints transfer 100% to the client. XESTUS retains zero proprietary licensing claims over custom client builds.
+                    </p>
+                </div>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="terminal"></i> 4. Use of Free In-Browser Developer Tools</h2>
+                <p>
+                    XESTUS offers a curated suite of client-side developer utilities (e.g., JSON Formatter, Base64 Encoder, JWT Debugger, UUID Generator, Regex Tester, Hash Generator, Text Diff) free of charge for personal, educational, and commercial development purposes.
+                </p>
+                <ul>
+                    <li>You may use these tools without limitation for formatting, debugging, and testing your data.</li>
+                    <li>You agree not to attempt to reverse engineer, scrape at abusive automated rates, or distribute malicious payloads intended to disrupt platform infrastructure.</li>
+                    <li>All tool processing occurs strictly client-side on your local device.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="shield-alert"></i> 5. Disclaimer of Warranties</h2>
+                <p>
+                    The materials, tools, and content on XESTUS's website are provided on an 'as is' and 'as available' basis. XESTUS makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="alert-triangle"></i> 6. Limitation of Liability</h2>
+                <p>
+                    In no event shall XESTUS, its founder Sudip Khatua, or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the tools or materials on XESTUS's website, even if XESTUS has been notified orally or in writing of the possibility of such damage.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="link"></i> 7. Third-Party Links &amp; Advertising</h2>
+                <p>
+                    XESTUS has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link or Google AdSense advertisement does not imply endorsement by XESTUS of the site. Use of any such linked website is at the user's own risk.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="scale"></i> 8. Governing Law &amp; Jurisdiction</h2>
+                <p>
+                    These terms and conditions are governed by and construed in accordance with the laws of India, and you irrevocably submit to the exclusive jurisdiction of the courts in West Bengal, India for the resolution of any disputes.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="mail"></i> 9. Inquiries &amp; Legal Notices</h2>
+                <p>
+                    For inquiries regarding these Terms of Service, please contact:
+                </p>
+                <div class="policy-highlight-box">
+                    <p><strong>XESTUS Legal &amp; Contracts Engineering</strong></p>
+                    <p>Founder &amp; Principal: <strong>Sudip Khatua</strong></p>
+                    <p>Email: <a href="mailto:xestus.office@gmail.com" style="color:var(--cyan-bright);">xestus.office@gmail.com</a></p>
+                    <p>WhatsApp: <a href="https://wa.me/918145338006" target="_blank" rel="noopener" style="color:var(--cyan-bright);">+91 8145338006</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
+        <div class="footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="index.html#home" class="footer-logo">
+                        <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="privacy-policy.html" class="legal-link-btn">Privacy Policy</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="terms.html" class="legal-link-btn" style="color:var(--cyan-bright);font-weight:600;">Terms of Service</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="disclaimer.html" class="legal-link-btn">Disclaimer</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="cookie-policy.html" class="legal-link-btn">Cookie Policy</a>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="index.html" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) lucide.createIcons();
+
+            const themeKey = "xestus_theme";
+            const themeBtn = document.getElementById("themeBtn");
+            const themeSwitcher = document.getElementById("themeSwitcher");
+            const themeOpts = document.querySelectorAll(".theme-opt");
+            const currentLabel = document.querySelector(".theme-current-label");
+            const activeIcon = document.querySelector(".theme-active-icon");
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                try { localStorage.setItem(themeKey, theme); } catch (_) {}
+                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
+                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
+                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
+                if (window.lucide) lucide.createIcons();
+            }
+
+            const savedTheme = localStorage.getItem(themeKey) || "night";
+            setTheme(savedTheme);
+
+            if (themeBtn && themeSwitcher) {
+                themeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    themeSwitcher.classList.toggle("is-open");
+                });
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+        });
+    </script>
+    <script src="js/security-shield.js?v=3.9.5"></script>
+</body>
+</html>

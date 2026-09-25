@@ -41,8 +41,11 @@
         ]
     };
 
+    // Check if current user is an automated search / ad verification crawler
+    const isSearchBot = typeof navigator !== "undefined" && /Googlebot|Mediapartners-Google|AdsBot-Google|Google-Adwords|Lighthouse|bingbot|Baiduspider/i.test(navigator.userAgent || "");
+
     // 2. Domain Authorization & Anti-Cloning Engine
-    if (SHIELD_CONFIG.enforceDomainLock) {
+    if (SHIELD_CONFIG.enforceDomainLock && !isSearchBot) {
         try {
             const currentHost = (window.location.hostname || "").toLowerCase();
             const isAuthorized = SHIELD_CONFIG.authorizedDomains.some(domain => {
@@ -72,16 +75,21 @@
         } catch (e) {}
     }
 
-    // 3. Anti-Clickjacking / IFrame Phishing Mirror Defense
-    if (SHIELD_CONFIG.antiClickjacking) {
+    // 3. Anti-Clickjacking / IFrame Phishing Mirror Defense (AdSense Safe)
+    if (SHIELD_CONFIG.antiClickjacking && !isSearchBot) {
         try {
             if (window.top !== window.self) {
-                window.top.location = window.self.location.href;
+                const referrer = document.referrer || "";
+                const isAdPreview = /google|doubleclick|googlesyndication|adservice/i.test(referrer);
+                if (!isAdPreview) {
+                    window.top.location = window.self.location.href;
+                }
             }
         } catch (e) {
-            console.warn("Frame sandbox active.");
+            // Silently handle sandboxed frame policies without throwing uncaught exceptions
         }
     }
+
 
     // 4. UI: Frosted Glass Security Toast Notification
     let toastContainer = null;

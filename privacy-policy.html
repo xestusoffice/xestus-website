@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var storedTheme = localStorage.getItem('xestus_theme');
+                if (storedTheme && ['night', 'day', 'eye-protect'].indexOf(storedTheme) !== -1) {
+                    document.documentElement.setAttribute('data-theme', storedTheme);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'day');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'night');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Analytics -->
+    <script src="js/cookie-consent.js"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+
+    
+    
+
+        <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869"
+     crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
+    <!-- Primary Metadata -->
+    <title>Privacy Policy | XESTUS — Data Protection, Cookies &amp; AdSense Compliance</title>
+    <meta name="description" content="Official Privacy Policy for XESTUS (xestus.in). Learn how we protect user privacy, manage browser-side developer tools, use cookies, and comply with GDPR, CCPA, and Google AdSense standards.">
+    <meta name="author" content="Sudip Khatua, XESTUS">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://xestus.in/privacy-policy.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="XESTUS">
+    <meta property="og:url" content="https://xestus.in/privacy-policy.html">
+    <meta property="og:title" content="Privacy Policy | XESTUS">
+    <meta property="og:description" content="Comprehensive Data Protection, In-Browser Processing Guarantees, Cookies, and Google AdSense Privacy Compliance.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/xestus-logo.png">
+    <link rel="apple-touch-icon" href="assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="style.css?v=3.9.6">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Privacy Policy",
+      "url": "https://xestus.in/privacy-policy.html",
+      "description": "Privacy policy, cookie disclosures, and data protection practices for XESTUS.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "url": "https://xestus.in/",
+        "logo": "https://xestus.in/assets/images/xestus-logo.png"
+      }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <li class="desktop-nav-item"><a href="index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="tools/index.html" class="nav-link">Tools</a></li>
+                <li class="desktop-nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Theme Switcher Dropdown -->
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="btn-primary btn-nav-cta magnetic-btn">
+                    <span>Contact Us</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="policy-page-container" id="main-content">
+        <!-- Breadcrumb -->
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 24px;">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Privacy Policy</span>
+        </nav>
+
+        <header class="policy-header">
+            <div class="policy-badge-row">
+                <span class="badge badge-accent"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> OFFICIAL POLICY</span>
+                <span class="digital-tag">GDPR &amp; CCPA READY</span>
+                <span class="tool-privacy-badge">GOOGLE ADSENSE COMPLIANT</span>
+            </div>
+            <h1 class="policy-title">Privacy Policy</h1>
+            <div class="policy-meta-bar">
+                <span><strong>Effective Date:</strong> January 1, 2026</span>
+                <span>•</span>
+                <span><strong>Last Updated:</strong> September 2026</span>
+                <span>•</span>
+                <span><strong>Entity:</strong> XESTUS (xestus.in)</span>
+            </div>
+        </header>
+
+        <div class="policy-content-card">
+            <div class="policy-section">
+                <h2><i data-lucide="info"></i> 1. Introduction &amp; Commitment</h2>
+                <p>
+                    At <strong>XESTUS</strong> (accessible at <a href="https://xestus.in" style="color:var(--cyan-bright);">https://xestus.in</a>), the privacy and data security of our visitors, developers, and clients are of paramount importance. This Privacy Policy document outlines the types of information that is collected and recorded by XESTUS and how we utilize, protect, and handle that information.
+                </p>
+                <p>
+                    If you have additional questions or require more information about our Privacy Policy, please contact us directly at <a href="mailto:xestus.office@gmail.com" style="color:var(--cyan-bright);font-weight:600;">xestus.office@gmail.com</a>.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="cpu"></i> 2. In-Browser Client-Side Tools Privacy Guarantee</h2>
+                <div class="policy-highlight-box">
+                    <p>
+                        <strong>Zero Server Uploads:</strong> Every single developer utility and productivity tool on XESTUS (including JSON Formatter, Base64 Encoder, JWT Decoder, UUID Generator, Regex Tester, Hash Generator, and Text Diff) executes <strong>100% client-side inside your browser</strong> using standard JavaScript and Web Crypto APIs.
+                    </p>
+                </div>
+                <p>
+                    No text, payloads, source code, cryptographic tokens, passwords, or files you input into our tools are ever transmitted to, processed by, or stored on our servers. Your data stays entirely within your local device memory.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="server"></i> 3. Log Files &amp; Edge Telemetry</h2>
+                <p>
+                    Like most modern web platforms, XESTUS follows standard industry practices for log files. When visitors access the website, our edge CDN infrastructure (e.g., Cloudflare / GitHub Pages) records standard technical telemetry. This information includes:
+                </p>
+                <ul>
+                    <li>Internet Protocol (IP) addresses (anonymized for telemetry)</li>
+                    <li>Browser type, device architecture, and operating system</li>
+                    <li>Internet Service Provider (ISP)</li>
+                    <li>Date and timestamp of requests</li>
+                    <li>Referring / exit pages and requested URLs</li>
+                    <li>Number of clicks and TLS handshake latency</li>
+                </ul>
+                <p>
+                    This telemetry is not linked to any personally identifiable information (PII). Its sole purpose is to analyze trends, administer the platform, mitigate DDoS attacks, monitor edge server uptime, and optimize website performance.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="cookie"></i> 4. Cookies, Web Beacons &amp; Consent Mode v2</h2>
+                <p>
+                    XESTUS uses standard cookies to enhance user experience, remember theme preferences (Night, Day, Eye-Protect), and provide anonymous analytics. We fully support <strong>Google Consent Mode v2</strong> and give visitors complete control over optional tracking cookies.
+                </p>
+                <p>
+                    You can manage or customize your preferences at any time via our <a href="cookie-policy.html" style="color:var(--cyan-bright);">Cookie Policy</a> or by clicking the Cookie Preferences link in the footer.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="layout"></i> 5. Google AdSense &amp; DoubleClick DART Cookies</h2>
+                <p>
+                    Google is a third-party vendor on our website. It uses cookies, known as <strong>DART cookies</strong>, to serve advertisements to our site visitors based upon their visit to <a href="https://xestus.in" style="color:var(--cyan-bright);">xestus.in</a> and other sites on the internet.
+                </p>
+                <ul>
+                    <li>
+                        Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to your website or other websites.
+                    </li>
+                    <li>
+                        Google's use of advertising cookies enables it and its partners to serve ads to users based on their visit to your sites and/or other sites on the Internet.
+                    </li>
+                    <li>
+                        Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style="color:var(--cyan-bright);font-weight:600;">Google Ads Settings</a> or through the <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="color:var(--cyan-bright);font-weight:600;">aboutads.info choices page</a>.
+                    </li>
+                </ul>
+                <p>
+                    Third-party ad servers or ad networks use technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on XESTUS. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see.
+                </p>
+                <p>
+                    <em>Note: XESTUS has no access to or control over these cookies that are used by third-party advertisers.</em>
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="bar-chart-3"></i> 6. Google Analytics</h2>
+                <p>
+                    We use Google Analytics (gtag.js ID: <code>G-EF3ZRR55YY</code>) to measure aggregated audience trends, page views, and geographic distribution. Google Analytics collects anonymized interaction data without storing personal identifying data.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="lock"></i> 7. GDPR Privacy Rights (Data Protection Rights)</h2>
+                <p>
+                    We want to ensure you are fully aware of all your data protection rights under the General Data Protection Regulation (GDPR). Every user is entitled to:
+                </p>
+                <ul>
+                    <li><strong>The right to access:</strong> You have the right to request copies of your personal data.</li>
+                    <li><strong>The right to rectification:</strong> You have the right to request that we correct any information you believe is inaccurate.</li>
+                    <li><strong>The right to erasure:</strong> You have the right to request that we erase your personal data under certain conditions.</li>
+                    <li><strong>The right to restrict processing:</strong> You have the right to request that we restrict the processing of your personal data.</li>
+                    <li><strong>The right to object to processing:</strong> You have the right to object to our processing of your personal data.</li>
+                    <li><strong>The right to data portability:</strong> You have the right to request that we transfer the data we collected to another organization.</li>
+                </ul>
+                <p>
+                    If you make a request, we have one month to respond to you. Please contact us at <a href="mailto:xestus.office@gmail.com" style="color:var(--cyan-bright);">xestus.office@gmail.com</a>.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="shield"></i> 8. CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
+                <p>
+                    Under the California Consumer Privacy Act (CCPA), California consumers have the right to:
+                </p>
+                <ul>
+                    <li>Request that a business disclose the categories and specific pieces of personal data that a business has collected about consumers.</li>
+                    <li>Request that a business delete any personal data about the consumer that a business has collected.</li>
+                    <li>Request that a business that sells a consumer's personal data, not sell the consumer's personal data. <strong>(XESTUS does NOT sell any user data).</strong></li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="user-check"></i> 9. Children's Privacy (COPPA Compliance)</h2>
+                <p>
+                    Another priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.
+                </p>
+                <p>
+                    XESTUS does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i data-lucide="mail"></i> 10. Contact Information</h2>
+                <p>
+                    If you have any questions or comments about our Privacy Policy or data protection practices, please reach out to:
+                </p>
+                <div class="policy-highlight-box">
+                    <p><strong>XESTUS Security &amp; Privacy Office</strong></p>
+                    <p>Lead Architect: <strong>Sudip Khatua</strong></p>
+                    <p>Email: <a href="mailto:xestus.office@gmail.com" style="color:var(--cyan-bright);">xestus.office@gmail.com</a></p>
+                    <p>WhatsApp Business: <a href="https://wa.me/918145338006" target="_blank" rel="noopener" style="color:var(--cyan-bright);">+91 8145338006</a></p>
+                    <p>Location: West Bengal, India</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Unified Footer -->
+    <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
+        <div class="footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="index.html#home" class="footer-logo">
+                        <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+                <p class="footer-mission-text">
+                    Engineering autonomous AI systems, high-performance web platforms, and mission-critical workflow automation pipelines.
+                </p>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved. Engineered for Operational Superiority.</p>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="privacy-policy.html" class="legal-link-btn" style="color:var(--cyan-bright);font-weight:600;">Privacy Policy</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="terms.html" class="legal-link-btn">Terms of Service</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="disclaimer.html" class="legal-link-btn">Disclaimer</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="cookie-policy.html" class="legal-link-btn">Cookie Policy</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <button type="button" class="legal-link-btn" onclick="if(window.XESTUS_COOKIE_CONSENT)window.XESTUS_COOKIE_CONSENT.openPreferences();">Cookie Settings</button>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="index.html" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) lucide.createIcons();
+
+            // Theme Switcher
+            const themeKey = "xestus_theme";
+            const themeBtn = document.getElementById("themeBtn");
+            const themeSwitcher = document.getElementById("themeSwitcher");
+            const themeOpts = document.querySelectorAll(".theme-opt");
+            const currentLabel = document.querySelector(".theme-current-label");
+            const activeIcon = document.querySelector(".theme-active-icon");
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                try { localStorage.setItem(themeKey, theme); } catch (_) {}
+                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
+                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
+                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
+                if (window.lucide) lucide.createIcons();
+            }
+
+            const savedTheme = localStorage.getItem(themeKey) || "night";
+            setTheme(savedTheme);
+
+            if (themeBtn && themeSwitcher) {
+                themeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    themeSwitcher.classList.toggle("is-open");
+                });
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+        });
+    </script>
+    <script src="js/security-shield.js?v=3.9.5"></script>
+</body>
+</html>

@@ -18,6 +18,9 @@
         })();
     </script>
 
+    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
+    <script src="js/cookie-consent.js?v=1.0.0"></script>
+
     <!-- Google Analytics (gtag.js) - Deferred Initialization -->
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -27,12 +30,20 @@
     </script>
     <script defer src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
 
+    
+    
+
+        <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869"
+     crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
 
     <!-- Primary Page Metadata -->
     <title>XESTUS | Intelligence Beyond Limits — AI Software, Autonomous Systems &amp; Web Development</title>
@@ -159,11 +170,6 @@
 <body>
  <!-- Skip to Main Content Accessibility Landmark -->
  <a href="#main-content" class="skip-to-content">Skip to Main Content</a>
-
- <!-- Cursor Enhancements -->
- <div class="cursor-dot" aria-hidden="true"></div>
- <div class="cursor-outline" aria-hidden="true"></div>
- <div class="cursor-glow" aria-hidden="true"></div>
 
  <!-- Scroll Progress Bar -->
  <div id="progress-bar" aria-hidden="true"></div>
@@ -3331,11 +3337,15 @@
  </div>
 
  <div class="footer-legal-links">
- <button type="button" class="legal-link-btn" data-legal-modal="privacy">Privacy Notice</button>
+ <a href="privacy-policy.html" class="legal-link-btn" data-legal-modal="privacy">Privacy Notice</a>
  <span class="legal-sep" aria-hidden="true">•</span>
- <button type="button" class="legal-link-btn" data-legal-modal="terms">Terms of Service</button>
+ <a href="terms.html" class="legal-link-btn" data-legal-modal="terms">Terms of Service</a>
  <span class="legal-sep" aria-hidden="true">•</span>
- <button type="button" class="legal-link-btn" data-legal-modal="security">Security Standards</button>
+ <a href="disclaimer.html" class="legal-link-btn">Disclaimer</a>
+ <span class="legal-sep" aria-hidden="true">•</span>
+ <a href="cookie-policy.html" class="legal-link-btn">Cookie Policy</a>
+ <span class="legal-sep" aria-hidden="true">•</span>
+ <button type="button" class="legal-link-btn" onclick="if(window.XESTUS_COOKIE_CONSENT)window.XESTUS_COOKIE_CONSENT.openPreferences();">Cookie Settings</button>
  </div>
 
  <div class="footer-back-to-top">
