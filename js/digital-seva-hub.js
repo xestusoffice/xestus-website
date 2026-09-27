@@ -359,7 +359,7 @@
             try {
                 window.lucide.createIcons({ root: container });
             } catch (_) {
-                window.lucide.createIcons();
+                if (window.lucide) { window.lucide.createIcons(); }
             }
         }
     }
@@ -611,7 +611,7 @@
                     window.lucide.createIcons({ root: privateGrid });
                 }
             } catch (_) {
-                window.lucide.createIcons();
+                if (window.lucide) { window.lucide.createIcons(); }
             }
         }
 
@@ -1026,7 +1026,7 @@
             try {
                 window.lucide.createIcons({ root: modal });
             } catch (_) {
-                window.lucide.createIcons();
+                if (window.lucide) { window.lucide.createIcons(); }
             }
         }
     }
@@ -1055,7 +1055,7 @@
             try {
                 window.lucide.createIcons({ root: modal });
             } catch (_) {
-                window.lucide.createIcons();
+                if (window.lucide) { window.lucide.createIcons(); }
             }
         }
     }
@@ -1140,7 +1140,7 @@
                     try {
                         window.lucide.createIcons({ root: feedback });
                     } catch (_) {
-                        window.lucide.createIcons();
+                        if (window.lucide) { window.lucide.createIcons(); }
                     }
                 }
             }
@@ -1212,7 +1212,7 @@
                 try {
                     window.lucide.createIcons({ root: grid });
                 } catch (_) {
-                    window.lucide.createIcons();
+                    if (window.lucide) { window.lucide.createIcons(); }
                 }
             }
         }
@@ -1292,7 +1292,7 @@
             try {
                 window.lucide.createIcons({ root: modal });
             } catch (_) {
-                window.lucide.createIcons();
+                if (window.lucide) { window.lucide.createIcons(); }
             }
         }
     }

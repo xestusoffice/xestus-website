@@ -12842,175 +12842,267 @@ html[lang="hi"] .founder-quote-box p {
     inherits: false;
 }
 
-@keyframes rotateRingBorder {
+/* ==========================================================================
+   XESTUS UNIVERSAL ROTATING RAINBOW GLOWING BORDER SYSTEM
+   Works on 100% of modern browsers (Chrome, Edge, Safari, Firefox, iOS, Android)
+   ========================================================================== */
+@keyframes rotateRainbowGlow {
     0% {
-        --ring-angle: 0deg;
+        transform: rotate(0deg);
     }
     100% {
-        --ring-angle: 360deg;
+        transform: rotate(360deg);
     }
 }
 
-/* Relative positioning for all interactive cards, buttons, and options */
-.service-card,
-.solution-card,
-.digital-card,
-.project-card,
-.product-card,
-.lab-card,
-.tech-stack-card,
-.why-card,
-.founder-card-glass,
-.stat-card,
-.epoch-card,
-.contact-channel-card,
-.contact-form-wrapper,
-.faq-item,
-.pricing-card,
-.follow-card,
-.estimator-card,
-.estimate-result-card,
+@keyframes rotateRingBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Button & Card Instant Active Touch / Click Feedback */
+button:active,
+.btn-primary:active,
+.btn-secondary:active,
+.btn-stitch-primary:active,
+.btn-modal-action:active,
+.btn-card-action:active,
+.btn-card-guide:active,
+.btn-card-assist:active,
+.btn-quick-action:active,
+.digital-filter-btn:active,
+.search-chip-btn:active,
+.seva-task-card:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.05s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Base style for rotating border buttons */
+.btn-primary,
+.btn-stitch-primary,
+.btn-modal-action,
+.btn-card-action,
+.btn-card-guide,
+.btn-card-assist,
+.btn-quick-action,
+.btn-catalog-trigger,
+.btn-scam-trigger,
+.btn-nav-cta,
+.btn-apply-primary {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    touch-action: manipulation;
+}
+
+.btn-primary::before,
+.btn-stitch-primary::before,
+.btn-modal-action::before,
+.btn-card-action::before,
+.btn-card-guide::before,
+.btn-card-assist::before,
+.btn-quick-action::before,
+.btn-catalog-trigger::before,
+.btn-scam-trigger::before,
+.btn-nav-cta::before,
+.btn-apply-primary::before {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 400%;
+    height: 400%;
+    background: conic-gradient(
+        from 0deg,
+        #00f2fe,
+        #38d6ff,
+        #a855f7,
+        #ec4899,
+        #eab308,
+        #00f2fe
+    );
+    animation: rotateRainbowGlow 3s linear infinite;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.btn-primary::after,
+.btn-stitch-primary::after,
+.btn-modal-action::after,
+.btn-card-action::after,
+.btn-card-guide::after,
+.btn-card-assist::after,
+.btn-quick-action::after,
+.btn-catalog-trigger::after,
+.btn-scam-trigger::after,
+.btn-nav-cta::after,
+.btn-apply-primary::after {
+    content: '';
+    position: absolute;
+    inset: 1.5px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(8, 14, 28, 0.94), rgba(16, 28, 54, 0.94));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1;
+    transition: background 0.25s ease;
+    pointer-events: none;
+}
+
+.btn-primary > *,
+.btn-stitch-primary > *,
+.btn-modal-action > *,
+.btn-card-action > *,
+.btn-card-guide > *,
+.btn-card-assist > *,
+.btn-quick-action > *,
+.btn-catalog-trigger > *,
+.btn-scam-trigger > *,
+.btn-nav-cta > *,
+.btn-apply-primary > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Hover State triggers the rotating rainbow border */
+.btn-primary:hover,
+.btn-stitch-primary:hover,
+.btn-modal-action:hover,
+.btn-card-action:hover,
+.btn-card-guide:hover,
+.btn-card-assist:hover,
+.btn-quick-action:hover,
+.btn-catalog-trigger:hover,
+.btn-scam-trigger:hover,
+.btn-nav-cta:hover,
+.btn-apply-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 191, 255, 0.4), 0 0 16px rgba(0, 242, 254, 0.35);
+}
+
+.btn-primary:hover::before,
+.btn-stitch-primary:hover::before,
+.btn-modal-action:hover::before,
+.btn-card-action:hover::before,
+.btn-card-guide:hover::before,
+.btn-card-assist:hover::before,
+.btn-quick-action:hover::before,
+.btn-catalog-trigger:hover::before,
+.btn-scam-trigger:hover::before,
+.btn-nav-cta:hover::before,
+.btn-apply-primary:hover::before {
+    opacity: 1;
+}
+
+/* Card Rotating Rainbow Glow on Hover */
 .seva-service-card,
 .seva-portal-card,
 .seva-task-card,
-.category-modal-card,
-.support-feature-card,
-.category-tag-card,
-.community-channel-card,
-.tool-card,
-.btn-primary,
-.btn-secondary,
-.btn-modal-action,
-.btn-card-action,
-.digital-filter-btn,
-.search-chip-btn,
-.filter-btn,
-.theme-btn,
-.cta-primary-link,
-.magnetic-btn,
-.estimator-opt-btn,
-.stitch-alert-btn {
-    position: relative;
-    z-index: 1;
+.digital-card,
+.service-card,
+.solution-card,
+.product-card {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
 }
 
-/* Glowing Rotating Ring Overlay Pseudo-Element */
-.service-card::after,
-.solution-card::after,
-.digital-card::after,
-.project-card::after,
-.product-card::after,
-.lab-card::after,
-.tech-stack-card::after,
-.why-card::after,
-.founder-card-glass::after,
-.stat-card::after,
-.epoch-card::after,
-.contact-channel-card::after,
-.contact-form-wrapper::after,
-.faq-item::after,
-.pricing-card::after,
-.follow-card::after,
-.estimator-card::after,
-.estimate-result-card::after,
+.seva-service-card::before,
+.seva-portal-card::before,
+.seva-task-card::before,
+.digital-card::before,
+.service-card::before,
+.solution-card::before,
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 400%;
+    height: 400%;
+    background: conic-gradient(
+        from 0deg,
+        #00f2fe,
+        #38d6ff,
+        #a855f7,
+        #ec4899,
+        #eab308,
+        #00f2fe
+    );
+    animation: rotateRainbowGlow 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 0;
+    pointer-events: none;
+}
+
 .seva-service-card::after,
 .seva-portal-card::after,
 .seva-task-card::after,
-.category-modal-card::after,
-.support-feature-card::after,
-.category-tag-card::after,
-.community-channel-card::after,
-.tool-card::after,
-.btn-primary::after,
-.btn-secondary::after,
-.btn-modal-action::after,
-.btn-card-action::after,
-.digital-filter-btn::after,
-.search-chip-btn::after,
-.filter-btn::after,
-.theme-btn::after,
-.cta-primary-link::after,
-.magnetic-btn::after,
-.estimator-opt-btn::after,
-.stitch-alert-btn::after {
+.digital-card::after,
+.service-card::after,
+.solution-card::after,
+.product-card::after {
     content: '';
     position: absolute;
-    inset: -2px;
+    inset: 1.5px;
     border-radius: inherit;
-    padding: 2px;
-    background: conic-gradient(
-        from var(--ring-angle, 0deg),
-        #00f2fe 0%,
-        #4facfe 20%,
-        #00ff88 40%,
-        #ffbb00 60%,
-        #ff007f 80%,
-        #7928ca 90%,
-        #00f2fe 100%
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
+    background: rgba(13, 19, 34, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 1;
+    transition: background 0.3s ease;
     pointer-events: none;
-    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
-    z-index: 2;
-    animation: rotateRingBorder 3.5s linear infinite;
-    will-change: transform, --ring-angle;
 }
 
-/* Activate glowing rotating border on hover & focus */
-.service-card:hover::after,
-.solution-card:hover::after,
-.digital-card:hover::after,
-.project-card:hover::after,
-.product-card:hover::after,
-.lab-card:hover::after,
-.tech-stack-card:hover::after,
-.why-card:hover::after,
-.founder-card-glass:hover::after,
-.stat-card:hover::after,
-.epoch-card:hover::after,
-.contact-channel-card:hover::after,
-.contact-form-wrapper:hover::after,
-.faq-item:hover::after,
-.pricing-card:hover::after,
-.follow-card:hover::after,
-.estimator-card:hover::after,
-.estimate-result-card:hover::after,
+.seva-service-card > *,
+.seva-portal-card > *,
+.seva-task-card > *,
+.digital-card > *,
+.service-card > *,
+.solution-card > *,
+.product-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.seva-service-card:hover,
+.seva-portal-card:hover,
+.seva-task-card:hover,
+.digital-card:hover,
+.service-card:hover,
+.solution-card:hover,
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 191, 255, 0.35), 0 0 15px rgba(168, 85, 247, 0.25);
+    border-color: transparent !important;
+}
+
+.seva-service-card:hover::before,
+.seva-portal-card:hover::before,
+.seva-task-card:hover::before,
+.digital-card:hover::before,
+.service-card:hover::before,
+.solution-card:hover::before,
+.product-card:hover::before {
+    opacity: 1;
+}
+
 .seva-service-card:hover::after,
 .seva-portal-card:hover::after,
 .seva-task-card:hover::after,
-.category-modal-card:hover::after,
-.support-feature-card:hover::after,
-.category-tag-card:hover::after,
-.community-channel-card:hover::after,
-.tool-card:hover::after,
-.btn-primary:hover::after,
-.btn-secondary:hover::after,
-.btn-modal-action:hover::after,
-.btn-card-action:hover::after,
-.digital-filter-btn:hover::after,
-.search-chip-btn:hover::after,
-.filter-btn:hover::after,
-.theme-btn:hover::after,
-.cta-primary-link:hover::after,
-.magnetic-btn:hover::after,
-.estimator-opt-btn:hover::after,
-.stitch-alert-btn:hover::after,
-.service-card:focus-visible::after,
-.btn-primary:focus-visible::after,
-.seva-service-card:focus-visible::after {
-    opacity: 1;
-    filter: drop-shadow(0 0 6px rgba(0, 242, 254, 0.6));
+.digital-card:hover::after,
+.service-card:hover::after,
+.solution-card:hover::after,
+.product-card:hover::after {
+    background: rgba(16, 25, 45, 0.96);
 }
-
-@media (prefers-reduced-motion: reduce) {
-    .service-card::after,
-    .btn-primary::after,
-    .seva-service-card::after {
-        animation: none !important;
-    }
 }
 
 /* Responsive adjustments */
