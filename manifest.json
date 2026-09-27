@@ -1,0 +1,31 @@
+{
+  "name": "XESTUS — Intelligence Beyond Limits",
+  "short_name": "XESTUS",
+  "description": "Daily digital utility tools, client-side developer utilities, and AI software engineering platform.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#05070c",
+  "theme_color": "#00bfff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/images/xestus-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/xestus-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "utilities",
+    "productivity",
+    "developer",
+    "business",
+    "education"
+  ]
+}

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Universal Unit Converter | Free Online Tool | XESTUS</title>
+  <meta name="description" content="undefined">
+  <meta name="keywords" content="unit converter, length converter, weight converter, celsius to fahrenheit, data storage converter, area converter">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://xestus.in/tools/calculators/unit-converter/">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#00ff88">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xestus.in/tools/calculators/unit-converter/">
+  <meta property="og:title" content="Universal Unit Converter | XESTUS Tools">
+  <meta property="og:description" content="undefined">
+  <meta property="og:image" content="https://xestus.in/assets/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google AdSense Official Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/tools/tools.css">
+  
+</head>
+<body>
+  <!-- Global Navigation Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="logo-link" aria-label="XESTUS Home">
+        <span class="logo-text">XESTUS<span class="logo-dot">.</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="/" class="nav-item">Home</a>
+        <a href="/index.html#services" class="nav-item">Services</a>
+        <a href="/tools/" class="nav-item active">Daily Tools</a>
+        <a href="/index.html#portfolio" class="nav-item">Portfolio</a>
+        <a href="/contact.html" class="nav-item">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn-icon" aria-label="Toggle visual theme" title="Change Theme">
+          <i data-lucide="sun"></i>
+        </button>
+        <a href="/tools/" class="btn-ghost-sm hide-mobile">
+          <i data-lucide="layout-grid"></i> All Tools
+        </a>
+        <button id="menuToggle" class="btn-icon mobile-only" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <span class="drawer-title">XESTUS MENU</span>
+      <button id="drawerClose" class="btn-icon" aria-label="Close menu">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="/" class="drawer-link"><i data-lucide="home"></i> Home</a>
+      <a href="/tools/" class="drawer-link active"><i data-lucide="layout-grid"></i> Daily Utility Tools</a>
+      <a href="/index.html#services" class="drawer-link"><i data-lucide="cpu"></i> Services & Solutions</a>
+      <a href="/index.html#portfolio" class="drawer-link"><i data-lucide="briefcase"></i> Portfolio</a>
+      <a href="/index.html#digital-services" class="drawer-link"><i data-lucide="award"></i> Digital Seva Kendra</a>
+      <a href="/contact.html" class="drawer-link"><i data-lucide="mail"></i> Contact</a>
+      <a href="/about.html" class="drawer-link"><i data-lucide="info"></i> About XESTUS</a>
+    </nav>
+  </div>
+
+  <main class="tool-page-main">
+    <!-- Breadcrumb & Top Bar -->
+    <div class="tool-page-header">
+      <div class="tool-breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <a href="/tools/">Tools</a>
+        <span class="sep">/</span>
+        <a href="/tools/#calculators">Calculators & Finance</a>
+        <span class="sep">/</span>
+        <span class="current">Unit Converter</span>
+      </div>
+
+      <div class="tool-header-flex">
+        <div class="tool-title-group">
+          <span class="tool-badge-pill"><i data-lucide="scale"></i> Calculators & Finance</span>
+          <h1 class="tool-main-heading">Universal Unit Converter</h1>
+          <p class="tool-main-subtitle">Convert Length, Weight, Temperature, Area, Data Storage, and Speed units in real-time with full precision matrix.</p>
+        </div>
+        <div class="tool-actions-bar">
+          <button id="favBtn" class="btn-tool-action" data-slug="unit-converter" title="Add to My XESTUS Favourites">
+            <i data-lucide="star"></i> <span>Favourite</span>
+          </button>
+          <button id="shareBtn" class="btn-tool-action" title="Share this tool">
+            <i data-lucide="share-2"></i> <span>Share</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security & Privacy Guarantee Notice -->
+    <div class="privacy-guarantee-banner">
+      <i data-lucide="shield-check"></i>
+      <span><strong>100% Client-Side & Private:</strong> This tool runs entirely inside your browser. No files, calculations, or inputs are ever sent to external servers.</span>
+    </div>
+
+    <!-- MAIN TOOL WORKSPACE -->
+    <section class="tool-workspace" id="toolApp">
+      
+    <div class="calc-card">
+      <div class="mode-toggle-group" id="unitCategoryGroup" style="overflow-x: auto; padding-bottom: 4px;">
+        <button type="button" class="mode-btn active" data-cat="length"><i data-lucide="ruler"></i> Length</button>
+        <button type="button" class="mode-btn" data-cat="weight"><i data-lucide="scale"></i> Weight / Mass</button>
+        <button type="button" class="mode-btn" data-cat="temperature"><i data-lucide="thermometer"></i> Temperature</button>
+        <button type="button" class="mode-btn" data-cat="area"><i data-lucide="box"></i> Area</button>
+        <button type="button" class="mode-btn" data-cat="storage"><i data-lucide="hard-drive"></i> Data Storage</button>
+        <button type="button" class="mode-btn" data-cat="speed"><i data-lucide="gauge"></i> Speed</button>
+      </div>
+
+      <div class="calc-grid-2" style="margin-top: 1.5rem; align-items: flex-end;">
+        <div class="calc-input-group">
+          <label class="calc-label" for="unitFromVal">From Value</label>
+          <input type="number" id="unitFromVal" class="calc-input" value="1" step="any">
+          <select id="unitFromSelect" class="calc-input" style="margin-top: 0.5rem; cursor: pointer;">
+            <!-- Options populated dynamically -->
+          </select>
+        </div>
+
+        <div class="calc-input-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <label class="calc-label" style="margin: 0;">Converted Result</label>
+            <button type="button" id="swapUnitsBtn" class="btn-ghost-sm" title="Swap From and To Units"><i data-lucide="arrow-left-right"></i> Swap</button>
+          </div>
+          <input type="text" id="unitToVal" class="calc-input" readonly style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #00ff88; background: rgba(0,255,136,0.05);">
+          <select id="unitToSelect" class="calc-input" style="margin-top: 0.5rem; cursor: pointer;">
+            <!-- Options populated dynamically -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Real-Time Complete Conversion Matrix -->
+      <div style="margin-top: 2rem;">
+        <h4 style="margin-bottom: 0.75rem; color: #fff; font-size: 1rem;"><i data-lucide="list"></i> All Equivalents Matrix</h4>
+        <div id="unitMatrixGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 0.75rem;">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+  
+    </section>
+
+    <!-- AdSense Compliant Banner Slot -->
+    <div class="adsense-slot-container" style="margin: 2rem 0; text-align: center; min-height: 90px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px dashed var(--border-color, #222);">
+      <!-- Non-intrusive Ad Display -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-1489572262543869"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- HOW IT WORKS & GUIDE SECTION -->
+    <section class="tool-guide-section">
+      <div class="guide-card">
+        <h2 class="guide-title"><i data-lucide="book-open"></i> How to Use the Universal Unit Converter</h2>
+        <div class="guide-content">
+          
+    <p>Select your physical quantity category (Length, Weight, Temperature, Area, Data Storage, or Speed), enter any numerical value, and choose your starting unit. All other standard unit conversions update simultaneously across metric and imperial systems.</p>
+  
+        </div>
+      </div>
+
+      <!-- Frequently Asked Questions -->
+      <div class="guide-card">
+        <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+          
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="true">
+              <span>Does the Temperature converter support Kelvin and Fahrenheit?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: block;">
+              <p>Yes. It uses the exact thermodynamic conversion formulas: °F = (°C × 9/5) + 32, and K = °C + 273.15.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What standard is used for Data Storage?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: none;">
+              <p>Standard decimal (1 KB = 1,000 Bytes) and binary (1 KiB = 1,024 Bytes) equivalents are calculated with high IEEE-754 floating precision.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED TOOLS SECTION -->
+    <section class="related-tools-section">
+      <div class="section-head-sm">
+        <h3 class="section-title-sm"><i data-lucide="sparkles"></i> Related Daily Utilities</h3>
+        <a href="/tools/" class="view-all-link">View All Tools &rarr;</a>
+      </div>
+      <div class="related-grid" id="relatedToolsGrid">
+        <!-- Injected via tools-registry.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <span class="footer-logo">XESTUS<span class="logo-dot">.</span></span>
+        <p class="footer-desc">Practical, high-performance daily digital tools, AI solutions, and engineering hubs designed for repeat daily productivity.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Utility Hubs</h4>
+        <ul class="footer-links">
+          <li><a href="/tools/calculators/gst-calculator/">GST Calculator</a></li>
+          <li><a href="/tools/calculators/percentage-calculator/">Percentage Calculator</a></li>
+          <li><a href="/tools/office/word-counter/">Word & Character Counter</a></li>
+          <li><a href="/tools/office/qr-generator/">Custom QR Code Maker</a></li>
+          <li><a href="/tools/developer/hash-generator/">Hash & Crypto Checksum</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="/tools/">All Daily Tools</a></li>
+          <li><a href="/index.html#services">Services & Engineering</a></li>
+          <li><a href="/index.html#portfolio">Live Portfolio</a></li>
+          <li><a href="/index.html#digital-services">Digital Seva Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal & Privacy</h4>
+        <ul class="footer-links">
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+          <li><a href="/cookie-policy.html">Cookie Policy</a></li>
+          <li><a href="/contact.html">Support & Inquiries</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 XESTUS Technologies. All rights reserved. 100% Client-Side Privacy Guaranteed.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/nav-core.js"></script>
+  <script src="/js/my-xestus.js"></script>
+  <script src="/tools/tools-registry.js"></script>
+  <script>
+    // Initialize Related Tools from Registry
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.XestusTools && window.XestusTools.renderRelatedTools) {
+        window.XestusTools.renderRelatedTools('unit-converter', 'relatedToolsGrid');
+      }
+      if (window.MyXestus) {
+        window.MyXestus.initToolPage('unit-converter', 'Universal Unit Converter');
+      }
+      // FAQ Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const ans = btn.nextElementSibling;
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          ans.style.display = isExpanded ? 'none' : 'block';
+        });
+      });
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+  <script>
+    (function() {
+      const UNIT_DATA = {
+        length: {
+          base: 'm',
+          units: {
+            m: { name: 'Meters (m)', factor: 1 },
+            km: { name: 'Kilometers (km)', factor: 1000 },
+            cm: { name: 'Centimeters (cm)', factor: 0.01 },
+            mm: { name: 'Millimeters (mm)', factor: 0.001 },
+            mi: { name: 'Miles (mi)', factor: 1609.344 },
+            yd: { name: 'Yards (yd)', factor: 0.9144 },
+            ft: { name: 'Feet (ft)', factor: 0.3048 },
+            in: { name: 'Inches (in)', factor: 0.0254 }
+          }
+        },
+        weight: {
+          base: 'kg',
+          units: {
+            kg: { name: 'Kilograms (kg)', factor: 1 },
+            g: { name: 'Grams (g)', factor: 0.001 },
+            mg: { name: 'Milligrams (mg)', factor: 0.000001 },
+            lb: { name: 'Pounds (lbs)', factor: 0.45359237 },
+            oz: { name: 'Ounces (oz)', factor: 0.028349523125 },
+            ton: { name: 'Metric Ton (t)', factor: 1000 },
+            quintal: { name: 'Quintal (q)', factor: 100 }
+          }
+        },
+        temperature: {
+          isCustom: true,
+          units: {
+            c: { name: 'Celsius (°C)' },
+            f: { name: 'Fahrenheit (°F)' },
+            k: { name: 'Kelvin (K)' }
+          }
+        },
+        area: {
+          base: 'sqm',
+          units: {
+            sqm: { name: 'Square Meters (m²)', factor: 1 },
+            sqkm: { name: 'Square Kilometers (km²)', factor: 1000000 },
+            sqft: { name: 'Square Feet (sq ft)', factor: 0.092903 },
+            sqyd: { name: 'Square Yards (sq yd)', factor: 0.836127 },
+            acre: { name: 'Acres', factor: 4046.86 },
+            hectare: { name: 'Hectares (ha)', factor: 10000 }
+          }
+        },
+        storage: {
+          base: 'mb',
+          units: {
+            b: { name: 'Bytes (B)', factor: 0.000001 },
+            kb: { name: 'Kilobytes (KB)', factor: 0.001 },
+            mb: { name: 'Megabytes (MB)', factor: 1 },
+            gb: { name: 'Gigabytes (GB)', factor: 1000 },
+            tb: { name: 'Terabytes (TB)', factor: 1000000 },
+            pb: { name: 'Petabytes (PB)', factor: 1000000000 }
+          }
+        },
+        speed: {
+          base: 'kmh',
+          units: {
+            kmh: { name: 'Kilometers/Hour (km/h)', factor: 1 },
+            ms: { name: 'Meters/Second (m/s)', factor: 3.6 },
+            mph: { name: 'Miles/Hour (mph)', factor: 1.609344 },
+            knot: { name: 'Knots (nautical mi/h)', factor: 1.852 }
+          }
+        }
+      };
+
+      let activeCat = 'length';
+      const fromVal = document.getElementById('unitFromVal');
+      const toVal = document.getElementById('unitToVal');
+      const fromSel = document.getElementById('unitFromSelect');
+      const toSel = document.getElementById('unitToSelect');
+      const matrixGrid = document.getElementById('unitMatrixGrid');
+
+      function populateSelects() {
+        const cat = UNIT_DATA[activeCat];
+        fromSel.innerHTML = '';
+        toSel.innerHTML = '';
+        const keys = Object.keys(cat.units);
+        keys.forEach((k, i) => {
+          const opt1 = new Option(cat.units[k].name, k);
+          const opt2 = new Option(cat.units[k].name, k);
+          fromSel.add(opt1);
+          toSel.add(opt2);
+        });
+        fromSel.selectedIndex = 0;
+        toSel.selectedIndex = keys.length > 1 ? 1 : 0;
+        recalculate();
+      }
+
+      function convertTemp(val, from, to) {
+        let c = val;
+        if (from === 'f') c = (val - 32) * (5/9);
+        else if (from === 'k') c = val - 273.15;
+
+        if (to === 'c') return c;
+        if (to === 'f') return (c * 9/5) + 32;
+        if (to === 'k') return c + 273.15;
+        return c;
+      }
+
+      function recalculate() {
+        const val = parseFloat(fromVal.value);
+        if (isNaN(val)) {
+          toVal.value = '';
+          matrixGrid.innerHTML = '';
+          return;
+        }
+
+        const cat = UNIT_DATA[activeCat];
+        const fromKey = fromSel.value;
+        const toKey = toSel.value;
+
+        let result;
+        if (activeCat === 'temperature') {
+          result = convertTemp(val, fromKey, toKey);
+        } else {
+          const baseVal = val * cat.units[fromKey].factor;
+          result = baseVal / cat.units[toKey].factor;
+        }
+
+        toVal.value = Number(result.toFixed(6)).toString();
+
+        // Render Matrix
+        matrixGrid.innerHTML = '';
+        Object.keys(cat.units).forEach(k => {
+          let converted;
+          if (activeCat === 'temperature') {
+            converted = convertTemp(val, fromKey, k);
+          } else {
+            const baseVal = val * cat.units[fromKey].factor;
+            converted = baseVal / cat.units[k].factor;
+          }
+          const item = document.createElement('div');
+          item.className = 'stat-tile';
+          item.style.padding = '0.75rem';
+          item.innerHTML = `
+            <div class="tile-label" style="font-size: 0.75rem;">${cat.units[k].name}</div>
+            <div class="tile-val" style="font-size: 1rem; color: #fff; font-family: 'JetBrains Mono', monospace;">${Number(converted.toFixed(6)).toString()}</div>
+          `;
+          matrixGrid.appendChild(item);
+        });
+      }
+
+      fromVal.addEventListener('input', recalculate);
+      fromSel.addEventListener('change', recalculate);
+      toSel.addEventListener('change', recalculate);
+
+      document.getElementById('swapUnitsBtn').addEventListener('click', () => {
+        const temp = fromSel.value;
+        fromSel.value = toSel.value;
+        toSel.value = temp;
+        recalculate();
+      });
+
+      document.querySelectorAll('#unitCategoryGroup .mode-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#unitCategoryGroup .mode-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeCat = btn.dataset.cat;
+          populateSelects();
+        });
+      });
+
+      populateSelects();
+    })();
+  </script>
+</body>
+</html>

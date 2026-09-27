@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('xestus_theme');
+                if (stored && ['night', 'day', 'eye-protect'].indexOf(stored) !== -1) {
+                    document.documentElement.setAttribute('data-theme', stored);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'day');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'night');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
+    <script src="../../../js/cookie-consent.js?v=1.0.0"></script>
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+
+    <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
+    <!-- SEO Metadata -->
+    <title>GST Calculator Online — Calculate GST Inclusive & Exclusive with CGST/SGST Breakdown | XESTUS Tools</title>
+    <meta name="description" content="Free online GST calculator for India. Calculate GST amount, total price, and CGST/SGST/IGST breakdown for standard rates (5%, 12%, 18%, 28%) or custom rates in real time.">
+    <meta name="keywords" content="gst calculator, calculate gst online, gst inclusive exclusive, cgst sgst igst calculator, gst tax calculator india">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://xestus.in/tools/calculators/gst-calculator/">
+    <link rel="manifest" href="../../../manifest.json">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xestus.in/tools/calculators/gst-calculator/">
+    <meta property="og:title" content="GST Calculator Online — Calculate GST Inclusive & Exclusive with CGST/SGST Breakdown | XESTUS Tools">
+    <meta property="og:description" content="Free online GST calculator for India. Calculate GST amount, total price, and CGST/SGST/IGST breakdown for standard rates (5%, 12%, 18%, 28%) or custom rates in real time.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../../style.css?v=3.9.7">
+    <link rel="stylesheet" href="../../../tools/tools.css?v=2.1.0">
+
+    <!-- Schema.org SoftwareApplication JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "GST Calculator (India Inclusive & Exclusive)",
+      "url": "https://xestus.in/tools/calculators/gst-calculator/",
+      "description": "Free online GST calculator for India. Calculate GST amount, total price, and CGST/SGST/IGST breakdown for standard rates (5%, 12%, 18%, 28%) or custom rates in real time.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "url": "https://xestus.in/"
+      }
+    }
+    </script>
+</head>
+
+<body data-tool-slug="gst-calculator">
+    <!-- Header / Navbar -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <!-- Desktop Primary Navigation -->
+                <li class="desktop-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="../../../tools/index.html" class="nav-link active">Tools</a></li>
+                <li class="desktop-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Drawer Direct Links -->
+                <li class="mobile-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation Lab</a></li>
+                <li class="mobile-nav-item"><a href="../../../tools/index.html" class="nav-link">Tools Directory</a></li>
+                <li class="mobile-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="mobile-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Theme Selector Strip -->
+                <li class="mobile-theme-strip" aria-label="Select Theme Mode">
+                    <span class="theme-strip-title"><i data-lucide="palette" aria-hidden="true"></i> Theme:</span>
+                    <button type="button" class="mobile-theme-btn" data-theme="day">Day</button>
+                    <button type="button" class="mobile-theme-btn active" data-theme="night">Night</button>
+                    <button type="button" class="mobile-theme-btn" data-theme="eye-protect">Eye Protect</button>
+                </li>
+
+                <!-- Mobile Drawer CTA Button -->
+                <li class="mobile-nav-item" style="margin-top: 10px;">
+                    <a href="../../../contact.html" class="btn-primary mobile-drawer-cta" style="width:100%; display:flex; justify-content:center; align-items:center; min-height:44px; text-decoration:none;">
+                        <span>Contact Us</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Theme Switcher Dropdown -->
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
+                    </div>
+                </div>
+
+                <a href="../../../contact.html" class="btn-primary btn-nav-cta magnetic-btn">
+                    <span>Contact Us</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Tool Container -->
+    <main class="tools-app-container" id="main-content">
+        <!-- Breadcrumb -->
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../index.html">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../../tools/index.html">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">GST Calculator (India Inclusive & Exclusive)</span>
+        </nav>
+
+        <!-- Tool Header -->
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="calculator" style="width:14px;height:14px;"></i> Calculators & Finance</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser • Zero Server Logs</span>
+                
+                <div class="tool-meta-actions">
+                    <button type="button" class="btn-fav-star" id="btnToggleFav">
+                        <i data-lucide="star" style="width:14px;height:14px;"></i>
+                        <span>Add to My Tools</span>
+                    </button>
+                    <button type="button" class="btn-share-tool" id="btnShareTool">
+                        <i data-lucide="share-2" style="width:14px;height:14px;"></i>
+                        <span>Share Tool</span>
+                    </button>
+                </div>
+            </div>
+            <h1 class="tool-title">GST Calculator (India Inclusive & Exclusive)</h1>
+            <p class="tool-description">
+                Calculate Goods and Services Tax (GST) in real time. Switch easily between GST Inclusive (reverse calculation) and GST Exclusive (adding tax) with clear CGST, SGST, and IGST breakdowns.
+            </p>
+        </header>
+
+        <!-- Tool Workspace -->
+        <section class="tool-workspace" aria-label="GST Calculator (India Inclusive & Exclusive) Workspace">
+            
+        <div class="calc-grid-2col">
+            <div class="calc-form-panel">
+                <div class="calc-field-group">
+                    <label for="gstAmountType">Calculation Mode</label>
+                    <div class="tool-btn-group" style="width:100%;">
+                        <button type="button" class="tool-btn tool-btn-primary" id="btnExclusive" style="flex:1;">GST Exclusive (+ Add GST)</button>
+                        <button type="button" class="tool-btn tool-btn-secondary" id="btnInclusive" style="flex:1;">GST Inclusive (Remove GST)</button>
+                    </div>
+                </div>
+
+                <div class="calc-field-group">
+                    <label for="gstInitialAmount">Initial Amount (₹)</label>
+                    <div class="calc-input-wrap">
+                        <span class="calc-input-prefix">₹</span>
+                        <input type="number" id="gstInitialAmount" class="calc-input has-prefix" value="10000" min="0" step="any" placeholder="Enter amount...">
+                    </div>
+                </div>
+
+                <div class="calc-field-group">
+                    <label>GST Rate (%)</label>
+                    <div class="calc-rate-pills">
+                        <button type="button" class="calc-rate-btn" data-rate="5">5%</button>
+                        <button type="button" class="calc-rate-btn" data-rate="12">12%</button>
+                        <button type="button" class="calc-rate-btn active" data-rate="18">18%</button>
+                        <button type="button" class="calc-rate-btn" data-rate="28">28%</button>
+                        <button type="button" class="calc-rate-btn" id="btnCustomRate" data-rate="custom">Custom</button>
+                    </div>
+                    <div class="calc-input-wrap" id="customRateWrap" style="display:none; margin-top:8px;">
+                        <input type="number" id="gstCustomRate" class="calc-input has-suffix" placeholder="Enter custom GST %" value="18" min="0" max="100" step="any">
+                        <span class="calc-input-suffix">%</span>
+                    </div>
+                </div>
+
+                <div class="calc-field-group">
+                    <label for="gstSupplyType">Transaction Type</label>
+                    <select id="gstSupplyType" class="tool-select" style="width:100%;">
+                        <option value="intra">Intra-State (CGST 50% + SGST 50%)</option>
+                        <option value="inter">Inter-State (IGST 100%)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="calc-result-panel">
+                <div class="calc-summary-hero">
+                    <div class="summary-lbl" id="resTotalLabel">Total Final Amount</div>
+                    <div class="summary-val" id="resTotalAmount">₹ 11,800.00</div>
+                </div>
+
+                <div class="calc-breakdown-list">
+                    <div class="calc-breakdown-row">
+                        <span class="row-lbl">Net Base Price:</span>
+                        <span class="row-val" id="resNetPrice">₹ 10,000.00</span>
+                    </div>
+                    <div class="calc-breakdown-row">
+                        <span class="row-lbl">Total GST Tax:</span>
+                        <span class="row-val" id="resGstAmount" style="color:var(--cyan-bright);">₹ 1,800.00</span>
+                    </div>
+                    <div class="calc-breakdown-row" id="cgstRow">
+                        <span class="row-lbl">CGST (<span id="cgstPct">9</span>%):</span>
+                        <span class="row-val" id="resCgst">₹ 900.00</span>
+                    </div>
+                    <div class="calc-breakdown-row" id="sgstRow">
+                        <span class="row-lbl">SGST (<span id="sgstPct">9</span>%):</span>
+                        <span class="row-val" id="resSgst">₹ 900.00</span>
+                    </div>
+                    <div class="calc-breakdown-row" id="igstRow" style="display:none;">
+                        <span class="row-lbl">IGST (<span id="igstPct">18</span>%):</span>
+                        <span class="row-val" id="resIgst">₹ 1,800.00</span>
+                    </div>
+                </div>
+
+                <div class="tool-btn-group" style="margin-top:12px;">
+                    <button type="button" class="tool-btn" id="btnCopyGst" style="flex:1;"><i data-lucide="copy"></i> <span id="copyGstText">Copy Summary</span></button>
+                    <button type="button" class="tool-btn tool-btn-danger" id="btnResetGst"><i data-lucide="rotate-ccw"></i> <span>Reset</span></button>
+                </div>
+            </div>
+        </div>
+    
+        </section>
+
+        <!-- Educational & Related Mesh -->
+        <section class="tool-info-section">
+            <div class="tool-info-grid">
+                <article class="tool-guide-content">
+                    
+        <h2>How GST Calculation Works in India</h2>
+        <p>Goods and Services Tax (GST) is a destination-based unified tax levied on manufacturing, sale, and consumption of goods and services throughout India.</p>
+        
+        <h3>1. GST Exclusive (Adding GST to Base Price)</h3>
+        <p>Used when the seller quotes a price excluding taxes:</p>
+        <ul>
+            <li><strong>GST Amount:</strong> <code>(Base Amount × GST %) ÷ 100</code></li>
+            <li><strong>Total Invoice Amount:</strong> <code>Base Amount + GST Amount</code></li>
+        </ul>
+
+        <h3>2. GST Inclusive (Reverse Tax Extraction)</h3>
+        <p>Used when retail prices already include GST (MRP):</p>
+        <ul>
+            <li><strong>Net Base Price:</strong> <code>(Total MRP × 100) ÷ (100 + GST %)</code></li>
+            <li><strong>GST Amount Extracted:</strong> <code>Total MRP - Net Base Price</code></li>
+        </ul>
+
+        <h3>3. CGST, SGST &amp; IGST Split</h3>
+        <ul>
+            <li><strong>Intra-State:</strong> When buyer and seller are in the same state, GST is divided equally into Central GST (CGST) and State GST (SGST).</li>
+            <li><strong>Inter-State:</strong> When transaction is across state borders, Integrated GST (IGST) is applied at the full rate.</li>
+        </ul>
+    
+                </article>
+                <aside class="related-tools-card">
+                    <h3 class="related-tools-title">Related Practical Tools</h3>
+                    <div class="related-tools-list">
+                        
+                            <a href="../../../tools/calculators/percentage-calculator/" class="related-tool-item">
+                                <span class="related-tool-name">Percentage Calculator</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                            <a href="../../../tools/calculators/discount-calculator/" class="related-tool-item">
+                                <span class="related-tool-name">Discount & Savings Calculator</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                            <a href="../../../tools/office/invoice-generator/" class="related-tool-item">
+                                <span class="related-tool-name">Simple Invoice & Bill Generator</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="stitch-footer" role="contentinfo">
+        <div class="stitch-footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../../index.html#home" class="footer-logo">
+                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+                <p class="footer-brand-desc">
+                    Enterprise technology company &amp; open digital utilities ecosystem. Engineered for privacy, speed, and real-world utility.
+                </p>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="../../../privacy-policy.html" class="legal-link-btn">Privacy Policy</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../terms.html" class="legal-link-btn">Terms of Service</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../disclaimer.html" class="legal-link-btn">Disclaimer</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../cookie-policy.html" class="legal-link-btn">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../../js/nav-core.js"></script>
+    <script src="../../../js/my-xestus.js?v=1.0.0"></script>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            let isExclusive = true;
+            let currentRate = 18;
+
+            const btnExclusive = document.getElementById('btnExclusive');
+            const btnInclusive = document.getElementById('btnInclusive');
+            const amountInput = document.getElementById('gstInitialAmount');
+            const ratePills = document.querySelectorAll('.calc-rate-btn');
+            const customRateWrap = document.getElementById('customRateWrap');
+            const customRateInput = document.getElementById('gstCustomRate');
+            const supplyTypeSelect = document.getElementById('gstSupplyType');
+
+            const resTotalLabel = document.getElementById('resTotalLabel');
+            const resTotalAmount = document.getElementById('resTotalAmount');
+            const resNetPrice = document.getElementById('resNetPrice');
+            const resGstAmount = document.getElementById('resGstAmount');
+            const resCgst = document.getElementById('resCgst');
+            const resSgst = document.getElementById('resSgst');
+            const resIgst = document.getElementById('resIgst');
+            const cgstPct = document.getElementById('cgstPct');
+            const sgstPct = document.getElementById('sgstPct');
+            const igstPct = document.getElementById('igstPct');
+            const cgstRow = document.getElementById('cgstRow');
+            const sgstRow = document.getElementById('sgstRow');
+            const igstRow = document.getElementById('igstRow');
+
+            function formatINR(val) {
+                return '₹ ' + val.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+
+            function calculate() {
+                const amount = parseFloat(amountInput.value) || 0;
+                let rate = currentRate;
+                if (currentRate === 'custom') {
+                    rate = parseFloat(customRateInput.value) || 0;
+                }
+
+                let base = 0;
+                let gst = 0;
+                let total = 0;
+
+                if (isExclusive) {
+                    base = amount;
+                    gst = (base * rate) / 100;
+                    total = base + gst;
+                    resTotalLabel.textContent = 'Total Gross Amount (with GST)';
+                } else {
+                    total = amount;
+                    base = (total * 100) / (100 + rate);
+                    gst = total - base;
+                    resTotalLabel.textContent = 'Original MRP (with GST)';
+                }
+
+                resTotalAmount.textContent = formatINR(total);
+                resNetPrice.textContent = formatINR(base);
+                resGstAmount.textContent = formatINR(gst);
+
+                const isInter = supplyTypeSelect.value === 'inter';
+                if (isInter) {
+                    cgstRow.style.display = 'none';
+                    sgstRow.style.display = 'none';
+                    igstRow.style.display = 'flex';
+                    igstPct.textContent = rate;
+                    resIgst.textContent = formatINR(gst);
+                } else {
+                    cgstRow.style.display = 'flex';
+                    sgstRow.style.display = 'flex';
+                    igstRow.style.display = 'none';
+                    const halfRate = (rate / 2).toFixed(2).replace(/\.00$/, '');
+                    cgstPct.textContent = halfRate;
+                    sgstPct.textContent = halfRate;
+                    resCgst.textContent = formatINR(gst / 2);
+                    resSgst.textContent = formatINR(gst / 2);
+                }
+            }
+
+            btnExclusive.addEventListener('click', () => {
+                isExclusive = true;
+                btnExclusive.className = 'tool-btn tool-btn-primary';
+                btnInclusive.className = 'tool-btn tool-btn-secondary';
+                calculate();
+            });
+
+            btnInclusive.addEventListener('click', () => {
+                isExclusive = false;
+                btnInclusive.className = 'tool-btn tool-btn-primary';
+                btnExclusive.className = 'tool-btn tool-btn-secondary';
+                calculate();
+            });
+
+            ratePills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    ratePills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    const r = pill.getAttribute('data-rate');
+                    if (r === 'custom') {
+                        currentRate = 'custom';
+                        customRateWrap.style.display = 'flex';
+                    } else {
+                        currentRate = parseFloat(r);
+                        customRateWrap.style.display = 'none';
+                    }
+                    calculate();
+                });
+            });
+
+            amountInput.addEventListener('input', calculate);
+            customRateInput.addEventListener('input', calculate);
+            supplyTypeSelect.addEventListener('change', calculate);
+
+            document.getElementById('btnResetGst').addEventListener('click', () => {
+                amountInput.value = '10000';
+                currentRate = 18;
+                customRateWrap.style.display = 'none';
+                ratePills.forEach(p => p.classList.toggle('active', p.getAttribute('data-rate') === '18'));
+                calculate();
+            });
+
+            document.getElementById('btnCopyGst').addEventListener('click', () => {
+                const text = `XESTUS GST Summary\nMode: ${isExclusive ? 'GST Exclusive' : 'GST Inclusive'}\nBase Price: ${resNetPrice.textContent}\nGST Tax: ${resGstAmount.textContent}\nFinal Total: ${resTotalAmount.textContent}`;
+                navigator.clipboard.writeText(text).then(() => {
+                    const btnText = document.getElementById('copyGstText');
+                    btnText.textContent = 'Copied!';
+                    setTimeout(() => { btnText.textContent = 'Copy Summary'; }, 2000);
+                });
+            });
+
+            calculate();
+        });
+    
+    </script>
+</body>
+</html>

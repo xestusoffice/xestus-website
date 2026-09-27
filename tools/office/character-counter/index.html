@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('xestus_theme');
+                if (stored && ['night', 'day', 'eye-protect'].indexOf(stored) !== -1) {
+                    document.documentElement.setAttribute('data-theme', stored);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'day');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'night');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
+    <script src="../../../js/cookie-consent.js?v=1.0.0"></script>
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+
+    <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
+    <!-- SEO Metadata -->
+    <title>Character Counter & Text Analyzer Online — Live Letter & Word Count | XESTUS Tools</title>
+    <meta name="description" content="Free online character counter, letter frequency analyzer, word count, space counter, sentence detector, and reading time estimator. 100% private in-browser analysis.">
+    <meta name="keywords" content="character counter, letter counter, count characters, word counter, character limit checker">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://xestus.in/tools/office/character-counter/">
+    <link rel="manifest" href="../../../manifest.json">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xestus.in/tools/office/character-counter/">
+    <meta property="og:title" content="Character Counter & Text Analyzer Online | XESTUS Tools">
+    <meta property="og:description" content="Free online character counter, letter frequency analyzer, word count, space counter, and sentence detector.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../../style.css?v=3.9.7">
+    <link rel="stylesheet" href="../../../tools/tools.css?v=2.1.0">
+
+    <!-- Schema.org WebApplication JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Character Counter & Text Analyzer",
+      "url": "https://xestus.in/tools/office/character-counter/",
+      "description": "Free online character counter, letter frequency analyzer, word count, space counter, sentence detector, and reading time estimator.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "url": "https://xestus.in/"
+      }
+    }
+    </script>
+</head>
+
+<body data-tool-slug="character-counter">
+    <!-- Header / Navbar -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <li class="desktop-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#tools" class="nav-link active">Tools</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="../../index.html" class="btn-stitch-primary" style="padding: 8px 16px; font-size: 13px;">
+                    <span>All Tools Hub ↗</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tool-main-content">
+        <!-- Breadcrumb Navigation -->
+        <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+            <a href="../../../index.html">Home</a>
+            <span class="crumb-separator">/</span>
+            <a href="../../index.html">Tools</a>
+            <span class="crumb-separator">/</span>
+            <a href="../index.html">Office & Text</a>
+            <span class="crumb-separator">/</span>
+            <span class="crumb-current">Character Counter</span>
+        </nav>
+
+        <section class="tool-hero-section">
+            <span class="tool-tag-pill">TEXT & OFFICE UTILITY</span>
+            <h1 class="tool-page-title">Live Character & Letter Counter</h1>
+            <p class="tool-page-desc">
+                Count total characters with and without whitespace, words, lines, paragraphs, sentences, and analyze platform character limits for Twitter/X, Instagram, and LinkedIn.
+            </p>
+        </section>
+
+        <!-- Main Tool Card Container -->
+        <div class="tool-workspace-container">
+            <div class="tool-card-panel">
+                <!-- Live Metric Badges Strip -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 20px;">
+                    <div style="background: var(--bg-surface); padding: 14px; border-radius: 10px; border: 1px solid var(--border-subtle); text-align: center;">
+                        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Characters</div>
+                        <div id="charCount" style="font-size: 1.8rem; font-weight: 700; color: var(--cyan-primary);">0</div>
+                    </div>
+                    <div style="background: var(--bg-surface); padding: 14px; border-radius: 10px; border: 1px solid var(--border-subtle); text-align: center;">
+                        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">No Spaces</div>
+                        <div id="charNoSpaceCount" style="font-size: 1.8rem; font-weight: 700; color: var(--cyan-bright);">0</div>
+                    </div>
+                    <div style="background: var(--bg-surface); padding: 14px; border-radius: 10px; border: 1px solid var(--border-subtle); text-align: center;">
+                        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Words</div>
+                        <div id="wordCount" style="font-size: 1.8rem; font-weight: 700; color: #10b981;">0</div>
+                    </div>
+                    <div style="background: var(--bg-surface); padding: 14px; border-radius: 10px; border: 1px solid var(--border-subtle); text-align: center;">
+                        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Sentences</div>
+                        <div id="sentenceCount" style="font-size: 1.8rem; font-weight: 700; color: var(--stitch-yellow);">0</div>
+                    </div>
+                    <div style="background: var(--bg-surface); padding: 14px; border-radius: 10px; border: 1px solid var(--border-subtle); text-align: center;">
+                        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Lines</div>
+                        <div id="lineCount" style="font-size: 1.8rem; font-weight: 700; color: var(--text-primary);">0</div>
+                    </div>
+                </div>
+
+                <div class="input-group" style="margin-bottom: 16px;">
+                    <textarea id="textInput" rows="10" placeholder="Type or paste your text here to analyze in real time..." style="width: 100%; padding: 16px; border-radius: 10px; border: 1px solid var(--border-medium); background: var(--bg-surface); color: var(--text-primary); font-family: inherit; font-size: 1rem; resize: vertical; box-sizing: border-box;"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px;">
+                    <button type="button" id="btnCopyText" class="btn-stitch-primary" style="padding: 10px 18px; font-size: 13px;">
+                        <span>Copy Text</span>
+                    </button>
+                    <button type="button" id="btnClearText" class="btn-secondary" style="padding: 10px 18px; font-size: 13px;">
+                        <span>Clear All</span>
+                    </button>
+                </div>
+
+                <!-- Platform Limit Gauges -->
+                <div style="background: var(--bg-surface); padding: 20px; border-radius: 12px; border: 1px solid var(--border-subtle);">
+                    <h4 style="margin-top: 0; color: var(--text-primary);">Social Media Limits Check</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 12px;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px;">
+                                <span>X (Twitter) Post:</span>
+                                <span id="twitterLimit">0 / 280</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: var(--bg-card); border-radius: 4px; overflow: hidden;">
+                                <div id="twitterBar" style="height: 100%; width: 0%; background: var(--cyan-primary); transition: width 0.2s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px;">
+                                <span>Instagram Bio:</span>
+                                <span id="instaLimit">0 / 150</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: var(--bg-card); border-radius: 4px; overflow: hidden;">
+                                <div id="instaBar" style="height: 100%; width: 0%; background: #e1306c; transition: width 0.2s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px;">
+                                <span>LinkedIn Post:</span>
+                                <span id="linkedinLimit">0 / 3000</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: var(--bg-card); border-radius: 4px; overflow: hidden;">
+                                <div id="linkedinBar" style="height: 100%; width: 0%; background: #0077b5; transition: width 0.2s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Educational Section -->
+        <article class="tool-editorial-content" style="max-width: 900px; margin: 50px auto 0 auto; line-height: 1.7; color: var(--text-secondary);">
+            <h2>Why Accurate Character Counting Matters</h2>
+            <p>
+                From SEO meta title limits (approx. 60 characters) and description lengths (155-160 characters) to SMS limits (160 characters per segment) and social media publishing, maintaining exact character budgets prevents truncation and improves engagement.
+            </p>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo" style="margin-top: 60px; padding: 40px 20px; border-top: 1px solid var(--border-subtle); text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+        <p>© 2026 XESTUS. All Rights Reserved. Privacy First &bull; Zero Server Egress.</p>
+    </footer>
+
+    <script>
+        (function() {
+            var input = document.getElementById('textInput');
+            var charCount = document.getElementById('charCount');
+            var charNoSpaceCount = document.getElementById('charNoSpaceCount');
+            var wordCount = document.getElementById('wordCount');
+            var sentenceCount = document.getElementById('sentenceCount');
+            var lineCount = document.getElementById('lineCount');
+
+            var twitterLimit = document.getElementById('twitterLimit');
+            var twitterBar = document.getElementById('twitterBar');
+            var instaLimit = document.getElementById('instaLimit');
+            var instaBar = document.getElementById('instaBar');
+            var linkedinLimit = document.getElementById('linkedinLimit');
+            var linkedinBar = document.getElementById('linkedinBar');
+
+            var btnCopy = document.getElementById('btnCopyText');
+            var btnClear = document.getElementById('btnClearText');
+
+            function analyze() {
+                var text = input.value;
+                var totalChars = text.length;
+                var noSpaces = text.replace(/\s/g, '').length;
+                var words = text.trim() ? text.trim().split(/\s+/).length : 0;
+                var sentences = text.trim() ? (text.match(/[^.!?]+[.!?]+/g) || [text]).length : 0;
+                var lines = text ? text.split(/\r\n|\r|\n/).length : 0;
+
+                charCount.textContent = totalChars;
+                charNoSpaceCount.textContent = noSpaces;
+                wordCount.textContent = words;
+                sentenceCount.textContent = sentences;
+                lineCount.textContent = lines;
+
+                // Twitter
+                twitterLimit.textContent = totalChars + ' / 280';
+                var twPct = Math.min(100, (totalChars / 280) * 100);
+                twitterBar.style.width = twPct + '%';
+                twitterBar.style.background = totalChars > 280 ? '#ef4444' : 'var(--cyan-primary)';
+
+                // Instagram
+                instaLimit.textContent = totalChars + ' / 150';
+                var inPct = Math.min(100, (totalChars / 150) * 100);
+                instaBar.style.width = inPct + '%';
+                instaBar.style.background = totalChars > 150 ? '#ef4444' : '#e1306c';
+
+                // LinkedIn
+                linkedinLimit.textContent = totalChars + ' / 3000';
+                var liPct = Math.min(100, (totalChars / 3000) * 100);
+                linkedinBar.style.width = liPct + '%';
+                linkedinBar.style.background = totalChars > 3000 ? '#ef4444' : '#0077b5';
+            }
+
+            input.addEventListener('input', analyze);
+
+            btnCopy.addEventListener('click', function() {
+                if (!input.value) return;
+                navigator.clipboard.writeText(input.value).then(function() {
+                    btnCopy.innerHTML = '<span>Copied! ✓</span>';
+                    setTimeout(function() {
+                        btnCopy.innerHTML = '<span>Copy Text</span>';
+                    }, 2000);
+                });
+            });
+
+            btnClear.addEventListener('click', function() {
+                input.value = '';
+                analyze();
+                input.focus();
+            });
+
+            analyze();
+        })();
+    </script>
+</body>
+</html>

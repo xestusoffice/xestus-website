@@ -2918,7 +2918,7 @@ html[data-theme="eye-protect"] .faq-item {
     max-width: var(--container-max);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: 32px;
 }
 
@@ -3861,7 +3861,7 @@ body.modal-open {
 /* Lab Cards Grid */
 .lab-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 28px;
     max-width: var(--container-max);
     margin: 0 auto 50px;
@@ -4483,7 +4483,7 @@ body.modal-open {
     max-width: var(--container-max);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(320px, 420px) 1fr;
+    grid-template-columns: minmax(min(100%, 300px), 420px) 1fr;
     gap: 48px;
     align-items: start;
     text-align: left;
@@ -7709,7 +7709,7 @@ html[lang="hi"] .founder-quote-box p {
     max-width: var(--container-max);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 30px;
 }
 
@@ -14499,4 +14499,110 @@ textarea,
 .btn-card-action {
     touch-action: manipulation;
 }
-
+
+
+/* ==========================================================================
+   DAILY UTILITY QUICK ACTIONS & TOOLS SEARCH BAR (HOMEPAGE & ECOSYSTEM)
+   ========================================================================== */
+.quick-actions-container {
+    margin: 1.5rem 0 2rem;
+    width: 100%;
+}
+
+.quick-actions-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.quick-actions-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cyan-bright, #00ff88);
+}
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+    gap: 0.65rem;
+}
+
+.btn-quick-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary, #ffffff);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    text-align: center;
+}
+
+.btn-quick-action i {
+    width: 16px;
+    height: 16px;
+    color: var(--cyan-bright, #00ff88);
+    flex-shrink: 0;
+}
+
+.btn-quick-action:hover {
+    background: rgba(0, 191, 255, 0.12);
+    border-color: var(--cyan-primary, #00bfff);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
+}
+
+.btn-quick-action.btn-quick-all {
+    background: rgba(0, 255, 136, 0.1);
+    border-color: rgba(0, 255, 136, 0.35);
+    color: #00ff88;
+    font-weight: 600;
+}
+
+.btn-quick-action.btn-quick-all:hover {
+    background: #00ff88;
+    color: #05070c;
+    box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
+}
+
+:root[data-theme="day"] .btn-quick-action {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    color: #0f172a;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+:root[data-theme="day"] .btn-quick-action:hover {
+    background: #f0fdf4;
+    border-color: #059669;
+    color: #059669;
+}
+
+:root[data-theme="day"] .btn-quick-action.btn-quick-all {
+    background: #ecfdf5;
+    border-color: #10b981;
+    color: #047857;
+}
+
+:root[data-theme="eye-protect"] .btn-quick-action {
+    background: #e4dac9;
+    border-color: #d4c7b5;
+    color: #2d261e;
+}

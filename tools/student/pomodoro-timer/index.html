@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('xestus_theme');
+                if (stored && ['night', 'day', 'eye-protect'].indexOf(stored) !== -1) {
+                    document.documentElement.setAttribute('data-theme', stored);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'day');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'night');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
+    <script src="../../../js/cookie-consent.js?v=1.0.0"></script>
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+
+    <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
+    <!-- SEO Metadata -->
+    <title>Pomodoro Timer Online — 25 Min Focus & Study Timer with Audio Chimes | XESTUS Tools</title>
+    <meta name="description" content="Boost concentration and study productivity with the free online Pomodoro Timer. Customizable 25-min study sessions, 5-min short breaks, and audio alerts.">
+    <meta name="keywords" content="pomodoro timer, study timer online, focus timer 25 min, pomodoro clock, productivity timer">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://xestus.in/tools/student/pomodoro-timer/">
+    <link rel="manifest" href="../../../manifest.json">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xestus.in/tools/student/pomodoro-timer/">
+    <meta property="og:title" content="Pomodoro Timer Online — 25 Min Focus & Study Timer with Audio Chimes | XESTUS Tools">
+    <meta property="og:description" content="Boost concentration and study productivity with the free online Pomodoro Timer. Customizable 25-min study sessions, 5-min short breaks, and audio alerts.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../../style.css?v=3.9.7">
+    <link rel="stylesheet" href="../../../tools/tools.css?v=2.1.0">
+
+    <!-- Schema.org SoftwareApplication JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Pomodoro Study & Focus Timer",
+      "url": "https://xestus.in/tools/student/pomodoro-timer/",
+      "description": "Boost concentration and study productivity with the free online Pomodoro Timer. Customizable 25-min study sessions, 5-min short breaks, and audio alerts.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "url": "https://xestus.in/"
+      }
+    }
+    </script>
+</head>
+
+<body data-tool-slug="pomodoro-timer">
+    <!-- Header / Navbar -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <!-- Desktop Primary Navigation -->
+                <li class="desktop-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="../../../tools/index.html" class="nav-link active">Tools</a></li>
+                <li class="desktop-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Drawer Direct Links -->
+                <li class="mobile-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation Lab</a></li>
+                <li class="mobile-nav-item"><a href="../../../tools/index.html" class="nav-link">Tools Directory</a></li>
+                <li class="mobile-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="mobile-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Theme Selector Strip -->
+                <li class="mobile-theme-strip" aria-label="Select Theme Mode">
+                    <span class="theme-strip-title"><i data-lucide="palette" aria-hidden="true"></i> Theme:</span>
+                    <button type="button" class="mobile-theme-btn" data-theme="day">Day</button>
+                    <button type="button" class="mobile-theme-btn active" data-theme="night">Night</button>
+                    <button type="button" class="mobile-theme-btn" data-theme="eye-protect">Eye Protect</button>
+                </li>
+
+                <!-- Mobile Drawer CTA Button -->
+                <li class="mobile-nav-item" style="margin-top: 10px;">
+                    <a href="../../../contact.html" class="btn-primary mobile-drawer-cta" style="width:100%; display:flex; justify-content:center; align-items:center; min-height:44px; text-decoration:none;">
+                        <span>Contact Us</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Theme Switcher Dropdown -->
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
+                    </div>
+                </div>
+
+                <a href="../../../contact.html" class="btn-primary btn-nav-cta magnetic-btn">
+                    <span>Contact Us</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Tool Container -->
+    <main class="tools-app-container" id="main-content">
+        <!-- Breadcrumb -->
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../index.html">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../../tools/index.html">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Pomodoro Study & Focus Timer</span>
+        </nav>
+
+        <!-- Tool Header -->
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="timer" style="width:14px;height:14px;"></i> Student Tools</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser • Zero Server Logs</span>
+                
+                <div class="tool-meta-actions">
+                    <button type="button" class="btn-fav-star" id="btnToggleFav">
+                        <i data-lucide="star" style="width:14px;height:14px;"></i>
+                        <span>Add to My Tools</span>
+                    </button>
+                    <button type="button" class="btn-share-tool" id="btnShareTool">
+                        <i data-lucide="share-2" style="width:14px;height:14px;"></i>
+                        <span>Share Tool</span>
+                    </button>
+                </div>
+            </div>
+            <h1 class="tool-title">Pomodoro Study & Focus Timer</h1>
+            <p class="tool-description">
+                Master time management with the proven Pomodoro technique. Run 25-minute uninterrupted study sessions followed by restorative 5-minute and 15-minute breaks.
+            </p>
+        </header>
+
+        <!-- Tool Workspace -->
+        <section class="tool-workspace" aria-label="Pomodoro Study & Focus Timer Workspace">
+            
+        <div style="text-align: center; max-width: 480px; margin: 0 auto;">
+            <div class="tool-btn-group" style="justify-content: center; margin-bottom: 24px;">
+                <button type="button" class="tool-btn tool-btn-primary" id="btnModePomodoro">Pomodoro (25m)</button>
+                <button type="button" class="tool-btn tool-btn-secondary" id="btnModeShort">Short Break (5m)</button>
+                <button type="button" class="tool-btn tool-btn-secondary" id="btnModeLong">Long Break (15m)</button>
+            </div>
+
+            <div style="background:var(--bg-surface); border:2px solid var(--cyan-border); border-radius:50%; width:240px; height:240px; margin:0 auto 28px; display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 0 35px var(--cyan-glow);">
+                <div id="timerDisplay" style="font-size:54px; font-weight:800; font-family:var(--tools-font-mono); color:var(--cyan-bright);">25:00</div>
+                <div id="timerModeLabel" style="font-size:12.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-top:4px;">Deep Focus</div>
+            </div>
+
+            <div class="tool-btn-group" style="justify-content: center; gap: 14px;">
+                <button type="button" class="btn-primary" id="btnStartPause" style="min-width:140px; min-height:48px; font-size:15px;"><i data-lucide="play"></i> <span>Start Focus</span></button>
+                <button type="button" class="tool-btn tool-btn-danger" id="btnResetTimer" style="min-height:48px;"><i data-lucide="rotate-ccw"></i> <span>Reset</span></button>
+            </div>
+
+            <div style="margin-top:24px; color:var(--text-secondary); font-size:13.5px;">
+                Completed Sessions Today: <strong id="sessionCount" style="color:var(--cyan-bright);">0</strong>
+            </div>
+        </div>
+    
+        </section>
+
+        <!-- Educational & Related Mesh -->
+        <section class="tool-info-section">
+            <div class="tool-info-grid">
+                <article class="tool-guide-content">
+                    
+        <h2>The Pomodoro Technique Workflow</h2>
+        <ol>
+            <li><strong>Choose a task:</strong> Pick a single assignment or study topic.</li>
+            <li><strong>Work for 25 minutes:</strong> Stay completely focused with zero multitasking.</li>
+            <li><strong>Take a 5-minute break:</strong> Relax, stretch, and grab water.</li>
+            <li><strong>Repeat 4 times:</strong> After 4 sessions, enjoy a longer 15–30 minute break.</li>
+        </ol>
+    
+                </article>
+                <aside class="related-tools-card">
+                    <h3 class="related-tools-title">Related Practical Tools</h3>
+                    <div class="related-tools-list">
+                        
+                            <a href="../../../tools/office/word-counter/" class="related-tool-item">
+                                <span class="related-tool-name">Word & Character Counter</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                            <a href="../../../tools/calculators/percentage-calculator/" class="related-tool-item">
+                                <span class="related-tool-name">Percentage Calculator</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                            <a href="../../../tools/calculators/age-calculator/" class="related-tool-item">
+                                <span class="related-tool-name">Age Calculator</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="stitch-footer" role="contentinfo">
+        <div class="stitch-footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../../index.html#home" class="footer-logo">
+                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+                <p class="footer-brand-desc">
+                    Enterprise technology company &amp; open digital utilities ecosystem. Engineered for privacy, speed, and real-world utility.
+                </p>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="../../../privacy-policy.html" class="legal-link-btn">Privacy Policy</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../terms.html" class="legal-link-btn">Terms of Service</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../disclaimer.html" class="legal-link-btn">Disclaimer</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../cookie-policy.html" class="legal-link-btn">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../../js/nav-core.js"></script>
+    <script src="../../../js/my-xestus.js?v=1.0.0"></script>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            let totalSeconds = 25 * 60;
+            let remainingSeconds = totalSeconds;
+            let timerInterval = null;
+            let isRunning = false;
+            let currentMode = 'pomodoro';
+            let completedCount = 0;
+
+            const display = document.getElementById('timerDisplay');
+            const modeLabel = document.getElementById('timerModeLabel');
+            const btnStart = document.getElementById('btnStartPause');
+            const btnReset = document.getElementById('btnResetTimer');
+            const sessionSpan = document.getElementById('sessionCount');
+
+            const btnPomodoro = document.getElementById('btnModePomodoro');
+            const btnShort = document.getElementById('btnModeShort');
+            const btnLong = document.getElementById('btnModeLong');
+
+            function updateDisplay() {
+                const mins = Math.floor(remainingSeconds / 60);
+                const secs = remainingSeconds % 60;
+                display.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+                document.title = `(${display.textContent}) Pomodoro | XESTUS`;
+            }
+
+            function setMode(mode, mins, label) {
+                clearInterval(timerInterval);
+                isRunning = false;
+                btnStart.innerHTML = '<i data-lucide="play"></i> <span>Start</span>';
+                currentMode = mode;
+                totalSeconds = mins * 60;
+                remainingSeconds = totalSeconds;
+                modeLabel.textContent = label;
+                
+                [btnPomodoro, btnShort, btnLong].forEach(b => b.className = 'tool-btn tool-btn-secondary');
+                if (mode === 'pomodoro') btnPomodoro.className = 'tool-btn tool-btn-primary';
+                if (mode === 'short') btnShort.className = 'tool-btn tool-btn-primary';
+                if (mode === 'long') btnLong.className = 'tool-btn tool-btn-primary';
+
+                updateDisplay();
+                if (window.lucide) lucide.createIcons();
+            }
+
+            btnPomodoro.addEventListener('click', () => setMode('pomodoro', 25, 'Deep Focus'));
+            btnShort.addEventListener('click', () => setMode('short', 5, 'Short Break'));
+            btnLong.addEventListener('click', () => setMode('long', 15, 'Long Break'));
+
+            btnStart.addEventListener('click', () => {
+                if (isRunning) {
+                    clearInterval(timerInterval);
+                    isRunning = false;
+                    btnStart.innerHTML = '<i data-lucide="play"></i> <span>Resume</span>';
+                } else {
+                    isRunning = true;
+                    btnStart.innerHTML = '<i data-lucide="pause"></i> <span>Pause</span>';
+                    timerInterval = setInterval(() => {
+                        if (remainingSeconds > 0) {
+                            remainingSeconds--;
+                            updateDisplay();
+                        } else {
+                            clearInterval(timerInterval);
+                            isRunning = false;
+                            btnStart.innerHTML = '<i data-lucide="play"></i> <span>Start</span>';
+                            if (currentMode === 'pomodoro') {
+                                completedCount++;
+                                sessionSpan.textContent = completedCount;
+                                alert('Focus session complete! Time for a well-deserved break.');
+                                setMode('short', 5, 'Short Break');
+                            } else {
+                                alert('Break is over! Ready for the next focus session?');
+                                setMode('pomodoro', 25, 'Deep Focus');
+                            }
+                        }
+                    }, 1000);
+                }
+                if (window.lucide) lucide.createIcons();
+            });
+
+            btnReset.addEventListener('click', () => {
+                clearInterval(timerInterval);
+                isRunning = false;
+                remainingSeconds = totalSeconds;
+                btnStart.innerHTML = '<i data-lucide="play"></i> <span>Start Focus</span>';
+                updateDisplay();
+                if (window.lucide) lucide.createIcons();
+            });
+
+            updateDisplay();
+        });
+    
+    </script>
+</body>
+</html>

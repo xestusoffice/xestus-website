@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('xestus_theme');
+                if (stored && ['night', 'day', 'eye-protect'].indexOf(stored) !== -1) {
+                    document.documentElement.setAttribute('data-theme', stored);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'day');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'night');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
+    <script src="../../../js/cookie-consent.js?v=1.0.0"></script>
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+
+    <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
+    <!-- SEO Metadata -->
+    <title>Word Counter & Character Count Online — Real-Time Text Statistics | XESTUS Tools</title>
+    <meta name="description" content="Free online word counter and character counter. Count words, characters with/without spaces, sentences, paragraphs, reading time, and speaking time in real time.">
+    <meta name="keywords" content="word counter, character count, count words online, character counter with spaces, reading time calculator">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://xestus.in/tools/office/word-counter/">
+    <link rel="manifest" href="../../../manifest.json">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xestus.in/tools/office/word-counter/">
+    <meta property="og:title" content="Word Counter & Character Count Online — Real-Time Text Statistics | XESTUS Tools">
+    <meta property="og:description" content="Free online word counter and character counter. Count words, characters with/without spaces, sentences, paragraphs, reading time, and speaking time in real time.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../../style.css?v=3.9.7">
+    <link rel="stylesheet" href="../../../tools/tools.css?v=2.1.0">
+
+    <!-- Schema.org SoftwareApplication JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Word & Character Counter",
+      "url": "https://xestus.in/tools/office/word-counter/",
+      "description": "Free online word counter and character counter. Count words, characters with/without spaces, sentences, paragraphs, reading time, and speaking time in real time.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "url": "https://xestus.in/"
+      }
+    }
+    </script>
+</head>
+
+<body data-tool-slug="word-counter">
+    <!-- Header / Navbar -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <!-- Desktop Primary Navigation -->
+                <li class="desktop-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="../../../tools/index.html" class="nav-link active">Tools</a></li>
+                <li class="desktop-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Drawer Direct Links -->
+                <li class="mobile-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation Lab</a></li>
+                <li class="mobile-nav-item"><a href="../../../tools/index.html" class="nav-link">Tools Directory</a></li>
+                <li class="mobile-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="mobile-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Theme Selector Strip -->
+                <li class="mobile-theme-strip" aria-label="Select Theme Mode">
+                    <span class="theme-strip-title"><i data-lucide="palette" aria-hidden="true"></i> Theme:</span>
+                    <button type="button" class="mobile-theme-btn" data-theme="day">Day</button>
+                    <button type="button" class="mobile-theme-btn active" data-theme="night">Night</button>
+                    <button type="button" class="mobile-theme-btn" data-theme="eye-protect">Eye Protect</button>
+                </li>
+
+                <!-- Mobile Drawer CTA Button -->
+                <li class="mobile-nav-item" style="margin-top: 10px;">
+                    <a href="../../../contact.html" class="btn-primary mobile-drawer-cta" style="width:100%; display:flex; justify-content:center; align-items:center; min-height:44px; text-decoration:none;">
+                        <span>Contact Us</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Theme Switcher Dropdown -->
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
+                    </div>
+                </div>
+
+                <a href="../../../contact.html" class="btn-primary btn-nav-cta magnetic-btn">
+                    <span>Contact Us</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Tool Container -->
+    <main class="tools-app-container" id="main-content">
+        <!-- Breadcrumb -->
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../index.html">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../../tools/index.html">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Word & Character Counter</span>
+        </nav>
+
+        <!-- Tool Header -->
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="file-text" style="width:14px;height:14px;"></i> Office & Productivity</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser • Zero Server Logs</span>
+                
+                <div class="tool-meta-actions">
+                    <button type="button" class="btn-fav-star" id="btnToggleFav">
+                        <i data-lucide="star" style="width:14px;height:14px;"></i>
+                        <span>Add to My Tools</span>
+                    </button>
+                    <button type="button" class="btn-share-tool" id="btnShareTool">
+                        <i data-lucide="share-2" style="width:14px;height:14px;"></i>
+                        <span>Share Tool</span>
+                    </button>
+                </div>
+            </div>
+            <h1 class="tool-title">Word & Character Counter</h1>
+            <p class="tool-description">
+                Accurate, instant word and character count metrics. Track character limits for essays, Twitter/X posts, meta descriptions, and calculate estimated reading and speaking duration.
+            </p>
+        </header>
+
+        <!-- Tool Workspace -->
+        <section class="tool-workspace" aria-label="Word & Character Counter Workspace">
+            
+        <div>
+            <div class="word-stats-grid">
+                <div class="word-stat-card">
+                    <div class="word-stat-num" id="statWords">0</div>
+                    <div class="word-stat-label">Words</div>
+                </div>
+                <div class="word-stat-card">
+                    <div class="word-stat-num" id="statChars">0</div>
+                    <div class="word-stat-label">Characters</div>
+                </div>
+                <div class="word-stat-card">
+                    <div class="word-stat-num" id="statCharsNoSpace">0</div>
+                    <div class="word-stat-label">Chars (No Space)</div>
+                </div>
+                <div class="word-stat-card">
+                    <div class="word-stat-num" id="statSentences">0</div>
+                    <div class="word-stat-label">Sentences</div>
+                </div>
+                <div class="word-stat-card">
+                    <div class="word-stat-num" id="statParagraphs">0</div>
+                    <div class="word-stat-label">Paragraphs</div>
+                </div>
+                <div class="word-stat-card">
+                    <div class="word-stat-num" id="statReadingTime">0 min</div>
+                    <div class="word-stat-label">Reading Time</div>
+                </div>
+            </div>
+
+            <div class="tool-action-bar">
+                <div class="tool-options-group">
+                    <span style="font-size:13px; color:var(--text-secondary);">Type or paste text below:</span>
+                </div>
+                <div class="tool-btn-group">
+                    <button type="button" class="tool-btn" id="btnCopyText"><i data-lucide="copy"></i> <span id="copyTextLabel">Copy Text</span></button>
+                    <button type="button" class="tool-btn tool-btn-danger" id="btnClearText"><i data-lucide="trash-2"></i> <span>Clear</span></button>
+                </div>
+            </div>
+
+            <textarea id="textInput" class="tool-textarea" style="height:280px;" placeholder="Start typing or paste your text here..." spellcheck="true"></textarea>
+        </div>
+    
+        </section>
+
+        <!-- Educational & Related Mesh -->
+        <section class="tool-info-section">
+            <div class="tool-info-grid">
+                <article class="tool-guide-content">
+                    
+        <h2>Why Real-Time Text Statistics Matter</h2>
+        <p>Whether you are writing an academic essay, preparing a client proposal, drafting an SEO meta description, or preparing a speech, tracking exact word counts and pacing is essential.</p>
+        
+        <h3>Standard Character Limits for Reference</h3>
+        <ul>
+            <li><strong>Google Meta Title:</strong> 50–60 characters</li>
+            <li><strong>Google Meta Description:</strong> 150–160 characters</li>
+            <li><strong>X (Twitter) Post:</strong> 280 characters</li>
+            <li><strong>LinkedIn Post:</strong> Up to 3,000 characters</li>
+            <li><strong>Average Reading Speed:</strong> ~200–250 words per minute</li>
+        </ul>
+    
+                </article>
+                <aside class="related-tools-card">
+                    <h3 class="related-tools-title">Related Practical Tools</h3>
+                    <div class="related-tools-list">
+                        
+                            <a href="../../../tools/office/case-converter/" class="related-tool-item">
+                                <span class="related-tool-name">Text Case Converter</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                            <a href="../../../tools/developer/json-formatter/" class="related-tool-item">
+                                <span class="related-tool-name">JSON Formatter & Minifier</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                            <a href="../../../tools/student/pomodoro-timer/" class="related-tool-item">
+                                <span class="related-tool-name">Pomodoro Study Timer</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="stitch-footer" role="contentinfo">
+        <div class="stitch-footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../../index.html#home" class="footer-logo">
+                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+                <p class="footer-brand-desc">
+                    Enterprise technology company &amp; open digital utilities ecosystem. Engineered for privacy, speed, and real-world utility.
+                </p>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="../../../privacy-policy.html" class="legal-link-btn">Privacy Policy</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../terms.html" class="legal-link-btn">Terms of Service</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../disclaimer.html" class="legal-link-btn">Disclaimer</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../cookie-policy.html" class="legal-link-btn">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../../js/nav-core.js"></script>
+    <script src="../../../js/my-xestus.js?v=1.0.0"></script>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('textInput');
+            const statWords = document.getElementById('statWords');
+            const statChars = document.getElementById('statChars');
+            const statCharsNoSpace = document.getElementById('statCharsNoSpace');
+            const statSentences = document.getElementById('statSentences');
+            const statParagraphs = document.getElementById('statParagraphs');
+            const statReadingTime = document.getElementById('statReadingTime');
+
+            function analyzeText() {
+                const text = input.value;
+                const chars = text.length;
+                const charsNoSpace = text.replace(/\s/g, '').length;
+                
+                const wordsArr = text.trim() ? text.trim().split(/\s+/) : [];
+                const words = wordsArr.length;
+
+                const sentencesArr = text.trim() ? text.split(/[.!?]+/).filter(s => s.trim().length > 0) : [];
+                const sentences = sentencesArr.length;
+
+                const paragraphsArr = text.trim() ? text.split(/\n+/).filter(p => p.trim().length > 0) : [];
+                const paragraphs = paragraphsArr.length;
+
+                const readMinutes = Math.ceil(words / 200);
+
+                statWords.textContent = words.toLocaleString();
+                statChars.textContent = chars.toLocaleString();
+                statCharsNoSpace.textContent = charsNoSpace.toLocaleString();
+                statSentences.textContent = sentences.toLocaleString();
+                statParagraphs.textContent = paragraphs.toLocaleString();
+                statReadingTime.textContent = (words === 0 ? '0' : readMinutes) + ' min';
+            }
+
+            input.addEventListener('input', analyzeText);
+
+            document.getElementById('btnClearText').addEventListener('click', () => {
+                input.value = '';
+                analyzeText();
+                input.focus();
+            });
+
+            document.getElementById('btnCopyText').addEventListener('click', () => {
+                navigator.clipboard.writeText(input.value).then(() => {
+                    const lbl = document.getElementById('copyTextLabel');
+                    lbl.textContent = 'Copied!';
+                    setTimeout(() => { lbl.textContent = 'Copy Text'; }, 2000);
+                });
+            });
+
+            analyzeText();
+        });
+    
+    </script>
+</body>
+</html>

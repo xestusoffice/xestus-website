@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('xestus_theme');
+                if (stored && ['night', 'day', 'eye-protect'].indexOf(stored) !== -1) {
+                    document.documentElement.setAttribute('data-theme', stored);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'day');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'night');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
+    <script src="../../../js/cookie-consent.js?v=1.0.0"></script>
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+
+    <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
+    <!-- SEO Metadata -->
+    <title>Text Case Converter Online — UPPERCASE, lowercase, Title Case, camelCase | XESTUS Tools</title>
+    <meta name="description" content="Free online text case converter. Convert text between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, and kebab-case instantly.">
+    <meta name="keywords" content="case converter, convert to uppercase, lowercase converter, title case converter, camelcase online">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://xestus.in/tools/office/case-converter/">
+    <link rel="manifest" href="../../../manifest.json">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xestus.in/tools/office/case-converter/">
+    <meta property="og:title" content="Text Case Converter Online — UPPERCASE, lowercase, Title Case, camelCase | XESTUS Tools">
+    <meta property="og:description" content="Free online text case converter. Convert text between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, and kebab-case instantly.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../../style.css?v=3.9.7">
+    <link rel="stylesheet" href="../../../tools/tools.css?v=2.1.0">
+
+    <!-- Schema.org SoftwareApplication JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Text Case Converter",
+      "url": "https://xestus.in/tools/office/case-converter/",
+      "description": "Free online text case converter. Convert text between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, and kebab-case instantly.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "url": "https://xestus.in/"
+      }
+    }
+    </script>
+</head>
+
+<body data-tool-slug="case-converter">
+    <!-- Header / Navbar -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <!-- Desktop Primary Navigation -->
+                <li class="desktop-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="../../../tools/index.html" class="nav-link active">Tools</a></li>
+                <li class="desktop-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Drawer Direct Links -->
+                <li class="mobile-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation Lab</a></li>
+                <li class="mobile-nav-item"><a href="../../../tools/index.html" class="nav-link">Tools Directory</a></li>
+                <li class="mobile-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="mobile-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Theme Selector Strip -->
+                <li class="mobile-theme-strip" aria-label="Select Theme Mode">
+                    <span class="theme-strip-title"><i data-lucide="palette" aria-hidden="true"></i> Theme:</span>
+                    <button type="button" class="mobile-theme-btn" data-theme="day">Day</button>
+                    <button type="button" class="mobile-theme-btn active" data-theme="night">Night</button>
+                    <button type="button" class="mobile-theme-btn" data-theme="eye-protect">Eye Protect</button>
+                </li>
+
+                <!-- Mobile Drawer CTA Button -->
+                <li class="mobile-nav-item" style="margin-top: 10px;">
+                    <a href="../../../contact.html" class="btn-primary mobile-drawer-cta" style="width:100%; display:flex; justify-content:center; align-items:center; min-height:44px; text-decoration:none;">
+                        <span>Contact Us</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Theme Switcher Dropdown -->
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
+                    </div>
+                </div>
+
+                <a href="../../../contact.html" class="btn-primary btn-nav-cta magnetic-btn">
+                    <span>Contact Us</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Tool Container -->
+    <main class="tools-app-container" id="main-content">
+        <!-- Breadcrumb -->
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../index.html">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../../tools/index.html">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Text Case Converter</span>
+        </nav>
+
+        <!-- Tool Header -->
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="type" style="width:14px;height:14px;"></i> Office & Productivity</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser • Zero Server Logs</span>
+                
+                <div class="tool-meta-actions">
+                    <button type="button" class="btn-fav-star" id="btnToggleFav">
+                        <i data-lucide="star" style="width:14px;height:14px;"></i>
+                        <span>Add to My Tools</span>
+                    </button>
+                    <button type="button" class="btn-share-tool" id="btnShareTool">
+                        <i data-lucide="share-2" style="width:14px;height:14px;"></i>
+                        <span>Share Tool</span>
+                    </button>
+                </div>
+            </div>
+            <h1 class="tool-title">Text Case Converter</h1>
+            <p class="tool-description">
+                Transform text formatting instantly across all naming conventions: UPPERCASE, lowercase, Capitalized Words, Sentence case, camelCase, snake_case, and kebab-case.
+            </p>
+        </header>
+
+        <!-- Tool Workspace -->
+        <section class="tool-workspace" aria-label="Text Case Converter Workspace">
+            
+        <div>
+            <div class="tool-action-bar">
+                <div class="tool-options-group">
+                    <button type="button" class="tool-btn" id="btnUpper">UPPERCASE</button>
+                    <button type="button" class="tool-btn" id="btnLower">lowercase</button>
+                    <button type="button" class="tool-btn" id="btnTitle">Title Case</button>
+                    <button type="button" class="tool-btn" id="btnSentence">Sentence case</button>
+                    <button type="button" class="tool-btn" id="btnCamel">camelCase</button>
+                    <button type="button" class="tool-btn" id="btnSnake">snake_case</button>
+                    <button type="button" class="tool-btn" id="btnKebab">kebab-case</button>
+                </div>
+                <div class="tool-btn-group">
+                    <button type="button" class="tool-btn" id="btnCopyCase"><i data-lucide="copy"></i> <span id="copyCaseLabel">Copy Output</span></button>
+                    <button type="button" class="tool-btn tool-btn-danger" id="btnClearCase"><i data-lucide="trash-2"></i> <span>Clear</span></button>
+                </div>
+            </div>
+
+            <textarea id="caseInput" class="tool-textarea" style="height:260px;" placeholder="Type or paste text to convert case..." spellcheck="false">XESTUS Intelligence Beyond Limits - Practical Digital Tools for Everyone.</textarea>
+        </div>
+    
+        </section>
+
+        <!-- Educational & Related Mesh -->
+        <section class="tool-info-section">
+            <div class="tool-info-grid">
+                <article class="tool-guide-content">
+                    
+        <h2>Case Conventions Explained</h2>
+        <ul>
+            <li><strong>UPPERCASE:</strong> ALL CHARACTERS IN CAPITAL LETTERS (e.g. HEADINGS, CONSTANTS).</li>
+            <li><strong>lowercase:</strong> all characters in small letters.</li>
+            <li><strong>Title Case:</strong> Capitalizes The First Letter Of Every Major Word.</li>
+            <li><strong>Sentence case:</strong> Capitalizes only the first letter of each sentence.</li>
+            <li><strong>camelCase:</strong> firstWordLowerNextWordsCapitalized (used in JavaScript/Java variables).</li>
+            <li><strong>snake_case:</strong> words_separated_by_underscores (used in Python).</li>
+            <li><strong>kebab-case:</strong> words-separated-by-hyphens (used in URLs and CSS classes).</li>
+        </ul>
+    
+                </article>
+                <aside class="related-tools-card">
+                    <h3 class="related-tools-title">Related Practical Tools</h3>
+                    <div class="related-tools-list">
+                        
+                            <a href="../../../tools/office/word-counter/" class="related-tool-item">
+                                <span class="related-tool-name">Word & Character Counter</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                            <a href="../../../tools/developer/json-formatter/" class="related-tool-item">
+                                <span class="related-tool-name">JSON Formatter & Minifier</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                            <a href="../../../tools/developer/base64-encode-decode/" class="related-tool-item">
+                                <span class="related-tool-name">Base64 Encoder & Decoder</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="stitch-footer" role="contentinfo">
+        <div class="stitch-footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../../index.html#home" class="footer-logo">
+                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+                <p class="footer-brand-desc">
+                    Enterprise technology company &amp; open digital utilities ecosystem. Engineered for privacy, speed, and real-world utility.
+                </p>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="../../../privacy-policy.html" class="legal-link-btn">Privacy Policy</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../terms.html" class="legal-link-btn">Terms of Service</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../disclaimer.html" class="legal-link-btn">Disclaimer</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../cookie-policy.html" class="legal-link-btn">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../../js/nav-core.js"></script>
+    <script src="../../../js/my-xestus.js?v=1.0.0"></script>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const txt = document.getElementById('caseInput');
+
+            function toTitleCase(str) {
+                return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+            }
+
+            function toSentenceCase(str) {
+                return str.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, (c) => c.toUpperCase());
+            }
+
+            function toCamelCase(str) {
+                return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+            }
+
+            function toSnakeCase(str) {
+                return str.trim().toLowerCase().replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
+            }
+
+            function toKebabCase(str) {
+                return str.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
+            }
+
+            document.getElementById('btnUpper').addEventListener('click', () => { txt.value = txt.value.toUpperCase(); });
+            document.getElementById('btnLower').addEventListener('click', () => { txt.value = txt.value.toLowerCase(); });
+            document.getElementById('btnTitle').addEventListener('click', () => { txt.value = toTitleCase(txt.value); });
+            document.getElementById('btnSentence').addEventListener('click', () => { txt.value = toSentenceCase(txt.value); });
+            document.getElementById('btnCamel').addEventListener('click', () => { txt.value = toCamelCase(txt.value); });
+            document.getElementById('btnSnake').addEventListener('click', () => { txt.value = toSnakeCase(txt.value); });
+            document.getElementById('btnKebab').addEventListener('click', () => { txt.value = toKebabCase(txt.value); });
+
+            document.getElementById('btnClearCase').addEventListener('click', () => {
+                txt.value = '';
+                txt.focus();
+            });
+
+            document.getElementById('btnCopyCase').addEventListener('click', () => {
+                navigator.clipboard.writeText(txt.value).then(() => {
+                    const lbl = document.getElementById('copyCaseLabel');
+                    lbl.textContent = 'Copied!';
+                    setTimeout(() => { lbl.textContent = 'Copy Output'; }, 2000);
+                });
+            });
+        });
+    
+    </script>
+</body>
+</html>

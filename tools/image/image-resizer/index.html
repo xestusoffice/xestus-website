@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Image Dimension Resizer | Free Online Tool | XESTUS</title>
+  <meta name="description" content="undefined">
+  <meta name="keywords" content="image resizer, resize photo online, change photo dimensions, passport photo size, social media image resizer">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://xestus.in/tools/image/image-resizer/">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#00ff88">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xestus.in/tools/image/image-resizer/">
+  <meta property="og:title" content="Image Dimension Resizer | XESTUS Tools">
+  <meta property="og:description" content="undefined">
+  <meta property="og:image" content="https://xestus.in/assets/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google AdSense Official Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/tools/tools.css">
+  
+</head>
+<body>
+  <!-- Global Navigation Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="logo-link" aria-label="XESTUS Home">
+        <span class="logo-text">XESTUS<span class="logo-dot">.</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="/" class="nav-item">Home</a>
+        <a href="/index.html#services" class="nav-item">Services</a>
+        <a href="/tools/" class="nav-item active">Daily Tools</a>
+        <a href="/index.html#portfolio" class="nav-item">Portfolio</a>
+        <a href="/contact.html" class="nav-item">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn-icon" aria-label="Toggle visual theme" title="Change Theme">
+          <i data-lucide="sun"></i>
+        </button>
+        <a href="/tools/" class="btn-ghost-sm hide-mobile">
+          <i data-lucide="layout-grid"></i> All Tools
+        </a>
+        <button id="menuToggle" class="btn-icon mobile-only" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <span class="drawer-title">XESTUS MENU</span>
+      <button id="drawerClose" class="btn-icon" aria-label="Close menu">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="/" class="drawer-link"><i data-lucide="home"></i> Home</a>
+      <a href="/tools/" class="drawer-link active"><i data-lucide="layout-grid"></i> Daily Utility Tools</a>
+      <a href="/index.html#services" class="drawer-link"><i data-lucide="cpu"></i> Services & Solutions</a>
+      <a href="/index.html#portfolio" class="drawer-link"><i data-lucide="briefcase"></i> Portfolio</a>
+      <a href="/index.html#digital-services" class="drawer-link"><i data-lucide="award"></i> Digital Seva Kendra</a>
+      <a href="/contact.html" class="drawer-link"><i data-lucide="mail"></i> Contact</a>
+      <a href="/about.html" class="drawer-link"><i data-lucide="info"></i> About XESTUS</a>
+    </nav>
+  </div>
+
+  <main class="tool-page-main">
+    <!-- Breadcrumb & Top Bar -->
+    <div class="tool-page-header">
+      <div class="tool-breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <a href="/tools/">Tools</a>
+        <span class="sep">/</span>
+        <a href="/tools/#image">Image Utilities</a>
+        <span class="sep">/</span>
+        <span class="current">Image Resizer</span>
+      </div>
+
+      <div class="tool-header-flex">
+        <div class="tool-title-group">
+          <span class="tool-badge-pill"><i data-lucide="crop"></i> Image Utilities</span>
+          <h1 class="tool-main-heading">Image Dimension Resizer</h1>
+          <p class="tool-main-subtitle">Resize photo dimensions by exact pixels, percentage, or passport/social media presets client-side without quality loss.</p>
+        </div>
+        <div class="tool-actions-bar">
+          <button id="favBtn" class="btn-tool-action" data-slug="image-resizer" title="Add to My XESTUS Favourites">
+            <i data-lucide="star"></i> <span>Favourite</span>
+          </button>
+          <button id="shareBtn" class="btn-tool-action" title="Share this tool">
+            <i data-lucide="share-2"></i> <span>Share</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security & Privacy Guarantee Notice -->
+    <div class="privacy-guarantee-banner">
+      <i data-lucide="shield-check"></i>
+      <span><strong>100% Client-Side & Private:</strong> This tool runs entirely inside your browser. No files, calculations, or inputs are ever sent to external servers.</span>
+    </div>
+
+    <!-- MAIN TOOL WORKSPACE -->
+    <section class="tool-workspace" id="toolApp">
+      
+    <div class="calc-card">
+      <div class="file-dropzone" id="imgDropzone" style="border: 2px dashed #444; border-radius: 8px; padding: 2.5rem 1.5rem; text-align: center; cursor: pointer; background: rgba(255,255,255,0.01);">
+        <i data-lucide="upload-cloud" style="width: 48px; height: 48px; color: #a855f7; margin-bottom: 0.75rem;"></i>
+        <p style="font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Choose or Drag & Drop an Image</p>
+        <p style="font-size: 0.85rem; color: #888;">Supports JPG, PNG, WebP, GIF, and BMP (Up to 25MB)</p>
+        <input type="file" id="imgFileInput" accept="image/*" style="display: none;">
+      </div>
+
+      <div id="resizerControls" style="display: none; margin-top: 1.5rem;">
+        <!-- Preset Buttons -->
+        <div class="calc-presets">
+          <span class="preset-label">Quick Presets:</span>
+          <button type="button" class="btn-preset active" data-w="" data-h="">Custom</button>
+          <button type="button" class="btn-preset" data-w="413" data-h="531">Passport Photo (3.5x4.5cm)</button>
+          <button type="button" class="btn-preset" data-w="1080" data-h="1080">Instagram Square (1080x1080)</button>
+          <button type="button" class="btn-preset" data-w="1280" data-h="720">YouTube 720p HD</button>
+          <button type="button" class="btn-preset" data-w="1920" data-h="1080">Full HD (1920x1080)</button>
+        </div>
+
+        <div class="calc-grid-2" style="margin-top: 1.25rem;">
+          <div class="calc-input-group">
+            <label class="calc-label" for="targetWidth">Width (Pixels)</label>
+            <input type="number" id="targetWidth" class="calc-input" min="1" step="1">
+          </div>
+          <div class="calc-input-group">
+            <label class="calc-label" for="targetHeight">Height (Pixels)</label>
+            <input type="number" id="targetHeight" class="calc-input" min="1" step="1">
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; flex-wrap: wrap; gap: 1rem;">
+          <label style="display: flex; align-items: center; gap: 0.5rem; color: #aaa; cursor: pointer;">
+            <input type="checkbox" id="lockAspectCheckbox" checked>
+            <span>Lock Aspect Ratio</span>
+          </label>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <label class="calc-label" style="margin: 0;">Format:</label>
+            <select id="outputFormat" class="calc-input" style="width: auto; padding: 4px 8px;">
+              <option value="image/jpeg">JPEG (.jpg)</option>
+              <option value="image/png">PNG (.png)</option>
+              <option value="image/webp">WebP (.webp)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Preview comparison -->
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <div style="display: flex; justify-content: space-around; font-size: 0.85rem; color: #888; margin-bottom: 0.5rem;">
+            <span>Original: <strong id="origMeta" style="color: #fff;">-</strong></span>
+            <span>Resized: <strong id="resizedMeta" style="color: #00ff88;">-</strong></span>
+          </div>
+          <canvas id="previewCanvas" style="max-width: 100%; max-height: 350px; border-radius: 6px; border: 1px solid #333; box-shadow: 0 4px 20px rgba(0,0,0,0.5);"></canvas>
+        </div>
+
+        <div class="tool-btn-row" style="margin-top: 1.5rem;">
+          <button type="button" class="btn-tool-secondary" id="changeImageBtn"><i data-lucide="refresh-cw"></i> Choose Another</button>
+          <button type="button" class="btn-tool-primary" id="downloadResizedBtn"><i data-lucide="download"></i> Download Resized Image</button>
+        </div>
+      </div>
+    </div>
+  
+    </section>
+
+    <!-- AdSense Compliant Banner Slot -->
+    <div class="adsense-slot-container" style="margin: 2rem 0; text-align: center; min-height: 90px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px dashed var(--border-color, #222);">
+      <!-- Non-intrusive Ad Display -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-1489572262543869"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- HOW IT WORKS & GUIDE SECTION -->
+    <section class="tool-guide-section">
+      <div class="guide-card">
+        <h2 class="guide-title"><i data-lucide="book-open"></i> How to Use the Image Dimension Resizer</h2>
+        <div class="guide-content">
+          
+    <p>Upload any picture from your smartphone or computer, adjust the target width and height in pixels (or select a preset like Passport Photo), and download your resized asset instantly without losing sharpness.</p>
+  
+        </div>
+      </div>
+
+      <!-- Frequently Asked Questions -->
+      <div class="guide-card">
+        <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+          
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="true">
+              <span>Is aspect ratio preserved?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: block;">
+              <p>Yes. By default, the 'Lock Aspect Ratio' checkbox keeps the proportional width and height. You can uncheck it to freely stretch or squish dimensions.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Can I make passport size photos?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: none;">
+              <p>Yes! Simply click the 'Passport Photo (3.5x4.5cm)' preset (413x531 px at 300 DPI).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED TOOLS SECTION -->
+    <section class="related-tools-section">
+      <div class="section-head-sm">
+        <h3 class="section-title-sm"><i data-lucide="sparkles"></i> Related Daily Utilities</h3>
+        <a href="/tools/" class="view-all-link">View All Tools &rarr;</a>
+      </div>
+      <div class="related-grid" id="relatedToolsGrid">
+        <!-- Injected via tools-registry.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <span class="footer-logo">XESTUS<span class="logo-dot">.</span></span>
+        <p class="footer-desc">Practical, high-performance daily digital tools, AI solutions, and engineering hubs designed for repeat daily productivity.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Utility Hubs</h4>
+        <ul class="footer-links">
+          <li><a href="/tools/calculators/gst-calculator/">GST Calculator</a></li>
+          <li><a href="/tools/calculators/percentage-calculator/">Percentage Calculator</a></li>
+          <li><a href="/tools/office/word-counter/">Word & Character Counter</a></li>
+          <li><a href="/tools/office/qr-generator/">Custom QR Code Maker</a></li>
+          <li><a href="/tools/developer/hash-generator/">Hash & Crypto Checksum</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="/tools/">All Daily Tools</a></li>
+          <li><a href="/index.html#services">Services & Engineering</a></li>
+          <li><a href="/index.html#portfolio">Live Portfolio</a></li>
+          <li><a href="/index.html#digital-services">Digital Seva Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal & Privacy</h4>
+        <ul class="footer-links">
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+          <li><a href="/cookie-policy.html">Cookie Policy</a></li>
+          <li><a href="/contact.html">Support & Inquiries</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 XESTUS Technologies. All rights reserved. 100% Client-Side Privacy Guaranteed.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/nav-core.js"></script>
+  <script src="/js/my-xestus.js"></script>
+  <script src="/tools/tools-registry.js"></script>
+  <script>
+    // Initialize Related Tools from Registry
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.XestusTools && window.XestusTools.renderRelatedTools) {
+        window.XestusTools.renderRelatedTools('image-resizer', 'relatedToolsGrid');
+      }
+      if (window.MyXestus) {
+        window.MyXestus.initToolPage('image-resizer', 'Image Dimension Resizer');
+      }
+      // FAQ Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const ans = btn.nextElementSibling;
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          ans.style.display = isExpanded ? 'none' : 'block';
+        });
+      });
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+  <script>
+    (function() {
+      let originalImg = null;
+      let originalWidth = 0;
+      let originalHeight = 0;
+      let origFileName = 'resized_image';
+
+      const dropzone = document.getElementById('imgDropzone');
+      const fileInput = document.getElementById('imgFileInput');
+      const controls = document.getElementById('resizerControls');
+      const widthInput = document.getElementById('targetWidth');
+      const heightInput = document.getElementById('targetHeight');
+      const lockAspect = document.getElementById('lockAspectCheckbox');
+      const formatSel = document.getElementById('outputFormat');
+      const canvas = document.getElementById('previewCanvas');
+      const ctx = canvas.getContext('2d');
+
+      dropzone.addEventListener('click', () => fileInput.click());
+      dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.style.borderColor = '#00ff88'; });
+      dropzone.addEventListener('dragleave', () => dropzone.style.borderColor = '#444');
+      dropzone.addEventListener('drop', e => {
+        e.preventDefault();
+        dropzone.style.borderColor = '#444';
+        if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+      });
+
+      fileInput.addEventListener('change', e => {
+        if (e.target.files.length) handleFile(e.target.files[0]);
+      });
+
+      function handleFile(file) {
+        if (!file.type.startsWith('image/')) {
+          alert('Please choose a valid image file.');
+          return;
+        }
+        origFileName = file.name.substring(0, file.name.lastIndexOf('.')) || 'resized_image';
+        const reader = new FileReader();
+        reader.onload = evt => {
+          const img = new Image();
+          img.onload = () => {
+            originalImg = img;
+            originalWidth = img.naturalWidth;
+            originalHeight = img.naturalHeight;
+            widthInput.value = originalWidth;
+            heightInput.value = originalHeight;
+            document.getElementById('origMeta').textContent = `${originalWidth} x ${originalHeight} px (${(file.size / 1024).toFixed(1)} KB)`;
+            dropzone.style.display = 'none';
+            controls.style.display = 'block';
+            drawResized();
+          };
+          img.src = evt.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function drawResized() {
+        if (!originalImg) return;
+        const w = parseInt(widthInput.value, 10) || 1;
+        const h = parseInt(heightInput.value, 10) || 1;
+        canvas.width = w;
+        canvas.height = h;
+        ctx.drawImage(originalImg, 0, 0, w, h);
+        document.getElementById('resizedMeta').textContent = `${w} x ${h} px`;
+      }
+
+      widthInput.addEventListener('input', () => {
+        if (lockAspect.checked && originalWidth > 0) {
+          const w = parseInt(widthInput.value, 10) || 1;
+          heightInput.value = Math.round((w / originalWidth) * originalHeight);
+        }
+        drawResized();
+      });
+
+      heightInput.addEventListener('input', () => {
+        if (lockAspect.checked && originalHeight > 0) {
+          const h = parseInt(heightInput.value, 10) || 1;
+          widthInput.value = Math.round((h / originalHeight) * originalWidth);
+        }
+        drawResized();
+      });
+
+      document.querySelectorAll('.btn-preset').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.btn-preset').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          if (btn.dataset.w && btn.dataset.h) {
+            lockAspect.checked = false;
+            widthInput.value = btn.dataset.w;
+            heightInput.value = btn.dataset.h;
+            drawResized();
+          }
+        });
+      });
+
+      document.getElementById('changeImageBtn').addEventListener('click', () => {
+        dropzone.style.display = 'block';
+        controls.style.display = 'none';
+        fileInput.value = '';
+      });
+
+      document.getElementById('downloadResizedBtn').addEventListener('click', () => {
+        const fmt = formatSel.value;
+        const ext = fmt === 'image/jpeg' ? 'jpg' : (fmt === 'image/webp' ? 'webp' : 'png');
+        const dataUrl = canvas.toDataURL(fmt, 0.92);
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = `${origFileName}_${canvas.width}x${canvas.height}.${ext}`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      });
+    })();
+  </script>
+</body>
+</html>

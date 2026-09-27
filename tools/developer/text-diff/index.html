@@ -89,32 +89,70 @@
 <body>
     <header class="site-header" role="banner">
         <nav class="nav-container" aria-label="Main Navigation">
-            <a href="../../../#home" class="logo" aria-label="XESTUS Home">
+            <a href="../../../index.html#home" class="logo" aria-label="XESTUS Home">
                 <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
                 <span>XESTUS</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="../../../#services" class="nav-link">Services</a></li>
-                <li><a href="../../../#digital-seva-hub" class="nav-link">Digital Seva</a></li>
-                <li><a href="../../" class="nav-link active"><span style="color:var(--cyan-bright);">Tools</span></a></li>
-                <li><a href="../../../#portfolio" class="nav-link">Projects</a></li>
-                <li><a href="../../../#lab" class="nav-link">Innovation Lab</a></li>
-                <li><a href="../../../#contact" class="nav-link">Contact</a></li>
+
+            <ul class="nav-links" id="primaryNav">
+                <!-- Desktop Primary Navigation -->
+                <li class="desktop-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="../../../tools/index.html" class="nav-link active">Tools</a></li>
+                <li class="desktop-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Drawer Direct Links -->
+                <li class="mobile-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation Lab</a></li>
+                <li class="mobile-nav-item"><a href="../../../tools/index.html" class="nav-link">Tools Directory</a></li>
+                <li class="mobile-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="mobile-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Theme Selector Strip -->
+                <li class="mobile-theme-strip" aria-label="Select Theme Mode">
+                    <span class="theme-strip-title"><i data-lucide="palette" aria-hidden="true"></i> Theme:</span>
+                    <button type="button" class="mobile-theme-btn" data-theme="day">Day</button>
+                    <button type="button" class="mobile-theme-btn active" data-theme="night">Night</button>
+                    <button type="button" class="mobile-theme-btn" data-theme="eye-protect">Eye Protect</button>
+                </li>
+
+                <!-- Mobile Drawer CTA Button -->
+                <li class="mobile-nav-item" style="margin-top: 10px;">
+                    <a href="../../../contact.html" class="btn-primary mobile-drawer-cta" style="width:100%; display:flex; justify-content:center; align-items:center; min-height:44px; text-decoration:none;">
+                        <span>Contact Us</span>
+                    </a>
+                </li>
             </ul>
+
             <div class="nav-actions">
+                <!-- Theme Switcher Dropdown -->
                 <div class="theme-switcher" id="themeSwitcher">
-                    <button type="button" class="theme-btn" id="themeBtn" aria-label="Select Theme Mode">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
                         <i data-lucide="moon" class="theme-active-icon"></i>
                         <span class="theme-current-label">Night</span>
                         <i data-lucide="chevron-down" class="theme-chevron"></i>
                     </button>
-                    <div class="theme-dropdown" id="themeDropdown">
-                        <button type="button" class="theme-opt" data-theme="day"><i data-lucide="sun"></i><span>Day</span></button>
-                        <button type="button" class="theme-opt active" data-theme="night"><i data-lucide="moon"></i><span>Night</span></button>
-                        <button type="button" class="theme-opt" data-theme="eye-protect"><i data-lucide="glasses"></i><span>Eye Protection</span></button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
                     </div>
                 </div>
-                <a href="../../../#contact" class="btn-primary btn-nav-cta"><span>Start a Project</span></a>
+
+                <a href="../../../contact.html" class="btn-primary btn-nav-cta magnetic-btn">
+                    <span>Contact Us</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
             </div>
         </nav>
     </header>
@@ -401,5 +439,6 @@
             });
         });
     </script>
+    <script src="../../../js/nav-core.js"></script>
 </body>
 </html>

@@ -95,13 +95,38 @@
             </a>
 
             <ul class="nav-links" id="primaryNav">
+                <!-- Desktop Primary Navigation -->
                 <li class="desktop-nav-item"><a href="index.html#digital-services" class="nav-link">Digital Help</a></li>
                 <li class="desktop-nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
                 <li class="desktop-nav-item"><a href="index.html#portfolio" class="nav-link">Projects</a></li>
                 <li class="desktop-nav-item"><a href="index.html#lab" class="nav-link">Innovation</a></li>
                 <li class="desktop-nav-item"><a href="tools/index.html" class="nav-link">Tools</a></li>
-                <li class="desktop-nav-item"><a href="about.html" class="nav-link">About</a></li>
-                <li class="desktop-nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="desktop-nav-item"><a href="about.html" class="nav-link ">About</a></li>
+                <li class="desktop-nav-item"><a href="contact.html" class="nav-link ">Contact</a></li>
+
+                <!-- Mobile Drawer Direct Links -->
+                <li class="mobile-nav-item"><a href="index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="mobile-nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
+                <li class="mobile-nav-item"><a href="index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="mobile-nav-item"><a href="index.html#lab" class="nav-link">Innovation Lab</a></li>
+                <li class="mobile-nav-item"><a href="tools/index.html" class="nav-link">Tools Directory</a></li>
+                <li class="mobile-nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="mobile-nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Theme Selector Strip -->
+                <li class="mobile-theme-strip" aria-label="Select Theme Mode">
+                    <span class="theme-strip-title"><i data-lucide="palette" aria-hidden="true"></i> Theme:</span>
+                    <button type="button" class="mobile-theme-btn" data-theme="day">Day</button>
+                    <button type="button" class="mobile-theme-btn active" data-theme="night">Night</button>
+                    <button type="button" class="mobile-theme-btn" data-theme="eye-protect">Eye Protect</button>
+                </li>
+
+                <!-- Mobile Drawer CTA Button -->
+                <li class="mobile-nav-item" style="margin-top: 10px;">
+                    <a href="contact.html" class="btn-primary mobile-drawer-cta" style="width:100%; display:flex; justify-content:center; align-items:center; min-height:44px; text-decoration:none;">
+                        <span>Contact Us</span>
+                    </a>
+                </li>
             </ul>
 
             <div class="nav-actions">
@@ -122,6 +147,12 @@
                 <a href="contact.html" class="btn-primary btn-nav-cta magnetic-btn">
                     <span>Contact Us</span>
                 </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
             </div>
         </nav>
     </header>
@@ -374,5 +405,6 @@
         });
     </script>
     <script src="js/security-shield.js?v=3.9.5"></script>
+    <script src="js/nav-core.js"></script>
 </body>
 </html>

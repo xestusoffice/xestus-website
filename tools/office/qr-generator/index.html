@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('xestus_theme');
+                if (stored && ['night', 'day', 'eye-protect'].indexOf(stored) !== -1) {
+                    document.documentElement.setAttribute('data-theme', stored);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'day');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'night');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
+    <script src="../../../js/cookie-consent.js?v=1.0.0"></script>
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+
+    <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
+    <!-- SEO Metadata -->
+    <title>Free QR Code Generator Online — Custom Color & High-Resolution PNG Download | XESTUS Tools</title>
+    <meta name="description" content="Generate custom QR codes online for URLs, text, WiFi credentials, UPI payments, and contacts. Customize colors and download high-resolution PNG images client-side.">
+    <meta name="keywords" content="qr code generator, make qr code free, custom qr code maker, upi qr code online, wifi qr code generator">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://xestus.in/tools/office/qr-generator/">
+    <link rel="manifest" href="../../../manifest.json">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xestus.in/tools/office/qr-generator/">
+    <meta property="og:title" content="Free QR Code Generator Online — Custom Color & High-Resolution PNG Download | XESTUS Tools">
+    <meta property="og:description" content="Generate custom QR codes online for URLs, text, WiFi credentials, UPI payments, and contacts. Customize colors and download high-resolution PNG images client-side.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../../style.css?v=3.9.7">
+    <link rel="stylesheet" href="../../../tools/tools.css?v=2.1.0">
+
+    <!-- Schema.org SoftwareApplication JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "QR Code Generator (Custom & Downloadable)",
+      "url": "https://xestus.in/tools/office/qr-generator/",
+      "description": "Generate custom QR codes online for URLs, text, WiFi credentials, UPI payments, and contacts. Customize colors and download high-resolution PNG images client-side.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "url": "https://xestus.in/"
+      }
+    }
+    </script>
+</head>
+
+<body data-tool-slug="qr-generator">
+    <!-- Header / Navbar -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <!-- Desktop Primary Navigation -->
+                <li class="desktop-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="../../../tools/index.html" class="nav-link active">Tools</a></li>
+                <li class="desktop-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Drawer Direct Links -->
+                <li class="mobile-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation Lab</a></li>
+                <li class="mobile-nav-item"><a href="../../../tools/index.html" class="nav-link">Tools Directory</a></li>
+                <li class="mobile-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="mobile-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Theme Selector Strip -->
+                <li class="mobile-theme-strip" aria-label="Select Theme Mode">
+                    <span class="theme-strip-title"><i data-lucide="palette" aria-hidden="true"></i> Theme:</span>
+                    <button type="button" class="mobile-theme-btn" data-theme="day">Day</button>
+                    <button type="button" class="mobile-theme-btn active" data-theme="night">Night</button>
+                    <button type="button" class="mobile-theme-btn" data-theme="eye-protect">Eye Protect</button>
+                </li>
+
+                <!-- Mobile Drawer CTA Button -->
+                <li class="mobile-nav-item" style="margin-top: 10px;">
+                    <a href="../../../contact.html" class="btn-primary mobile-drawer-cta" style="width:100%; display:flex; justify-content:center; align-items:center; min-height:44px; text-decoration:none;">
+                        <span>Contact Us</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Theme Switcher Dropdown -->
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
+                    </div>
+                </div>
+
+                <a href="../../../contact.html" class="btn-primary btn-nav-cta magnetic-btn">
+                    <span>Contact Us</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Tool Container -->
+    <main class="tools-app-container" id="main-content">
+        <!-- Breadcrumb -->
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../index.html">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../../tools/index.html">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">QR Code Generator (Custom & Downloadable)</span>
+        </nav>
+
+        <!-- Tool Header -->
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="qr-code" style="width:14px;height:14px;"></i> Office & Productivity</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser • Zero Server Logs</span>
+                
+                <div class="tool-meta-actions">
+                    <button type="button" class="btn-fav-star" id="btnToggleFav">
+                        <i data-lucide="star" style="width:14px;height:14px;"></i>
+                        <span>Add to My Tools</span>
+                    </button>
+                    <button type="button" class="btn-share-tool" id="btnShareTool">
+                        <i data-lucide="share-2" style="width:14px;height:14px;"></i>
+                        <span>Share Tool</span>
+                    </button>
+                </div>
+            </div>
+            <h1 class="tool-title">QR Code Generator (Custom & Downloadable)</h1>
+            <p class="tool-description">
+                Create high-resolution, scannable QR codes in seconds. Supports website URLs, UPI payment requests, WiFi access credentials, and plain text with custom dark/light colors.
+            </p>
+        </header>
+
+        <!-- Tool Workspace -->
+        <section class="tool-workspace" aria-label="QR Code Generator (Custom & Downloadable) Workspace">
+            
+        <div class="calc-grid-2col">
+            <div class="calc-form-panel">
+                <div class="calc-field-group">
+                    <label for="qrInputType">QR Code Content Type</label>
+                    <select id="qrInputType" class="tool-select">
+                        <option value="url">Website URL</option>
+                        <option value="text">Plain Text</option>
+                        <option value="upi">UPI Payment (GPay, PhonePe, Paytm)</option>
+                        <option value="wifi">WiFi Network Access</option>
+                    </select>
+                </div>
+
+                <div class="calc-field-group" id="urlGroup">
+                    <label for="qrText">URL / Website Link</label>
+                    <input type="text" id="qrText" class="calc-input" value="https://xestus.in" placeholder="https://example.com">
+                </div>
+
+                <div class="calc-field-group" id="upiGroup" style="display:none;">
+                    <label for="upiId">UPI ID / VPA</label>
+                    <input type="text" id="upiId" class="calc-input" placeholder="e.g. mobile@upi or username@okhdfcbank">
+                    <label for="upiName" style="margin-top:8px;">Payee Name</label>
+                    <input type="text" id="upiName" class="calc-input" placeholder="e.g. Store Name">
+                    <label for="upiAmount" style="margin-top:8px;">Amount (Optional ₹)</label>
+                    <input type="number" id="upiAmount" class="calc-input" placeholder="Leave blank for open amount">
+                </div>
+
+                <div class="calc-field-group" id="wifiGroup" style="display:none;">
+                    <label for="wifiSsid">WiFi Network Name (SSID)</label>
+                    <input type="text" id="wifiSsid" class="calc-input" placeholder="MyHomeWiFi">
+                    <label for="wifiPass" style="margin-top:8px;">Password</label>
+                    <input type="text" id="wifiPass" class="calc-input" placeholder="Network password">
+                    <label for="wifiType" style="margin-top:8px;">Encryption</label>
+                    <select id="wifiType" class="tool-select">
+                        <option value="WPA">WPA/WPA2</option>
+                        <option value="WEP">WEP</option>
+                        <option value="nopass">None (Open)</option>
+                    </select>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                    <div class="calc-field-group">
+                        <label for="qrColorDark">QR Color</label>
+                        <input type="color" id="qrColorDark" value="#000000" style="width:100%; height:40px; border-radius:8px; border:1px solid var(--border-medium); cursor:pointer; background:transparent;">
+                    </div>
+                    <div class="calc-field-group">
+                        <label for="qrColorLight">Background</label>
+                        <input type="color" id="qrColorLight" value="#ffffff" style="width:100%; height:40px; border-radius:8px; border:1px solid var(--border-medium); cursor:pointer; background:transparent;">
+                    </div>
+                </div>
+
+                <div class="calc-field-group">
+                    <label for="qrSize">QR Resolution</label>
+                    <select id="qrSize" class="tool-select">
+                        <option value="256">256 x 256 px (Standard)</option>
+                        <option value="512" selected>512 x 512 px (High Quality)</option>
+                        <option value="1024">1024 x 1024 px (Ultra HD Print)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="qr-preview-container">
+                <div class="qr-canvas-box" id="qrCanvasContainer">
+                    <canvas id="qrCanvas" width="256" height="256"></canvas>
+                </div>
+                <div style="display:flex; gap:10px; width:100%; max-width:320px;">
+                    <button type="button" class="tool-btn tool-btn-primary" id="btnDownloadQr" style="flex:1;"><i data-lucide="download"></i> <span>Download PNG</span></button>
+                </div>
+            </div>
+        </div>
+    
+        </section>
+
+        <!-- Educational & Related Mesh -->
+        <section class="tool-info-section">
+            <div class="tool-info-grid">
+                <article class="tool-guide-content">
+                    
+        <h2>How QR Codes Work &amp; Best Practices</h2>
+        <p>A Quick Response (QR) code is a two-dimensional matrix barcode designed to be scanned rapidly by smartphone cameras.</p>
+        
+        <h3>Supported Formats</h3>
+        <ul>
+            <li><strong>Website URL:</strong> Opens links directly in the user's browser.</li>
+            <li><strong>UPI Payment QR:</strong> Uses the National Payments Corporation of India (NPCI) <code>upi://pay</code> standard for instant zero-fee transfers via Google Pay, PhonePe, and Paytm.</li>
+            <li><strong>WiFi QR:</strong> Formats credentials using the <code>WIFI:S:name;T:WPA;P:password;;</code> standard for instant camera scan &amp; connect.</li>
+        </ul>
+    
+                </article>
+                <aside class="related-tools-card">
+                    <h3 class="related-tools-title">Related Practical Tools</h3>
+                    <div class="related-tools-list">
+                        
+                            <a href="../../../tools/developer/url-encode-decode/" class="related-tool-item">
+                                <span class="related-tool-name">URL Encoder & Decoder</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                            <a href="../../../tools/office/invoice-generator/" class="related-tool-item">
+                                <span class="related-tool-name">Simple Invoice & Bill Generator</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                            <a href="../../../tools/calculators/gst-calculator/" class="related-tool-item">
+                                <span class="related-tool-name">GST Calculator</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="stitch-footer" role="contentinfo">
+        <div class="stitch-footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../../index.html#home" class="footer-logo">
+                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+                <p class="footer-brand-desc">
+                    Enterprise technology company &amp; open digital utilities ecosystem. Engineered for privacy, speed, and real-world utility.
+                </p>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="../../../privacy-policy.html" class="legal-link-btn">Privacy Policy</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../terms.html" class="legal-link-btn">Terms of Service</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../disclaimer.html" class="legal-link-btn">Disclaimer</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../cookie-policy.html" class="legal-link-btn">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../../js/nav-core.js"></script>
+    <script src="../../../js/my-xestus.js?v=1.0.0"></script>
+    <script>
+        
+        // Load QRCode.js library dynamically
+        (function() {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js';
+            script.onload = initQr;
+            document.head.appendChild(script);
+
+            function initQr() {
+                const typeSelect = document.getElementById('qrInputType');
+                const urlGroup = document.getElementById('urlGroup');
+                const upiGroup = document.getElementById('upiGroup');
+                const wifiGroup = document.getElementById('wifiGroup');
+                const qrText = document.getElementById('qrText');
+                const colorDark = document.getElementById('qrColorDark');
+                const colorLight = document.getElementById('qrColorLight');
+                const qrSize = document.getElementById('qrSize');
+                const canvas = document.getElementById('qrCanvas');
+
+                function getQrPayload() {
+                    const type = typeSelect.value;
+                    if (type === 'url' || type === 'text') {
+                        return qrText.value || 'https://xestus.in';
+                    } else if (type === 'upi') {
+                        const upiId = document.getElementById('upiId').value.trim();
+                        const upiName = document.getElementById('upiName').value.trim();
+                        const upiAmount = document.getElementById('upiAmount').value.trim();
+                        let link = 'upi://pay?pa=' + encodeURIComponent(upiId) + '&pn=' + encodeURIComponent(upiName || 'Payee');
+                        if (upiAmount) link += '&am=' + encodeURIComponent(upiAmount);
+                        link += '&cu=INR';
+                        return link;
+                    } else if (type === 'wifi') {
+                        const ssid = document.getElementById('wifiSsid').value.trim();
+                        const pass = document.getElementById('wifiPass').value;
+                        const enc = document.getElementById('wifiType').value;
+                        return 'WIFI:S:' + ssid + ';T:' + enc + ';P:' + pass + ';;';
+                    }
+                    return 'https://xestus.in';
+                }
+
+                function drawQr() {
+                    const payload = getQrPayload();
+                    const size = parseInt(qrSize.value, 10) || 512;
+                    canvas.width = size;
+                    canvas.height = size;
+                    
+                    try {
+                        const qr = qrcode(0, 'M');
+                        qr.addData(payload);
+                        qr.make();
+                        
+                        const moduleCount = qr.getModuleCount();
+                        const ctx = canvas.getContext('2d');
+                        const cellSize = size / moduleCount;
+
+                        ctx.fillStyle = colorLight.value;
+                        ctx.fillRect(0, 0, size, size);
+
+                        ctx.fillStyle = colorDark.value;
+                        for (let row = 0; row < moduleCount; row++) {
+                            for (let col = 0; col < moduleCount; col++) {
+                                if (qr.isDark(row, col)) {
+                                    ctx.fillRect(col * cellSize, row * cellSize, Math.ceil(cellSize), Math.ceil(cellSize));
+                                }
+                            }
+                        }
+                    } catch (e) {
+                        console.warn('QR render error:', e);
+                    }
+                }
+
+                typeSelect.addEventListener('change', () => {
+                    const t = typeSelect.value;
+                    urlGroup.style.display = (t === 'url' || t === 'text') ? 'block' : 'none';
+                    upiGroup.style.display = (t === 'upi') ? 'block' : 'none';
+                    wifiGroup.style.display = (t === 'wifi') ? 'block' : 'none';
+                    drawQr();
+                });
+
+                document.querySelectorAll('#urlGroup input, #upiGroup input, #wifiGroup input, #wifiGroup select').forEach(i => {
+                    i.addEventListener('input', drawQr);
+                });
+                colorDark.addEventListener('input', drawQr);
+                colorLight.addEventListener('input', drawQr);
+                qrSize.addEventListener('change', drawQr);
+
+                document.getElementById('btnDownloadQr').addEventListener('click', () => {
+                    const link = document.createElement('a');
+                    link.download = 'xestus-qr-code.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                });
+
+                drawQr();
+            }
+        })();
+    
+    </script>
+</body>
+</html>

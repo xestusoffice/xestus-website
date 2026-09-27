@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('xestus_theme');
+                if (stored && ['night', 'day', 'eye-protect'].indexOf(stored) !== -1) {
+                    document.documentElement.setAttribute('data-theme', stored);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'day');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'night');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
+    <script src="../../../js/cookie-consent.js?v=1.0.0"></script>
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+
+    <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
+    <!-- SEO Metadata -->
+    <title>Online Stopwatch & Precision Lap Timer | XESTUS Tools</title>
+    <meta name="description" content="Free precision online stopwatch with lap recording, millisecond accuracy, split times, and full-screen display. 100% private in-browser digital timer.">
+    <meta name="keywords" content="online stopwatch, digital stopwatch, lap timer, millisecond timer, stopwatch with laps">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://xestus.in/tools/student/stopwatch/">
+    <link rel="manifest" href="../../../manifest.json">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xestus.in/tools/student/stopwatch/">
+    <meta property="og:title" content="Online Stopwatch & Precision Lap Timer | XESTUS Tools">
+    <meta property="og:description" content="Free precision online stopwatch with lap recording, millisecond accuracy, split times, and full-screen display.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../../style.css?v=3.9.7">
+    <link rel="stylesheet" href="../../../tools/tools.css?v=2.1.0">
+
+    <!-- Schema.org WebApplication JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Precision Digital Stopwatch & Lap Timer",
+      "url": "https://xestus.in/tools/student/stopwatch/",
+      "description": "Free precision online stopwatch with lap recording, millisecond accuracy, split times, and full-screen display.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "url": "https://xestus.in/"
+      }
+    }
+    </script>
+</head>
+
+<body data-tool-slug="stopwatch">
+    <!-- Header / Navbar -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <li class="desktop-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#tools" class="nav-link active">Tools</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="../../index.html" class="btn-stitch-primary" style="padding: 8px 16px; font-size: 13px;">
+                    <span>All Tools Hub ↗</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tool-main-content">
+        <!-- Breadcrumb Navigation -->
+        <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+            <a href="../../../index.html">Home</a>
+            <span class="crumb-separator">/</span>
+            <a href="../../index.html">Tools</a>
+            <span class="crumb-separator">/</span>
+            <a href="../index.html">Productivity</a>
+            <span class="crumb-separator">/</span>
+            <span class="crumb-current">Stopwatch</span>
+        </nav>
+
+        <section class="tool-hero-section">
+            <span class="tool-tag-pill">TIME & PRODUCTIVITY</span>
+            <h1 class="tool-page-title">Precision Digital Stopwatch & Lap Timer</h1>
+            <p class="tool-page-desc">
+                High-precision millisecond stopwatch with split lap tracking for productivity, workouts, speed typing tests, and sports.
+            </p>
+        </section>
+
+        <!-- Main Tool Card Container -->
+        <div class="tool-workspace-container">
+            <div class="tool-card-panel" style="text-align: center;">
+                <!-- Main Digital Time Display -->
+                <div style="background: var(--bg-surface); padding: 40px 20px; border-radius: 16px; border: 1px solid var(--cyan-border); margin-bottom: 24px;">
+                    <div id="stopwatchDisplay" style="font-family: 'Fira Code', monospace; font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; color: var(--cyan-primary); letter-spacing: 2px;">
+                        00:00:00<span style="font-size: 0.6em; color: var(--text-muted);">.00</span>
+                    </div>
+                </div>
+
+                <!-- Action Controls -->
+                <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 30px;">
+                    <button type="button" id="btnStartPause" class="btn-stitch-primary" style="padding: 14px 32px; font-size: 1rem; min-width: 140px;">
+                        <span id="btnStartText">Start</span>
+                    </button>
+                    <button type="button" id="btnLap" class="btn-secondary" style="padding: 14px 28px; font-size: 1rem; min-width: 120px;" disabled>
+                        <span>Lap</span>
+                    </button>
+                    <button type="button" id="btnReset" class="btn-secondary" style="padding: 14px 28px; font-size: 1rem; min-width: 120px;" disabled>
+                        <span>Reset</span>
+                    </button>
+                </div>
+
+                <!-- Laps Table -->
+                <div id="lapsContainer" style="display: none; background: var(--bg-surface); border-radius: 12px; border: 1px solid var(--border-subtle); padding: 20px; text-align: left; max-width: 600px; margin: 0 auto;">
+                    <h4 style="margin-top: 0; color: var(--text-primary); border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px;">Recorded Laps</h4>
+                    <div id="lapsList" style="max-height: 250px; overflow-y: auto;">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Educational Section -->
+        <article class="tool-editorial-content" style="max-width: 900px; margin: 50px auto 0 auto; line-height: 1.7; color: var(--text-secondary);">
+            <h2>High Precision Browser-Based Timekeeping</h2>
+            <p>
+                This stopwatch utilizes standard high-resolution performance timers (`performance.now()`) to maintain absolute millisecond precision independent of browser animation frame drops or throttling.
+            </p>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo" style="margin-top: 60px; padding: 40px 20px; border-top: 1px solid var(--border-subtle); text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+        <p>© 2026 XESTUS. All Rights Reserved. Privacy First &bull; Zero Server Egress.</p>
+    </footer>
+
+    <script>
+        (function() {
+            var display = document.getElementById('stopwatchDisplay');
+            var btnStartPause = document.getElementById('btnStartPause');
+            var btnStartText = document.getElementById('btnStartText');
+            var btnLap = document.getElementById('btnLap');
+            var btnReset = document.getElementById('btnReset');
+            var lapsContainer = document.getElementById('lapsContainer');
+            var lapsList = document.getElementById('lapsList');
+
+            var startTime = 0;
+            var elapsedTime = 0;
+            var timerInterval = null;
+            var isRunning = false;
+            var lapCounter = 0;
+            var lastLapTime = 0;
+
+            function formatTime(ms) {
+                var totalSeconds = Math.floor(ms / 1000);
+                var minutes = Math.floor(totalSeconds / 60);
+                var seconds = totalSeconds % 60;
+                var hundredths = Math.floor((ms % 1000) / 10);
+
+                var pad = function(n) { return (n < 10 ? '0' : '') + n; };
+                return pad(minutes) + ':' + pad(seconds) + '<span style="font-size: 0.6em; color: var(--text-muted);">.' + pad(hundredths) + '</span>';
+            }
+
+            function updateDisplay() {
+                var currentMs = elapsedTime + (isRunning ? (performance.now() - startTime) : 0);
+                display.innerHTML = formatTime(currentMs);
+            }
+
+            btnStartPause.addEventListener('click', function() {
+                if (!isRunning) {
+                    isRunning = true;
+                    startTime = performance.now();
+                    timerInterval = setInterval(updateDisplay, 10);
+                    btnStartText.textContent = 'Pause';
+                    btnLap.disabled = false;
+                    btnReset.disabled = false;
+                } else {
+                    isRunning = false;
+                    elapsedTime += performance.now() - startTime;
+                    clearInterval(timerInterval);
+                    btnStartText.textContent = 'Resume';
+                    btnLap.disabled = true;
+                }
+            });
+
+            btnLap.addEventListener('click', function() {
+                if (!isRunning) return;
+                var currentMs = elapsedTime + (performance.now() - startTime);
+                var lapDiff = currentMs - lastLapTime;
+                lastLapTime = currentMs;
+                lapCounter++;
+
+                lapsContainer.style.display = 'block';
+
+                var row = document.createElement('div');
+                row.style.cssText = 'display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-subtle); font-family: monospace; font-size: 0.95rem;';
+                row.innerHTML = '<span style="color: var(--cyan-primary);">Lap ' + lapCounter + '</span><span>' + formatTime(lapDiff) + '</span><span style="color: var(--text-muted);">' + formatTime(currentMs) + '</span>';
+                lapsList.prepend(row);
+            });
+
+            btnReset.addEventListener('click', function() {
+                isRunning = false;
+                clearInterval(timerInterval);
+                startTime = 0;
+                elapsedTime = 0;
+                lapCounter = 0;
+                lastLapTime = 0;
+                display.innerHTML = '00:00<span style="font-size: 0.6em; color: var(--text-muted);">.00</span>';
+                btnStartText.textContent = 'Start';
+                btnLap.disabled = true;
+                btnReset.disabled = true;
+                lapsList.innerHTML = '';
+                lapsContainer.style.display = 'none';
+            });
+        })();
+    </script>
+</body>
+</html>

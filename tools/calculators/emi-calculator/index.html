@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Loan EMI Calculator | Free Online Tool | XESTUS</title>
+  <meta name="description" content="undefined">
+  <meta name="keywords" content="emi calculator, loan emi calculator, home loan emi, car loan emi, personal loan calculator, interest breakdown">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://xestus.in/tools/calculators/emi-calculator/">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#00ff88">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xestus.in/tools/calculators/emi-calculator/">
+  <meta property="og:title" content="Loan EMI Calculator | XESTUS Tools">
+  <meta property="og:description" content="undefined">
+  <meta property="og:image" content="https://xestus.in/assets/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google AdSense Official Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/tools/tools.css">
+  
+</head>
+<body>
+  <!-- Global Navigation Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="logo-link" aria-label="XESTUS Home">
+        <span class="logo-text">XESTUS<span class="logo-dot">.</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="/" class="nav-item">Home</a>
+        <a href="/index.html#services" class="nav-item">Services</a>
+        <a href="/tools/" class="nav-item active">Daily Tools</a>
+        <a href="/index.html#portfolio" class="nav-item">Portfolio</a>
+        <a href="/contact.html" class="nav-item">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn-icon" aria-label="Toggle visual theme" title="Change Theme">
+          <i data-lucide="sun"></i>
+        </button>
+        <a href="/tools/" class="btn-ghost-sm hide-mobile">
+          <i data-lucide="layout-grid"></i> All Tools
+        </a>
+        <button id="menuToggle" class="btn-icon mobile-only" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <span class="drawer-title">XESTUS MENU</span>
+      <button id="drawerClose" class="btn-icon" aria-label="Close menu">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="/" class="drawer-link"><i data-lucide="home"></i> Home</a>
+      <a href="/tools/" class="drawer-link active"><i data-lucide="layout-grid"></i> Daily Utility Tools</a>
+      <a href="/index.html#services" class="drawer-link"><i data-lucide="cpu"></i> Services & Solutions</a>
+      <a href="/index.html#portfolio" class="drawer-link"><i data-lucide="briefcase"></i> Portfolio</a>
+      <a href="/index.html#digital-services" class="drawer-link"><i data-lucide="award"></i> Digital Seva Kendra</a>
+      <a href="/contact.html" class="drawer-link"><i data-lucide="mail"></i> Contact</a>
+      <a href="/about.html" class="drawer-link"><i data-lucide="info"></i> About XESTUS</a>
+    </nav>
+  </div>
+
+  <main class="tool-page-main">
+    <!-- Breadcrumb & Top Bar -->
+    <div class="tool-page-header">
+      <div class="tool-breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <a href="/tools/">Tools</a>
+        <span class="sep">/</span>
+        <a href="/tools/#calculators">Calculators & Finance</a>
+        <span class="sep">/</span>
+        <span class="current">EMI Calculator</span>
+      </div>
+
+      <div class="tool-header-flex">
+        <div class="tool-title-group">
+          <span class="tool-badge-pill"><i data-lucide="landmark"></i> Calculators & Finance</span>
+          <h1 class="tool-main-heading">Loan EMI Calculator</h1>
+          <p class="tool-main-subtitle">Calculate monthly loan EMI, total interest payable, principal vs interest breakdown, and amortization schedule instantly.</p>
+        </div>
+        <div class="tool-actions-bar">
+          <button id="favBtn" class="btn-tool-action" data-slug="emi-calculator" title="Add to My XESTUS Favourites">
+            <i data-lucide="star"></i> <span>Favourite</span>
+          </button>
+          <button id="shareBtn" class="btn-tool-action" title="Share this tool">
+            <i data-lucide="share-2"></i> <span>Share</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security & Privacy Guarantee Notice -->
+    <div class="privacy-guarantee-banner">
+      <i data-lucide="shield-check"></i>
+      <span><strong>100% Client-Side & Private:</strong> This tool runs entirely inside your browser. No files, calculations, or inputs are ever sent to external servers.</span>
+    </div>
+
+    <!-- MAIN TOOL WORKSPACE -->
+    <section class="tool-workspace" id="toolApp">
+      
+    <div class="calc-card">
+      <div class="calc-presets">
+        <span class="preset-label">Quick Presets:</span>
+        <button type="button" class="btn-preset active" data-amt="2500000" data-rate="8.5" data-yrs="20">Home Loan (₹25L, 8.5%, 20Y)</button>
+        <button type="button" class="btn-preset" data-amt="800000" data-rate="9.0" data-yrs="5">Car Loan (₹8L, 9.0%, 5Y)</button>
+        <button type="button" class="btn-preset" data-amt="200000" data-rate="12.5" data-yrs="3">Personal (₹2L, 12.5%, 3Y)</button>
+      </div>
+
+      <div class="calc-grid-2">
+        <div class="calc-input-group">
+          <label class="calc-label" for="loanAmount">Loan Amount (Principal)</label>
+          <div class="input-with-affix">
+            <span class="affix">₹</span>
+            <input type="number" id="loanAmount" class="calc-input" value="2500000" min="1000" step="1000">
+          </div>
+          <input type="range" id="loanAmountRange" min="10000" max="10000000" step="10000" value="2500000" class="calc-slider">
+        </div>
+
+        <div class="calc-input-group">
+          <label class="calc-label" for="interestRate">Interest Rate (% P.A.)</label>
+          <div class="input-with-affix">
+            <input type="number" id="interestRate" class="calc-input" value="8.5" min="0.1" max="50" step="0.1">
+            <span class="affix">%</span>
+          </div>
+          <input type="range" id="interestRateRange" min="1" max="30" step="0.1" value="8.5" class="calc-slider">
+        </div>
+      </div>
+
+      <div class="calc-grid-2" style="margin-top: 1rem;">
+        <div class="calc-input-group">
+          <label class="calc-label" for="loanTenure">Loan Tenure</label>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="number" id="loanTenure" class="calc-input" value="20" min="1" max="40" step="1" style="flex: 1;">
+            <div class="mode-toggle-group" style="margin: 0;">
+              <button type="button" class="mode-btn active" id="tenureYearsBtn">Years</button>
+              <button type="button" class="mode-btn" id="tenureMonthsBtn">Months</button>
+            </div>
+          </div>
+          <input type="range" id="loanTenureRange" min="1" max="30" step="1" value="20" class="calc-slider">
+        </div>
+
+        <div class="calc-input-group">
+          <label class="calc-label">Monthly EMI Output</label>
+          <div class="result-tile-highlight" style="padding: 1rem; border-radius: 8px; background: rgba(0, 255, 136, 0.08); border: 1px solid rgba(0, 255, 136, 0.3);">
+            <div class="tile-label">Monthly EMI</div>
+            <div class="tile-val-hero" id="monthlyEmiDisplay" style="font-size: 2rem; color: #00ff88; font-family: 'JetBrains Mono', monospace; font-weight: 700;">₹21,696</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary Stats & Chart Breakdown -->
+      <div class="stat-tiles-row" style="margin-top: 1.5rem;">
+        <div class="stat-tile">
+          <div class="tile-label">Principal Amount</div>
+          <div class="tile-val" id="principalDisplay" style="color: #38d6ff;">₹25,00,000</div>
+        </div>
+        <div class="stat-tile">
+          <div class="tile-label">Total Interest Payable</div>
+          <div class="tile-val" id="interestDisplay" style="color: #ffaa00;">₹27,07,040</div>
+        </div>
+        <div class="stat-tile">
+          <div class="tile-label">Total Payment (Principal + Interest)</div>
+          <div class="tile-val" id="totalPaymentDisplay" style="color: #00ff88;">₹52,07,040</div>
+        </div>
+      </div>
+
+      <!-- Ratio Bar -->
+      <div style="margin-top: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.35rem;">
+          <span style="color: #38d6ff;"><i data-lucide="circle-dot" style="width: 12px; height: 12px; display: inline-block;"></i> Principal: <span id="principalRatioText">48%</span></span>
+          <span style="color: #ffaa00;"><i data-lucide="circle-dot" style="width: 12px; height: 12px; display: inline-block;"></i> Interest: <span id="interestRatioText">52%</span></span>
+        </div>
+        <div style="height: 12px; border-radius: 6px; background: #222; display: flex; overflow: hidden;">
+          <div id="principalRatioBar" style="background: #38d6ff; width: 48%; transition: width 0.3s ease;"></div>
+          <div id="interestRatioBar" style="background: #ffaa00; width: 52%; transition: width 0.3s ease;"></div>
+        </div>
+      </div>
+
+      <div class="tool-btn-row" style="margin-top: 1.5rem;">
+        <button type="button" class="btn-tool-secondary" id="copyEmiSummaryBtn"><i data-lucide="copy"></i> Copy Breakdown</button>
+        <button type="button" class="btn-tool-secondary" id="toggleScheduleBtn"><i data-lucide="calendar"></i> View Yearly Amortization</button>
+      </div>
+
+      <!-- Yearly Amortization Table -->
+      <div id="amortizationContainer" style="display: none; margin-top: 1.5rem; overflow-x: auto;">
+        <h4 style="margin-bottom: 0.75rem; color: #fff; font-size: 1rem;"><i data-lucide="table"></i> Year-by-Year Payment Schedule</h4>
+        <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: right; font-family: 'JetBrains Mono', monospace;">
+          <thead>
+            <tr style="border-bottom: 1px solid #333; color: #888;">
+              <th style="padding: 8px; text-align: left;">Year</th>
+              <th style="padding: 8px;">Principal Paid</th>
+              <th style="padding: 8px;">Interest Paid</th>
+              <th style="padding: 8px;">Total Yearly</th>
+              <th style="padding: 8px;">Balance Remaining</th>
+            </tr>
+          </thead>
+          <tbody id="amortizationBody">
+            <!-- Injected via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    </section>
+
+    <!-- AdSense Compliant Banner Slot -->
+    <div class="adsense-slot-container" style="margin: 2rem 0; text-align: center; min-height: 90px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px dashed var(--border-color, #222);">
+      <!-- Non-intrusive Ad Display -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-1489572262543869"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- HOW IT WORKS & GUIDE SECTION -->
+    <section class="tool-guide-section">
+      <div class="guide-card">
+        <h2 class="guide-title"><i data-lucide="book-open"></i> How to Use the Loan EMI Calculator</h2>
+        <div class="guide-content">
+          
+    <p>An Equated Monthly Installment (EMI) is the fixed monthly amount a borrower pays back to a lender to repay a loan. The formula used is:</p>
+    <div style="padding: 0.75rem 1rem; background: rgba(0,0,0,0.3); border-radius: 6px; font-family: 'JetBrains Mono', monospace; color: #00ff88; margin: 0.5rem 0;">
+      EMI = [P x R x (1+R)^N] / [(1+R)^N - 1]
+    </div>
+    <ul>
+      <li><strong>P:</strong> Principal Loan Amount</li>
+      <li><strong>R:</strong> Monthly Interest Rate (Annual Rate / 12 / 100)</li>
+      <li><strong>N:</strong> Loan Tenure in Total Months</li>
+    </ul>
+  
+        </div>
+      </div>
+
+      <!-- Frequently Asked Questions -->
+      <div class="guide-card">
+        <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+          
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="true">
+              <span>Is this EMI calculator suitable for Home, Car, and Personal loans?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: block;">
+              <p>Yes. It uses the standard reducing-balance amortizing EMI formula adopted by all major commercial banks, NBFCs, and financial institutions worldwide.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Can I switch between tenure in Years and Months?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: none;">
+              <p>Yes. You can toggle between Years and Months using the toggle button. It instantly recalculates your total monthly payment and interest.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Are any of my financial figures transmitted to servers?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: none;">
+              <p>Never. All calculations run strictly in your local browser JavaScript engine with zero external tracking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED TOOLS SECTION -->
+    <section class="related-tools-section">
+      <div class="section-head-sm">
+        <h3 class="section-title-sm"><i data-lucide="sparkles"></i> Related Daily Utilities</h3>
+        <a href="/tools/" class="view-all-link">View All Tools &rarr;</a>
+      </div>
+      <div class="related-grid" id="relatedToolsGrid">
+        <!-- Injected via tools-registry.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <span class="footer-logo">XESTUS<span class="logo-dot">.</span></span>
+        <p class="footer-desc">Practical, high-performance daily digital tools, AI solutions, and engineering hubs designed for repeat daily productivity.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Utility Hubs</h4>
+        <ul class="footer-links">
+          <li><a href="/tools/calculators/gst-calculator/">GST Calculator</a></li>
+          <li><a href="/tools/calculators/percentage-calculator/">Percentage Calculator</a></li>
+          <li><a href="/tools/office/word-counter/">Word & Character Counter</a></li>
+          <li><a href="/tools/office/qr-generator/">Custom QR Code Maker</a></li>
+          <li><a href="/tools/developer/hash-generator/">Hash & Crypto Checksum</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="/tools/">All Daily Tools</a></li>
+          <li><a href="/index.html#services">Services & Engineering</a></li>
+          <li><a href="/index.html#portfolio">Live Portfolio</a></li>
+          <li><a href="/index.html#digital-services">Digital Seva Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal & Privacy</h4>
+        <ul class="footer-links">
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+          <li><a href="/cookie-policy.html">Cookie Policy</a></li>
+          <li><a href="/contact.html">Support & Inquiries</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 XESTUS Technologies. All rights reserved. 100% Client-Side Privacy Guaranteed.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/nav-core.js"></script>
+  <script src="/js/my-xestus.js"></script>
+  <script src="/tools/tools-registry.js"></script>
+  <script>
+    // Initialize Related Tools from Registry
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.XestusTools && window.XestusTools.renderRelatedTools) {
+        window.XestusTools.renderRelatedTools('emi-calculator', 'relatedToolsGrid');
+      }
+      if (window.MyXestus) {
+        window.MyXestus.initToolPage('emi-calculator', 'Loan EMI Calculator');
+      }
+      // FAQ Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const ans = btn.nextElementSibling;
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          ans.style.display = isExpanded ? 'none' : 'block';
+        });
+      });
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+  <script>
+    (function() {
+      let isYears = true;
+      const amtInput = document.getElementById('loanAmount');
+      const amtRange = document.getElementById('loanAmountRange');
+      const rateInput = document.getElementById('interestRate');
+      const rateRange = document.getElementById('interestRateRange');
+      const tenureInput = document.getElementById('loanTenure');
+      const tenureRange = document.getElementById('loanTenureRange');
+      const tenureYearsBtn = document.getElementById('tenureYearsBtn');
+      const tenureMonthsBtn = document.getElementById('tenureMonthsBtn');
+
+      function formatINR(num) {
+        return '₹' + Math.round(num).toLocaleString('en-IN');
+      }
+
+      function calculate() {
+        const P = parseFloat(amtInput.value) || 0;
+        const annualRate = parseFloat(rateInput.value) || 0;
+        let tenureVal = parseFloat(tenureInput.value) || 0;
+        const N = isYears ? tenureVal * 12 : tenureVal;
+
+        if (P <= 0 || annualRate <= 0 || N <= 0) {
+          document.getElementById('monthlyEmiDisplay').textContent = '₹0';
+          document.getElementById('principalDisplay').textContent = formatINR(P);
+          document.getElementById('interestDisplay').textContent = '₹0';
+          document.getElementById('totalPaymentDisplay').textContent = formatINR(P);
+          return;
+        }
+
+        const R = (annualRate / 12) / 100;
+        const emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+        const totalPayment = emi * N;
+        const totalInterest = totalPayment - P;
+
+        document.getElementById('monthlyEmiDisplay').textContent = formatINR(emi);
+        document.getElementById('principalDisplay').textContent = formatINR(P);
+        document.getElementById('interestDisplay').textContent = formatINR(totalInterest);
+        document.getElementById('totalPaymentDisplay').textContent = formatINR(totalPayment);
+
+        const pRatio = Math.round((P / totalPayment) * 100);
+        const iRatio = 100 - pRatio;
+        document.getElementById('principalRatioText').textContent = pRatio + '%';
+        document.getElementById('interestRatioText').textContent = iRatio + '%';
+        document.getElementById('principalRatioBar').style.width = pRatio + '%';
+        document.getElementById('interestRatioBar').style.width = iRatio + '%';
+
+        buildSchedule(P, annualRate, N, emi);
+      }
+
+      function buildSchedule(principal, annualRate, months, emi) {
+        const tbody = document.getElementById('amortizationBody');
+        tbody.innerHTML = '';
+        let balance = principal;
+        const r = (annualRate / 12) / 100;
+        const totalYears = Math.ceil(months / 12);
+
+        for (let yr = 1; yr <= totalYears; yr++) {
+          let yrPrincipal = 0;
+          let yrInterest = 0;
+          for (let m = 0; m < 12 && balance > 0; m++) {
+            const interestMonth = balance * r;
+            const principalMonth = Math.min(balance, emi - interestMonth);
+            yrInterest += interestMonth;
+            yrPrincipal += principalMonth;
+            balance -= principalMonth;
+          }
+          const tr = document.createElement('tr');
+          tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+          tr.innerHTML = `
+            <td style="padding: 6px 8px; text-align: left; color: #fff;">Year ${yr}</td>
+            <td style="padding: 6px 8px; color: #38d6ff;">${formatINR(yrPrincipal)}</td>
+            <td style="padding: 6px 8px; color: #ffaa00;">${formatINR(yrInterest)}</td>
+            <td style="padding: 6px 8px; color: #aaa;">${formatINR(yrPrincipal + yrInterest)}</td>
+            <td style="padding: 6px 8px; color: #00ff88;">${formatINR(Math.max(0, balance))}</td>
+          `;
+          tbody.appendChild(tr);
+        }
+      }
+
+      amtInput.addEventListener('input', () => { amtRange.value = amtInput.value; calculate(); });
+      amtRange.addEventListener('input', () => { amtInput.value = amtRange.value; calculate(); });
+      rateInput.addEventListener('input', () => { rateRange.value = rateInput.value; calculate(); });
+      rateRange.addEventListener('input', () => { rateInput.value = rateRange.value; calculate(); });
+      tenureInput.addEventListener('input', () => { tenureRange.value = tenureInput.value; calculate(); });
+      tenureRange.addEventListener('input', () => { tenureInput.value = tenureRange.value; calculate(); });
+
+      tenureYearsBtn.addEventListener('click', () => {
+        isYears = true;
+        tenureYearsBtn.classList.add('active');
+        tenureMonthsBtn.classList.remove('active');
+        tenureRange.max = 30;
+        if (parseFloat(tenureInput.value) > 30) tenureInput.value = 20;
+        calculate();
+      });
+
+      tenureMonthsBtn.addEventListener('click', () => {
+        isYears = false;
+        tenureMonthsBtn.classList.add('active');
+        tenureYearsBtn.classList.remove('active');
+        tenureRange.max = 360;
+        if (parseFloat(tenureInput.value) <= 30) tenureInput.value = parseFloat(tenureInput.value) * 12;
+        calculate();
+      });
+
+      document.querySelectorAll('.btn-preset').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.btn-preset').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          amtInput.value = btn.dataset.amt; amtRange.value = btn.dataset.amt;
+          rateInput.value = btn.dataset.rate; rateRange.value = btn.dataset.rate;
+          tenureInput.value = btn.dataset.yrs; tenureRange.value = btn.dataset.yrs;
+          isYears = true;
+          tenureYearsBtn.classList.add('active');
+          tenureMonthsBtn.classList.remove('active');
+          calculate();
+        });
+      });
+
+      document.getElementById('toggleScheduleBtn').addEventListener('click', () => {
+        const sched = document.getElementById('amortizationContainer');
+        sched.style.display = sched.style.display === 'none' ? 'block' : 'none';
+      });
+
+      document.getElementById('copyEmiSummaryBtn').addEventListener('click', () => {
+        const text = `Loan EMI Summary (XESTUS):\nPrincipal: ${document.getElementById('principalDisplay').textContent}\nMonthly EMI: ${document.getElementById('monthlyEmiDisplay').textContent}\nTotal Interest: ${document.getElementById('interestDisplay').textContent}\nTotal Repayment: ${document.getElementById('totalPaymentDisplay').textContent}`;
+        navigator.clipboard.writeText(text).then(() => alert('Loan EMI summary copied to clipboard!'));
+      });
+
+      calculate();
+    })();
+  </script>
+</body>
+</html>

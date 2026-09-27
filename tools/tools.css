@@ -489,12 +489,315 @@
   color: var(--cyan-bright);
 }
 
-.related-tool-name {
+/* --- "My XESTUS" Action Buttons (Star & Share) --- */
+.tool-meta-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-fav-star {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-fav-star:hover {
+  border-color: var(--stitch-yellow, #ffc107);
+  color: var(--text-primary);
+}
+
+.btn-fav-star.is-favourite {
+  background: rgba(255, 193, 7, 0.12);
+  border-color: rgba(255, 193, 7, 0.4);
+  color: var(--stitch-yellow, #ffc107);
+}
+
+.btn-share-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-share-tool:hover {
+  border-color: var(--cyan-border);
+  color: var(--cyan-bright);
+}
+
+/* --- Calculator & Form Grid System --- */
+.calc-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 868px) {
+  .calc-grid-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calc-form-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.calc-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calc-field-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.calc-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.calc-input-prefix,
+.calc-input-suffix {
+  position: absolute;
+  color: var(--text-muted);
   font-size: 13.5px;
   font-weight: 600;
 }
 
-/* Tools Hub Listing Grid */
+.calc-input-prefix { left: 14px; }
+.calc-input-suffix { right: 14px; }
+
+.calc-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-size: 15px;
+  outline: none;
+  transition: border-color var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.calc-input.has-prefix { padding-left: 36px; }
+.calc-input.has-suffix { padding-right: 36px; }
+
+.calc-input:focus {
+  border-color: var(--cyan-primary);
+  box-shadow: 0 0 0 3px var(--cyan-subtle);
+}
+
+.calc-rate-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.calc-rate-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.calc-rate-btn:hover,
+.calc-rate-btn.active {
+  background: var(--cyan-subtle);
+  border-color: var(--cyan-border);
+  color: var(--cyan-bright);
+}
+
+.calc-result-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.calc-summary-hero {
+  text-align: center;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(0, 191, 255, 0.08), rgba(0, 255, 136, 0.05));
+  border: 1px solid var(--cyan-border);
+}
+
+.calc-summary-hero .summary-lbl {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.calc-summary-hero .summary-val {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  color: var(--cyan-bright);
+}
+
+.calc-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calc-breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.calc-breakdown-row .row-lbl { color: var(--text-secondary); }
+.calc-breakdown-row .row-val { font-weight: 700; color: var(--text-primary); }
+
+/* --- Word Counter Stat Grid --- */
+.word-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.word-stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  text-align: center;
+}
+
+.word-stat-num {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--cyan-bright);
+}
+
+.word-stat-label {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* --- QR & Image Preview Box --- */
+.qr-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  gap: 16px;
+}
+
+.qr-canvas-box {
+  padding: 16px;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Drag & Drop File Zone --- */
+.file-dropzone {
+  border: 2px dashed var(--cyan-border);
+  border-radius: var(--radius-xl);
+  padding: 36px 20px;
+  text-align: center;
+  background: rgba(0, 191, 255, 0.03);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-bottom: 20px;
+}
+
+.file-dropzone:hover,
+.file-dropzone.drag-over {
+  border-color: var(--cyan-bright);
+  background: rgba(0, 191, 255, 0.08);
+}
+
+.dropzone-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--cyan-bright);
+  margin-bottom: 12px;
+}
+
+/* --- Tools Directory Hub Tabs --- */
+.tools-nav-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.tools-nav-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tools-nav-tab:hover,
+.tools-nav-tab.active {
+  background: linear-gradient(135deg, var(--cyan-primary), var(--cyan-dark));
+  border-color: var(--cyan-bright);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--cyan-glow);
+}
+
 .tools-hub-hero {
   text-align: center;
   padding: 40px 0 20px;
@@ -568,7 +871,7 @@
 
 .tools-catalog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: 24px;
   margin-top: 30px;
 }
@@ -585,6 +888,7 @@
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .tool-card:hover {
@@ -646,3 +950,181 @@
   font-size: 13px;
   font-weight: 600;
 }
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT ENGINE (Mobile, Tablet, Fold Screen Optimization)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .tools-app-container {
+    padding: 84px 18px 48px;
+  }
+
+  .tool-workspace {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tools-app-container {
+    padding: 72px 14px 40px;
+  }
+
+  .tool-header {
+    margin-bottom: 22px;
+  }
+
+  .tool-title {
+    font-size: clamp(22px, 6vw, 30px);
+  }
+
+  .tool-description {
+    font-size: 14.5px;
+  }
+
+  .tool-workspace {
+    padding: 16px 14px;
+    border-radius: var(--radius-lg);
+  }
+
+  .tool-action-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .tool-options-group,
+  .tool-btn-group {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tool-btn {
+    flex: 1 1 calc(50% - 4px);
+    min-height: 42px;
+    justify-content: center;
+    font-size: 12.5px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+  }
+
+  .tool-btn-primary {
+    flex: 1 1 100%;
+  }
+
+  .tool-toggle-label {
+    width: 100%;
+    font-size: 12.5px;
+    padding: 4px 0;
+  }
+
+  .tool-textarea {
+    height: 260px;
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .tools-categories-filter {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tools-filter-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .tools-catalog-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .tool-info-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Specific Interactive Components */
+  .diff-split-view,
+  .diff-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  .timestamp-converter-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .regex-pattern-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .regex-flags-wrap {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .password-display-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .tools-app-container {
+    padding: 68px 10px 32px;
+  }
+
+  .tool-workspace {
+    padding: 14px 10px;
+  }
+
+  .tool-btn {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .tool-badge-row {
+    gap: 6px;
+  }
+
+  .tool-category-badge,
+  .tool-privacy-badge {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  .tools-search-box {
+    margin-top: 16px;
+  }
+
+  .tools-search-input {
+    font-size: 13.5px;
+    padding: 12px 16px 12px 42px;
+  }
+}
+
+@media (max-width: 360px) {
+  .tools-app-container {
+    padding: 62px 8px 24px;
+  }
+
+  .tool-title {
+    font-size: 20px;
+  }
+
+  .tool-card {
+    padding: 16px 12px;
+  }
+
+  .tool-textarea {
+    height: 220px;
+    font-size: 12px;
+  }
+}
+

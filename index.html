@@ -96,6 +96,7 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="style.css?v=3.9.5">
+    <link rel="stylesheet" href="css/xestus-tools.css?v=1.0.0">
 
     <!-- Preloaded Translations Dictionary & Central Service Registry & Security Shield -->
     <script src="js/translations.js?v=3.9.5"></script>
@@ -224,6 +225,13 @@
             <button type="button" class="mobile-lang-btn active" data-lang="en">EN</button>
             <button type="button" class="mobile-lang-btn" data-lang="bn">বাংলা</button>
             <button type="button" class="mobile-lang-btn" data-lang="hi">हिन्दी</button>
+        </li>
+
+        <!-- Mobile Drawer CTA Button -->
+        <li class="mobile-nav-item" style="margin-top: 10px;">
+            <a href="#contact" class="btn-primary mobile-drawer-cta" style="width:100%; display:flex; justify-content:center; align-items:center; min-height:44px; text-decoration:none;">
+                <span data-i18n="common.start_project">Start a Project</span>
+            </a>
         </li>
 
         <!-- Mobile Theme Selector Strip -->
@@ -831,6 +839,519 @@
         </button>
     </div>
 </section>
+
+<!-- ==========================================================================
+     SECTION 02 // XESTUS TOOLS — SMART DAILY UTILITY & DEVELOPER HUB
+     ========================================================================== -->
+<section class="xestus-tools-section reveal-item" id="tools" aria-labelledby="xestusToolsTitle">
+    <!-- Header -->
+    <div class="xestus-tools-header">
+        <span class="xestus-tools-tag"><i data-lucide="wrench"></i> UTILITIES // CLIENT-SIDE</span>
+        <h2 class="xestus-tools-title" id="xestusToolsTitle">Xestus Tools</h2>
+        <p class="xestus-tools-subtitle">Everyday tools. Simple, fast, useful.</p>
+    </div>
+
+    <!-- Live Search Box -->
+    <div class="xestus-tools-search-wrapper">
+        <div class="xestus-tools-search-box">
+            <i data-lucide="search" class="xestus-tools-search-icon" aria-hidden="true"></i>
+            <input type="search" id="xestusToolsSearch" class="xestus-tools-search-input" placeholder="Search tools (e.g., PDF, GST, JSON, Image, EMI, Word)..." aria-label="Search Xestus Tools">
+            <button type="button" id="xestusToolsClearSearch" class="xestus-tools-search-clear" aria-label="Clear tool search">
+                <i data-lucide="x" aria-hidden="true"></i>
+            </button>
+            <span id="xestusToolsResultCount" class="xestus-tools-result-count">30 tools</span>
+        </div>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="xestus-tools-tabs" role="tablist" aria-label="Tool Category Filters">
+        <button type="button" class="xestus-tools-tab-btn active" data-filter="all" role="tab" aria-selected="true"><i data-lucide="layout-grid"></i> All Tools</button>
+        <button type="button" class="xestus-tools-tab-btn" data-filter="pdf" role="tab" aria-selected="false"><i data-lucide="file-text"></i> PDF &amp; Documents</button>
+        <button type="button" class="xestus-tools-tab-btn" data-filter="image" role="tab" aria-selected="false"><i data-lucide="image"></i> Image Tools</button>
+        <button type="button" class="xestus-tools-tab-btn" data-filter="calculators" role="tab" aria-selected="false"><i data-lucide="calculator"></i> Calculators</button>
+        <button type="button" class="xestus-tools-tab-btn" data-filter="text" role="tab" aria-selected="false"><i data-lucide="type"></i> Text &amp; Office</button>
+        <button type="button" class="xestus-tools-tab-btn" data-filter="developer" role="tab" aria-selected="false"><i data-lucide="code-2"></i> Developer Tools</button>
+        <button type="button" class="xestus-tools-tab-btn" data-filter="everyday" role="tab" aria-selected="false"><i data-lucide="clock"></i> Everyday Tools</button>
+    </div>
+
+    <!-- Empty State -->
+    <div id="xestusToolsEmpty" class="xestus-tools-empty">
+        <div class="xestus-tools-empty-icon">🔍</div>
+        <h4 class="xestus-tools-empty-title">No matching tools found</h4>
+        <p class="xestus-tools-empty-desc">Try searching for different keywords (e.g., GST, Image, PDF, Format, Counter, Timer).</p>
+    </div>
+
+    <!-- 1. PDF & Documents -->
+    <div class="xestus-tools-category-group" data-category="pdf">
+        <div class="xestus-tools-category-header">
+            <div class="xestus-tools-category-icon"><i data-lucide="file-text"></i></div>
+            <h3 class="xestus-tools-category-title">PDF &amp; Documents</h3>
+            <span class="xestus-tools-category-badge">5 Tools</span>
+        </div>
+        <div class="xestus-tools-grid">
+            <!-- PDF Compressor -->
+            <div class="xestus-tools-card" data-name="PDF Compressor" data-desc="Reduce PDF file size quickly without losing clarity." data-tags="pdf compress shrink document size">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="file-minus"></i></div>
+                        <span class="xestus-tools-badge coming-soon">Coming Soon</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">PDF Compressor</h4>
+                    <p class="xestus-tools-card-desc">Reduce PDF file size quickly without losing document clarity.</p>
+                </div>
+                <button type="button" class="xestus-tools-card-action disabled-btn" disabled>Coming Soon</button>
+            </div>
+
+            <!-- PDF Merger -->
+            <div class="xestus-tools-card" data-name="PDF Merger" data-desc="Combine multiple PDF documents into a single organized file." data-tags="pdf merge combine join attach">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="files"></i></div>
+                        <span class="xestus-tools-badge coming-soon">Coming Soon</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">PDF Merger</h4>
+                    <p class="xestus-tools-card-desc">Combine multiple PDF documents into a single organized file.</p>
+                </div>
+                <button type="button" class="xestus-tools-card-action disabled-btn" disabled>Coming Soon</button>
+            </div>
+
+            <!-- PDF Splitter -->
+            <div class="xestus-tools-card" data-name="PDF Splitter" data-desc="Extract specific pages or split large PDF files into smaller documents." data-tags="pdf split extract pages divide">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="scissors"></i></div>
+                        <span class="xestus-tools-badge coming-soon">Coming Soon</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">PDF Splitter</h4>
+                    <p class="xestus-tools-card-desc">Extract specific pages or split large PDF files into smaller documents.</p>
+                </div>
+                <button type="button" class="xestus-tools-card-action disabled-btn" disabled>Coming Soon</button>
+            </div>
+
+            <!-- JPG to PDF -->
+            <div class="xestus-tools-card" data-name="JPG to PDF" data-desc="Convert images into clean, multi-page PDF documents." data-tags="jpg to pdf image to pdf photo to pdf convert">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="file-image"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">JPG to PDF</h4>
+                    <p class="xestus-tools-card-desc">Convert single or batch images into clean, multi-page PDF documents.</p>
+                </div>
+                <a href="tools/pdf/image-to-pdf/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- PDF to JPG -->
+            <div class="xestus-tools-card" data-name="PDF to JPG" data-desc="Export high-resolution JPG image pages from any PDF file." data-tags="pdf to jpg pdf to image convert photo extract">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="image"></i></div>
+                        <span class="xestus-tools-badge coming-soon">Coming Soon</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">PDF to JPG</h4>
+                    <p class="xestus-tools-card-desc">Export high-resolution JPG image pages from any PDF file.</p>
+                </div>
+                <button type="button" class="xestus-tools-card-action disabled-btn" disabled>Coming Soon</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Image Tools -->
+    <div class="xestus-tools-category-group" data-category="image">
+        <div class="xestus-tools-category-header">
+            <div class="xestus-tools-category-icon"><i data-lucide="image"></i></div>
+            <h3 class="xestus-tools-category-title">Image Tools</h3>
+            <span class="xestus-tools-category-badge">5 Tools</span>
+        </div>
+        <div class="xestus-tools-grid">
+            <!-- Image Compressor -->
+            <div class="xestus-tools-card" data-name="Image Compressor" data-desc="Compress JPG, PNG, and WebP images to reduce file size instantly." data-tags="image compress shrink optimize reduce kb mb photo">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="image-down"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Image Compressor</h4>
+                    <p class="xestus-tools-card-desc">Compress JPG, PNG, and WebP images to reduce file size instantly.</p>
+                </div>
+                <a href="tools/image/image-compressor/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Image Resizer -->
+            <div class="xestus-tools-card" data-name="Image Resizer" data-desc="Resize image dimensions by width, height, or percentage." data-tags="image resize dimensions scale crop photo pixel">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="scaling"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Image Resizer</h4>
+                    <p class="xestus-tools-card-desc">Resize image dimensions by width, height, or custom aspect ratio.</p>
+                </div>
+                <a href="tools/image/image-resizer/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- JPG to PNG -->
+            <div class="xestus-tools-card" data-name="JPG to PNG" data-desc="Convert JPG photographs to lossless PNG format in the browser." data-tags="jpg to png convert format image lossless">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="file-output"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">JPG to PNG</h4>
+                    <p class="xestus-tools-card-desc">Convert JPG photographs to lossless PNG format in the browser.</p>
+                </div>
+                <a href="tools/image/jpg-to-png/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- PNG to JPG -->
+            <div class="xestus-tools-card" data-name="PNG to JPG" data-desc="Convert PNG images to lightweight JPG format with adjustable quality." data-tags="png to jpg convert format image photo">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="file-input"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">PNG to JPG</h4>
+                    <p class="xestus-tools-card-desc">Convert PNG images to lightweight JPG format with adjustable quality.</p>
+                </div>
+                <a href="tools/image/jpg-to-png/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Image Cropper -->
+            <div class="xestus-tools-card" data-name="Image Cropper" data-desc="Crop images to custom aspect ratios for social media and profiles." data-tags="crop image cut framing aspect ratio avatar">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="crop"></i></div>
+                        <span class="xestus-tools-badge coming-soon">Coming Soon</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Image Cropper</h4>
+                    <p class="xestus-tools-card-desc">Crop images to custom aspect ratios for social media and profiles.</p>
+                </div>
+                <button type="button" class="xestus-tools-card-action disabled-btn" disabled>Coming Soon</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Calculators -->
+    <div class="xestus-tools-category-group" data-category="calculators">
+        <div class="xestus-tools-category-header">
+            <div class="xestus-tools-category-icon"><i data-lucide="calculator"></i></div>
+            <h3 class="xestus-tools-category-title">Calculators</h3>
+            <span class="xestus-tools-category-badge">6 Tools</span>
+        </div>
+        <div class="xestus-tools-grid">
+            <!-- Percentage Calculator -->
+            <div class="xestus-tools-card" data-name="Percentage Calculator" data-desc="Calculate percent value, percentage increase, decrease, and fractions." data-tags="percentage calculator math fraction discount ratio">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="percent"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Percentage Calculator</h4>
+                    <p class="xestus-tools-card-desc">Calculate percent value, percentage increase, decrease, and fractions.</p>
+                </div>
+                <a href="tools/calculators/percentage-calculator/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Discount Calculator -->
+            <div class="xestus-tools-card" data-name="Discount Calculator" data-desc="Calculate final sale price, savings amount, and double discounts." data-tags="discount calculator shopping sale savings price offer">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="tag"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Discount Calculator</h4>
+                    <p class="xestus-tools-card-desc">Calculate final sale price, savings amount, and double discounts.</p>
+                </div>
+                <a href="tools/calculators/discount-calculator/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- GST Calculator -->
+            <div class="xestus-tools-card" data-name="GST Calculator" data-desc="Instant GST calculation with CGST, SGST, and IGST breakdowns." data-tags="gst calculator tax finance invoice cgst sgst">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="receipt"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">GST Calculator</h4>
+                    <p class="xestus-tools-card-desc">Instant GST calculation with CGST, SGST, and IGST breakdowns.</p>
+                </div>
+                <a href="tools/calculators/gst-calculator/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Profit Calculator -->
+            <div class="xestus-tools-card" data-name="Profit Calculator" data-desc="Calculate gross profit, net profit margin, and markup percentage." data-tags="profit calculator margin markup revenue business shop">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="trending-up"></i></div>
+                        <span class="xestus-tools-badge coming-soon">Coming Soon</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Profit Calculator</h4>
+                    <p class="xestus-tools-card-desc">Calculate gross profit, net profit margin, and markup percentage.</p>
+                </div>
+                <button type="button" class="xestus-tools-card-action disabled-btn" disabled>Coming Soon</button>
+            </div>
+
+            <!-- Age Calculator -->
+            <div class="xestus-tools-card" data-name="Age Calculator" data-desc="Calculate exact age in years, months, weeks, days, hours, and minutes." data-tags="age calculator dob date of birth birthday days">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="calendar"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Age Calculator</h4>
+                    <p class="xestus-tools-card-desc">Calculate exact age in years, months, weeks, days, hours, and minutes.</p>
+                </div>
+                <a href="tools/calculators/age-calculator/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- EMI Calculator -->
+            <div class="xestus-tools-card" data-name="EMI Calculator" data-desc="Calculate monthly loan EMI, total interest, and amortization schedule." data-tags="emi calculator loan interest bank home loan car loan">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="landmark"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">EMI Calculator</h4>
+                    <p class="xestus-tools-card-desc">Calculate monthly loan EMI, total interest, and amortization schedule.</p>
+                </div>
+                <a href="tools/calculators/emi-calculator/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Text & Office -->
+    <div class="xestus-tools-category-group" data-category="text">
+        <div class="xestus-tools-category-header">
+            <div class="xestus-tools-category-icon"><i data-lucide="type"></i></div>
+            <h3 class="xestus-tools-category-title">Text &amp; Office</h3>
+            <span class="xestus-tools-category-badge">5 Tools</span>
+        </div>
+        <div class="xestus-tools-grid">
+            <!-- Word Counter -->
+            <div class="xestus-tools-card" data-name="Word Counter" data-desc="Count words, sentences, paragraphs, and estimated reading time live." data-tags="word counter character count sentences paragraphs reading time text">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="file-text"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Word Counter</h4>
+                    <p class="xestus-tools-card-desc">Count words, sentences, paragraphs, and estimated reading time live.</p>
+                </div>
+                <a href="tools/office/word-counter/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Character Counter -->
+            <div class="xestus-tools-card" data-name="Character Counter" data-desc="Count characters with/without spaces and check social media limits." data-tags="character counter letter count text length twitter limit">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="binary"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Character Counter</h4>
+                    <p class="xestus-tools-card-desc">Count characters with/without spaces and check social media limits.</p>
+                </div>
+                <a href="tools/office/character-counter/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Text Case Converter -->
+            <div class="xestus-tools-card" data-name="Text Case Converter" data-desc="Convert text to UPPERCASE, lowercase, Title Case, camelCase, snake_case." data-tags="text case converter uppercase lowercase camelcase slugify formatting">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="case-sensitive"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Text Case Converter</h4>
+                    <p class="xestus-tools-card-desc">Convert text to UPPERCASE, lowercase, Title Case, camelCase, snake_case.</p>
+                </div>
+                <a href="tools/office/case-converter/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- QR Code Generator -->
+            <div class="xestus-tools-card" data-name="QR Code Generator" data-desc="Generate downloadable QR codes for URLs, WiFi, UPI payments, and text." data-tags="qr code generator qr creator upi wifi scanner link">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="qr-code"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">QR Code Generator</h4>
+                    <p class="xestus-tools-card-desc">Generate downloadable QR codes for URLs, WiFi, UPI payments, and text.</p>
+                </div>
+                <a href="tools/office/qr-generator/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Simple Invoice Generator -->
+            <div class="xestus-tools-card" data-name="Simple Invoice Generator" data-desc="Generate professional client invoices with instant PDF export & tax math." data-tags="invoice generator bill maker receipt billing shop tax print">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="receipt"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Simple Invoice Generator</h4>
+                    <p class="xestus-tools-card-desc">Generate professional client invoices with instant PDF export &amp; tax math.</p>
+                </div>
+                <a href="tools/office/invoice-generator/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Developer Tools -->
+    <div class="xestus-tools-category-group" data-category="developer">
+        <div class="xestus-tools-category-header">
+            <div class="xestus-tools-category-icon"><i data-lucide="code-2"></i></div>
+            <h3 class="xestus-tools-category-title">Developer Tools</h3>
+            <span class="xestus-tools-category-badge">5 Tools</span>
+        </div>
+        <div class="xestus-tools-grid">
+            <!-- JSON Formatter -->
+            <div class="xestus-tools-card" data-name="JSON Formatter" data-desc="Format, beautify, validate, and minify JSON data with syntax highlight." data-tags="json formatter beautifier validator minifier dev code">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="braces"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">JSON Formatter</h4>
+                    <p class="xestus-tools-card-desc">Format, beautify, validate, and minify JSON data with syntax highlight.</p>
+                </div>
+                <a href="tools/developer/json-formatter/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Base64 Encoder / Decoder -->
+            <div class="xestus-tools-card" data-name="Base64 Encoder / Decoder" data-desc="Encode and decode text, strings, and data URLs with UTF-8 support." data-tags="base64 encoder decoder utf8 ascii binary string">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="code"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Base64 Encoder / Decoder</h4>
+                    <p class="xestus-tools-card-desc">Encode and decode text, strings, and data URLs with UTF-8 support.</p>
+                </div>
+                <a href="tools/developer/base64-encode-decode/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- URL Encoder / Decoder -->
+            <div class="xestus-tools-card" data-name="URL Encoder / Decoder" data-desc="Encode and decode URLs, query parameters, and special characters." data-tags="url encoder decoder uri percent encoding query string">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="link-2"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">URL Encoder / Decoder</h4>
+                    <p class="xestus-tools-card-desc">Encode and decode URLs, query parameters, and special characters.</p>
+                </div>
+                <a href="tools/developer/url-encode-decode/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- UUID Generator -->
+            <div class="xestus-tools-card" data-name="UUID Generator" data-desc="Generate cryptographically secure UUID v4 identifiers in bulk." data-tags="uuid generator guid v4 unique identifier crypto random">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="fingerprint"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">UUID Generator</h4>
+                    <p class="xestus-tools-card-desc">Generate cryptographically secure UUID v4 identifiers in bulk.</p>
+                </div>
+                <a href="tools/developer/uuid-generator/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Timestamp Converter -->
+            <div class="xestus-tools-card" data-name="Timestamp Converter" data-desc="Convert Unix timestamps (seconds/ms) to human-readable dates & ISO 8601." data-tags="timestamp converter unix epoch date time iso8601 utc">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="clock"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Timestamp Converter</h4>
+                    <p class="xestus-tools-card-desc">Convert Unix timestamps (seconds/ms) to human-readable dates &amp; ISO 8601.</p>
+                </div>
+                <a href="tools/developer/timestamp-converter/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Everyday Tools -->
+    <div class="xestus-tools-category-group" data-category="everyday">
+        <div class="xestus-tools-category-header">
+            <div class="xestus-tools-category-icon"><i data-lucide="clock"></i></div>
+            <h3 class="xestus-tools-category-title">Everyday Tools</h3>
+            <span class="xestus-tools-category-badge">5 Tools</span>
+        </div>
+        <div class="xestus-tools-grid">
+            <!-- Password Generator -->
+            <div class="xestus-tools-card" data-name="Password Generator" data-desc="Generate strong, secure, random passwords with custom symbols & length." data-tags="password generator security random strong passphrase">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="key-round"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Password Generator</h4>
+                    <p class="xestus-tools-card-desc">Generate strong, secure, random passwords with custom symbols &amp; length.</p>
+                </div>
+                <a href="tools/developer/password-generator/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Unit Converter -->
+            <div class="xestus-tools-card" data-name="Unit Converter" data-desc="Convert Length, Weight, Temperature, Area, and Volume units instantly." data-tags="unit converter metric imperial length weight temperature area">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="ruler"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Unit Converter</h4>
+                    <p class="xestus-tools-card-desc">Convert Length, Weight, Temperature, Area, and Volume units instantly.</p>
+                </div>
+                <a href="tools/calculators/unit-converter/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Date Calculator -->
+            <div class="xestus-tools-card" data-name="Date Calculator" data-desc="Calculate days between dates, working business days, and future dates." data-tags="date calculator calendar days difference working days">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="calendar-days"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Date Calculator</h4>
+                    <p class="xestus-tools-card-desc">Calculate days between dates, working business days, and future dates.</p>
+                </div>
+                <a href="tools/calculators/date-calculator/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Countdown Timer / Pomodoro -->
+            <div class="xestus-tools-card" data-name="Countdown Timer" data-desc="Custom countdown timer and Pomodoro focus session tracker." data-tags="countdown timer pomodoro study interval focus alarm">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="timer"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Countdown Timer</h4>
+                    <p class="xestus-tools-card-desc">Custom countdown timer and Pomodoro focus session tracker.</p>
+                </div>
+                <a href="tools/student/pomodoro-timer/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Stopwatch -->
+            <div class="xestus-tools-card" data-name="Stopwatch" data-desc="Precision millisecond stopwatch with split lap recording." data-tags="stopwatch timer laps precision milliseconds sports productivity">
+                <div>
+                    <div class="xestus-tools-card-top">
+                        <div class="xestus-tools-card-icon"><i data-lucide="watch"></i></div>
+                        <span class="xestus-tools-badge live">Live Tool</span>
+                    </div>
+                    <h4 class="xestus-tools-card-name">Stopwatch</h4>
+                    <p class="xestus-tools-card-desc">Precision millisecond stopwatch with split lap recording.</p>
+                </div>
+                <a href="tools/student/stopwatch/index.html" class="xestus-tools-card-action open-btn"><span>Open Tool</span> <i data-lucide="arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Master Suite CTA -->
+    <div style="text-align: center; margin-top: 36px;">
+        <a href="tools/index.html" class="btn-stitch-primary" style="display: inline-flex; padding: 14px 28px; font-size: 14px; text-decoration: none;">
+            <span>Explore Complete Tools Hub (26+ Daily Utilities) ↗</span>
+        </a>
+    </div>
+</section>
+
 
 <!-- ==========================================================================
      FOUNDER & LEADERSHIP PROFILE SECTION (DIRECTLY AFTER DIGITAL SEVA)
@@ -1780,341 +2301,9 @@
     </div>
 </section>
 
-<!-- ==========================================================================
-     SECTION 04 // XESTUS TOOLS DIRECTORY
-     ========================================================================== -->
-<section class="stitch-tools-section" id="tools" aria-labelledby="toolsTitle">
-    <div class="stitch-section-header reveal-item">
-        <span class="stitch-tag-mono">SECTION 04 // XESTUS TOOLS DIRECTORY</span>
-        <h2 class="stitch-section-title" id="toolsTitle">DEVELOPER &amp; UTILITY TOOLS</h2>
-        <p class="stitch-section-desc">
-            Ultra-fast, privacy-first, client-side developer and productivity utilities. Zero server logs, zero cloud egress, and 100% in-browser processing.
-        </p>
-    </div>
 
-    <!-- Category Filter Bar -->
-    <div class="stitch-tools-filter-bar reveal-item" role="tablist" aria-label="Tools Filter Tabs">
-        <button type="button" class="stitch-tool-filter-btn active" data-tool-filter="all" role="tab" aria-selected="true">All Tools</button>
-        <button type="button" class="stitch-tool-filter-btn" data-tool-filter="developer" role="tab" aria-selected="false">Developer</button>
-        <button type="button" class="stitch-tool-filter-btn" data-tool-filter="security" role="tab" aria-selected="false">Security</button>
-        <button type="button" class="stitch-tool-filter-btn" data-tool-filter="productivity" role="tab" aria-selected="false">Productivity</button>
-        <button type="button" class="stitch-tool-filter-btn" data-tool-filter="upcoming" role="tab" aria-selected="false">Coming Soon</button>
-    </div>
 
-    <!-- Tools Grid -->
-    <div class="stitch-tools-grid reveal-item" id="stitchToolsGrid">
-        <!-- Tool 1: JSON Formatter & Minifier (Live) -->
-        <div class="stitch-tool-card" data-category="developer">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">DEV UTILITY</span>
-                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">JSON Formatter &amp; Minifier</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Format, minify, validate, and inspect nested JSON objects with real-time syntax tree error highlighting and instant copy.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <a href="tools/developer/json-formatter/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
-                    <span>Launch JSON Formatter ↗</span>
-                </a>
-            </div>
-        </div>
 
-        <!-- Tool 2: JSON Schema & Syntax Validator (Live) -->
-        <div class="stitch-tool-card" data-category="developer">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">DEV UTILITY</span>
-                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">JSON Schema &amp; Validator</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Validate JSON syntax with line-and-column error highlighting, structure metrics, and tree inspection in real time.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <a href="tools/developer/json-validator/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
-                    <span>Launch Validator ↗</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Tool 3: Base64 Encoder & Decoder (Live) -->
-        <div class="stitch-tool-card" data-category="developer">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">DATA ENCODING</span>
-                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">Base64 Encoder &amp; Decoder</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Convert raw strings, binary buffers, and data URLs to and from standard Base64 with full UTF-8 Unicode support.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <a href="tools/developer/base64-encode-decode/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
-                    <span>Launch Base64 Tool ↗</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Tool 4: JWT Debugger & Token Decoder (Live) -->
-        <div class="stitch-tool-card" data-category="developer security">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">SECURITY / AUTH</span>
-                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">JWT Debugger &amp; Decoder</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Inspect JSON Web Tokens (JWT), decode header algorithms, expiration claims, and payload properties securely client-side.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <a href="tools/developer/jwt-decoder/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
-                    <span>Launch JWT Debugger ↗</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Tool 5: UUID / GUID Generator (Live) -->
-        <div class="stitch-tool-card" data-category="developer security">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">IDENTIFIERS</span>
-                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">UUID / GUID Generator</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Batch generate cryptographically secure RFC 4122 Version 4 UUIDs (1 to 100) with uppercase and hyphen customization.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <a href="tools/developer/uuid-generator/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
-                    <span>Launch UUID Generator ↗</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Tool 6: Regex Tester & Matcher (Live) -->
-        <div class="stitch-tool-card" data-category="developer">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">DEV UTILITY</span>
-                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">Regex Tester &amp; Matcher</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Test regular expressions with real-time match highlighting, capture group extraction, substitution, and flags.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <a href="tools/developer/regex-tester/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
-                    <span>Launch Regex Tester ↗</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Tool 7: Cryptographic Hash Generator (Live) -->
-        <div class="stitch-tool-card" data-category="developer security">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">CRYPTOGRAPHY</span>
-                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">Cryptographic Hash Generator</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Calculate SHA-256, SHA-512, SHA-1, and MD5 cryptographic checksums instantly using native Web Crypto API.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <a href="tools/developer/hash-generator/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
-                    <span>Launch Hash Generator ↗</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Tool 8: Secure Password Generator (Live) -->
-        <div class="stitch-tool-card" data-category="security">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">SECURITY / TOKENS</span>
-                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">Password &amp; Token Generator</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Generate high-entropy random passwords and API tokens with customizable character sets and strength meters.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <a href="tools/developer/password-generator/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
-                    <span>Launch Password Tool ↗</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Tool 9: Unix Timestamp Converter (Live) -->
-        <div class="stitch-tool-card" data-category="productivity">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">PRODUCTIVITY</span>
-                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">Unix Timestamp Converter</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Convert Unix Epoch timestamps to human-readable UTC and Local time, and parse dates to timestamps in real time.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <a href="tools/developer/timestamp-converter/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
-                    <span>Launch Timestamp Tool ↗</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Tool 10: Text & Code Diff Checker (Live) -->
-        <div class="stitch-tool-card" data-category="productivity developer">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">PRODUCTIVITY</span>
-                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">Text &amp; Code Diff Checker</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Compare two text blocks or code snippets side-by-side or unified with character-level additions and deletions.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <a href="tools/developer/text-diff/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
-                    <span>Launch Diff Checker ↗</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Tool 11: URL Encoder & Decoder (Live) -->
-        <div class="stitch-tool-card" data-category="developer">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">DEV UTILITY</span>
-                    <span class="stitch-tool-badge-live">● LIVE TOOL</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">URL Encoder &amp; Decoder</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Encode and decode standard URLs, URI components, and query parameters with full RFC 3986 compliance.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <a href="tools/developer/url-encode-decode/index.html" class="btn-stitch-primary" style="padding: 10px 16px; font-size: 12px; width: 100%;">
-                    <span>Launch URL Tool ↗</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Tool 12: Model Context Protocol (MCP) Builder (Coming Soon) -->
-        <div class="stitch-tool-card" data-category="upcoming developer">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">MCP PROTOCOL</span>
-                    <span class="stitch-tool-badge-coming-soon">COMING SOON</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">Model Context Protocol (MCP) Builder</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Visual JSON schema generator and live inspector for testing custom MCP tools, resources, and prompt endpoints.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <button type="button" class="btn-stitch-outline" style="padding: 10px 16px; font-size: 12px; width: 100%;" onclick="openContactModalWithSubject('MCP Tool Builder Access')">
-                    <span>Notify on Release</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Tool 13: Token Compactor & Cost Estimator (Coming Soon) -->
-        <div class="stitch-tool-card" data-category="upcoming">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">LLM COST</span>
-                    <span class="stitch-tool-badge-coming-soon">COMING SOON</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">Token Compactor &amp; Cost Estimator</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Estimate token counts across OpenAI tiktoken, Claude, and Gemini with automated whitespace context compression.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <button type="button" class="btn-stitch-outline" style="padding: 10px 16px; font-size: 12px; width: 100%;" onclick="openContactModalWithSubject('Token Estimator Access')">
-                    <span>Notify on Release</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Tool 14: PDF & Document Suite (Coming Soon) -->
-        <div class="stitch-tool-card" data-category="upcoming">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">DOCUMENTS</span>
-                    <span class="stitch-tool-badge-coming-soon">COMING SOON</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">PDF Compressor &amp; Tools</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Client-side PDF page extractor, image-to-PDF compiler, and document size optimization targeting portal limits.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <button type="button" class="btn-stitch-outline" style="padding: 10px 16px; font-size: 12px; width: 100%;" onclick="openContactModalWithSubject('PDF Tools Access')">
-                    <span>Notify on Release</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Tool 15: Image Optimizer & Resizer (Coming Soon) -->
-        <div class="stitch-tool-card" data-category="upcoming">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">MEDIA / GRAPHICS</span>
-                    <span class="stitch-tool-badge-coming-soon">COMING SOON</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">Image Resizer &amp; Converter</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Convert PNG, JPEG, WebP, SVG and resize passport photos/signatures to exact KB thresholds in-browser.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <button type="button" class="btn-stitch-outline" style="padding: 10px 16px; font-size: 12px; width: 100%;" onclick="openContactModalWithSubject('Image Tools Access')">
-                    <span>Notify on Release</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Tool 16: CSS Glassmorphism Studio (Coming Soon) -->
-        <div class="stitch-tool-card" data-category="upcoming developer">
-            <div>
-                <div class="stitch-card-top" style="margin-bottom: 12px;">
-                    <span class="stitch-card-tag">UI / CSS</span>
-                    <span class="stitch-tool-badge-coming-soon">COMING SOON</span>
-                </div>
-                <h3 class="stitch-card-title" style="font-size: 18px;">CSS Glassmorphism &amp; Shadow Studio</h3>
-                <p class="stitch-card-desc" style="font-size: 13px;">
-                    Interactive backdrop-filter, border gradient, and ambient glow code generator with cross-browser CSS export.
-                </p>
-            </div>
-            <div style="margin-top: 18px;">
-                <button type="button" class="btn-stitch-outline" style="padding: 10px 16px; font-size: 12px; width: 100%;" onclick="openContactModalWithSubject('CSS Studio Access')">
-                    <span>Notify on Release</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Master Suite CTA -->
-    <div style="text-align: center; margin-top: 36px;" class="reveal-item">
-        <a href="tools/index.html" class="btn-stitch-primary" style="display: inline-flex; padding: 14px 28px; font-size: 14px;">
-            <span>Explore Complete Tools Suite (24+ Utilities) ↗</span>
-        </a>
-    </div>
-</section>
 
 <!-- ==========================================================================
  INNOVATION LAB & R&D SECTION
@@ -3723,6 +3912,7 @@
 <!-- Core Script & Interactive Controllers -->
 <script defer src="script.js?v=3.9.5"></script>
 <script defer src="js/digital-seva-hub.js?v=3.9.5"></script>
+<script defer src="js/xestus-tools.js?v=1.0.0"></script>
 <script defer src="js/ai-assistant.js?v=3.9.5"></script>
 
 <!-- XESTUS Connection Lost Overlay -->

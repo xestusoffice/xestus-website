@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('xestus_theme');
+                if (stored && ['night', 'day', 'eye-protect'].indexOf(stored) !== -1) {
+                    document.documentElement.setAttribute('data-theme', stored);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'day');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'night');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
+    <script src="../../../js/cookie-consent.js?v=1.0.0"></script>
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+
+    <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
+    <!-- SEO Metadata -->
+    <title>Image Compressor Online — Compress JPG, PNG, WebP Free Without Uploading | XESTUS Tools</title>
+    <meta name="description" content="Compress JPG, PNG, and WebP images online directly in your browser. Reduce file size in KB while preserving visual quality with zero server uploads.">
+    <meta name="keywords" content="image compressor, compress image online, reduce photo kb, compress jpg, png compressor">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://xestus.in/tools/image/image-compressor/">
+    <link rel="manifest" href="../../../manifest.json">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xestus.in/tools/image/image-compressor/">
+    <meta property="og:title" content="Image Compressor Online — Compress JPG, PNG, WebP Free Without Uploading | XESTUS Tools">
+    <meta property="og:description" content="Compress JPG, PNG, and WebP images online directly in your browser. Reduce file size in KB while preserving visual quality with zero server uploads.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../../style.css?v=3.9.7">
+    <link rel="stylesheet" href="../../../tools/tools.css?v=2.1.0">
+
+    <!-- Schema.org SoftwareApplication JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image Compressor & Optimizer",
+      "url": "https://xestus.in/tools/image/image-compressor/",
+      "description": "Compress JPG, PNG, and WebP images online directly in your browser. Reduce file size in KB while preserving visual quality with zero server uploads.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "url": "https://xestus.in/"
+      }
+    }
+    </script>
+</head>
+
+<body data-tool-slug="image-compressor">
+    <!-- Header / Navbar -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <!-- Desktop Primary Navigation -->
+                <li class="desktop-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="../../../tools/index.html" class="nav-link active">Tools</a></li>
+                <li class="desktop-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Drawer Direct Links -->
+                <li class="mobile-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation Lab</a></li>
+                <li class="mobile-nav-item"><a href="../../../tools/index.html" class="nav-link">Tools Directory</a></li>
+                <li class="mobile-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="mobile-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Theme Selector Strip -->
+                <li class="mobile-theme-strip" aria-label="Select Theme Mode">
+                    <span class="theme-strip-title"><i data-lucide="palette" aria-hidden="true"></i> Theme:</span>
+                    <button type="button" class="mobile-theme-btn" data-theme="day">Day</button>
+                    <button type="button" class="mobile-theme-btn active" data-theme="night">Night</button>
+                    <button type="button" class="mobile-theme-btn" data-theme="eye-protect">Eye Protect</button>
+                </li>
+
+                <!-- Mobile Drawer CTA Button -->
+                <li class="mobile-nav-item" style="margin-top: 10px;">
+                    <a href="../../../contact.html" class="btn-primary mobile-drawer-cta" style="width:100%; display:flex; justify-content:center; align-items:center; min-height:44px; text-decoration:none;">
+                        <span>Contact Us</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Theme Switcher Dropdown -->
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
+                    </div>
+                </div>
+
+                <a href="../../../contact.html" class="btn-primary btn-nav-cta magnetic-btn">
+                    <span>Contact Us</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Tool Container -->
+    <main class="tools-app-container" id="main-content">
+        <!-- Breadcrumb -->
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../index.html">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../../tools/index.html">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Image Compressor & Optimizer</span>
+        </nav>
+
+        <!-- Tool Header -->
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="image-down" style="width:14px;height:14px;"></i> Image Utilities</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser • Zero Server Logs</span>
+                
+                <div class="tool-meta-actions">
+                    <button type="button" class="btn-fav-star" id="btnToggleFav">
+                        <i data-lucide="star" style="width:14px;height:14px;"></i>
+                        <span>Add to My Tools</span>
+                    </button>
+                    <button type="button" class="btn-share-tool" id="btnShareTool">
+                        <i data-lucide="share-2" style="width:14px;height:14px;"></i>
+                        <span>Share Tool</span>
+                    </button>
+                </div>
+            </div>
+            <h1 class="tool-title">Image Compressor & Optimizer</h1>
+            <p class="tool-description">
+                Compress JPG, PNG, and WebP photo files directly inside your browser. Adjust quality, compare before/after size in KB, and download compressed images instantly.
+            </p>
+        </header>
+
+        <!-- Tool Workspace -->
+        <section class="tool-workspace" aria-label="Image Compressor & Optimizer Workspace">
+            
+        <div>
+            <div class="file-dropzone" id="dropzone">
+                <i data-lucide="image-up" class="dropzone-icon"></i>
+                <h3 style="color:var(--text-primary); font-size:17px; margin-bottom:6px;">Drag &amp; Drop Image Here, or Click to Browse</h3>
+                <p style="color:var(--text-secondary); font-size:13px; margin:0;">Supports JPG, PNG, WebP • 100% In-Browser (Zero files uploaded to server)</p>
+                <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" style="display:none;">
+            </div>
+
+            <div id="compressionControls" style="display:none; background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:var(--radius-xl); padding:24px;">
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:20px; align-items:center;">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <label style="font-weight:600; color:var(--text-primary);">Compression Quality</label>
+                            <span id="qualityVal" style="color:var(--cyan-bright); font-weight:700;">80%</span>
+                        </div>
+                        <input type="range" id="qualityRange" min="10" max="100" value="80" class="slider-input" style="width:100%;">
+                    </div>
+
+                    <div style="display:flex; gap:12px; align-items:center;">
+                        <button type="button" class="tool-btn tool-btn-primary" id="btnDownloadCompressed" style="flex:1;"><i data-lucide="download"></i> <span>Download Compressed Image</span></button>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:24px;">
+                    <div style="text-align:center;">
+                        <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">Original Size</div>
+                        <div id="origSize" style="font-size:18px; font-weight:800; color:var(--text-primary);">0 KB</div>
+                        <div style="margin-top:10px; max-height:240px; overflow:hidden; border-radius:12px; border:1px solid var(--border-subtle);">
+                            <img id="previewOrig" style="max-width:100%; height:auto; display:block; margin:0 auto;">
+                        </div>
+                    </div>
+
+                    <div style="text-align:center;">
+                        <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">Compressed Size</div>
+                        <div id="compSize" style="font-size:18px; font-weight:800; color:#00ff88;">0 KB</div>
+                        <div style="margin-top:10px; max-height:240px; overflow:hidden; border-radius:12px; border:1px solid var(--border-subtle);">
+                            <img id="previewComp" style="max-width:100%; height:auto; display:block; margin:0 auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        </section>
+
+        <!-- Educational & Related Mesh -->
+        <section class="tool-info-section">
+            <div class="tool-info-grid">
+                <article class="tool-guide-content">
+                    
+        <h2>Private, In-Browser Image Compression</h2>
+        <p>Unlike other websites that upload your personal photos to their remote servers, XESTUS compresses all photos directly on your device CPU using the HTML5 Canvas API.</p>
+        <ul>
+            <li><strong>Zero Uploads:</strong> Your images never leave your computer or phone.</li>
+            <li><strong>Instant Speed:</strong> No waiting for file uploads or downloads.</li>
+            <li><strong>Safe for Sensitive Docs:</strong> Ideal for passport photos, ID cards, and private screenshots.</li>
+        </ul>
+    
+                </article>
+                <aside class="related-tools-card">
+                    <h3 class="related-tools-title">Related Practical Tools</h3>
+                    <div class="related-tools-list">
+                        
+                            <a href="../../../tools/image/image-resizer/" class="related-tool-item">
+                                <span class="related-tool-name">Image Dimension Resizer</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                            <a href="../../../tools/pdf/image-to-pdf/" class="related-tool-item">
+                                <span class="related-tool-name">Image to PDF Converter</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                            <a href="../../../tools/office/qr-generator/" class="related-tool-item">
+                                <span class="related-tool-name">QR Code Generator</span>
+                                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </a>
+                        
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="stitch-footer" role="contentinfo">
+        <div class="stitch-footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../../index.html#home" class="footer-logo">
+                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+                <p class="footer-brand-desc">
+                    Enterprise technology company &amp; open digital utilities ecosystem. Engineered for privacy, speed, and real-world utility.
+                </p>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="../../../privacy-policy.html" class="legal-link-btn">Privacy Policy</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../terms.html" class="legal-link-btn">Terms of Service</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../disclaimer.html" class="legal-link-btn">Disclaimer</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../../cookie-policy.html" class="legal-link-btn">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../../js/nav-core.js"></script>
+    <script src="../../../js/my-xestus.js?v=1.0.0"></script>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropzone = document.getElementById('dropzone');
+            const fileInput = document.getElementById('fileInput');
+            const controls = document.getElementById('compressionControls');
+            const qualityRange = document.getElementById('qualityRange');
+            const qualityVal = document.getElementById('qualityVal');
+            const origSize = document.getElementById('origSize');
+            const compSize = document.getElementById('compSize');
+            const previewOrig = document.getElementById('previewOrig');
+            const previewComp = document.getElementById('previewComp');
+            const btnDownload = document.getElementById('btnDownloadCompressed');
+
+            let loadedImg = null;
+            let originalFile = null;
+            let compressedBlobUrl = null;
+
+            dropzone.addEventListener('click', () => fileInput.click());
+            dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('drag-over'); });
+            dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
+            dropzone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropzone.classList.remove('drag-over');
+                if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+            });
+
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files.length) handleFile(fileInput.files[0]);
+            });
+
+            function formatBytes(bytes) {
+                if (bytes < 1024) return bytes + ' B';
+                if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+                return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+            }
+
+            function handleFile(file) {
+                if (!file.type.startsWith('image/')) return;
+                originalFile = file;
+                origSize.textContent = formatBytes(file.size);
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewOrig.src = e.target.result;
+                    loadedImg = new Image();
+                    loadedImg.onload = () => {
+                        controls.style.display = 'block';
+                        compressImage();
+                    };
+                    loadedImg.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            function compressImage() {
+                if (!loadedImg) return;
+                const canvas = document.createElement('canvas');
+                canvas.width = loadedImg.width;
+                canvas.height = loadedImg.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(loadedImg, 0, 0);
+
+                const q = parseInt(qualityRange.value, 10) / 100;
+                qualityVal.textContent = qualityRange.value + '%';
+
+                canvas.toBlob((blob) => {
+                    if (compressedBlobUrl) URL.revokeObjectURL(compressedBlobUrl);
+                    compressedBlobUrl = URL.createObjectURL(blob);
+                    previewComp.src = compressedBlobUrl;
+                    compSize.textContent = formatBytes(blob.size);
+                    const savedPct = (((originalFile.size - blob.size) / originalFile.size) * 100).toFixed(0);
+                    if (savedPct > 0) {
+                        compSize.textContent += ` (${savedPct}% smaller)`;
+                    }
+                }, 'image/jpeg', q);
+            }
+
+            qualityRange.addEventListener('input', compressImage);
+
+            btnDownload.addEventListener('click', () => {
+                if (!compressedBlobUrl) return;
+                const a = document.createElement('a');
+                a.download = 'xestus-compressed-' + (originalFile ? originalFile.name : 'image.jpg');
+                a.href = compressedBlobUrl;
+                a.click();
+            });
+        });
+    
+    </script>
+</body>
+</html>
