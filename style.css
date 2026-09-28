@@ -35,7 +35,7 @@
     /* Google Stitch UI/UX Design System Tokens - Cyber Yellow & High-Tech Matrix */
     --stitch-yellow: #ffcc00;
     --stitch-yellow-hover: #e6b800;
-    --stitch-yellow-text: #05070c;
+    --stitch-yellow-text: #ffffff;
     --stitch-yellow-subtle: rgba(255, 204, 0, 0.12);
     --stitch-yellow-border: rgba(255, 204, 0, 0.35);
     --stitch-yellow-glow: 0 0 25px rgba(255, 204, 0, 0.35);
@@ -15281,29 +15281,92 @@ section.follow-section,
     pointer-events: none;
 }
 
-/* Base states icon stroke synchronisation */
+/* Base states icon & text synchronisation (100% High Contrast Guarantee) */
+.btn-stitch-primary,
+.btn-stitch-primary *,
+.btn-stitch-primary span,
+.stitch-card .btn-stitch-primary,
+.stitch-card .btn-stitch-primary *,
+.stitch-card .btn-stitch-primary span,
+.stitch-internship-section .btn-stitch-primary,
+.stitch-internship-section .btn-stitch-primary span,
+.stitch-how-section .btn-stitch-primary,
+.stitch-how-section .btn-stitch-primary span {
+    color: #ffd700 !important;
+    stroke: #ffd700 !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.45) !important;
+}
+
+.btn-stitch-outline,
+.btn-stitch-outline *,
+.btn-stitch-outline span {
+    color: #ffd700 !important;
+    stroke: #ffd700 !important;
+    font-weight: 600 !important;
+}
+
+.btn-card-guide,
+.btn-card-guide span,
 .btn-card-guide svg,
 .btn-card-guide i {
     stroke: #00f2fe !important;
     color: #00f2fe !important;
+    font-weight: 600 !important;
 }
 
+.btn-card-portal,
+.btn-card-portal span,
 .btn-card-portal svg,
 .btn-card-portal i {
     stroke: #34d399 !important;
     color: #34d399 !important;
+    font-weight: 600 !important;
 }
 
+.btn-card-assist,
+.btn-card-assist span,
 .btn-card-assist svg,
 .btn-card-assist i {
     stroke: #ffcc00 !important;
     color: #ffcc00 !important;
+    font-weight: 600 !important;
 }
 
-.btn-stitch-primary svg,
-.btn-stitch-primary i {
-    stroke: #ffd700 !important;
-    color: #ffd700 !important;
+.btn-primary,
+.btn-primary *,
+.btn-primary span,
+.hero-btn-primary,
+.hero-btn-primary span,
+.btn-nav-cta,
+.btn-nav-cta span,
+.btn-apply-primary,
+.btn-apply-primary span,
+.btn-case-study,
+.btn-case-study span,
+.btn-product-waitlist,
+.btn-product-waitlist span,
+.btn-transfer-inquiry,
+.btn-transfer-inquiry span,
+.btn-submit-inquiry,
+.btn-submit-inquiry span,
+.btn-follow-trigger,
+.btn-follow-trigger span {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.btn-secondary,
+.btn-secondary *,
+.btn-secondary span,
+.hero-btn-secondary,
+.hero-btn-secondary span,
+.btn-project-discuss,
+.btn-project-discuss span {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    font-weight: 600 !important;
 }
 
 /* 1. Guide Button Hover (Crystal Crisp Glowing White on Vivid Cyan Glow) */
@@ -15367,6 +15430,8 @@ section.follow-section,
 .btn-stitch-primary:hover span,
 .btn-stitch-primary:hover svg,
 .btn-stitch-primary:hover i,
+.stitch-card .btn-stitch-primary:hover,
+.stitch-card .btn-stitch-primary:hover span,
 .btn-stitch-outline:hover,
 .btn-stitch-outline:hover span,
 .btn-apply-primary:hover,
