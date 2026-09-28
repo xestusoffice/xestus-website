@@ -9104,7 +9104,8 @@ html[lang="hi"] .founder-quote-box p {
 .seva-action-btn:hover {
     background: var(--cyan-primary);
     border-color: var(--cyan-bright);
-    color: #080c16;
+    color: #ffffff !important;
+    font-weight: 700 !important;
     transform: translateY(-1px);
     box-shadow: 0 4px 15px rgba(0, 191, 255, 0.35);
 }
@@ -9234,7 +9235,8 @@ html[lang="hi"] .founder-quote-box p {
 .btn-view-guide:hover {
     background: var(--cyan-primary);
     border-color: var(--cyan-bright);
-    color: #080c16;
+    color: #ffffff !important;
+    font-weight: 700 !important;
     transform: translateY(-1px);
     box-shadow: 0 4px 14px rgba(0, 191, 255, 0.3);
 }
@@ -9248,7 +9250,8 @@ html[lang="hi"] .founder-quote-box p {
 .btn-visit-official:hover {
     background: #10b981;
     border-color: #34d399;
-    color: #ffffff;
+    color: #ffffff !important;
+    font-weight: 700 !important;
     transform: translateY(-1px);
     box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
 }
@@ -9360,7 +9363,8 @@ html[lang="hi"] .founder-quote-box p {
 
 .btn-official-sec:hover {
     background: var(--cyan-primary);
-    color: #080c16 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
     transform: translateY(-1px);
 }
 
@@ -9372,7 +9376,8 @@ html[lang="hi"] .founder-quote-box p {
 
 .btn-status-sec:hover {
     background: #f59e0b;
-    color: #080c16 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
     transform: translateY(-1px);
 }
 
@@ -9384,7 +9389,8 @@ html[lang="hi"] .founder-quote-box p {
 
 .btn-assist-modal-trigger:hover {
     background: #f59e0b;
-    color: #080c16 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
     transform: translateY(-1px);
 }
 
@@ -10448,7 +10454,8 @@ html[lang="hi"] .founder-quote-box p {
 
 .ai-nav-btn:hover {
     background: var(--cyan-primary);
-    color: #080c16;
+    color: #ffffff !important;
+    font-weight: 700 !important;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 191, 255, 0.35);
 }
@@ -11848,50 +11855,72 @@ html[lang="hi"] .founder-quote-box p {
     gap: 6px;
     box-sizing: border-box;
     text-align: center;
+    position: relative !important;
+    isolation: isolate !important;
 }
 
-.btn-card-action svg {
+.btn-card-action svg,
+.btn-card-action i {
     width: 14px;
     height: 14px;
     flex-shrink: 0;
+    stroke: currentColor;
 }
 
 .btn-card-guide {
     flex: 1 1 100%;
-    background: rgba(0, 191, 255, 0.15);
-    border: 1px solid var(--cyan-border);
-    color: var(--cyan-bright);
+    background: rgba(0, 191, 255, 0.12);
+    border: 1px solid rgba(0, 242, 254, 0.4);
+    color: #00f2fe;
+}
+
+.btn-card-guide svg {
+    stroke: #00f2fe;
 }
 
 .btn-card-guide:hover {
-    background: var(--cyan-primary);
-    color: #05070c;
+    background: rgba(0, 191, 255, 0.35) !important;
+    border-color: #00f2fe !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 16px rgba(0, 242, 254, 1), 0 0 26px rgba(0, 191, 255, 0.8) !important;
 }
 
 .btn-card-portal {
     flex: 1 1 calc(50% - 4px);
     min-width: 110px;
-    background: rgba(16, 185, 129, 0.15);
-    border: 1px solid rgba(16, 185, 129, 0.35);
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(52, 211, 153, 0.4);
     color: #34d399;
 }
 
+.btn-card-portal svg {
+    stroke: #34d399;
+}
+
 .btn-card-portal:hover {
-    background: #10b981;
-    color: #ffffff;
+    background: rgba(16, 185, 129, 0.35) !important;
+    border-color: #34d399 !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 16px rgba(52, 211, 153, 1), 0 0 26px rgba(16, 185, 129, 0.8) !important;
 }
 
 .btn-card-assist {
     flex: 1 1 calc(50% - 4px);
     min-width: 110px;
     background: rgba(255, 204, 0, 0.12);
-    border: 1px solid rgba(255, 204, 0, 0.35);
+    border: 1px solid rgba(255, 215, 0, 0.4);
     color: #ffcc00;
 }
 
+.btn-card-assist svg {
+    stroke: #ffcc00;
+}
+
 .btn-card-assist:hover {
-    background: #ffcc00;
-    color: #05070c;
+    background: rgba(255, 204, 0, 0.35) !important;
+    border-color: #ffd700 !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 16px rgba(255, 215, 0, 1), 0 0 26px rgba(245, 158, 11, 0.8) !important;
 }
 
 /* Fallback Suggestions */
@@ -12887,6 +12916,7 @@ button:active,
 .btn-modal-action,
 .btn-card-action,
 .btn-card-guide,
+.btn-card-portal,
 .btn-card-assist,
 .btn-quick-action,
 .btn-catalog-trigger,
@@ -12904,6 +12934,7 @@ button:active,
 .btn-modal-action::before,
 .btn-card-action::before,
 .btn-card-guide::before,
+.btn-card-portal::before,
 .btn-card-assist::before,
 .btn-quick-action::before,
 .btn-catalog-trigger::before,
@@ -12937,6 +12968,7 @@ button:active,
 .btn-modal-action::after,
 .btn-card-action::after,
 .btn-card-guide::after,
+.btn-card-portal::after,
 .btn-card-assist::after,
 .btn-quick-action::after,
 .btn-catalog-trigger::after,
@@ -12960,14 +12992,28 @@ button:active,
 .btn-modal-action > *,
 .btn-card-action > *,
 .btn-card-guide > *,
+.btn-card-portal > *,
 .btn-card-assist > *,
 .btn-quick-action > *,
 .btn-catalog-trigger > *,
 .btn-scam-trigger > *,
 .btn-nav-cta > *,
-.btn-apply-primary > * {
-    position: relative;
-    z-index: 2;
+.btn-apply-primary > *,
+.btn-card-action span,
+.btn-card-guide span,
+.btn-card-portal span,
+.btn-card-assist span,
+.btn-card-action svg,
+.btn-card-guide svg,
+.btn-card-portal svg,
+.btn-card-assist svg,
+.btn-card-action i,
+.btn-card-guide i,
+.btn-card-portal i,
+.btn-card-assist i {
+    position: relative !important;
+    z-index: 10 !important;
+    pointer-events: none;
 }
 
 /* Hover State triggers the rotating rainbow border */
@@ -12976,6 +13022,7 @@ button:active,
 .btn-modal-action:hover,
 .btn-card-action:hover,
 .btn-card-guide:hover,
+.btn-card-portal:hover,
 .btn-card-assist:hover,
 .btn-quick-action:hover,
 .btn-catalog-trigger:hover,
@@ -12991,6 +13038,7 @@ button:active,
 .btn-modal-action:hover::before,
 .btn-card-action:hover::before,
 .btn-card-guide:hover::before,
+.btn-card-portal:hover::before,
 .btn-card-assist:hover::before,
 .btn-quick-action:hover::before,
 .btn-catalog-trigger:hover::before,
@@ -12998,6 +13046,18 @@ button:active,
 .btn-nav-cta:hover::before,
 .btn-apply-primary:hover::before {
     opacity: 1;
+}
+
+.btn-card-guide:hover::after {
+    background: linear-gradient(135deg, rgba(6, 26, 52, 0.96), rgba(10, 40, 80, 0.96)) !important;
+}
+
+.btn-card-portal:hover::after {
+    background: linear-gradient(135deg, rgba(4, 36, 24, 0.96), rgba(8, 54, 38, 0.96)) !important;
+}
+
+.btn-card-assist:hover::after {
+    background: linear-gradient(135deg, rgba(48, 32, 6, 0.96), rgba(72, 48, 10, 0.96)) !important;
 }
 
 /* Card Rotating Rainbow Glow on Hover */
@@ -14668,8 +14728,10 @@ textarea,
 }
 
 .btn-quick-action.btn-quick-all:hover {
-    background: #00ff88;
-    color: #05070c;
+    background: rgba(0, 255, 136, 0.35) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 12px rgba(0, 255, 136, 0.8) !important;
     box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
 }
 
@@ -14992,3 +15054,173 @@ p,
         scroll-behavior: auto !important;
     }
 }
+
+/* ==========================================================================
+   UNIVERSAL HIGH-CONTRAST & VIBRANT HOVER GUARANTEE FOR ALL ACTION BUTTONS
+   ========================================================================== */
+.btn-card-action,
+.btn-card-guide,
+.btn-card-portal,
+.btn-card-assist,
+.btn-seva-card-action,
+.btn-quick-action,
+.btn-modal-action,
+.btn-view-guide,
+.btn-visit-official,
+.btn-assist-modal-trigger,
+.btn-official-sec,
+.btn-status-sec {
+    position: relative !important;
+    isolation: isolate !important;
+    overflow: hidden !important;
+}
+
+.btn-card-action > *,
+.btn-card-guide > *,
+.btn-card-portal > *,
+.btn-card-assist > *,
+.btn-card-action span,
+.btn-card-guide span,
+.btn-card-portal span,
+.btn-card-assist span,
+.btn-card-action i,
+.btn-card-guide i,
+.btn-card-portal i,
+.btn-card-assist i,
+.btn-card-action svg,
+.btn-card-guide svg,
+.btn-card-portal svg,
+.btn-card-assist svg,
+.btn-card-action svg path,
+.btn-card-guide svg path,
+.btn-card-portal svg path,
+.btn-card-assist svg path {
+    position: relative !important;
+    z-index: 10 !important;
+    pointer-events: none;
+}
+
+/* Base states icon stroke synchronisation */
+.btn-card-guide svg,
+.btn-card-guide i {
+    stroke: #00f2fe !important;
+    color: #00f2fe !important;
+}
+
+.btn-card-portal svg,
+.btn-card-portal i {
+    stroke: #34d399 !important;
+    color: #34d399 !important;
+}
+
+.btn-card-assist svg,
+.btn-card-assist i {
+    stroke: #ffcc00 !important;
+    color: #ffcc00 !important;
+}
+
+/* 1. Guide Button Hover (Crystal Crisp Glowing White on Vivid Cyan Glow) */
+.btn-card-guide:hover,
+.btn-card-guide:focus-visible,
+.btn-card-guide:active,
+.btn-card-guide:hover > *,
+.btn-card-guide:hover span,
+.btn-card-guide:hover i,
+.btn-card-guide:hover svg,
+.btn-card-guide:hover svg *,
+.btn-view-guide:hover,
+.btn-view-guide:hover *,
+.btn-view-guide:hover span {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: 0 0 16px rgba(0, 242, 254, 1), 0 0 28px rgba(0, 191, 255, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+/* 2. Portal Button Hover (Crystal Crisp Glowing White on Vivid Emerald Glow) */
+.btn-card-portal:hover,
+.btn-card-portal:focus-visible,
+.btn-card-portal:active,
+.btn-card-portal:hover > *,
+.btn-card-portal:hover span,
+.btn-card-portal:hover i,
+.btn-card-portal:hover svg,
+.btn-card-portal:hover svg *,
+.btn-visit-official:hover,
+.btn-visit-official:hover *,
+.btn-visit-official:hover span {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: 0 0 16px rgba(52, 211, 153, 1), 0 0 28px rgba(16, 185, 129, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+/* 3. Request Help / Assist Button Hover (Crystal Crisp Glowing White on Vivid Amber Glow) */
+.btn-card-assist:hover,
+.btn-card-assist:focus-visible,
+.btn-card-assist:active,
+.btn-card-assist:hover > *,
+.btn-card-assist:hover span,
+.btn-card-assist:hover i,
+.btn-card-assist:hover svg,
+.btn-card-assist:hover svg *,
+.btn-assist-modal-trigger:hover,
+.btn-assist-modal-trigger:hover *,
+.btn-assist-modal-trigger:hover span {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: 0 0 16px rgba(255, 215, 0, 1), 0 0 28px rgba(245, 158, 11, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+/* 4. Day Mode Specific Vibrant High Contrast Overrides */
+:root[data-theme="day"] .btn-card-guide:hover,
+:root[data-theme="day"] .btn-card-guide:hover * {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: none !important;
+}
+
+:root[data-theme="day"] .btn-card-portal:hover,
+:root[data-theme="day"] .btn-card-portal:hover * {
+    background: #059669 !important;
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: none !important;
+}
+
+:root[data-theme="day"] .btn-card-assist:hover,
+:root[data-theme="day"] .btn-card-assist:hover * {
+    background: #d97706 !important;
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: none !important;
+}
+
+/* 5. Eye Protect Mode Specific Vibrant High Contrast Overrides */
+:root[data-theme="eye-protect"] .btn-card-guide:hover,
+:root[data-theme="eye-protect"] .btn-card-guide:hover * {
+    background: #0e7490 !important;
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: none !important;
+}
+
+:root[data-theme="eye-protect"] .btn-card-portal:hover,
+:root[data-theme="eye-protect"] .btn-card-portal:hover * {
+    background: #047857 !important;
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: none !important;
+}
+
+:root[data-theme="eye-protect"] .btn-card-assist:hover,
+:root[data-theme="eye-protect"] .btn-card-assist:hover * {
+    background: #c2410c !important;
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: none !important;
+}
+
+

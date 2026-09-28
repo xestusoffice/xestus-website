@@ -719,18 +719,18 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
         },
         {
                 "id": "portal-duare-sarkar",
-                "name": "Duare Sarkar (Government at Your Doorstep)",
+                "name": "Bangla Sahayata Kendra (BSK) / Duare Sarkar",
                 "title": {
-                        "en": "Duare Sarkar Outreach Portal",
-                        "bn": "দুয়ারে সরকার প্রকল্প পোর্টাল",
-                        "hi": "द्वारे सरकार पोर्टल"
+                        "en": "Bangla Sahayata Kendra (BSK) & Duare Sarkar Portal",
+                        "bn": "বাংলা সহায়তা কেন্দ্র (BSK) ও দুয়ারে সরকার পোর্টাল",
+                        "hi": "बांग्ला सहायता केंद्र (BSK) व द्वारे सरकार पोर्टल"
                 },
                 "desc": {
-                        "en": "Official camp schedules, scheme enrollments (Annapurna Bhandar, Swasthya Sathi, Kanyashree) and status.",
-                        "bn": "দুয়ারে সরকার ক্যাম্পের সময়সূচি, স্কিম আবেদন (অন্নপূর্ণা ভাণ্ডার, স্বাস্থ্য সাথী, কন্যাশ্রী) ও স্ট্যাটাস ট্র্যাকিং পোর্টাল।",
-                        "hi": "द्वारे सरकार कैंप का समय, योजना आवेदन (अन्नपूर्णा भंडार, स्वास्थ्य साथी) और स्थिति जांच।"
+                        "en": "Official Government of West Bengal single-window citizen services portal for 300+ statutory schemes (Lakshmir Bhandar, Swasthya Sathi, Kanyashree, BSK).",
+                        "bn": "পশ্চিমবঙ্গ সরকারের ৩০০+ নাগরিক পরিষেবার অফিসিয়াল পোর্টাল (লক্ষ্মীর ভাণ্ডার, স্বাস্থ্য সাথী, কন্যাশ্রী, বিএসকে)।",
+                        "hi": "पश्चिम बंगाल सरकार का आधिकारिक 300+ नागरिक सेवा पोर्टल (लक्ष्मी भंडार, स्वास्थ्य साथी)।"
                 },
-                "url": "https://ds.wb.gov.in/",
+                "url": "https://bsk.wb.gov.in/",
                 "badge": "🟢 Officially Verified",
                 "authority": "Govt of West Bengal"
         },
@@ -8351,29 +8351,29 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                 },
                 "process_steps": {
                         "en": [
-                                "Visit the official Duare Sarkar portal (ds.wb.gov.in) to locate upcoming camp dates and venue in your Ward/Gram Panchayat.",
-                                "Collect official free application form from the designated registration desk at the camp.",
+                                "Visit the official Bangla Sahayata Kendra / Duare Sarkar portal (bsk.wb.gov.in) to locate your nearest center, camp dates and schemes.",
+                                "Collect official free application form from the designated registration desk or BSK center.",
                                 "Attach required photocopies of Aadhaar, Bank Passbook, and supporting documents.",
                                 "Submit at the dedicated scheme counter and collect your stamped Acknowledgement Slip."
                         ],
                         "bn": [
-                                "ds.wb.gov.in পোর্টালে আপনার ওয়ার্ড বা গ্রাম পঞ্চায়েতের ক্যাম্পের তারিখ জানুন।",
+                                "bsk.wb.gov.in পোর্টালে আপনার নিকটবর্তী সহায়তা কেন্দ্র বা ক্যাম্পের তথ্য জানুন।",
                                 "ক্যাম্প থেকে বিনামূল্যে ফর্ম সংগ্রহ করে নথি সহ জমা দিন এবং রসিদ নিন।"
                         ],
                         "hi": [
-                                "ds.wb.gov.in पर कैंप की तिथि देखें और कैंप में फॉर्म जमा करें।"
+                                "bsk.wb.gov.in पर सहायता केंद्र या कैंप की तिथि देखें और फॉर्म जमा करें।"
                         ]
                 },
-                "official_homepage": "https://ds.wb.gov.in/",
-                "official_apply_url": "https://ds.wb.gov.in/",
-                "official_status_url": "https://ds.wb.gov.in/",
-                "official_helpline": "1800-345-0117 (State Toll Free)",
-                "official_email": "duaresarkar@wb.gov.in",
+                "official_homepage": "https://bsk.wb.gov.in/",
+                "official_apply_url": "https://bsk.wb.gov.in/",
+                "official_status_url": "https://bsk.wb.gov.in/",
+                "official_helpline": "1800-345-0117 / 1800-103-0009 (Toll Free)",
+                "official_email": "bsk.wb@gov.in",
                 "state": "West Bengal",
-                "availability": "Neighbourhood Camps + Online",
+                "availability": "Neighbourhood Camps + BSK Centers + Online",
                 "active_status": true,
                 "verification_status": "officially_verified",
-                "source_url": "https://ds.wb.gov.in/",
+                "source_url": "https://bsk.wb.gov.in/",
                 "last_verified": "15 Sep 2026",
                 "is_popular": true,
                 "intent_tags": [
