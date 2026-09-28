@@ -15282,276 +15282,454 @@ section.follow-section,
 }
 
 /* ==========================================================================
-   SLOW RAINBOW COLOR-SHIFTING TEXT & GLOW ENGINE (CYBERPUNK MATRIX WOW-FACTOR)
+   SOLID HIGH-CONTRAST 100% CRYSTAL-CLEAR BUTTON & TEXT ENGINE (ZERO TRANSPARENCY BUGS)
    ========================================================================== */
 
-@keyframes slowRainbowShift {
-    0% {
-        background-position: 0% 50%;
-        filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.65));
-    }
-    25% {
-        background-position: 50% 100%;
-        filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.65));
-    }
-    50% {
-        background-position: 100% 50%;
-        filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.7));
-    }
-    75% {
-        background-position: 50% 0%;
-        filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.7));
-    }
-    100% {
-        background-position: 0% 50%;
-        filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.65));
-    }
-}
-
-/* 1. Universal Rainbow Text Effect on All Action Buttons & Highlights */
+/* 1. STITCH Lab Primary & Architecture Action Buttons */
 .btn-stitch-primary,
-.btn-stitch-primary span,
-.btn-stitch-primary > *,
 .stitch-card .btn-stitch-primary,
-.stitch-card .btn-stitch-primary span,
-.stitch-card .btn-stitch-primary > *,
 .stitch-internship-section .btn-stitch-primary,
-.stitch-internship-section .btn-stitch-primary span,
 .stitch-how-section .btn-stitch-primary,
-.stitch-how-section .btn-stitch-primary span,
-.btn-primary span,
-.btn-secondary span,
-.hero-btn-primary span,
-.hero-btn-secondary span,
-.btn-card-guide span,
-.btn-card-portal span,
-.btn-card-assist span,
-.btn-nav-cta span,
-.btn-apply-primary span,
-.btn-case-study span,
-.btn-project-discuss span,
-.btn-product-waitlist span,
-.btn-transfer-inquiry span,
-.btn-submit-inquiry span,
-.btn-follow-trigger span,
-.floating-back-to-top-btn span,
-.floating-follow-btn span,
-.xestus-tools-card-action.open-btn span,
-.cookie-btn-accept,
-.stitch-highlight-box {
-    background: linear-gradient(
-        135deg,
-        #00f2fe 0%,
-        #38d6ff 20%,
-        #a855f7 40%,
-        #ec4899 60%,
-        #ffd700 80%,
-        #00f2fe 100%
-    ) !important;
-    background-size: 300% 300% !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    background-clip: text !important;
-    color: transparent !important;
-    animation: slowRainbowShift 6s ease-in-out infinite !important;
-    font-weight: 800 !important;
-    position: relative !important;
-    z-index: 10 !important;
+.btn-apply-primary {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 8px !important;
-    letter-spacing: 0.5px !important;
-    text-transform: uppercase !important;
-    will-change: background-position;
-}
-
-/* 2. SVG Icons Stroke Glow */
-.btn-stitch-primary svg,
-.btn-stitch-primary i,
-.btn-primary svg,
-.btn-primary i,
-.btn-secondary svg,
-.btn-secondary i,
-.btn-card-guide svg,
-.btn-card-portal svg,
-.btn-card-assist svg,
-.btn-nav-cta svg,
-.btn-apply-primary svg,
-.btn-case-study svg,
-.btn-project-discuss svg,
-.btn-transfer-inquiry svg,
-.btn-submit-inquiry svg,
-.floating-back-to-top-btn svg,
-.floating-follow-btn svg,
-.xestus-tools-card-action.open-btn svg {
-    stroke: #38d6ff !important;
-    color: #38d6ff !important;
+    padding: 13px 24px !important;
+    background: linear-gradient(135deg, rgba(16, 26, 50, 0.96), rgba(8, 14, 28, 0.98)) !important;
+    border: 2px solid #ffd700 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), 0 0 16px rgba(255, 215, 0, 0.35), inset 0 0 10px rgba(255, 215, 0, 0.12) !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
     position: relative !important;
     z-index: 10 !important;
-    filter: drop-shadow(0 0 6px rgba(56, 214, 255, 0.75)) !important;
-    transition: transform 0.25s ease, stroke 0.25s ease !important;
-}
-
-/* 3. Accelerated High-Intensity Rainbow on Hover */
-.btn-stitch-primary:hover span,
-.stitch-card .btn-stitch-primary:hover span,
-.btn-primary:hover span,
-.btn-card-guide:hover span,
-.btn-card-portal:hover span,
-.btn-card-assist:hover span,
-.btn-nav-cta:hover span,
-.btn-apply-primary:hover span,
-.xestus-tools-card-action.open-btn:hover span {
-    animation: slowRainbowShift 2.2s linear infinite !important;
-    filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.95)) !important;
-}
-
-.btn-stitch-primary:hover svg,
-.btn-primary:hover svg,
-.btn-card-guide:hover svg,
-.btn-card-portal:hover svg,
-.btn-card-assist:hover svg,
-.btn-nav-cta:hover svg,
-.btn-apply-primary:hover svg {
-    transform: translateX(4px) scale(1.15) !important;
-    stroke: #ffffff !important;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.95)) !important;
-}
-
-/* 4. Button Surface Glass & Rainbow Neon Borders */
-.btn-stitch-primary,
-.stitch-card .btn-stitch-primary,
-.stitch-internship-section .btn-stitch-primary,
-.stitch-how-section .btn-stitch-primary {
-    background: rgba(13, 20, 36, 0.92) !important;
-    border: 1.5px solid rgba(255, 215, 0, 0.6) !important;
-    border-radius: 6px !important;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), inset 0 0 14px rgba(255, 204, 0, 0.12) !important;
-    position: relative !important;
     isolation: isolate !important;
-    overflow: hidden !important;
-    transition: all 0.25s ease !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-stitch-primary span,
+.btn-stitch-primary > *,
+.stitch-card .btn-stitch-primary span,
+.stitch-card .btn-stitch-primary > *,
+.stitch-internship-section .btn-stitch-primary span,
+.stitch-how-section .btn-stitch-primary span,
+.btn-apply-primary span {
+    color: #ffffff !important;
+    font-size: 13.5px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 215, 0, 0.6) !important;
+    position: relative !important;
+    z-index: 12 !important;
+    pointer-events: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.btn-stitch-primary svg,
+.btn-stitch-primary i,
+.stitch-card .btn-stitch-primary svg,
+.btn-apply-primary svg {
+    stroke: #ffd700 !important;
+    color: #ffd700 !important;
+    width: 16px !important;
+    height: 16px !important;
+    position: relative !important;
+    z-index: 12 !important;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8)) !important;
+    transition: transform 0.25s ease !important;
 }
 
 .btn-stitch-primary:hover,
 .stitch-card .btn-stitch-primary:hover,
 .stitch-internship-section .btn-stitch-primary:hover,
-.stitch-how-section .btn-stitch-primary:hover {
-    border-color: #ffd700 !important;
-    box-shadow: 0 8px 30px rgba(255, 204, 0, 0.4), 0 0 25px rgba(0, 242, 254, 0.35) !important;
-    background: rgba(18, 28, 52, 0.98) !important;
+.stitch-how-section .btn-stitch-primary:hover,
+.btn-apply-primary:hover {
+    background: linear-gradient(135deg, #ffd700, #ffaa00) !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.7), 0 0 25px rgba(255, 255, 255, 0.5) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+}
+
+.btn-stitch-primary:hover span,
+.stitch-card .btn-stitch-primary:hover span,
+.stitch-internship-section .btn-stitch-primary:hover span,
+.stitch-how-section .btn-stitch-primary:hover span,
+.btn-apply-primary:hover span {
+    color: #05070c !important;
+    text-shadow: none !important;
+}
+
+.btn-stitch-primary:hover svg,
+.stitch-card .btn-stitch-primary:hover svg,
+.btn-apply-primary:hover svg {
+    stroke: #05070c !important;
+    color: #05070c !important;
+    filter: none !important;
+    transform: translateX(4px) !important;
+}
+
+/* 2. Core Primary & Secondary Buttons */
+.btn-primary,
+.hero-btn-primary,
+.btn-nav-cta,
+.btn-case-study,
+.btn-product-waitlist,
+.btn-transfer-inquiry,
+.btn-submit-inquiry {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 13px 26px !important;
+    background: linear-gradient(135deg, #0284c7, #0077cc) !important;
+    border: 1.5px solid #38d6ff !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 18px rgba(0, 191, 255, 0.4), 0 0 16px rgba(56, 214, 255, 0.3) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 10 !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-primary span,
+.hero-btn-primary span,
+.btn-nav-cta span,
+.btn-case-study span,
+.btn-product-waitlist span,
+.btn-transfer-inquiry span,
+.btn-submit-inquiry span {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    z-index: 12 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
+}
+
+.btn-primary:hover,
+.hero-btn-primary:hover,
+.btn-nav-cta:hover,
+.btn-case-study:hover,
+.btn-product-waitlist:hover,
+.btn-transfer-inquiry:hover,
+.btn-submit-inquiry:hover {
+    background: linear-gradient(135deg, #38d6ff, #00bfff) !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 8px 30px rgba(0, 191, 255, 0.7), 0 0 25px rgba(56, 214, 255, 0.5) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+}
+
+.btn-secondary,
+.hero-btn-secondary,
+.btn-project-discuss {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 13px 24px !important;
+    background: rgba(14, 24, 48, 0.85) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 10 !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-secondary span,
+.hero-btn-secondary span,
+.btn-project-discuss span {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    position: relative !important;
+    z-index: 12 !important;
+}
+
+.btn-secondary:hover,
+.hero-btn-secondary:hover,
+.btn-project-discuss:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: #38d6ff !important;
+    color: #38d6ff !important;
+    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.3) !important;
     transform: translateY(-2px) !important;
 }
 
-/* 5. Day Mode Specific Vibrant High Contrast Overrides */
-:root[data-theme="day"] .btn-card-guide:hover,
-:root[data-theme="day"] .btn-card-guide:hover * {
-    background: #0284c7 !important;
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    text-shadow: none !important;
+/* 3. Digital Seva High-Contrast Action Buttons */
+.btn-card-guide {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 10px 18px !important;
+    background: rgba(0, 242, 254, 0.12) !important;
+    border: 1.5px solid #00f2fe !important;
+    border-radius: 8px !important;
+    color: #00f2fe !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    text-decoration: none !important;
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.25) !important;
+    position: relative !important;
+    z-index: 10 !important;
+    transition: all 0.2s ease !important;
 }
 
-:root[data-theme="day"] .btn-card-portal:hover,
-:root[data-theme="day"] .btn-card-portal:hover * {
-    background: #059669 !important;
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    text-shadow: none !important;
+.btn-card-guide span {
+    color: #00f2fe !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    z-index: 12 !important;
 }
 
-:root[data-theme="day"] .btn-card-assist:hover,
-:root[data-theme="day"] .btn-card-assist:hover * {
-    background: #d97706 !important;
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    text-shadow: none !important;
+.btn-card-guide svg,
+.btn-card-guide i {
+    stroke: #00f2fe !important;
+    position: relative !important;
+    z-index: 12 !important;
 }
 
-:root[data-theme="day"] .btn-stitch-primary:hover,
-:root[data-theme="day"] .btn-stitch-primary:hover * {
-    background: #b45309 !important;
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    text-shadow: none !important;
+.btn-card-guide:hover {
+    background: #00f2fe !important;
+    color: #05070c !important;
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.8) !important;
+    transform: translateY(-2px) !important;
 }
 
-/* 6. Eye Protect Mode Specific Vibrant High Contrast Overrides */
-:root[data-theme="eye-protect"] .btn-card-guide:hover,
-:root[data-theme="eye-protect"] .btn-card-guide:hover * {
-    background: #0e7490 !important;
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    text-shadow: none !important;
+.btn-card-guide:hover span,
+.btn-card-guide:hover svg {
+    color: #05070c !important;
+    stroke: #05070c !important;
 }
 
-:root[data-theme="eye-protect"] .btn-card-portal:hover,
-:root[data-theme="eye-protect"] .btn-card-portal:hover * {
-    background: #047857 !important;
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    text-shadow: none !important;
+.btn-card-portal {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 10px 18px !important;
+    background: rgba(52, 211, 153, 0.12) !important;
+    border: 1.5px solid #34d399 !important;
+    border-radius: 8px !important;
+    color: #34d399 !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    text-decoration: none !important;
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.25) !important;
+    position: relative !important;
+    z-index: 10 !important;
+    transition: all 0.2s ease !important;
 }
 
-:root[data-theme="eye-protect"] .btn-card-assist:hover,
-:root[data-theme="eye-protect"] .btn-card-assist:hover * {
-    background: #c2410c !important;
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    text-shadow: none !important;
+.btn-card-portal span {
+    color: #34d399 !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    z-index: 12 !important;
 }
 
-:root[data-theme="eye-protect"] .btn-stitch-primary:hover,
-:root[data-theme="eye-protect"] .btn-stitch-primary:hover * {
-    background: #9a3412 !important;
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    text-shadow: none !important;
+.btn-card-portal svg,
+.btn-card-portal i {
+    stroke: #34d399 !important;
+    position: relative !important;
+    z-index: 12 !important;
+}
+
+.btn-card-portal:hover {
+    background: #34d399 !important;
+    color: #05070c !important;
+    box-shadow: 0 0 25px rgba(52, 211, 153, 0.8) !important;
+    transform: translateY(-2px) !important;
+}
+
+.btn-card-portal:hover span,
+.btn-card-portal:hover svg {
+    color: #05070c !important;
+    stroke: #05070c !important;
+}
+
+.btn-card-assist {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 10px 18px !important;
+    background: rgba(255, 204, 0, 0.12) !important;
+    border: 1.5px solid #ffd700 !important;
+    border-radius: 8px !important;
+    color: #ffd700 !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    text-decoration: none !important;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.25) !important;
+    position: relative !important;
+    z-index: 10 !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-card-assist span {
+    color: #ffd700 !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    z-index: 12 !important;
+}
+
+.btn-card-assist svg,
+.btn-card-assist i {
+    stroke: #ffd700 !important;
+    position: relative !important;
+    z-index: 12 !important;
+}
+
+.btn-card-assist:hover {
+    background: #ffd700 !important;
+    color: #05070c !important;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8) !important;
+    transform: translateY(-2px) !important;
+}
+
+.btn-card-assist:hover span,
+.btn-card-assist:hover svg {
+    color: #05070c !important;
+    stroke: #05070c !important;
 }
 
 /* ==========================================================================
-   7. UNIVERSAL HIGH-CONTRAST LEGIBILITY & 60-120 FPS SMOOTH SCROLLING ENGINE
+   COLORFUL GLASSY AURORA BACKGROUND & BUTTER-SMOOTH (MAKHOON MAFIK) ENGINE
    ========================================================================== */
 
-/* Universal Dark Mode High Contrast & Text Legibility Guarantee */
-:root:not([data-theme="day"]):not([data-theme="eye-protect"]) {
-    --text-primary: #ffffff;
-    --text-secondary: #cbd5e1;
-    --text-muted: #94a3b8;
-}
-
-:root:not([data-theme="day"]):not([data-theme="eye-protect"]) body {
+/* Multi-Layered Luminous Aurora Glass Background */
+body {
+    background-color: #060913 !important;
+    background-image:
+        radial-gradient(ellipse 90% 55% at 12% 8%, rgba(0, 242, 254, 0.18) 0%, transparent 45%),
+        radial-gradient(ellipse 80% 55% at 88% 14%, rgba(168, 85, 247, 0.18) 0%, transparent 45%),
+        radial-gradient(ellipse 90% 65% at 50% 36%, rgba(2, 132, 199, 0.14) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 55% at 10% 62%, rgba(16, 185, 129, 0.14) 0%, transparent 45%),
+        radial-gradient(ellipse 85% 60% at 90% 72%, rgba(236, 72, 153, 0.15) 0%, transparent 48%),
+        radial-gradient(ellipse 80% 50% at 50% 90%, rgba(245, 158, 11, 0.14) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px) !important;
+    background-size:
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        48px 48px,
+        48px 48px !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat !important;
     color: #f1f5f9;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-:root:not([data-theme="day"]):not([data-theme="eye-protect"]) input,
-:root:not([data-theme="day"]):not([data-theme="eye-protect"]) textarea,
-:root:not([data-theme="day"]):not([data-theme="eye-protect"]) select {
-    color: #ffffff !important;
+/* Frosted Glass Aesthetics on Cards */
+.service-card,
+.solution-card,
+.digital-card,
+.project-card,
+.product-card,
+.lab-card,
+.why-card,
+.tech-stack-card,
+.stat-card,
+.epoch-card,
+.contact-channel-card,
+.contact-form-wrapper,
+.seva-task-card,
+.tool-card,
+.stitch-card,
+.stitch-how-card,
+.stitch-internship-card,
+.xestus-tools-card {
+    background: rgba(12, 19, 38, 0.82) !important;
+    border: 1px solid rgba(0, 191, 255, 0.22) !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border-radius: 14px !important;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
 }
 
-:root:not([data-theme="day"]):not([data-theme="eye-protect"]) input::placeholder,
-:root:not([data-theme="day"]):not([data-theme="eye-protect"]) textarea::placeholder {
-    color: #94a3b8 !important;
-    opacity: 1 !important;
+.service-card:hover,
+.solution-card:hover,
+.digital-card:hover,
+.project-card:hover,
+.product-card:hover,
+.lab-card:hover,
+.why-card:hover,
+.tech-stack-card:hover,
+.stat-card:hover,
+.epoch-card:hover,
+.contact-channel-card:hover,
+.seva-task-card:hover,
+.tool-card:hover,
+.stitch-card:hover,
+.stitch-how-card:hover,
+.stitch-internship-card:hover,
+.xestus-tools-card:hover {
+    border-color: rgba(56, 214, 255, 0.6) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 191, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-4px) !important;
 }
 
-/* Ensure All Button Inner Text Stays 100% Legible & Floating Above Layers */
-button, a.btn, a[class*="btn-"], .magnetic-btn, .filter-btn, .digital-filter-btn {
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+/* Butter Smooth 60-120 FPS Performance Acceleration */
+section.digital-services,
+section.xestus-tools-section,
+section.founder,
+section.services,
+section.solutions,
+section.portfolio,
+section.products,
+section.lab,
+section.stitch-internship-section,
+section.stitch-how-section,
+section.roadmap,
+section.why-us,
+section.technologies,
+section.stats,
+section.faq-section,
+section.estimator,
+section.contact,
+section.follow-section,
+.site-footer,
+#digital-services,
+#tools,
+#founder,
+#services,
+#solutions,
+#portfolio,
+#products,
+#lab,
+#internship,
+#how-we-help,
+#roadmap,
+#about,
+#technologies,
+#stats,
+#faq,
+#estimator,
+#contact,
+#updates {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px;
 }
 
-button > *, a.btn > *, a[class*="btn-"] > * {
-    position: relative;
-    z-index: 5;
-}
-
-/* Silky Smooth 60-120 FPS Scroll Acceleration */
 html {
     scroll-behavior: smooth;
 }
@@ -15562,7 +15740,6 @@ html {
     }
 }
 
-/* GPU Hardware Layer Isolation for Critical Interactive Containers */
 .site-header,
 #floatingAssistantContainer,
 .floating-back-to-top-btn,
