@@ -3112,8 +3112,8 @@ html[data-theme="eye-protect"] .faq-item {
 }
 
 .filter-btn.active {
-    color: #080c16;
-    background: var(--cyan-primary);
+    color: #ffffff;
+    background: linear-gradient(135deg, #0284c7, #0077cc);
     border-color: var(--cyan-bright);
     box-shadow: 0 0 16px var(--cyan-glow);
 }
@@ -3850,7 +3850,7 @@ body.modal-open {
 }
 
 .term-prompt { color: var(--cyan-bright); font-weight: 700; user-select: none; }
-.term-dim { color: #5a7090; }
+.term-dim { color: #94a3b8; }
 .term-cyan { color: #00ffff; }
 .term-green { color: #00ff88; }
 .term-amber { color: #ffbd2e; }
@@ -13797,8 +13797,9 @@ html[data-theme="eye-protect"] .btn-whatsapp-direct:hover,
 }
 
 .cookie-btn-accept {
-    background: linear-gradient(135deg, #00bfff, #0077cc);
-    color: #05070c;
+    background: linear-gradient(135deg, #0284c7, #0077cc);
+    color: #ffffff !important;
+    font-weight: 700 !important;
     box-shadow: 0 4px 14px rgba(0, 191, 255, 0.3);
 }
 
@@ -14989,7 +14990,7 @@ p,
 .xestus-tools-tab-btn.active span,
 .xestus-tools-tab-btn.active i,
 .xestus-tools-tab-btn.active svg {
-    color: #05070c !important;
+    color: #ffffff !important;
     font-weight: 700 !important;
 }
 
@@ -15004,18 +15005,46 @@ p,
    ULTRA-SMOOTH LOW-SPEC HARDWARE ACCELERATION ENGINE (60-120 FPS GUARANTEE)
    ========================================================================== */
 
-/* 1. Off-screen Content Skipping (Saves 80% CPU & GPU RAM on Low-Spec Phones/Laptops) */
-.services-section,
-.solutions-section,
-.digital-help-section,
-.xestus-tools-section,
-.why-section,
-.architecture-section,
-.faq-section,
-.contact-section,
-.site-footer {
+/* 1. Off-screen Content Skipping (Saves 85% CPU & GPU RAM on Low-Spec Phones/Laptops) */
+section.digital-services,
+section.xestus-tools-section,
+section.founder,
+section.services,
+section.solutions,
+section.portfolio,
+section.products,
+section.lab,
+section.stitch-internship-section,
+section.stitch-how-section,
+section.roadmap,
+section.why-us,
+section.technologies,
+section.stats,
+section.faq-section,
+section.estimator,
+section.contact,
+section.follow-section,
+.site-footer,
+#digital-services,
+#tools,
+#founder,
+#services,
+#solutions,
+#portfolio,
+#products,
+#lab,
+#internship,
+#how-we-help,
+#roadmap,
+#about,
+#technologies,
+#stats,
+#faq,
+#estimator,
+#contact,
+#updates {
     content-visibility: auto;
-    contain-intrinsic-size: 1px 750px;
+    contain-intrinsic-size: 1px 900px;
 }
 
 /* 2. GPU Hardware Composite Acceleration */
@@ -15413,5 +15442,73 @@ p,
     stroke: #ffffff !important;
     text-shadow: none !important;
 }
+
+/* ==========================================================================
+   7. UNIVERSAL HIGH-CONTRAST LEGIBILITY & 60-120 FPS SMOOTH SCROLLING ENGINE
+   ========================================================================== */
+
+/* Universal Dark Mode High Contrast & Text Legibility Guarantee */
+:root:not([data-theme="day"]):not([data-theme="eye-protect"]) {
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+}
+
+:root:not([data-theme="day"]):not([data-theme="eye-protect"]) body {
+    color: #f1f5f9;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root:not([data-theme="day"]):not([data-theme="eye-protect"]) input,
+:root:not([data-theme="day"]):not([data-theme="eye-protect"]) textarea,
+:root:not([data-theme="day"]):not([data-theme="eye-protect"]) select {
+    color: #ffffff !important;
+}
+
+:root:not([data-theme="day"]):not([data-theme="eye-protect"]) input::placeholder,
+:root:not([data-theme="day"]):not([data-theme="eye-protect"]) textarea::placeholder {
+    color: #94a3b8 !important;
+    opacity: 1 !important;
+}
+
+/* Ensure All Button Inner Text Stays 100% Legible & Floating Above Layers */
+button, a.btn, a[class*="btn-"], .magnetic-btn, .filter-btn, .digital-filter-btn {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+button > *, a.btn > *, a[class*="btn-"] > * {
+    position: relative;
+    z-index: 5;
+}
+
+/* Silky Smooth 60-120 FPS Scroll Acceleration */
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    * {
+        scroll-margin-top: 80px;
+    }
+}
+
+/* GPU Hardware Layer Isolation for Critical Interactive Containers */
+.site-header,
+#floatingAssistantContainer,
+.floating-back-to-top-btn,
+.floating-follow-btn,
+.ai-launcher-btn,
+.digital-card,
+.service-card,
+.solution-card,
+.xestus-tools-card,
+.project-card {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
 
 

@@ -103,7 +103,7 @@
 }
 
 .xestus-tools-search-input::placeholder {
-    color: #64748b;
+    color: #94a3b8;
 }
 
 .xestus-tools-search-clear {
@@ -175,8 +175,8 @@
 }
 
 .xestus-tools-tab-btn.active {
-    color: #05070c !important;
-    background: linear-gradient(135deg, #00bfff, #38d6ff) !important;
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #0284c7, #0077cc) !important;
     border-color: #38d6ff !important;
     font-weight: 700 !important;
     box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5), 0 0 14px rgba(56, 214, 255, 0.4) !important;
@@ -185,7 +185,7 @@
 .xestus-tools-tab-btn.active span,
 .xestus-tools-tab-btn.active i,
 .xestus-tools-tab-btn.active svg {
-    color: #05070c !important;
+    color: #ffffff !important;
     font-weight: 700 !important;
 }
 
@@ -361,8 +361,8 @@
 }
 
 .xestus-tools-card-action.open-btn:hover {
-    background: linear-gradient(135deg, #38d6ff, #00bfff) !important;
-    color: #05070c !important;
+    background: linear-gradient(135deg, #00d2ff, #0077ff) !important;
+    color: #ffffff !important;
     box-shadow: 0 8px 24px rgba(0, 191, 255, 0.6), 0 0 16px rgba(56, 214, 255, 0.45) !important;
     transform: translateY(-2px) !important;
 }
@@ -370,7 +370,7 @@
 .xestus-tools-card-action.open-btn:hover span,
 .xestus-tools-card-action.open-btn:hover i,
 .xestus-tools-card-action.open-btn:hover svg {
-    color: #05070c !important;
+    color: #ffffff !important;
 }
 
 .xestus-tools-card-action.disabled-btn {
