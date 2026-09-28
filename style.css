@@ -15281,165 +15281,167 @@ section.follow-section,
     pointer-events: none;
 }
 
-/* Base states icon & text synchronisation (100% High Contrast Guarantee) */
+/* ==========================================================================
+   SLOW RAINBOW COLOR-SHIFTING TEXT & GLOW ENGINE (CYBERPUNK MATRIX WOW-FACTOR)
+   ========================================================================== */
+
+@keyframes slowRainbowShift {
+    0% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.65));
+    }
+    25% {
+        background-position: 50% 100%;
+        filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.65));
+    }
+    50% {
+        background-position: 100% 50%;
+        filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.7));
+    }
+    75% {
+        background-position: 50% 0%;
+        filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.7));
+    }
+    100% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.65));
+    }
+}
+
+/* 1. Universal Rainbow Text Effect on All Action Buttons & Highlights */
 .btn-stitch-primary,
-.btn-stitch-primary *,
 .btn-stitch-primary span,
+.btn-stitch-primary > *,
 .stitch-card .btn-stitch-primary,
-.stitch-card .btn-stitch-primary *,
 .stitch-card .btn-stitch-primary span,
+.stitch-card .btn-stitch-primary > *,
 .stitch-internship-section .btn-stitch-primary,
 .stitch-internship-section .btn-stitch-primary span,
 .stitch-how-section .btn-stitch-primary,
-.stitch-how-section .btn-stitch-primary span {
-    color: #ffd700 !important;
-    stroke: #ffd700 !important;
-    font-weight: 700 !important;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.45) !important;
-}
-
-.btn-stitch-outline,
-.btn-stitch-outline *,
-.btn-stitch-outline span {
-    color: #ffd700 !important;
-    stroke: #ffd700 !important;
-    font-weight: 600 !important;
-}
-
-.btn-card-guide,
-.btn-card-guide span,
-.btn-card-guide svg,
-.btn-card-guide i {
-    stroke: #00f2fe !important;
-    color: #00f2fe !important;
-    font-weight: 600 !important;
-}
-
-.btn-card-portal,
-.btn-card-portal span,
-.btn-card-portal svg,
-.btn-card-portal i {
-    stroke: #34d399 !important;
-    color: #34d399 !important;
-    font-weight: 600 !important;
-}
-
-.btn-card-assist,
-.btn-card-assist span,
-.btn-card-assist svg,
-.btn-card-assist i {
-    stroke: #ffcc00 !important;
-    color: #ffcc00 !important;
-    font-weight: 600 !important;
-}
-
-.btn-primary,
-.btn-primary *,
+.stitch-how-section .btn-stitch-primary span,
 .btn-primary span,
-.hero-btn-primary,
-.hero-btn-primary span,
-.btn-nav-cta,
-.btn-nav-cta span,
-.btn-apply-primary,
-.btn-apply-primary span,
-.btn-case-study,
-.btn-case-study span,
-.btn-product-waitlist,
-.btn-product-waitlist span,
-.btn-transfer-inquiry,
-.btn-transfer-inquiry span,
-.btn-submit-inquiry,
-.btn-submit-inquiry span,
-.btn-follow-trigger,
-.btn-follow-trigger span {
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    font-weight: 700 !important;
-}
-
-.btn-secondary,
-.btn-secondary *,
 .btn-secondary span,
-.hero-btn-secondary,
+.hero-btn-primary span,
 .hero-btn-secondary span,
-.btn-project-discuss,
-.btn-project-discuss span {
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    font-weight: 600 !important;
-}
-
-/* 1. Guide Button Hover (Crystal Crisp Glowing White on Vivid Cyan Glow) */
-.btn-card-guide:hover,
-.btn-card-guide:focus-visible,
-.btn-card-guide:active,
-.btn-card-guide:hover > *,
-.btn-card-guide:hover span,
-.btn-card-guide:hover i,
-.btn-card-guide:hover svg,
-.btn-card-guide:hover svg *,
-.btn-view-guide:hover,
-.btn-view-guide:hover *,
-.btn-view-guide:hover span {
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    text-shadow: 0 0 16px rgba(0, 242, 254, 1), 0 0 28px rgba(0, 191, 255, 0.8) !important;
-    font-weight: 700 !important;
-}
-
-/* 2. Portal Button Hover (Crystal Crisp Glowing White on Vivid Emerald Glow) */
-.btn-card-portal:hover,
-.btn-card-portal:focus-visible,
-.btn-card-portal:active,
-.btn-card-portal:hover > *,
-.btn-card-portal:hover span,
-.btn-card-portal:hover i,
-.btn-card-portal:hover svg,
-.btn-card-portal:hover svg *,
-.btn-visit-official:hover,
-.btn-visit-official:hover *,
-.btn-visit-official:hover span {
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    text-shadow: 0 0 16px rgba(52, 211, 153, 1), 0 0 28px rgba(16, 185, 129, 0.8) !important;
-    font-weight: 700 !important;
-}
-
-/* 3. Request Help / Assist Button Hover (Crystal Crisp Glowing White on Vivid Amber Glow) */
-.btn-card-assist:hover,
-.btn-card-assist:focus-visible,
-.btn-card-assist:active,
-.btn-card-assist:hover > *,
-.btn-card-assist:hover span,
-.btn-card-assist:hover i,
-.btn-card-assist:hover svg,
-.btn-card-assist:hover svg *,
-.btn-assist-modal-trigger:hover,
-.btn-assist-modal-trigger:hover *,
-.btn-assist-modal-trigger:hover span {
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    text-shadow: 0 0 16px rgba(255, 215, 0, 1), 0 0 28px rgba(245, 158, 11, 0.8) !important;
-    font-weight: 700 !important;
-}
-
-/* 4. STITCH Lab Primary & Outline Buttons Hover */
-.btn-stitch-primary:hover,
-.btn-stitch-primary:focus-visible,
-.btn-stitch-primary:active,
-.btn-stitch-primary:hover span,
-.btn-stitch-primary:hover svg,
-.btn-stitch-primary:hover i,
-.stitch-card .btn-stitch-primary:hover,
-.stitch-card .btn-stitch-primary:hover span,
-.btn-stitch-outline:hover,
-.btn-stitch-outline:hover span,
-.btn-apply-primary:hover,
-.btn-apply-primary:hover span {
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-    text-shadow: 0 0 16px rgba(255, 215, 0, 1), 0 0 28px rgba(245, 158, 11, 0.8) !important;
+.btn-card-guide span,
+.btn-card-portal span,
+.btn-card-assist span,
+.btn-nav-cta span,
+.btn-apply-primary span,
+.btn-case-study span,
+.btn-project-discuss span,
+.btn-product-waitlist span,
+.btn-transfer-inquiry span,
+.btn-submit-inquiry span,
+.btn-follow-trigger span,
+.floating-back-to-top-btn span,
+.floating-follow-btn span,
+.xestus-tools-card-action.open-btn span,
+.cookie-btn-accept,
+.stitch-highlight-box {
+    background: linear-gradient(
+        135deg,
+        #00f2fe 0%,
+        #38d6ff 20%,
+        #a855f7 40%,
+        #ec4899 60%,
+        #ffd700 80%,
+        #00f2fe 100%
+    ) !important;
+    background-size: 300% 300% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    animation: slowRainbowShift 6s ease-in-out infinite !important;
     font-weight: 800 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    will-change: background-position;
+}
+
+/* 2. SVG Icons Stroke Glow */
+.btn-stitch-primary svg,
+.btn-stitch-primary i,
+.btn-primary svg,
+.btn-primary i,
+.btn-secondary svg,
+.btn-secondary i,
+.btn-card-guide svg,
+.btn-card-portal svg,
+.btn-card-assist svg,
+.btn-nav-cta svg,
+.btn-apply-primary svg,
+.btn-case-study svg,
+.btn-project-discuss svg,
+.btn-transfer-inquiry svg,
+.btn-submit-inquiry svg,
+.floating-back-to-top-btn svg,
+.floating-follow-btn svg,
+.xestus-tools-card-action.open-btn svg {
+    stroke: #38d6ff !important;
+    color: #38d6ff !important;
+    position: relative !important;
+    z-index: 10 !important;
+    filter: drop-shadow(0 0 6px rgba(56, 214, 255, 0.75)) !important;
+    transition: transform 0.25s ease, stroke 0.25s ease !important;
+}
+
+/* 3. Accelerated High-Intensity Rainbow on Hover */
+.btn-stitch-primary:hover span,
+.stitch-card .btn-stitch-primary:hover span,
+.btn-primary:hover span,
+.btn-card-guide:hover span,
+.btn-card-portal:hover span,
+.btn-card-assist:hover span,
+.btn-nav-cta:hover span,
+.btn-apply-primary:hover span,
+.xestus-tools-card-action.open-btn:hover span {
+    animation: slowRainbowShift 2.2s linear infinite !important;
+    filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.95)) !important;
+}
+
+.btn-stitch-primary:hover svg,
+.btn-primary:hover svg,
+.btn-card-guide:hover svg,
+.btn-card-portal:hover svg,
+.btn-card-assist:hover svg,
+.btn-nav-cta:hover svg,
+.btn-apply-primary:hover svg {
+    transform: translateX(4px) scale(1.15) !important;
+    stroke: #ffffff !important;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.95)) !important;
+}
+
+/* 4. Button Surface Glass & Rainbow Neon Borders */
+.btn-stitch-primary,
+.stitch-card .btn-stitch-primary,
+.stitch-internship-section .btn-stitch-primary,
+.stitch-how-section .btn-stitch-primary {
+    background: rgba(13, 20, 36, 0.92) !important;
+    border: 1.5px solid rgba(255, 215, 0, 0.6) !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), inset 0 0 14px rgba(255, 204, 0, 0.12) !important;
+    position: relative !important;
+    isolation: isolate !important;
+    overflow: hidden !important;
+    transition: all 0.25s ease !important;
+}
+
+.btn-stitch-primary:hover,
+.stitch-card .btn-stitch-primary:hover,
+.stitch-internship-section .btn-stitch-primary:hover,
+.stitch-how-section .btn-stitch-primary:hover {
+    border-color: #ffd700 !important;
+    box-shadow: 0 8px 30px rgba(255, 204, 0, 0.4), 0 0 25px rgba(0, 242, 254, 0.35) !important;
+    background: rgba(18, 28, 52, 0.98) !important;
+    transform: translateY(-2px) !important;
 }
 
 /* 5. Day Mode Specific Vibrant High Contrast Overrides */
