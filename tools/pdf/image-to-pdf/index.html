@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Image to PDF Converter | Free Online Tool | XESTUS</title>
@@ -29,7 +30,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css?v=6.0.0">
   <link rel="stylesheet" href="/tools/tools.css">
   
 </head>
@@ -344,7 +345,7 @@
 
         selectedImages.forEach((img, idx) => {
           const card = document.createElement('div');
-          card.style.cssText = 'position: relative; border-radius: 6px; overflow: hidden; border: 1px solid #444; background: #111; aspect-ratio: 1;';
+          card.style.css?v=6.0.0Text = 'position: relative; border-radius: 6px; overflow: hidden; border: 1px solid #444; background: #111; aspect-ratio: 1;';
           card.innerHTML = `
             <img src="${img.dataUrl}" style="width: 100%; height: 100%; object-fit: cover;">
             <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); font-size: 0.7rem; color: #fff; padding: 2px 4px; text-align: center;">Page ${idx + 1}</div>

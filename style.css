@@ -13103,7 +13103,6 @@ button:active,
 .product-card:hover::after {
     background: rgba(16, 25, 45, 0.96);
 }
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -14697,4 +14696,221 @@ textarea,
     background: #e4dac9;
     border-color: #d4c7b5;
     color: #2d261e;
+}
+
+
+
+/* ==========================================================================
+   XESTUS 3D GLASSMORPHISM & AMBIENT BLUR MESH ENGINE
+   - Multi-Color Glowing Blurry Ambient Background
+   - 3D Frosted Glass Cards (backdrop-filter: blur, specular highlights)
+   - Exclusively Dark Night Cyber Aesthetic
+   ========================================================================== */
+
+/* 1. Hide Theme Controls Completely */
+.theme-switcher,
+#themeSwitcher,
+.theme-dropdown,
+.mobile-theme-strip {
+    display: none !important;
+}
+
+/* 2. Multi-Layer 3D Luminous Blur Background */
+body {
+    background-color: #05070c !important;
+    background-image:
+        radial-gradient(circle at 14% 12%, rgba(0, 191, 255, 0.16) 0%, transparent 40%),
+        radial-gradient(circle at 86% 16%, rgba(168, 85, 247, 0.15) 0%, transparent 42%),
+        radial-gradient(circle at 50% 38%, rgba(2, 132, 199, 0.10) 0%, transparent 48%),
+        radial-gradient(circle at 10% 65%, rgba(16, 185, 129, 0.11) 0%, transparent 38%),
+        radial-gradient(circle at 90% 75%, rgba(217, 119, 6, 0.10) 0%, transparent 40%),
+        radial-gradient(circle at 50% 92%, rgba(147, 51, 234, 0.13) 0%, transparent 48%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px) !important;
+    background-size:
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        60px 60px,
+        60px 60px !important;
+    background-attachment: fixed, fixed, fixed, fixed, fixed, fixed, fixed, fixed !important;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat !important;
+}
+
+/* 3. 3D Frosted Glass Cards with Specular Highlights */
+.service-card,
+.seva-service-card,
+.seva-portal-card,
+.seva-task-card,
+.digital-card,
+.solution-card,
+.product-card,
+.project-card,
+.vision-card,
+.epoch-card,
+.lab-card,
+.why-card,
+.stat-card,
+.tech-stack-card,
+.contact-channel-card,
+.contact-form-wrapper,
+.community-channel-card,
+.follow-card,
+.faq-item,
+.founder-quote-box,
+.founder-image-card,
+.connection-box,
+.digital-trust-box,
+.xestus-tools-card,
+.tool-card,
+.stitch-card,
+.capability-item,
+.product-specs-box,
+.summary-metrics-box,
+.stats-pill,
+.whatsapp-dispatch-card {
+    background: rgba(11, 19, 36, 0.72) !important;
+    backdrop-filter: blur(22px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(22px) saturate(190%) !important;
+    border: 1px solid rgba(0, 191, 255, 0.22) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+/* 4. Card Inner Layer for 360 Rotating Laser Border */
+.seva-service-card::after,
+.seva-portal-card::after,
+.seva-task-card::after,
+.digital-card::after,
+.service-card::after,
+.solution-card::after,
+.product-card::after,
+.xestus-tools-card::after,
+.floating-follow-btn::after {
+    background: rgba(10, 17, 33, 0.88) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+}
+
+/* 5. 3D Card Hover Elevation */
+.service-card:hover,
+.seva-service-card:hover,
+.seva-portal-card:hover,
+.seva-task-card:hover,
+.digital-card:hover,
+.solution-card:hover,
+.product-card:hover,
+.project-card:hover,
+.vision-card:hover,
+.epoch-card:hover,
+.lab-card:hover,
+.why-card:hover,
+.stat-card:hover,
+.tech-stack-card:hover,
+.contact-channel-card:hover,
+.xestus-tools-card:hover,
+.tool-card:hover,
+.stitch-card:hover {
+    transform: translateY(-5px) scale(1.01) !important;
+    border-color: rgba(56, 214, 255, 0.55) !important;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(0, 191, 255, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+}
+
+.seva-service-card:hover::after,
+.seva-portal-card:hover::after,
+.seva-task-card:hover::after,
+.digital-card:hover::after,
+.service-card:hover::after,
+.solution-card:hover::after,
+.product-card:hover::after,
+.xestus-tools-card:hover::after {
+    background: rgba(13, 22, 42, 0.94) !important;
+}
+
+/* 6. High-Contrast Typography */
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.service-card h3,
+.digital-card h3,
+.solution-card h3,
+.product-card h3,
+.project-card h3,
+.vision-card h3,
+.lab-card h3,
+.why-card h3,
+.stat-card h3,
+.epoch-card h3,
+.xestus-tools-card-title,
+.connection-box h2,
+.founder-quote-box strong,
+.seva-task-title {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+p,
+.service-card p,
+.digital-card p,
+.solution-card p,
+.product-card p,
+.project-card p,
+.vision-card p,
+.lab-card p,
+.why-card p,
+.stat-card p,
+.epoch-card p,
+.xestus-tools-card-desc,
+.connection-box p,
+.founder-quote-box p,
+.capability-item,
+.product-specs-box span,
+.seva-task-desc {
+    color: #cbd5e1 !important;
+    line-height: 1.7;
+}
+
+
+
+/* ==========================================================================
+   HIGH-CONTRAST & 120FPS PERFORMANCE OVERHAUL FOR TOOLS & CARDS
+   ========================================================================== */
+.xestus-tools-card-action.open-btn {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #0284c7, #0077cc) !important;
+    border: 1px solid rgba(56, 214, 255, 0.45) !important;
+    box-shadow: 0 4px 14px rgba(0, 191, 255, 0.35) !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+}
+
+.xestus-tools-card-action.open-btn span,
+.xestus-tools-card-action.open-btn i,
+.xestus-tools-card-action.open-btn svg {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+.xestus-tools-tab-btn span,
+.xestus-tools-tab-btn i,
+.xestus-tools-tab-btn svg {
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+.xestus-tools-tab-btn.active span,
+.xestus-tools-tab-btn.active i,
+.xestus-tools-tab-btn.active svg {
+    color: #05070c !important;
+    font-weight: 700 !important;
+}
+
+.xestus-tools-tab-btn:not(.active) span,
+.xestus-tools-tab-btn:not(.active) i,
+.xestus-tools-tab-btn:not(.active) svg {
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
 }

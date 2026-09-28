@@ -5,14 +5,8 @@
     <script>
         (function() {
             try {
-                var storedTheme = localStorage.getItem('xestus_theme');
-                if (storedTheme && ['night', 'day', 'eye-protect'].indexOf(storedTheme) !== -1) {
-                    document.documentElement.setAttribute('data-theme', storedTheme);
-                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-                    document.documentElement.setAttribute('data-theme', 'day');
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'night');
-                }
+                document.documentElement.setAttribute('data-theme', 'night');
+                localStorage.setItem('xestus_theme', 'night');
             } catch (e) {}
         })();
     </script>
@@ -64,7 +58,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Core Stylesheets -->
-    <link rel="stylesheet" href="../style.css?v=3.5.2">
+    <link rel="stylesheet" href="../style.css?v=6.0.0">
     <link rel="stylesheet" href="./tools.css?v=1.0.0">
 
     <!-- Schema.org JSON-LD -->

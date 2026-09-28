@@ -296,8 +296,8 @@
                     <span>Follow XESTUS</span>
                 `;
             }
-            if (window.lucide) {
-                try { window.lucide.createIcons({ scope: followBtn }); } catch (e) {}
+            if (window.lucide && typeof window.lucide.createIcons === "function") {
+                try { window.lucide.createIcons(); } catch (e) {}
             }
         }
 
@@ -428,8 +428,8 @@
 
             messagesContainer.innerHTML = greetingHtml;
             wireQuickActionButtons();
-            if (window.lucide) {
-                try { window.lucide.createIcons({ scope: messagesContainer }); } catch (e) {}
+            if (window.lucide && typeof window.lucide.createIcons === "function") {
+                try { window.lucide.createIcons(); } catch (e) {}
             }
         }
 
@@ -460,8 +460,8 @@
                 </div>
             `;
             messagesContainer.appendChild(typingEl);
-            if (window.lucide) {
-                try { window.lucide.createIcons({ scope: typingEl }); } catch (e) {}
+            if (window.lucide && typeof window.lucide.createIcons === "function") {
+                try { window.lucide.createIcons(); } catch (e) {}
             }
             scrollToBottom();
             return typingEl;
@@ -512,8 +512,8 @@
             `;
 
             messagesContainer.appendChild(msgEl);
-            if (window.lucide) {
-                try { window.lucide.createIcons({ scope: msgEl }); } catch (e) {}
+            if (window.lucide && typeof window.lucide.createIcons === "function") {
+                try { window.lucide.createIcons(); } catch (e) {}
             }
 
             // Wire action navigation buttons

@@ -1,19 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="night">
 
 <head>
     <!-- Immediate Theme Initialization (Prevents Flash of Unstyled Theme) -->
     <script>
         (function() {
             try {
-                var storedTheme = localStorage.getItem('xestus_theme');
-                if (storedTheme && ['night', 'day', 'eye-protect'].indexOf(storedTheme) !== -1) {
-                    document.documentElement.setAttribute('data-theme', storedTheme);
-                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-                    document.documentElement.setAttribute('data-theme', 'day');
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'night');
-                }
+                document.documentElement.setAttribute('data-theme', 'night');
+                localStorage.setItem('xestus_theme', 'night');
             } catch (e) {}
         })();
     </script>
@@ -95,7 +89,7 @@
     </noscript>
 
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=3.9.5">
+    <link rel="stylesheet" href="style.css?v=6.0.0">
     <link rel="stylesheet" href="css/xestus-tools.css?v=1.0.0">
 
     <!-- Preloaded Translations Dictionary & Central Service Registry & Security Shield -->

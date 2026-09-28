@@ -2962,134 +2962,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --------------------------------------------------------------------------
-    // 13B. Accessible 3-Theme Engine (Day, Night, Eye Protection)
+    // 13B. Exclusively Dark Cyber-Aesthetic System (Permanent Night Mode)
     // --------------------------------------------------------------------------
-    const THEME_STORAGE_KEY = "xestus_theme";
-    const SUPPORTED_THEMES = ["night", "day", "eye-protect"];
-    const themeSwitcher = document.getElementById("themeSwitcher");
-    const themeBtn = document.getElementById("themeBtn");
-    const themeDropdown = document.getElementById("themeDropdown");
-    const themeOpts = document.querySelectorAll(".theme-opt");
-    const mobileThemeBtns = document.querySelectorAll(".mobile-theme-btn");
-    const currentThemeLabel = document.querySelector(".theme-current-label");
-    const activeThemeIcon = document.querySelector(".theme-active-icon");
+    document.documentElement.setAttribute("data-theme", "night");
+    try {
+        localStorage.setItem("xestus_theme", "night");
+    } catch (e) {}
 
-    const THEME_METADATA = {
-        night: { label: "Night", icon: "moon" },
-        day: { label: "Day", icon: "sun" },
-        "eye-protect": { label: "Eye Protect", icon: "glasses" }
-    };
-
-    function detectPreferredTheme() {
-        try {
-            const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-            if (storedTheme && SUPPORTED_THEMES.includes(storedTheme)) {
-                return storedTheme;
-            }
-            if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
-                return "day";
-            }
-        } catch (e) {}
-        return "night";
+    function setTheme(theme) {
+        document.documentElement.setAttribute("data-theme", "night");
+        try { localStorage.setItem("xestus_theme", "night"); } catch (e) {}
     }
-
-    function setTheme(theme, persist = true) {
-        if (!SUPPORTED_THEMES.includes(theme)) {
-            theme = "night";
-        }
-
-        document.documentElement.setAttribute("data-theme", theme);
-
-        if (persist) {
-            try {
-                localStorage.setItem(THEME_STORAGE_KEY, theme);
-            } catch (e) {}
-        }
-
-        // Update Desktop UI label & icon
-        const meta = THEME_METADATA[theme] || THEME_METADATA.night;
-        if (currentThemeLabel) {
-            currentThemeLabel.textContent = meta.label;
-        }
-
-        if (activeThemeIcon && window.lucide) {
-            activeThemeIcon.setAttribute("data-lucide", meta.icon);
-            try { window.lucide.createIcons({ scope: themeBtn }); } catch (e) {}
-        }
-
-        // Update active class on dropdown options
-        themeOpts.forEach((opt) => {
-            const optTheme = opt.getAttribute("data-theme");
-            opt.classList.toggle("active", optTheme === theme);
-        });
-
-        // Update active class on mobile theme strip buttons
-        mobileThemeBtns.forEach((btn) => {
-            const btnTheme = btn.getAttribute("data-theme");
-            btn.classList.toggle("active", btnTheme === theme);
-        });
-
-        if (typeof window !== "undefined") {
-            window.dispatchEvent(new CustomEvent("xestus:theme-changed", { detail: { theme } }));
-        }
-    }
-
-    // Initialize immediate theme preference
-    const initialTheme = detectPreferredTheme();
-    setTheme(initialTheme, false);
-
-    // Toggle theme dropdown
-    if (themeBtn && themeSwitcher) {
-        themeBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const isOpen = themeSwitcher.classList.toggle("is-open");
-            themeBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-            // Close language switcher if open
-            if (langSwitcher) {
-                langSwitcher.classList.remove("is-open");
-                if (langBtn) langBtn.setAttribute("aria-expanded", "false");
-            }
-        });
-
-        document.addEventListener("click", (e) => {
-            if (!themeSwitcher.contains(e.target)) {
-                themeSwitcher.classList.remove("is-open");
-                themeBtn.setAttribute("aria-expanded", "false");
-            }
-        });
-
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && themeSwitcher.classList.contains("is-open")) {
-                themeSwitcher.classList.remove("is-open");
-                themeBtn.setAttribute("aria-expanded", "false");
-                themeBtn.focus();
-            }
-        });
-    }
-
-    // Dropdown option clicks
-    themeOpts.forEach((opt) => {
-        opt.addEventListener("click", () => {
-            const selectedTheme = opt.getAttribute("data-theme");
-            if (selectedTheme) {
-                setTheme(selectedTheme);
-            }
-            if (themeSwitcher) {
-                themeSwitcher.classList.remove("is-open");
-                if (themeBtn) themeBtn.setAttribute("aria-expanded", "false");
-            }
-        });
-    });
-
-    // Mobile theme button clicks
-    mobileThemeBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            const selectedTheme = btn.getAttribute("data-theme");
-            if (selectedTheme) {
-                setTheme(selectedTheme);
-            }
-        });
-    });
+    window.setTheme = setTheme;
 
     // --------------------------------------------------------------------------
     // 14. Digital Services Assistance Form Pre-Selection

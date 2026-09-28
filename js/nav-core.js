@@ -10,20 +10,11 @@
 
     const THEME_STORAGE_KEY = "xestus_theme";
 
-    // 1. Initialize Theme from LocalStorage or System Preference
+    // 1. Initialize Theme: Permanently locked to night mode
     function applyStoredTheme() {
         try {
-            const stored = localStorage.getItem(THEME_STORAGE_KEY);
-            if (stored && ["night", "day", "eye-protect"].includes(stored)) {
-                document.documentElement.setAttribute("data-theme", stored);
-                updateThemeUI(stored);
-            } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
-                document.documentElement.setAttribute("data-theme", "day");
-                updateThemeUI("day");
-            } else {
-                document.documentElement.setAttribute("data-theme", "night");
-                updateThemeUI("night");
-            }
+            document.documentElement.setAttribute("data-theme", "night");
+            localStorage.setItem(THEME_STORAGE_KEY, "night");
         } catch (_) {}
     }
 
@@ -31,13 +22,11 @@
         const themeLabels = {
             "night": "Night",
             "day": "Day",
-            "eye-protect": "Eye Protect"
-        };
+            };
         const themeIcons = {
             "night": "moon",
             "day": "sun",
-            "eye-protect": "glasses"
-        };
+            };
 
         const currentLabel = document.querySelector(".theme-current-label");
         if (currentLabel) {
@@ -61,7 +50,7 @@
     }
 
     function setTheme(theme) {
-        if (!["night", "day", "eye-protect"].includes(theme)) return;
+        if (!["night", "day"].includes(theme)) return;
         document.documentElement.setAttribute("data-theme", theme);
         try {
             localStorage.setItem(THEME_STORAGE_KEY, theme);
