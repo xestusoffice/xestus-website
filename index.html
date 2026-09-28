@@ -89,7 +89,7 @@
     </noscript>
 
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=6.1.0">
+    <link rel="stylesheet" href="style.css?v=6.2.0">
     <link rel="stylesheet" href="css/xestus-tools.css?v=1.0.0">
 
     <!-- Preloaded Translations Dictionary & Central Service Registry & Security Shield -->
@@ -3843,7 +3843,13 @@
      ========================================================================== -->
 <div class="xestus-floating-assistant" id="floatingAssistantContainer" role="region" aria-label="XESTUS AI Assistant and Follow">
     <!-- Attached Follow Button (Directly ABOVE the AI Launcher) -->
-    <button type="button" class="floating-follow-btn" id="floatingFollowBtn" aria-label="Follow XESTUS on Official Channels" aria-pressed="false">
+        <!-- Floating Back to Top Button (Directly ABOVE the Follow Button) -->
+    <button type="button" class="floating-back-to-top-btn" id="floatingBackToTopBtn" aria-label="Scroll Back to Top" title="Back to Top">
+        <i data-lucide="arrow-up" class="back-to-top-icon" aria-hidden="true"></i>
+        <span>Back to Top</span>
+    </button>
+
+<button type="button" class="floating-follow-btn" id="floatingFollowBtn" aria-label="Follow XESTUS on Official Channels" aria-pressed="false">
         <i data-lucide="user-plus" class="follow-icon" aria-hidden="true"></i>
         <span data-i18n="assistant.follow_btn">Follow XESTUS</span>
     </button>
@@ -3904,7 +3910,7 @@
 
 <!-- Core App Script -->
 <!-- Core Script & Interactive Controllers -->
-<script defer src="script.js?v=4.0.0"></script>
+<script defer src="script.js?v=4.1.0"></script>
 <script defer src="js/digital-seva-hub.js?v=4.0.0"></script>
 <script defer src="js/xestus-tools.js?v=4.0.0"></script>
 <script defer src="js/ai-assistant.js?v=4.0.0"></script>

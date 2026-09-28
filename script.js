@@ -2387,16 +2387,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------------------------------
-    // 10. Back-to-Top Controller
+    // 10. Unified Back-to-Top Controller (Floating Pill & Footer)
     // --------------------------------------------------------------------------
+    const floatingBackToTopBtn = document.getElementById("floatingBackToTopBtn");
     const backToTopBtn = document.getElementById("backToTopBtn");
-    if (backToTopBtn) {
-        backToTopBtn.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+
+    function scrollToPageTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
         });
+    }
+
+    if (floatingBackToTopBtn) {
+        floatingBackToTopBtn.addEventListener("click", scrollToPageTop);
+
+        const updateFloatingTopVisibility = () => {
+            if (window.scrollY > 250) {
+                floatingBackToTopBtn.classList.add("is-visible");
+            } else {
+                floatingBackToTopBtn.classList.remove("is-visible");
+            }
+        };
+
+        window.addEventListener("scroll", updateFloatingTopVisibility, { passive: true });
+        updateFloatingTopVisibility();
+    }
+
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener("click", scrollToPageTop);
     }
 
     // --------------------------------------------------------------------------

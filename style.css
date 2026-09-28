@@ -11017,24 +11017,46 @@ html[lang="hi"] .founder-quote-box p {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 10px 16px;
-    border-radius: 4px;
-    background: var(--stitch-yellow);
-    color: var(--stitch-yellow-text);
+    padding: 12px 22px;
+    border-radius: var(--radius-sm, 6px);
+    background: rgba(255, 204, 0, 0.12) !important;
+    border: 1px solid rgba(255, 215, 0, 0.45) !important;
+    color: #ffd700 !important;
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border: none;
     cursor: pointer;
     text-decoration: none;
     transition: all var(--transition-fast);
+    position: relative !important;
+    isolation: isolate !important;
+}
+
+.btn-stitch-primary span,
+.btn-stitch-primary svg,
+.btn-stitch-primary i {
+    color: #ffd700 !important;
+    stroke: #ffd700 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    pointer-events: none;
+    transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .btn-stitch-primary:hover {
-    background: var(--stitch-yellow-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(255, 204, 0, 0.4);
+    background: rgba(255, 204, 0, 0.28) !important;
+    border-color: #ffd700 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 204, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.35);
+}
+
+.btn-stitch-primary:hover span,
+.btn-stitch-primary:hover svg,
+.btn-stitch-primary:hover i {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: 0 0 16px rgba(255, 215, 0, 1), 0 0 28px rgba(245, 158, 11, 0.8) !important;
 }
 
 .btn-stitch-outline {
@@ -11042,11 +11064,11 @@ html[lang="hi"] .founder-quote-box p {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    padding: 9px 14px;
-    border-radius: 4px;
-    background: transparent;
-    border: 1px solid var(--border-medium);
-    color: var(--text-primary);
+    padding: 10px 18px;
+    border-radius: var(--radius-sm, 6px);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 204, 0, 0.35);
+    color: #ffd700;
     font-size: 12.5px;
     font-weight: 600;
     cursor: pointer;
@@ -11055,9 +11077,10 @@ html[lang="hi"] .founder-quote-box p {
 }
 
 .btn-stitch-outline:hover {
-    border-color: var(--stitch-yellow);
-    color: var(--stitch-yellow);
-    background: var(--stitch-yellow-subtle);
+    border-color: #ffd700;
+    color: #ffffff;
+    background: rgba(255, 204, 0, 0.15);
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.25);
 }
 
 /* 5-Step Delivery Pipeline Roadmap */
@@ -15056,6 +15079,122 @@ p,
 }
 
 /* ==========================================================================
+   FLOATING BACK TO TOP PILL BUTTON (UNIFIED FLOATING STACK)
+   ========================================================================== */
+.floating-back-to-top-btn {
+    pointer-events: auto;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 38px;
+    padding: 0 18px;
+    border-radius: var(--radius-full, 9999px);
+    border: none !important;
+    color: var(--text-primary, #ffffff);
+    font-size: 12.5px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 191, 255, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px) scale(0.95);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease, box-shadow 0.24s ease;
+    touch-action: manipulation;
+}
+
+.floating-back-to-top-btn.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.floating-back-to-top-btn::before {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 400%;
+    height: 400%;
+    background: conic-gradient(
+        from 0deg,
+        #00f2fe,
+        #38d6ff,
+        #a855f7,
+        #ec4899,
+        #eab308,
+        #00f2fe
+    );
+    animation: rotateConicBorder 4s linear infinite;
+    z-index: 0;
+}
+
+.floating-back-to-top-btn::after {
+    content: '';
+    position: absolute;
+    inset: 1.5px;
+    border-radius: inherit;
+    background: rgba(13, 19, 34, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.floating-back-to-top-btn .back-to-top-icon,
+.floating-back-to-top-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+.floating-back-to-top-btn .back-to-top-icon {
+    width: 15px;
+    height: 15px;
+    color: var(--cyan-bright, #00f2fe);
+    stroke: var(--cyan-bright, #00f2fe);
+    transition: transform var(--transition-fast);
+}
+
+.floating-back-to-top-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(0, 191, 255, 0.45), 0 0 20px rgba(0, 242, 254, 0.4);
+}
+
+.floating-back-to-top-btn:hover .back-to-top-icon {
+    transform: translateY(-3px);
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+}
+
+.floating-back-to-top-btn:hover span {
+    color: #ffffff !important;
+    text-shadow: 0 0 14px rgba(0, 191, 255, 0.9) !important;
+}
+
+:root[data-theme="day"] .floating-back-to-top-btn::after {
+    background: rgba(248, 250, 252, 0.95);
+}
+
+:root[data-theme="day"] .floating-back-to-top-btn span,
+:root[data-theme="day"] .floating-back-to-top-btn .back-to-top-icon {
+    color: #0284c7;
+    stroke: #0284c7;
+}
+
+:root[data-theme="eye-protect"] .floating-back-to-top-btn::after {
+    background: rgba(245, 239, 230, 0.95);
+}
+
+:root[data-theme="eye-protect"] .floating-back-to-top-btn span,
+:root[data-theme="eye-protect"] .floating-back-to-top-btn .back-to-top-icon {
+    color: #0e7490;
+    stroke: #0e7490;
+}
+
+/* ==========================================================================
    UNIVERSAL HIGH-CONTRAST & VIBRANT HOVER GUARANTEE FOR ALL ACTION BUTTONS
    ========================================================================== */
 .btn-card-action,
@@ -15069,7 +15208,10 @@ p,
 .btn-visit-official,
 .btn-assist-modal-trigger,
 .btn-official-sec,
-.btn-status-sec {
+.btn-status-sec,
+.btn-stitch-primary,
+.btn-stitch-outline,
+.btn-apply-primary {
     position: relative !important;
     isolation: isolate !important;
     overflow: hidden !important;
@@ -15094,7 +15236,17 @@ p,
 .btn-card-action svg path,
 .btn-card-guide svg path,
 .btn-card-portal svg path,
-.btn-card-assist svg path {
+.btn-card-assist svg path,
+.btn-stitch-primary > *,
+.btn-stitch-primary span,
+.btn-stitch-primary svg,
+.btn-stitch-primary i,
+.btn-stitch-outline > *,
+.btn-stitch-outline span,
+.btn-stitch-outline svg,
+.btn-stitch-outline i,
+.btn-apply-primary > *,
+.btn-apply-primary span {
     position: relative !important;
     z-index: 10 !important;
     pointer-events: none;
@@ -15117,6 +15269,12 @@ p,
 .btn-card-assist i {
     stroke: #ffcc00 !important;
     color: #ffcc00 !important;
+}
+
+.btn-stitch-primary svg,
+.btn-stitch-primary i {
+    stroke: #ffd700 !important;
+    color: #ffd700 !important;
 }
 
 /* 1. Guide Button Hover (Crystal Crisp Glowing White on Vivid Cyan Glow) */
@@ -15173,7 +15331,24 @@ p,
     font-weight: 700 !important;
 }
 
-/* 4. Day Mode Specific Vibrant High Contrast Overrides */
+/* 4. STITCH Lab Primary & Outline Buttons Hover */
+.btn-stitch-primary:hover,
+.btn-stitch-primary:focus-visible,
+.btn-stitch-primary:active,
+.btn-stitch-primary:hover span,
+.btn-stitch-primary:hover svg,
+.btn-stitch-primary:hover i,
+.btn-stitch-outline:hover,
+.btn-stitch-outline:hover span,
+.btn-apply-primary:hover,
+.btn-apply-primary:hover span {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: 0 0 16px rgba(255, 215, 0, 1), 0 0 28px rgba(245, 158, 11, 0.8) !important;
+    font-weight: 800 !important;
+}
+
+/* 5. Day Mode Specific Vibrant High Contrast Overrides */
 :root[data-theme="day"] .btn-card-guide:hover,
 :root[data-theme="day"] .btn-card-guide:hover * {
     background: #0284c7 !important;
@@ -15198,7 +15373,15 @@ p,
     text-shadow: none !important;
 }
 
-/* 5. Eye Protect Mode Specific Vibrant High Contrast Overrides */
+:root[data-theme="day"] .btn-stitch-primary:hover,
+:root[data-theme="day"] .btn-stitch-primary:hover * {
+    background: #b45309 !important;
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: none !important;
+}
+
+/* 6. Eye Protect Mode Specific Vibrant High Contrast Overrides */
 :root[data-theme="eye-protect"] .btn-card-guide:hover,
 :root[data-theme="eye-protect"] .btn-card-guide:hover * {
     background: #0e7490 !important;
@@ -15218,6 +15401,14 @@ p,
 :root[data-theme="eye-protect"] .btn-card-assist:hover,
 :root[data-theme="eye-protect"] .btn-card-assist:hover * {
     background: #c2410c !important;
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: none !important;
+}
+
+:root[data-theme="eye-protect"] .btn-stitch-primary:hover,
+:root[data-theme="eye-protect"] .btn-stitch-primary:hover * {
+    background: #9a3412 !important;
     color: #ffffff !important;
     stroke: #ffffff !important;
     text-shadow: none !important;
