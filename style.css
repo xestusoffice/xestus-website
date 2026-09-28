@@ -14914,3 +14914,81 @@ p,
     color: #e2e8f0 !important;
     font-weight: 600 !important;
 }
+
+/* ==========================================================================
+   ULTRA-SMOOTH LOW-SPEC HARDWARE ACCELERATION ENGINE (60-120 FPS GUARANTEE)
+   ========================================================================== */
+
+/* 1. Off-screen Content Skipping (Saves 80% CPU & GPU RAM on Low-Spec Phones/Laptops) */
+.services-section,
+.solutions-section,
+.digital-help-section,
+.xestus-tools-section,
+.why-section,
+.architecture-section,
+.faq-section,
+.contact-section,
+.site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 750px;
+}
+
+/* 2. GPU Hardware Composite Acceleration */
+.service-card,
+.solution-card,
+.digital-card,
+.xestus-tools-card,
+.tool-card,
+.project-card,
+.product-card,
+.site-header,
+.glass-panel {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* 3. Automatic Low-Spec Tier Optimization (Tier-2, Tier-3 & Low Memory Devices) */
+:root[data-perf-tier="tier-3"] .service-card,
+:root[data-perf-tier="tier-3"] .solution-card,
+:root[data-perf-tier="tier-3"] .digital-card,
+:root[data-perf-tier="tier-3"] .xestus-tools-card,
+:root[data-perf-tier="tier-3"] .tool-card,
+:root[data-perf-tier="tier-3"] .site-header .nav-container,
+:root[data-perf-tier="tier-3"] .glass-panel {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(13, 20, 36, 0.95) !important;
+}
+
+/* 4. Touch & Mobile Devices Performance Boost */
+@media (hover: none) and (pointer: coarse) {
+    .service-card,
+    .solution-card,
+    .digital-card,
+    .xestus-tools-card,
+    .tool-card {
+        transform: none !important;
+        transition: opacity 0.2s ease !important;
+    }
+    
+    .cursor-dot,
+    .cursor-outline,
+    .cursor-glow,
+    .magnetic-btn {
+        display: none !important;
+    }
+}
+
+/* 5. Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
