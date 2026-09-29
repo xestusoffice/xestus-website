@@ -10868,7 +10868,7 @@ html[lang="hi"] .founder-quote-box p {
     padding: 14px 22px;
     border-radius: 6px;
     background: var(--stitch-yellow);
-    color: var(--stitch-yellow-text);
+    color: #000000;
     font-size: 13.5px;
     font-weight: 600;
     margin-bottom: 32px;
@@ -10880,21 +10880,23 @@ html[lang="hi"] .founder-quote-box p {
     align-items: center;
     gap: 12px;
     flex: 1;
+    color: #000000;
 }
 
 .stitch-alert-content svg {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
+    stroke: #000000;
 }
 
 .stitch-alert-btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 14px;
+    padding: 7px 16px;
     border-radius: 4px;
-    background: #05070c;
+    background: #dc2626;
     color: #ffffff;
     font-family: var(--stitch-mono);
     font-size: 12px;
@@ -10903,12 +10905,15 @@ html[lang="hi"] .founder-quote-box p {
     cursor: pointer;
     border: none;
     white-space: nowrap;
-    transition: transform var(--transition-fast), background var(--transition-fast);
+    transition: transform var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.35);
 }
 
 .stitch-alert-btn:hover {
-    background: #1e2430;
+    background: #b91c1c;
+    color: #ffffff;
     transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(185, 28, 28, 0.45);
 }
 
 /* Structured Stitch Cards */
@@ -13219,13 +13224,17 @@ button:active,
 }
 
 :root[data-theme="day"] .stitch-alert-box {
-    background: #d97706;
-    color: #ffffff;
+    background: #ffcc00;
+    color: #000000;
 }
 
 :root[data-theme="day"] .stitch-alert-btn {
-    background: #0f172a;
+    background: #dc2626;
     color: #ffffff;
+}
+
+:root[data-theme="day"] .stitch-alert-btn:hover {
+    background: #b91c1c;
 }
 
 :root[data-theme="day"] .btn-stitch-primary {
@@ -13263,13 +13272,17 @@ button:active,
 }
 
 :root[data-theme="eye-protect"] .stitch-alert-box {
-    background: #c2410c;
-    color: #ffffff;
+    background: #fed7aa;
+    color: #1c1917;
 }
 
 :root[data-theme="eye-protect"] .stitch-alert-btn {
-    background: #2c241b;
+    background: #dc2626;
     color: #ffffff;
+}
+
+:root[data-theme="eye-protect"] .stitch-alert-btn:hover {
+    background: #b91c1c;
 }
 
 :root[data-theme="eye-protect"] .btn-stitch-primary {
