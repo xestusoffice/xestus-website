@@ -13031,6 +13031,7 @@ button:active,
         #00f2fe
     );
     animation: rotateRainbowGlow 3s linear infinite;
+    animation-play-state: paused;
     opacity: 0;
     transition: opacity 0.25s ease;
     z-index: 0;
@@ -13112,6 +13113,7 @@ button:active,
 .btn-scam-trigger:hover::before,
 .btn-nav-cta:hover::before {
     opacity: 1;
+    animation-play-state: running;
 }
 
 .btn-stitch-primary:hover::after {
@@ -15894,21 +15896,37 @@ section.follow-section,
 }
 
 /* ==========================================================================
-   COLORFUL GLASSY AURORA BACKGROUND & BUTTER-SMOOTH (MAKHOON MAFIK) ENGINE
+   ULTRA-SMOOTH 120 FPS GPU-ACCELERATED AURORA BACKGROUND & PERFORMANCE ENGINE
    ========================================================================== */
 
-/* Multi-Layered Luminous Aurora Glass Background */
+/* High-Performance Body Setup */
 body {
     background-color: #060913 !important;
+    color: #f1f5f9;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+}
+
+/* Dedicated Fixed Hardware GPU Layer for Aurora Gradients (Zero Repaints on Scroll) */
+body::before {
+    content: "" !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: #060913 !important;
     background-image:
-        radial-gradient(ellipse 90% 55% at 12% 8%, rgba(0, 242, 254, 0.18) 0%, transparent 45%),
-        radial-gradient(ellipse 80% 55% at 88% 14%, rgba(168, 85, 247, 0.18) 0%, transparent 45%),
-        radial-gradient(ellipse 90% 65% at 50% 36%, rgba(2, 132, 199, 0.14) 0%, transparent 50%),
-        radial-gradient(ellipse 80% 55% at 10% 62%, rgba(16, 185, 129, 0.14) 0%, transparent 45%),
-        radial-gradient(ellipse 85% 60% at 90% 72%, rgba(236, 72, 153, 0.15) 0%, transparent 48%),
-        radial-gradient(ellipse 80% 50% at 50% 90%, rgba(245, 158, 11, 0.14) 0%, transparent 45%),
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px) !important;
+        radial-gradient(ellipse 90% 55% at 12% 8%, rgba(0, 242, 254, 0.16) 0%, transparent 45%),
+        radial-gradient(ellipse 80% 55% at 88% 14%, rgba(168, 85, 247, 0.16) 0%, transparent 45%),
+        radial-gradient(ellipse 90% 65% at 50% 36%, rgba(2, 132, 199, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 55% at 10% 62%, rgba(16, 185, 129, 0.12) 0%, transparent 45%),
+        radial-gradient(ellipse 85% 60% at 90% 72%, rgba(236, 72, 153, 0.13) 0%, transparent 48%),
+        radial-gradient(ellipse 80% 50% at 50% 90%, rgba(245, 158, 11, 0.12) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px) !important;
     background-size:
         100% 100%,
         100% 100%,
@@ -15918,15 +15936,15 @@ body {
         100% 100%,
         48px 48px,
         48px 48px !important;
-    background-attachment: fixed !important;
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat !important;
-    color: #f1f5f9;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    pointer-events: none !important;
+    z-index: -9999 !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    will-change: transform !important;
 }
 
-/* Frosted Glass Aesthetics on Cards */
+/* Optimized High-Performance Glass Aesthetics on Cards */
 .service-card,
 .solution-card,
 .digital-card,
@@ -15945,13 +15963,15 @@ body {
 .stitch-how-card,
 .stitch-internship-card,
 .xestus-tools-card {
-    background: rgba(12, 19, 38, 0.82) !important;
+    background: rgba(12, 19, 38, 0.88) !important;
     border: 1px solid rgba(0, 191, 255, 0.22) !important;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
     border-radius: 14px !important;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease, box-shadow 0.22s ease !important;
 }
 
 .service-card:hover,
@@ -15972,50 +15992,9 @@ body {
 .stitch-internship-card:hover,
 .xestus-tools-card:hover {
     border-color: rgba(56, 214, 255, 0.6) !important;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 191, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-    transform: translateY(-4px) !important;
-}
-
-/* Butter Smooth 60-120 FPS Performance Acceleration */
-section.digital-services,
-section.xestus-tools-section,
-section.founder,
-section.services,
-section.solutions,
-section.portfolio,
-section.products,
-section.lab,
-section.stitch-internship-section,
-section.stitch-how-section,
-section.roadmap,
-section.why-us,
-section.technologies,
-section.stats,
-section.faq-section,
-section.estimator,
-section.contact,
-section.follow-section,
-.site-footer,
-#digital-services,
-#tools,
-#founder,
-#services,
-#solutions,
-#portfolio,
-#products,
-#lab,
-#internship,
-#how-we-help,
-#roadmap,
-#about,
-#technologies,
-#stats,
-#faq,
-#estimator,
-#contact,
-#updates {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 800px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(0, 191, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-3px) translateZ(0) !important;
+    -webkit-transform: translateY(-3px) translateZ(0) !important;
 }
 
 html {
@@ -16769,6 +16748,35 @@ button.btn-assist-modal-trigger:hover {
     color: #ffffff !important;
     stroke: #ffffff !important;
 }
+
+/* ==========================================================================
+   GOOGLE ADSENSE COMPLIANT RESPONSIVE AD CONTAINER
+   ========================================================================== */
+.adsense-slot-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 12px;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-md, 12px);
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+    contain: layout;
+}
+
+.adsense-slot-container ins.adsbygoogle {
+    display: block !important;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
 
 
 
