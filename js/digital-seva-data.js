@@ -1757,6 +1757,108 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
     // =========================================================================
     const SERVICES = [
         {
+                "service_id": "outlier-ai-freelance",
+                "service_name": {
+                        "en": "Outlier AI — Train the Next Generation of AI as a Freelancer",
+                        "bn": "আউটলায়ার এআই — ফ্রিল্যান্সার হিসেবে নেক্সট-জেন এআই ট্রেইনিং",
+                        "hi": "आउटलायर एআই — फ्रीलांसर के रूप में एआई ट्रेनिंग व मूल्यांकन"
+                },
+                "short_description": {
+                        "en": "Train the Next Generation of AI as a Freelancer. Join expert developers, scientists, and writers evaluating and fine-tuning frontier AI models with flexible remote hours.",
+                        "bn": "আউটলায়ার এআই প্ল্যাটফর্মে যুক্ত হয়ে বিশ্বমানের এআই মডেল ফাইন-টিউনিং, কোডিং ইভালুয়েশন ও যুক্তিমূলক টাস্কে কাজ করুন সম্পূর্ণ রিমোট ও সুবিধাজনক সময়ে।",
+                        "hi": "आउटलायर एआई प्लेटफॉर्म पर जुड़कर अत्याधुनिक एআই मॉडल फाइन-ट्यूनिंग और कोडिंग मूल्यांकन पर दूरस्थ रूप से काम करें।"
+                },
+                "category": "freelance-creator",
+                "category_name": {
+                        "en": "Freelancing & Creator Opportunities",
+                        "bn": "ফ্রিল্যান্সিং ও ক্রিয়েটর প্ল্যাটফর্ম",
+                        "hi": "फ्रीलांसिंग और क्रिएटर"
+                },
+                "subcategory": "AI Model Training & Remote Freelancing",
+                "authority": "Outlier.ai / Scale AI Ecosystem",
+                "government_level": "Private",
+                "service_type": "Freelancing",
+                "target_users": [
+                        "Developers",
+                        "Software Engineers",
+                        "AI Enthusiasts",
+                        "Students",
+                        "Freelancers",
+                        "Subject Matter Experts"
+                ],
+                "eligibility": {
+                        "en": [
+                                "Domain expertise in Coding (Python, JavaScript, C++, etc.), Mathematics, Science, or Professional Writing.",
+                                "Fluent in English and capable of following precise evaluation guidelines.",
+                                "Valid identity proof for remote payment setup."
+                        ],
+                        "bn": [
+                                "কোডিং (Python, JS, etc.), গণিত, বিজ্ঞান বা প্রফেশনাল লেখায় দক্ষতা।",
+                                "নির্ভুলভাবে নির্দেশিকা অনুসরণ করে এআই আউটপুট যাচাই করার সক্ষমতা।"
+                        ],
+                        "hi": [
+                                "कोडिंग, गणित, विज्ञान या तकनीकी लेखन में विशेषज्ञता।",
+                                "एআই মডেল के उत्तरों की गुणवत्ता और तर्क की जांच करने की क्षमता।"
+                        ]
+                },
+                "required_documents": {
+                        "en": [
+                                "Professional Resume / LinkedIn Profile",
+                                "Government ID for Identity Verification",
+                                "Bank Account / PayPal / Airwallex for weekly payouts"
+                        ],
+                        "bn": [
+                                "প্রফেশনাল সিভি / লিঙ্কডইন প্রোফাইল",
+                                "ভেরিফিকেশনের জন্য জাতীয় পরিচয়পত্র (ভোটার / পাসপোর্ট / আধার)",
+                                "সাপ্তাহিক পেমেন্ট গ্রহণের জন্য ব্যাংক অ্যাকাউন্ট বা পেমেন্ট গেটওয়ে"
+                        ],
+                        "hi": [
+                                "प्रोफेशनल रिज्यूमे या लिंक्डइन प्रोफाइल",
+                                "पहचान सत्यापन हेतु सरकारी आईडी",
+                                "साप्ताहिक भुगतान के लिए बैंक विवरण"
+                        ]
+                },
+                "official_portal_url": "https://outlier.ai/",
+                "official_portal_domain": "outlier.ai",
+                "official_fee": "100% Free Application (No Fees)",
+                "processing_time": "1–3 Days after Skills Screening",
+                "application_steps": {
+                        "en": [
+                                "Visit the official Outlier website (outlier.ai).",
+                                "Sign up and choose your specialization (Coding, STEM, Reasoning, Writing).",
+                                "Complete the initial skill assessment and verification test.",
+                                "Once approved, receive project tasks on your dashboard and start earning weekly."
+                        ],
+                        "bn": [
+                                "অফিসিয়াল ওয়েবসাইট outlier.ai তে যান।",
+                                "রেজিস্ট্রেশন করুন এবং আপনার পছন্দের ক্ষেত্র (কোডিং, গণিত, বিজ্ঞান ইত্যাদি) নির্বাচন করুন।",
+                                "অনলাইন স্কিল অ্যাসেসমেন্ট টেস্ট সম্পন্ন করুন।",
+                                "অনুমোদন পাওয়ার পর ড্যাশবোর্ডে প্রোজেক্ট টাস্ক পাওয়া শুরু করুন এবং সাপ্তাহিক পারিশ্রমিক পান।"
+                        ],
+                        "hi": [
+                                "आधिकारिक वेबसाइट outlier.ai पर जाएं।",
+                                "साइन अप करें और अपना विशेषज्ञता क्षेत्र चुनें।",
+                                "प्रारंभिक कौशल मूल्यांकन पूरा करें।",
+                                "स्वीकृति मिलने के बाद काम शुरू करें और साप्ताहिक भुगतान पाएं।"
+                        ]
+                },
+                "keywords": [
+                        "Outlier",
+                        "Outlier AI",
+                        "AI Training",
+                        "AI Freelancer",
+                        "Remote AI Job",
+                        "LLM Trainer",
+                        "RLHF",
+                        "Coding Freelancer",
+                        "Python AI",
+                        "Scale AI",
+                        "Train AI"
+                ],
+                "verification_badge": "🟢 Verified Official Portal",
+                "last_verified_date": "2026-09-29"
+        },
+        {
                 "service_id": "wb-annapurna-bhandar-scheme",
                 "service_name": {
                         "en": "Annapurna Bhandar Scheme (West Bengal)",
