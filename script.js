@@ -170,7 +170,7 @@ function initLucide() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function initApp() {
     initLucide();
     initEmailJS();
 
@@ -2932,23 +2932,70 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Toggle language dropdown
-    if (langBtn && langSwitcher) {
+    // Language feedback toast notification
+    function showLanguageToast(lang) {
+        const labels = {
+            en: "Language: English",
+            bn: "ভাষা: বাংলা (Bengali)",
+            hi: "भाषा: हिन्दी (Hindi)"
+        };
+        let toast = document.getElementById("langToast");
+        if (!toast) {
+            toast = document.createElement("div");
+            toast.id = "langToast";
+            toast.className = "lang-toast";
+            document.body.appendChild(toast);
+        }
+        toast.textContent = labels[lang] || labels.en;
+        toast.classList.remove("show");
+        void toast.offsetWidth; // trigger reflow
+        toast.classList.add("show");
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2200);
+    }
+
+    // Direct cycle through languages (EN -> BN -> HI -> EN)
+    function cycleLanguage() {
+        const current = document.documentElement.getAttribute("lang") || "en";
+        const idx = SUPPORTED_LANGS.indexOf(current);
+        const nextLang = SUPPORTED_LANGS[(idx + 1) % SUPPORTED_LANGS.length] || "en";
+        setLanguage(nextLang);
+        showLanguageToast(nextLang);
+        return nextLang;
+    }
+    window.cycleLanguage = cycleLanguage;
+    window.setLanguage = setLanguage;
+
+    // Toggle / Cycle language on button click
+    if (langBtn) {
         langBtn.addEventListener("click", (e) => {
             e.stopPropagation();
-            const isOpen = langSwitcher.classList.toggle("is-open");
-            langBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            // On mobile / compact navbar (<= 1024px), direct tap cycles through languages instantly!
+            if (window.innerWidth <= 1024) {
+                cycleLanguage();
+                if (langSwitcher) langSwitcher.classList.remove("is-open");
+                langBtn.setAttribute("aria-expanded", "false");
+                return;
+            }
+
+            // On desktop (> 1024px), toggle the language dropdown
+            if (langSwitcher) {
+                const isOpen = langSwitcher.classList.toggle("is-open");
+                langBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            }
         });
 
         document.addEventListener("click", (e) => {
-            if (!langSwitcher.contains(e.target)) {
+            if (langSwitcher && !langSwitcher.contains(e.target)) {
                 langSwitcher.classList.remove("is-open");
                 langBtn.setAttribute("aria-expanded", "false");
             }
         });
 
         document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && langSwitcher.classList.contains("is-open")) {
+            if (e.key === "Escape" && langSwitcher && langSwitcher.classList.contains("is-open")) {
                 langSwitcher.classList.remove("is-open");
                 langBtn.setAttribute("aria-expanded", "false");
                 langBtn.focus();
@@ -2958,10 +3005,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Dropdown option clicks
     langOpts.forEach((opt) => {
-        opt.addEventListener("click", () => {
+        opt.addEventListener("click", (e) => {
+            e.stopPropagation();
             const selectedLang = opt.getAttribute("data-lang");
             if (selectedLang) {
                 setLanguage(selectedLang);
+                showLanguageToast(selectedLang);
             }
             if (langSwitcher) {
                 langSwitcher.classList.remove("is-open");
@@ -2970,12 +3019,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Mobile lang button clicks
+    // Mobile drawer lang button clicks
     mobileLangBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
             const selectedLang = btn.getAttribute("data-lang");
             if (selectedLang) {
                 setLanguage(selectedLang);
+                showLanguageToast(selectedLang);
             }
         });
     });
@@ -3642,7 +3693,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize language with multi-layer detection (URL param -> LocalStorage -> Browser locale -> English default)
     const initialLang = detectPreferredLanguage();
     setLanguage(initialLang, false);
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initApp);
+} else {
+    initApp();
+}
 
 window.addEventListener("load", () => {
     if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
