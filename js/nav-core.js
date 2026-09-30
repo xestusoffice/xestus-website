@@ -1,8 +1,8 @@
 /**
  * XESTUS | Universal Header & Responsive Navigation Engine
  * Tagline: Intelligence Beyond Limits
- * Version: 3.3.0
- * Handles Mobile Menu Drawer, Theme Switcher (Day / Night / Eye Protect), and Responsive Layout
+ * Version: 4.0.0
+ * Handles Mobile Menu Drawer, Theme Switcher (Night / Day / Eye Protect), Dropdowns & Smooth Anchor Navigation
  */
 
 (function () {
@@ -10,23 +10,27 @@
 
     const THEME_STORAGE_KEY = "xestus_theme";
 
-    // 1. Initialize Theme: Permanently locked to night mode
+    // 1. Initialize Theme (Day / Night / Eye Protect)
     function applyStoredTheme() {
         try {
-            document.documentElement.setAttribute("data-theme", "night");
-            localStorage.setItem(THEME_STORAGE_KEY, "night");
-        } catch (_) {}
+            const saved = localStorage.getItem(THEME_STORAGE_KEY) || "night";
+            setTheme(saved);
+        } catch (_) {
+            setTheme("night");
+        }
     }
 
     function updateThemeUI(theme) {
         const themeLabels = {
             "night": "Night",
             "day": "Day",
-            };
+            "eye-protect": "Eye Protect"
+        };
         const themeIcons = {
             "night": "moon",
             "day": "sun",
-            };
+            "eye-protect": "glasses"
+        };
 
         const currentLabel = document.querySelector(".theme-current-label");
         if (currentLabel) {
@@ -44,13 +48,22 @@
             opt.classList.toggle("active", optTheme === theme);
         });
 
+        // Update single-button toggle icon if present
+        const singleToggle = document.getElementById("themeToggle");
+        if (singleToggle) {
+            const icon = singleToggle.querySelector("[data-lucide]");
+            if (icon) {
+                icon.setAttribute("data-lucide", theme === "night" ? "sun" : "moon");
+            }
+        }
+
         if (window.lucide && typeof window.lucide.createIcons === "function") {
             window.lucide.createIcons();
         }
     }
 
     function setTheme(theme) {
-        if (!["night", "day"].includes(theme)) return;
+        if (!["night", "day", "eye-protect"].includes(theme)) return;
         document.documentElement.setAttribute("data-theme", theme);
         try {
             localStorage.setItem(THEME_STORAGE_KEY, theme);
@@ -59,13 +72,16 @@
         window.dispatchEvent(new CustomEvent("xestus:theme-changed", { detail: { theme } }));
     }
 
-    // 2. Initialize Navigation Drawer & Interactivity
+    // 2. Initialize Navigation Drawer & Dropdowns
     function initNavigation() {
         const menuToggle = document.getElementById("menuToggle") || document.querySelector(".menu-toggle");
         const navLinks = document.getElementById("primaryNav") || document.querySelector(".nav-links");
+        const mobileDrawer = document.getElementById("mobileDrawer");
+        const drawerClose = document.getElementById("drawerClose");
         const themeBtn = document.getElementById("themeBtn");
         const themeSwitcher = document.getElementById("themeSwitcher");
         const themeOpts = document.querySelectorAll(".theme-opt, .mobile-theme-btn");
+        const singleThemeToggle = document.getElementById("themeToggle");
 
         let isNavOpen = false;
 
@@ -78,56 +94,96 @@
             if (navLinks) {
                 navLinks.classList.toggle("active", isNavOpen);
             }
+            if (mobileDrawer) {
+                mobileDrawer.classList.toggle("open", isNavOpen);
+                mobileDrawer.setAttribute("aria-hidden", isNavOpen ? "false" : "true");
+            }
             document.body.classList.toggle("nav-open", isNavOpen);
         }
 
-        if (menuToggle && navLinks) {
+        if (menuToggle) {
             menuToggle.addEventListener("click", (e) => {
+                e.preventDefault();
                 e.stopPropagation();
                 setNavState(!isNavOpen);
             });
+        }
 
-            // Close when clicking nav items
-            const links = navLinks.querySelectorAll("a");
-            links.forEach((link) => {
-                link.addEventListener("click", () => {
-                    setNavState(false);
-                });
-            });
-
-            // Close on Escape
-            document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape" && isNavOpen) {
-                    setNavState(false);
-                }
-            });
-
-            // Close on click outside
-            document.addEventListener("click", (e) => {
-                if (isNavOpen && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                    setNavState(false);
-                }
+        if (drawerClose) {
+            drawerClose.addEventListener("click", (e) => {
+                e.preventDefault();
+                setNavState(false);
             });
         }
+
+        // Close on clicking any link inside navigation
+        const allNavLinks = document.querySelectorAll("#primaryNav a, .nav-links a, #mobileDrawer a");
+        allNavLinks.forEach((link) => {
+            link.addEventListener("click", (e) => {
+                const href = link.getAttribute("href");
+                if (href && href.startsWith("#") && href.length > 1) {
+                    const targetEl = document.querySelector(href);
+                    if (targetEl) {
+                        e.preventDefault();
+                        setNavState(false);
+                        const header = document.querySelector(".site-header") || document.querySelector(".nav-container");
+                        const headerOffset = header ? header.offsetHeight + 10 : 75;
+                        const targetY = targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                        window.scrollTo({
+                            top: Math.max(0, targetY),
+                            behavior: "smooth"
+                        });
+                        if (window.history && window.history.pushState) {
+                            window.history.pushState(null, "", href);
+                        }
+                    } else {
+                        setNavState(false);
+                    }
+                } else {
+                    setNavState(false);
+                }
+            });
+        });
+
+        // Close on Escape
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                if (isNavOpen) setNavState(false);
+                if (themeSwitcher) {
+                    themeSwitcher.classList.remove("is-open");
+                    if (themeBtn) themeBtn.setAttribute("aria-expanded", "false");
+                }
+            }
+        });
+
+        // Close on click outside
+        document.addEventListener("click", (e) => {
+            if (isNavOpen) {
+                const clickedInsideNav = (navLinks && navLinks.contains(e.target)) || (mobileDrawer && mobileDrawer.contains(e.target));
+                const clickedToggle = menuToggle && menuToggle.contains(e.target);
+                if (!clickedInsideNav && !clickedToggle) {
+                    setNavState(false);
+                }
+            }
+            if (themeSwitcher && !themeSwitcher.contains(e.target)) {
+                themeSwitcher.classList.remove("is-open");
+                if (themeBtn) themeBtn.setAttribute("aria-expanded", "false");
+            }
+        });
 
         // Theme Switcher Dropdown
         if (themeBtn && themeSwitcher) {
             themeBtn.addEventListener("click", (e) => {
+                e.preventDefault();
                 e.stopPropagation();
                 const isOpen = themeSwitcher.classList.toggle("is-open");
                 themeBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-            });
-
-            document.addEventListener("click", (e) => {
-                if (!themeSwitcher.contains(e.target)) {
-                    themeSwitcher.classList.remove("is-open");
-                    themeBtn.setAttribute("aria-expanded", "false");
-                }
             });
         }
 
         themeOpts.forEach((opt) => {
             opt.addEventListener("click", (e) => {
+                e.preventDefault();
                 e.stopPropagation();
                 const t = opt.getAttribute("data-theme");
                 if (t) {
@@ -139,6 +195,16 @@
                 }
             });
         });
+
+        // Single Theme Toggle Button (cycle between night and day)
+        if (singleThemeToggle) {
+            singleThemeToggle.addEventListener("click", (e) => {
+                e.preventDefault();
+                const current = document.documentElement.getAttribute("data-theme") || "night";
+                const next = current === "night" ? "day" : "night";
+                setTheme(next);
+            });
+        }
 
         // Current saved theme UI update
         const currentTheme = document.documentElement.getAttribute("data-theme") || "night";

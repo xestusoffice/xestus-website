@@ -175,12 +175,16 @@ function initApp() {
     initEmailJS();
 
     // --------------------------------------------------------------------------
-    // 2. Navigation & Mobile Drawer Controller
+    // 2. Navigation & Mobile Drawer Controller (Universal Smooth Scrolling & Themes)
     // --------------------------------------------------------------------------
     const siteHeader = document.querySelector(".site-header");
     const menuToggle = document.getElementById("menuToggle") || document.querySelector(".menu-toggle");
     const navLinks = document.getElementById("primaryNav") || document.querySelector(".nav-links");
-    const navItems = document.querySelectorAll(".nav-link");
+    const navMoreDropdown = document.getElementById("navMoreDropdown");
+    const navMoreBtn = document.getElementById("navMoreBtn");
+    const themeBtn = document.getElementById("themeBtn");
+    const themeSwitcher = document.getElementById("themeSwitcher");
+    const themeOpts = document.querySelectorAll(".theme-opt, .mobile-theme-btn");
 
     let isNavOpen = false;
 
@@ -196,32 +200,86 @@ function initApp() {
         document.body.classList.toggle("nav-open", isNavOpen);
     }
 
-    if (menuToggle && navLinks) {
+    // Programmatic smooth scroll to any on-page target section
+    function navigateToSection(targetHashOrId, e) {
+        if (!targetHashOrId) return;
+        const cleanId = (targetHashOrId.startsWith("#") ? targetHashOrId.substring(1) : targetHashOrId).trim();
+        if (!cleanId) return;
+
+        const targetEl = document.getElementById(cleanId);
+        if (!targetEl) return;
+
+        if (e && typeof e.preventDefault === "function") {
+            e.preventDefault();
+        }
+
+        // 1. Immediately close mobile drawer and dropdowns
+        setNavState(false);
+        if (navMoreDropdown) {
+            navMoreDropdown.classList.remove("is-open");
+            if (navMoreBtn) navMoreBtn.setAttribute("aria-expanded", "false");
+        }
+        if (themeSwitcher) {
+            themeSwitcher.classList.remove("is-open");
+            if (themeBtn) themeBtn.setAttribute("aria-expanded", "false");
+        }
+
+        // 2. Compute accurate target scroll coordinate with sticky header offset
+        const header = document.querySelector(".site-header") || document.querySelector(".nav-container");
+        const headerHeight = header ? header.getBoundingClientRect().height : 70;
+        const targetRect = targetEl.getBoundingClientRect();
+        const currentScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+        const targetPos = Math.max(0, targetRect.top + currentScrollY - (headerHeight + 10));
+
+        // 3. Smooth scroll
+        window.scrollTo({
+            top: targetPos,
+            behavior: "smooth"
+        });
+
+        // 4. Update URL hash without abrupt jumps
+        if (window.history && window.history.pushState) {
+            window.history.pushState(null, "", `#${cleanId}`);
+        }
+
+        // 5. Highlight active item across all nav bars
+        document.querySelectorAll(".nav-link, .nav-dropdown-item").forEach((item) => {
+            const href = item.getAttribute("href");
+            if (href === `#${cleanId}` || href === targetHashOrId || href === `index.html#${cleanId}`) {
+                item.classList.add("active");
+            } else if (href && href.startsWith("#")) {
+                item.classList.remove("active");
+            }
+        });
+    }
+
+    // Hamburger toggle click
+    if (menuToggle) {
         menuToggle.addEventListener("click", (e) => {
+            e.preventDefault();
             e.stopPropagation();
             setNavState(!isNavOpen);
         });
+    }
 
-        // Close when clicking nav items
-        navItems.forEach((item) => {
-            item.addEventListener("click", () => {
-                navItems.forEach((link) => link.classList.remove("active"));
-                item.classList.add("active");
-                setNavState(false);
-            });
-        });
-
-        // Close on Escape key press
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && isNavOpen) {
-                setNavState(false);
-            }
-        });
-
-        // Close when clicking outside navigation
-        document.addEventListener("click", (e) => {
-            if (isNavOpen && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                setNavState(false);
+    // Close mobile drawer when clicking any link inside nav-links
+    if (navLinks) {
+        navLinks.addEventListener("click", (e) => {
+            const link = e.target.closest("a");
+            if (link) {
+                const href = link.getAttribute("href");
+                if (href && (href.startsWith("#") || href.includes("#"))) {
+                    const hashIndex = href.indexOf("#");
+                    const hash = href.substring(hashIndex);
+                    const targetEl = document.getElementById(hash.substring(1));
+                    if (targetEl) {
+                        navigateToSection(hash, e);
+                    } else {
+                        setNavState(false);
+                    }
+                } else {
+                    setNavState(false);
+                }
             }
         });
     }
@@ -229,9 +287,6 @@ function initApp() {
     // --------------------------------------------------------------------------
     // 2B. Desktop "More ▾" Navigation Dropdown Controller
     // --------------------------------------------------------------------------
-    const navMoreDropdown = document.getElementById("navMoreDropdown");
-    const navMoreBtn = document.getElementById("navMoreBtn");
-
     if (navMoreDropdown && navMoreBtn) {
         navMoreBtn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -239,33 +294,177 @@ function initApp() {
             const isOpen = navMoreDropdown.classList.toggle("is-open");
             navMoreBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
         });
+    }
 
-        // Close dropdown when clicking any dropdown item
-        const navDropdownItems = navMoreDropdown.querySelectorAll(".nav-dropdown-item");
-        navDropdownItems.forEach((item) => {
-            item.addEventListener("click", () => {
-                navMoreDropdown.classList.remove("is-open");
-                navMoreBtn.setAttribute("aria-expanded", "false");
-            });
+    // --------------------------------------------------------------------------
+    // 2C. Theme Switcher Controller (Day / Night / Eye Protect)
+    // --------------------------------------------------------------------------
+    function applyTheme(theme) {
+        if (!["night", "day", "eye-protect"].includes(theme)) return;
+        document.documentElement.setAttribute("data-theme", theme);
+        try {
+            localStorage.setItem("xestus_theme", theme);
+        } catch (_) {}
+
+        const themeLabels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+        const themeIcons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+
+        const currentLabel = document.querySelector(".theme-current-label");
+        if (currentLabel) currentLabel.textContent = themeLabels[theme] || "Night";
+
+        const activeIcon = document.querySelector(".theme-active-icon");
+        if (activeIcon) activeIcon.setAttribute("data-lucide", themeIcons[theme] || "moon");
+
+        themeOpts.forEach((opt) => {
+            const optTheme = opt.getAttribute("data-theme");
+            opt.classList.toggle("active", optTheme === theme);
         });
 
-        // Close dropdown when clicking outside
-        document.addEventListener("click", (e) => {
-            if (!navMoreDropdown.contains(e.target)) {
-                navMoreDropdown.classList.remove("is-open");
-                navMoreBtn.setAttribute("aria-expanded", "false");
-            }
-        });
+        if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+            lucide.createIcons();
+        }
+        window.dispatchEvent(new CustomEvent("xestus:theme-changed", { detail: { theme } }));
+    }
 
-        // Close on Escape key press
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && navMoreDropdown.classList.contains("is-open")) {
-                navMoreDropdown.classList.remove("is-open");
-                navMoreBtn.setAttribute("aria-expanded", "false");
-                navMoreBtn.focus();
-            }
+    if (themeBtn && themeSwitcher) {
+        themeBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = themeSwitcher.classList.toggle("is-open");
+            themeBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
         });
     }
+
+    themeOpts.forEach((opt) => {
+        opt.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const t = opt.getAttribute("data-theme");
+            if (t) {
+                applyTheme(t);
+                if (themeSwitcher) {
+                    themeSwitcher.classList.remove("is-open");
+                    if (themeBtn) themeBtn.setAttribute("aria-expanded", "false");
+                }
+            }
+        });
+    });
+
+    try {
+        const savedTheme = localStorage.getItem("xestus_theme") || "night";
+        applyTheme(savedTheme);
+    } catch (_) {
+        applyTheme("night");
+    }
+
+    // --------------------------------------------------------------------------
+    // 2D. Universal Section Anchor Click & Smooth Navigation Listener
+    // --------------------------------------------------------------------------
+    document.addEventListener("click", (e) => {
+        const anchor = e.target.closest('a[href*="#"]');
+        if (!anchor) return;
+
+        const href = anchor.getAttribute("href");
+        if (!href || href === "#" || href.startsWith("#modal") || href.startsWith("#dialog")) return;
+
+        const isAnchorOnly = href.startsWith("#");
+        const isIndexAnchor = href.startsWith("index.html#") || href.startsWith("./index.html#");
+        const isCurrentPageAnchor = isAnchorOnly || (isIndexAnchor && (window.location.pathname.endsWith("index.html") || window.location.pathname.endsWith("/")));
+
+        if (isAnchorOnly || isCurrentPageAnchor) {
+            const hashIndex = href.indexOf("#");
+            const hash = href.substring(hashIndex);
+            const targetId = hash.substring(1);
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+                navigateToSection(hash, e);
+            }
+        }
+    });
+
+    // Close dropdowns and drawer on outside click
+    document.addEventListener("click", (e) => {
+        if (isNavOpen && navLinks && !navLinks.contains(e.target) && menuToggle && !menuToggle.contains(e.target)) {
+            setNavState(false);
+        }
+        if (navMoreDropdown && !navMoreDropdown.contains(e.target)) {
+            navMoreDropdown.classList.remove("is-open");
+            if (navMoreBtn) navMoreBtn.setAttribute("aria-expanded", "false");
+        }
+        if (themeSwitcher && !themeSwitcher.contains(e.target)) {
+            themeSwitcher.classList.remove("is-open");
+            if (themeBtn) themeBtn.setAttribute("aria-expanded", "false");
+        }
+    });
+
+    // Close dropdowns on Escape key press
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            if (isNavOpen) setNavState(false);
+            if (navMoreDropdown && navMoreDropdown.classList.contains("is-open")) {
+                navMoreDropdown.classList.remove("is-open");
+                if (navMoreBtn) navMoreBtn.setAttribute("aria-expanded", "false");
+                navMoreBtn.focus();
+            }
+            if (themeSwitcher && themeSwitcher.classList.contains("is-open")) {
+                themeSwitcher.classList.remove("is-open");
+                if (themeBtn) themeBtn.setAttribute("aria-expanded", "false");
+            }
+        }
+    });
+
+    // --------------------------------------------------------------------------
+    // 2E. Active Navigation ScrollSpy (IntersectionObserver)
+    // --------------------------------------------------------------------------
+    const trackedSectionIds = [
+        "home",
+        "digital-services",
+        "services",
+        "portfolio",
+        "lab",
+        "tools",
+        "about",
+        "faq",
+        "internship",
+        "roadmap",
+        "products",
+        "contact"
+    ];
+    const trackedSections = trackedSectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+
+    if (typeof IntersectionObserver !== "undefined" && trackedSections.length > 0) {
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    document.querySelectorAll(".nav-link, .nav-dropdown-item").forEach((link) => {
+                        const href = link.getAttribute("href");
+                        if (href === `#${id}` || href === `index.html#${id}`) {
+                            link.classList.add("active");
+                        } else if (href && href.startsWith("#") && href.length > 1) {
+                            link.classList.remove("active");
+                        }
+                    });
+                }
+            });
+        }, {
+            rootMargin: "-25% 0px -55% 0px",
+            threshold: 0.05
+        });
+
+        trackedSections.forEach((sec) => navObserver.observe(sec));
+    }
+
+    // Initial Hash Check & Auto-scroll on load
+    function handleInitialHash() {
+        if (window.location.hash && window.location.hash.length > 1) {
+            setTimeout(() => {
+                navigateToSection(window.location.hash);
+            }, 150);
+        }
+    }
+    handleInitialHash();
+    window.addEventListener("hashchange", handleInitialHash);
 
     // --------------------------------------------------------------------------
     // 3. Consolidated Scroll State & Progress Bar (rAF Throttled)
