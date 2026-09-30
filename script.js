@@ -2932,13 +2932,8 @@ function initApp() {
         }
     }
 
-    // Language feedback toast notification
-    function showLanguageToast(lang) {
-        const labels = {
-            en: "Language: English",
-            bn: "ভাষা: বাংলা (Bengali)",
-            hi: "भाषा: हिन्दी (Hindi)"
-        };
+    // General toast notification feedback
+    function showToastMessage(msg) {
         let toast = document.getElementById("langToast");
         if (!toast) {
             toast = document.createElement("div");
@@ -2946,14 +2941,25 @@ function initApp() {
             toast.className = "lang-toast";
             document.body.appendChild(toast);
         }
-        toast.textContent = labels[lang] || labels.en;
+        toast.textContent = msg;
         toast.classList.remove("show");
         void toast.offsetWidth; // trigger reflow
         toast.classList.add("show");
         clearTimeout(toast._timer);
         toast._timer = setTimeout(() => {
             toast.classList.remove("show");
-        }, 2200);
+        }, 2800);
+    }
+    window.showToastMessage = showToastMessage;
+
+    // Language feedback toast notification
+    function showLanguageToast(lang) {
+        const labels = {
+            en: "Language: English",
+            bn: "ভাষা: বাংলা (Bengali)",
+            hi: "भाषा: हिन्दी (Hindi)"
+        };
+        showToastMessage(labels[lang] || labels.en);
     }
 
     // Direct cycle through languages (EN -> BN -> HI -> EN)
@@ -3686,6 +3692,61 @@ function initApp() {
             messageField.focus();
         }
     };
+
+    // --------------------------------------------------------------------------
+    // 15. Progressive Web App (PWA) & Bookmark Action Controller
+    // --------------------------------------------------------------------------
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("sw.js").catch(() => {});
+    }
+
+    let deferredPrompt = null;
+    const pwaInstallBtn = document.getElementById("pwaInstallBtn");
+    const bookmarkSiteBtn = document.getElementById("bookmarkSiteBtn");
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (pwaInstallBtn) {
+            pwaInstallBtn.classList.add("ready-to-install");
+        }
+    });
+
+    if (pwaInstallBtn) {
+        pwaInstallBtn.addEventListener("click", async (e) => {
+            e.stopPropagation();
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === "accepted") {
+                    showToastMessage("✓ XESTUS App Installed!");
+                }
+                deferredPrompt = null;
+            } else {
+                const currentLang = document.documentElement.getAttribute("lang") || "en";
+                const trans = window.XESTUS_TRANSLATIONS || {};
+                const msg = (trans[currentLang] && trans[currentLang]["pwa.installed_toast"]) || 
+                    "✓ XESTUS Web App is ready to install / installed on your device!";
+                showToastMessage(msg);
+            }
+        });
+    }
+
+    window.addEventListener("appinstalled", () => {
+        deferredPrompt = null;
+        showToastMessage("✓ XESTUS App Installed on Home Screen!");
+    });
+
+    if (bookmarkSiteBtn) {
+        bookmarkSiteBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const currentLang = document.documentElement.getAttribute("lang") || "en";
+            const trans = window.XESTUS_TRANSLATIONS || {};
+            const msg = (trans[currentLang] && trans[currentLang]["pwa.bookmark_toast"]) || 
+                "⭐ Press Ctrl + D (or Cmd + D) to bookmark XESTUS!";
+            showToastMessage(msg);
+        });
+    }
 
     updateEstimatorUI();
     initLiveStats();

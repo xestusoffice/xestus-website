@@ -17317,6 +17317,57 @@ button.btn-assist-modal-trigger:hover {
         border-color: #c084fc !important;
     }
 
+    /* Mobile App Strip inside Drawer (PWA Install & Bookmark) */
+    .mobile-app-strip {
+        display: flex !important;
+        align-items: center !important;
+        gap: clamp(4px, 1.2vw, 6px) !important;
+        margin: clamp(2px, 0.8vw, 4px) 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .mobile-app-btn {
+        flex: 1 1 50% !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: clamp(4px, 1vw, 6px) !important;
+        min-height: clamp(34px, 8vw, 38px) !important;
+        padding: clamp(5px, 1.2vw, 7px) clamp(6px, 1.5vw, 10px) !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.14)) !important;
+        border-radius: clamp(8px, 2vw, 10px) !important;
+        color: var(--text-primary, #ffffff) !important;
+        font-size: clamp(11px, 2.7vw, 12px) !important;
+        font-weight: 700 !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        box-sizing: border-box !important;
+    }
+
+    .mobile-app-btn svg {
+        width: clamp(13px, 3.2vw, 15px) !important;
+        height: clamp(13px, 3.2vw, 15px) !important;
+        color: var(--cyan-primary, #00bfff) !important;
+        flex-shrink: 0 !important;
+    }
+
+    .mobile-app-btn:hover {
+        background: rgba(0, 191, 255, 0.15) !important;
+        border-color: var(--cyan-primary, #00bfff) !important;
+        color: #ffffff !important;
+    }
+
+    .btn-install-pwa {
+        background: linear-gradient(135deg, rgba(0, 191, 255, 0.12), rgba(147, 51, 234, 0.12)) !important;
+        border-color: rgba(0, 191, 255, 0.35) !important;
+    }
+
+    .btn-install-pwa:hover {
+        background: linear-gradient(135deg, rgba(0, 191, 255, 0.25), rgba(147, 51, 234, 0.25)) !important;
+        border-color: #38d6ff !important;
+    }
+
     /* Drawer CTA button */
     .mobile-drawer-cta {
         display: flex !important;
@@ -17405,6 +17456,18 @@ button.btn-assist-modal-trigger:hover {
         border-color: #e2e8f0 !important;
     }
 
+    [data-theme="day"] .mobile-app-btn {
+        background: #f8fafc !important;
+        border-color: #cbd5e1 !important;
+        color: #0f172a !important;
+    }
+
+    [data-theme="day"] .mobile-app-btn:hover {
+        background: rgba(2, 132, 199, 0.1) !important;
+        color: #0284c7 !important;
+        border-color: #0284c7 !important;
+    }
+
     [data-theme="day"] .mobile-lang-btn,
     [data-theme="day"] .mobile-theme-btn {
         background: #ffffff !important;
@@ -17484,6 +17547,18 @@ button.btn-assist-modal-trigger:hover {
     [data-theme="eye-protect"] .mobile-theme-strip {
         background: #f5efe6 !important;
         border-color: #e5dacb !important;
+    }
+
+    [data-theme="eye-protect"] .mobile-app-btn {
+        background: #f5efe6 !important;
+        border-color: #d8ccbc !important;
+        color: #2c241b !important;
+    }
+
+    [data-theme="eye-protect"] .mobile-app-btn:hover {
+        background: rgba(14, 116, 144, 0.1) !important;
+        color: #0e7490 !important;
+        border-color: #0e7490 !important;
     }
 
     [data-theme="eye-protect"] .mobile-lang-btn,

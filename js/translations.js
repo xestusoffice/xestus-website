@@ -23,6 +23,10 @@ window.XESTUS_TRANSLATIONS = {
     "common.get_help": "Get Digital Help",
     "common.contact_us": "Contact XESTUS",
     "common.discuss_project": "Discuss Project",
+    "pwa.install_app": "Install Web App",
+    "pwa.bookmark_site": "Bookmark Site",
+    "pwa.installed_toast": "✓ XESTUS Web App is ready to install / installed on your device!",
+    "pwa.bookmark_toast": "⭐ Press Ctrl+D (Cmd+D on Mac) or tap browser menu to bookmark XESTUS!",
 
     // Navigation
     "nav.services": "Services",
@@ -468,6 +472,10 @@ window.XESTUS_TRANSLATIONS = {
     "common.get_help": "ডিজিটাল সহায়তা নিন",
     "common.contact_us": "যোগাযোগ করুন",
     "common.discuss_project": "প্রজেক্ট নিয়ে কথা বলুন",
+    "pwa.install_app": "ওয়েব অ্যাপ ইনস্টল করুন",
+    "pwa.bookmark_site": "বুকমার্ক করুন",
+    "pwa.installed_toast": "✓ XESTUS অ্যাপটি আপনার ডিভাইসে যুক্ত করার জন্য প্রস্তুত!",
+    "pwa.bookmark_toast": "⭐ বুকমার্ক করতে Ctrl+D চাপুন (বা ব্রাউজার মেনু থেকে বুকমার্ক করুন)!",
 
     // Navigation
     "nav.services": "পরিষেবা",
@@ -913,6 +921,10 @@ window.XESTUS_TRANSLATIONS = {
     "common.get_help": "डिजिटल सहायता लें",
     "common.contact_us": "संपर्क करें",
     "common.discuss_project": "प्रोजेक्ट पर चर्चा करें",
+    "pwa.install_app": "वेब ऐप इंस्टॉल करें",
+    "pwa.bookmark_site": "बुकमार्क करें",
+    "pwa.installed_toast": "✓ XESTUS ऐप आपके डिवाइस पर जोड़ने के लिए तैयार है!",
+    "pwa.bookmark_toast": "⭐ बुकमार्क करने के लिए Ctrl+D दबाएं (या ब्राउज़र मेनू से बुकमार्क करें)!",
 
     // Navigation
     "nav.services": "सेवाएं",
