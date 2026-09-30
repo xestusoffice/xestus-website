@@ -29,6 +29,7 @@ window.XESTUS_TRANSLATIONS = {
     "nav.solutions": "Solutions",
     "nav.digital_services": "Digital Help",
     "nav.tools": "Tools",
+    "nav.tools_dir": "Tools Directory",
     "nav.projects": "Projects",
     "nav.products": "Products",
     "nav.lab": "Innovation Lab",
@@ -38,6 +39,7 @@ window.XESTUS_TRANSLATIONS = {
     "nav.follow": "Follow",
     "nav.faq": "FAQ",
     "nav.contact": "Contact",
+    "nav.internship": "Internship & Training",
     "nav.more": "More",
 
     // Hero Section
@@ -53,6 +55,14 @@ window.XESTUS_TRANSLATIONS = {
     "hero.cap3_val": "Cloud & Web",
     "hero.cap3_lbl": "Scalable Systems",
     "hero.trusted": "Trusted by innovators",
+
+    // Truthful Core Commitments (KPI Cards)
+    "kpi.client_side": "Client-Side",
+    "kpi.client_side_sub": "Privacy-First In-Browser Utilities",
+    "kpi.edge_cdn": "Edge CDN",
+    "kpi.edge_cdn_sub": "Resilient Global Infrastructure",
+    "kpi.direct_sla": "Direct SLA",
+    "kpi.direct_sla_sub": "Senior Engineering Collaboration",
 
     // Floating HUD Tags
     "hud.aiml": "AI & ML",
@@ -464,6 +474,7 @@ window.XESTUS_TRANSLATIONS = {
     "nav.solutions": "সলিউশন",
     "nav.digital_services": "ডিজিটাল সহায়তা",
     "nav.tools": "টুলস (Tools)",
+    "nav.tools_dir": "টুলস ডিরেক্টরি",
     "nav.projects": "প্রজেক্টসমূহ",
     "nav.products": "প্রোডাক্টস",
     "nav.lab": "ইনোভেশন ল্যাব",
@@ -473,6 +484,7 @@ window.XESTUS_TRANSLATIONS = {
     "nav.follow": "অনুসরণ",
     "nav.faq": "প্রশ্নোত্তর (FAQ)",
     "nav.contact": "যোগাযোগ",
+    "nav.internship": "ইন্টার্নশিপ ও ট্রেনিং",
     "nav.more": "আরও",
 
     // Hero Section
@@ -488,6 +500,14 @@ window.XESTUS_TRANSLATIONS = {
     "hero.cap3_val": "ক্লাউড ও ওয়েব",
     "hero.cap3_lbl": "গতিশীল সিস্টেম",
     "hero.trusted": "উদ্ভাবকদের আস্থাভাজন",
+
+    // Truthful Core Commitments (KPI Cards)
+    "kpi.client_side": "ক্লায়েন্ট-সাইড",
+    "kpi.client_side_sub": "ব্রাউজারে ১০০% প্রাইভেট ও নিরাপদ ইউটিলিটি",
+    "kpi.edge_cdn": "এজ সিডিএন (Edge CDN)",
+    "kpi.edge_cdn_sub": "শক্তিশালী দ্রুতগতির গ্লোবাল ইনফ্রাস্ট্রাকচার",
+    "kpi.direct_sla": "সরাসরি সহায়তা",
+    "kpi.direct_sla_sub": "সিনিয়র ইঞ্জিনিয়ারিং কোলাবরেশন",
 
     // Floating HUD Tags
     "hud.aiml": "AI & ML",
@@ -899,6 +919,7 @@ window.XESTUS_TRANSLATIONS = {
     "nav.solutions": "सॉल्यूशंस",
     "nav.digital_services": "डिजिटल सहायता",
     "nav.tools": "टूल्स (Tools)",
+    "nav.tools_dir": "टूल्स डायरेक्टरी",
     "nav.projects": "प्रोजेक्ट्स",
     "nav.products": "उत्पाद (Products)",
     "nav.lab": "इनोवेशन लैब",
@@ -908,6 +929,7 @@ window.XESTUS_TRANSLATIONS = {
     "nav.follow": "फ़ॉलो",
     "nav.faq": "सामान्य प्रश्न (FAQ)",
     "nav.contact": "संपर्क",
+    "nav.internship": "इन्टर्नशिप और प्रशिक्षण",
     "nav.more": "और अधिक",
 
     // Hero Section
@@ -923,6 +945,14 @@ window.XESTUS_TRANSLATIONS = {
     "hero.cap3_val": "क्लाउड व वेब",
     "hero.cap3_lbl": "स्केलेबल सिस्टम",
     "hero.trusted": "इनोवेटर्स का भरोसा",
+
+    // Truthful Core Commitments (KPI Cards)
+    "kpi.client_side": "क्लाइंट-साइड",
+    "kpi.client_side_sub": "ब्राउज़र में 100% निजी और सुरक्षित उपयोगिता",
+    "kpi.edge_cdn": "एज सीडीएन (Edge CDN)",
+    "kpi.edge_cdn_sub": "मजबूत और तेज ग्लोबल इंफ्रास्ट्रक्चर",
+    "kpi.direct_sla": "प्रत्यक्ष सहायता",
+    "kpi.direct_sla_sub": "वरिष्ठ इंजीनियरिंग सहयोग",
 
     // Floating HUD Tags
     "hud.aiml": "AI & ML",
