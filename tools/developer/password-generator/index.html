@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="night">
 <head>
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                document.documentElement.setAttribute('data-theme', 'night');
+                localStorage.setItem('xestus_theme', 'night');
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
+    <script src="../../../js/cookie-consent.js?v=4.0.0"></script>
+
     <!-- Google Analytics (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
     <script>
@@ -10,83 +23,67 @@
         gtag('config', 'G-EF3ZRR55YY');
     </script>
 
-    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
-    <script src="../../../js/cookie-consent.js?v=4.0.0"></script>
-
-        <!-- Google AdSense - Official Publisher Code -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869"
-     crossorigin="anonymous"></script>
+    <!-- Google AdSense - Official Publisher Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
-    <title>Strong Password & API Token Generator Online | XESTUS Tools</title>
-    <meta name="description" content="Generate high-entropy, cryptographically random passwords and API tokens online. Customizable length (8–128), character sets, entropy score, and copy button. 100% private.">
-    <meta name="keywords" content="password generator, random token generator, secure password generator, api token generator, password entropy checker">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+
+    <!-- SEO Metadata -->
+    <title>Strong Password Generator — 100% Free Online Browser Utility | XESTUS Tools</title>
+    <meta name="description" content="Generate high-entropy passwords with custom length (8 to 64), symbols, numbers, and real-time brute-force crack time estimator.">
+    <meta name="keywords" content="password generator, strong password generator, random password maker, secure password tool">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://xestus.in/tools/developer/password-generator/">
-    <link rel="icon" type="image/png" href="../../../assets/images/xestus-logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="../../../manifest.json">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xestus.in/tools/developer/password-generator/">
+    <meta property="og:title" content="Strong Password Generator | XESTUS Tools">
+    <meta property="og:description" content="Generate high-entropy passwords with custom length (8 to 64), symbols, numbers, and real-time brute-force crack time estimator.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="../../../style.css?v=1790936593562">
-    <link rel="stylesheet" href="../../tools.css?v=1.0.0">
-    <style>
-        .password-display-card {
-            background: var(--tools-code-bg);
-            border: 2px solid var(--cyan-border);
-            border-radius: var(--radius-xl);
-            padding: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-        .password-display-text {
-            font-family: var(--tools-font-mono);
-            font-size: clamp(18px, 3vw, 24px);
-            color: var(--cyan-bright);
-            word-break: break-all;
-            flex: 1;
-            user-select: all;
-        }
-        .entropy-bar-wrap {
-            width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
-            margin-top: 14px;
-            overflow: hidden;
-        }
-        .entropy-bar-fill {
-            height: 100%;
-            width: 0%;
-            transition: width 0.3s ease, background 0.3s ease;
-        }
-        .controls-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .slider-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .slider-input {
-            flex: 1;
-            accent-color: var(--cyan-primary);
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="../../../tools/tools.css?v=2.1.0">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+
+    <!-- Schema.org SoftwareApplication JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Strong Password Generator",
+      "url": "https://xestus.in/tools/developer/password-generator/",
+      "description": "Generate high-entropy passwords with custom length (8 to 64), symbols, numbers, and real-time brute-force crack time estimator.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "url": "https://xestus.in/"
+      }
+    }
+    </script>
 </head>
 
-<body>
+<body data-tool-slug="password-generator">
+    <!-- Header / Navbar -->
     <header class="site-header" role="banner">
         <nav class="nav-container" aria-label="Main Navigation">
             <a href="../../../index.html#home" class="logo" aria-label="XESTUS Home">
@@ -157,29 +154,44 @@
         </nav>
     </header>
 
+    <!-- Main Tool Container -->
     <main class="tools-app-container" id="main-content">
+        <!-- Breadcrumb -->
         <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
-            <a href="../../../">XESTUS</a>
+            <a href="../../../index.html">XESTUS</a>
             <span class="breadcrumb-sep">/</span>
-            <a href="../../">Tools</a>
+            <a href="../../../tools/index.html">Tools</a>
             <span class="breadcrumb-sep">/</span>
-            <a href="../">Developer</a>
+            <a href="../../../tools/developer/">Security & Crypto</a>
             <span class="breadcrumb-sep">/</span>
-            <span class="breadcrumb-current">Password Generator</span>
+            <span class="breadcrumb-current">Strong Password Generator</span>
         </nav>
 
+        <!-- Tool Header -->
         <header class="tool-header">
             <div class="tool-badge-row">
-                <span class="tool-category-badge"><i data-lucide="lock" style="width:14px;height:14px;"></i> Security Utility</span>
-                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> WebCrypto CSPRNG</span>
+                <span class="tool-category-badge"><i data-lucide="lock" style="width:14px;height:14px;"></i> Security & Crypto</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser • Zero Server Logs</span>
+                
+                <div class="tool-meta-actions">
+                    <button type="button" class="btn-fav-star" id="btnToggleFav">
+                        <i data-lucide="star" style="width:14px;height:14px;"></i>
+                        <span>Add to My Tools</span>
+                    </button>
+                    <button type="button" class="btn-share-tool" id="btnShareTool">
+                        <i data-lucide="share-2" style="width:14px;height:14px;"></i>
+                        <span>Share Tool</span>
+                    </button>
+                </div>
             </div>
-            <h1 class="tool-title">Secure Password &amp; Token Generator</h1>
+            <h1 class="tool-title">Strong Password Generator</h1>
             <p class="tool-description">
-                Generate cryptographically strong passwords and API secret tokens with high entropy. Tailor length, include symbols, numbers, and uppercase letters.
+                Generate high-entropy passwords with custom length (8 to 64), symbols, numbers, and real-time brute-force crack time estimator.
             </p>
         </header>
 
-        <section class="tool-workspace" aria-label="Password Generator Workspace">
+        <!-- Tool Workspace (Pure Action-First UI) -->
+        <section class="tool-workspace" aria-label="Strong Password Generator Workspace">
             <!-- Output Display Card -->
             <div class="password-display-card">
                 <div style="flex: 1; min-width: 240px;">
@@ -252,190 +264,132 @@
             </div>
         </section>
 
-        <section class="tool-info-section">
-            <div class="tool-info-grid">
-                <article class="tool-guide-content">
-                    <h2>How Password Entropy Works</h2>
-                    <p>
-                        Password entropy measures the unpredictable randomness of a password in bits. A 24-character password combining uppercase, lowercase, numbers, and symbols contains approximately <strong>140+ bits of entropy</strong>, requiring trillions of years to brute-force with modern supercomputers.
-                    </p>
-                </article>
-                <aside class="related-tools-card">
-                    <h3 class="related-tools-title">Related Developer Tools</h3>
-                    <div class="related-tools-list">
-                        <a href="../uuid-generator/" class="related-tool-item">
-                            <span class="related-tool-name">UUID v4 Generator</span>
-                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
-                        </a>
-                        <a href="../hash-generator/" class="related-tool-item">
-                            <span class="related-tool-name">Hash Generator (SHA-256)</span>
-                            <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
-                        </a>
-                    </div>
-                </aside>
+        <!-- Responsive Ad Slot (AdSense Compliant) -->
+        <div class="adsense-slot-container" style="margin: 2rem 0; text-align: center; min-height: 90px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px dashed var(--border-color, rgba(255,255,255,0.1));">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-1489572262543869"
+               data-ad-slot="1234567890"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </div>
+
+        <!-- Tool Guide & FAQs Section (Clean, Collapsible, Below Workspace) -->
+        <section class="tool-guide-section">
+            
+      <div class="guide-card">
+        <h2 class="guide-title"><i data-lucide="book-open"></i> How to Use the Strong Password Generator</h2>
+        <div class="guide-content">
+          <p>Generate high-entropy passwords with custom length (8 to 64), symbols, numbers, and real-time brute-force crack time estimator.</p>
+        </div>
+      </div>
+    
+            
+      <div class="guide-card">
+        <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="true">
+              <span>Is my data private and secure?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: block;">
+              <p>Yes, 100%. All processing runs strictly inside your local web browser. No inputs or files are uploaded to any server.</p>
             </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Is this tool completely free to use?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: none;">
+              <p>Yes, all XESTUS tools are 100% free with unlimited usage and zero registration required.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+        </section>
+
+        <!-- Related Tools Section -->
+        <section class="related-tools-section">
+          <div class="section-head-sm">
+            <h3 class="section-title-sm"><i data-lucide="sparkles"></i> Related Daily Utilities</h3>
+            <a href="../../../tools/index.html" class="view-all-link">View All Tools &rarr;</a>
+          </div>
+          <div class="related-grid" id="relatedToolsGrid">
+            <!-- Injected via tools-registry.js -->
+          </div>
         </section>
     </main>
 
-    <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
-        <div class="footer-container">
-            <div class="footer-brand-section">
-                <div class="footer-brand-header">
-                    <a href="../../../#home" class="footer-logo">
-                        <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
-                        <span class="footer-brand-name">XESTUS</span>
-                    </a>
-                    <span class="footer-tagline">Intelligence Beyond Limits</span>
-                </div>
-            </div>
-            <div class="footer-bottom-bar">
-                <div class="footer-copyright">
-                    <p>© 2026 XESTUS. All Rights Reserved.</p>
-                </div>
-                <div class="footer-legal-links">
-                    <a href="../../../privacy-policy.html" class="legal-link-btn">Privacy Policy</a>
-                    <span class="legal-sep" aria-hidden="true">•</span>
-                    <a href="../../../terms.html" class="legal-link-btn">Terms of Service</a>
-                    <span class="legal-sep" aria-hidden="true">•</span>
-                    <a href="../../../disclaimer.html" class="legal-link-btn">Disclaimer</a>
-                    <span class="legal-sep" aria-hidden="true">•</span>
-                    <a href="../../../cookie-policy.html" class="legal-link-btn">Cookie Policy</a>
-                </div>
-                <div class="footer-back-to-top">
-                    <a href="../../" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← All Tools</a>
-                </div>
-            </div>
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <span class="footer-logo">XESTUS<span class="logo-dot">.</span></span>
+          <p class="footer-desc">Practical, high-performance daily digital tools, AI solutions, and engineering hubs designed for repeat daily productivity.</p>
         </div>
+        <div class="footer-col">
+          <h4>Utility Hubs</h4>
+          <ul class="footer-links">
+            <li><a href="../../../tools/calculators/gst-calculator/">GST Calculator</a></li>
+            <li><a href="../../../tools/calculators/percentage-calculator/">Percentage Calculator</a></li>
+            <li><a href="../../../tools/office/word-counter/">Word & Character Counter</a></li>
+            <li><a href="../../../tools/office/qr-generator/">Custom QR Code Maker</a></li>
+            <li><a href="../../../tools/developer/hash-generator/">Hash & Crypto Checksum</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul class="footer-links">
+            <li><a href="../../../tools/">All Daily Tools</a></li>
+            <li><a href="../../../index.html#services">Services & Engineering</a></li>
+            <li><a href="../../../index.html#portfolio">Live Portfolio</a></li>
+            <li><a href="../../../index.html#digital-services">Digital Seva Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal & Privacy</h4>
+          <ul class="footer-links">
+            <li><a href="../../../privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../../../terms.html">Terms of Service</a></li>
+            <li><a href="../../../cookie-policy.html">Cookie Policy</a></li>
+            <li><a href="../../../contact.html">Support & Inquiries</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 XESTUS Technologies. All rights reserved. 100% Client-Side Privacy Guaranteed.</p>
+      </div>
     </footer>
 
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const themeKey = "xestus_theme";
-            const themeBtn = document.getElementById("themeBtn");
-            const themeSwitcher = document.getElementById("themeSwitcher");
-            const themeOpts = document.querySelectorAll(".theme-opt");
-            const currentLabel = document.querySelector(".theme-current-label");
-            const activeIcon = document.querySelector(".theme-active-icon");
-
-            function setTheme(theme) {
-                document.documentElement.setAttribute("data-theme", theme);
-                try { localStorage.setItem(themeKey, theme); } catch (_) {}
-                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
-                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
-                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
-                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
-                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
-                if (window.lucide) lucide.createIcons();
-            }
-
-            const savedTheme = localStorage.getItem(themeKey) || "night";
-            setTheme(savedTheme);
-
-            if (themeBtn && themeSwitcher) {
-                themeBtn.addEventListener("click", (e) => {
-                    e.stopPropagation();
-                    themeSwitcher.classList.toggle("is-open");
-                });
-                document.addEventListener("click", (e) => {
-                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
-                });
-            }
-
-            themeOpts.forEach(opt => {
-                opt.addEventListener("click", () => {
-                    setTheme(opt.getAttribute("data-theme"));
-                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
-                });
-            });
-
-            // Password Generator Logic
-            const passwordOutput = document.getElementById("passwordOutput");
-            const sliderLength = document.getElementById("sliderLength");
-            const lengthVal = document.getElementById("lengthVal");
-            const chkUpper = document.getElementById("chkUpper");
-            const chkLower = document.getElementById("chkLower");
-            const chkNumbers = document.getElementById("chkNumbers");
-            const chkSymbols = document.getElementById("chkSymbols");
-            const chkAvoidAmbiguous = document.getElementById("chkAvoidAmbiguous");
-            const btnRegenerate = document.getElementById("btnRegenerate");
-            const btnCopy = document.getElementById("btnCopy");
-            const copyBtnText = document.getElementById("copyBtnText");
-            const entropyBar = document.getElementById("entropyBar");
-            const entropyText = document.getElementById("entropyText");
-
-            const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const LOWER = "abcdefghijklmnopqrstuvwxyz";
-            const NUMS = "0123456789";
-            const SYMBOLS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
-            const AMBIGUOUS = /[l1IO0]/g;
-
-            function generatePassword() {
-                const len = parseInt(sliderLength.value, 10);
-                lengthVal.textContent = len;
-
-                let pool = "";
-                if (chkUpper.checked) pool += UPPER;
-                if (chkLower.checked) pool += LOWER;
-                if (chkNumbers.checked) pool += NUMS;
-                if (chkSymbols.checked) pool += SYMBOLS;
-
-                if (chkAvoidAmbiguous.checked) {
-                    pool = pool.replace(AMBIGUOUS, "");
-                }
-
-                if (!pool) {
-                    passwordOutput.textContent = "Select at least one character set!";
-                    entropyBar.style.width = "0%";
-                    entropyText.textContent = "Entropy: 0 bits";
-                    return;
-                }
-
-                const bytes = new Uint32Array(len);
-                crypto.getRandomValues(bytes);
-                let pwd = "";
-                for (let i = 0; i < len; i++) {
-                    pwd += pool[bytes[i] % pool.length];
-                }
-
-                passwordOutput.textContent = pwd;
-
-                // Calculate Entropy
-                const poolSize = pool.length;
-                const entropy = Math.round(len * Math.log2(poolSize));
-                let rating = "Weak";
-                let color = "#ff4d6a";
-                let pct = Math.min(100, Math.round((entropy / 128) * 100));
-
-                if (entropy >= 80) { rating = "Very Strong"; color = "#00ff88"; }
-                else if (entropy >= 60) { rating = "Strong"; color = "#00bfff"; }
-                else if (entropy >= 40) { rating = "Moderate"; color = "#ffaa00"; }
-
-                entropyBar.style.width = `${pct}%`;
-                entropyBar.style.background = color;
-                entropyText.textContent = `Entropy: ~${entropy} bits (${rating}) • Generated via CSPRNG`;
-            }
-
-            sliderLength.addEventListener("input", generatePassword);
-            chkUpper.addEventListener("change", generatePassword);
-            chkLower.addEventListener("change", generatePassword);
-            chkNumbers.addEventListener("change", generatePassword);
-            chkSymbols.addEventListener("change", generatePassword);
-            chkAvoidAmbiguous.addEventListener("change", generatePassword);
-            btnRegenerate.addEventListener("click", generatePassword);
-
-            btnCopy.addEventListener("click", () => {
-                const pwd = passwordOutput.textContent;
-                if (!pwd || pwd.startsWith("Select")) return;
-                navigator.clipboard.writeText(pwd).then(() => {
-                    copyBtnText.textContent = "Copied!";
-                    setTimeout(() => { copyBtnText.textContent = "Copy"; }, 2000);
-                });
-            });
-
-            generatePassword();
-        });
-    </script>
+    <!-- Scripts -->
     <script src="../../../js/nav-core.js"></script>
+    <script src="../../../js/my-xestus.js"></script>
+    <script src="../../../tools/tools-registry.js"></script>
+    
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.XestusTools && window.XestusTools.renderRelatedTools) {
+        window.XestusTools.renderRelatedTools('password-generator', 'relatedToolsGrid');
+      }
+      if (window.MyXestus) {
+        window.MyXestus.initToolPage('password-generator', 'Strong Password Generator');
+      }
+      // FAQ Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const ans = btn.nextElementSibling;
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          ans.style.display = isExpanded ? 'none' : 'block';
+        });
+      });
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+  
+  
 </body>
 </html>

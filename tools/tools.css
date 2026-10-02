@@ -1128,3 +1128,535 @@
   }
 }
 
+
+
+/* ==========================================================================
+   XESTUS TOOLS — MODERN SLEEK HEADER, INSTANT-ACTION WORKSPACE & CLEAN UX
+   Eliminates all unstyled mobile drawer clutter and broken headings.
+   Puts the interactive workspace front and center with luxury dark SaaS styling.
+   ========================================================================== */
+
+/* 1. Global Reset & Body for Tool Pages */
+body {
+    background: #060b14 !important;
+    color: #cbd5e1 !important;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh !important;
+}
+
+/* 2. Site Header for Tool Pages */
+.site-header {
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    background: rgba(8, 14, 28, 0.94) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(0, 191, 255, 0.22) !important;
+    padding: 10px 0 !important;
+    box-sizing: border-box !important;
+}
+
+.header-container {
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: 48px !important;
+    box-sizing: border-box !important;
+}
+
+.logo-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+}
+
+.logo-text {
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    letter-spacing: -0.5px !important;
+}
+
+.logo-dot {
+    color: #00bfff !important;
+}
+
+.desktop-nav {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.nav-item {
+    color: #94a3b8 !important;
+    text-decoration: none !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    padding: 6px 12px !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    color: #38d6ff !important;
+    background: rgba(0, 191, 255, 0.1) !important;
+}
+
+.header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.btn-icon {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #e2e8f0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-icon:hover {
+    border-color: #38d6ff !important;
+    color: #38d6ff !important;
+    background: rgba(0, 191, 255, 0.1) !important;
+}
+
+.btn-ghost-sm {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    height: 36px !important;
+    padding: 0 12px !important;
+    border-radius: 8px !important;
+    background: rgba(0, 191, 255, 0.12) !important;
+    border: 1px solid rgba(0, 191, 255, 0.35) !important;
+    color: #38d6ff !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-ghost-sm:hover {
+    background: #00bfff !important;
+    color: #070c18 !important;
+    box-shadow: 0 4px 14px rgba(0, 191, 255, 0.4) !important;
+}
+
+/* Hide unstyled mobile drawer on desktop and mobile */
+.mobile-drawer {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+.mobile-only {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none !important;
+    }
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* 3. Main Tool Page Layout */
+.tool-page-main {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 24px 20px 60px !important;
+    box-sizing: border-box !important;
+}
+
+.tool-page-header {
+    margin-bottom: 20px !important;
+}
+
+.tool-breadcrumb {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 12.5px !important;
+    color: #64748b !important;
+    margin-bottom: 12px !important;
+    flex-wrap: wrap !important;
+}
+
+.tool-breadcrumb a {
+    color: #94a3b8 !important;
+    text-decoration: none !important;
+}
+
+.tool-breadcrumb a:hover {
+    color: #38d6ff !important;
+}
+
+.tool-breadcrumb .sep {
+    color: #475569 !important;
+}
+
+.tool-breadcrumb .current {
+    color: #38d6ff !important;
+    font-weight: 600 !important;
+}
+
+.tool-header-flex {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+}
+
+.tool-title-group {
+    flex: 1 1 500px !important;
+}
+
+.tool-badge-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    padding: 4px 10px !important;
+    border-radius: 999px !important;
+    background: rgba(0, 191, 255, 0.12) !important;
+    border: 1px solid rgba(0, 191, 255, 0.3) !important;
+    color: #38d6ff !important;
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: 8px !important;
+}
+
+.tool-main-heading {
+    font-size: clamp(24px, 3.5vw, 32px) !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin: 0 0 6px 0 !important;
+    letter-spacing: -0.5px !important;
+}
+
+.tool-main-subtitle {
+    font-size: 14px !important;
+    color: #cbd5e1 !important;
+    margin: 0 !important;
+    line-height: 1.5 !important;
+    max-width: 680px !important;
+}
+
+.tool-actions-bar {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.btn-tool-action {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    height: 34px !important;
+    padding: 0 12px !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #e2e8f0 !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-tool-action:hover {
+    border-color: #38d6ff !important;
+    color: #38d6ff !important;
+    background: rgba(0, 191, 255, 0.1) !important;
+}
+
+/* Privacy Guarantee Banner: Clean, Compact Pill */
+.privacy-guarantee-banner {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 6px 14px !important;
+    border-radius: 8px !important;
+    background: rgba(0, 255, 136, 0.08) !important;
+    border: 1px solid rgba(0, 255, 136, 0.25) !important;
+    color: #4ade80 !important;
+    font-size: 12px !important;
+    margin-bottom: 20px !important;
+    box-sizing: border-box !important;
+}
+
+.privacy-guarantee-banner i,
+.privacy-guarantee-banner svg {
+    width: 14px !important;
+    height: 14px !important;
+    color: #4ade80 !important;
+    flex-shrink: 0 !important;
+}
+
+/* 4. Interactive Tool Workspace Card */
+.tool-workspace {
+    background: #0b1329 !important;
+    border: 1px solid rgba(0, 191, 255, 0.28) !important;
+    border-radius: 14px !important;
+    padding: 24px !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55), 0 0 20px rgba(0, 191, 255, 0.1) !important;
+    margin-bottom: 30px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+}
+
+/* Day Mode Tool Page Overrides */
+[data-theme="day"] body {
+    background: #f8fafc !important;
+    color: #334155 !important;
+}
+
+[data-theme="day"] .site-header {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-bottom-color: #e2e8f0 !important;
+}
+
+[data-theme="day"] .logo-text {
+    color: #0f172a !important;
+}
+
+[data-theme="day"] .nav-item {
+    color: #475569 !important;
+}
+
+[data-theme="day"] .nav-item:hover,
+[data-theme="day"] .nav-item.active {
+    color: #0284c7 !important;
+    background: #e0f2fe !important;
+}
+
+[data-theme="day"] .tool-main-heading {
+    color: #0f172a !important;
+}
+
+[data-theme="day"] .tool-main-subtitle {
+    color: #475569 !important;
+}
+
+[data-theme="day"] .tool-workspace {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* --- Universal Tool Workspace Utilities & Layout Classes --- */
+.calc-grid-2 {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 20px !important;
+    margin-bottom: 16px !important;
+}
+
+.calc-input-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+}
+
+.calc-label {
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    color: var(--text-secondary, #cbd5e1) !important;
+}
+
+.input-with-affix {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+.input-with-affix .affix {
+    position: absolute !important;
+    color: var(--text-muted, #94a3b8) !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    pointer-events: none !important;
+}
+
+.input-with-affix .affix:first-child {
+    left: 14px !important;
+}
+
+.input-with-affix .affix:last-child {
+    right: 14px !important;
+}
+
+.input-with-affix input:has(+ .affix) {
+    padding-right: 36px !important;
+}
+
+.input-with-affix .affix + input {
+    padding-left: 36px !important;
+}
+
+.calc-slider {
+    width: 100% !important;
+    margin-top: 6px !important;
+    accent-color: var(--cyan-primary, #00bfff) !important;
+    cursor: pointer !important;
+}
+
+.calc-presets {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 20px !important;
+    padding-bottom: 16px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.preset-label {
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    color: var(--text-muted, #94a3b8) !important;
+}
+
+.btn-preset {
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: var(--text-secondary, #cbd5e1) !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-preset:hover,
+.btn-preset.active {
+    background: rgba(0, 191, 255, 0.15) !important;
+    border-color: #00bfff !important;
+    color: #ffffff !important;
+}
+
+.stat-tiles-row {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    gap: 14px !important;
+}
+
+.stat-tile {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 10px !important;
+    padding: 14px !important;
+    text-align: center !important;
+}
+
+.stat-tile .tile-label {
+    font-size: 11.5px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    color: var(--text-muted, #94a3b8) !important;
+    margin-bottom: 6px !important;
+}
+
+.stat-tile .tile-val {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+}
+
+.mode-toggle-group {
+    display: inline-flex !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-radius: 8px !important;
+    padding: 3px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.mode-btn {
+    padding: 6px 14px !important;
+    border-radius: 6px !important;
+    border: none !important;
+    background: transparent !important;
+    color: var(--text-secondary, #cbd5e1) !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.mode-btn.active {
+    background: #00bfff !important;
+    color: #ffffff !important;
+}
+
+.tool-btn-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+}
+
+.btn-tool-primary {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 10px 20px !important;
+    border-radius: 8px !important;
+    background: linear-gradient(135deg, #00bfff, #0088cc) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 4px 14px rgba(0, 191, 255, 0.3) !important;
+}
+
+.btn-tool-primary:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.45) !important;
+}
+
+.btn-tool-secondary {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 10px 18px !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: var(--text-secondary, #cbd5e1) !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-tool-secondary:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
