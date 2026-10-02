@@ -17855,3 +17855,234 @@ body, h1, h2, h3, h4, h5, h6, p, span, a, button, label, input, select, textarea
     border: 1px solid #e7ddca !important;
     box-shadow: 0 4px 16px rgba(66, 44, 20, 0.06) !important;
 }
+
+
+/* ==========================================================================
+   XESTUS HIGH-END HARDWARE-ACCELERATED NEON RAINBOW CIRCULATING BORDER BEAM
+   Activates sleek circulating neon beam light around borders on hover.
+   100% solid inner masking guarantees crystal-clear, crisp text readability.
+   ========================================================================== */
+
+@keyframes neonRainbowCirculate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    /* 1. Base Card Container Setup */
+    .seva-service-card,
+    .seva-portal-card,
+    .seva-task-card,
+    .xestus-tools-card,
+    .tool-card,
+    .service-card,
+    .solution-card,
+    .product-card,
+    .project-card,
+    .lab-card,
+    .why-card,
+    .tech-stack-card,
+    .digital-card,
+    .ai-launcher-btn,
+    .floating-follow-btn,
+    .floating-back-to-top-btn {
+        position: relative !important;
+        overflow: hidden !important;
+        border: 1px solid rgba(255, 255, 255, 0.09) !important;
+        background: #0b1329 !important;
+        isolation: isolate !important;
+    }
+
+    /* 2. Concentrated Neon Rainbow Stream (Comet Beam Light) */
+    .seva-service-card::before,
+    .seva-portal-card::before,
+    .seva-task-card::before,
+    .xestus-tools-card::before,
+    .tool-card::before,
+    .service-card::before,
+    .solution-card::before,
+    .product-card::before,
+    .project-card::before,
+    .lab-card::before,
+    .why-card::before,
+    .tech-stack-card::before,
+    .digital-card::before,
+    .ai-launcher-btn::before,
+    .floating-follow-btn::before,
+    .floating-back-to-top-btn::before {
+        content: '' !important;
+        position: absolute !important;
+        top: -150% !important;
+        left: -150% !important;
+        width: 400% !important;
+        height: 400% !important;
+        background: conic-gradient(
+            from 0deg,
+            transparent 0deg 230deg,
+            rgba(0, 242, 254, 0.4) 260deg,
+            #00f2fe 285deg,
+            #00ff88 310deg,
+            #a855f7 335deg,
+            #ec4899 352deg,
+            #00f2fe 360deg
+        ) !important;
+        animation: neonRainbowCirculate 3s linear infinite !important;
+        opacity: 0 !important;
+        transition: opacity 0.25s ease !important;
+        z-index: 0 !important;
+        display: block !important;
+        pointer-events: none !important;
+    }
+
+    /* 3. Solid Inner Masking (Guarantees 0% Light Bleed & 100% Solid Card Interior) */
+    .seva-service-card::after,
+    .seva-portal-card::after,
+    .seva-task-card::after,
+    .xestus-tools-card::after,
+    .tool-card::after,
+    .service-card::after,
+    .solution-card::after,
+    .product-card::after,
+    .project-card::after,
+    .lab-card::after,
+    .why-card::after,
+    .tech-stack-card::after,
+    .digital-card::after {
+        content: '' !important;
+        position: absolute !important;
+        inset: 1.5px !important;
+        border-radius: inherit !important;
+        background: #0b1329 !important;
+        z-index: 1 !important;
+        transition: background 0.22s ease !important;
+        display: block !important;
+        pointer-events: none !important;
+    }
+
+    .ai-launcher-btn::after,
+    .floating-follow-btn::after,
+    .floating-back-to-top-btn::after {
+        content: '' !important;
+        position: absolute !important;
+        inset: 1.5px !important;
+        border-radius: inherit !important;
+        background: #0b1329 !important;
+        z-index: 1 !important;
+        display: block !important;
+        pointer-events: none !important;
+    }
+
+    /* 4. Foreground Content (Strictly in front with high contrast) */
+    .seva-service-card > *,
+    .seva-portal-card > *,
+    .seva-task-card > *,
+    .xestus-tools-card > *,
+    .tool-card > *,
+    .service-card > *,
+    .solution-card > *,
+    .product-card > *,
+    .project-card > *,
+    .lab-card > *,
+    .why-card > *,
+    .tech-stack-card > *,
+    .digital-card > *,
+    .ai-launcher-btn > *,
+    .floating-follow-btn > *,
+    .floating-back-to-top-btn > * {
+        position: relative !important;
+        z-index: 2 !important;
+    }
+
+    /* 5. Hover State: Circulate Neon Rainbow Light */
+    .seva-service-card:hover::before,
+    .seva-portal-card:hover::before,
+    .seva-task-card:hover::before,
+    .xestus-tools-card:hover::before,
+    .tool-card:hover::before,
+    .service-card:hover::before,
+    .solution-card:hover::before,
+    .product-card:hover::before,
+    .project-card:hover::before,
+    .lab-card:hover::before,
+    .why-card:hover::before,
+    .tech-stack-card:hover::before,
+    .digital-card:hover::before,
+    .ai-launcher-btn:hover::before,
+    .floating-follow-btn:hover::before,
+    .floating-back-to-top-btn:hover::before {
+        opacity: 1 !important;
+    }
+
+    .seva-service-card:hover,
+    .seva-portal-card:hover,
+    .seva-task-card:hover,
+    .xestus-tools-card:hover,
+    .tool-card:hover,
+    .service-card:hover,
+    .solution-card:hover,
+    .product-card:hover,
+    .project-card:hover,
+    .lab-card:hover,
+    .why-card:hover,
+    .tech-stack-card:hover,
+    .digital-card:hover {
+        transform: translateY(-3.5px) !important;
+        box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7), 0 0 22px rgba(0, 191, 255, 0.22) !important;
+        border-color: transparent !important;
+    }
+
+    .seva-service-card:hover::after,
+    .seva-portal-card:hover::after,
+    .seva-task-card:hover::after,
+    .xestus-tools-card:hover::after,
+    .tool-card:hover::after,
+    .service-card:hover::after,
+    .solution-card:hover::after,
+    .product-card:hover::after,
+    .project-card:hover::after,
+    .lab-card:hover::after,
+    .why-card:hover::after,
+    .tech-stack-card:hover::after,
+    .digital-card:hover::after {
+        background: #0f1936 !important;
+    }
+
+    /* 6. Day Theme Masking */
+    [data-theme="day"] .seva-service-card::after,
+    [data-theme="day"] .seva-portal-card::after,
+    [data-theme="day"] .seva-task-card::after,
+    [data-theme="day"] .xestus-tools-card::after,
+    [data-theme="day"] .tool-card::after,
+    [data-theme="day"] .service-card::after,
+    [data-theme="day"] .solution-card::after,
+    [data-theme="day"] .product-card::after,
+    [data-theme="day"] .project-card::after,
+    [data-theme="day"] .lab-card::after,
+    [data-theme="day"] .why-card::after,
+    [data-theme="day"] .tech-stack-card::after,
+    [data-theme="day"] .digital-card::after,
+    [data-theme="day"] .ai-launcher-btn::after,
+    [data-theme="day"] .floating-follow-btn::after,
+    [data-theme="day"] .floating-back-to-top-btn::after {
+        background: #ffffff !important;
+    }
+
+    [data-theme="day"] .seva-service-card:hover::after,
+    [data-theme="day"] .xestus-tools-card:hover::after,
+    [data-theme="day"] .tool-card:hover::after,
+    [data-theme="day"] .service-card:hover::after {
+        background: #ffffff !important;
+    }
+
+    /* 7. Eye Protect Theme Masking */
+    [data-theme="eye-protect"] .seva-service-card::after,
+    [data-theme="eye-protect"] .xestus-tools-card::after,
+    [data-theme="eye-protect"] .tool-card::after,
+    [data-theme="eye-protect"] .service-card::after {
+        background: #fbf7ee !important;
+    }
+}
