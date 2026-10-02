@@ -1609,14 +1609,11 @@
             }
         });
 
-        let lastObservedLang = getActiveLanguage();
-        setInterval(() => {
-            const current = getActiveLanguage();
-            if (current !== lastObservedLang) {
-                lastObservedLang = current;
-                syncLanguage();
-            }
-        }, 1000);
+        // Event-driven language sync (zero interval overhead)
+        window.addEventListener("xestus:language-changed", syncLanguage);
+        window.addEventListener("storage", (e) => {
+            if (e.key === "xestus_user_language") syncLanguage();
+        });
     }
 
     // -------------------------------------------------------------------------

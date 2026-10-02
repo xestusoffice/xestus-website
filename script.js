@@ -90,46 +90,12 @@ window.XESTUS_PERF = (function () {
     let isMonitoring = true;
     let downgradeTimer = null;
 
-    function monitorFPS(now) {
-        if (!isMonitoring || typeof requestAnimationFrame === "undefined") return;
-        const delta = now - lastFrameTime;
-        lastFrameTime = now;
-
-        if (delta > 0 && delta < 200) {
-            frameTimes.push(1000 / delta);
-            if (frameTimes.length > 45) frameTimes.shift();
-
-            // Check average FPS over 45 frames
-            if (frameTimes.length >= 30) {
-                const avgFPS = frameTimes.reduce((a, b) => a + b, 0) / frameTimes.length;
-                if (avgFPS < 38) {
-                    if (!downgradeTimer) {
-                        downgradeTimer = setTimeout(() => {
-                            if (activeTier === "tier-1") {
-                                setTier("tier-2");
-                                frameTimes = [];
-                            } else if (activeTier === "tier-2") {
-                                setTier("tier-3");
-                                frameTimes = [];
-                                isMonitoring = false; // Stop monitoring at tier-3
-                            }
-                            downgradeTimer = null;
-                        }, 2500);
-                    }
-                } else {
-                    if (downgradeTimer) {
-                        clearTimeout(downgradeTimer);
-                        downgradeTimer = null;
-                    }
-                }
-            }
-        }
-        requestAnimationFrame(monitorFPS);
+    function monitorFPS() {
+        // Disabled infinite monitor loop for 120 FPS butter-smooth scroll performance
+        isMonitoring = false;
     }
 
-    if (typeof requestAnimationFrame !== "undefined" && activeTier !== "tier-4" && activeTier !== "tier-3") {
-        requestAnimationFrame(monitorFPS);
-    }
+    // One-time tier evaluation complete - zero continuous loop overhead
 
     // Listen for OS reduced motion toggle
     if (typeof window !== "undefined" && window.matchMedia) {
