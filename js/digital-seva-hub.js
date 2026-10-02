@@ -469,6 +469,7 @@
                             <i data-lucide="external-link" aria-hidden="true"></i>
                         </a>
                     ` : ''}
+                    <button type="button" class="btn-card-action btn-card-share" data-service-id="${s.service_id}" data-service-title="${escapeHTML(name)}" title="Share direct link to this service"><i data-lucide="share-2" aria-hidden="true"></i><span>${lang === 'bn' ? 'শেয়ার' : lang === 'hi' ? 'शेयर' : 'Share'}</span></button>
                     <button type="button" class="btn-card-action btn-card-assist" data-service-name="${escapeHTML(name)}" title="Request XESTUS assisted typing or checklist support">
                         <i data-lucide="handshake" aria-hidden="true"></i>
                         <span>${lang === 'bn' ? 'সাহায্য চান' : lang === 'hi' ? 'मदद चाहिए' : 'Request Help'}</span>
@@ -650,6 +651,15 @@
         if (!container) return;
 
         // View Guide & Checklist button
+        container.querySelectorAll(".btn-card-share").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const sId = btn.getAttribute("data-service-id");
+                const sTitle = btn.getAttribute("data-service-title");
+                shareService(sId, sTitle);
+            });
+        });
+
         container.querySelectorAll(".btn-card-guide").forEach((btn) => {
             btn.addEventListener("click", (e) => {
                 e.stopPropagation();
@@ -750,6 +760,80 @@
     // -------------------------------------------------------------------------
     // 5. PROGRESSIVE DISCLOSURE SERVICE DETAIL MODAL
     // -------------------------------------------------------------------------
+    
+    // Helper to generate canonical direct URL for any service
+    function getServiceDirectUrl(serviceId) {
+        const origin = window.location.origin && window.location.origin !== "null" ? window.location.origin : "https://xestus.in";
+        return origin + "/?service=" + encodeURIComponent(serviceId) + "#digital-services";
+    }
+
+    // Toast Notification for sharing
+    function showShareToast(message) {
+        let toast = document.querySelector(".lang-toast");
+        if (!toast) {
+            toast = document.createElement("div");
+            toast.className = "lang-toast";
+            document.body.appendChild(toast);
+        }
+        toast.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 3200);
+    }
+
+    // Share action executor (Web Share API fallback to Clipboard)
+    async function shareService(serviceId, serviceTitle) {
+        const directUrl = getServiceDirectUrl(serviceId);
+        const lang = getActiveLanguage();
+        const shareTitle = serviceTitle || "XESTUS Digital Seva Portal";
+        const shareText = (lang === "bn")
+            ? "XESTUS-এ " + shareTitle + "-এর সরাসরি অফিসিয়াল গাইড ও পোর্টাল দেখুন:"
+            : (lang === "hi")
+            ? "XESTUS पर " + shareTitle + " की डायरेक्ट आधिकारिक गाइड व पोर्टल देखें:"
+            : "Explore verified official portal & application guide for " + shareTitle + " on XESTUS:";
+
+        if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
+            try {
+                await navigator.share({
+                    title: shareTitle,
+                    text: shareText,
+                    url: directUrl
+                });
+                return;
+            } catch (err) {
+                if (err.name !== "AbortError") {
+                    console.warn("Navigator.share error, falling back to clipboard:", err);
+                }
+            }
+        }
+
+        // Clipboard Copy
+        try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(directUrl);
+            } else {
+                const textarea = document.createElement("textarea");
+                textarea.value = directUrl;
+                textarea.style.position = "fixed";
+                textarea.style.opacity = "0";
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
+            }
+            const copySuccessMsg = (lang === "bn")
+                ? "✓ সরাসরি লিঙ্ক কপি হয়েছে! যে কারো সাথে শেয়ার করুন।"
+                : (lang === "hi")
+                ? "✓ डायरेक्ट लिंक कॉपी हो गया! इसे किसी के साथ भी शेयर करें।"
+                : "✓ Direct Link Copied to Clipboard! Share it with anyone.";
+            showShareToast(copySuccessMsg);
+        } catch (e) {
+            console.error("Clipboard copy failed:", e);
+            showShareToast(directUrl);
+        }
+    }
+
     function openServiceModal(serviceId) {
         const dataStore = getDataStore();
         if (!dataStore) return;
@@ -837,6 +921,10 @@
                             <i data-lucide="arrow-up-right"></i>
                         </a>
                     ` : ""}
+                    <button type="button" class="btn-modal-action btn-share-modal" id="btnModalShareService" data-service-id="${escapeHTML(service.service_id)}" data-service-title="${escapeHTML(name)}">
+                        <i data-lucide="share-2"></i>
+                        <span>${lang === "bn" ? "ডিরেক্ট লিঙ্ক শেয়ার / কপি করুন" : lang === "hi" ? "डायरेक्ट लिंक शेयर / कॉपी करें" : "Share / Copy Direct Link"}</span>
+                    </button>
                     <button type="button" class="btn-modal-action btn-assist-modal-trigger" id="btnModalTriggerAssist">
                         <i data-lucide="handshake"></i>
                         <span>Request XESTUS Help</span>
@@ -1000,6 +1088,15 @@
             });
 
             // Button to trigger assistance modal from inside service modal
+            const btnModalShare = bodyEl.querySelector("#btnModalShareService");
+            if (btnModalShare) {
+                btnModalShare.addEventListener("click", () => {
+                    const sId = btnModalShare.getAttribute("data-service-id");
+                    const sTitle = btnModalShare.getAttribute("data-service-title");
+                    shareService(sId, sTitle);
+                });
+            }
+
             const btnModalAssist = bodyEl.querySelector("#btnModalTriggerAssist");
             if (btnModalAssist) {
                 btnModalAssist.addEventListener("click", () => {
@@ -1017,6 +1114,12 @@
         }
 
         // Open Modal
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.set("service", serviceId);
+            window.history.replaceState({ serviceId }, "", url.toString());
+        } catch (_) {}
+
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
@@ -1301,6 +1404,14 @@
         if (!modal) modal = state.activeModal;
         if (!modal) return;
 
+        try {
+            const url = new URL(window.location.href);
+            if (url.searchParams.has("service")) {
+                url.searchParams.delete("service");
+                window.history.replaceState({}, "", url.pathname + (url.hash || "#digital-services"));
+            }
+        } catch (_) {}
+
         modal.classList.remove("is-open");
         modal.setAttribute("aria-hidden", "true");
         document.body.classList.remove("modal-open");
@@ -1511,6 +1622,57 @@
     // -------------------------------------------------------------------------
     // 10. MAIN ENTRYPOINT
     // -------------------------------------------------------------------------
+    
+    function handleDeepLinksOnLoad() {
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceParam = urlParams.get("service") || urlParams.get("s");
+            const searchParam = urlParams.get("search") || urlParams.get("q");
+            const categoryParam = urlParams.get("category") || urlParams.get("cat");
+            const hash = window.location.hash || "";
+
+            let targetServiceId = serviceParam;
+            if (!targetServiceId && hash.startsWith("#service-")) {
+                targetServiceId = hash.replace("#service-", "");
+            }
+
+            if (targetServiceId) {
+                setTimeout(() => {
+                    const dsEl = document.getElementById("digital-services");
+                    if (dsEl) {
+                        dsEl.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                    openServiceModal(targetServiceId);
+                }, 350);
+                return;
+            }
+
+            if (searchParam) {
+                setTimeout(() => {
+                    const input = document.getElementById("sevaSearchInput");
+                    if (input) {
+                        input.value = searchParam;
+                        state.searchQuery = searchParam;
+                        renderServicesGrid(true);
+                        scrollServicesIntoView();
+                    }
+                }, 350);
+                return;
+            }
+
+            if (categoryParam) {
+                setTimeout(() => {
+                    state.activeCategory = categoryParam;
+                    syncFilterButtons("category", categoryParam);
+                    renderServicesGrid(true);
+                    scrollServicesIntoView();
+                }, 350);
+            }
+        } catch (e) {
+            console.warn("Deep linking initialization error:", e);
+        }
+    }
+
     function initDigitalSevaHub(retryCount = 0) {
         const dataStore = getDataStore();
         if (!dataStore) {
@@ -1522,6 +1684,7 @@
         renderMasterPortals();
         renderServicesGrid(false);
         initEvents();
+        handleDeepLinksOnLoad();
     }
 
     if (document.readyState === "loading") {

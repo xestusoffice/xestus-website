@@ -17856,3 +17856,68 @@ textarea,
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 }
+
+
+/* ==========================================================================
+   SMART DEEP-LINKING & SHARE BUTTON STYLING
+   High-contrast, glowing cyan-emerald cyber gradient for viral sharing
+   ========================================================================== */
+.btn-share-modal {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 191, 255, 0.18)) !important;
+    border: 1.5px solid var(--cyan-primary, #00bfff) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.25) !important;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-share-modal:hover {
+    background: linear-gradient(135deg, #00ff88, #00bfff) !important;
+    color: #070c18 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 136, 0.45) !important;
+}
+
+.btn-share-modal:hover i,
+.btn-share-modal:hover svg {
+    color: #070c18 !important;
+    stroke: #070c18 !important;
+}
+
+.btn-card-share {
+    background: rgba(0, 191, 255, 0.12) !important;
+    border: 1px solid rgba(0, 191, 255, 0.35) !important;
+    color: #00e5ff !important;
+}
+
+.btn-card-share:hover {
+    background: rgba(0, 191, 255, 0.28) !important;
+    border-color: #00bfff !important;
+    color: #ffffff !important;
+    transform: translateY(-1.5px);
+    box-shadow: 0 4px 12px rgba(0, 191, 255, 0.3);
+}
+
+[data-theme="day"] .btn-share-modal {
+    background: linear-gradient(135deg, #e0f2fe, #dcfce7) !important;
+    border-color: #0284c7 !important;
+    color: #0f172a !important;
+}
+
+[data-theme="day"] .btn-share-modal:hover {
+    background: linear-gradient(135deg, #0284c7, #16a34a) !important;
+    color: #ffffff !important;
+}
+
+[data-theme="day"] .btn-card-share {
+    background: #f0f9ff !important;
+    border-color: #0284c7 !important;
+    color: #0369a1 !important;
+}
+
+[data-theme="eye-protect"] .btn-share-modal {
+    background: #fef9c3 !important;
+    border-color: #ca8a04 !important;
+    color: #422006 !important;
+}

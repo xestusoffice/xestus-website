@@ -27,6 +27,8 @@ window.XESTUS_TRANSLATIONS = {
     "pwa.bookmark_site": "Bookmark Site",
     "pwa.installed_toast": "✓ XESTUS Web App is ready to install / installed on your device!",
     "pwa.bookmark_toast": "⭐ Press Ctrl+D (Cmd+D on Mac) or tap browser menu to bookmark XESTUS!",
+    "share.copied_toast": "✓ Direct Link Copied to Clipboard! Share it with anyone.",
+    "share.button_text": "Share / Copy Link",
 
     // Navigation
     "nav.services": "Services",
@@ -476,6 +478,8 @@ window.XESTUS_TRANSLATIONS = {
     "pwa.bookmark_site": "বুকমার্ক করুন",
     "pwa.installed_toast": "✓ XESTUS অ্যাপটি আপনার ডিভাইসে যুক্ত করার জন্য প্রস্তুত!",
     "pwa.bookmark_toast": "⭐ বুকমার্ক করতে Ctrl+D চাপুন (বা ব্রাউজার মেনু থেকে বুকমার্ক করুন)!",
+    "share.copied_toast": "✓ সরাসরি লিঙ্ক কপি হয়েছে! যে কারো সাথে শেয়ার করুন।",
+    "share.button_text": "শেয়ার / কপি লিঙ্ক",
 
     // Navigation
     "nav.services": "পরিষেবা",
@@ -925,6 +929,8 @@ window.XESTUS_TRANSLATIONS = {
     "pwa.bookmark_site": "बुकमार्क करें",
     "pwa.installed_toast": "✓ XESTUS ऐप आपके डिवाइस पर जोड़ने के लिए तैयार है!",
     "pwa.bookmark_toast": "⭐ बुकमार्क करने के लिए Ctrl+D दबाएं (या ब्राउज़र मेनू से बुकमार्क करें)!",
+    "share.copied_toast": "✓ डायरेक्ट लिंक कॉपी हो गया! इसे किसी के साथ भी शेयर करें।",
+    "share.button_text": "शेयर / कॉपी लिंक",
 
     // Navigation
     "nav.services": "सेवाएं",
