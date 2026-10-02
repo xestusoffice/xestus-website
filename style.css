@@ -2090,10 +2090,7 @@ html[data-theme="eye-protect"] .faq-item {
 }
 
 @media (min-width: 1025px) {
-    .mobile-only-nav,
-    .mobile-nav-item,
-    .mobile-lang-strip,
-    .mobile-theme-strip {
+    .mobile-only-nav, .mobile-nav-item, .mobile-lang-strip, .mobile-app-strip, .mobile-theme-strip, .mobile-outlier-item {
         display: none !important;
     }
     .desktop-nav-item {
@@ -16327,10 +16324,7 @@ button.btn-assist-modal-trigger:hover {
         display: inline-flex !important;
     }
 
-    .mobile-nav-item,
-    .mobile-only-nav,
-    .mobile-lang-strip,
-    .mobile-theme-strip {
+    .mobile-nav-item, .mobile-only-nav, .mobile-lang-strip, .mobile-app-strip, .mobile-theme-strip, .mobile-outlier-item {
         display: none !important;
     }
 
@@ -18084,5 +18078,100 @@ body, h1, h2, h3, h4, h5, h6, p, span, a, button, label, input, select, textarea
     [data-theme="eye-protect"] .tool-card::after,
     [data-theme="eye-protect"] .service-card::after {
         background: #fbf7ee !important;
+    }
+}
+
+
+/* ==========================================================================
+   MOBILE DRAWER ACTION STRIPS & PWA BUTTONS
+   Hidden on desktop (>=1025px), perfectly aligned horizontally in mobile drawer
+   ========================================================================== */
+
+@media (min-width: 1025px) {
+    .mobile-only-nav,
+    .mobile-nav-item,
+    .mobile-lang-strip,
+    .mobile-app-strip,
+    .mobile-theme-strip,
+    .mobile-outlier-item {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .mobile-app-strip {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        margin: 8px 16px !important;
+        padding: 0 !important;
+        list-style: none !important;
+        box-sizing: border-box !important;
+        width: calc(100% - 32px) !important;
+    }
+
+    .mobile-app-btn {
+        flex: 1 1 50% !important;
+        display: inline-flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        min-height: 42px !important;
+        padding: 8px 10px !important;
+        border-radius: 10px !important;
+        color: #ffffff !important;
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        white-space: nowrap !important;
+        cursor: pointer !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+        text-decoration: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        background: #0b1329 !important;
+    }
+
+    .mobile-app-btn svg,
+    .mobile-app-btn i {
+        width: 16px !important;
+        height: 16px !important;
+        flex-shrink: 0 !important;
+        display: inline-block !important;
+        margin: 0 !important;
+    }
+
+    .mobile-app-btn span {
+        display: inline-block !important;
+        white-space: nowrap !important;
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        color: #ffffff !important;
+    }
+
+    .btn-install-pwa {
+        background: rgba(0, 191, 255, 0.12) !important;
+        border: 1px solid rgba(0, 191, 255, 0.4) !important;
+        color: #38d6ff !important;
+    }
+    .btn-install-pwa svg,
+    .btn-install-pwa i,
+    .btn-install-pwa span {
+        color: #38d6ff !important;
+    }
+
+    .btn-bookmark-site {
+        background: rgba(245, 158, 11, 0.12) !important;
+        border: 1px solid rgba(245, 158, 11, 0.4) !important;
+        color: #fbbf24 !important;
+    }
+    .btn-bookmark-site svg,
+    .btn-bookmark-site i,
+    .btn-bookmark-site span {
+        color: #fbbf24 !important;
     }
 }
