@@ -1761,7 +1761,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                 "service_name": {
                         "en": "Outlier AI — Train the Next Generation of AI as a Freelancer",
                         "bn": "আউটলায়ার এআই — ফ্রিল্যান্সার হিসেবে নেক্সট-জেন এআই ট্রেইনিং",
-                        "hi": "आउटलायर एআই — फ्रीलांसर के रूप में एआई ट्रेनिंग व मूल्यांकन"
+                        "hi": "आउटलायर एআই — फ्रीलांसर के रूप में एআই ट्रेनिंग व मूल्यांकन"
                 },
                 "short_description": {
                         "en": "Train the Next Generation of AI as a Freelancer. Join expert developers, scientists, and writers evaluating and fine-tuning frontier AI models with flexible remote hours.",
@@ -1819,9 +1819,44 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                         ]
                 },
                 "official_portal_url": "https://outlier.ai/",
+                "official_apply_url": "https://outlier.ai/",
+                "official_homepage": "https://outlier.ai/",
+                "official_status_url": "https://outlier.ai/",
                 "official_portal_domain": "outlier.ai",
+                "official_helpline": "support@outlier.ai",
+                "official_email": "support@outlier.ai",
+                "source_url": "https://outlier.ai/",
                 "official_fee": "100% Free Application (No Fees)",
+                "application_fee": "100% Free Application (No Fees)",
                 "processing_time": "1–3 Days after Skills Screening",
+                "state": "All India / Remote Worldwide",
+                "availability": "Online 24x7 Web & Mobile",
+                "active_status": true,
+                "is_popular": true,
+                "verification_status": "officially_verified",
+                "verification_badge": "🟢 Verified Official Portal",
+                "last_verified": "29 Sep 2026",
+                "last_verified_date": "2026-09-29",
+                "process_steps": {
+                        "en": [
+                                "Visit the official Outlier website (outlier.ai).",
+                                "Sign up and choose your specialization (Coding, STEM, Reasoning, Writing).",
+                                "Complete the initial skill assessment and verification test.",
+                                "Once approved, receive project tasks on your dashboard and start earning weekly."
+                        ],
+                        "bn": [
+                                "অফিসিয়াল ওয়েবসাইট outlier.ai তে যান।",
+                                "রেজিস্ট্রেশন করুন এবং আপনার পছন্দের ক্ষেত্র (কোডিং, গণিত, বিজ্ঞান ইত্যাদি) নির্বাচন করুন।",
+                                "অনলাইন স্কিল অ্যাসেসমেন্ট টেস্ট সম্পন্ন করুন।",
+                                "অনুমোদন পাওয়ার পর ড্যাশবোর্ডে প্রোজেক্ট টাস্ক পাওয়া শুরু করুন এবং সাপ্তাহিক পারিশ্রমিক পান।"
+                        ],
+                        "hi": [
+                                "आधिकारिक वेबसाइट outlier.ai पर जाएं।",
+                                "साइन अप करें और अपना विशेषज्ञता क्षेत्र चुनें।",
+                                "प्रारंभिक कौशल मूल्यांकन पूरा करें।",
+                                "स्वीकृति मिलने के बाद काम शुरू करें और साप्ताहिक भुगतान पाएं।"
+                        ]
+                },
                 "application_steps": {
                         "en": [
                                 "Visit the official Outlier website (outlier.ai).",
@@ -1855,8 +1890,20 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                         "Scale AI",
                         "Train AI"
                 ],
-                "verification_badge": "🟢 Verified Official Portal",
-                "last_verified_date": "2026-09-29"
+                "intent_tags": [
+                        "outlier",
+                        "outlier ai",
+                        "ai training",
+                        "remote work",
+                        "freelance ai",
+                        "earn online",
+                        "coding job",
+                        "আউটলায়ার",
+                        "আউটলায়ার এআই",
+                        "রিমোট কাজ",
+                        "आउटलायर",
+                        "आउटलायर एআই"
+                ]
         },
         {
                 "service_id": "wb-annapurna-bhandar-scheme",

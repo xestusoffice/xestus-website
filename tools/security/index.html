@@ -13,7 +13,7 @@
     <!-- Google Consent Mode v2 & Cookie Consent Controller -->
     <script src="../../js/cookie-consent.js?v=4.0.0"></script>
 
-        <!-- Google AdSense - Official Publisher Code -->
+    <!-- Google AdSense - Official Publisher Code -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869"
      crossorigin="anonymous"></script>
 
@@ -21,8 +21,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
-    <title>Free Security & Cryptography Tools | Hash, Token & Password Generator | XESTUS</title>
-    <meta name="description" content="Browser-side security and cryptography utilities. Calculate SHA-256/SHA-512 hashes, decode JWT tokens, generate high-entropy passwords, and create UUIDs. 100% private.">
+    <title>Free Security & Cryptography Tools | Hash, Password, JWT | XESTUS Tools</title>
+    <meta name="description" content="Free, 100% private security and cryptography utilities. Generate SHA-256/SHA-512 hashes, create strong entropy-tested passwords, and inspect JWT tokens securely in-browser.">
+    <meta name="keywords" content="security tools, hash generator online, sha256 generator, password generator, jwt debugger, cryptography utilities">
     <link rel="canonical" href="https://xestus.in/tools/security/">
     <link rel="icon" type="image/png" href="../../assets/images/xestus-logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
@@ -39,7 +40,6 @@
             </a>
 
             <ul class="nav-links" id="primaryNav">
-                <!-- Desktop Primary Navigation -->
                 <li class="desktop-nav-item"><a href="../../index.html#digital-services" class="nav-link">Digital Help</a></li>
                 <li class="desktop-nav-item"><a href="../../index.html#services" class="nav-link">Services</a></li>
                 <li class="desktop-nav-item"><a href="../../index.html#portfolio" class="nav-link">Projects</a></li>
@@ -48,7 +48,6 @@
                 <li class="desktop-nav-item"><a href="../../about.html" class="nav-link">About</a></li>
                 <li class="desktop-nav-item"><a href="../../contact.html" class="nav-link">Contact</a></li>
 
-                <!-- Mobile Drawer Direct Links -->
                 <li class="mobile-nav-item"><a href="../../index.html#digital-services" class="nav-link">Digital Help</a></li>
                 <li class="mobile-nav-item"><a href="../../index.html#services" class="nav-link">Services</a></li>
                 <li class="mobile-nav-item"><a href="../../index.html#portfolio" class="nav-link">Projects</a></li>
@@ -57,7 +56,6 @@
                 <li class="mobile-nav-item"><a href="../../about.html" class="nav-link">About</a></li>
                 <li class="mobile-nav-item"><a href="../../contact.html" class="nav-link">Contact</a></li>
 
-                <!-- Mobile Theme Selector Strip -->
                 <li class="mobile-theme-strip" aria-label="Select Theme Mode">
                     <span class="theme-strip-title"><i data-lucide="palette" aria-hidden="true"></i> Theme:</span>
                     <button type="button" class="mobile-theme-btn" data-theme="day">Day</button>
@@ -65,7 +63,6 @@
                     <button type="button" class="mobile-theme-btn" data-theme="eye-protect">Eye Protect</button>
                 </li>
 
-                <!-- Mobile Drawer CTA Button -->
                 <li class="mobile-nav-item" style="margin-top: 10px;">
                     <a href="../../contact.html" class="btn-primary mobile-drawer-cta" style="width:100%; display:flex; justify-content:center; align-items:center; min-height:44px; text-decoration:none;">
                         <span>Contact Us</span>
@@ -74,7 +71,6 @@
             </ul>
 
             <div class="nav-actions">
-                <!-- Theme Switcher Dropdown -->
                 <div class="theme-switcher" id="themeSwitcher">
                     <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
                         <i data-lucide="moon" class="theme-active-icon"></i>
@@ -113,30 +109,88 @@
         <section class="tools-hub-hero" style="text-align: left; padding: 20px 0 30px;">
             <div class="tool-badge-row">
                 <span class="tool-category-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> Security Category</span>
-                <span class="tool-privacy-badge"><i data-lucide="lock" style="width:14px;height:14px;"></i> Zero Server Transmission</span>
+                <span class="tool-privacy-badge"><i data-lucide="lock" style="width:14px;height:14px;"></i> Web Crypto API • 100% Zero-Trust</span>
             </div>
-            <h1 class="tool-title">Security &amp; Cryptography Tools</h1>
+            <h1 class="tool-title">Security &amp; Cryptography Utilities</h1>
             <p class="tool-description">
-                Cryptographically secure utilities executing on native Web Crypto APIs. Calculate checksums, inspect JWT claims, and generate high-entropy tokens without transmitting secrets across the web.
+                Client-side cryptographic security utilities. Generate secure hashes, entropy-verified random passwords, UUIDs, and inspect security tokens with complete local privacy.
             </p>
         </section>
 
-        <section class="tools-catalog-grid" id="securityToolsGrid">
-            <!-- Populated via script -->
+        <!-- Ad Slot: Category Top Banner -->
+        <div class="tool-ad-container" style="margin-bottom: 24px;">
+            <div class="ad-label" style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Advertisement</div>
+            <div class="ad-slot-card" style="min-height:90px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border:1px dashed var(--border-subtle); border-radius:8px;">
+                <ins class="adsbygoogle"
+                     style="display:block; width:100%; text-align:center;"
+                     data-ad-client="ca-pub-1489572262543869"
+                     data-ad-slot="responsive"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+
+        <section class="tools-catalog-grid" id="secToolsGrid">
+            <!-- Hash Generator -->
+            <a href="../developer/hash-generator/index.html" class="tool-card">
+                <div class="tool-card-top">
+                    <div class="tool-card-icon"><i data-lucide="hash"></i></div>
+                    <span class="tool-card-badge">Essential</span>
+                </div>
+                <h3 class="tool-card-title">Cryptographic Hash Generator</h3>
+                <p class="tool-card-desc">Calculate SHA-256, SHA-512, SHA-384, SHA-1, and MD5 checksums instantly.</p>
+                <div class="tool-card-action"><span>Open Tool</span> <i data-lucide="arrow-right"></i></div>
+            </a>
+
+            <!-- Password Generator -->
+            <a href="../developer/password-generator/index.html" class="tool-card">
+                <div class="tool-card-top">
+                    <div class="tool-card-icon"><i data-lucide="shield-check"></i></div>
+                    <span class="tool-card-badge">Popular</span>
+                </div>
+                <h3 class="tool-card-title">Strong Password &amp; Token Generator</h3>
+                <p class="tool-card-desc">Generate cryptographically secure passwords with entropy meter and custom symbol sets.</p>
+                <div class="tool-card-action"><span>Open Tool</span> <i data-lucide="arrow-right"></i></div>
+            </a>
+
+            <!-- JWT Decoder -->
+            <a href="../developer/jwt-decoder/index.html" class="tool-card">
+                <div class="tool-card-top">
+                    <div class="tool-card-icon"><i data-lucide="key"></i></div>
+                    <span class="tool-card-badge">Security</span>
+                </div>
+                <h3 class="tool-card-title">JWT Decoder &amp; Token Debugger</h3>
+                <p class="tool-card-desc">Decode and inspect JWT headers, expiration timestamps, and payload claims safely.</p>
+                <div class="tool-card-action"><span>Open Tool</span> <i data-lucide="arrow-right"></i></div>
+            </a>
+
+            <!-- UUID Generator -->
+            <a href="../developer/uuid-generator/index.html" class="tool-card">
+                <div class="tool-card-top">
+                    <div class="tool-card-icon"><i data-lucide="fingerprint"></i></div>
+                    <span class="tool-card-badge">Crypto</span>
+                </div>
+                <h3 class="tool-card-title">UUID / GUID Generator</h3>
+                <p class="tool-card-desc">Generate secure version-4 random UUIDs in single or bulk batches for API tokens.</p>
+                <div class="tool-card-action"><span>Open Tool</span> <i data-lucide="arrow-right"></i></div>
+            </a>
+
+            <!-- Base64 Encode Decode -->
+            <a href="../developer/base64-encode-decode/index.html" class="tool-card">
+                <div class="tool-card-top">
+                    <div class="tool-card-icon"><i data-lucide="binary"></i></div>
+                    <span class="tool-card-badge">Encoding</span>
+                </div>
+                <h3 class="tool-card-title">Base64 Encoder &amp; Decoder</h3>
+                <p class="tool-card-desc">Encode and decode text, authorization headers, and data URIs securely.</p>
+                <div class="tool-card-action"><span>Open Tool</span> <i data-lucide="arrow-right"></i></div>
+            </a>
         </section>
     </main>
 
     <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
         <div class="footer-container">
-            <div class="footer-brand-section">
-                <div class="footer-brand-header">
-                    <a href="../../#home" class="footer-logo">
-                        <img src="../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
-                        <span class="footer-brand-name">XESTUS</span>
-                    </a>
-                    <span class="footer-tagline">Intelligence Beyond Limits</span>
-                </div>
-            </div>
             <div class="footer-bottom-bar">
                 <div class="footer-copyright">
                     <p>© 2026 XESTUS. All Rights Reserved.</p>
@@ -158,7 +212,6 @@
     </footer>
 
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="../tools-registry.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const themeKey = "xestus_theme";
@@ -198,26 +251,7 @@
                     if (themeSwitcher) themeSwitcher.classList.remove("is-open");
                 });
             });
-
-            const grid = document.getElementById("securityToolsGrid");
-            if (window.XESTUS_TOOLS_REGISTRY && grid) {
-                const tools = window.XESTUS_TOOLS_REGISTRY.tools.filter(t => t.category === "security" || t.slug === "jwt-decoder" || t.slug === "base64-encode-decode");
-                grid.innerHTML = tools.map(t => `
-                    <a href="..${t.url.replace('/tools', '')}" class="tool-card">
-                        <div class="tool-card-top">
-                            <div class="tool-card-icon"><i data-lucide="${t.icon}"></i></div>
-                            <span class="tool-card-badge">${t.badge}</span>
-                        </div>
-                        <h3 class="tool-card-title">${t.title}</h3>
-                        <p class="tool-card-desc">${t.description}</p>
-                        <div class="tool-card-action">
-                            <span>Open Tool</span>
-                            <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
-                        </div>
-                    </a>
-                `).join("");
-                if (window.lucide) lucide.createIcons();
-            }
+            if (window.lucide) lucide.createIcons();
         });
     </script>
     <script src="../../js/nav-core.js"></script>

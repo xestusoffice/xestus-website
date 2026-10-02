@@ -13,7 +13,7 @@
     <!-- Google Consent Mode v2 & Cookie Consent Controller -->
     <script src="../../js/cookie-consent.js?v=4.0.0"></script>
 
-        <!-- Google AdSense - Official Publisher Code -->
+    <!-- Google AdSense - Official Publisher Code -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869"
      crossorigin="anonymous"></script>
 
@@ -21,8 +21,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
-    <title>Free Image & Asset Utilities Online | XESTUS Tools</title>
-    <meta name="description" content="Client-side image formatting and asset conversion utilities. 100% private in-browser processing with zero server uploads.">
+    <title>Free Image & Asset Utilities Online | Compress, Resize, Convert | XESTUS Tools</title>
+    <meta name="description" content="Free client-side image formatting and asset utilities. Compress JPG/PNG/WebP, resize dimensions, convert JPG to PNG, and encode Base64 with 100% private in-browser processing.">
+    <meta name="keywords" content="image tools, image compressor online, resize image, convert jpg to png, webp compressor, image utilities">
     <link rel="canonical" href="https://xestus.in/tools/image/">
     <link rel="icon" type="image/png" href="../../assets/images/xestus-logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
@@ -74,7 +75,6 @@
             </ul>
 
             <div class="nav-actions">
-                <!-- Theme Switcher Dropdown -->
                 <div class="theme-switcher" id="themeSwitcher">
                     <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
                         <i data-lucide="moon" class="theme-active-icon"></i>
@@ -112,35 +112,89 @@
 
         <section class="tools-hub-hero" style="text-align: left; padding: 20px 0 30px;">
             <div class="tool-badge-row">
-                <span class="tool-category-badge"><i data-lucide="image" style="width:14px;height:14px;"></i> Asset Category</span>
-                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> HTML5 Canvas Execution</span>
+                <span class="tool-category-badge"><i data-lucide="image" style="width:14px;height:14px;"></i> Image Category</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser • Zero Server Upload</span>
             </div>
-            <h1 class="tool-title">Image &amp; Asset Utilities</h1>
+            <h1 class="tool-title">Image &amp; Visual Asset Utilities</h1>
             <p class="tool-description">
-                Fast, browser-based image resizing, format optimization, and SVG rasterization without image data ever touching a remote server.
+                Fast, client-side photo and graphics processing. Optimize file sizes, resize dimensions, and convert image formats directly in your browser with zero latency and complete privacy.
             </p>
         </section>
 
-        <section style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 30px; margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
-            <div>
-                <h3 style="color: var(--text-primary); margin-bottom: 6px;">Looking for Base64 Asset Converters?</h3>
-                <p style="color: var(--text-secondary); margin: 0; font-size: 14.5px;">Convert images, SVGs, and binary icons directly into Data URIs using our Base64 tool.</p>
+        <!-- Ad Slot: Category Top Banner -->
+        <div class="tool-ad-container" style="margin-bottom: 24px;">
+            <div class="ad-label" style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Advertisement</div>
+            <div class="ad-slot-card" style="min-height:90px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border:1px dashed var(--border-subtle); border-radius:8px;">
+                <ins class="adsbygoogle"
+                     style="display:block; width:100%; text-align:center;"
+                     data-ad-client="ca-pub-1489572262543869"
+                     data-ad-slot="responsive"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
-            <a href="../developer/base64-encode-decode/" class="btn-primary"><span>Base64 Encoder / Decoder</span><i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <section class="tools-catalog-grid" id="imageToolsGrid">
+            <!-- Image Compressor -->
+            <a href="image-compressor/index.html" class="tool-card">
+                <div class="tool-card-top">
+                    <div class="tool-card-icon"><i data-lucide="file-archive"></i></div>
+                    <span class="tool-card-badge">Popular</span>
+                </div>
+                <h3 class="tool-card-title">Image Compressor &amp; Optimizer</h3>
+                <p class="tool-card-desc">Compress JPG, PNG, and WebP images up to 90% without visible quality loss.</p>
+                <div class="tool-card-action"><span>Open Tool</span> <i data-lucide="arrow-right"></i></div>
+            </a>
+
+            <!-- Image Resizer -->
+            <a href="image-resizer/index.html" class="tool-card">
+                <div class="tool-card-top">
+                    <div class="tool-card-icon"><i data-lucide="maximize-2"></i></div>
+                    <span class="tool-card-badge">Essential</span>
+                </div>
+                <h3 class="tool-card-title">Image Dimension Resizer</h3>
+                <p class="tool-card-desc">Resize photo dimensions by pixels or percentage while maintaining exact aspect ratio.</p>
+                <div class="tool-card-action"><span>Open Tool</span> <i data-lucide="arrow-right"></i></div>
+            </a>
+
+            <!-- JPG to PNG -->
+            <a href="jpg-to-png/index.html" class="tool-card">
+                <div class="tool-card-top">
+                    <div class="tool-card-icon"><i data-lucide="refresh-cw"></i></div>
+                    <span class="tool-card-badge">Fast</span>
+                </div>
+                <h3 class="tool-card-title">JPG to PNG / PNG to JPG</h3>
+                <p class="tool-card-desc">Convert image formats instantly in your browser without uploading to external servers.</p>
+                <div class="tool-card-action"><span>Open Tool</span> <i data-lucide="arrow-right"></i></div>
+            </a>
+
+            <!-- Image to PDF -->
+            <a href="../pdf/image-to-pdf/index.html" class="tool-card">
+                <div class="tool-card-top">
+                    <div class="tool-card-icon"><i data-lucide="file-text"></i></div>
+                    <span class="tool-card-badge">Document</span>
+                </div>
+                <h3 class="tool-card-title">Image to PDF Converter</h3>
+                <p class="tool-card-desc">Combine multiple photos and document scans into a single high-quality PDF file.</p>
+                <div class="tool-card-action"><span>Open Tool</span> <i data-lucide="arrow-right"></i></div>
+            </a>
+
+            <!-- Base64 Asset Encoder -->
+            <a href="../developer/base64-encode-decode/index.html" class="tool-card">
+                <div class="tool-card-top">
+                    <div class="tool-card-icon"><i data-lucide="code-2"></i></div>
+                    <span class="tool-card-badge">Developer</span>
+                </div>
+                <h3 class="tool-card-title">Base64 Image &amp; Asset Encoder</h3>
+                <p class="tool-card-desc">Convert images and icons directly into Data URIs and base64 strings for CSS/HTML.</p>
+                <div class="tool-card-action"><span>Open Tool</span> <i data-lucide="arrow-right"></i></div>
+            </a>
         </section>
     </main>
 
     <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">
         <div class="footer-container">
-            <div class="footer-brand-section">
-                <div class="footer-brand-header">
-                    <a href="../../#home" class="footer-logo">
-                        <img src="../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
-                        <span class="footer-brand-name">XESTUS</span>
-                    </a>
-                    <span class="footer-tagline">Intelligence Beyond Limits</span>
-                </div>
-            </div>
             <div class="footer-bottom-bar">
                 <div class="footer-copyright">
                     <p>© 2026 XESTUS. All Rights Reserved.</p>
