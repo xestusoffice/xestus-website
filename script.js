@@ -3092,6 +3092,11 @@ function initApp() {
             syncLiveStatsUI();
         }
 
+        // Dispatch language change event for all dynamic hubs (Digital Seva, Tools, etc.)
+        try {
+            window.dispatchEvent(new CustomEvent("xestus:language-changed", { detail: { lang } }));
+        } catch (e) {}
+
         if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
             lucide.createIcons();
         }
@@ -3174,11 +3179,13 @@ function initApp() {
         });
     }
 
-    // Dropdown option clicks
+    // Dropdown option clicks (Handles clicks on button, span, or icon inside)
     langOpts.forEach((opt) => {
         opt.addEventListener("click", (e) => {
+            e.preventDefault();
             e.stopPropagation();
-            const selectedLang = opt.getAttribute("data-lang");
+            const targetBtn = opt.closest("[data-lang]") || opt;
+            const selectedLang = targetBtn.getAttribute("data-lang");
             if (selectedLang) {
                 setLanguage(selectedLang);
                 showLanguageToast(selectedLang);
@@ -3186,6 +3193,22 @@ function initApp() {
             if (langSwitcher) {
                 langSwitcher.classList.remove("is-open");
                 if (langBtn) langBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+    });
+
+    // Explicit click handlers for all More Navigation Dropdown items
+    document.querySelectorAll(".nav-dropdown-item").forEach((item) => {
+        item.addEventListener("click", (e) => {
+            const href = item.getAttribute("href");
+            if (href && href.startsWith("#")) {
+                e.preventDefault();
+                e.stopPropagation();
+                navigateToSection(href, e);
+                if (navMoreDropdown) {
+                    navMoreDropdown.classList.remove("is-open");
+                    if (navMoreBtn) navMoreBtn.setAttribute("aria-expanded", "false");
+                }
             }
         });
     });

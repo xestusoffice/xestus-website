@@ -57,7 +57,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../../style.css?v=1790934983644">
+    <link rel="stylesheet" href="../../../style.css?v=1790936593562">
     <link rel="stylesheet" href="../../../tools/tools.css?v=2.1.0">
     
 </head>
@@ -378,7 +378,7 @@
 
         selectedImages.forEach((img, idx) => {
           const card = document.createElement('div');
-          card.style.css?v=1790934983644 = 'position: relative; border-radius: 6px; overflow: hidden; border: 1px solid #444; background: #111; aspect-ratio: 1;';
+          card.style.css?v=1790936593562 = 'position: relative; border-radius: 6px; overflow: hidden; border: 1px solid #444; background: #111; aspect-ratio: 1;';
           card.innerHTML = `
             <img src="${img.dataUrl}" style="width: 100%; height: 100%; object-fit: cover;">
             <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); font-size: 0.7rem; color: #fff; padding: 2px 4px; text-align: center;">Page ${idx + 1}</div>

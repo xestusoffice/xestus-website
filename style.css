@@ -18329,3 +18329,214 @@ body, h1, h2, h3, h4, h5, h6, p, span, a, button, label, input, select, textarea
         display: none !important;
     }
 }
+
+
+/* ==========================================================================
+   XESTUS SLEEK LUXURY COMPACT NAVBAR & UNBLOCKED DROPDOWN CONTROLS
+   Guarantees 100% clickability on all dropdowns, zero overflow, and crisp layout
+   ========================================================================== */
+
+/* 1. Header and Nav Container Pointer Events & Overflow */
+.site-header {
+    pointer-events: auto !important;
+    z-index: 10000 !important;
+}
+
+.nav-container {
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 10001 !important;
+    overflow: visible !important;
+    height: 60px !important;
+    padding: 0 16px !important;
+    max-width: 1440px !important;
+    width: min(97%, 1440px) !important;
+    gap: 8px !important;
+}
+
+.nav-links {
+    display: flex !important;
+    align-items: center !important;
+    gap: clamp(6px, 1vw, 14px) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.nav-link {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 6px 8px !important;
+    white-space: nowrap !important;
+}
+
+/* 2. All Dropdown Menus (More, Language, Theme) Guaranteed Clickable & Visible */
+.nav-dropdown-menu,
+.lang-dropdown,
+.theme-dropdown {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    background: #0b1329 !important;
+    border: 1px solid rgba(0, 191, 255, 0.35) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 191, 255, 0.15) !important;
+    padding: 6px !important;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    min-width: 160px !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.nav-item-dropdown.is-open .nav-dropdown-menu,
+.lang-switcher.is-open .lang-dropdown,
+.theme-switcher.is-open .theme-dropdown {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.nav-dropdown-item,
+.lang-opt,
+.theme-opt {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 8px 12px !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 8px !important;
+    color: #e2e8f0 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    transition: all 0.18s ease !important;
+    box-sizing: border-box !important;
+    user-select: none !important;
+}
+
+.nav-dropdown-item:hover,
+.lang-opt:hover,
+.theme-opt:hover {
+    background: rgba(0, 191, 255, 0.15) !important;
+    color: #38d6ff !important;
+    transform: translateX(2px) !important;
+}
+
+.lang-opt.active,
+.theme-opt.active {
+    background: rgba(0, 191, 255, 0.22) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    border: 1px solid rgba(0, 191, 255, 0.4) !important;
+}
+
+/* 3. Action Group (.nav-actions) Compact, High-Density & Proportionate */
+.nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+}
+
+.btn-outlier-nav {
+    height: 34px !important;
+    padding: 0 10px !important;
+    font-size: 12px !important;
+    gap: 5px !important;
+    border-radius: 8px !important;
+}
+
+.desktop-app-strip {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+.desktop-app-btn {
+    height: 34px !important;
+    padding: 0 10px !important;
+    font-size: 12px !important;
+    gap: 5px !important;
+    border-radius: 8px !important;
+}
+
+.theme-btn,
+.lang-btn {
+    height: 34px !important;
+    padding: 0 10px !important;
+    font-size: 12px !important;
+    gap: 4px !important;
+    border-radius: 8px !important;
+    background: #0b1329 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #e2e8f0 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+.theme-btn:hover,
+.lang-btn:hover {
+    border-color: #38d6ff !important;
+    color: #38d6ff !important;
+    background: #0f1936 !important;
+}
+
+.btn-nav-cta {
+    height: 34px !important;
+    padding: 0 14px !important;
+    font-size: 12px !important;
+    border-radius: 8px !important;
+    white-space: nowrap !important;
+}
+
+/* Day Mode Dropdowns */
+[data-theme="day"] .nav-dropdown-menu,
+[data-theme="day"] .lang-dropdown,
+[data-theme="day"] .theme-dropdown {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12) !important;
+}
+
+[data-theme="day"] .nav-dropdown-item,
+[data-theme="day"] .lang-opt,
+[data-theme="day"] .theme-opt {
+    color: #0f172a !important;
+}
+
+[data-theme="day"] .nav-dropdown-item:hover,
+[data-theme="day"] .lang-opt:hover,
+[data-theme="day"] .theme-opt:hover {
+    background: #f1f5f9 !important;
+    color: #0284c7 !important;
+}
+
+[data-theme="day"] .theme-btn,
+[data-theme="day"] .lang-btn {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+}
+
+/* Eye Protect Mode Dropdowns */
+[data-theme="eye-protect"] .nav-dropdown-menu,
+[data-theme="eye-protect"] .lang-dropdown,
+[data-theme="eye-protect"] .theme-dropdown {
+    background: #fbf7ee !important;
+    border: 1px solid #e7ddca !important;
+    box-shadow: 0 10px 30px rgba(66, 44, 20, 0.12) !important;
+}
+
+[data-theme="eye-protect"] .nav-dropdown-item,
+[data-theme="eye-protect"] .lang-opt,
+[data-theme="eye-protect"] .theme-opt {
+    color: #291e13 !important;
+}
