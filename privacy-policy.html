@@ -59,7 +59,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
-    <link rel="stylesheet" href="style.css?v=1790934149528">
+    <link rel="stylesheet" href="style.css?v=1790934983644">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -125,7 +125,20 @@
 
             <div class="nav-actions">
                 <!-- Theme Switcher Dropdown -->
-                <div class="theme-switcher" id="themeSwitcher">
+                
+        <!-- Desktop PWA Install & Bookmark Action Strip -->
+        <div class="desktop-app-strip" aria-label="Web App and Bookmark Options">
+            <button type="button" class="desktop-app-btn btn-install-pwa" id="desktopPwaBtn" aria-label="Install XESTUS Web App" title="Install XESTUS Web App">
+                <i data-lucide="download" aria-hidden="true"></i>
+                <span data-i18n="pwa.install_app">Install Web App</span>
+            </button>
+            <button type="button" class="desktop-app-btn btn-bookmark-site" id="desktopBookmarkBtn" aria-label="Bookmark XESTUS Website" title="Bookmark XESTUS Website">
+                <i data-lucide="bookmark" aria-hidden="true"></i>
+                <span data-i18n="pwa.bookmark_site">Bookmark Site</span>
+            </button>
+        </div>
+
+        <div class="theme-switcher" id="themeSwitcher">
                     <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
                         <i data-lucide="moon" class="theme-active-icon"></i>
                         <span class="theme-current-label">Night</span>

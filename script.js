@@ -3866,19 +3866,17 @@ function initApp() {
     }
 
     let deferredPrompt = null;
-    const pwaInstallBtn = document.getElementById("pwaInstallBtn");
-    const bookmarkSiteBtn = document.getElementById("bookmarkSiteBtn");
+    const installBtns = document.querySelectorAll(".btn-install-pwa");
+    const bookmarkBtns = document.querySelectorAll(".btn-bookmark-site");
 
     window.addEventListener("beforeinstallprompt", (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        if (pwaInstallBtn) {
-            pwaInstallBtn.classList.add("ready-to-install");
-        }
+        installBtns.forEach(btn => btn.classList.add("ready-to-install"));
     });
 
-    if (pwaInstallBtn) {
-        pwaInstallBtn.addEventListener("click", async (e) => {
+    installBtns.forEach(btn => {
+        btn.addEventListener("click", async (e) => {
             e.stopPropagation();
             if (deferredPrompt) {
                 deferredPrompt.prompt();
@@ -3895,15 +3893,15 @@ function initApp() {
                 showToastMessage(msg);
             }
         });
-    }
+    });
 
     window.addEventListener("appinstalled", () => {
         deferredPrompt = null;
         showToastMessage("✓ XESTUS App Installed on Home Screen!");
     });
 
-    if (bookmarkSiteBtn) {
-        bookmarkSiteBtn.addEventListener("click", (e) => {
+    bookmarkBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
             e.stopPropagation();
             const currentLang = document.documentElement.getAttribute("lang") || "en";
             const trans = window.XESTUS_TRANSLATIONS || {};
@@ -3911,7 +3909,7 @@ function initApp() {
                 "⭐ Press Ctrl + D (or Cmd + D) to bookmark XESTUS!";
             showToastMessage(msg);
         });
-    }
+    });
 
     updateEstimatorUI();
     initLiveStats();

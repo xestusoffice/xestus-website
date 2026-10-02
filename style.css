@@ -18175,3 +18175,157 @@ body, h1, h2, h3, h4, h5, h6, p, span, a, button, label, input, select, textarea
         color: #fbbf24 !important;
     }
 }
+
+
+/* ==========================================================================
+   DESKTOP NAVBAR PWA INSTALL & BOOKMARK ACTION STRIP
+   Sleek, luxury high-contrast buttons side-by-side in header nav-actions
+   ========================================================================== */
+
+.desktop-app-strip {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.desktop-app-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    height: 38px !important;
+    padding: 0 12px !important;
+    border-radius: 8px !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
+    line-height: 1 !important;
+}
+
+.desktop-app-btn svg,
+.desktop-app-btn i {
+    width: 15px !important;
+    height: 15px !important;
+    flex-shrink: 0 !important;
+    display: inline-block !important;
+}
+
+.desktop-app-btn span {
+    display: inline-block !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+}
+
+/* Install Web App Button */
+.desktop-app-btn.btn-install-pwa {
+    background: rgba(0, 191, 255, 0.12) !important;
+    border: 1px solid rgba(0, 191, 255, 0.38) !important;
+    color: #38d6ff !important;
+}
+.desktop-app-btn.btn-install-pwa svg,
+.desktop-app-btn.btn-install-pwa i,
+.desktop-app-btn.btn-install-pwa span {
+    color: #38d6ff !important;
+}
+
+.desktop-app-btn.btn-install-pwa:hover {
+    background: #00bfff !important;
+    color: #070c18 !important;
+    border-color: #00bfff !important;
+    box-shadow: 0 4px 14px rgba(0, 191, 255, 0.45) !important;
+    transform: translateY(-1.5px) !important;
+}
+.desktop-app-btn.btn-install-pwa:hover svg,
+.desktop-app-btn.btn-install-pwa:hover i,
+.desktop-app-btn.btn-install-pwa:hover span {
+    color: #070c18 !important;
+}
+
+/* Bookmark Site Button */
+.desktop-app-btn.btn-bookmark-site {
+    background: rgba(245, 158, 11, 0.12) !important;
+    border: 1px solid rgba(245, 158, 11, 0.38) !important;
+    color: #fbbf24 !important;
+}
+.desktop-app-btn.btn-bookmark-site svg,
+.desktop-app-btn.btn-bookmark-site i,
+.desktop-app-btn.btn-bookmark-site span {
+    color: #fbbf24 !important;
+}
+
+.desktop-app-btn.btn-bookmark-site:hover {
+    background: #f59e0b !important;
+    color: #070c18 !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.45) !important;
+    transform: translateY(-1.5px) !important;
+}
+.desktop-app-btn.btn-bookmark-site:hover svg,
+.desktop-app-btn.btn-bookmark-site:hover i,
+.desktop-app-btn.btn-bookmark-site:hover span {
+    color: #070c18 !important;
+}
+
+/* Day Mode Styling */
+[data-theme="day"] .desktop-app-btn.btn-install-pwa {
+    background: #e0f2fe !important;
+    border-color: #0284c7 !important;
+    color: #0369a1 !important;
+}
+[data-theme="day"] .desktop-app-btn.btn-install-pwa svg,
+[data-theme="day"] .desktop-app-btn.btn-install-pwa i,
+[data-theme="day"] .desktop-app-btn.btn-install-pwa span {
+    color: #0369a1 !important;
+}
+[data-theme="day"] .desktop-app-btn.btn-install-pwa:hover {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+}
+[data-theme="day"] .desktop-app-btn.btn-install-pwa:hover svg,
+[data-theme="day"] .desktop-app-btn.btn-install-pwa:hover i,
+[data-theme="day"] .desktop-app-btn.btn-install-pwa:hover span {
+    color: #ffffff !important;
+}
+
+[data-theme="day"] .desktop-app-btn.btn-bookmark-site {
+    background: #fef3c7 !important;
+    border-color: #d97706 !important;
+    color: #b45309 !important;
+}
+[data-theme="day"] .desktop-app-btn.btn-bookmark-site svg,
+[data-theme="day"] .desktop-app-btn.btn-bookmark-site i,
+[data-theme="day"] .desktop-app-btn.btn-bookmark-site span {
+    color: #b45309 !important;
+}
+[data-theme="day"] .desktop-app-btn.btn-bookmark-site:hover {
+    background: #d97706 !important;
+    color: #ffffff !important;
+}
+[data-theme="day"] .desktop-app-btn.btn-bookmark-site:hover svg,
+[data-theme="day"] .desktop-app-btn.btn-bookmark-site:hover i,
+[data-theme="day"] .desktop-app-btn.btn-bookmark-site:hover span {
+    color: #ffffff !important;
+}
+
+/* Eye Protect Mode Styling */
+[data-theme="eye-protect"] .desktop-app-btn.btn-install-pwa {
+    background: #e8f0fe !important;
+    border-color: #4a7bb0 !important;
+    color: #1e3a8a !important;
+}
+[data-theme="eye-protect"] .desktop-app-btn.btn-bookmark-site {
+    background: #fdf3d8 !important;
+    border-color: #c28822 !important;
+    color: #78350f !important;
+}
+
+/* Responsiveness: Hide Desktop Strip on Mobile (<1025px), show Mobile Strip in Drawer */
+@media (max-width: 1024px) {
+    .desktop-app-strip {
+        display: none !important;
+    }
+}
