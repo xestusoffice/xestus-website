@@ -10078,37 +10078,18 @@ html[lang="hi"] .founder-quote-box p {
     transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s ease;
 }
 
-.floating-follow-btn::before {
-    content: '';
-    position: absolute;
-    top: -150%;
-    left: -150%;
-    width: 400%;
-    height: 400%;
-    background: conic-gradient(
-        from 0deg,
-        #00f2fe,
-        #38d6ff,
-        #a855f7,
-        #ec4899,
-        #eab308,
-        #00f2fe
-    );
-    animation: rotateConicBorder 4s linear infinite;
-    z-index: 0;
+
+.floating-follow-btn {
+    background: #0b1329 !important;
+    border: 1px solid rgba(0, 191, 255, 0.35) !important;
+    border-radius: var(--radius-full) !important;
+}
+.floating-follow-btn::before,
+.floating-follow-btn::after {
+    display: none !important;
+    content: none !important;
 }
 
-.floating-follow-btn::after {
-    content: '';
-    position: absolute;
-    inset: 1.5px;
-    border-radius: inherit;
-    background: rgba(13, 19, 34, 0.94);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    z-index: 1;
-    transition: background 0.3s ease;
-}
 
 .floating-follow-btn .follow-icon,
 .floating-follow-btn span {
@@ -10163,36 +10144,19 @@ html[lang="hi"] .founder-quote-box p {
     transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s ease;
 }
 
-.ai-launcher-btn::before {
-    content: '';
-    position: absolute;
-    top: -150%;
-    left: -150%;
-    width: 400%;
-    height: 400%;
-    background: conic-gradient(
-        from 0deg,
-        #00f2fe 0%,
-        #0077cc 25%,
-        #c084fc 50%,
-        #ff007f 75%,
-        #00f2fe 100%
-    );
-    animation: rotateConicBorder 3.5s linear infinite;
-    z-index: 0;
+
+.ai-launcher-btn {
+    background: linear-gradient(135deg, #0b1329 0%, #0f1c3f 100%) !important;
+    border: 1px solid rgba(0, 191, 255, 0.45) !important;
+    border-radius: var(--radius-full) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 191, 255, 0.25) !important;
+}
+.ai-launcher-btn::before,
+.ai-launcher-btn::after {
+    display: none !important;
+    content: none !important;
 }
 
-.ai-launcher-btn::after {
-    content: '';
-    position: absolute;
-    inset: 2px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, rgba(8, 12, 22, 0.96), rgba(16, 25, 45, 0.96));
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    z-index: 1;
-    transition: background 0.3s ease;
-}
 
 .ai-launcher-icon-wrap,
 .ai-launcher-text {
@@ -10228,10 +10192,7 @@ html[lang="hi"] .founder-quote-box p {
     animation: aiPulse 2s infinite;
 }
 
-@keyframes rotateConicBorder {
-    0% {
-        transform: rotate(0deg);
-    }
+/* rotateConicBorder removed */
     100% {
         transform: rotate(360deg);
     }
@@ -12972,479 +12933,7 @@ html[lang="hi"] .founder-quote-box p {
     inherits: false;
 }
 
-/* ==========================================================================
-   XESTUS UNIVERSAL ROTATING RAINBOW GLOWING BORDER SYSTEM
-   Works on 100% of modern browsers (Chrome, Edge, Safari, Firefox, iOS, Android)
-   ========================================================================== */
-@keyframes rotateRainbowGlow {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes rotateRingBorder {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* Button & Card Instant Active Touch / Click Feedback */
-button:active,
-.btn-primary:active,
-.btn-secondary:active,
-.btn-stitch-primary:active,
-.btn-modal-action:active,
-.btn-card-action:active,
-.btn-card-guide:active,
-.btn-card-assist:active,
-.btn-quick-action:active,
-.digital-filter-btn:active,
-.search-chip-btn:active,
-.seva-task-card:active {
-    transform: scale(0.96) !important;
-    transition: transform 0.05s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-/* Base style for rotating border buttons */
-.btn-primary,
-.btn-stitch-primary,
-.btn-card-action,
-.btn-card-guide,
-.btn-card-portal,
-.btn-card-assist,
-.btn-quick-action,
-.btn-catalog-trigger,
-.btn-scam-trigger,
-.btn-nav-cta {
-    position: relative !important;
-    overflow: hidden !important;
-    isolation: isolate !important;
-    touch-action: manipulation;
-}
-
-.btn-primary::before,
-.btn-stitch-primary::before,
-.btn-card-action::before,
-.btn-card-guide::before,
-.btn-card-portal::before,
-.btn-card-assist::before,
-.btn-quick-action::before,
-.btn-catalog-trigger::before,
-.btn-scam-trigger::before,
-.btn-nav-cta::before {
-    content: '';
-    position: absolute;
-    top: -150%;
-    left: -150%;
-    width: 400%;
-    height: 400%;
-    background: conic-gradient(
-        from 0deg,
-        #00f2fe,
-        #38d6ff,
-        #a855f7,
-        #ec4899,
-        #eab308,
-        #00f2fe
-    );
-    animation: rotateRainbowGlow 3s linear infinite;
-    animation-play-state: paused;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.btn-primary::after,
-.btn-stitch-primary::after,
-.btn-card-action::after,
-.btn-card-guide::after,
-.btn-card-portal::after,
-.btn-card-assist::after,
-.btn-quick-action::after,
-.btn-catalog-trigger::after,
-.btn-scam-trigger::after,
-.btn-nav-cta::after {
-    content: '';
-    position: absolute;
-    inset: 1.5px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, rgba(8, 14, 28, 0.94), rgba(16, 28, 54, 0.94));
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    z-index: 1;
-    transition: background 0.25s ease;
-    pointer-events: none;
-}
-
-.btn-primary > *,
-.btn-stitch-primary > *,
-.btn-card-action > *,
-.btn-card-guide > *,
-.btn-card-portal > *,
-.btn-card-assist > *,
-.btn-quick-action > *,
-.btn-catalog-trigger > *,
-.btn-scam-trigger > *,
-.btn-nav-cta > *,
-.btn-card-action span,
-.btn-card-guide span,
-.btn-card-portal span,
-.btn-card-assist span,
-.btn-card-action svg,
-.btn-card-guide svg,
-.btn-card-portal svg,
-.btn-card-assist svg,
-.btn-card-action i,
-.btn-card-guide i,
-.btn-card-portal i,
-.btn-card-assist i {
-    position: relative !important;
-    z-index: 10 !important;
-    pointer-events: none;
-}
-
-/* Hover State triggers the rotating rainbow border */
-.btn-primary:hover,
-.btn-stitch-primary:hover,
-.btn-card-action:hover,
-.btn-card-guide:hover,
-.btn-card-portal:hover,
-.btn-card-assist:hover,
-.btn-quick-action:hover,
-.btn-catalog-trigger:hover,
-.btn-scam-trigger:hover,
-.btn-nav-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 191, 255, 0.4), 0 0 16px rgba(0, 242, 254, 0.35);
-}
-
-.btn-primary:hover::before,
-.btn-stitch-primary:hover::before,
-.btn-card-action:hover::before,
-.btn-card-guide:hover::before,
-.btn-card-portal:hover::before,
-.btn-card-assist:hover::before,
-.btn-quick-action:hover::before,
-.btn-catalog-trigger:hover::before,
-.btn-scam-trigger:hover::before,
-.btn-nav-cta:hover::before {
-    opacity: 1;
-    animation-play-state: running;
-}
-
-.btn-stitch-primary:hover::after {
-    background: linear-gradient(135deg, rgba(202, 138, 4, 0.96), rgba(234, 179, 8, 0.96)) !important;
-}
-
-.btn-card-guide:hover::after {
-    background: linear-gradient(135deg, rgba(2, 132, 199, 0.96), rgba(0, 191, 255, 0.96)) !important;
-}
-
-.btn-card-portal:hover::after {
-    background: linear-gradient(135deg, rgba(5, 150, 105, 0.96), rgba(16, 185, 129, 0.96)) !important;
-}
-
-.btn-card-assist:hover::after {
-    background: linear-gradient(135deg, rgba(217, 119, 6, 0.96), rgba(245, 158, 11, 0.96)) !important;
-}
-
-/* Card Rotating Rainbow Glow on Hover */
-.seva-service-card,
-.seva-portal-card,
-.seva-task-card,
-.digital-card,
-.service-card,
-.solution-card,
-.product-card {
-    position: relative !important;
-    overflow: hidden !important;
-    isolation: isolate !important;
-}
-
-.seva-service-card::before,
-.seva-portal-card::before,
-.seva-task-card::before,
-.digital-card::before,
-.service-card::before,
-.solution-card::before,
-.product-card::before {
-    content: '';
-    position: absolute;
-    top: -150%;
-    left: -150%;
-    width: 400%;
-    height: 400%;
-    background: conic-gradient(
-        from 0deg,
-        #00f2fe,
-        #38d6ff,
-        #a855f7,
-        #ec4899,
-        #eab308,
-        #00f2fe
-    );
-    animation: rotateRainbowGlow 4s linear infinite;
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.seva-service-card::after,
-.seva-portal-card::after,
-.seva-task-card::after,
-.digital-card::after,
-.service-card::after,
-.solution-card::after,
-.product-card::after {
-    content: '';
-    position: absolute;
-    inset: 1.5px;
-    border-radius: inherit;
-    background: rgba(13, 19, 34, 0.94);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    z-index: 1;
-    transition: background 0.3s ease;
-    pointer-events: none;
-}
-
-.seva-service-card > *,
-.seva-portal-card > *,
-.seva-task-card > *,
-.digital-card > *,
-.service-card > *,
-.solution-card > *,
-.product-card > * {
-    position: relative;
-    z-index: 2;
-}
-
-.seva-service-card:hover,
-.seva-portal-card:hover,
-.seva-task-card:hover,
-.digital-card:hover,
-.service-card:hover,
-.solution-card:hover,
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 191, 255, 0.35), 0 0 15px rgba(168, 85, 247, 0.25);
-    border-color: transparent !important;
-}
-
-.seva-service-card:hover::before,
-.seva-portal-card:hover::before,
-.seva-task-card:hover::before,
-.digital-card:hover::before,
-.service-card:hover::before,
-.solution-card:hover::before,
-.product-card:hover::before {
-    opacity: 1;
-}
-
-.seva-service-card:hover::after,
-.seva-portal-card:hover::after,
-.seva-task-card:hover::after,
-.digital-card:hover::after,
-.service-card:hover::after,
-.solution-card:hover::after,
-.product-card:hover::after {
-    background: rgba(16, 25, 45, 0.96);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .seva-card-actions-3col .btn-card-action {
-        flex: 1 1 100% !important;
-    }
-    .form-row-2col {
-        grid-template-columns: 1fr;
-    }
-    .seva-trust-strip {
-        grid-template-columns: 1fr;
-    }
-    .seva-task-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* --------------------------------------------------------------------------
-   30. THEME OVERRIDES FOR STITCH VISUAL SYSTEM
-   -------------------------------------------------------------------------- */
-:root[data-theme="day"] .stitch-tag-mono {
-    color: #d97706;
-    background: rgba(217, 119, 6, 0.12);
-    border-color: rgba(217, 119, 6, 0.35);
-}
-
-:root[data-theme="day"] .stitch-highlight-box {
-    background: #d97706;
-    color: #ffffff;
-    box-shadow: 0 0 20px rgba(217, 119, 6, 0.25);
-}
-
-:root[data-theme="day"] .stitch-alert-box {
-    background: #ffcc00;
-    color: #000000;
-}
-
-:root[data-theme="day"] .stitch-alert-btn {
-    background: #dc2626;
-    color: #ffffff;
-}
-
-:root[data-theme="day"] .stitch-alert-btn:hover {
-    background: #b91c1c;
-}
-
-:root[data-theme="day"] .btn-stitch-primary {
-    background: #d97706;
-    color: #ffffff;
-}
-
-:root[data-theme="day"] .btn-stitch-primary:hover {
-    background: #b45309;
-}
-
-:root[data-theme="day"] .stitch-tool-filter-btn.active,
-:root[data-theme="day"] .stitch-inquiry-tab.active {
-    background: #d97706;
-    color: #ffffff;
-    border-color: #d97706;
-}
-
-:root[data-theme="day"] .stitch-lab-tab.active {
-    color: #d97706;
-    border-bottom-color: #d97706;
-}
-
-/* Eye Protection Mode Overrides */
-:root[data-theme="eye-protect"] .stitch-tag-mono {
-    color: #c2410c;
-    background: rgba(194, 65, 12, 0.12);
-    border-color: rgba(194, 65, 12, 0.35);
-}
-
-:root[data-theme="eye-protect"] .stitch-highlight-box {
-    background: #c2410c;
-    color: #ffffff;
-    box-shadow: 0 0 20px rgba(194, 65, 12, 0.2);
-}
-
-:root[data-theme="eye-protect"] .stitch-alert-box {
-    background: #fed7aa;
-    color: #1c1917;
-}
-
-:root[data-theme="eye-protect"] .stitch-alert-btn {
-    background: #dc2626;
-    color: #ffffff;
-}
-
-:root[data-theme="eye-protect"] .stitch-alert-btn:hover {
-    background: #b91c1c;
-}
-
-:root[data-theme="eye-protect"] .btn-stitch-primary {
-    background: #c2410c;
-    color: #ffffff;
-}
-
-:root[data-theme="eye-protect"] .btn-stitch-primary:hover {
-    background: #9a3412;
-}
-
-:root[data-theme="eye-protect"] .stitch-tool-filter-btn.active,
-:root[data-theme="eye-protect"] .stitch-inquiry-tab.active {
-    background: #c2410c;
-    color: #ffffff;
-    border-color: #c2410c;
-}
-
-:root[data-theme="day"] .hud-tag {
-    background: rgba(255, 255, 255, 0.95);
-    border-color: rgba(2, 132, 199, 0.4);
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
-}
-
-:root[data-theme="day"] .hud-tag-title {
-    color: #0f172a;
-}
-
-:root[data-theme="day"] .hud-tag-sub {
-    color: #0284c7;
-}
-
-:root[data-theme="eye-protect"] .hud-tag {
-    background: rgba(253, 251, 247, 0.96);
-    border-color: rgba(14, 116, 144, 0.4);
-    box-shadow: 0 10px 25px rgba(60, 40, 20, 0.1);
-}
-
-:root[data-theme="eye-protect"] .hud-tag-title {
-    color: #2c241b;
-}
-
-:root[data-theme="eye-protect"] .hud-tag-sub {
-    color: #0e7490;
-}
-
-:root[data-theme="day"] .kpi-accent {
-    background: rgba(2, 132, 199, 0.08);
-    border-color: rgba(2, 132, 199, 0.35);
-}
-
-:root[data-theme="eye-protect"] .kpi-accent {
-    background: rgba(14, 116, 144, 0.08);
-    border-color: rgba(14, 116, 144, 0.35);
-}
-
-/* Responsive Breakpoints for Stitch System */
-@media (max-width: 1024px) {
-    .stitch-contact-wrapper {
-        grid-template-columns: 1fr;
-        gap: 36px;
-    }
-
-    .stitch-footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
-    }
-}
-
-@media (max-width: 640px) {
-    .stitch-footer-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
-    }
-
-    .stitch-alert-box {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
-    .stitch-alert-btn {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .stitch-card-actions {
-        flex-direction: column;
-    }
-
-    .btn-stitch-primary,
-    .btn-stitch-outline {
-        width: 100%;
-    }
-}
+/* Universal Rotating Rainbow System removed for clean SaaS aesthetic */
 
 /* ==========================================================================
    FINAL HIGH-PRIORITY THEME OVERRIDES FOR CONTACT & APPLICATION SYSTEM
@@ -15232,37 +14721,18 @@ section.follow-section,
     transform: translateY(0) scale(1);
 }
 
-.floating-back-to-top-btn::before {
-    content: '';
-    position: absolute;
-    top: -150%;
-    left: -150%;
-    width: 400%;
-    height: 400%;
-    background: conic-gradient(
-        from 0deg,
-        #00f2fe,
-        #38d6ff,
-        #a855f7,
-        #ec4899,
-        #eab308,
-        #00f2fe
-    );
-    animation: rotateConicBorder 4s linear infinite;
-    z-index: 0;
+
+.floating-back-to-top-btn {
+    background: #0b1329 !important;
+    border: 1px solid rgba(0, 191, 255, 0.35) !important;
+    border-radius: 50% !important;
+}
+.floating-back-to-top-btn::before,
+.floating-back-to-top-btn::after {
+    display: none !important;
+    content: none !important;
 }
 
-.floating-back-to-top-btn::after {
-    content: '';
-    position: absolute;
-    inset: 1.5px;
-    border-radius: inherit;
-    background: rgba(13, 19, 34, 0.94);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    z-index: 1;
-    transition: background 0.3s ease;
-}
 
 .floating-back-to-top-btn .back-to-top-icon,
 .floating-back-to-top-btn span {
@@ -18015,4 +17485,373 @@ body::before {
 }
 button, a, input, select, textarea {
     touch-action: manipulation;
+}
+
+
+/* ==========================================================================
+   XESTUS ULTIMATE CLEAN LUXURY DESIGN SYSTEM (DARK SAAS / LINEAR AESTHETIC)
+   Eliminates all rainbow rotations, dazzling glows, and blurry overlays.
+   Provides 100% crisp, legible typography & high-contrast interactive cards.
+   ========================================================================== */
+
+/* 1. Eliminate all pseudo-element rotating conic borders permanently */
+*::before,
+*::after {
+    animation-name: none !important;
+}
+
+.floating-follow-btn::before, .floating-follow-btn::after,
+.ai-launcher-btn::before, .ai-launcher-btn::after,
+.floating-back-to-top-btn::before, .floating-back-to-top-btn::after,
+.btn-primary::before, .btn-primary::after,
+.btn-secondary::before, .btn-secondary::after,
+.btn-stitch-primary::before, .btn-stitch-primary::after,
+.btn-card-action::before, .btn-card-action::after,
+.btn-card-guide::before, .btn-card-guide::after,
+.btn-card-portal::before, .btn-card-portal::after,
+.btn-card-share::before, .btn-card-share::after,
+.btn-card-assist::before, .btn-card-assist::after,
+.btn-quick-action::before, .btn-quick-action::after,
+.btn-catalog-trigger::before, .btn-catalog-trigger::after,
+.btn-scam-trigger::before, .btn-scam-trigger::after,
+.btn-nav-cta::before, .btn-nav-cta::after,
+.seva-service-card::before, .seva-service-card::after,
+.seva-portal-card::before, .seva-portal-card::after,
+.seva-task-card::before, .seva-task-card::after,
+.digital-card::before, .digital-card::after,
+.service-card::before, .service-card::after,
+.solution-card::before, .solution-card::after,
+.product-card::before, .product-card::after,
+.project-card::before, .project-card::after,
+.xestus-tools-card::before, .xestus-tools-card::after,
+.tool-card::before, .tool-card::after {
+    display: none !important;
+    content: none !important;
+    animation: none !important;
+    background: none !important;
+}
+
+/* 2. Crisp, High-Contrast Typography Across All Elements */
+body, h1, h2, h3, h4, h5, h6, p, span, a, button, label, input, select, textarea {
+    text-shadow: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+/* Titles: Solid Crisp Pure White in Dark Theme */
+.hero-title,
+.section-title,
+.section-heading,
+.tool-title,
+.guide-title,
+.seva-card-title,
+.xestus-tools-title,
+.xestus-tools-card-name,
+.tool-card-title,
+.service-card-title,
+.card-title,
+.modal-title,
+.category-title,
+.category-name,
+.footer-heading {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.015em !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: none !important;
+    background-image: none !important;
+}
+
+/* Descriptions & Body Text: Clean Crisp Slate Gray */
+.hero-description,
+.section-desc,
+.tool-description,
+.xestus-tools-subtitle,
+.xestus-tools-card-desc,
+.seva-card-desc,
+.tool-card-desc,
+.service-card-desc,
+.card-desc,
+.doc-preview-text,
+.footer-desc,
+.service-step-desc {
+    color: #cbd5e1 !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    -webkit-text-fill-color: #cbd5e1 !important;
+    text-shadow: none !important;
+}
+
+/* 3. Luxury Dark SaaS Cards (Crisp Solid Backgrounds, Zero Blur Overhead) */
+.seva-service-card,
+.seva-portal-card,
+.seva-task-card,
+.xestus-tools-card,
+.tool-card,
+.service-card,
+.solution-card,
+.product-card,
+.project-card,
+.lab-card,
+.why-card,
+.stat-card,
+.tech-stack-card,
+.contact-channel-card,
+.contact-form-wrapper,
+.digital-card {
+    background: #0b1329 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+    overflow: hidden !important;
+    position: relative !important;
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease, box-shadow 0.22s ease !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Card Hover: Subtle, Elegant Elevation (No spinning rainbow rings) */
+.seva-service-card:hover,
+.seva-portal-card:hover,
+.seva-task-card:hover,
+.xestus-tools-card:hover,
+.tool-card:hover,
+.service-card:hover,
+.solution-card:hover,
+.product-card:hover,
+.project-card:hover,
+.lab-card:hover,
+.why-card:hover,
+.tech-stack-card:hover,
+.digital-card:hover {
+    border-color: rgba(0, 191, 255, 0.45) !important;
+    box-shadow: 0 14px 34px -8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 191, 255, 0.15) !important;
+    transform: translateY(-3px) !important;
+    background: #0f1936 !important;
+}
+
+/* 4. Action Buttons (Clean, High Contrast & High Legibility) */
+.btn-primary,
+.btn-nav-cta,
+.btn-stitch-primary,
+.btn-apply-primary {
+    background: linear-gradient(135deg, #00bfff 0%, #00ff88 100%) !important;
+    border: none !important;
+    color: #070c18 !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 14px rgba(0, 191, 255, 0.3) !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    text-decoration: none !important;
+    text-shadow: none !important;
+    cursor: pointer !important;
+}
+
+.btn-primary:hover,
+.btn-nav-cta:hover,
+.btn-stitch-primary:hover,
+.btn-apply-primary:hover {
+    background: linear-gradient(135deg, #38d6ff 0%, #34d399 100%) !important;
+    box-shadow: 0 6px 20px rgba(0, 255, 136, 0.45) !important;
+    transform: translateY(-1.5px) !important;
+    color: #070c18 !important;
+}
+
+.btn-primary *,
+.btn-nav-cta *,
+.btn-stitch-primary *,
+.btn-apply-primary * {
+    color: #070c18 !important;
+    fill: #070c18 !important;
+    text-shadow: none !important;
+}
+
+/* Card Action Buttons (Pill buttons in 3-column / 2-column layout) */
+.btn-card-action {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 7px 11px !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    transition: all 0.18s ease !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+    text-shadow: none !important;
+}
+
+.btn-card-guide {
+    background: rgba(0, 191, 255, 0.12) !important;
+    border: 1px solid rgba(0, 191, 255, 0.35) !important;
+    color: #38d6ff !important;
+}
+.btn-card-guide * { color: #38d6ff !important; }
+.btn-card-guide:hover {
+    background: #00bfff !important;
+    color: #070c18 !important;
+    border-color: #00bfff !important;
+    box-shadow: 0 4px 12px rgba(0, 191, 255, 0.4) !important;
+}
+.btn-card-guide:hover * { color: #070c18 !important; }
+
+.btn-card-portal {
+    background: rgba(16, 185, 129, 0.12) !important;
+    border: 1px solid rgba(16, 185, 129, 0.35) !important;
+    color: #34d399 !important;
+}
+.btn-card-portal * { color: #34d399 !important; }
+.btn-card-portal:hover {
+    background: #10b981 !important;
+    color: #070c18 !important;
+    border-color: #10b981 !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4) !important;
+}
+.btn-card-portal:hover * { color: #070c18 !important; }
+
+.btn-card-share {
+    background: rgba(168, 85, 247, 0.12) !important;
+    border: 1px solid rgba(168, 85, 247, 0.35) !important;
+    color: #c084fc !important;
+}
+.btn-card-share * { color: #c084fc !important; }
+.btn-card-share:hover {
+    background: #a855f7 !important;
+    color: #ffffff !important;
+    border-color: #a855f7 !important;
+    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4) !important;
+}
+.btn-card-share:hover * { color: #ffffff !important; }
+
+.btn-card-assist {
+    background: rgba(245, 158, 11, 0.12) !important;
+    border: 1px solid rgba(245, 158, 11, 0.35) !important;
+    color: #fbbf24 !important;
+}
+.btn-card-assist * { color: #fbbf24 !important; }
+.btn-card-assist:hover {
+    background: #f59e0b !important;
+    color: #070c18 !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4) !important;
+}
+.btn-card-assist:hover * { color: #070c18 !important; }
+
+/* Tool Hub Card Open Button */
+.xestus-tools-card-action.open-btn {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    border: 1px solid rgba(56, 214, 255, 0.4) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3) !important;
+}
+.xestus-tools-card-action.open-btn:hover {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%) !important;
+    color: #ffffff !important;
+    border-color: #38d6ff !important;
+    box-shadow: 0 6px 18px rgba(14, 165, 233, 0.45) !important;
+    transform: translateY(-1.5px) !important;
+}
+
+/* 5. Day Theme High-Contrast Mode */
+[data-theme="day"] body {
+    background: #f8fafc !important;
+    color: #0f172a !important;
+}
+
+[data-theme="day"] .hero-title,
+[data-theme="day"] .section-title,
+[data-theme="day"] .section-heading,
+[data-theme="day"] .tool-title,
+[data-theme="day"] .guide-title,
+[data-theme="day"] .seva-card-title,
+[data-theme="day"] .xestus-tools-title,
+[data-theme="day"] .xestus-tools-card-name,
+[data-theme="day"] .tool-card-title,
+[data-theme="day"] .service-card-title,
+[data-theme="day"] .card-title,
+[data-theme="day"] .modal-title {
+    color: #0f172a !important;
+    -webkit-text-fill-color: #0f172a !important;
+}
+
+[data-theme="day"] .hero-description,
+[data-theme="day"] .section-desc,
+[data-theme="day"] .tool-description,
+[data-theme="day"] .xestus-tools-subtitle,
+[data-theme="day"] .xestus-tools-card-desc,
+[data-theme="day"] .seva-card-desc,
+[data-theme="day"] .tool-card-desc,
+[data-theme="day"] .service-card-desc,
+[data-theme="day"] .card-desc,
+[data-theme="day"] .doc-preview-text {
+    color: #475569 !important;
+    -webkit-text-fill-color: #475569 !important;
+}
+
+[data-theme="day"] .seva-service-card,
+[data-theme="day"] .seva-portal-card,
+[data-theme="day"] .seva-task-card,
+[data-theme="day"] .xestus-tools-card,
+[data-theme="day"] .tool-card,
+[data-theme="day"] .service-card,
+[data-theme="day"] .solution-card,
+[data-theme="day"] .product-card,
+[data-theme="day"] .project-card,
+[data-theme="day"] .lab-card,
+[data-theme="day"] .why-card,
+[data-theme="day"] .stat-card,
+[data-theme="day"] .tech-stack-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06) !important;
+}
+
+[data-theme="day"] .seva-service-card:hover,
+[data-theme="day"] .xestus-tools-card:hover,
+[data-theme="day"] .tool-card:hover,
+[data-theme="day"] .service-card:hover {
+    border-color: #0284c7 !important;
+    box-shadow: 0 10px 25px rgba(2, 132, 199, 0.15) !important;
+    background: #ffffff !important;
+}
+
+/* 6. Eye Protect Theme High-Contrast Mode */
+[data-theme="eye-protect"] body {
+    background: #fdfbf7 !important;
+    color: #291e13 !important;
+}
+
+[data-theme="eye-protect"] .hero-title,
+[data-theme="eye-protect"] .section-title,
+[data-theme="eye-protect"] .tool-title,
+[data-theme="eye-protect"] .seva-card-title,
+[data-theme="eye-protect"] .xestus-tools-card-name,
+[data-theme="eye-protect"] .tool-card-title,
+[data-theme="eye-protect"] .service-card-title {
+    color: #291e13 !important;
+    -webkit-text-fill-color: #291e13 !important;
+}
+
+[data-theme="eye-protect"] .hero-description,
+[data-theme="eye-protect"] .section-desc,
+[data-theme="eye-protect"] .tool-description,
+[data-theme="eye-protect"] .seva-card-desc,
+[data-theme="eye-protect"] .tool-card-desc {
+    color: #574635 !important;
+    -webkit-text-fill-color: #574635 !important;
+}
+
+[data-theme="eye-protect"] .seva-service-card,
+[data-theme="eye-protect"] .xestus-tools-card,
+[data-theme="eye-protect"] .tool-card,
+[data-theme="eye-protect"] .service-card {
+    background: #fbf7ee !important;
+    border: 1px solid #e7ddca !important;
+    box-shadow: 0 4px 16px rgba(66, 44, 20, 0.06) !important;
 }
