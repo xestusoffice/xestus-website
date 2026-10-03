@@ -1259,23 +1259,23 @@ body {
     box-shadow: 0 4px 14px rgba(0, 191, 255, 0.4) !important;
 }
 
-/* Hide unstyled mobile drawer on desktop and mobile */
-.mobile-drawer {
-    display: none !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-}
-
-.mobile-only {
-    display: none !important;
-}
-
-@media (max-width: 768px) {
-    .desktop-nav {
+@media (min-width: 1025px) {
+    .mobile-drawer,
+    .mobile-only {
         display: none !important;
     }
-    .hide-mobile {
+}
+
+@media (max-width: 1024px) {
+    .desktop-nav,
+    .hide-mobile,
+    .desktop-app-strip,
+    .btn-nav-cta,
+    .btn-outlier-nav {
         display: none !important;
+    }
+    .mobile-only {
+        display: block !important;
     }
 }
 
