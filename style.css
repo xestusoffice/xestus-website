@@ -14689,100 +14689,116 @@ section.follow-section,
 }
 
 /* ==========================================================================
-   FLOATING BACK TO TOP PILL BUTTON (UNIFIED FLOATING STACK)
+   FLOATING BACK TO TOP BUTTON (UNIFIED FLOATING STACK)
    ========================================================================== */
 .floating-back-to-top-btn {
-    pointer-events: auto;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    height: 38px;
-    padding: 0 18px;
-    border-radius: var(--radius-full, 9999px);
-    border: none !important;
-    color: var(--text-primary, #ffffff);
-    font-size: 12.5px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    overflow: hidden;
-    z-index: 1;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 191, 255, 0.25);
+    pointer-events: auto !important;
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 50% !important;
+    border: 1.5px solid rgba(0, 242, 254, 0.6) !important;
+    background: #0b1329 !important;
+    color: #00f2fe !important;
+    cursor: pointer !important;
+    overflow: hidden !important;
+    z-index: 9997 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 16px rgba(0, 242, 254, 0.35) !important;
     opacity: 0;
     visibility: hidden;
     transform: translateY(12px) scale(0.95);
-    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease, box-shadow 0.24s ease;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease, box-shadow 0.24s ease, border-color 0.24s ease, background 0.24s ease !important;
     touch-action: manipulation;
 }
 
 .floating-back-to-top-btn.is-visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) scale(1) !important;
 }
 
-
-.floating-back-to-top-btn {
-    background: #0b1329 !important;
-    border: 1px solid rgba(0, 191, 255, 0.35) !important;
-    border-radius: 50% !important;
-}
-.floating-back-to-top-btn::before,
-.floating-back-to-top-btn::after {
+.floating-back-to-top-btn span {
     display: none !important;
-    content: none !important;
 }
-
 
 .floating-back-to-top-btn .back-to-top-icon,
-.floating-back-to-top-btn span {
-    position: relative;
-    z-index: 2;
-}
-
-.floating-back-to-top-btn .back-to-top-icon {
-    width: 15px;
-    height: 15px;
-    color: var(--cyan-bright, #00f2fe);
-    stroke: var(--cyan-bright, #00f2fe);
-    transition: transform var(--transition-fast);
+.floating-back-to-top-btn svg {
+    position: relative !important;
+    z-index: 10 !important;
+    display: block !important;
+    margin: auto !important;
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    stroke: #00f2fe !important;
+    color: #00f2fe !important;
+    stroke-width: 2.5px !important;
+    fill: none !important;
+    transition: transform 0.24s ease, stroke 0.24s ease, color 0.24s ease !important;
 }
 
 .floating-back-to-top-btn:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 12px 32px rgba(0, 191, 255, 0.45), 0 0 20px rgba(0, 242, 254, 0.4);
+    transform: translateY(-3px) scale(1.06) !important;
+    border-color: #00f2fe !important;
+    background: #0f1936 !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 242, 254, 0.6) !important;
 }
 
-.floating-back-to-top-btn:hover .back-to-top-icon {
-    transform: translateY(-3px);
-    color: #ffffff !important;
+.floating-back-to-top-btn:hover .back-to-top-icon,
+.floating-back-to-top-btn:hover svg {
+    transform: translateY(-2px) !important;
     stroke: #ffffff !important;
-}
-
-.floating-back-to-top-btn:hover span {
     color: #ffffff !important;
-    text-shadow: 0 0 14px rgba(0, 191, 255, 0.9) !important;
 }
 
-:root[data-theme="day"] .floating-back-to-top-btn::after {
-    background: rgba(248, 250, 252, 0.95);
+:root[data-theme="day"] .floating-back-to-top-btn {
+    background: #ffffff !important;
+    border-color: rgba(2, 132, 199, 0.6) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 16px rgba(2, 132, 199, 0.25) !important;
 }
 
-:root[data-theme="day"] .floating-back-to-top-btn span,
-:root[data-theme="day"] .floating-back-to-top-btn .back-to-top-icon {
-    color: #0284c7;
-    stroke: #0284c7;
+:root[data-theme="day"] .floating-back-to-top-btn .back-to-top-icon,
+:root[data-theme="day"] .floating-back-to-top-btn svg {
+    stroke: #0284c7 !important;
+    color: #0284c7 !important;
 }
 
-:root[data-theme="eye-protect"] .floating-back-to-top-btn::after {
-    background: rgba(245, 239, 230, 0.95);
+:root[data-theme="day"] .floating-back-to-top-btn:hover {
+    background: #f0f9ff !important;
+    border-color: #0284c7 !important;
+    box-shadow: 0 12px 28px rgba(2, 132, 199, 0.35) !important;
 }
 
-:root[data-theme="eye-protect"] .floating-back-to-top-btn span,
-:root[data-theme="eye-protect"] .floating-back-to-top-btn .back-to-top-icon {
-    color: #0e7490;
-    stroke: #0e7490;
+:root[data-theme="day"] .floating-back-to-top-btn:hover .back-to-top-icon,
+:root[data-theme="day"] .floating-back-to-top-btn:hover svg {
+    stroke: #0369a1 !important;
+    color: #0369a1 !important;
+}
+
+:root[data-theme="eye-protect"] .floating-back-to-top-btn {
+    background: #fdfbf7 !important;
+    border-color: rgba(14, 116, 144, 0.6) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), 0 0 16px rgba(14, 116, 144, 0.25) !important;
+}
+
+:root[data-theme="eye-protect"] .floating-back-to-top-btn .back-to-top-icon,
+:root[data-theme="eye-protect"] .floating-back-to-top-btn svg {
+    stroke: #0e7490 !important;
+    color: #0e7490 !important;
+}
+
+:root[data-theme="eye-protect"] .floating-back-to-top-btn:hover {
+    background: #f5eedc !important;
+    border-color: #0e7490 !important;
+    box-shadow: 0 12px 28px rgba(14, 116, 144, 0.35) !important;
 }
 
 /* ==========================================================================
@@ -19031,8 +19047,6 @@ table {
 /* Floating Widgets on Mobile */
 @media (max-width: 768px) {
     .ai-launcher-btn {
-        bottom: 16px !important;
-        right: 16px !important;
         height: 42px !important;
         padding: 0 14px !important;
         z-index: 9998 !important;
@@ -19041,10 +19055,12 @@ table {
     .floating-back-to-top-btn,
     #backToTop,
     .back-to-top {
-        bottom: 68px !important;
-        right: 16px !important;
-        width: 38px !important;
-        height: 38px !important;
+        width: 42px !important;
+        height: 42px !important;
+        min-width: 42px !important;
+        min-height: 42px !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
         z-index: 9997 !important;
     }
 
