@@ -17,16 +17,16 @@
 "use strict";
 
 (function () {
-    // 1. Core Shield Configuration
+    // 1. Core Shield Configuration (User-Friendly Mode: Full Interaction & Selection Enabled)
     const SHIELD_CONFIG = {
         enabled: true,
         enforceDomainLock: true,
-        blockContextMenu: true,
-        blockDevShortcuts: true,
-        blockSourceCopy: true,
-        antiDevTools: true,
+        blockContextMenu: false,
+        blockDevShortcuts: false,
+        blockSourceCopy: false,
+        antiDevTools: false,
         antiClickjacking: true,
-        preventAssetDrag: true,
+        preventAssetDrag: false,
         sanitizeInputs: true,
         toastDurationMs: 2800,
         authorizedDomains: [

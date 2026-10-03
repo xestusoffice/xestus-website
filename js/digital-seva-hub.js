@@ -26,7 +26,8 @@
         activeDistrict: "All India / Central",
         activeModal: null,
         activeTabInModal: "overview",
-        currentLang: "en"
+        currentLang: "en",
+        visibleLimit: 12
     };
 
     function getActiveLanguage() {
@@ -590,7 +591,30 @@
         }
 
         // Render Main Grid
-        grid.innerHTML = mainServices.map((s) => createServiceCardHTML(s, lang)).join("");
+        const totalMainCount = mainServices.length;
+        const visibleServices = mainServices.slice(0, state.visibleLimit);
+        grid.innerHTML = visibleServices.map((s) => createServiceCardHTML(s, lang)).join("");
+        
+        // Manage Load More Button Container
+        const loadMoreContainer = document.getElementById("sevaLoadMoreContainer");
+        const loadMoreText = document.getElementById("sevaLoadMoreText");
+        const totalCountBadge = document.getElementById("sevaTotalCountBadge");
+
+        if (loadMoreContainer) {
+            if (totalMainCount > state.visibleLimit) {
+                loadMoreContainer.style.display = "flex";
+                const remaining = totalMainCount - state.visibleLimit;
+                if (loadMoreText) {
+                    const btnLabel = lang === "bn" ? `আরও সেবা দেখুন (+${Math.min(12, remaining)})` : (lang === "hi" ? `और सेवाएं देखें (+${Math.min(12, remaining)})` : `Load More Services (+${Math.min(12, remaining)})`);
+                    loadMoreText.textContent = btnLabel;
+                }
+                if (totalCountBadge) {
+                    totalCountBadge.textContent = totalMainCount;
+                }
+            } else {
+                loadMoreContainer.style.display = "none";
+            }
+        }
         attachCardActions(grid);
 
         // Render Private Services Section
@@ -721,6 +745,8 @@
     }
 
     function resetAllFilters() {
+        state.visibleLimit = 12;
+
         state.searchQuery = "";
         state.activeCategory = null;
         state.activeGovLevel = "all";
@@ -1481,6 +1507,7 @@
         // Search Suggestion Chips
         document.querySelectorAll(".seva-search-chips .search-chip-btn").forEach((chip) => {
             chip.addEventListener("click", () => {
+                state.visibleLimit = 12;
                 const q = chip.getAttribute("data-query") || "";
                 if (searchInput) {
                     searchInput.value = q;
@@ -1499,6 +1526,7 @@
         // 12 Task-First Discovery Cards ("I NEED HELP WITH...")
         document.querySelectorAll("#sevaTaskGrid .seva-task-card").forEach((card) => {
             card.addEventListener("click", () => {
+                state.visibleLimit = 12;
                 const cat = card.getAttribute("data-category");
                 if (cat) {
                     state.activeCategory = cat;
@@ -1517,6 +1545,7 @@
                 const filterType = btn.getAttribute("data-filter-type");
                 const val = btn.getAttribute("data-value");
 
+                state.visibleLimit = 12;
                 if (filterType === "all") {
                     resetAllFilters();
                 } else if (filterType === "govLevel") {
@@ -1564,6 +1593,23 @@
         }
 
         // Reset Button inside Empty State
+        // Progressive Load More & Show All Handlers
+        const btnLoadMore = document.getElementById("btnSevaLoadMore");
+        if (btnLoadMore) {
+            btnLoadMore.addEventListener("click", () => {
+                state.visibleLimit += 12;
+                renderServicesGrid(false);
+            });
+        }
+
+        const btnShowAll = document.getElementById("btnSevaShowAll");
+        if (btnShowAll) {
+            btnShowAll.addEventListener("click", () => {
+                state.visibleLimit = 9999;
+                renderServicesGrid(false);
+            });
+        }
+
         const btnResetFilters = document.getElementById("btnClearAllFilters");
         if (btnResetFilters) {
             btnResetFilters.addEventListener("click", resetAllFilters);

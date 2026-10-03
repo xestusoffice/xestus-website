@@ -829,6 +829,17 @@
     <div class="seva-services-section">
         <div class="seva-services-grid" id="sevaServicesGrid"></div>
 
+        <!-- Progressive Load More Container -->
+        <div class="seva-load-more-wrap" id="sevaLoadMoreContainer" style="display: none;">
+            <button type="button" class="btn-seva-load-more" id="btnSevaLoadMore">
+                <i data-lucide="plus-circle" aria-hidden="true"></i>
+                <span id="sevaLoadMoreText">Load More Services</span>
+            </button>
+            <button type="button" class="btn-seva-show-all" id="btnSevaShowAll">
+                <span>Show All (<span id="sevaTotalCountBadge">0</span>)</span>
+            </button>
+        </div>
+
         <!-- Fallback Suggestions when 0 exact results match -->
         <div class="seva-fallback-suggestions" id="sevaFallbackSuggestions" style="display: none;">
             <div class="fallback-header">
