@@ -1660,3 +1660,291 @@ body {
     color: #ffffff !important;
 }
 
+
+
+/* ==========================================================================
+   XESTUS PREMIUM HIGH-VALUE TOOL GUIDES & RICH CONTENT DESIGN SYSTEM
+   Google AdSense & Search Quality Compliant
+   ========================================================================== */
+
+.tool-guide-section {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.guide-card {
+  background: var(--bg-surface, #0d1527);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-lg, 14px);
+  padding: 28px 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.guide-card:hover {
+  border-color: rgba(0, 255, 136, 0.25);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.guide-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary, #ffffff);
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  padding-bottom: 12px;
+}
+
+.guide-title svg,
+.guide-title i {
+  color: var(--cyan-bright, #00ff88);
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.guide-content {
+  color: var(--text-secondary, #94a3b8);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.guide-content p {
+  margin-bottom: 16px;
+}
+
+.guide-content p:last-child {
+  margin-bottom: 0;
+}
+
+.guide-content h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary, #f1f5f9);
+  margin: 22px 0 10px;
+}
+
+.guide-content ul,
+.guide-content ol {
+  margin: 12px 0 18px 22px;
+  padding: 0;
+}
+
+.guide-content li {
+  margin-bottom: 8px;
+  line-height: 1.7;
+}
+
+.guide-content strong {
+  color: var(--text-primary, #ffffff);
+}
+
+/* Formula & Math Highlights */
+.formula-box {
+  background: rgba(0, 255, 136, 0.05);
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  border-left: 4px solid #00ff88;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 18px 0;
+  font-family: 'Fira Code', monospace;
+  color: #00ff88;
+  font-size: 14.5px;
+  overflow-x: auto;
+}
+
+.formula-box code {
+  color: #00ff88;
+  font-weight: 600;
+}
+
+.code-inline {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace;
+  font-size: 13.5px;
+  color: var(--cyan-bright, #00ff88);
+}
+
+/* Step-by-Step Grid */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 18px 0;
+}
+
+.step-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+  border-radius: 10px;
+  padding: 18px;
+  position: relative;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00ff88, #00bfff);
+  color: #070c18;
+  font-weight: 800;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.step-title {
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.step-desc {
+  font-size: 13.5px;
+  color: var(--text-secondary, #94a3b8);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Use Cases List */
+.use-cases-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.use-case-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.use-case-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: rgba(0, 191, 255, 0.12);
+  color: #00bfff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.use-case-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.use-case-text h4 {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+  margin: 0 0 4px;
+}
+
+.use-case-text p {
+  font-size: 13px;
+  color: var(--text-secondary, #94a3b8);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* FAQ Accordion */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.faq-item {
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(0, 255, 136, 0.2);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary, #ffffff);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  font-family: inherit;
+}
+
+.faq-question:hover {
+  color: var(--cyan-bright, #00ff88);
+}
+
+.faq-question svg,
+.faq-question i {
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted, #64748b);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.faq-question[aria-expanded="true"] svg,
+.faq-question[aria-expanded="true"] i {
+  transform: rotate(180deg);
+  color: var(--cyan-bright, #00ff88);
+}
+
+.faq-answer {
+  padding: 0 20px 18px;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.faq-answer p {
+  margin: 0;
+}
+
+.faq-answer p + p {
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .guide-card {
+    padding: 20px 18px;
+  }
+  .guide-title {
+    font-size: 18px;
+  }
+  .steps-grid,
+  .use-cases-list {
+    grid-template-columns: 1fr;
+  }
+}

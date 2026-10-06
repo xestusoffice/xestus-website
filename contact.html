@@ -60,6 +60,32 @@
 
     <!-- EmailJS SDK -->
     <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Schema.org ContactPage JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "url": "https://xestus.in/",
+        "logo": "https://xestus.in/assets/images/xestus-logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "xestus.office@gmail.com",
+          "contactType": "Customer Support & Technical Inquiries",
+          "availableLanguage": ["English", "Bengali", "Hindi"]
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Sudip Khatua",
+          "jobTitle": "Founder & Lead Architect"
+        }
+      }
+    }
+    </script>
+  
 </head>
 
 <body>
@@ -255,6 +281,24 @@
                 </button>
             </form>
         </div>
+    
+        <!-- Consultation & Technical Support Guide -->
+        <div class="policy-content-card" style="padding: 32px; margin-top: 28px;">
+            <h2 style="font-size: 20px; color: var(--cyan-bright); margin-bottom: 14px;"><i data-lucide="help-circle"></i> Technical Consultation &amp; Support Guidelines</h2>
+            <div style="color: var(--text-secondary); font-size: 14.5px; line-height: 1.75;">
+                <p>We welcome technical inquiries, feature suggestions for our digital tools ecosystem, custom AI solutions requests, and partnership proposals. Review the following guidelines for prompt assistance:</p>
+                
+                <h3 style="font-size: 16px; color: var(--text-primary); margin: 20px 0 8px;">1. Expected Response Timelines</h3>
+                <p>Our solutions architecture team reviews incoming messages daily from Monday through Saturday (9:00 AM – 8:00 PM IST). Standard response time for technical consultations, software development proposals, and bug reports is <strong>within 24 business hours</strong>.</p>
+
+                <h3 style="font-size: 16px; color: var(--text-primary); margin: 20px 0 8px;">2. Digital Tools &amp; Feature Suggestions</h3>
+                <p>Have an idea for a new client-side calculator, developer utility, or image processing tool? We actively build and expand the XESTUS platform based on community feedback. Send your tool requirements or mathematical specifications to <a href="mailto:xestus.office@gmail.com" style="color: var(--cyan-bright);">xestus.office@gmail.com</a>.</p>
+
+                <h3 style="font-size: 16px; color: var(--text-primary); margin: 20px 0 8px;">3. Privacy &amp; Non-Disclosure (NDA)</h3>
+                <p>All project specifications, proprietary business workflows, and technical details shared through this contact portal remain strictly confidential. Mutual Non-Disclosure Agreements (NDAs) are available upon request before initiating architecture deep dives.</p>
+            </div>
+        </div>
+
     </main>
 
     <!-- Footer -->

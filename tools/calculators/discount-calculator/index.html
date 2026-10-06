@@ -34,8 +34,8 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
 
     <!-- SEO Metadata -->
-    <title>Discount & Savings Calculator — 100% Free Online Browser Utility | XESTUS Tools</title>
-    <meta name="description" content="Calculate final sale price, total savings, and double discounts instantly for shopping and retail stores.">
+    <title>Discount Calculator — Calculate Sale Price, Savings & Stacked Discounts | XESTUS</title>
+    <meta name="description" content="Calculate final sale price, total money saved, and stacked double discounts (e.g., 20% off + extra 10% coupon) with instant in-browser calculations.">
     <meta name="keywords" content="discount calculator, sale price calculator, percentage discount, calculate savings">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://xestus.in/tools/calculators/discount-calculator/">
@@ -45,7 +45,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xestus.in/tools/calculators/discount-calculator/">
     <meta property="og:title" content="Discount & Savings Calculator | XESTUS Tools">
-    <meta property="og:description" content="Calculate final sale price, total savings, and double discounts instantly for shopping and retail stores.">
+    <meta property="og:description" content="Calculate final sale price, total money saved, and stacked double discounts (e.g., 20% off + extra 10% coupon) with instant in-browser calculations.">
     <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
 
     <!-- Fonts & CSS -->
@@ -58,28 +58,96 @@
     
 
     <!-- Schema.org SoftwareApplication JSON-LD -->
+    
+
+    <!-- Schema.org Multi-Entity JSON-LD (WebApplication, BreadcrumbList, FAQPage) -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Discount & Savings Calculator",
-      "url": "https://xestus.in/tools/calculators/discount-calculator/",
-      "description": "Calculate final sale price, total savings, and double discounts instantly for shopping and retail stores.",
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript. Requires HTML5.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "XESTUS",
-        "url": "https://xestus.in/"
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Discount & Sale Savings Calculator",
+  "url": "https://xestus.in/tools/calculators/discount-calculator/",
+  "description": "Calculate final sale price, total money saved, and stacked double discounts (e.g., 20% off + extra 10% coupon) with instant in-browser calculations.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XESTUS",
+    "url": "https://xestus.in/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://xestus.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://xestus.in/tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Calculators",
+      "item": "https://xestus.in/tools/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Discount & Sale Savings Calculator",
+      "item": "https://xestus.in/tools/calculators/discount-calculator/"
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is 20% off plus an extra 10% off not equal to 30% off?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because the second discount (10%) is applied to the already discounted price, not the original price. For a $100 item, 20% off makes it $80; 10% off $80 is $8, making the final price $72 (a total discount of 28%, not 30%)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add sales tax to see the final checkout price?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, you can specify your local sales tax rate to calculate the exact final total after applying discounts and adding tax."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this calculator free with no ads or limits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all XESTUS utilities are 100% free with unlimited calculations and zero data tracking."
       }
     }
+  ]
+}
     </script>
+  
 </head>
 
 <body data-tool-slug="discount-calculator">
@@ -240,50 +308,165 @@
         </section>
 
         <!-- Responsive Ad Slot (AdSense Compliant) -->
-        <div class="adsense-slot-container" style="margin: 2rem 0; text-align: center; min-height: 90px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px dashed var(--border-color, rgba(255,255,255,0.1));">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-1489572262543869"
-               data-ad-slot="1234567890"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
+        
 
         <!-- Tool Guide & FAQs Section (Clean, Collapsible, Below Workspace) -->
-        <section class="tool-guide-section">
-            
-      <div class="guide-card">
-        <h2 class="guide-title"><i data-lucide="book-open"></i> How to Use the Discount & Savings Calculator</h2>
-        <div class="guide-content">
-          <p>Calculate final sale price, total savings, and double discounts instantly for shopping and retail stores.</p>
-        </div>
+        <!-- Tool Guide & Educational Content Section (High-Value AdSense & Search Compliant) -->
+        <section class="tool-guide-section" aria-label="Educational Guide & Documentation">
+          
+          <!-- Card 1: Overview & Architecture -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="book-open"></i> About the Discount & Sale Savings Calculator</h2>
+            <div class="guide-content">
+              The <strong>XESTUS Discount Calculator</strong> is an intuitive financial tool built for smart shoppers, retail managers, and e-commerce buyers to calculate the exact final discounted price and total monetary savings on any purchase.
+
+It supports single percentage discounts (e.g., 25% off), flat price reductions (e.g., $15 off), and <strong>stacked multi-tier discounts</strong> (e.g., 30% storewide clearance plus an additional 10% promo code). With optional tax calculation, you can also see the exact out-of-pocket amount payable at checkout.
+            </div>
+          </div>
+
+          <!-- Card 2: How to Use & Steps -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="list-ordered"></i> Step-by-Step How to Use</h2>
+            <div class="guide-content">
+              <p>Follow these simple instructions to achieve accurate, instant calculations or data transformations:</p>
+              
+      <div class="steps-grid">
+        
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-title">Enter Original Retail Price</div>
+            <p class="step-desc">Type the original item list price or MRP before any discounts.</p>
+          </div>
+        
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Specify Discount Percentage</div>
+            <p class="step-desc">Input the primary discount rate or toggle to flat currency deduction.</p>
+          </div>
+        
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Add Optional Stacked Promo Code</div>
+            <p class="step-desc">Include secondary coupon codes or sales tax rates for total checkout estimation.</p>
+          </div>
+        
       </div>
     
-            
-      <div class="guide-card">
-        <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
-        <div class="faq-accordion">
+            </div>
+          </div>
+
+          <!-- Card 3: Formulas, Mechanics & Worked Example -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="cpu"></i> Mathematical Formulas & Technical Mechanics</h2>
+            <div class="guide-content">
+              <p>Under the hood, calculations and operations strictly adhere to validated standards:</p>
+              
+                <div class="formula-box">
+                  <strong>Discount Calculation Formulas</strong><br>
+                  <pre style="margin: 8px 0 0; color: inherit; font-family: inherit; white-space: pre-wrap;">1. Single Discount:
+   Savings Amount = Original Price × (Discount Rate / 100)
+   Final Price = Original Price - Savings Amount
+
+2. Stacked / Double Discount (e.g., D1% then D2%):
+   Intermediate Price = Original Price × (1 - (D1 / 100))
+   Final Price = Intermediate Price × (1 - (D2 / 100))
+   Effective Combined Discount % = 100 × (1 - (1 - D1/100) × (1 - D2/100))</pre>
+                </div>
+              
+              
+                <h3>Worked Example: Stacked Discount Analysis</h3>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle, rgba(255,255,255,0.06)); border-radius: 8px; padding: 16px 20px; margin-top: 10px;">
+                  A laptop with an original price of <strong>$1,200</strong> is on a <strong>25% Black Friday Sale</strong> with an extra <strong>10% loyalty voucher</strong>:
+<ul>
+  <li><strong>Price after 25% off:</strong> $1,200 - $300 = $900</li>
+  <li><strong>Price after additional 10% voucher:</strong> $900 - $90 = $810</li>
+  <li><strong>Total Savings:</strong> $390.00 (32.5% effective combined discount, NOT 35%)</li>
+  <li><strong>Final Price to Pay:</strong> $810.00</li>
+</ul>
+                </div>
+              
+            </div>
+          </div>
+
+          <!-- Card 4: Practical Real-World Use Cases -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="sparkles"></i> Practical Real-World Use Cases</h2>
+            <div class="guide-content">
+              <p>Discover how professionals, developers, students, and businesses use this tool daily:</p>
+              
+      <div class="use-cases-list">
+        
+          <div class="use-case-item">
+            <div class="use-case-icon"><i data-lucide="check-circle-2"></i></div>
+            <div class="use-case-text">
+              <h4>Holiday & Flash Sale Shopping</h4>
+              <p>Calculate exact savings on Black Friday, Cyber Monday, and festive e-commerce sales.</p>
+            </div>
+          </div>
+        
+          <div class="use-case-item">
+            <div class="use-case-icon"><i data-lucide="check-circle-2"></i></div>
+            <div class="use-case-text">
+              <h4>Retail Inventory Pricing</h4>
+              <p>Determine clearance markdowns and promotional pricing strategies for store merchandise.</p>
+            </div>
+          </div>
+        
+          <div class="use-case-item">
+            <div class="use-case-icon"><i data-lucide="check-circle-2"></i></div>
+            <div class="use-case-text">
+              <h4>Wholesale Volume Rebates</h4>
+              <p>Compute tiered buyer discounts for bulk procurement and supply chain orders.</p>
+            </div>
+          </div>
+        
+      </div>
+    
+            </div>
+          </div>
+
+          <!-- Card 5: In-Depth FAQs -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
+            <div class="guide-content">
+              
+      <div class="faq-accordion">
+        
           <div class="faq-item">
             <button class="faq-question" aria-expanded="true">
-              <span>Is my data private and secure?</span>
+              <span>Why is 20% off plus an extra 10% off not equal to 30% off?</span>
               <i data-lucide="chevron-down"></i>
             </button>
             <div class="faq-answer" style="display: block;">
-              <p>Yes, 100%. All processing runs strictly inside your local web browser. No inputs or files are uploaded to any server.</p>
+              <p>Because the second discount (10%) is applied to the already discounted price, not the original price. For a $100 item, 20% off makes it $80; 10% off $80 is $8, making the final price $72 (a total discount of 28%, not 30%).</p>
             </div>
           </div>
+        
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false">
-              <span>Is this tool completely free to use?</span>
+              <span>Can I add sales tax to see the final checkout price?</span>
               <i data-lucide="chevron-down"></i>
             </button>
             <div class="faq-answer" style="display: none;">
-              <p>Yes, all XESTUS tools are 100% free with unlimited usage and zero registration required.</p>
+              <p>Yes, you can specify your local sales tax rate to calculate the exact final total after applying discounts and adding tax.</p>
             </div>
           </div>
-        </div>
+        
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Is this calculator free with no ads or limits?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: none;">
+              <p>Yes, all XESTUS utilities are 100% free with unlimited calculations and zero data tracking.</p>
+            </div>
+          </div>
+        
       </div>
     
+            </div>
+          </div>
+
         </section>
 
         <!-- Related Tools Section -->

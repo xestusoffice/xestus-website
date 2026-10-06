@@ -29,6 +29,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css?v=1790936593562">
     <link rel="stylesheet" href="../tools.css?v=1.0.0">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do my images get uploaded to your servers during compression or resizing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All image processing is executed entirely in your browser using HTML5 Canvas. Your files never leave your device."
+      }
+    }
+  ]
+}
+    </script>
+    
 </head>
 
 <body>
@@ -122,16 +141,10 @@
         </section>
 
         <!-- Ad Slot: Category Top Banner -->
-        <div class="tool-ad-container" style="margin-bottom: 24px;">
-            <div class="ad-label" style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Advertisement</div>
+        
             <div class="ad-slot-card" style="min-height:90px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border:1px dashed var(--border-subtle); border-radius:8px;">
-                <ins class="adsbygoogle"
-                     style="display:block; width:100%; text-align:center;"
-                     data-ad-client="ca-pub-1489572262543869"
-                     data-ad-slot="responsive"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                
+                
             </div>
         </div>
 
@@ -191,6 +204,45 @@
                 <div class="tool-card-action"><span>Open Tool</span> <i data-lucide="arrow-right"></i></div>
             </a>
         </section>
+    
+      <!-- Category Knowledge Hub & FAQs (AdSense & Quality Compliant) -->
+      <section class="tool-guide-section" style="margin-top: 40px;" aria-label="Category Overview and Documentation">
+        <div class="guide-card">
+          <h2 class="guide-title"><i data-lucide="book-open"></i> Domain Overview & Architecture</h2>
+          <div class="guide-content">
+            The <strong>XESTUS Image Processing Hub</strong> offers fast, client-side graphic tools for web designers, digital marketers, and everyday users. Compress image file sizes by up to 80%, resize dimensions with locked aspect ratios, and convert formats without sending photos to remote cloud servers.
+          </div>
+        </div>
+        
+        <div class="guide-card">
+          <h2 class="guide-title"><i data-lucide="shield-check"></i> HTML5 Canvas & Client-Side Quantization</h2>
+          <div class="guide-content">
+            By leveraging the browser's hardware-accelerated Canvas 2D API, XESTUS performs image operations directly on your local GPU and CPU. This ensures instant conversions, zero upload wait times, and complete privacy for sensitive personal and commercial photos.
+          </div>
+        </div>
+      
+        
+        <div class="guide-card">
+          <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
+          <div class="guide-content">
+            <div class="faq-accordion">
+              
+                <div class="faq-item">
+                  <button class="faq-question" aria-expanded="true">
+                    <span>Do my images get uploaded to your servers during compression or resizing?</span>
+                    <i data-lucide="chevron-down"></i>
+                  </button>
+                  <div class="faq-answer" style="display: block;">
+                    <p>No. All image processing is executed entirely in your browser using HTML5 Canvas. Your files never leave your device.</p>
+                  </div>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      
+      </section>
+    
     </main>
 
     <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">

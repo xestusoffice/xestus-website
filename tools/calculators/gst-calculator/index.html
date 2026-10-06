@@ -34,8 +34,8 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
 
     <!-- SEO Metadata -->
-    <title>GST Calculator (India Inclusive & Exclusive) — 100% Free Online Browser Utility | XESTUS Tools</title>
-    <meta name="description" content="Calculate GST amount, total price, and CGST/SGST/IGST breakdown for standard rates (5%, 12%, 18%, 28%) or custom tax.">
+    <title>GST Calculator India — Inclusive & Exclusive Tax, CGST, SGST, IGST | XESTUS</title>
+    <meta name="description" content="Calculate Goods and Services Tax (GST) for standard slab rates (5%, 12%, 18%, 28%) and custom tax rates with intra-state CGST/SGST and inter-state IGST breakdown.">
     <meta name="keywords" content="gst calculator, calculate gst online, gst inclusive exclusive, india gst tax, cgst sgst calculator">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://xestus.in/tools/calculators/gst-calculator/">
@@ -45,7 +45,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xestus.in/tools/calculators/gst-calculator/">
     <meta property="og:title" content="GST Calculator (India Inclusive & Exclusive) | XESTUS Tools">
-    <meta property="og:description" content="Calculate GST amount, total price, and CGST/SGST/IGST breakdown for standard rates (5%, 12%, 18%, 28%) or custom tax.">
+    <meta property="og:description" content="Calculate Goods and Services Tax (GST) for standard slab rates (5%, 12%, 18%, 28%) and custom tax rates with intra-state CGST/SGST and inter-state IGST breakdown.">
     <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
 
     <!-- Fonts & CSS -->
@@ -58,28 +58,112 @@
     
 
     <!-- Schema.org SoftwareApplication JSON-LD -->
+    
+
+    <!-- Schema.org Multi-Entity JSON-LD (WebApplication, BreadcrumbList, FAQPage) -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "GST Calculator (India Inclusive & Exclusive)",
+  "url": "https://xestus.in/tools/calculators/gst-calculator/",
+  "description": "Calculate Goods and Services Tax (GST) for standard slab rates (5%, 12%, 18%, 28%) and custom tax rates with intra-state CGST/SGST and inter-state IGST breakdown.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XESTUS",
+    "url": "https://xestus.in/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://xestus.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://xestus.in/tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Calculators",
+      "item": "https://xestus.in/tools/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
       "name": "GST Calculator (India Inclusive & Exclusive)",
-      "url": "https://xestus.in/tools/calculators/gst-calculator/",
-      "description": "Calculate GST amount, total price, and CGST/SGST/IGST breakdown for standard rates (5%, 12%, 18%, 28%) or custom tax.",
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript. Requires HTML5.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "XESTUS",
-        "url": "https://xestus.in/"
+      "item": "https://xestus.in/tools/calculators/gst-calculator/"
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between GST Exclusive and GST Inclusive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GST Exclusive means the tax is added on top of the net base amount (Final = Base + GST). GST Inclusive means the displayed price already contains the tax, and you are calculating the original base price and the tax component embedded inside it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I apply CGST + SGST versus IGST?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When the supplier and the recipient are in the same state (Intra-State), GST is split equally into Central GST (CGST) and State GST (SGST). When the transaction is between different states or union territories (Inter-State), Integrated GST (IGST) is applied at the full rate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the standard GST tax slabs in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The primary Indian GST slabs are 0% (essential food & agriculture), 5% (household essentials, transport, basic apparel), 12% (processed foods, business software), 18% (IT services, capital goods, consumer electronics), and 28% (luxury items, automobiles, tobacco)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use custom tax rates for special items like gold or rough diamonds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Simply click the 'Custom' pill and input special GST rates such as 3% (gold/jewelry) or 1.5% (rough diamonds)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this calculator suitable for official GST invoice generation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The mathematical formulas implemented match the official Goods and Services Tax Network (GSTN) rounding and computation standards."
       }
     }
+  ]
+}
     </script>
+  
 </head>
 
 <body data-tool-slug="gst-calculator">
@@ -272,50 +356,206 @@
         </section>
 
         <!-- Responsive Ad Slot (AdSense Compliant) -->
-        <div class="adsense-slot-container" style="margin: 2rem 0; text-align: center; min-height: 90px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px dashed var(--border-color, rgba(255,255,255,0.1));">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-1489572262543869"
-               data-ad-slot="1234567890"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
+        
 
         <!-- Tool Guide & FAQs Section (Clean, Collapsible, Below Workspace) -->
-        <section class="tool-guide-section">
-            
-      <div class="guide-card">
-        <h2 class="guide-title"><i data-lucide="book-open"></i> How to Use the GST Calculator (India Inclusive & Exclusive)</h2>
-        <div class="guide-content">
-          <p>Calculate GST amount, total price, and CGST/SGST/IGST breakdown for standard rates (5%, 12%, 18%, 28%) or custom tax.</p>
-        </div>
+        <!-- Tool Guide & Educational Content Section (High-Value AdSense & Search Compliant) -->
+        <section class="tool-guide-section" aria-label="Educational Guide & Documentation">
+          
+          <!-- Card 1: Overview & Architecture -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="book-open"></i> About the GST Calculator (India Inclusive & Exclusive)</h2>
+            <div class="guide-content">
+              The <strong>XESTUS Indian GST Calculator</strong> is a comprehensive financial tool designed to compute Goods and Services Tax (GST) amounts, net base prices, and gross invoice amounts with instantaneous precision. Designed for Indian business owners, chartered accountants, freelance professionals, e-commerce merchants, and consumers, this tool supports both <strong>GST Exclusive (+ Add GST)</strong> and <strong>GST Inclusive (Remove GST from MRP)</strong> modes.
+
+Under the Indian indirect taxation regime, goods and services are taxed under distinct slabs (0%, 5%, 12%, 18%, and 28%). Our calculator also provides automatic bifurcations for <strong>Intra-State transactions (CGST 50% + SGST 50%)</strong> and <strong>Inter-State transactions (IGST 100%)</strong>, helping you prepare accurate tax invoices and filing records.
+            </div>
+          </div>
+
+          <!-- Card 2: How to Use & Steps -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="list-ordered"></i> Step-by-Step How to Use</h2>
+            <div class="guide-content">
+              <p>Follow these simple instructions to achieve accurate, instant calculations or data transformations:</p>
+              
+      <div class="steps-grid">
+        
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-title">Select Calculation Mode</div>
+            <p class="step-desc">Choose 'GST Exclusive' to add tax to a net base price, or 'GST Inclusive' to extract the embedded tax from an MRP.</p>
+          </div>
+        
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Enter Base / Gross Amount</div>
+            <p class="step-desc">Type in the numerical amount in Indian Rupees (₹) without commas.</p>
+          </div>
+        
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Choose GST Rate Slab</div>
+            <p class="step-desc">Select 5%, 12%, 18%, 28%, or enter a custom percentage for specialized tax schedules.</p>
+          </div>
+        
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-title">Select Transaction Type</div>
+            <p class="step-desc">Toggle between Intra-State (CGST + SGST) for local sales and Inter-State (IGST) for out-of-state sales.</p>
+          </div>
+        
       </div>
     
-            
-      <div class="guide-card">
-        <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
-        <div class="faq-accordion">
+            </div>
+          </div>
+
+          <!-- Card 3: Formulas, Mechanics & Worked Example -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="cpu"></i> Mathematical Formulas & Technical Mechanics</h2>
+            <div class="guide-content">
+              <p>Under the hood, calculations and operations strictly adhere to validated standards:</p>
+              
+                <div class="formula-box">
+                  <strong>GST Calculation Formulas (Inclusive & Exclusive)</strong><br>
+                  <pre style="margin: 8px 0 0; color: inherit; font-family: inherit; white-space: pre-wrap;">1. GST Exclusive (Adding GST to Base Price):
+   GST Amount = (Base Amount × GST Rate) / 100
+   Total Gross Amount = Base Amount + GST Amount
+
+2. GST Inclusive (Extracting GST from Gross Price / MRP):
+   Net Base Amount = Gross Amount / (1 + (GST Rate / 100))
+   GST Amount = Gross Amount - Net Base Amount
+
+3. Tax Split Breakdown:
+   Intra-State: CGST = GST Amount / 2, SGST = GST Amount / 2
+   Inter-State: IGST = GST Amount</pre>
+                </div>
+              
+              
+                <h3>Worked Example: GST Exclusive vs Inclusive</h3>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle, rgba(255,255,255,0.06)); border-radius: 8px; padding: 16px 20px; margin-top: 10px;">
+                  <strong>Example 1 (Exclusive):</strong> Base price of ₹10,000 with 18% GST (Intra-State):
+<ul>
+  <li><strong>Total Final Amount:</strong> ₹11,800.00</li>
+  <li><strong>GST Tax:</strong> ₹1,800.00</li>
+  <li><strong>CGST (9%):</strong> ₹900.00 | <strong>SGST (9%):</strong> ₹900.00</li>
+</ul>
+<strong>Example 2 (Inclusive / Reverse GST):</strong> Product MRP of ₹11,800 with 18% GST:
+<ul>
+  <li><strong>Net Base Price:</strong> ₹10,000.00</li>
+  <li><strong>GST Tax Included:</strong> ₹1,800.00 (CGST ₹900 + SGST ₹900)</li>
+</ul>
+                </div>
+              
+            </div>
+          </div>
+
+          <!-- Card 4: Practical Real-World Use Cases -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="sparkles"></i> Practical Real-World Use Cases</h2>
+            <div class="guide-content">
+              <p>Discover how professionals, developers, students, and businesses use this tool daily:</p>
+              
+      <div class="use-cases-list">
+        
+          <div class="use-case-item">
+            <div class="use-case-icon"><i data-lucide="check-circle-2"></i></div>
+            <div class="use-case-text">
+              <h4>Retail & E-commerce Invoicing</h4>
+              <p>Calculate exact taxable value and tax breakdowns for B2B and B2C sales invoices.</p>
+            </div>
+          </div>
+        
+          <div class="use-case-item">
+            <div class="use-case-icon"><i data-lucide="check-circle-2"></i></div>
+            <div class="use-case-text">
+              <h4>Freelance & Service Billing</h4>
+              <p>Add mandatory 18% GST on IT consulting, digital marketing, and design service retainers.</p>
+            </div>
+          </div>
+        
+          <div class="use-case-item">
+            <div class="use-case-icon"><i data-lucide="check-circle-2"></i></div>
+            <div class="use-case-text">
+              <h4>Purchase Order Verification</h4>
+              <p>Verify supplier bills to confirm correct GST tax calculations before approving vendor payments.</p>
+            </div>
+          </div>
+        
+          <div class="use-case-item">
+            <div class="use-case-icon"><i data-lucide="check-circle-2"></i></div>
+            <div class="use-case-text">
+              <h4>GSTR-1 & GSTR-3B Tax Filing</h4>
+              <p>Reconcile output tax liabilities and input tax credits (ITC) across standard GST slabs.</p>
+            </div>
+          </div>
+        
+      </div>
+    
+            </div>
+          </div>
+
+          <!-- Card 5: In-Depth FAQs -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
+            <div class="guide-content">
+              
+      <div class="faq-accordion">
+        
           <div class="faq-item">
             <button class="faq-question" aria-expanded="true">
-              <span>Is my data private and secure?</span>
+              <span>What is the difference between GST Exclusive and GST Inclusive?</span>
               <i data-lucide="chevron-down"></i>
             </button>
             <div class="faq-answer" style="display: block;">
-              <p>Yes, 100%. All processing runs strictly inside your local web browser. No inputs or files are uploaded to any server.</p>
+              <p>GST Exclusive means the tax is added on top of the net base amount (Final = Base + GST). GST Inclusive means the displayed price already contains the tax, and you are calculating the original base price and the tax component embedded inside it.</p>
             </div>
           </div>
+        
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false">
-              <span>Is this tool completely free to use?</span>
+              <span>When should I apply CGST + SGST versus IGST?</span>
               <i data-lucide="chevron-down"></i>
             </button>
             <div class="faq-answer" style="display: none;">
-              <p>Yes, all XESTUS tools are 100% free with unlimited usage and zero registration required.</p>
+              <p>When the supplier and the recipient are in the same state (Intra-State), GST is split equally into Central GST (CGST) and State GST (SGST). When the transaction is between different states or union territories (Inter-State), Integrated GST (IGST) is applied at the full rate.</p>
             </div>
           </div>
-        </div>
+        
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What are the standard GST tax slabs in India?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: none;">
+              <p>The primary Indian GST slabs are 0% (essential food & agriculture), 5% (household essentials, transport, basic apparel), 12% (processed foods, business software), 18% (IT services, capital goods, consumer electronics), and 28% (luxury items, automobiles, tobacco).</p>
+            </div>
+          </div>
+        
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Can I use custom tax rates for special items like gold or rough diamonds?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: none;">
+              <p>Yes. Simply click the 'Custom' pill and input special GST rates such as 3% (gold/jewelry) or 1.5% (rough diamonds).</p>
+            </div>
+          </div>
+        
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Is this calculator suitable for official GST invoice generation?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: none;">
+              <p>Yes. The mathematical formulas implemented match the official Goods and Services Tax Network (GSTN) rounding and computation standards.</p>
+            </div>
+          </div>
+        
       </div>
     
+            </div>
+          </div>
+
         </section>
 
         <!-- Related Tools Section -->

@@ -29,6 +29,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css?v=1790936593562">
     <link rel="stylesheet" href="../tools.css?v=1.0.0">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it safe to paste confidential API payloads or JWT tokens?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, 100%. All processing runs locally inside your browser's JavaScript engine. No data is logged, transmitted, or stored on any server."
+      }
+    }
+  ]
+}
+    </script>
+    
 </head>
 
 <body>
@@ -118,16 +137,10 @@
         </section>
 
         <!-- Ad Slot: Category Top Banner -->
-        <div class="tool-ad-container" style="margin-bottom: 24px;">
-            <div class="ad-label" style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Advertisement</div>
+        
             <div class="ad-slot-card" style="min-height:90px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border:1px dashed var(--border-subtle); border-radius:8px;">
-                <ins class="adsbygoogle"
-                     style="display:block; width:100%; text-align:center;"
-                     data-ad-client="ca-pub-1489572262543869"
-                     data-ad-slot="responsive"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                
+                
             </div>
         </div>
 
@@ -253,6 +266,51 @@
                 <div class="tool-card-action"><span>Open Tool</span> <i data-lucide="arrow-right"></i></div>
             </a>
         </section>
+    
+      <!-- Category Knowledge Hub & FAQs (AdSense & Quality Compliant) -->
+      <section class="tool-guide-section" style="margin-top: 40px;" aria-label="Category Overview and Documentation">
+        <div class="guide-card">
+          <h2 class="guide-title"><i data-lucide="book-open"></i> Domain Overview & Architecture</h2>
+          <div class="guide-content">
+            The <strong>XESTUS Developer Tools Suite</strong> is an essential daily workstation for frontend engineers, backend developers, DevOps specialists, and security analysts. Built for high productivity, our utilities handle code formatting, token inspection, cryptographic hashing, and data serialization with zero latency.
+          </div>
+        </div>
+        
+        <div class="guide-card">
+          <h2 class="guide-title"><i data-lucide="shield-check"></i> Engineered for Security & RFC Standards</h2>
+          <div class="guide-content">
+            When handling sensitive authorization tokens, API responses, and database schemas, developer security is paramount:
+<ul>
+  <li><strong>JSON Formatter & Validator:</strong> Strict RFC 8259 syntax validation with detailed error line pointers.</li>
+  <li><strong>JWT Inspector:</strong> Decodes RFC 7519 JSON Web Tokens without exposing private keys or bearer credentials to external endpoints.</li>
+  <li><strong>UUID v4 Generator:</strong> Generates RFC 4122 compliant 128-bit unique identifiers using Web Crypto CSPRNG.</li>
+  <li><strong>Cryptographic Checksums:</strong> Hardware-accelerated SHA-256, SHA-512, MD5, and SHA-1 hashing.</li>
+</ul>
+          </div>
+        </div>
+      
+        
+        <div class="guide-card">
+          <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
+          <div class="guide-content">
+            <div class="faq-accordion">
+              
+                <div class="faq-item">
+                  <button class="faq-question" aria-expanded="true">
+                    <span>Is it safe to paste confidential API payloads or JWT tokens?</span>
+                    <i data-lucide="chevron-down"></i>
+                  </button>
+                  <div class="faq-answer" style="display: block;">
+                    <p>Yes, 100%. All processing runs locally inside your browser's JavaScript engine. No data is logged, transmitted, or stored on any server.</p>
+                  </div>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      
+      </section>
+    
     </main>
 
     <footer class="site-footer" role="contentinfo" style="margin-top: 60px;">

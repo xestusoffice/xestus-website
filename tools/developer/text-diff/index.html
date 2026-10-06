@@ -34,8 +34,8 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
 
     <!-- SEO Metadata -->
-    <title>Text & Code Diff Comparator — 100% Free Online Browser Utility | XESTUS Tools</title>
-    <meta name="description" content="Compare two text blocks or code snippets side-by-side with line-by-line additions, deletions, and whitespace toggles.">
+    <title>Text Diff Checker — Compare Text & Code Differences Side-by-Side | XESTUS</title>
+    <meta name="description" content="Compare two text snippets or code files side-by-side or inline. Highlights additions, deletions, and line-by-line differences using Myers diff algorithm.">
     <meta name="keywords" content="text diff online, code diff checker, compare two texts, diff viewer tool">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://xestus.in/tools/developer/text-diff/">
@@ -45,7 +45,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xestus.in/tools/developer/text-diff/">
     <meta property="og:title" content="Text & Code Diff Comparator | XESTUS Tools">
-    <meta property="og:description" content="Compare two text blocks or code snippets side-by-side with line-by-line additions, deletions, and whitespace toggles.">
+    <meta property="og:description" content="Compare two text snippets or code files side-by-side or inline. Highlights additions, deletions, and line-by-line differences using Myers diff algorithm.">
     <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
 
     <!-- Fonts & CSS -->
@@ -58,28 +58,88 @@
     
 
     <!-- Schema.org SoftwareApplication JSON-LD -->
+    
+
+    <!-- Schema.org Multi-Entity JSON-LD (WebApplication, BreadcrumbList, FAQPage) -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Text & Code Diff Comparator",
-      "url": "https://xestus.in/tools/developer/text-diff/",
-      "description": "Compare two text blocks or code snippets side-by-side with line-by-line additions, deletions, and whitespace toggles.",
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript. Requires HTML5.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "XESTUS",
-        "url": "https://xestus.in/"
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Text & Code Diff Comparison Tool",
+  "url": "https://xestus.in/tools/developer/text-diff/",
+  "description": "Compare two text snippets or code files side-by-side or inline. Highlights additions, deletions, and line-by-line differences using Myers diff algorithm.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XESTUS",
+    "url": "https://xestus.in/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://xestus.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://xestus.in/tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Developer",
+      "item": "https://xestus.in/tools/developer/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Text & Code Diff Comparison Tool",
+      "item": "https://xestus.in/tools/developer/text-diff/"
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this diff tool support syntax highlighting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It formats code with clean line numbering and clear color indicators."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there any character or file size limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can compare thousands of lines of text smoothly in modern browsers."
       }
     }
+  ]
+}
     </script>
+  
 </head>
 
 <body data-tool-slug="text-diff">
@@ -248,50 +308,140 @@
         </section>
 
         <!-- Responsive Ad Slot (AdSense Compliant) -->
-        <div class="adsense-slot-container" style="margin: 2rem 0; text-align: center; min-height: 90px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px dashed var(--border-color, rgba(255,255,255,0.1));">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-1489572262543869"
-               data-ad-slot="1234567890"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
+        
 
         <!-- Tool Guide & FAQs Section (Clean, Collapsible, Below Workspace) -->
-        <section class="tool-guide-section">
-            
-      <div class="guide-card">
-        <h2 class="guide-title"><i data-lucide="book-open"></i> How to Use the Text & Code Diff Comparator</h2>
-        <div class="guide-content">
-          <p>Compare two text blocks or code snippets side-by-side with line-by-line additions, deletions, and whitespace toggles.</p>
-        </div>
+        <!-- Tool Guide & Educational Content Section (High-Value AdSense & Search Compliant) -->
+        <section class="tool-guide-section" aria-label="Educational Guide & Documentation">
+          
+          <!-- Card 1: Overview & Architecture -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="book-open"></i> About the Text & Code Diff Comparison Tool</h2>
+            <div class="guide-content">
+              The <strong>XESTUS Text Diff Checker</strong> is a visual text comparison tool designed for developers, copywriters, and legal teams to pinpoint differences between two versions of text, code, or configuration files.
+
+Using the industry-standard <strong>Myers Diff Algorithm</strong> (the same core algorithm powering Git), this utility highlights added, removed, and modified lines with color-coded visual cues.
+            </div>
+          </div>
+
+          <!-- Card 2: How to Use & Steps -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="list-ordered"></i> Step-by-Step How to Use</h2>
+            <div class="guide-content">
+              <p>Follow these simple instructions to achieve accurate, instant calculations or data transformations:</p>
+              
+      <div class="steps-grid">
+        
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-title">Paste Original Text</div>
+            <p class="step-desc">Insert your baseline document or source code into the left pane.</p>
+          </div>
+        
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Paste Modified Text</div>
+            <p class="step-desc">Insert the updated version into the right pane.</p>
+          </div>
+        
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Inspect Visual Differences</div>
+            <p class="step-desc">View the side-by-side comparison with highlighted additions and deletions.</p>
+          </div>
+        
       </div>
     
-            
-      <div class="guide-card">
-        <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
-        <div class="faq-accordion">
+            </div>
+          </div>
+
+          <!-- Card 3: Formulas, Mechanics & Worked Example -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="cpu"></i> Mathematical Formulas & Technical Mechanics</h2>
+            <div class="guide-content">
+              <p>Under the hood, calculations and operations strictly adhere to validated standards:</p>
+              
+                <div class="formula-box">
+                  <strong>Myers Diff Algorithm & Edit Distance</strong><br>
+                  <pre style="margin: 8px 0 0; color: inherit; font-family: inherit; white-space: pre-wrap;">Shortest Edit Script (SES) Problem:
+Find the minimum number of insertions and deletions to transform String A into String B.
+- Deletions (-) represented in Red / Coral
+- Additions (+) represented in Green / Cyan
+- Unchanged lines preserved in neutral background</pre>
+                </div>
+              
+              
+                <h3>Worked Example: Code Refactoring Diff</h3>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle, rgba(255,255,255,0.06)); border-radius: 8px; padding: 16px 20px; margin-top: 10px;">
+                  <strong>Original:</strong> <code>const port = 3000;</code><br>
+<strong>Modified:</strong> <code>const port = process.env.PORT || 3000;</code><br>
+<strong>Diff:</strong> Identifies modification on line 1 with exact token replacements.
+                </div>
+              
+            </div>
+          </div>
+
+          <!-- Card 4: Practical Real-World Use Cases -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="sparkles"></i> Practical Real-World Use Cases</h2>
+            <div class="guide-content">
+              <p>Discover how professionals, developers, students, and businesses use this tool daily:</p>
+              
+      <div class="use-cases-list">
+        
+          <div class="use-case-item">
+            <div class="use-case-icon"><i data-lucide="check-circle-2"></i></div>
+            <div class="use-case-text">
+              <h4>Code Review & Refactoring</h4>
+              <p>Compare code changes before committing patches to version control repositories.</p>
+            </div>
+          </div>
+        
+          <div class="use-case-item">
+            <div class="use-case-icon"><i data-lucide="check-circle-2"></i></div>
+            <div class="use-case-text">
+              <h4>Contract & Document Revisions</h4>
+              <p>Track clause modifications across legal agreements and terms of service.</p>
+            </div>
+          </div>
+        
+      </div>
+    
+            </div>
+          </div>
+
+          <!-- Card 5: In-Depth FAQs -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
+            <div class="guide-content">
+              
+      <div class="faq-accordion">
+        
           <div class="faq-item">
             <button class="faq-question" aria-expanded="true">
-              <span>Is my data private and secure?</span>
+              <span>Does this diff tool support syntax highlighting?</span>
               <i data-lucide="chevron-down"></i>
             </button>
             <div class="faq-answer" style="display: block;">
-              <p>Yes, 100%. All processing runs strictly inside your local web browser. No inputs or files are uploaded to any server.</p>
+              <p>Yes. It formats code with clean line numbering and clear color indicators.</p>
             </div>
           </div>
+        
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false">
-              <span>Is this tool completely free to use?</span>
+              <span>Is there any character or file size limit?</span>
               <i data-lucide="chevron-down"></i>
             </button>
             <div class="faq-answer" style="display: none;">
-              <p>Yes, all XESTUS tools are 100% free with unlimited usage and zero registration required.</p>
+              <p>You can compare thousands of lines of text smoothly in modern browsers.</p>
             </div>
           </div>
-        </div>
+        
       </div>
     
+            </div>
+          </div>
+
         </section>
 
         <!-- Related Tools Section -->

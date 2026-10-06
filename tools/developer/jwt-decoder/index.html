@@ -34,8 +34,8 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
 
     <!-- SEO Metadata -->
-    <title>JWT Debugger & Token Decoder — 100% Free Online Browser Utility | XESTUS Tools</title>
-    <meta name="description" content="Inspect JSON Web Tokens (JWT) client-side. Decode Header, Payload, and Signature with real-time expiration validation.">
+    <title>JWT Decoder — Decode JSON Web Tokens & Inspect Claims In-Browser | XESTUS</title>
+    <meta name="description" content="Decode and inspect JSON Web Tokens (JWT) in real time. View Header, Payload, and Signature claims without exposing private signing keys.">
     <meta name="keywords" content="jwt decoder, decode jwt token, jwt debugger, jwt expiration checker, json web token">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://xestus.in/tools/developer/jwt-decoder/">
@@ -45,7 +45,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xestus.in/tools/developer/jwt-decoder/">
     <meta property="og:title" content="JWT Debugger & Token Decoder | XESTUS Tools">
-    <meta property="og:description" content="Inspect JSON Web Tokens (JWT) client-side. Decode Header, Payload, and Signature with real-time expiration validation.">
+    <meta property="og:description" content="Decode and inspect JSON Web Tokens (JWT) in real time. View Header, Payload, and Signature claims without exposing private signing keys.">
     <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
 
     <!-- Fonts & CSS -->
@@ -58,28 +58,88 @@
     
 
     <!-- Schema.org SoftwareApplication JSON-LD -->
+    
+
+    <!-- Schema.org Multi-Entity JSON-LD (WebApplication, BreadcrumbList, FAQPage) -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "JWT Debugger & Token Decoder",
-      "url": "https://xestus.in/tools/developer/jwt-decoder/",
-      "description": "Inspect JSON Web Tokens (JWT) client-side. Decode Header, Payload, and Signature with real-time expiration validation.",
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript. Requires HTML5.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "XESTUS",
-        "url": "https://xestus.in/"
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "JWT Decoder & Claims Inspector",
+  "url": "https://xestus.in/tools/developer/jwt-decoder/",
+  "description": "Decode and inspect JSON Web Tokens (JWT) in real time. View Header, Payload, and Signature claims without exposing private signing keys.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XESTUS",
+    "url": "https://xestus.in/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://xestus.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://xestus.in/tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Developer",
+      "item": "https://xestus.in/tools/developer/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "JWT Decoder & Claims Inspector",
+      "item": "https://xestus.in/tools/developer/jwt-decoder/"
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it safe to paste production JWTs into this tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Unlike other token debuggers, XESTUS performs 100% of Base64URL parsing inside your web browser. No token data ever leaves your computer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool verify the cryptographic signature?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This tool decodes the header and payload claims. Cryptographic signature verification requires your private/public asymmetric key or symmetric shared secret."
       }
     }
+  ]
+}
     </script>
+  
 </head>
 
 <body data-tool-slug="jwt-decoder">
@@ -240,50 +300,148 @@
         </section>
 
         <!-- Responsive Ad Slot (AdSense Compliant) -->
-        <div class="adsense-slot-container" style="margin: 2rem 0; text-align: center; min-height: 90px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px dashed var(--border-color, rgba(255,255,255,0.1));">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-1489572262543869"
-               data-ad-slot="1234567890"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
+        
 
         <!-- Tool Guide & FAQs Section (Clean, Collapsible, Below Workspace) -->
-        <section class="tool-guide-section">
-            
-      <div class="guide-card">
-        <h2 class="guide-title"><i data-lucide="book-open"></i> How to Use the JWT Debugger & Token Decoder</h2>
-        <div class="guide-content">
-          <p>Inspect JSON Web Tokens (JWT) client-side. Decode Header, Payload, and Signature with real-time expiration validation.</p>
-        </div>
+        <!-- Tool Guide & Educational Content Section (High-Value AdSense & Search Compliant) -->
+        <section class="tool-guide-section" aria-label="Educational Guide & Documentation">
+          
+          <!-- Card 1: Overview & Architecture -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="book-open"></i> About the JWT Decoder & Claims Inspector</h2>
+            <div class="guide-content">
+              The <strong>XESTUS JWT (JSON Web Token) Decoder</strong> is a secure, client-side utility built for software engineers and security researchers to parse and inspect JSON Web Tokens (RFC 7519). JWTs are the industry standard for stateless user authentication, OAuth2 / OpenID Connect authorization flows, and single sign-on (SSO) systems.
+
+This decoder breaks down any standard compact JWT into its three constituent segments: <strong>Header (algorithm & token type)</strong>, <strong>Payload (subject, issuer, audience, expiration claims)</strong>, and <strong>Signature status</strong> without transmitting your secret tokens over the internet.
+            </div>
+          </div>
+
+          <!-- Card 2: How to Use & Steps -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="list-ordered"></i> Step-by-Step How to Use</h2>
+            <div class="guide-content">
+              <p>Follow these simple instructions to achieve accurate, instant calculations or data transformations:</p>
+              
+      <div class="steps-grid">
+        
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-title">Paste Encoded JWT</div>
+            <p class="step-desc">Paste the Bearer token or raw JWT string into the input field.</p>
+          </div>
+        
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Inspect Header & Claims</div>
+            <p class="step-desc">Review formatted JSON representing token metadata, user permissions, and timestamps.</p>
+          </div>
+        
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Check Expiration Status</div>
+            <p class="step-desc">Verify whether the token is currently active or expired based on the 'exp' claim.</p>
+          </div>
+        
       </div>
     
-            
-      <div class="guide-card">
-        <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
-        <div class="faq-accordion">
+            </div>
+          </div>
+
+          <!-- Card 3: Formulas, Mechanics & Worked Example -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="cpu"></i> Mathematical Formulas & Technical Mechanics</h2>
+            <div class="guide-content">
+              <p>Under the hood, calculations and operations strictly adhere to validated standards:</p>
+              
+                <div class="formula-box">
+                  <strong>JWT Structure & Anatomy (RFC 7519)</strong><br>
+                  <pre style="margin: 8px 0 0; color: inherit; font-family: inherit; white-space: pre-wrap;">JWT Format = <Header>.<Payload>.<Signature>
+1. Header: Base64UrlEncoded({"alg": "RS256", "typ": "JWT"})
+2. Payload: Base64UrlEncoded({
+     "sub": "1234567890",
+     "name": "John Doe",
+     "iat": 1516239022,
+     "exp": 1516242622
+   })
+3. Signature: HMACSHA256(Header + "." + Payload, secret) OR RSASHA256(...)</pre>
+                </div>
+              
+              
+                <h3>Worked Example: JWT Claims Breakdown</h3>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle, rgba(255,255,255,0.06)); border-radius: 8px; padding: 16px 20px; margin-top: 10px;">
+                  Standard claims parsed by the inspector:
+<ul>
+  <li><code>iss</code> (Issuer): Identifies the authorization server that issued the token.</li>
+  <li><code>sub</code> (Subject): Unique user or client identifier.</li>
+  <li><code>exp</code> (Expiration Time): Unix timestamp when the token becomes invalid.</li>
+  <li><code>iat</code> (Issued At): Unix timestamp when the token was created.</li>
+</ul>
+                </div>
+              
+            </div>
+          </div>
+
+          <!-- Card 4: Practical Real-World Use Cases -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="sparkles"></i> Practical Real-World Use Cases</h2>
+            <div class="guide-content">
+              <p>Discover how professionals, developers, students, and businesses use this tool daily:</p>
+              
+      <div class="use-cases-list">
+        
+          <div class="use-case-item">
+            <div class="use-case-icon"><i data-lucide="check-circle-2"></i></div>
+            <div class="use-case-text">
+              <h4>Auth0 / Firebase / AWS Cognito Debugging</h4>
+              <p>Inspect user ID tokens and session claims during development.</p>
+            </div>
+          </div>
+        
+          <div class="use-case-item">
+            <div class="use-case-icon"><i data-lucide="check-circle-2"></i></div>
+            <div class="use-case-text">
+              <h4>Role-Based Access Control (RBAC)</h4>
+              <p>Verify that access tokens contain required user scopes and organizational roles.</p>
+            </div>
+          </div>
+        
+      </div>
+    
+            </div>
+          </div>
+
+          <!-- Card 5: In-Depth FAQs -->
+          <div class="guide-card">
+            <h2 class="guide-title"><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
+            <div class="guide-content">
+              
+      <div class="faq-accordion">
+        
           <div class="faq-item">
             <button class="faq-question" aria-expanded="true">
-              <span>Is my data private and secure?</span>
+              <span>Is it safe to paste production JWTs into this tool?</span>
               <i data-lucide="chevron-down"></i>
             </button>
             <div class="faq-answer" style="display: block;">
-              <p>Yes, 100%. All processing runs strictly inside your local web browser. No inputs or files are uploaded to any server.</p>
+              <p>Yes. Unlike other token debuggers, XESTUS performs 100% of Base64URL parsing inside your web browser. No token data ever leaves your computer.</p>
             </div>
           </div>
+        
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false">
-              <span>Is this tool completely free to use?</span>
+              <span>Does this tool verify the cryptographic signature?</span>
               <i data-lucide="chevron-down"></i>
             </button>
             <div class="faq-answer" style="display: none;">
-              <p>Yes, all XESTUS tools are 100% free with unlimited usage and zero registration required.</p>
+              <p>This tool decodes the header and payload claims. Cryptographic signature verification requires your private/public asymmetric key or symmetric shared secret.</p>
             </div>
           </div>
-        </div>
+        
       </div>
     
+            </div>
+          </div>
+
         </section>
 
         <!-- Related Tools Section -->
