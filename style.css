@@ -19189,3 +19189,329 @@ select option {
     color: #ffffff !important;
     padding: 10px !important;
 }
+
+
+/* ==========================================================================
+   XESTUS PRO SPOTLIGHT SEARCH (CTRL+K) & TOAST NOTIFICATION STYLES
+   ========================================================================== */
+
+.xestus-spotlight-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(7, 12, 24, 0.75);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  z-index: 999999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10vh 16px 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.xestus-spotlight-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.xestus-spotlight-dialog {
+  width: 100%;
+  max-width: 640px;
+  background: #0d1527;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 255, 136, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-20px) scale(0.98);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.xestus-spotlight-backdrop.active .xestus-spotlight-dialog {
+  transform: translateY(0) scale(1);
+}
+
+.spotlight-search-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.spotlight-search-icon {
+  color: #00ff88;
+  flex-shrink: 0;
+}
+
+.spotlight-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #ffffff;
+  font-family: inherit;
+}
+
+.spotlight-input::placeholder {
+  color: #64748b;
+  font-size: 14.5px;
+}
+
+.spotlight-esc-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.spotlight-categories-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
+  font-size: 12px;
+}
+
+.spotlight-strip-label {
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.spotlight-pill {
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 12px;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.spotlight-pill:hover {
+  background: rgba(0, 255, 136, 0.12);
+  color: #00ff88;
+  border-color: rgba(0, 255, 136, 0.3);
+}
+
+.spotlight-results-container {
+  max-height: 380px;
+  overflow-y: auto;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spotlight-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.spotlight-item:hover,
+.spotlight-item.selected {
+  background: rgba(0, 255, 136, 0.08);
+  border-color: rgba(0, 255, 136, 0.25);
+}
+
+.spotlight-item-icon {
+  flex-shrink: 0;
+}
+
+.spotlight-cat-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(0, 191, 255, 0.12);
+  color: #00bfff;
+  border: 1px solid rgba(0, 191, 255, 0.2);
+}
+
+.spotlight-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.spotlight-item-title {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spotlight-item-desc {
+  font-size: 12.5px;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spotlight-item-action {
+  font-size: 12px;
+  font-weight: 600;
+  color: #00ff88;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.spotlight-item:hover .spotlight-item-action,
+.spotlight-item.selected .spotlight-item-action {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.spotlight-no-results {
+  padding: 36px 20px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.spotlight-no-results p {
+  font-size: 15px;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.spotlight-no-results span {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.spotlight-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.spotlight-footer-hint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.spotlight-footer-hint kbd {
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.spotlight-footer-brand span {
+  color: #00ff88;
+  font-weight: 600;
+}
+
+/* Universal 1-Click Copy Toast */
+.xestus-copy-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background: rgba(13, 21, 39, 0.92);
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 136, 0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 30px;
+  padding: 10px 22px;
+  z-index: 9999999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.xestus-copy-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.xestus-copy-toast .toast-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Quick Search Trigger Pill in Navbar */
+.nav-spotlight-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-spotlight-btn:hover {
+  background: rgba(0, 255, 136, 0.1);
+  border-color: rgba(0, 255, 136, 0.3);
+  color: #ffffff;
+}
+
+.nav-spotlight-btn kbd {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+}
+
+@media (max-width: 640px) {
+  .xestus-spotlight-backdrop {
+    padding: 20px 10px;
+  }
+  .spotlight-footer-hint span:not(:first-child) {
+    display: none;
+  }
+}

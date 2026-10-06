@@ -225,4 +225,14 @@
         applyStoredTheme();
         initNavigation();
     }
+
+    // Auto-load Spotlight Command Search Engine
+    try {
+        if (!window.XestusSpotlight && !document.querySelector('script[src*="spotlight-search.js"]')) {
+            const spotlightScript = document.createElement('script');
+            spotlightScript.src = (window.location.origin || '') + '/js/spotlight-search.js?v=4.0.0';
+            spotlightScript.defer = true;
+            document.head.appendChild(spotlightScript);
+        }
+    } catch (_) {}
 })();
