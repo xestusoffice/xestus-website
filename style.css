@@ -19178,7 +19178,11 @@ table {
 }
 
 /* Global Select & Option Dropdown Usability */
-select {
+select,
+.form-select,
+.tool-select,
+.calc-input,
+.calc-input select {
     cursor: pointer !important;
     pointer-events: auto !important;
     user-select: text !important;
@@ -19205,7 +19209,7 @@ select option {
   backdrop-filter: blur(12px) saturate(160%);
   -webkit-backdrop-filter: blur(12px) saturate(160%);
   z-index: 999999;
-  display: flex;
+  display: none !important;
   align-items: flex-start;
   justify-content: center;
   padding: 10vh 16px 20px;
@@ -19215,6 +19219,7 @@ select option {
 }
 
 .xestus-spotlight-backdrop.active {
+  display: flex !important;
   opacity: 1;
   pointer-events: auto;
 }

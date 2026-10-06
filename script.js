@@ -3144,19 +3144,10 @@ function initApp() {
     window.cycleLanguage = cycleLanguage;
     window.setLanguage = setLanguage;
 
-    // Toggle / Cycle language on button click
+    // Toggle language dropdown on button click
     if (langBtn) {
         langBtn.addEventListener("click", (e) => {
             e.stopPropagation();
-            // On mobile / compact navbar (<= 1024px), direct tap cycles through languages instantly!
-            if (window.innerWidth <= 1024) {
-                cycleLanguage();
-                if (langSwitcher) langSwitcher.classList.remove("is-open");
-                langBtn.setAttribute("aria-expanded", "false");
-                return;
-            }
-
-            // On desktop (> 1024px), toggle the language dropdown
             if (langSwitcher) {
                 const isOpen = langSwitcher.classList.toggle("is-open");
                 langBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
@@ -3193,6 +3184,20 @@ function initApp() {
             if (langSwitcher) {
                 langSwitcher.classList.remove("is-open");
                 if (langBtn) langBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+    });
+
+    // Mobile strip language buttons
+    mobileLangBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const targetBtn = btn.closest("[data-lang]") || btn;
+            const selectedLang = targetBtn.getAttribute("data-lang");
+            if (selectedLang) {
+                setLanguage(selectedLang);
+                showLanguageToast(selectedLang);
             }
         });
     });
@@ -3455,25 +3460,32 @@ function initApp() {
         }
     }
 
-    const serviceOptBtns = document.querySelectorAll("#estimatorServiceOptions .estimator-opt-btn");
-    serviceOptBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            serviceOptBtns.forEach((b) => b.classList.remove("active"));
+    const serviceContainer = document.getElementById("estimatorServiceOptions");
+    if (serviceContainer) {
+        serviceContainer.addEventListener("click", (e) => {
+            const btn = e.target.closest(".estimator-opt-btn");
+            if (!btn) return;
+            serviceContainer.querySelectorAll(".estimator-opt-btn").forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
             currentEstimatorService = btn.getAttribute("data-service-key") || "ai";
             updateEstimatorUI();
         });
-    });
+    }
 
-    const scaleOptBtns = document.querySelectorAll("#estimatorScaleOptions .estimator-opt-btn");
-    scaleOptBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            scaleOptBtns.forEach((b) => b.classList.remove("active"));
+    const scaleContainer = document.getElementById("estimatorScaleOptions");
+    if (scaleContainer) {
+        scaleContainer.addEventListener("click", (e) => {
+            const btn = e.target.closest(".estimator-opt-btn");
+            if (!btn) return;
+            scaleContainer.querySelectorAll(".estimator-opt-btn").forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
             currentEstimatorScale = btn.getAttribute("data-scale-key") || "starter";
             updateEstimatorUI();
         });
-    });
+    }
+
+    // Initial sync
+    updateEstimatorUI();
 
     const btnTransferToInquiry = document.getElementById("btnTransferToInquiry");
     if (btnTransferToInquiry) {
