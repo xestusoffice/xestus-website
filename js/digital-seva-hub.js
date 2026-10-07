@@ -27,7 +27,7 @@
         activeModal: null,
         activeTabInModal: "overview",
         currentLang: "en",
-        visibleLimit: 12
+        visibleLimit: 9999
     };
 
     function getActiveLanguage() {
@@ -745,7 +745,7 @@
     }
 
     function resetAllFilters() {
-        state.visibleLimit = 12;
+        state.visibleLimit = 9999;
 
         state.searchQuery = "";
         state.activeCategory = null;
@@ -1507,7 +1507,7 @@
         // Search Suggestion Chips
         document.querySelectorAll(".seva-search-chips .search-chip-btn").forEach((chip) => {
             chip.addEventListener("click", () => {
-                state.visibleLimit = 12;
+                state.visibleLimit = 9999;
                 const q = chip.getAttribute("data-query") || "";
                 if (searchInput) {
                     searchInput.value = q;
@@ -1526,7 +1526,7 @@
         // 12 Task-First Discovery Cards ("I NEED HELP WITH...")
         document.querySelectorAll("#sevaTaskGrid .seva-task-card").forEach((card) => {
             card.addEventListener("click", () => {
-                state.visibleLimit = 12;
+                state.visibleLimit = 9999;
                 const cat = card.getAttribute("data-category");
                 if (cat) {
                     state.activeCategory = cat;
@@ -1545,7 +1545,7 @@
                 const filterType = btn.getAttribute("data-filter-type");
                 const val = btn.getAttribute("data-value");
 
-                state.visibleLimit = 12;
+                state.visibleLimit = 9999;
                 if (filterType === "all") {
                     resetAllFilters();
                 } else if (filterType === "govLevel") {

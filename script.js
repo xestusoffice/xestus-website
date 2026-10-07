@@ -3223,41 +3223,7 @@ function initApp() {
             }
         });
     });
-
-    // Explicit click handlers for all More Navigation Dropdown items
-    const navMoreMenu = document.getElementById("navMoreMenu");
-    if (navMoreMenu) {
-        navMoreMenu.addEventListener("click", (e) => {
-            const item = e.target.closest(".nav-dropdown-item");
-            if (!item) return;
-            const href = item.getAttribute("href");
-            if (href && href.startsWith("#")) {
-                e.preventDefault();
-                e.stopPropagation();
-                navigateToSection(href, e);
-                if (navMoreDropdown) {
-                    navMoreDropdown.classList.remove("is-open");
-                    if (navMoreBtn) navMoreBtn.setAttribute("aria-expanded", "false");
-                }
-            }
-        });
-    }
-
-    document.querySelectorAll(".nav-dropdown-item").forEach((item) => {
-        item.addEventListener("click", (e) => {
-            const href = item.getAttribute("href");
-            if (href && href.startsWith("#")) {
-                e.preventDefault();
-                e.stopPropagation();
-                navigateToSection(href, e);
-                if (navMoreDropdown) {
-                    navMoreDropdown.classList.remove("is-open");
-                    if (navMoreBtn) navMoreBtn.setAttribute("aria-expanded", "false");
-                }
-            }
-        });
-    });
-
+    // Ensure Lucide icons refresh if available
     if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
         lucide.createIcons();
     }
