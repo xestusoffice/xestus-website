@@ -1867,6 +1867,12 @@ html[data-theme="eye-protect"] .faq-item {
     line-height: 1.8;
 }
 
+section[id],
+div[id],
+main[id] {
+    scroll-margin-top: 85px !important;
+}
+
 /* --------------------------------------------------------------------------
    6. NAVIGATION (Phase 2 Overhaul)
    -------------------------------------------------------------------------- */
@@ -1879,6 +1885,26 @@ html[data-theme="eye-protect"] .faq-item {
     padding: 18px 0;
     pointer-events: none;
     transition: padding var(--transition-normal);
+}
+
+.site-header *,
+.nav-container,
+.nav-links,
+.desktop-nav-item,
+.nav-item-dropdown,
+.nav-dropdown-menu,
+.nav-dropdown-item,
+.lang-switcher,
+.lang-dropdown,
+.lang-opt,
+.theme-switcher,
+.theme-dropdown,
+.theme-opt,
+.nav-actions,
+.btn-nav-cta,
+.desktop-app-btn,
+.btn-outlier-nav {
+    pointer-events: auto !important;
 }
 
 .site-header.scrolled {
@@ -1899,7 +1925,7 @@ html[data-theme="eye-protect"] .faq-item {
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-full);
     box-shadow: var(--shadow-subtle);
-    pointer-events: auto;
+    pointer-events: auto !important;
     transition: all var(--transition-normal);
 }
 
@@ -18397,16 +18423,17 @@ body, h1, h2, h3, h4, h5, h6, p, span, a, button, label, input, select, textarea
     position: absolute !important;
     top: calc(100% + 8px) !important;
     background: #0b1329 !important;
-    border: 1px solid rgba(0, 191, 255, 0.35) !important;
-    border-radius: 12px !important;
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 191, 255, 0.15) !important;
-    padding: 6px !important;
+    border: 1px solid rgba(0, 191, 255, 0.45) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85), 0 0 25px rgba(0, 191, 255, 0.2) !important;
+    padding: 8px !important;
     z-index: 999999 !important;
     pointer-events: auto !important;
     cursor: pointer !important;
-    min-width: 160px !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    min-width: 200px !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    display: none !important;
 }
 
 .nav-item-dropdown.is-open .nav-dropdown-menu,
@@ -18414,10 +18441,28 @@ body, h1, h2, h3, h4, h5, h6, p, span, a, button, label, input, select, textarea
 .theme-switcher.is-open .theme-dropdown {
     display: flex !important;
     flex-direction: column !important;
-    gap: 3px !important;
+    gap: 4px !important;
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
+}
+
+@media (min-width: 1025px) {
+    .nav-item-dropdown:hover .nav-dropdown-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 4px !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+    .nav-item-dropdown:hover .nav-dropdown-btn {
+        color: var(--cyan-bright) !important;
+    }
+    .nav-item-dropdown:hover .nav-dropdown-btn svg,
+    .nav-item-dropdown:hover .nav-dropdown-btn i {
+        transform: rotate(180deg) !important;
+    }
 }
 
 .nav-dropdown-item,
@@ -18425,37 +18470,64 @@ body, h1, h2, h3, h4, h5, h6, p, span, a, button, label, input, select, textarea
 .theme-opt {
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
     width: 100% !important;
-    padding: 8px 12px !important;
+    padding: 10px 14px !important;
     background: transparent !important;
-    border: none !important;
-    border-radius: 8px !important;
+    border: 1px solid transparent !important;
+    border-radius: 10px !important;
     color: #e2e8f0 !important;
-    font-size: 13px !important;
+    font-size: 13.5px !important;
     font-weight: 500 !important;
     text-decoration: none !important;
     cursor: pointer !important;
     pointer-events: auto !important;
-    transition: all 0.18s ease !important;
+    transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
     box-sizing: border-box !important;
     user-select: none !important;
+    position: relative !important;
+    z-index: 1000000 !important;
+}
+
+.nav-dropdown-item svg,
+.nav-dropdown-item i {
+    width: 16px !important;
+    height: 16px !important;
+    color: #00ffff !important;
+    flex-shrink: 0 !important;
+    transition: transform 0.2s ease, color 0.2s ease !important;
+}
+
+.nav-dropdown-item::after {
+    display: none !important;
 }
 
 .nav-dropdown-item:hover,
+.nav-dropdown-item:focus,
 .lang-opt:hover,
 .theme-opt:hover {
-    background: rgba(0, 191, 255, 0.15) !important;
-    color: #38d6ff !important;
-    transform: translateX(2px) !important;
+    background: rgba(0, 191, 255, 0.2) !important;
+    border-color: rgba(0, 255, 255, 0.4) !important;
+    color: #ffffff !important;
+    transform: translateX(4px) !important;
+    box-shadow: inset 3px 0 0 #00ffff, 0 4px 14px rgba(0, 191, 255, 0.3) !important;
 }
 
+.nav-dropdown-item:hover svg,
+.nav-dropdown-item:hover i {
+    transform: scale(1.15) !important;
+    color: #ffffff !important;
+}
+
+.nav-dropdown-item.active,
 .lang-opt.active,
 .theme-opt.active {
-    background: rgba(0, 191, 255, 0.22) !important;
+    background: rgba(0, 191, 255, 0.25) !important;
+    border-color: rgba(0, 255, 255, 0.5) !important;
     color: #ffffff !important;
     font-weight: 700 !important;
-    border: 1px solid rgba(0, 191, 255, 0.4) !important;
+    box-shadow: inset 3px 0 0 #00ffff !important;
 }
 
 /* 3. Desktop Navigation Action Group & Dropdowns (min-width: 1025px) */

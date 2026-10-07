@@ -189,19 +189,27 @@ function initApp() {
             themeSwitcher.classList.remove("is-open");
             if (themeBtn) themeBtn.setAttribute("aria-expanded", "false");
         }
+        if (typeof langSwitcher !== "undefined" && langSwitcher) {
+            langSwitcher.classList.remove("is-open");
+            if (typeof langBtn !== "undefined" && langBtn) langBtn.setAttribute("aria-expanded", "false");
+        }
 
         // 2. Compute accurate target scroll coordinate with sticky header offset
         const header = document.querySelector(".site-header") || document.querySelector(".nav-container");
-        const headerHeight = header ? header.getBoundingClientRect().height : 70;
+        const headerOffset = header ? ((header.getBoundingClientRect && header.getBoundingClientRect().height) || 80) : 80;
         const targetRect = targetEl.getBoundingClientRect();
-        const currentScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-        const targetPos = Math.max(0, targetRect.top + currentScrollY - (headerHeight + 10));
+        const currentScrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const targetPos = Math.max(0, targetRect.top + currentScrollY - headerOffset);
 
         // 3. Smooth scroll
-        window.scrollTo({
-            top: targetPos,
-            behavior: "smooth"
-        });
+        try {
+            window.scrollTo({
+                top: targetPos,
+                behavior: "smooth"
+            });
+        } catch (_) {
+            window.scrollTo(0, targetPos);
+        }
 
         // 4. Update URL hash without abrupt jumps
         if (window.history && window.history.pushState) {
@@ -259,6 +267,20 @@ function initApp() {
             e.stopPropagation();
             const isOpen = navMoreDropdown.classList.toggle("is-open");
             navMoreBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+    }
+
+    const navMoreMenu = document.getElementById("navMoreMenu");
+    if (navMoreMenu) {
+        navMoreMenu.addEventListener("click", (e) => {
+            const item = e.target.closest(".nav-dropdown-item");
+            if (!item) return;
+            const href = item.getAttribute("href");
+            if (href && href.startsWith("#")) {
+                e.preventDefault();
+                e.stopPropagation();
+                navigateToSection(href, e);
+            }
         });
     }
 
@@ -3203,6 +3225,24 @@ function initApp() {
     });
 
     // Explicit click handlers for all More Navigation Dropdown items
+    const navMoreMenu = document.getElementById("navMoreMenu");
+    if (navMoreMenu) {
+        navMoreMenu.addEventListener("click", (e) => {
+            const item = e.target.closest(".nav-dropdown-item");
+            if (!item) return;
+            const href = item.getAttribute("href");
+            if (href && href.startsWith("#")) {
+                e.preventDefault();
+                e.stopPropagation();
+                navigateToSection(href, e);
+                if (navMoreDropdown) {
+                    navMoreDropdown.classList.remove("is-open");
+                    if (navMoreBtn) navMoreBtn.setAttribute("aria-expanded", "false");
+                }
+            }
+        });
+    }
+
     document.querySelectorAll(".nav-dropdown-item").forEach((item) => {
         item.addEventListener("click", (e) => {
             const href = item.getAttribute("href");
@@ -3217,6 +3257,10 @@ function initApp() {
             }
         });
     });
+
+    if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+        lucide.createIcons();
+    }
 
     // Mobile drawer lang button clicks
     mobileLangBtns.forEach((btn) => {
