@@ -555,5 +555,62 @@ Unlike online tools that upload your text or credentials to a remote server, XES
   </script>
   
   
+
+  
+
+
+
+  <!-- TOOL_FUNCTIONAL_LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const input = document.getElementById('base64Input');
+    const output = document.getElementById('base64Output');
+    const btnEncode = document.getElementById('btnEncode');
+    const btnDecode = document.getElementById('btnDecode');
+    const btnCopy = document.getElementById('btnCopyBase64');
+
+    function utf8_to_b64(str) {
+        return window.btoa(unescape(encodeURIComponent(str)));
+    }
+    function b64_to_utf8(str) {
+        return decodeURIComponent(escape(window.atob(str)));
+    }
+
+    if (btnEncode && input && output) {
+        btnEncode.addEventListener('click', () => {
+            try {
+                output.value = utf8_to_b64(input.value);
+            } catch (e) {
+                output.value = 'Encoding Error: ' + e.message;
+            }
+        });
+    }
+
+    if (btnDecode && input && output) {
+        btnDecode.addEventListener('click', () => {
+            try {
+                output.value = b64_to_utf8(input.value.trim());
+            } catch (e) {
+                output.value = 'Invalid Base64 string';
+            }
+        });
+    }
+
+    if (btnCopy && output) {
+        btnCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText(output.value).then(() => {
+                const orig = btnCopy.textContent;
+                btnCopy.textContent = 'Copied!';
+                setTimeout(() => btnCopy.textContent = orig, 2000);
+            });
+        });
+    }
+      } catch (err) {
+        console.error('Error executing tool logic for base64-encode-decode:', err);
+      }
+    });
+  </script>
+  <!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

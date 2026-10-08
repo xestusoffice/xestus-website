@@ -502,5 +502,190 @@ Space = %20 or + | & = %26 | ? = %3F | = = %3D | / = %2F | # = %23 | : = %3A</pr
   </script>
   
   
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tool-specific Functional Logic
+      window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener("DOMContentLoaded", () => {
+            
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // URL Logic
+            const urlInput = document.getElementById("urlInput");
+            const urlOutput = document.getElementById("urlOutput");
+            const btnEncode = document.getElementById("btnEncode");
+            const btnDecode = document.getElementById("btnDecode");
+            const chkComponent = document.getElementById("chkComponent");
+            const btnCopy = document.getElementById("btnCopy");
+            const copyBtnText = document.getElementById("copyBtnText");
+            const btnClear = document.getElementById("btnClear");
+            const statusBox = document.getElementById("statusBox");
+            const statusMsg = document.getElementById("statusMsg");
+            const statusIcon = document.getElementById("statusIcon");
+            const inputStats = document.getElementById("inputStats");
+            const outputStats = document.getElementById("outputStats");
+
+            function showStatus(msg, type = "success") {
+                statusBox.className = `tool-status-box show ${type}`;
+                statusMsg.textContent = msg;
+                statusIcon.setAttribute("data-lucide", type === "success" ? "check-circle" : "alert-circle");
+                if (window.lucide) lucide.createIcons();
+            }
+
+            function updateStats() {
+                inputStats.textContent = `${urlInput.value.length} chars`;
+                outputStats.textContent = `${urlOutput.value.length} chars`;
+            }
+
+            btnEncode.addEventListener("click", () => {
+                const text = urlInput.value;
+                if (!text) return;
+                try {
+                    urlOutput.value = chkComponent.checked ? encodeURIComponent(text) : encodeURI(text);
+                    showStatus("Successfully encoded URL / Component.", "success");
+                } catch (e) {
+                    showStatus(`Encoding Error: ${e.message}`, "error");
+                }
+                updateStats();
+            });
+
+            btnDecode.addEventListener("click", () => {
+                const text = urlInput.value;
+                if (!text) return;
+                try {
+                    urlOutput.value = decodeURIComponent(text.replace(/\+/g, " "));
+                    showStatus("Successfully decoded percent-encoded URL.", "success");
+                } catch (e) {
+                    showStatus(`Decoding Error: ${e.message}`, "error");
+                }
+                updateStats();
+            });
+
+            btnCopy.addEventListener("click", () => {
+                if (!urlOutput.value) return;
+                navigator.clipboard.writeText(urlOutput.value).then(() => {
+                    copyBtnText.textContent = "Copied!";
+                    setTimeout(() => { copyBtnText.textContent = "Copy Output"; }, 2000);
+                });
+            });
+
+            btnClear.addEventListener("click", () => {
+                urlInput.value = "";
+                urlOutput.value = "";
+                statusBox.className = "tool-status-box";
+                updateStats();
+            });
+
+            urlInput.addEventListener("input", updateStats);
+        });
+    });
+  </script>
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener("DOMContentLoaded", () => {
+            
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // URL Logic
+            const urlInput = document.getElementById("urlInput");
+            const urlOutput = document.getElementById("urlOutput");
+            const btnEncode = document.getElementById("btnEncode");
+            const btnDecode = document.getElementById("btnDecode");
+            const chkComponent = document.getElementById("chkComponent");
+            const btnCopy = document.getElementById("btnCopy");
+            const copyBtnText = document.getElementById("copyBtnText");
+            const btnClear = document.getElementById("btnClear");
+            const statusBox = document.getElementById("statusBox");
+            const statusMsg = document.getElementById("statusMsg");
+            const statusIcon = document.getElementById("statusIcon");
+            const inputStats = document.getElementById("inputStats");
+            const outputStats = document.getElementById("outputStats");
+
+            function showStatus(msg, type = "success") {
+                statusBox.className = `tool-status-box show ${type}`;
+                statusMsg.textContent = msg;
+                statusIcon.setAttribute("data-lucide", type === "success" ? "check-circle" : "alert-circle");
+                if (window.lucide) lucide.createIcons();
+            }
+
+            function updateStats() {
+                inputStats.textContent = `${urlInput.value.length} chars`;
+                outputStats.textContent = `${urlOutput.value.length} chars`;
+            }
+
+            btnEncode.addEventListener("click", () => {
+                const text = urlInput.value;
+                if (!text) return;
+                try {
+                    urlOutput.value = chkComponent.checked ? encodeURIComponent(text) : encodeURI(text);
+                    showStatus("Successfully encoded URL / Component.", "success");
+                } catch (e) {
+                    showStatus(`Encoding Error: ${e.message}`, "error");
+                }
+                updateStats();
+            });
+
+            btnDecode.addEventListener("click", () => {
+                const text = urlInput.value;
+                if (!text) return;
+                try {
+                    urlOutput.value = decodeURIComponent(text.replace(/\+/g, " "));
+                    showStatus("Successfully decoded percent-encoded URL.", "success");
+                } catch (e) {
+                    showStatus(`Decoding Error: ${e.message}`, "error");
+                }
+                updateStats();
+            });
+
+            btnCopy.addEventListener("click", () => {
+                if (!urlOutput.value) return;
+                navigator.clipboard.writeText(urlOutput.value).then(() => {
+                    copyBtnText.textContent = "Copied!";
+                    setTimeout(() => { copyBtnText.textContent = "Copy Output"; }, 2000);
+                });
+            });
+
+            btnClear.addEventListener("click", () => {
+                urlInput.value = "";
+                urlOutput.value = "";
+                statusBox.className = "tool-status-box";
+                updateStats();
+            });
+
+            urlInput.addEventListener("input", updateStats);
+        });
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

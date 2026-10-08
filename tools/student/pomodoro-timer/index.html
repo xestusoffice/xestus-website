@@ -570,5 +570,104 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 </script>
   
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener('DOMContentLoaded', () => {
+            let totalSeconds = 25 * 60;
+            let remainingSeconds = totalSeconds;
+            let timerInterval = null;
+            let isRunning = false;
+            let currentMode = 'pomodoro';
+            let completedCount = 0;
+
+            const display = document.getElementById('timerDisplay');
+            const modeLabel = document.getElementById('timerModeLabel');
+            const btnStart = document.getElementById('btnStartPause');
+            const btnReset = document.getElementById('btnResetTimer');
+            const sessionSpan = document.getElementById('sessionCount');
+
+            const btnPomodoro = document.getElementById('btnModePomodoro');
+            const btnShort = document.getElementById('btnModeShort');
+            const btnLong = document.getElementById('btnModeLong');
+
+            function updateDisplay() {
+                const mins = Math.floor(remainingSeconds / 60);
+                const secs = remainingSeconds % 60;
+                display.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+                document.title = `(${display.textContent}) Pomodoro | XESTUS`;
+            }
+
+            function setMode(mode, mins, label) {
+                clearInterval(timerInterval);
+                isRunning = false;
+                btnStart.innerHTML = '<i data-lucide="play"></i> <span>Start</span>';
+                currentMode = mode;
+                totalSeconds = mins * 60;
+                remainingSeconds = totalSeconds;
+                modeLabel.textContent = label;
+                
+                [btnPomodoro, btnShort, btnLong].forEach(b => b.className = 'tool-btn tool-btn-secondary');
+                if (mode === 'pomodoro') btnPomodoro.className = 'tool-btn tool-btn-primary';
+                if (mode === 'short') btnShort.className = 'tool-btn tool-btn-primary';
+                if (mode === 'long') btnLong.className = 'tool-btn tool-btn-primary';
+
+                updateDisplay();
+                if (window.lucide) lucide.createIcons();
+            }
+
+            btnPomodoro.addEventListener('click', () => setMode('pomodoro', 25, 'Deep Focus'));
+            btnShort.addEventListener('click', () => setMode('short', 5, 'Short Break'));
+            btnLong.addEventListener('click', () => setMode('long', 15, 'Long Break'));
+
+            btnStart.addEventListener('click', () => {
+                if (isRunning) {
+                    clearInterval(timerInterval);
+                    isRunning = false;
+                    btnStart.innerHTML = '<i data-lucide="play"></i> <span>Resume</span>';
+                } else {
+                    isRunning = true;
+                    btnStart.innerHTML = '<i data-lucide="pause"></i> <span>Pause</span>';
+                    timerInterval = setInterval(() => {
+                        if (remainingSeconds > 0) {
+                            remainingSeconds--;
+                            updateDisplay();
+                        } else {
+                            clearInterval(timerInterval);
+                            isRunning = false;
+                            btnStart.innerHTML = '<i data-lucide="play"></i> <span>Start</span>';
+                            if (currentMode === 'pomodoro') {
+                                completedCount++;
+                                sessionSpan.textContent = completedCount;
+                                alert('Focus session complete! Time for a well-deserved break.');
+                                setMode('short', 5, 'Short Break');
+                            } else {
+                                alert('Break is over! Ready for the next focus session?');
+                                setMode('pomodoro', 25, 'Deep Focus');
+                            }
+                        }
+                    }, 1000);
+                }
+                if (window.lucide) lucide.createIcons();
+            });
+
+            btnReset.addEventListener('click', () => {
+                clearInterval(timerInterval);
+                isRunning = false;
+                remainingSeconds = totalSeconds;
+                btnStart.innerHTML = '<i data-lucide="play"></i> <span>Start Focus</span>';
+                updateDisplay();
+                if (window.lucide) lucide.createIcons();
+            });
+
+            updateDisplay();
+        });
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

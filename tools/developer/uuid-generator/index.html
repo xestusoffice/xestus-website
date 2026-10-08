@@ -511,5 +511,56 @@ Where:
   </script>
   
   
+
+  
+
+
+
+  <!-- TOOL_FUNCTIONAL_LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const output = document.getElementById('uuidOutput');
+    const btnGen = document.getElementById('btnGenUuid');
+    const btnCopy = document.getElementById('btnCopyUuid');
+    const countInput = document.getElementById('uuidCount');
+
+    function generateUuidV4() {
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+            return crypto.randomUUID();
+        }
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+
+    function runUuidGen() {
+        if (!output) return;
+        const count = countInput ? Math.min(100, Math.max(1, parseInt(countInput.value) || 1)) : 1;
+        const list = [];
+        for (let i = 0; i < count; i++) {
+            list.push(generateUuidV4());
+        }
+        output.value = list.join('\n');
+    }
+
+    if (btnGen) btnGen.addEventListener('click', runUuidGen);
+    if (btnCopy && output) {
+        btnCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText(output.value).then(() => {
+                const orig = btnCopy.textContent;
+                btnCopy.textContent = 'Copied!';
+                setTimeout(() => btnCopy.textContent = orig, 2000);
+            });
+        });
+    }
+    runUuidGen();
+      } catch (err) {
+        console.error('Error executing tool logic for uuid-generator:', err);
+      }
+    });
+  </script>
+  <!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

@@ -617,5 +617,53 @@ Scanning this QR code on any smartphone instantly connects the device to the Wi-
         })();
 </script>
   
+
+  
+
+
+
+  <!-- TOOL_FUNCTIONAL_LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const qrText = document.getElementById('qrText');
+    const qrCanvas = document.getElementById('qrCanvas');
+    const btnDownload = document.getElementById('btnDownloadQr');
+    const qrSize = document.getElementById('qrSize');
+
+    function renderQr() {
+        if (!qrText || !qrCanvas) return;
+        const text = qrText.value || 'https://xestus.in';
+        const size = qrSize ? parseInt(qrSize.value) || 256 : 256;
+        const url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + encodeURIComponent(text) + '&size=' + size + 'x' + size;
+        
+        const img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.onload = function() {
+            qrCanvas.width = size;
+            qrCanvas.height = size;
+            const ctx = qrCanvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, size, size);
+        };
+        img.src = url;
+    }
+
+    if (qrText) qrText.addEventListener('input', renderQr);
+    if (qrSize) qrSize.addEventListener('change', renderQr);
+    if (btnDownload && qrCanvas) {
+        btnDownload.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'xestus-qr-code.png';
+            link.href = qrCanvas.toDataURL('image/png');
+            link.click();
+        });
+    }
+    renderQr();
+      } catch (err) {
+        console.error('Error executing tool logic for qr-generator:', err);
+      }
+    });
+  </script>
+  <!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

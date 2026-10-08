@@ -611,5 +611,37 @@ It computes total characters with spaces, characters without spaces, word count,
 if (window.lucide) lucide.createIcons();
 </script>
   
+
+  
+
+
+
+  <!-- TOOL_FUNCTIONAL_LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const input = document.getElementById('charInput') || document.querySelector('textarea');
+    const outTotal = document.getElementById('outTotalChars');
+    const outNoSpace = document.getElementById('outNoSpaces');
+    const outWords = document.getElementById('outWords');
+    const outLines = document.getElementById('outLines');
+
+    function updateCounters() {
+        if (!input) return;
+        const val = input.value || '';
+        if (outTotal) outTotal.textContent = val.length;
+        if (outNoSpace) outNoSpace.textContent = val.replace(/\s/g, '').length;
+        if (outWords) outWords.textContent = val.trim() ? val.trim().split(/\s+/).length : 0;
+        if (outLines) outLines.textContent = val ? val.split('\n').length : 0;
+    }
+
+    if (input) input.addEventListener('input', updateCounters);
+    updateCounters();
+      } catch (err) {
+        console.error('Error executing tool logic for character-counter:', err);
+      }
+    });
+  </script>
+  <!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

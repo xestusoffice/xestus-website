@@ -547,5 +547,81 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 </script>
   
+
+  
+
+
+
+  <!-- TOOL_FUNCTIONAL_LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const input = document.getElementById('textInput') || document.getElementById('wordCounterInput') || document.querySelector('textarea');
+    const statWords = document.getElementById('statWords');
+    const statChars = document.getElementById('statChars');
+    const statCharsNoSpace = document.getElementById('statCharsNoSpace');
+    const statSentences = document.getElementById('statSentences');
+    const statParagraphs = document.getElementById('statParagraphs');
+    const statReadingTime = document.getElementById('statReadingTime');
+
+    function analyzeText() {
+        if (!input) return;
+        const text = input.value || '';
+        const chars = text.length;
+        const charsNoSpace = text.replace(/\s/g, '').length;
+        
+        const wordsArr = text.trim() ? text.trim().split(/\s+/) : [];
+        const words = wordsArr.length;
+
+        const sentencesArr = text.trim() ? text.split(/[.!?]+/).filter(s => s.trim().length > 0) : [];
+        const sentences = sentencesArr.length;
+
+        const paragraphsArr = text.trim() ? text.split(/\n+/).filter(p => p.trim().length > 0) : [];
+        const paragraphs = paragraphsArr.length;
+
+        const readMinutes = Math.ceil(words / 200);
+
+        if (statWords) statWords.textContent = words.toLocaleString();
+        if (statChars) statChars.textContent = chars.toLocaleString();
+        if (statCharsNoSpace) statCharsNoSpace.textContent = charsNoSpace.toLocaleString();
+        if (statSentences) statSentences.textContent = sentences.toLocaleString();
+        if (statParagraphs) statParagraphs.textContent = paragraphs.toLocaleString();
+        if (statReadingTime) statReadingTime.textContent = (words === 0 ? '0' : readMinutes) + ' min';
+    }
+
+    if (input) {
+        input.addEventListener('input', analyzeText);
+    }
+
+    const btnClear = document.getElementById('btnClearText');
+    if (btnClear && input) {
+        btnClear.addEventListener('click', () => {
+            input.value = '';
+            analyzeText();
+            input.focus();
+        });
+    }
+
+    const btnCopy = document.getElementById('btnCopyText');
+    if (btnCopy && input) {
+        btnCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText(input.value).then(() => {
+                const lbl = document.getElementById('copyTextLabel') || btnCopy.querySelector('span');
+                if (lbl) {
+                    const orig = lbl.textContent;
+                    lbl.textContent = 'Copied!';
+                    setTimeout(() => { lbl.textContent = orig; }, 2000);
+                }
+            });
+        });
+    }
+
+    analyzeText();
+      } catch (err) {
+        console.error('Error executing tool logic for word-counter:', err);
+      }
+    });
+  </script>
+  <!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

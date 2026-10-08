@@ -574,5 +574,95 @@ Lap Time = Current Timestamp - Previous Lap Timestamp</pre>
 if (window.lucide) lucide.createIcons();
 </script>
   
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+(function() {
+            var display = document.getElementById('stopwatchDisplay');
+            var btnStartPause = document.getElementById('btnStartPause');
+            var btnStartText = document.getElementById('btnStartText');
+            var btnLap = document.getElementById('btnLap');
+            var btnReset = document.getElementById('btnReset');
+            var lapsContainer = document.getElementById('lapsContainer');
+            var lapsList = document.getElementById('lapsList');
+
+            var startTime = 0;
+            var elapsedTime = 0;
+            var timerInterval = null;
+            var isRunning = false;
+            var lapCounter = 0;
+            var lastLapTime = 0;
+
+            function formatTime(ms) {
+                var totalSeconds = Math.floor(ms / 1000);
+                var minutes = Math.floor(totalSeconds / 60);
+                var seconds = totalSeconds % 60;
+                var hundredths = Math.floor((ms % 1000) / 10);
+
+                var pad = function(n) { return (n < 10 ? '0' : '') + n; };
+                return pad(minutes) + ':' + pad(seconds) + '<span style="font-size: 0.6em; color: var(--text-muted);">.' + pad(hundredths) + '</span>';
+            }
+
+            function updateDisplay() {
+                var currentMs = elapsedTime + (isRunning ? (performance.now() - startTime) : 0);
+                display.innerHTML = formatTime(currentMs);
+            }
+
+            btnStartPause.addEventListener('click', function() {
+                if (!isRunning) {
+                    isRunning = true;
+                    startTime = performance.now();
+                    timerInterval = setInterval(updateDisplay, 10);
+                    btnStartText.textContent = 'Pause';
+                    btnLap.disabled = false;
+                    btnReset.disabled = false;
+                } else {
+                    isRunning = false;
+                    elapsedTime += performance.now() - startTime;
+                    clearInterval(timerInterval);
+                    btnStartText.textContent = 'Resume';
+                    btnLap.disabled = true;
+                }
+            });
+
+            btnLap.addEventListener('click', function() {
+                if (!isRunning) return;
+                var currentMs = elapsedTime + (performance.now() - startTime);
+                var lapDiff = currentMs - lastLapTime;
+                lastLapTime = currentMs;
+                lapCounter++;
+
+                lapsContainer.style.display = 'block';
+
+                var row = document.createElement('div');
+                row.style.cssText = 'display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-subtle); font-family: monospace; font-size: 0.95rem;';
+                row.innerHTML = '<span style="color: var(--cyan-primary);">Lap ' + lapCounter + '</span><span>' + formatTime(lapDiff) + '</span><span style="color: var(--text-muted);">' + formatTime(currentMs) + '</span>';
+                lapsList.prepend(row);
+            });
+
+            btnReset.addEventListener('click', function() {
+                isRunning = false;
+                clearInterval(timerInterval);
+                startTime = 0;
+                elapsedTime = 0;
+                lapCounter = 0;
+                lastLapTime = 0;
+                display.innerHTML = '00:00<span style="font-size: 0.6em; color: var(--text-muted);">.00</span>';
+                btnStartText.textContent = 'Start';
+                btnLap.disabled = true;
+                btnReset.disabled = true;
+                lapsList.innerHTML = '';
+                lapsContainer.style.display = 'none';
+            });
+        })();
+
+if (window.lucide) lucide.createIcons();
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

@@ -620,5 +620,130 @@ Output: <code>photo.png</code> (Lossless PNG-24 with full pixel fidelity)
 if (window.lucide) lucide.createIcons();
 </script>
   
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+(function() {
+            var dropzone = document.getElementById('dropzone');
+            var fileInput = document.getElementById('fileInput');
+            var optionsPanel = document.getElementById('optionsPanel');
+            var targetFormat = document.getElementById('targetFormat');
+            var qualityGroup = document.getElementById('qualityGroup');
+            var qualitySlider = document.getElementById('qualitySlider');
+            var qualityVal = document.getElementById('qualityVal');
+            var btnConvert = document.getElementById('btnConvert');
+            var btnReset = document.getElementById('btnReset');
+            var previewContainer = document.getElementById('previewContainer');
+            var previewImg = document.getElementById('previewImg');
+            var fileInfoText = document.getElementById('fileInfoText');
+
+            var currentImage = null;
+            var currentFileName = 'image';
+
+            dropzone.addEventListener('click', function() { fileInput.click(); });
+
+            dropzone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                dropzone.style.borderColor = 'var(--cyan-primary)';
+            });
+
+            dropzone.addEventListener('dragleave', function() {
+                dropzone.style.borderColor = 'var(--border-medium)';
+            });
+
+            dropzone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                dropzone.style.borderColor = 'var(--border-medium)';
+                if (e.dataTransfer.files.length) {
+                    handleFile(e.dataTransfer.files[0]);
+                }
+            });
+
+            fileInput.addEventListener('change', function() {
+                if (fileInput.files.length) {
+                    handleFile(fileInput.files[0]);
+                }
+            });
+
+            function handleFile(file) {
+                if (!file.type.match('image.*')) return;
+                currentFileName = file.name.substring(0, file.name.lastIndexOf('.')) || 'converted';
+                
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = new Image();
+                    img.onload = function() {
+                        currentImage = img;
+                        previewImg.src = e.target.result;
+                        previewContainer.style.display = 'block';
+                        optionsPanel.style.display = 'block';
+                        fileInfoText.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB) — ' + img.width + ' × ' + img.height + ' px';
+
+                        // Default target format opposite to source
+                        if (file.type === 'image/jpeg' || file.type === 'image/jpg') {
+                            targetFormat.value = 'image/png';
+                        } else {
+                            targetFormat.value = 'image/jpeg';
+                        }
+                        updateQualityVisibility();
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            function updateQualityVisibility() {
+                qualityGroup.style.display = targetFormat.value === 'image/png' ? 'none' : 'block';
+            }
+
+            targetFormat.addEventListener('change', updateQualityVisibility);
+            qualitySlider.addEventListener('input', function() {
+                qualityVal.textContent = qualitySlider.value + '%';
+            });
+
+            btnConvert.addEventListener('click', function() {
+                if (!currentImage) return;
+
+                var canvas = document.createElement('canvas');
+                canvas.width = currentImage.naturalWidth;
+                canvas.height = currentImage.naturalHeight;
+                var ctx = canvas.getContext('2d');
+
+                var mime = targetFormat.value;
+                if (mime === 'image/jpeg') {
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+
+                ctx.drawImage(currentImage, 0, 0);
+
+                var quality = parseInt(qualitySlider.value, 10) / 100;
+                var dataUrl = canvas.toDataURL(mime, quality);
+
+                var ext = mime === 'image/png' ? '.png' : (mime === 'image/webp' ? '.webp' : '.jpg');
+                var a = document.createElement('a');
+                a.href = dataUrl;
+                a.download = currentFileName + ext;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+
+            btnReset.addEventListener('click', function() {
+                currentImage = null;
+                fileInput.value = '';
+                previewContainer.style.display = 'none';
+                optionsPanel.style.display = 'none';
+            });
+        })();
+
+if (window.lucide) lucide.createIcons();
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

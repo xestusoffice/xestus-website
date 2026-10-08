@@ -608,5 +608,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 </script>
   
+
+  
+
+
+
+  <!-- TOOL_FUNCTIONAL_LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const modeSelect = document.getElementById('calcMode');
+    const numA = document.getElementById('numA'), numB = document.getElementById('numB');
+    const resMain = document.getElementById('resMain'), resFormula = document.getElementById('resFormula');
+
+    function calcPercentage() {
+        if (!numA || !numB || !resMain) return;
+        const a = parseFloat(numA.value) || 0;
+        const b = parseFloat(numB.value) || 0;
+        const mode = modeSelect ? modeSelect.value : 'what_is_pct';
+
+        let result = 0;
+        let formulaStr = '';
+
+        if (mode === 'what_is_pct') {
+            result = (a * b) / 100;
+            formulaStr = a + '% × ' + b + ' = ' + result;
+        } else if (mode === 'is_what_pct') {
+            result = b !== 0 ? (a / b) * 100 : 0;
+            formulaStr = '(' + a + ' ÷ ' + b + ') × 100 = ' + result.toFixed(2) + '%';
+        } else if (mode === 'pct_change') {
+            result = a !== 0 ? ((b - a) / a) * 100 : 0;
+            const dir = result >= 0 ? 'Increase' : 'Decrease';
+            formulaStr = '((' + b + ' - ' + a + ') ÷ ' + a + ') × 100 = ' + Math.abs(result).toFixed(2) + '% (' + dir + ')';
+        }
+
+        resMain.textContent = isNaN(result) ? '0' : result.toLocaleString('en-IN', { maximumFractionDigits: 4 });
+        if (resFormula) resFormula.textContent = formulaStr;
+    }
+
+    if (numA) numA.addEventListener('input', calcPercentage);
+    if (numB) numB.addEventListener('input', calcPercentage);
+    if (modeSelect) modeSelect.addEventListener('change', calcPercentage);
+    calcPercentage();
+      } catch (err) {
+        console.error('Error executing tool logic for percentage-calculator:', err);
+      }
+    });
+  </script>
+  <!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

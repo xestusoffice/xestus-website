@@ -622,5 +622,228 @@ Grand Total = Taxable Value + Tax Amount + Shipping Charges</pre>
     })();
 </script>
   
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tool-specific Functional Logic
+      (function() {
+            try {
+                document.documentElement.setAttribute('data-theme', 'night');
+                localStorage.setItem('xestus_theme', 'night');
+            } catch (e) {}
+        })();
+
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+// Initialize Related Tools from Registry
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.XestusTools && window.XestusTools.renderRelatedTools) {
+        window.XestusTools.renderRelatedTools('invoice-generator', 'relatedToolsGrid');
+      }
+      if (window.MyXestus) {
+        window.MyXestus.initToolPage('invoice-generator', 'Simple Invoice & Bill Generator');
+      }
+      // FAQ Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const ans = btn.nextElementSibling;
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          ans.style.display = isExpanded ? 'none' : 'block';
+        });
+      });
+      if (window.lucide) lucide.createIcons();
+    });
+
+(function() {
+      const items = [
+        { desc: 'Web Development & System Integration', qty: 1, rate: 25000, tax: 18 },
+        { desc: 'Cloud Infrastructure Setup', qty: 1, rate: 8000, tax: 18 }
+      ];
+
+      const tbody = document.getElementById('invItemsBody');
+      const currencySel = document.getElementById('invCurrency');
+      document.getElementById('invDate').valueAsDate = new Date();
+
+      function renderItems() {
+        tbody.innerHTML = '';
+        const sym = currencySel.value;
+        let subtotal = 0;
+        let taxTotal = 0;
+
+        items.forEach((item, idx) => {
+          const lineAmt = item.qty * item.rate;
+          const lineTax = lineAmt * (item.tax / 100);
+          subtotal += lineAmt;
+          taxTotal += lineTax;
+
+          const tr = document.createElement('tr');
+          tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+          tr.innerHTML = `
+            <td style="padding: 6px;"><input type="text" class="calc-input item-desc" data-idx="${idx}" value="${item.desc}" style="width: 100%;"></td>
+            <td style="padding: 6px;"><input type="number" class="calc-input item-qty" data-idx="${idx}" value="${item.qty}" min="1" style="text-align: right; width: 100%;"></td>
+            <td style="padding: 6px;"><input type="number" class="calc-input item-rate" data-idx="${idx}" value="${item.rate}" min="0" step="any" style="text-align: right; width: 100%;"></td>
+            <td style="padding: 6px;"><input type="number" class="calc-input item-tax" data-idx="${idx}" value="${item.tax}" min="0" max="100" style="text-align: right; width: 100%;"></td>
+            <td style="padding: 6px; text-align: right; font-family: 'JetBrains Mono', monospace; color: #fff;">${sym}${(lineAmt + lineTax).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+            <td style="padding: 6px; text-align: center;" class="invoice-ctrls">
+              <button type="button" class="btn-icon remove-item-btn" data-idx="${idx}" title="Remove" style="color: #ff5555;"><i data-lucide="trash-2" style="width: 14px; height: 14px;"></i></button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        const grand = subtotal + taxTotal;
+        document.getElementById('invSubtotal').textContent = sym + subtotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+        document.getElementById('invTaxTotal').textContent = sym + taxTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+        document.getElementById('invGrandTotal').textContent = sym + grand.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+
+        if (window.lucide) lucide.createIcons();
+        attachListeners();
+      }
+
+      function attachListeners() {
+        document.querySelectorAll('.item-desc').forEach(el => el.addEventListener('input', e => { items[e.target.dataset.idx].desc = e.target.value; }));
+        document.querySelectorAll('.item-qty').forEach(el => el.addEventListener('input', e => { items[e.target.dataset.idx].qty = parseFloat(e.target.value) || 0; renderItems(); }));
+        document.querySelectorAll('.item-rate').forEach(el => el.addEventListener('input', e => { items[e.target.dataset.idx].rate = parseFloat(e.target.value) || 0; renderItems(); }));
+        document.querySelectorAll('.item-tax').forEach(el => el.addEventListener('input', e => { items[e.target.dataset.idx].tax = parseFloat(e.target.value) || 0; renderItems(); }));
+        document.querySelectorAll('.remove-item-btn').forEach(el => el.addEventListener('click', e => {
+          const idx = parseInt(el.closest('button').dataset.idx, 10);
+          items.splice(idx, 1);
+          renderItems();
+        }));
+      }
+
+      document.getElementById('invAddItemBtn').addEventListener('click', () => {
+        items.push({ desc: 'New Service / Item', qty: 1, rate: 1000, tax: 18 });
+        renderItems();
+      });
+
+      currencySel.addEventListener('change', renderItems);
+      document.getElementById('invPrintBtn').addEventListener('click', () => window.print());
+      document.getElementById('invResetBtn').addEventListener('click', () => {
+        if (confirm('Reset invoice items?')) {
+          items.length = 0;
+          items.push({ desc: 'Consulting / Service', qty: 1, rate: 5000, tax: 18 });
+          renderItems();
+        }
+      });
+
+      renderItems();
+    })();
+    });
+  </script>
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+// Only trigger push if user configures a live custom ad slot ID (Auto Ads runs automatically)
+        if (typeof adsbygoogle !== 'undefined' && document.querySelector('.adsense-slot-container ins')?.getAttribute('data-ad-slot') !== '1234567890') {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+
+// Initialize Related Tools from Registry
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.XestusTools && window.XestusTools.renderRelatedTools) {
+        window.XestusTools.renderRelatedTools('invoice-generator', 'relatedToolsGrid');
+      }
+      if (window.MyXestus) {
+        window.MyXestus.initToolPage('invoice-generator', 'Simple Invoice & Bill Generator');
+      }
+      // FAQ Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const ans = btn.nextElementSibling;
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          ans.style.display = isExpanded ? 'none' : 'block';
+        });
+      });
+      if (window.lucide) lucide.createIcons();
+    });
+
+(function() {
+      const items = [
+        { desc: 'Web Development & System Integration', qty: 1, rate: 25000, tax: 18 },
+        { desc: 'Cloud Infrastructure Setup', qty: 1, rate: 8000, tax: 18 }
+      ];
+
+      const tbody = document.getElementById('invItemsBody');
+      const currencySel = document.getElementById('invCurrency');
+      document.getElementById('invDate').valueAsDate = new Date();
+
+      function renderItems() {
+        tbody.innerHTML = '';
+        const sym = currencySel.value;
+        let subtotal = 0;
+        let taxTotal = 0;
+
+        items.forEach((item, idx) => {
+          const lineAmt = item.qty * item.rate;
+          const lineTax = lineAmt * (item.tax / 100);
+          subtotal += lineAmt;
+          taxTotal += lineTax;
+
+          const tr = document.createElement('tr');
+          tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+          tr.innerHTML = `
+            <td style="padding: 6px;"><input type="text" class="calc-input item-desc" data-idx="${idx}" value="${item.desc}" style="width: 100%;"></td>
+            <td style="padding: 6px;"><input type="number" class="calc-input item-qty" data-idx="${idx}" value="${item.qty}" min="1" style="text-align: right; width: 100%;"></td>
+            <td style="padding: 6px;"><input type="number" class="calc-input item-rate" data-idx="${idx}" value="${item.rate}" min="0" step="any" style="text-align: right; width: 100%;"></td>
+            <td style="padding: 6px;"><input type="number" class="calc-input item-tax" data-idx="${idx}" value="${item.tax}" min="0" max="100" style="text-align: right; width: 100%;"></td>
+            <td style="padding: 6px; text-align: right; font-family: 'JetBrains Mono', monospace; color: #fff;">${sym}${(lineAmt + lineTax).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+            <td style="padding: 6px; text-align: center;" class="invoice-ctrls">
+              <button type="button" class="btn-icon remove-item-btn" data-idx="${idx}" title="Remove" style="color: #ff5555;"><i data-lucide="trash-2" style="width: 14px; height: 14px;"></i></button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        const grand = subtotal + taxTotal;
+        document.getElementById('invSubtotal').textContent = sym + subtotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+        document.getElementById('invTaxTotal').textContent = sym + taxTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+        document.getElementById('invGrandTotal').textContent = sym + grand.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+
+        if (window.lucide) lucide.createIcons();
+        attachListeners();
+      }
+
+      function attachListeners() {
+        document.querySelectorAll('.item-desc').forEach(el => el.addEventListener('input', e => { items[e.target.dataset.idx].desc = e.target.value; }));
+        document.querySelectorAll('.item-qty').forEach(el => el.addEventListener('input', e => { items[e.target.dataset.idx].qty = parseFloat(e.target.value) || 0; renderItems(); }));
+        document.querySelectorAll('.item-rate').forEach(el => el.addEventListener('input', e => { items[e.target.dataset.idx].rate = parseFloat(e.target.value) || 0; renderItems(); }));
+        document.querySelectorAll('.item-tax').forEach(el => el.addEventListener('input', e => { items[e.target.dataset.idx].tax = parseFloat(e.target.value) || 0; renderItems(); }));
+        document.querySelectorAll('.remove-item-btn').forEach(el => el.addEventListener('click', e => {
+          const idx = parseInt(el.closest('button').dataset.idx, 10);
+          items.splice(idx, 1);
+          renderItems();
+        }));
+      }
+
+      document.getElementById('invAddItemBtn').addEventListener('click', () => {
+        items.push({ desc: 'New Service / Item', qty: 1, rate: 1000, tax: 18 });
+        renderItems();
+      });
+
+      currencySel.addEventListener('change', renderItems);
+      document.getElementById('invPrintBtn').addEventListener('click', () => window.print());
+      document.getElementById('invResetBtn').addEventListener('click', () => {
+        if (confirm('Reset invoice items?')) {
+          items.length = 0;
+          items.push({ desc: 'Consulting / Service', qty: 1, rate: 5000, tax: 18 });
+          renderItems();
+        }
+      });
+
+      renderItems();
+    })();
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

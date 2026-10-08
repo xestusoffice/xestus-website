@@ -574,5 +574,67 @@ It validates syntax against the <strong>RFC 8259 standard</strong>, highlights k
     }
 </script>
   
+
+  
+
+
+
+  <!-- TOOL_FUNCTIONAL_LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const input = document.getElementById('jsonInput');
+    const output = document.getElementById('jsonOutput');
+    const indentSelect = document.getElementById('indentSelect');
+    const btnFormat = document.getElementById('btnFormat');
+    const btnMinify = document.getElementById('btnMinify');
+    const btnCopy = document.getElementById('btnCopyJson');
+    const statusBox = document.getElementById('jsonStatus');
+
+    function formatJson(minify = false) {
+        if (!input || !output) return;
+        const raw = input.value.trim();
+        if (!raw) {
+            output.textContent = '';
+            if (statusBox) statusBox.textContent = 'Ready';
+            return;
+        }
+        try {
+            const parsed = JSON.parse(raw);
+            const indent = minify ? 0 : (indentSelect ? parseInt(indentSelect.value) || 2 : 2);
+            const res = JSON.stringify(parsed, null, indent);
+            output.textContent = res;
+            if (statusBox) {
+                statusBox.textContent = '✓ Valid JSON (' + Object.keys(parsed).length + ' keys / items)';
+                statusBox.className = 'tool-status success';
+            }
+        } catch (e) {
+            if (statusBox) {
+                statusBox.textContent = '✗ Invalid JSON: ' + e.message;
+                statusBox.className = 'tool-status error';
+            }
+        }
+    }
+
+    if (btnFormat) btnFormat.addEventListener('click', () => formatJson(false));
+    if (btnMinify) btnMinify.addEventListener('click', () => formatJson(true));
+    if (input) input.addEventListener('input', () => formatJson(false));
+    if (indentSelect) indentSelect.addEventListener('change', () => formatJson(false));
+    if (btnCopy && output) {
+        btnCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText(output.textContent).then(() => {
+                const orig = btnCopy.textContent;
+                btnCopy.textContent = 'Copied!';
+                setTimeout(() => btnCopy.textContent = orig, 2000);
+            });
+        });
+    }
+    formatJson(false);
+      } catch (err) {
+        console.error('Error executing tool logic for json-formatter:', err);
+      }
+    });
+  </script>
+  <!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

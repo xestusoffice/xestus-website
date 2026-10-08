@@ -524,5 +524,274 @@ This decoder breaks down any standard compact JWT into its three constituent seg
   </script>
   
   
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tool-specific Functional Logic
+      window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener("DOMContentLoaded", () => {
+            
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // JWT Logic
+            const jwtInput = document.getElementById("jwtInput");
+            const jwtOutputBox = document.getElementById("jwtOutputBox");
+            const btnDecodeJwt = document.getElementById("btnDecodeJwt");
+            const btnSampleJwt = document.getElementById("btnSampleJwt");
+            const btnClear = document.getElementById("btnClear");
+            const statusBox = document.getElementById("statusBox");
+            const statusMsg = document.getElementById("statusMsg");
+            const statusIcon = document.getElementById("statusIcon");
+            const tokenStats = document.getElementById("tokenStats");
+            const tokenExpStatus = document.getElementById("tokenExpStatus");
+
+            function showStatus(msg, type = "success") {
+                statusBox.className = `tool-status-box show ${type}`;
+                statusMsg.textContent = msg;
+                statusIcon.setAttribute("data-lucide", type === "success" ? "check-circle" : "alert-circle");
+                if (window.lucide) lucide.createIcons();
+            }
+
+            function decodeBase64Url(str) {
+                let output = str.replace(/-/g, "+").replace(/_/g, "/");
+                switch (output.length % 4) {
+                    case 0: break;
+                    case 2: output += "=="; break;
+                    case 3: output += "="; break;
+                    default: throw new Error("Illegal base64url string!");
+                }
+                const binString = atob(output);
+                const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0));
+                return new TextDecoder().decode(bytes);
+            }
+
+            function decodeToken() {
+                const token = jwtInput.value.trim();
+                if (!token) {
+                    jwtOutputBox.innerHTML = '<p style="color: var(--text-muted);">Decoded Header and Payload claims will appear here.</p>';
+                    tokenExpStatus.textContent = "Awaiting token";
+                    statusBox.className = "tool-status-box";
+                    return;
+                }
+
+                const parts = token.split(".");
+                if (parts.length !== 3) {
+                    showStatus("Invalid JWT format. A valid token must contain 3 dot-separated segments (header.payload.signature).", "error");
+                    jwtOutputBox.innerHTML = '<div style="color: #ff4d6a;">Invalid JWT Structure: Expected 3 segments.</div>';
+                    tokenExpStatus.textContent = "Invalid JWT";
+                    return;
+                }
+
+                try {
+                    const header = JSON.parse(decodeBase64Url(parts[0]));
+                    const payload = JSON.parse(decodeBase64Url(parts[1]));
+                    const signature = parts[2];
+
+                    let expHtml = "";
+                    if (payload.exp) {
+                        const expDate = new Date(payload.exp * 1000);
+                        const isExpired = Date.now() > payload.exp * 1000;
+                        expHtml = `
+                            <div style="margin-top: 12px; padding: 10px 14px; border-radius: 6px; background: ${isExpired ? 'rgba(255,77,106,0.1)' : 'rgba(0,255,136,0.1)'}; border: 1px solid ${isExpired ? 'rgba(255,77,106,0.3)' : 'rgba(0,255,136,0.3)'}; color: ${isExpired ? '#ff4d6a' : '#00ff88'};">
+                                <strong>Expiration Status:</strong> ${isExpired ? 'EXPIRED' : 'ACTIVE'} (${expDate.toUTCString()})
+                            </div>
+                        `;
+                        tokenExpStatus.textContent = isExpired ? "Token Expired" : "Token Active";
+                    } else {
+                        tokenExpStatus.textContent = "No Expiration Set";
+                    }
+
+                    jwtOutputBox.innerHTML = `
+                        <div style="margin-bottom: 16px;">
+                            <span style="color: #ff5588; font-weight: 700; text-transform: uppercase;">Header: Algorithm &amp; Token Type</span>
+                            <pre style="margin: 6px 0 0; color: #f1f5f9; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px;">${JSON.stringify(header, null, 2)}</pre>
+                        </div>
+                        <div style="margin-bottom: 16px;">
+                            <span style="color: #a855f7; font-weight: 700; text-transform: uppercase;">Payload: Claims &amp; Identity</span>
+                            <pre style="margin: 6px 0 0; color: #f1f5f9; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px;">${JSON.stringify(payload, null, 2)}</pre>
+                            ${expHtml}
+                        </div>
+                        <div>
+                            <span style="color: #00bfff; font-weight: 700; text-transform: uppercase;">Signature (Base64Url)</span>
+                            <div style="margin-top: 6px; word-break: break-all; color: var(--text-dim); background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px;">${signature}</div>
+                        </div>
+                    `;
+                    showStatus("Token successfully decoded and inspected.", "success");
+                } catch (e) {
+                    showStatus(`Error decoding token: ${e.message}`, "error");
+                    jwtOutputBox.innerHTML = `<div style="color: #ff4d6a;">Failed to decode token segments: ${e.message}</div>`;
+                }
+            }
+
+            btnDecodeJwt.addEventListener("click", decodeToken);
+
+            btnSampleJwt.addEventListener("click", () => {
+                // Pre-built sample JWT
+                jwtInput.value = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlhFU1RVUyBEZXZlbG9wZXIiLCJyb2xlIjoiQXJjaGl0ZWN0IiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE5MjQ5MDU2MDB9.4Hz9PqQYV4f_5vU5d9c2v-p5r0NlU8O9W4Z2b_6x8Y4";
+                decodeToken();
+            });
+
+            btnClear.addEventListener("click", () => {
+                jwtInput.value = "";
+                jwtOutputBox.innerHTML = '<p style="color: var(--text-muted);">Decoded Header and Payload claims will appear here.</p>';
+                tokenExpStatus.textContent = "Awaiting token";
+                statusBox.className = "tool-status-box";
+                tokenStats.textContent = "0 chars";
+            });
+
+            jwtInput.addEventListener("input", () => {
+                tokenStats.textContent = `${jwtInput.value.length} chars`;
+            });
+        });
+    });
+  </script>
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener("DOMContentLoaded", () => {
+            
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // JWT Logic
+            const jwtInput = document.getElementById("jwtInput");
+            const jwtOutputBox = document.getElementById("jwtOutputBox");
+            const btnDecodeJwt = document.getElementById("btnDecodeJwt");
+            const btnSampleJwt = document.getElementById("btnSampleJwt");
+            const btnClear = document.getElementById("btnClear");
+            const statusBox = document.getElementById("statusBox");
+            const statusMsg = document.getElementById("statusMsg");
+            const statusIcon = document.getElementById("statusIcon");
+            const tokenStats = document.getElementById("tokenStats");
+            const tokenExpStatus = document.getElementById("tokenExpStatus");
+
+            function showStatus(msg, type = "success") {
+                statusBox.className = `tool-status-box show ${type}`;
+                statusMsg.textContent = msg;
+                statusIcon.setAttribute("data-lucide", type === "success" ? "check-circle" : "alert-circle");
+                if (window.lucide) lucide.createIcons();
+            }
+
+            function decodeBase64Url(str) {
+                let output = str.replace(/-/g, "+").replace(/_/g, "/");
+                switch (output.length % 4) {
+                    case 0: break;
+                    case 2: output += "=="; break;
+                    case 3: output += "="; break;
+                    default: throw new Error("Illegal base64url string!");
+                }
+                const binString = atob(output);
+                const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0));
+                return new TextDecoder().decode(bytes);
+            }
+
+            function decodeToken() {
+                const token = jwtInput.value.trim();
+                if (!token) {
+                    jwtOutputBox.innerHTML = '<p style="color: var(--text-muted);">Decoded Header and Payload claims will appear here.</p>';
+                    tokenExpStatus.textContent = "Awaiting token";
+                    statusBox.className = "tool-status-box";
+                    return;
+                }
+
+                const parts = token.split(".");
+                if (parts.length !== 3) {
+                    showStatus("Invalid JWT format. A valid token must contain 3 dot-separated segments (header.payload.signature).", "error");
+                    jwtOutputBox.innerHTML = '<div style="color: #ff4d6a;">Invalid JWT Structure: Expected 3 segments.</div>';
+                    tokenExpStatus.textContent = "Invalid JWT";
+                    return;
+                }
+
+                try {
+                    const header = JSON.parse(decodeBase64Url(parts[0]));
+                    const payload = JSON.parse(decodeBase64Url(parts[1]));
+                    const signature = parts[2];
+
+                    let expHtml = "";
+                    if (payload.exp) {
+                        const expDate = new Date(payload.exp * 1000);
+                        const isExpired = Date.now() > payload.exp * 1000;
+                        expHtml = `
+                            <div style="margin-top: 12px; padding: 10px 14px; border-radius: 6px; background: ${isExpired ? 'rgba(255,77,106,0.1)' : 'rgba(0,255,136,0.1)'}; border: 1px solid ${isExpired ? 'rgba(255,77,106,0.3)' : 'rgba(0,255,136,0.3)'}; color: ${isExpired ? '#ff4d6a' : '#00ff88'};">
+                                <strong>Expiration Status:</strong> ${isExpired ? 'EXPIRED' : 'ACTIVE'} (${expDate.toUTCString()})
+                            </div>
+                        `;
+                        tokenExpStatus.textContent = isExpired ? "Token Expired" : "Token Active";
+                    } else {
+                        tokenExpStatus.textContent = "No Expiration Set";
+                    }
+
+                    jwtOutputBox.innerHTML = `
+                        <div style="margin-bottom: 16px;">
+                            <span style="color: #ff5588; font-weight: 700; text-transform: uppercase;">Header: Algorithm &amp; Token Type</span>
+                            <pre style="margin: 6px 0 0; color: #f1f5f9; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px;">${JSON.stringify(header, null, 2)}</pre>
+                        </div>
+                        <div style="margin-bottom: 16px;">
+                            <span style="color: #a855f7; font-weight: 700; text-transform: uppercase;">Payload: Claims &amp; Identity</span>
+                            <pre style="margin: 6px 0 0; color: #f1f5f9; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px;">${JSON.stringify(payload, null, 2)}</pre>
+                            ${expHtml}
+                        </div>
+                        <div>
+                            <span style="color: #00bfff; font-weight: 700; text-transform: uppercase;">Signature (Base64Url)</span>
+                            <div style="margin-top: 6px; word-break: break-all; color: var(--text-dim); background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px;">${signature}</div>
+                        </div>
+                    `;
+                    showStatus("Token successfully decoded and inspected.", "success");
+                } catch (e) {
+                    showStatus(`Error decoding token: ${e.message}`, "error");
+                    jwtOutputBox.innerHTML = `<div style="color: #ff4d6a;">Failed to decode token segments: ${e.message}</div>`;
+                }
+            }
+
+            btnDecodeJwt.addEventListener("click", decodeToken);
+
+            btnSampleJwt.addEventListener("click", () => {
+                // Pre-built sample JWT
+                jwtInput.value = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlhFU1RVUyBEZXZlbG9wZXIiLCJyb2xlIjoiQXJjaGl0ZWN0IiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE5MjQ5MDU2MDB9.4Hz9PqQYV4f_5vU5d9c2v-p5r0NlU8O9W4Z2b_6x8Y4";
+                decodeToken();
+            });
+
+            btnClear.addEventListener("click", () => {
+                jwtInput.value = "";
+                jwtOutputBox.innerHTML = '<p style="color: var(--text-muted);">Decoded Header and Payload claims will appear here.</p>';
+                tokenExpStatus.textContent = "Awaiting token";
+                statusBox.className = "tool-status-box";
+                tokenStats.textContent = "0 chars";
+            });
+
+            jwtInput.addEventListener("input", () => {
+                tokenStats.textContent = `${jwtInput.value.length} chars`;
+            });
+        });
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

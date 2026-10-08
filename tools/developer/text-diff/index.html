@@ -524,5 +524,266 @@ Find the minimum number of insertions and deletions to transform String A into S
   </script>
   
   
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tool-specific Functional Logic
+      window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener("DOMContentLoaded", () => {
+            
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // LCS Diff Algorithm
+            const textOriginal = document.getElementById("textOriginal");
+            const textModified = document.getElementById("textModified");
+            const btnCompare = document.getElementById("btnCompare");
+            const btnSampleDiff = document.getElementById("btnSampleDiff");
+            const btnClear = document.getElementById("btnClear");
+            const chkIgnoreCase = document.getElementById("chkIgnoreCase");
+            const diffResultContainer = document.getElementById("diffResultContainer");
+            const diffStats = document.getElementById("diffStats");
+
+            function escapeHtml(str) {
+                return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }
+
+            function computeDiff() {
+                const orig = textOriginal.value;
+                const mod = textModified.value;
+                const ignoreCase = chkIgnoreCase.checked;
+
+                const origLines = orig ? orig.split("\n") : [];
+                const modLines = mod ? mod.split("\n") : [];
+
+                if (origLines.length === 0 && modLines.length === 0) {
+                    diffResultContainer.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--text-dim); padding: 40px 0;">Both inputs are empty.</div>';
+                    diffStats.textContent = "Empty";
+                    return;
+                }
+
+                // Simple Myers/LCS Line Matcher
+                const N = origLines.length;
+                const M = modLines.length;
+                const dp = Array.from({ length: N + 1 }, () => Array(M + 1).fill(0));
+
+                for (let i = 1; i <= N; i++) {
+                    for (let j = 1; j <= M; j++) {
+                        const s1 = ignoreCase ? origLines[i - 1].toLowerCase() : origLines[i - 1];
+                        const s2 = ignoreCase ? modLines[j - 1].toLowerCase() : modLines[j - 1];
+                        if (s1 === s2) {
+                            dp[i][j] = dp[i - 1][j - 1] + 1;
+                        } else {
+                            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                        }
+                    }
+                }
+
+                let i = N, j = M;
+                const origResult = [];
+                const modResult = [];
+                let addedCount = 0;
+                let removedCount = 0;
+
+                while (i > 0 || j > 0) {
+                    if (i > 0 && j > 0 && (ignoreCase ? origLines[i - 1].toLowerCase() === modLines[j - 1].toLowerCase() : origLines[i - 1] === modLines[j - 1])) {
+                        origResult.unshift({ type: "same", line: origLines[i - 1], num: i });
+                        modResult.unshift({ type: "same", line: modLines[j - 1], num: j });
+                        i--; j--;
+                    } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+                        origResult.unshift({ type: "empty", line: "", num: "" });
+                        modResult.unshift({ type: "added", line: modLines[j - 1], num: j });
+                        addedCount++;
+                        j--;
+                    } else if (i > 0 && (j === 0 || dp[i][j - 1] < dp[i - 1][j])) {
+                        origResult.unshift({ type: "removed", line: origLines[i - 1], num: i });
+                        modResult.unshift({ type: "empty", line: "", num: "" });
+                        removedCount++;
+                        i--;
+                    }
+                }
+
+                const leftColHtml = origResult.map(r => `
+                    <div class="diff-line-row ${r.type === 'removed' ? 'diff-line-removed' : (r.type === 'empty' ? '' : 'diff-line-unchanged')}">
+                        <span class="diff-num">${r.num || '&nbsp;'}</span>
+                        <span>${r.type === 'removed' ? '- ' : ''}${escapeHtml(r.line) || '&nbsp;'}</span>
+                    </div>
+                `).join("");
+
+                const rightColHtml = modResult.map(r => `
+                    <div class="diff-line-row ${r.type === 'added' ? 'diff-line-added' : (r.type === 'empty' ? '' : 'diff-line-unchanged')}">
+                        <span class="diff-num">${r.num || '&nbsp;'}</span>
+                        <span>${r.type === 'added' ? '+ ' : ''}${escapeHtml(r.line) || '&nbsp;'}</span>
+                    </div>
+                `).join("");
+
+                diffResultContainer.innerHTML = `
+                    <div class="diff-column">${leftColHtml}</div>
+                    <div class="diff-column">${rightColHtml}</div>
+                `;
+
+                diffStats.textContent = `+${addedCount} lines added • -${removedCount} lines removed`;
+            }
+
+            btnCompare.addEventListener("click", computeDiff);
+
+            btnSampleDiff.addEventListener("click", () => {
+                textOriginal.value = `function initializeServer() {\n  const port = 3000;\n  console.log("Server starting on port " + port);\n  connectDatabase();\n}`;
+                textModified.value = `function initializeServer() {\n  const port = process.env.PORT || 8080;\n  console.log(\`XESTUS Edge Server listening on port \${port}\`);\n  connectDatabase();\n  enableTelemetry();\n}`;
+                computeDiff();
+            });
+
+            btnClear.addEventListener("click", () => {
+                textOriginal.value = "";
+                textModified.value = "";
+                diffResultContainer.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--text-dim); padding: 40px 0;">Enter or paste text into both panels above and click "Compare Differences".</div>';
+                diffStats.textContent = "Ready";
+            });
+        });
+    });
+  </script>
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener("DOMContentLoaded", () => {
+            
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // LCS Diff Algorithm
+            const textOriginal = document.getElementById("textOriginal");
+            const textModified = document.getElementById("textModified");
+            const btnCompare = document.getElementById("btnCompare");
+            const btnSampleDiff = document.getElementById("btnSampleDiff");
+            const btnClear = document.getElementById("btnClear");
+            const chkIgnoreCase = document.getElementById("chkIgnoreCase");
+            const diffResultContainer = document.getElementById("diffResultContainer");
+            const diffStats = document.getElementById("diffStats");
+
+            function escapeHtml(str) {
+                return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }
+
+            function computeDiff() {
+                const orig = textOriginal.value;
+                const mod = textModified.value;
+                const ignoreCase = chkIgnoreCase.checked;
+
+                const origLines = orig ? orig.split("\n") : [];
+                const modLines = mod ? mod.split("\n") : [];
+
+                if (origLines.length === 0 && modLines.length === 0) {
+                    diffResultContainer.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--text-dim); padding: 40px 0;">Both inputs are empty.</div>';
+                    diffStats.textContent = "Empty";
+                    return;
+                }
+
+                // Simple Myers/LCS Line Matcher
+                const N = origLines.length;
+                const M = modLines.length;
+                const dp = Array.from({ length: N + 1 }, () => Array(M + 1).fill(0));
+
+                for (let i = 1; i <= N; i++) {
+                    for (let j = 1; j <= M; j++) {
+                        const s1 = ignoreCase ? origLines[i - 1].toLowerCase() : origLines[i - 1];
+                        const s2 = ignoreCase ? modLines[j - 1].toLowerCase() : modLines[j - 1];
+                        if (s1 === s2) {
+                            dp[i][j] = dp[i - 1][j - 1] + 1;
+                        } else {
+                            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                        }
+                    }
+                }
+
+                let i = N, j = M;
+                const origResult = [];
+                const modResult = [];
+                let addedCount = 0;
+                let removedCount = 0;
+
+                while (i > 0 || j > 0) {
+                    if (i > 0 && j > 0 && (ignoreCase ? origLines[i - 1].toLowerCase() === modLines[j - 1].toLowerCase() : origLines[i - 1] === modLines[j - 1])) {
+                        origResult.unshift({ type: "same", line: origLines[i - 1], num: i });
+                        modResult.unshift({ type: "same", line: modLines[j - 1], num: j });
+                        i--; j--;
+                    } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+                        origResult.unshift({ type: "empty", line: "", num: "" });
+                        modResult.unshift({ type: "added", line: modLines[j - 1], num: j });
+                        addedCount++;
+                        j--;
+                    } else if (i > 0 && (j === 0 || dp[i][j - 1] < dp[i - 1][j])) {
+                        origResult.unshift({ type: "removed", line: origLines[i - 1], num: i });
+                        modResult.unshift({ type: "empty", line: "", num: "" });
+                        removedCount++;
+                        i--;
+                    }
+                }
+
+                const leftColHtml = origResult.map(r => `
+                    <div class="diff-line-row ${r.type === 'removed' ? 'diff-line-removed' : (r.type === 'empty' ? '' : 'diff-line-unchanged')}">
+                        <span class="diff-num">${r.num || '&nbsp;'}</span>
+                        <span>${r.type === 'removed' ? '- ' : ''}${escapeHtml(r.line) || '&nbsp;'}</span>
+                    </div>
+                `).join("");
+
+                const rightColHtml = modResult.map(r => `
+                    <div class="diff-line-row ${r.type === 'added' ? 'diff-line-added' : (r.type === 'empty' ? '' : 'diff-line-unchanged')}">
+                        <span class="diff-num">${r.num || '&nbsp;'}</span>
+                        <span>${r.type === 'added' ? '+ ' : ''}${escapeHtml(r.line) || '&nbsp;'}</span>
+                    </div>
+                `).join("");
+
+                diffResultContainer.innerHTML = `
+                    <div class="diff-column">${leftColHtml}</div>
+                    <div class="diff-column">${rightColHtml}</div>
+                `;
+
+                diffStats.textContent = `+${addedCount} lines added • -${removedCount} lines removed`;
+            }
+
+            btnCompare.addEventListener("click", computeDiff);
+
+            btnSampleDiff.addEventListener("click", () => {
+                textOriginal.value = `function initializeServer() {\n  const port = 3000;\n  console.log("Server starting on port " + port);\n  connectDatabase();\n}`;
+                textModified.value = `function initializeServer() {\n  const port = process.env.PORT || 8080;\n  console.log(\`XESTUS Edge Server listening on port \${port}\`);\n  connectDatabase();\n  enableTelemetry();\n}`;
+                computeDiff();
+            });
+
+            btnClear.addEventListener("click", () => {
+                textOriginal.value = "";
+                textModified.value = "";
+                diffResultContainer.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--text-dim); padding: 40px 0;">Enter or paste text into both panels above and click "Compare Differences".</div>';
+                diffStats.textContent = "Ready";
+            });
+        });
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

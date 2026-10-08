@@ -523,5 +523,274 @@ This tool pinpoints the exact <strong>line number</strong>, <strong>column offse
   </script>
   
   
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tool-specific Functional Logic
+      window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener("DOMContentLoaded", () => {
+            
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // JSON Validator Logic
+            const jsonInput = document.getElementById("jsonInput");
+            const metricsBox = document.getElementById("metricsBox");
+            const btnValidate = document.getElementById("btnValidate");
+            const btnSampleValid = document.getElementById("btnSampleValid");
+            const btnSampleInvalid = document.getElementById("btnSampleInvalid");
+            const btnClear = document.getElementById("btnClear");
+            const statusBox = document.getElementById("statusBox");
+            const statusMsg = document.getElementById("statusMsg");
+            const statusIcon = document.getElementById("statusIcon");
+            const inputStats = document.getElementById("inputStats");
+            const analysisStats = document.getElementById("analysisStats");
+
+            function showStatus(msg, type = "success") {
+                statusBox.className = `tool-status-box show ${type}`;
+                statusMsg.textContent = msg;
+                statusIcon.setAttribute("data-lucide", type === "success" ? "check-circle" : "alert-circle");
+                if (window.lucide) lucide.createIcons();
+            }
+
+            function hideStatus() {
+                statusBox.className = "tool-status-box";
+            }
+
+            function countKeys(obj) {
+                let count = 0;
+                let maxDepth = 1;
+                function traverse(o, depth) {
+                    if (depth > maxDepth) maxDepth = depth;
+                    if (o && typeof o === "object") {
+                        if (Array.isArray(o)) {
+                            o.forEach(item => traverse(item, depth + 1));
+                        } else {
+                            Object.keys(o).forEach(k => {
+                                count++;
+                                traverse(o[k], depth + 1);
+                            });
+                        }
+                    }
+                }
+                traverse(obj, 1);
+                return { count, maxDepth };
+            }
+
+            function validate() {
+                const raw = jsonInput.value.trim();
+                if (!raw) {
+                    metricsBox.innerHTML = '<p style="color: var(--text-muted);">Paste JSON and click "Validate Syntax" to see detailed metrics.</p>';
+                    analysisStats.textContent = "Awaiting input";
+                    hideStatus();
+                    return;
+                }
+                try {
+                    const parsed = JSON.parse(raw);
+                    const rootType = Array.isArray(parsed) ? "Array" : (typeof parsed === "object" && parsed !== null ? "Object" : typeof parsed);
+                    const { count, maxDepth } = countKeys(parsed);
+                    const byteSize = new Blob([raw]).size;
+
+                    metricsBox.innerHTML = `
+                        <div style="color: #00ff88; font-weight: 700; margin-bottom: 12px;">✔ VALID RFC 8259 JSON</div>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div><strong>Root Data Type:</strong> <span style="color: var(--cyan-bright);">${rootType}</span></div>
+                            <div><strong>Total Keys / Nodes:</strong> <span>${count}</span></div>
+                            <div><strong>Max Nesting Depth:</strong> <span>${maxDepth} levels</span></div>
+                            <div><strong>Payload Size:</strong> <span>${byteSize} bytes (${(byteSize / 1024).toFixed(2)} KB)</span></div>
+                            <div><strong>Lines of Code:</strong> <span>${raw.split('\n').length} lines</span></div>
+                        </div>
+                    `;
+                    analysisStats.textContent = "Valid JSON Structure";
+                    showStatus("JSON is 100% valid with zero syntax errors.", "success");
+                } catch (err) {
+                    metricsBox.innerHTML = `
+                        <div style="color: #ff4d6a; font-weight: 700; margin-bottom: 12px;">✖ SYNTAX ERROR DETECTED</div>
+                        <div style="color: var(--text-secondary);">${err.message}</div>
+                        <div style="margin-top: 14px; font-size: 12px; color: var(--text-dim);">Check for missing quotes, trailing commas, or unescaped characters.</div>
+                    `;
+                    analysisStats.textContent = "Invalid Syntax";
+                    showStatus(`Syntax Error: ${err.message}`, "error");
+                }
+            }
+
+            btnValidate.addEventListener("click", validate);
+
+            btnSampleValid.addEventListener("click", () => {
+                jsonInput.value = JSON.stringify({
+                    "service": "XESTUS Neural Engine",
+                    "status": "operational",
+                    "metrics": { "latency_ms": 38, "uptime": 0.9998 },
+                    "protocols": ["MCP", "JSON-RPC", "WebSocket"]
+                }, null, 2);
+                validate();
+            });
+
+            btnSampleInvalid.addEventListener("click", () => {
+                jsonInput.value = '{\n  "service": "XESTUS",\n  "status": "active",\n  "trailing_comma_error": true,\n}';
+                validate();
+            });
+
+            btnClear.addEventListener("click", () => {
+                jsonInput.value = "";
+                metricsBox.innerHTML = '<p style="color: var(--text-muted);">Paste JSON and click "Validate Syntax" to see detailed metrics.</p>';
+                analysisStats.textContent = "Awaiting input";
+                hideStatus();
+            });
+
+            jsonInput.addEventListener("input", () => {
+                const val = jsonInput.value;
+                inputStats.textContent = `${val.length} chars • ${val ? val.split("\n").length : 0} lines`;
+            });
+        });
+    });
+  </script>
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener("DOMContentLoaded", () => {
+            
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // JSON Validator Logic
+            const jsonInput = document.getElementById("jsonInput");
+            const metricsBox = document.getElementById("metricsBox");
+            const btnValidate = document.getElementById("btnValidate");
+            const btnSampleValid = document.getElementById("btnSampleValid");
+            const btnSampleInvalid = document.getElementById("btnSampleInvalid");
+            const btnClear = document.getElementById("btnClear");
+            const statusBox = document.getElementById("statusBox");
+            const statusMsg = document.getElementById("statusMsg");
+            const statusIcon = document.getElementById("statusIcon");
+            const inputStats = document.getElementById("inputStats");
+            const analysisStats = document.getElementById("analysisStats");
+
+            function showStatus(msg, type = "success") {
+                statusBox.className = `tool-status-box show ${type}`;
+                statusMsg.textContent = msg;
+                statusIcon.setAttribute("data-lucide", type === "success" ? "check-circle" : "alert-circle");
+                if (window.lucide) lucide.createIcons();
+            }
+
+            function hideStatus() {
+                statusBox.className = "tool-status-box";
+            }
+
+            function countKeys(obj) {
+                let count = 0;
+                let maxDepth = 1;
+                function traverse(o, depth) {
+                    if (depth > maxDepth) maxDepth = depth;
+                    if (o && typeof o === "object") {
+                        if (Array.isArray(o)) {
+                            o.forEach(item => traverse(item, depth + 1));
+                        } else {
+                            Object.keys(o).forEach(k => {
+                                count++;
+                                traverse(o[k], depth + 1);
+                            });
+                        }
+                    }
+                }
+                traverse(obj, 1);
+                return { count, maxDepth };
+            }
+
+            function validate() {
+                const raw = jsonInput.value.trim();
+                if (!raw) {
+                    metricsBox.innerHTML = '<p style="color: var(--text-muted);">Paste JSON and click "Validate Syntax" to see detailed metrics.</p>';
+                    analysisStats.textContent = "Awaiting input";
+                    hideStatus();
+                    return;
+                }
+                try {
+                    const parsed = JSON.parse(raw);
+                    const rootType = Array.isArray(parsed) ? "Array" : (typeof parsed === "object" && parsed !== null ? "Object" : typeof parsed);
+                    const { count, maxDepth } = countKeys(parsed);
+                    const byteSize = new Blob([raw]).size;
+
+                    metricsBox.innerHTML = `
+                        <div style="color: #00ff88; font-weight: 700; margin-bottom: 12px;">✔ VALID RFC 8259 JSON</div>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div><strong>Root Data Type:</strong> <span style="color: var(--cyan-bright);">${rootType}</span></div>
+                            <div><strong>Total Keys / Nodes:</strong> <span>${count}</span></div>
+                            <div><strong>Max Nesting Depth:</strong> <span>${maxDepth} levels</span></div>
+                            <div><strong>Payload Size:</strong> <span>${byteSize} bytes (${(byteSize / 1024).toFixed(2)} KB)</span></div>
+                            <div><strong>Lines of Code:</strong> <span>${raw.split('\n').length} lines</span></div>
+                        </div>
+                    `;
+                    analysisStats.textContent = "Valid JSON Structure";
+                    showStatus("JSON is 100% valid with zero syntax errors.", "success");
+                } catch (err) {
+                    metricsBox.innerHTML = `
+                        <div style="color: #ff4d6a; font-weight: 700; margin-bottom: 12px;">✖ SYNTAX ERROR DETECTED</div>
+                        <div style="color: var(--text-secondary);">${err.message}</div>
+                        <div style="margin-top: 14px; font-size: 12px; color: var(--text-dim);">Check for missing quotes, trailing commas, or unescaped characters.</div>
+                    `;
+                    analysisStats.textContent = "Invalid Syntax";
+                    showStatus(`Syntax Error: ${err.message}`, "error");
+                }
+            }
+
+            btnValidate.addEventListener("click", validate);
+
+            btnSampleValid.addEventListener("click", () => {
+                jsonInput.value = JSON.stringify({
+                    "service": "XESTUS Neural Engine",
+                    "status": "operational",
+                    "metrics": { "latency_ms": 38, "uptime": 0.9998 },
+                    "protocols": ["MCP", "JSON-RPC", "WebSocket"]
+                }, null, 2);
+                validate();
+            });
+
+            btnSampleInvalid.addEventListener("click", () => {
+                jsonInput.value = '{\n  "service": "XESTUS",\n  "status": "active",\n  "trailing_comma_error": true,\n}';
+                validate();
+            });
+
+            btnClear.addEventListener("click", () => {
+                jsonInput.value = "";
+                metricsBox.innerHTML = '<p style="color: var(--text-muted);">Paste JSON and click "Validate Syntax" to see detailed metrics.</p>';
+                analysisStats.textContent = "Awaiting input";
+                hideStatus();
+            });
+
+            jsonInput.addEventListener("input", () => {
+                const val = jsonInput.value;
+                inputStats.textContent = `${val.length} chars • ${val ? val.split("\n").length : 0} lines`;
+            });
+        });
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

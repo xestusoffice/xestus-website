@@ -558,6 +558,305 @@ Whether you are consolidating receipts, creating job portfolios, compiling homew
       setTimeout(() => window.close(), 1000);
     };
   </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tool-specific Functional Logic
+      (function() {
+            try {
+                document.documentElement.setAttribute('data-theme', 'night');
+                localStorage.setItem('xestus_theme', 'night');
+            } catch (e) {}
+        })();
+
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+// Initialize Related Tools from Registry
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.XestusTools && window.XestusTools.renderRelatedTools) {
+        window.XestusTools.renderRelatedTools('image-to-pdf', 'relatedToolsGrid');
+      }
+      if (window.MyXestus) {
+        window.MyXestus.initToolPage('image-to-pdf', 'Image to PDF Converter');
+      }
+      // FAQ Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const ans = btn.nextElementSibling;
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          ans.style.display = isExpanded ? 'none' : 'block';
+        });
+      });
+      if (window.lucide) lucide.createIcons();
+    });
+
+(function() {
+      const selectedImages = [];
+      const dropzone = document.getElementById('pdfDropzone');
+      const fileInput = document.getElementById('pdfFileInput');
+      const controls = document.getElementById('pdfControls');
+      const thumbsGrid = document.getElementById('pdfThumbnailsGrid');
+      const countText = document.getElementById('imgCountText');
+
+      dropzone.addEventListener('click', () => fileInput.click());
+      document.getElementById('addMoreImagesBtn').addEventListener('click', () => fileInput.click());
+
+      dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.style.borderColor = '#00ff88'; });
+      dropzone.addEventListener('dragleave', () => dropzone.style.borderColor = '#ff5588');
+      dropzone.addEventListener('drop', e => {
+        e.preventDefault();
+        dropzone.style.borderColor = '#ff5588';
+        if (e.dataTransfer.files.length) handleFiles(Array.from(e.dataTransfer.files));
+      });
+
+      fileInput.addEventListener('change', e => {
+        if (e.target.files.length) handleFiles(Array.from(e.target.files));
+      });
+
+      function handleFiles(files) {
+        files.forEach(file => {
+          if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = evt => {
+              selectedImages.push({ name: file.name, dataUrl: evt.target.result });
+              renderThumbs();
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      }
+
+      function renderThumbs() {
+        if (selectedImages.length === 0) {
+          dropzone.style.display = 'block';
+          controls.style.display = 'none';
+          return;
+        }
+        dropzone.style.display = 'none';
+        controls.style.display = 'block';
+        countText.textContent = selectedImages.length;
+        thumbsGrid.innerHTML = '';
+
+        selectedImages.forEach((img, idx) => {
+          const card = document.createElement('div');
+          card.style.cssText = 'position: relative; border-radius: 6px; overflow: hidden; border: 1px solid #444; background: #111; aspect-ratio: 1;';
+          card.innerHTML = `
+            <img src="${img.dataUrl}" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); font-size: 0.7rem; color: #fff; padding: 2px 4px; text-align: center;">Page ${idx + 1}</div>
+            <button type="button" class="btn-icon" data-idx="${idx}" style="position: absolute; top: 2px; right: 2px; background: rgba(255,0,0,0.8); border: none; width: 22px; height: 22px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;"><i data-lucide="x" style="width: 12px; height: 12px;"></i></button>
+          `;
+          thumbsGrid.appendChild(card);
+        });
+
+        if (window.lucide) lucide.createIcons();
+
+        thumbsGrid.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', e => {
+            const idx = parseInt(btn.dataset.idx, 10);
+            selectedImages.splice(idx, 1);
+            renderThumbs();
+          });
+        });
+      }
+
+      document.getElementById('pdfClearBtn').addEventListener('click', () => {
+        selectedImages.length = 0;
+        renderThumbs();
+      });
+
+      document.getElementById('generatePdfBtn').addEventListener('click', async () => {
+        if (selectedImages.length === 0) return;
+        const btn = document.getElementById('generatePdfBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<i data-lucide="loader"></i> Compiling PDF...';
+        if (window.lucide) lucide.createIcons();
+
+        try {
+          // Client-side printable PDF generation via clean window print canvas container
+          const printWin = window.open('', '_blank');
+          if (!printWin) {
+            alert('Please allow popups to download your PDF.');
+            btn.disabled = false;
+            btn.innerHTML = '<i data-lucide="download"></i> Generate & Download PDF';
+            return;
+          }
+          const orient = document.getElementById('pdfOrientation').value;
+          const margin = document.getElementById('pdfMargin').value;
+
+          printWin.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <title>Converted_Images_Xestus.pdf</title>
+              <style>
+                @page { size: ${orient === 'portrait' ? 'A4 portrait' : 'A4 landscape'}; margin: ${margin}px; }
+                body { margin: 0; padding: 0; background: #fff; }
+                .page { page-break-after: always; display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; overflow: hidden; }
+                .page:last-child { page-break-after: auto; }
+                img { max-width: 100%; max-height: 100%; object-fit: contain; }
+              </style>
+            </head>
+            <body>
+              ${selectedImages.map(img => `<div class="page"><img src="${img.dataUrl}"></div>`).join('')}
+              
+                window.onload = function() {
+                  window.print();
+                  setTimeout(() => window.close(), 1000);
+                };
+    });
+  </script>
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+// Only trigger push if user configures a live custom ad slot ID (Auto Ads runs automatically)
+        if (typeof adsbygoogle !== 'undefined' && document.querySelector('.adsense-slot-container ins')?.getAttribute('data-ad-slot') !== '1234567890') {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+
+// Initialize Related Tools from Registry
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.XestusTools && window.XestusTools.renderRelatedTools) {
+        window.XestusTools.renderRelatedTools('image-to-pdf', 'relatedToolsGrid');
+      }
+      if (window.MyXestus) {
+        window.MyXestus.initToolPage('image-to-pdf', 'Image to PDF Converter');
+      }
+      // FAQ Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const ans = btn.nextElementSibling;
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          ans.style.display = isExpanded ? 'none' : 'block';
+        });
+      });
+      if (window.lucide) lucide.createIcons();
+    });
+
+(function() {
+      const selectedImages = [];
+      const dropzone = document.getElementById('pdfDropzone');
+      const fileInput = document.getElementById('pdfFileInput');
+      const controls = document.getElementById('pdfControls');
+      const thumbsGrid = document.getElementById('pdfThumbnailsGrid');
+      const countText = document.getElementById('imgCountText');
+
+      dropzone.addEventListener('click', () => fileInput.click());
+      document.getElementById('addMoreImagesBtn').addEventListener('click', () => fileInput.click());
+
+      dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.style.borderColor = '#00ff88'; });
+      dropzone.addEventListener('dragleave', () => dropzone.style.borderColor = '#ff5588');
+      dropzone.addEventListener('drop', e => {
+        e.preventDefault();
+        dropzone.style.borderColor = '#ff5588';
+        if (e.dataTransfer.files.length) handleFiles(Array.from(e.dataTransfer.files));
+      });
+
+      fileInput.addEventListener('change', e => {
+        if (e.target.files.length) handleFiles(Array.from(e.target.files));
+      });
+
+      function handleFiles(files) {
+        files.forEach(file => {
+          if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = evt => {
+              selectedImages.push({ name: file.name, dataUrl: evt.target.result });
+              renderThumbs();
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      }
+
+      function renderThumbs() {
+        if (selectedImages.length === 0) {
+          dropzone.style.display = 'block';
+          controls.style.display = 'none';
+          return;
+        }
+        dropzone.style.display = 'none';
+        controls.style.display = 'block';
+        countText.textContent = selectedImages.length;
+        thumbsGrid.innerHTML = '';
+
+        selectedImages.forEach((img, idx) => {
+          const card = document.createElement('div');
+          card.style.cssText = 'position: relative; border-radius: 6px; overflow: hidden; border: 1px solid #444; background: #111; aspect-ratio: 1;';
+          card.innerHTML = `
+            <img src="${img.dataUrl}" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); font-size: 0.7rem; color: #fff; padding: 2px 4px; text-align: center;">Page ${idx + 1}</div>
+            <button type="button" class="btn-icon" data-idx="${idx}" style="position: absolute; top: 2px; right: 2px; background: rgba(255,0,0,0.8); border: none; width: 22px; height: 22px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;"><i data-lucide="x" style="width: 12px; height: 12px;"></i></button>
+          `;
+          thumbsGrid.appendChild(card);
+        });
+
+        if (window.lucide) lucide.createIcons();
+
+        thumbsGrid.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', e => {
+            const idx = parseInt(btn.dataset.idx, 10);
+            selectedImages.splice(idx, 1);
+            renderThumbs();
+          });
+        });
+      }
+
+      document.getElementById('pdfClearBtn').addEventListener('click', () => {
+        selectedImages.length = 0;
+        renderThumbs();
+      });
+
+      document.getElementById('generatePdfBtn').addEventListener('click', async () => {
+        if (selectedImages.length === 0) return;
+        const btn = document.getElementById('generatePdfBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<i data-lucide="loader"></i> Compiling PDF...';
+        if (window.lucide) lucide.createIcons();
+
+        try {
+          // Client-side printable PDF generation via clean window print canvas container
+          const printWin = window.open('', '_blank');
+          if (!printWin) {
+            alert('Please allow popups to download your PDF.');
+            btn.disabled = false;
+            btn.innerHTML = '<i data-lucide="download"></i> Generate & Download PDF';
+            return;
+          }
+          const orient = document.getElementById('pdfOrientation').value;
+          const margin = document.getElementById('pdfMargin').value;
+
+          printWin.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <title>Converted_Images_Xestus.pdf</title>
+              <style>
+                @page { size: ${orient === 'portrait' ? 'A4 portrait' : 'A4 landscape'}; margin: ${margin}px; }
+                body { margin: 0; padding: 0; background: #fff; }
+                .page { page-break-after: always; display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; overflow: hidden; }
+                .page:last-child { page-break-after: auto; }
+                img { max-width: 100%; max-height: 100%; object-fit: contain; }
+              </style>
+            </head>
+            <body>
+              ${selectedImages.map(img => `<div class="page"><img src="${img.dataUrl}"></div>`).join('')}
+              <script>
+                window.onload = function() {
+                  window.print();
+                  setTimeout(() => window.close(), 1000);
+                };
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>`);
               printWin.document.close();

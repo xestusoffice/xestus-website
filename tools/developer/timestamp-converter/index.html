@@ -523,5 +523,226 @@ The Unix epoch is defined as the number of seconds that have elapsed since <stro
   </script>
   
   
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tool-specific Functional Logic
+      window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener("DOMContentLoaded", () => {
+            
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // Timestamp Logic
+            const liveEpochNum = document.getElementById("liveEpochNum");
+            const btnUseCurrent = document.getElementById("btnUseCurrent");
+            const inputTimestamp = document.getElementById("inputTimestamp");
+            const btnConvertTs = document.getElementById("btnConvertTs");
+            const outUtc = document.getElementById("outUtc");
+            const outLocal = document.getElementById("outLocal");
+            const outIso = document.getElementById("outIso");
+            const outRelative = document.getElementById("outRelative");
+
+            const inputDate = document.getElementById("inputDate");
+            const btnConvertDate = document.getElementById("btnConvertDate");
+            const outEpochSec = document.getElementById("outEpochSec");
+            const outEpochMs = document.getElementById("outEpochMs");
+
+            // Live clock ticker
+            function tickLiveClock() {
+                liveEpochNum.textContent = Math.floor(Date.now() / 1000);
+            }
+            setInterval(tickLiveClock, 1000);
+            tickLiveClock();
+
+            function getRelativeTime(d) {
+                const deltaSec = Math.round((d.getTime() - Date.now()) / 1000);
+                const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+                if (Math.abs(deltaSec) < 60) return rtf.format(deltaSec, "second");
+                const deltaMin = Math.round(deltaSec / 60);
+                if (Math.abs(deltaMin) < 60) return rtf.format(deltaMin, "minute");
+                const deltaHour = Math.round(deltaMin / 60);
+                if (Math.abs(deltaHour) < 24) return rtf.format(deltaHour, "hour");
+                const deltaDay = Math.round(deltaHour / 24);
+                return rtf.format(deltaDay, "day");
+            }
+
+            function convertTimestamp() {
+                let val = inputTimestamp.value.trim();
+                if (!val) return;
+                let num = Number(val);
+                if (isNaN(num)) {
+                    outUtc.textContent = "Invalid Number";
+                    return;
+                }
+                // Handle seconds vs milliseconds
+                if (val.length <= 11) {
+                    num = num * 1000;
+                }
+                const date = new Date(num);
+                if (isNaN(date.getTime())) {
+                    outUtc.textContent = "Invalid Timestamp Date";
+                    return;
+                }
+                outUtc.textContent = date.toUTCString();
+                outLocal.textContent = date.toString();
+                outIso.textContent = date.toISOString();
+                outRelative.textContent = getRelativeTime(date);
+            }
+
+            btnConvertTs.addEventListener("click", convertTimestamp);
+            inputTimestamp.addEventListener("input", convertTimestamp);
+
+            btnUseCurrent.addEventListener("click", () => {
+                inputTimestamp.value = Math.floor(Date.now() / 1000);
+                convertTimestamp();
+            });
+
+            function convertDateToEpoch() {
+                const val = inputDate.value;
+                if (!val) return;
+                const d = new Date(val);
+                if (isNaN(d.getTime())) return;
+                const ms = d.getTime();
+                outEpochSec.textContent = Math.floor(ms / 1000);
+                outEpochMs.textContent = ms;
+            }
+
+            btnConvertDate.addEventListener("click", convertDateToEpoch);
+            inputDate.addEventListener("change", convertDateToEpoch);
+
+            // Set default date input to now
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            inputDate.value = now.toISOString().slice(0, 16);
+
+            convertTimestamp();
+            convertDateToEpoch();
+        });
+    });
+  </script>
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener("DOMContentLoaded", () => {
+            
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // Timestamp Logic
+            const liveEpochNum = document.getElementById("liveEpochNum");
+            const btnUseCurrent = document.getElementById("btnUseCurrent");
+            const inputTimestamp = document.getElementById("inputTimestamp");
+            const btnConvertTs = document.getElementById("btnConvertTs");
+            const outUtc = document.getElementById("outUtc");
+            const outLocal = document.getElementById("outLocal");
+            const outIso = document.getElementById("outIso");
+            const outRelative = document.getElementById("outRelative");
+
+            const inputDate = document.getElementById("inputDate");
+            const btnConvertDate = document.getElementById("btnConvertDate");
+            const outEpochSec = document.getElementById("outEpochSec");
+            const outEpochMs = document.getElementById("outEpochMs");
+
+            // Live clock ticker
+            function tickLiveClock() {
+                liveEpochNum.textContent = Math.floor(Date.now() / 1000);
+            }
+            setInterval(tickLiveClock, 1000);
+            tickLiveClock();
+
+            function getRelativeTime(d) {
+                const deltaSec = Math.round((d.getTime() - Date.now()) / 1000);
+                const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+                if (Math.abs(deltaSec) < 60) return rtf.format(deltaSec, "second");
+                const deltaMin = Math.round(deltaSec / 60);
+                if (Math.abs(deltaMin) < 60) return rtf.format(deltaMin, "minute");
+                const deltaHour = Math.round(deltaMin / 60);
+                if (Math.abs(deltaHour) < 24) return rtf.format(deltaHour, "hour");
+                const deltaDay = Math.round(deltaHour / 24);
+                return rtf.format(deltaDay, "day");
+            }
+
+            function convertTimestamp() {
+                let val = inputTimestamp.value.trim();
+                if (!val) return;
+                let num = Number(val);
+                if (isNaN(num)) {
+                    outUtc.textContent = "Invalid Number";
+                    return;
+                }
+                // Handle seconds vs milliseconds
+                if (val.length <= 11) {
+                    num = num * 1000;
+                }
+                const date = new Date(num);
+                if (isNaN(date.getTime())) {
+                    outUtc.textContent = "Invalid Timestamp Date";
+                    return;
+                }
+                outUtc.textContent = date.toUTCString();
+                outLocal.textContent = date.toString();
+                outIso.textContent = date.toISOString();
+                outRelative.textContent = getRelativeTime(date);
+            }
+
+            btnConvertTs.addEventListener("click", convertTimestamp);
+            inputTimestamp.addEventListener("input", convertTimestamp);
+
+            btnUseCurrent.addEventListener("click", () => {
+                inputTimestamp.value = Math.floor(Date.now() / 1000);
+                convertTimestamp();
+            });
+
+            function convertDateToEpoch() {
+                const val = inputDate.value;
+                if (!val) return;
+                const d = new Date(val);
+                if (isNaN(d.getTime())) return;
+                const ms = d.getTime();
+                outEpochSec.textContent = Math.floor(ms / 1000);
+                outEpochMs.textContent = ms;
+            }
+
+            btnConvertDate.addEventListener("click", convertDateToEpoch);
+            inputDate.addEventListener("change", convertDateToEpoch);
+
+            // Set default date input to now
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            inputDate.value = now.toISOString().slice(0, 16);
+
+            convertTimestamp();
+            convertDateToEpoch();
+        });
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

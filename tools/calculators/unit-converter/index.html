@@ -711,5 +711,207 @@ Built with high-precision IEEE 754 floating-point standard conversion constants,
     })();
 </script>
   
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+// Only trigger push if user configures a live custom ad slot ID (Auto Ads runs automatically)
+        if (typeof adsbygoogle !== 'undefined' && document.querySelector('.adsense-slot-container ins')?.getAttribute('data-ad-slot') !== '1234567890') {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+
+// Initialize Related Tools from Registry
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.XestusTools && window.XestusTools.renderRelatedTools) {
+        window.XestusTools.renderRelatedTools('unit-converter', 'relatedToolsGrid');
+      }
+      if (window.MyXestus) {
+        window.MyXestus.initToolPage('unit-converter', 'Universal Unit Converter');
+      }
+      // FAQ Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const ans = btn.nextElementSibling;
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          ans.style.display = isExpanded ? 'none' : 'block';
+        });
+      });
+      if (window.lucide) lucide.createIcons();
+    });
+
+(function() {
+      const UNIT_DATA = {
+        length: {
+          base: 'm',
+          units: {
+            m: { name: 'Meters (m)', factor: 1 },
+            km: { name: 'Kilometers (km)', factor: 1000 },
+            cm: { name: 'Centimeters (cm)', factor: 0.01 },
+            mm: { name: 'Millimeters (mm)', factor: 0.001 },
+            mi: { name: 'Miles (mi)', factor: 1609.344 },
+            yd: { name: 'Yards (yd)', factor: 0.9144 },
+            ft: { name: 'Feet (ft)', factor: 0.3048 },
+            in: { name: 'Inches (in)', factor: 0.0254 }
+          }
+        },
+        weight: {
+          base: 'kg',
+          units: {
+            kg: { name: 'Kilograms (kg)', factor: 1 },
+            g: { name: 'Grams (g)', factor: 0.001 },
+            mg: { name: 'Milligrams (mg)', factor: 0.000001 },
+            lb: { name: 'Pounds (lbs)', factor: 0.45359237 },
+            oz: { name: 'Ounces (oz)', factor: 0.028349523125 },
+            ton: { name: 'Metric Ton (t)', factor: 1000 },
+            quintal: { name: 'Quintal (q)', factor: 100 }
+          }
+        },
+        temperature: {
+          isCustom: true,
+          units: {
+            c: { name: 'Celsius (°C)' },
+            f: { name: 'Fahrenheit (°F)' },
+            k: { name: 'Kelvin (K)' }
+          }
+        },
+        area: {
+          base: 'sqm',
+          units: {
+            sqm: { name: 'Square Meters (m²)', factor: 1 },
+            sqkm: { name: 'Square Kilometers (km²)', factor: 1000000 },
+            sqft: { name: 'Square Feet (sq ft)', factor: 0.092903 },
+            sqyd: { name: 'Square Yards (sq yd)', factor: 0.836127 },
+            acre: { name: 'Acres', factor: 4046.86 },
+            hectare: { name: 'Hectares (ha)', factor: 10000 }
+          }
+        },
+        storage: {
+          base: 'mb',
+          units: {
+            b: { name: 'Bytes (B)', factor: 0.000001 },
+            kb: { name: 'Kilobytes (KB)', factor: 0.001 },
+            mb: { name: 'Megabytes (MB)', factor: 1 },
+            gb: { name: 'Gigabytes (GB)', factor: 1000 },
+            tb: { name: 'Terabytes (TB)', factor: 1000000 },
+            pb: { name: 'Petabytes (PB)', factor: 1000000000 }
+          }
+        },
+        speed: {
+          base: 'kmh',
+          units: {
+            kmh: { name: 'Kilometers/Hour (km/h)', factor: 1 },
+            ms: { name: 'Meters/Second (m/s)', factor: 3.6 },
+            mph: { name: 'Miles/Hour (mph)', factor: 1.609344 },
+            knot: { name: 'Knots (nautical mi/h)', factor: 1.852 }
+          }
+        }
+      };
+
+      let activeCat = 'length';
+      const fromVal = document.getElementById('unitFromVal');
+      const toVal = document.getElementById('unitToVal');
+      const fromSel = document.getElementById('unitFromSelect');
+      const toSel = document.getElementById('unitToSelect');
+      const matrixGrid = document.getElementById('unitMatrixGrid');
+
+      function populateSelects() {
+        const cat = UNIT_DATA[activeCat];
+        fromSel.innerHTML = '';
+        toSel.innerHTML = '';
+        const keys = Object.keys(cat.units);
+        keys.forEach((k, i) => {
+          const opt1 = new Option(cat.units[k].name, k);
+          const opt2 = new Option(cat.units[k].name, k);
+          fromSel.add(opt1);
+          toSel.add(opt2);
+        });
+        fromSel.selectedIndex = 0;
+        toSel.selectedIndex = keys.length > 1 ? 1 : 0;
+        recalculate();
+      }
+
+      function convertTemp(val, from, to) {
+        let c = val;
+        if (from === 'f') c = (val - 32) * (5/9);
+        else if (from === 'k') c = val - 273.15;
+
+        if (to === 'c') return c;
+        if (to === 'f') return (c * 9/5) + 32;
+        if (to === 'k') return c + 273.15;
+        return c;
+      }
+
+      function recalculate() {
+        const val = parseFloat(fromVal.value);
+        if (isNaN(val)) {
+          toVal.value = '';
+          matrixGrid.innerHTML = '';
+          return;
+        }
+
+        const cat = UNIT_DATA[activeCat];
+        const fromKey = fromSel.value;
+        const toKey = toSel.value;
+
+        let result;
+        if (activeCat === 'temperature') {
+          result = convertTemp(val, fromKey, toKey);
+        } else {
+          const baseVal = val * cat.units[fromKey].factor;
+          result = baseVal / cat.units[toKey].factor;
+        }
+
+        toVal.value = Number(result.toFixed(6)).toString();
+
+        // Render Matrix
+        matrixGrid.innerHTML = '';
+        Object.keys(cat.units).forEach(k => {
+          let converted;
+          if (activeCat === 'temperature') {
+            converted = convertTemp(val, fromKey, k);
+          } else {
+            const baseVal = val * cat.units[fromKey].factor;
+            converted = baseVal / cat.units[k].factor;
+          }
+          const item = document.createElement('div');
+          item.className = 'stat-tile';
+          item.style.padding = '0.75rem';
+          item.innerHTML = `
+            <div class="tile-label" style="font-size: 0.75rem;">${cat.units[k].name}</div>
+            <div class="tile-val" style="font-size: 1rem; color: #fff; font-family: 'JetBrains Mono', monospace;">${Number(converted.toFixed(6)).toString()}</div>
+          `;
+          matrixGrid.appendChild(item);
+        });
+      }
+
+      fromVal.addEventListener('input', recalculate);
+      fromSel.addEventListener('change', recalculate);
+      toSel.addEventListener('change', recalculate);
+
+      document.getElementById('swapUnitsBtn').addEventListener('click', () => {
+        const temp = fromSel.value;
+        fromSel.value = toSel.value;
+        toSel.value = temp;
+        recalculate();
+      });
+
+      document.querySelectorAll('#unitCategoryGroup .mode-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#unitCategoryGroup .mode-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeCat = btn.dataset.cat;
+          populateSelects();
+        });
+      });
+
+      populateSelects();
+    })();
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

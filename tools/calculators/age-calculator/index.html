@@ -657,5 +657,79 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 </script>
   
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener('DOMContentLoaded', () => {
+            const birthInput = document.getElementById('birthDate');
+            const targetInput = document.getElementById('targetDate');
+
+            const now = new Date();
+            const yyyy = now.getFullYear();
+            const mm = String(now.getMonth() + 1).padStart(2, '0');
+            const dd = String(now.getDate()).padStart(2, '0');
+            targetInput.value = `${yyyy}-${mm}-${dd}`;
+
+            function computeAge() {
+                const bDate = new Date(birthInput.value);
+                const tDate = new Date(targetInput.value);
+
+                if (isNaN(bDate) || isNaN(tDate) || bDate > tDate) {
+                    document.getElementById('resAgeYears').textContent = 'Please select a valid birth date';
+                    return;
+                }
+
+                let years = tDate.getFullYear() - bDate.getFullYear();
+                let months = tDate.getMonth() - bDate.getMonth();
+                let days = tDate.getDate() - bDate.getDate();
+
+                if (days < 0) {
+                    months--;
+                    const prevMonth = new Date(tDate.getFullYear(), tDate.getMonth(), 0);
+                    days += prevMonth.getDate();
+                }
+
+                if (months < 0) {
+                    years--;
+                    months += 12;
+                }
+
+                document.getElementById('resAgeYears').textContent = `${years} Y, ${months} M, ${days} D`;
+
+                const diffMs = tDate - bDate;
+                const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                const totalWeeks = Math.floor(totalDays / 7);
+                const totalMonths = years * 12 + months;
+
+                document.getElementById('resTotalMonths').textContent = totalMonths.toLocaleString() + ' Months';
+                document.getElementById('resTotalWeeks').textContent = totalWeeks.toLocaleString() + ' Weeks';
+                document.getElementById('resTotalDays').textContent = totalDays.toLocaleString() + ' Days';
+
+                // Next birthday
+                let nextBday = new Date(tDate.getFullYear(), bDate.getMonth(), bDate.getDate());
+                if (nextBday < tDate) {
+                    nextBday.setFullYear(tDate.getFullYear() + 1);
+                }
+                const bdayDiffDays = Math.ceil((nextBday - tDate) / (1000 * 60 * 60 * 24));
+                document.getElementById('resNextBday').textContent = bdayDiffDays + ' Days';
+            }
+
+            birthInput.addEventListener('change', computeAge);
+            targetInput.addEventListener('change', computeAge);
+            document.getElementById('btnCalcAge').addEventListener('click', computeAge);
+            document.getElementById('btnTodayAge').addEventListener('click', () => {
+                targetInput.value = `${yyyy}-${mm}-${dd}`;
+                computeAge();
+            });
+
+            computeAge();
+        });
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

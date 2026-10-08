@@ -412,5 +412,270 @@
   </script>
   
   
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tool-specific Functional Logic
+      window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener("DOMContentLoaded", () => {
+            
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // Regex Logic
+            const patternInput = document.getElementById("regexPattern");
+            const testString = document.getElementById("testString");
+            const flagG = document.getElementById("flagG");
+            const flagI = document.getElementById("flagI");
+            const flagM = document.getElementById("flagM");
+            const flagS = document.getElementById("flagS");
+            const matchOutput = document.getElementById("matchOutput");
+            const matchStats = document.getElementById("matchStats");
+            const testStats = document.getElementById("testStats");
+            const statusBox = document.getElementById("statusBox");
+            const statusMsg = document.getElementById("statusMsg");
+            const statusIcon = document.getElementById("statusIcon");
+
+            function escapeHtml(str) {
+                return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }
+
+            function testRegex() {
+                const pat = patternInput.value;
+                const text = testString.value;
+                testStats.textContent = `${text.length} chars`;
+
+                if (!pat) {
+                    matchOutput.innerHTML = `<span style="color: var(--text-dim);">${escapeHtml(text)}</span>`;
+                    matchStats.textContent = "No pattern";
+                    statusBox.className = "tool-status-box";
+                    return;
+                }
+
+                let flags = "";
+                if (flagG.checked) flags += "g";
+                if (flagI.checked) flags += "i";
+                if (flagM.checked) flags += "m";
+                if (flagS.checked) flags += "s";
+
+                try {
+                    const re = new RegExp(pat, flags);
+                    let matchesCount = 0;
+                    let lastIndex = 0;
+                    let html = "";
+                    let groupsSummary = [];
+
+                    if (flags.includes("g")) {
+                        let match;
+                        while ((match = re.exec(text)) !== null) {
+                            matchesCount++;
+                            // Text before match
+                            html += escapeHtml(text.substring(lastIndex, match.index));
+                            // Highlighted match
+                            html += `<mark class="match-highlight">${escapeHtml(match[0])}</mark>`;
+                            lastIndex = match.index + match[0].length;
+
+                            if (match.length > 1) {
+                                groupsSummary.push(`Match #${matchesCount}: ` + match.slice(1).map((g, i) => `Group ${i+1}: "${g}"`).join(", "));
+                            }
+                            if (match.index === re.lastIndex) re.lastIndex++; // prevent zero-length infinite loop
+                        }
+                        html += escapeHtml(text.substring(lastIndex));
+                    } else {
+                        const match = re.exec(text);
+                        if (match) {
+                            matchesCount = 1;
+                            html += escapeHtml(text.substring(0, match.index));
+                            html += `<mark class="match-highlight">${escapeHtml(match[0])}</mark>`;
+                            html += escapeHtml(text.substring(match.index + match[0].length));
+                            if (match.length > 1) {
+                                groupsSummary.push(`Match #1: ` + match.slice(1).map((g, i) => `Group ${i+1}: "${g}"`).join(", "));
+                            }
+                        } else {
+                            html = escapeHtml(text);
+                        }
+                    }
+
+                    let groupsHtml = "";
+                    if (groupsSummary.length > 0) {
+                        groupsHtml = `
+                            <div style="margin-top: 16px; border-top: 1px solid var(--border-subtle); padding-top: 12px;">
+                                <strong style="color: var(--cyan-bright); font-size: 12px; text-transform: uppercase;">Capture Groups:</strong>
+                                ${groupsSummary.map(g => `<div class="match-card">${escapeHtml(g)}</div>`).join("")}
+                            </div>
+                        `;
+                    }
+
+                    matchOutput.innerHTML = `<div>${html}</div>${groupsHtml}`;
+                    matchStats.textContent = `${matchesCount} match${matchesCount !== 1 ? 'es' : ''} found`;
+                    statusBox.className = `tool-status-box show ${matchesCount > 0 ? 'success' : 'info'}`;
+                    statusMsg.textContent = matchesCount > 0 ? `Found ${matchesCount} match(es) in test string.` : 'Pattern is valid, but no matches were found.';
+                    statusIcon.setAttribute("data-lucide", matchesCount > 0 ? "check-circle" : "info");
+                } catch (e) {
+                    matchOutput.innerHTML = `<div style="color: #ff4d6a;">Invalid Regular Expression: ${escapeHtml(e.message)}</div>`;
+                    matchStats.textContent = "Regex Error";
+                    statusBox.className = "tool-status-box show error";
+                    statusMsg.textContent = `Regex Error: ${e.message}`;
+                    statusIcon.setAttribute("data-lucide", "alert-circle");
+                }
+                if (window.lucide) lucide.createIcons();
+            }
+
+            patternInput.addEventListener("input", testRegex);
+            testString.addEventListener("input", testRegex);
+            flagG.addEventListener("change", testRegex);
+            flagI.addEventListener("change", testRegex);
+            flagM.addEventListener("change", testRegex);
+            flagS.addEventListener("change", testRegex);
+
+            testRegex();
+        });
+    });
+  </script>
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+document.addEventListener("DOMContentLoaded", () => {
+            
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            // Regex Logic
+            const patternInput = document.getElementById("regexPattern");
+            const testString = document.getElementById("testString");
+            const flagG = document.getElementById("flagG");
+            const flagI = document.getElementById("flagI");
+            const flagM = document.getElementById("flagM");
+            const flagS = document.getElementById("flagS");
+            const matchOutput = document.getElementById("matchOutput");
+            const matchStats = document.getElementById("matchStats");
+            const testStats = document.getElementById("testStats");
+            const statusBox = document.getElementById("statusBox");
+            const statusMsg = document.getElementById("statusMsg");
+            const statusIcon = document.getElementById("statusIcon");
+
+            function escapeHtml(str) {
+                return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }
+
+            function testRegex() {
+                const pat = patternInput.value;
+                const text = testString.value;
+                testStats.textContent = `${text.length} chars`;
+
+                if (!pat) {
+                    matchOutput.innerHTML = `<span style="color: var(--text-dim);">${escapeHtml(text)}</span>`;
+                    matchStats.textContent = "No pattern";
+                    statusBox.className = "tool-status-box";
+                    return;
+                }
+
+                let flags = "";
+                if (flagG.checked) flags += "g";
+                if (flagI.checked) flags += "i";
+                if (flagM.checked) flags += "m";
+                if (flagS.checked) flags += "s";
+
+                try {
+                    const re = new RegExp(pat, flags);
+                    let matchesCount = 0;
+                    let lastIndex = 0;
+                    let html = "";
+                    let groupsSummary = [];
+
+                    if (flags.includes("g")) {
+                        let match;
+                        while ((match = re.exec(text)) !== null) {
+                            matchesCount++;
+                            // Text before match
+                            html += escapeHtml(text.substring(lastIndex, match.index));
+                            // Highlighted match
+                            html += `<mark class="match-highlight">${escapeHtml(match[0])}</mark>`;
+                            lastIndex = match.index + match[0].length;
+
+                            if (match.length > 1) {
+                                groupsSummary.push(`Match #${matchesCount}: ` + match.slice(1).map((g, i) => `Group ${i+1}: "${g}"`).join(", "));
+                            }
+                            if (match.index === re.lastIndex) re.lastIndex++; // prevent zero-length infinite loop
+                        }
+                        html += escapeHtml(text.substring(lastIndex));
+                    } else {
+                        const match = re.exec(text);
+                        if (match) {
+                            matchesCount = 1;
+                            html += escapeHtml(text.substring(0, match.index));
+                            html += `<mark class="match-highlight">${escapeHtml(match[0])}</mark>`;
+                            html += escapeHtml(text.substring(match.index + match[0].length));
+                            if (match.length > 1) {
+                                groupsSummary.push(`Match #1: ` + match.slice(1).map((g, i) => `Group ${i+1}: "${g}"`).join(", "));
+                            }
+                        } else {
+                            html = escapeHtml(text);
+                        }
+                    }
+
+                    let groupsHtml = "";
+                    if (groupsSummary.length > 0) {
+                        groupsHtml = `
+                            <div style="margin-top: 16px; border-top: 1px solid var(--border-subtle); padding-top: 12px;">
+                                <strong style="color: var(--cyan-bright); font-size: 12px; text-transform: uppercase;">Capture Groups:</strong>
+                                ${groupsSummary.map(g => `<div class="match-card">${escapeHtml(g)}</div>`).join("")}
+                            </div>
+                        `;
+                    }
+
+                    matchOutput.innerHTML = `<div>${html}</div>${groupsHtml}`;
+                    matchStats.textContent = `${matchesCount} match${matchesCount !== 1 ? 'es' : ''} found`;
+                    statusBox.className = `tool-status-box show ${matchesCount > 0 ? 'success' : 'info'}`;
+                    statusMsg.textContent = matchesCount > 0 ? `Found ${matchesCount} match(es) in test string.` : 'Pattern is valid, but no matches were found.';
+                    statusIcon.setAttribute("data-lucide", matchesCount > 0 ? "check-circle" : "info");
+                } catch (e) {
+                    matchOutput.innerHTML = `<div style="color: #ff4d6a;">Invalid Regular Expression: ${escapeHtml(e.message)}</div>`;
+                    matchStats.textContent = "Regex Error";
+                    statusBox.className = "tool-status-box show error";
+                    statusMsg.textContent = `Regex Error: ${e.message}`;
+                    statusIcon.setAttribute("data-lucide", "alert-circle");
+                }
+                if (window.lucide) lucide.createIcons();
+            }
+
+            patternInput.addEventListener("input", testRegex);
+            testString.addEventListener("input", testRegex);
+            flagG.addEventListener("change", testRegex);
+            flagI.addEventListener("change", testRegex);
+            flagM.addEventListener("change", testRegex);
+            flagS.addEventListener("change", testRegex);
+
+            testRegex();
+        });
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

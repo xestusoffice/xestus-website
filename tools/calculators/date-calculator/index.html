@@ -622,5 +622,76 @@ Calendar Months & Years = Chronological date subtraction accounting for Gregoria
 if (window.lucide) lucide.createIcons();
 </script>
   
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+(function() {
+            var startInput = document.getElementById('startDate');
+            var endInput = document.getElementById('endDate');
+            var btnCalc = document.getElementById('btnCalcDate');
+            var btnToday = document.getElementById('btnTodayStart');
+
+            var today = new Date().toISOString().split('T')[0];
+            startInput.value = today;
+            
+            // Set end date to 30 days ahead by default
+            var nextMonth = new Date();
+            nextMonth.setDate(nextMonth.getDate() + 30);
+            endInput.value = nextMonth.toISOString().split('T')[0];
+
+            function calculate() {
+                var s = new Date(startInput.value);
+                var e = new Date(endInput.value);
+
+                if (isNaN(s.getTime()) || isNaN(e.getTime())) return;
+
+                var diffTime = e.getTime() - s.getTime();
+                var diffDays = Math.round(diffTime / (1000 * 3600 * 24));
+                var isNegative = diffDays < 0;
+                var absDays = Math.abs(diffDays);
+
+                var weeks = Math.floor(absDays / 7);
+                var remDays = absDays % 7;
+
+                // Calculate working days
+                var workDays = 0;
+                var cur = new Date(Math.min(s.getTime(), e.getTime()));
+                var target = new Date(Math.max(s.getTime(), e.getTime()));
+
+                while (cur < target) {
+                    cur.setDate(cur.getDate() + 1);
+                    var dayOfWeek = cur.getDay();
+                    if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+                        workDays++;
+                    }
+                }
+                var weekendDays = absDays - workDays;
+
+                document.getElementById('resTotalDays').textContent = (isNegative ? '-' : '') + absDays;
+                document.getElementById('resWeeks').textContent = weeks + ' wks, ' + remDays + ' days';
+                document.getElementById('resWorkDays').textContent = workDays;
+                document.getElementById('resWeekendDays').textContent = weekendDays;
+            }
+
+            btnToday.addEventListener('click', function() {
+                startInput.value = new Date().toISOString().split('T')[0];
+                calculate();
+            });
+
+            btnCalc.addEventListener('click', calculate);
+            startInput.addEventListener('change', calculate);
+            endInput.addEventListener('change', calculate);
+
+            calculate();
+        })();
+
+if (window.lucide) lucide.createIcons();
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

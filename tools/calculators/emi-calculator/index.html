@@ -772,5 +772,170 @@ Total Interest Payable = Total Payment - P</pre>
     })();
 </script>
   
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+// Only trigger push if user configures a live custom ad slot ID (Auto Ads runs automatically)
+        if (typeof adsbygoogle !== 'undefined' && document.querySelector('.adsense-slot-container ins')?.getAttribute('data-ad-slot') !== '1234567890') {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+
+// Initialize Related Tools from Registry
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.XestusTools && window.XestusTools.renderRelatedTools) {
+        window.XestusTools.renderRelatedTools('emi-calculator', 'relatedToolsGrid');
+      }
+      if (window.MyXestus) {
+        window.MyXestus.initToolPage('emi-calculator', 'Loan EMI Calculator');
+      }
+      // FAQ Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const ans = btn.nextElementSibling;
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          ans.style.display = isExpanded ? 'none' : 'block';
+        });
+      });
+      if (window.lucide) lucide.createIcons();
+    });
+
+(function() {
+      let isYears = true;
+      const amtInput = document.getElementById('loanAmount');
+      const amtRange = document.getElementById('loanAmountRange');
+      const rateInput = document.getElementById('interestRate');
+      const rateRange = document.getElementById('interestRateRange');
+      const tenureInput = document.getElementById('loanTenure');
+      const tenureRange = document.getElementById('loanTenureRange');
+      const tenureYearsBtn = document.getElementById('tenureYearsBtn');
+      const tenureMonthsBtn = document.getElementById('tenureMonthsBtn');
+
+      function formatINR(num) {
+        return '₹' + Math.round(num).toLocaleString('en-IN');
+      }
+
+      function calculate() {
+        const P = parseFloat(amtInput.value) || 0;
+        const annualRate = parseFloat(rateInput.value) || 0;
+        let tenureVal = parseFloat(tenureInput.value) || 0;
+        const N = isYears ? tenureVal * 12 : tenureVal;
+
+        if (P <= 0 || annualRate <= 0 || N <= 0) {
+          document.getElementById('monthlyEmiDisplay').textContent = '₹0';
+          document.getElementById('principalDisplay').textContent = formatINR(P);
+          document.getElementById('interestDisplay').textContent = '₹0';
+          document.getElementById('totalPaymentDisplay').textContent = formatINR(P);
+          return;
+        }
+
+        const R = (annualRate / 12) / 100;
+        const emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+        const totalPayment = emi * N;
+        const totalInterest = totalPayment - P;
+
+        document.getElementById('monthlyEmiDisplay').textContent = formatINR(emi);
+        document.getElementById('principalDisplay').textContent = formatINR(P);
+        document.getElementById('interestDisplay').textContent = formatINR(totalInterest);
+        document.getElementById('totalPaymentDisplay').textContent = formatINR(totalPayment);
+
+        const pRatio = Math.round((P / totalPayment) * 100);
+        const iRatio = 100 - pRatio;
+        document.getElementById('principalRatioText').textContent = pRatio + '%';
+        document.getElementById('interestRatioText').textContent = iRatio + '%';
+        document.getElementById('principalRatioBar').style.width = pRatio + '%';
+        document.getElementById('interestRatioBar').style.width = iRatio + '%';
+
+        buildSchedule(P, annualRate, N, emi);
+      }
+
+      function buildSchedule(principal, annualRate, months, emi) {
+        const tbody = document.getElementById('amortizationBody');
+        tbody.innerHTML = '';
+        let balance = principal;
+        const r = (annualRate / 12) / 100;
+        const totalYears = Math.ceil(months / 12);
+
+        for (let yr = 1; yr <= totalYears; yr++) {
+          let yrPrincipal = 0;
+          let yrInterest = 0;
+          for (let m = 0; m < 12 && balance > 0; m++) {
+            const interestMonth = balance * r;
+            const principalMonth = Math.min(balance, emi - interestMonth);
+            yrInterest += interestMonth;
+            yrPrincipal += principalMonth;
+            balance -= principalMonth;
+          }
+          const tr = document.createElement('tr');
+          tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+          tr.innerHTML = `
+            <td style="padding: 6px 8px; text-align: left; color: #fff;">Year ${yr}</td>
+            <td style="padding: 6px 8px; color: #38d6ff;">${formatINR(yrPrincipal)}</td>
+            <td style="padding: 6px 8px; color: #ffaa00;">${formatINR(yrInterest)}</td>
+            <td style="padding: 6px 8px; color: #aaa;">${formatINR(yrPrincipal + yrInterest)}</td>
+            <td style="padding: 6px 8px; color: #00ff88;">${formatINR(Math.max(0, balance))}</td>
+          `;
+          tbody.appendChild(tr);
+        }
+      }
+
+      amtInput.addEventListener('input', () => { amtRange.value = amtInput.value; calculate(); });
+      amtRange.addEventListener('input', () => { amtInput.value = amtRange.value; calculate(); });
+      rateInput.addEventListener('input', () => { rateRange.value = rateInput.value; calculate(); });
+      rateRange.addEventListener('input', () => { rateInput.value = rateRange.value; calculate(); });
+      tenureInput.addEventListener('input', () => { tenureRange.value = tenureInput.value; calculate(); });
+      tenureRange.addEventListener('input', () => { tenureInput.value = tenureRange.value; calculate(); });
+
+      tenureYearsBtn.addEventListener('click', () => {
+        isYears = true;
+        tenureYearsBtn.classList.add('active');
+        tenureMonthsBtn.classList.remove('active');
+        tenureRange.max = 30;
+        if (parseFloat(tenureInput.value) > 30) tenureInput.value = 20;
+        calculate();
+      });
+
+      tenureMonthsBtn.addEventListener('click', () => {
+        isYears = false;
+        tenureMonthsBtn.classList.add('active');
+        tenureYearsBtn.classList.remove('active');
+        tenureRange.max = 360;
+        if (parseFloat(tenureInput.value) <= 30) tenureInput.value = parseFloat(tenureInput.value) * 12;
+        calculate();
+      });
+
+      document.querySelectorAll('.btn-preset').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.btn-preset').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          amtInput.value = btn.dataset.amt; amtRange.value = btn.dataset.amt;
+          rateInput.value = btn.dataset.rate; rateRange.value = btn.dataset.rate;
+          tenureInput.value = btn.dataset.yrs; tenureRange.value = btn.dataset.yrs;
+          isYears = true;
+          tenureYearsBtn.classList.add('active');
+          tenureMonthsBtn.classList.remove('active');
+          calculate();
+        });
+      });
+
+      document.getElementById('toggleScheduleBtn').addEventListener('click', () => {
+        const sched = document.getElementById('amortizationContainer');
+        sched.style.display = sched.style.display === 'none' ? 'block' : 'none';
+      });
+
+      document.getElementById('copyEmiSummaryBtn').addEventListener('click', () => {
+        const text = `Loan EMI Summary (XESTUS):\nPrincipal: ${document.getElementById('principalDisplay').textContent}\nMonthly EMI: ${document.getElementById('monthlyEmiDisplay').textContent}\nTotal Interest: ${document.getElementById('interestDisplay').textContent}\nTotal Repayment: ${document.getElementById('totalPaymentDisplay').textContent}`;
+        navigator.clipboard.writeText(text).then(() => alert('Loan EMI summary copied to clipboard!'));
+      });
+
+      calculate();
+    })();
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

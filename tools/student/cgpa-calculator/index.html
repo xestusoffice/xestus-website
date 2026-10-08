@@ -634,5 +634,139 @@ It supports standard university credit-weighted GPA calculations (SGPA/CGPA) and
     })();
 </script>
   
+
+<!-- TOOL_FUNCTIONAL_LOGIC -->
+<script>
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+
+// Only trigger push if user configures a live custom ad slot ID (Auto Ads runs automatically)
+        if (typeof adsbygoogle !== 'undefined' && document.querySelector('.adsense-slot-container ins')?.getAttribute('data-ad-slot') !== '1234567890') {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+
+// Initialize Related Tools from Registry
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.XestusTools && window.XestusTools.renderRelatedTools) {
+        window.XestusTools.renderRelatedTools('cgpa-calculator', 'relatedToolsGrid');
+      }
+      if (window.MyXestus) {
+        window.MyXestus.initToolPage('cgpa-calculator', 'CGPA to Percentage & GPA Calculator');
+      }
+      // FAQ Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const ans = btn.nextElementSibling;
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          ans.style.display = isExpanded ? 'none' : 'block';
+        });
+      });
+      if (window.lucide) lucide.createIcons();
+    });
+
+(function() {
+      const cgpaIn = document.getElementById('cgpaInput');
+      const formulaSel = document.getElementById('universityFormula');
+      const pctOut = document.getElementById('percentageResult');
+      const divOut = document.getElementById('divisionResult');
+      const gpaOut = document.getElementById('usGpaResult');
+
+      function calculateSingle() {
+        const cgpa = parseFloat(cgpaIn.value) || 0;
+        let pct = 0;
+        const formula = formulaSel.value;
+
+        if (formula === '9.5') pct = cgpa * 9.5;
+        else if (formula === '10.0') pct = cgpa * 10.0;
+        else if (formula === 'mumbai') pct = (7.1 * cgpa) + 11;
+        else if (formula === 'vtu') pct = (cgpa - 0.75) * 10;
+        else if (formula === 'ktu') pct = (cgpa - 0.5) * 10;
+
+        pct = Math.max(0, Math.min(100, pct));
+        pctOut.textContent = pct.toFixed(2) + '%';
+
+        if (pct >= 75) divOut.textContent = 'First Class with Distinction';
+        else if (pct >= 60) divOut.textContent = 'First Class';
+        else if (pct >= 50) divOut.textContent = 'Second Class';
+        else if (pct >= 40) divOut.textContent = 'Pass Division';
+        else divOut.textContent = 'Fail';
+
+        const usGpa = (cgpa / 10) * 4.0;
+        gpaOut.textContent = usGpa.toFixed(2) + ' / 4.0';
+      }
+
+      cgpaIn.addEventListener('input', calculateSingle);
+      formulaSel.addEventListener('change', calculateSingle);
+
+      // Multi Semester
+      const semesters = [
+        { name: 'Semester 1', credits: 20, sgpa: 8.4 },
+        { name: 'Semester 2', credits: 22, sgpa: 8.6 },
+        { name: 'Semester 3', credits: 24, sgpa: 8.2 }
+      ];
+
+      const semBody = document.getElementById('semTableBody');
+
+      function renderSemesters() {
+        semBody.innerHTML = '';
+        let totalCr = 0;
+        let weightedSum = 0;
+
+        semesters.forEach((sem, idx) => {
+          totalCr += sem.credits;
+          weightedSum += (sem.credits * sem.sgpa);
+
+          const tr = document.createElement('tr');
+          tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+          tr.innerHTML = `
+            <td style="padding: 6px;"><input type="text" class="calc-input sem-name" data-idx="${idx}" value="${sem.name}"></td>
+            <td style="padding: 6px;"><input type="number" class="calc-input sem-credits" data-idx="${idx}" value="${sem.credits}" min="1" style="text-align: right;"></td>
+            <td style="padding: 6px;"><input type="number" class="calc-input sem-sgpa" data-idx="${idx}" value="${sem.sgpa}" min="0" max="10" step="0.01" style="text-align: right;"></td>
+            <td style="padding: 6px; text-align: center;">
+              <button type="button" class="btn-icon remove-sem-btn" data-idx="${idx}" style="color: #ff5555;"><i data-lucide="trash-2" style="width: 14px; height: 14px;"></i></button>
+            </td>
+          `;
+          semBody.appendChild(tr);
+        });
+
+        const cumCgpa = totalCr > 0 ? (weightedSum / totalCr) : 0;
+        document.getElementById('cumulativeCgpa').textContent = cumCgpa.toFixed(2);
+        document.getElementById('totalCreditsEarned').textContent = totalCr;
+
+        if (window.lucide) lucide.createIcons();
+
+        document.querySelectorAll('.sem-name').forEach(el => el.addEventListener('input', e => { semesters[e.target.dataset.idx].name = e.target.value; }));
+        document.querySelectorAll('.sem-credits').forEach(el => el.addEventListener('input', e => { semesters[e.target.dataset.idx].credits = parseFloat(e.target.value) || 0; renderSemesters(); }));
+        document.querySelectorAll('.sem-sgpa').forEach(el => el.addEventListener('input', e => { semesters[e.target.dataset.idx].sgpa = parseFloat(e.target.value) || 0; renderSemesters(); }));
+        document.querySelectorAll('.remove-sem-btn').forEach(el => el.addEventListener('click', e => {
+          const idx = parseInt(el.closest('button').dataset.idx, 10);
+          semesters.splice(idx, 1);
+          renderSemesters();
+        }));
+      }
+
+      document.getElementById('addSemesterBtn').addEventListener('click', () => {
+        semesters.push({ name: 'Semester ' + (semesters.length + 1), credits: 20, sgpa: 8.0 });
+        renderSemesters();
+      });
+
+      document.querySelectorAll('#cgpaModeGroup .mode-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#cgpaModeGroup .mode-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const mode = btn.dataset.mode;
+          document.getElementById('singleCgpaMode').style.display = mode === 'single' ? 'block' : 'none';
+          document.getElementById('multiCgpaMode').style.display = mode === 'multi' ? 'block' : 'none';
+        });
+      });
+
+      calculateSingle();
+      renderSemesters();
+    })();
+</script>
+<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

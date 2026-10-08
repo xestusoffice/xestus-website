@@ -522,5 +522,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 </script>
   
+
+  
+
+
+
+  <!-- TOOL_FUNCTIONAL_LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const textInput = document.getElementById('caseTextInput');
+    const btnUpper = document.getElementById('btnUpper');
+    const btnLower = document.getElementById('btnLower');
+    const btnTitle = document.getElementById('btnTitle');
+    const btnSentence = document.getElementById('btnSentence');
+    const btnCamel = document.getElementById('btnCamel');
+    const btnSnake = document.getElementById('btnSnake');
+    const btnKebab = document.getElementById('btnKebab');
+    const btnCopy = document.getElementById('btnCopyCase');
+
+    function setCase(fn) {
+        if (!textInput) return;
+        textInput.value = fn(textInput.value);
+    }
+
+    if (btnUpper) btnUpper.addEventListener('click', () => setCase(t => t.toUpperCase()));
+    if (btnLower) btnLower.addEventListener('click', () => setCase(t => t.toLowerCase()));
+    if (btnTitle) btnTitle.addEventListener('click', () => setCase(t => t.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')));
+    if (btnSentence) btnSentence.addEventListener('click', () => setCase(t => t.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase())));
+    if (btnCamel) btnCamel.addEventListener('click', () => setCase(t => t.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase())));
+    if (btnSnake) btnSnake.addEventListener('click', () => setCase(t => t.trim().toLowerCase().replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, '')));
+    if (btnKebab) btnKebab.addEventListener('click', () => setCase(t => t.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '')));
+
+    if (btnCopy && textInput) {
+        btnCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText(textInput.value).then(() => {
+                const orig = btnCopy.textContent;
+                btnCopy.textContent = 'Copied!';
+                setTimeout(() => btnCopy.textContent = orig, 2000);
+            });
+        });
+    }
+      } catch (err) {
+        console.error('Error executing tool logic for case-converter:', err);
+      }
+    });
+  </script>
+  <!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

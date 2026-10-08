@@ -550,5 +550,110 @@ Entropy Classification:
   </script>
   
   
+
+  
+
+
+
+  <!-- TOOL_FUNCTIONAL_LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const passwordOutput = document.getElementById("passwordOutput");
+    const sliderLength = document.getElementById("sliderLength");
+    const lengthVal = document.getElementById("lengthVal");
+    const chkUpper = document.getElementById("chkUpper");
+    const chkLower = document.getElementById("chkLower");
+    const chkNumbers = document.getElementById("chkNumbers");
+    const chkSymbols = document.getElementById("chkSymbols");
+    const chkAvoidAmbiguous = document.getElementById("chkAvoidAmbiguous");
+    const btnRegenerate = document.getElementById("btnRegenerate");
+    const btnCopy = document.getElementById("btnCopy");
+    const copyBtnText = document.getElementById("copyBtnText");
+    const entropyBar = document.getElementById("entropyBar");
+    const entropyText = document.getElementById("entropyText");
+
+    const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const LOWER = "abcdefghijklmnopqrstuvwxyz";
+    const NUMS = "0123456789";
+    const SYMBOLS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+    const AMBIGUOUS = /[l1IO0]/g;
+
+    function generatePassword() {
+        if (!sliderLength || !passwordOutput) return;
+        const len = parseInt(sliderLength.value, 10);
+        if (lengthVal) lengthVal.textContent = len;
+
+        let pool = "";
+        if (chkUpper && chkUpper.checked) pool += UPPER;
+        if (chkLower && chkLower.checked) pool += LOWER;
+        if (chkNumbers && chkNumbers.checked) pool += NUMS;
+        if (chkSymbols && chkSymbols.checked) pool += SYMBOLS;
+
+        if (chkAvoidAmbiguous && chkAvoidAmbiguous.checked) {
+            pool = pool.replace(AMBIGUOUS, "");
+        }
+
+        if (!pool) {
+            passwordOutput.textContent = "Select at least one character set!";
+            if (entropyBar) entropyBar.style.width = "0%";
+            if (entropyText) entropyText.textContent = "Entropy: 0 bits";
+            return;
+        }
+
+        const bytes = new Uint32Array(len);
+        window.crypto.getRandomValues(bytes);
+        let pwd = "";
+        for (let i = 0; i < len; i++) {
+            pwd += pool[bytes[i] % pool.length];
+        }
+
+        passwordOutput.textContent = pwd;
+
+        const poolSize = pool.length;
+        const entropy = Math.round(len * Math.log2(poolSize));
+        let rating = "Weak";
+        let color = "#ff4d6a";
+        let pct = Math.min(100, Math.round((entropy / 128) * 100));
+
+        if (entropy >= 80) { rating = "Very Strong"; color = "#00ff88"; }
+        else if (entropy >= 60) { rating = "Strong"; color = "#00bfff"; }
+        else if (entropy >= 40) { rating = "Moderate"; color = "#ffaa00"; }
+
+        if (entropyBar) {
+            entropyBar.style.width = pct + "%";
+            entropyBar.style.background = color;
+        }
+        if (entropyText) {
+            entropyText.textContent = "Entropy: ~" + entropy + " bits (" + rating + ") • CSPRNG Verified";
+        }
+    }
+
+    if (sliderLength) sliderLength.addEventListener("input", generatePassword);
+    if (chkUpper) chkUpper.addEventListener("change", generatePassword);
+    if (chkLower) chkLower.addEventListener("change", generatePassword);
+    if (chkNumbers) chkNumbers.addEventListener("change", generatePassword);
+    if (chkSymbols) chkSymbols.addEventListener("change", generatePassword);
+    if (chkAvoidAmbiguous) chkAvoidAmbiguous.addEventListener("change", generatePassword);
+    if (btnRegenerate) btnRegenerate.addEventListener("click", generatePassword);
+
+    if (btnCopy) {
+        btnCopy.addEventListener("click", () => {
+            const pwd = passwordOutput.textContent;
+            if (!pwd || pwd.startsWith("Select")) return;
+            navigator.clipboard.writeText(pwd).then(() => {
+                if (copyBtnText) copyBtnText.textContent = "Copied!";
+                setTimeout(() => { if (copyBtnText) copyBtnText.textContent = "Copy"; }, 2000);
+            });
+        });
+    }
+
+    generatePassword();
+      } catch (err) {
+        console.error('Error executing tool logic for password-generator:', err);
+      }
+    });
+  </script>
+  <!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

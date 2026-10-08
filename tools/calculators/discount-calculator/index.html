@@ -574,5 +574,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 </script>
   
+
+  
+
+
+
+  <!-- TOOL_FUNCTIONAL_LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const p = document.getElementById('origPrice'), d1 = document.getElementById('discPercent'), d2 = document.getElementById('extraDiscPercent');
+    const resFinal = document.getElementById('resFinalPrice'), resOrig = document.getElementById('resOrigPrice'), resSaved = document.getElementById('resTotalSaved');
+
+    function calcDiscount() {
+        if (!p || !d1 || !resFinal) return;
+        const orig = parseFloat(p.value) || 0;
+        const disc1 = parseFloat(d1.value) || 0;
+        const disc2 = d2 ? (parseFloat(d2.value) || 0) : 0;
+
+        const afterD1 = orig - (orig * disc1) / 100;
+        const finalP = afterD1 - (afterD1 * disc2) / 100;
+        const saved = orig - finalP;
+        const savedPct = orig > 0 ? ((saved / orig) * 100).toFixed(1) : '0';
+
+        if (resOrig) resOrig.textContent = '₹ ' + orig.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+        if (resFinal) resFinal.textContent = '₹ ' + finalP.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+        if (resSaved) resSaved.textContent = '₹ ' + saved.toLocaleString('en-IN', { minimumFractionDigits: 2 }) + ' (' + savedPct + '%)';
+    }
+
+    if (p) p.addEventListener('input', calcDiscount);
+    if (d1) d1.addEventListener('input', calcDiscount);
+    if (d2) d2.addEventListener('input', calcDiscount);
+    calcDiscount();
+      } catch (err) {
+        console.error('Error executing tool logic for discount-calculator:', err);
+      }
+    });
+  </script>
+  <!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>
