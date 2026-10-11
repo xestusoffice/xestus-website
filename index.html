@@ -12,17 +12,28 @@
         })();
     </script>
 
-    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
-    <script src="js/cookie-consent.js?v=4.0.0"></script>
-
-    <!-- Google Analytics (gtag.js) - Deferred Initialization -->
+    <!-- Google Consent Mode v2 Default Setup & Google Analytics -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-EF3ZRR55YY');
+        (function() {
+            var consent = { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500 };
+            try {
+                var stored = JSON.parse(localStorage.getItem('xestus_cookie_consent_v2') || 'null');
+                if (stored) {
+                    consent.ad_storage = stored.advertising ? 'granted' : 'denied';
+                    consent.ad_user_data = stored.advertising ? 'granted' : 'denied';
+                    consent.ad_personalization = stored.advertising ? 'granted' : 'denied';
+                    consent.analytics_storage = stored.analytics ? 'granted' : 'denied';
+                }
+            } catch(e) {}
+            gtag('consent', 'default', consent);
+            gtag('js', new Date());
+            gtag('config', 'G-EF3ZRR55YY');
+        })();
     </script>
     <script defer src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+    <script defer src="js/cookie-consent.js?v=4.0.0"></script>
 
     
     
@@ -36,7 +47,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://ep1.adtrafficquality.google https://pagead2.googlesyndication.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://pagead2.googlesyndication.com https://unpkg.com https://cdn.jsdelivr.net;">
 
 
     <!-- Primary Page Metadata -->
@@ -93,14 +104,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
     </noscript>
 
-    <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=1790936593562">
+    <!-- Core Stylesheet (Minified Production Bundle) -->
+    <link rel="stylesheet" href="style.min.css?v=1790936593562">
     <link rel="stylesheet" href="css/xestus-tools.css?v=1790936593562">
 
-    <!-- Preloaded Translations Dictionary & Central Service Registry & Security Shield -->
-    <script src="js/translations.js?v=4.2.0"></script>
-    <script src="js/digital-seva-data.js?v=4.0.0"></script>
-    <script src="js/security-shield.js?v=4.0.0"></script>
 
     <!-- Unified Structured Data / JSON-LD -->
     <script type="application/ld+json">
@@ -178,7 +185,10 @@
  <header class="site-header" role="banner">
   <nav class="nav-container" aria-label="Main Navigation">
     <a href="#home" class="logo" aria-label="XESTUS Home">
-        <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46" fetchpriority="high" decoding="async">
+        <picture>
+            <source srcset="assets/images/xestus-logo.webp" type="image/webp">
+            <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46" fetchpriority="high" decoding="async">
+        </picture>
         <span>XESTUS</span>
     </a>
 
@@ -1443,13 +1453,16 @@
         <!-- Founder Portrait Frame -->
         <div class="founder-image-wrapper">
             <div class="founder-image-card">
-                <img
-                    src="assets/images/founder.jpg"
-                    alt="Sudip Khatua - Founder, CEO & Lead Product Architect at XESTUS"
-                    width="400"
-                    height="500"
-                    fetchpriority="high"
-                    decoding="async">
+                <picture>
+                    <source srcset="assets/images/founder.webp" type="image/webp">
+                    <img
+                        src="assets/images/founder.jpg"
+                        alt="Sudip Khatua - Founder, CEO & Lead Product Architect at XESTUS"
+                        width="400"
+                        height="500"
+                        loading="lazy"
+                        decoding="async">
+                </picture>
                 <div class="founder-verified-badge">
                     <i data-lucide="check-circle-2"></i>
                     <span data-i18n="founder.verified">Verified Founder &amp; CEO</span>
@@ -3562,7 +3575,10 @@
 
  <div class="footer-brand-header">
  <a href="#home" class="footer-logo" aria-label="XESTUS Home">
- <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36" loading="lazy">
+ <picture>
+     <source srcset="assets/images/xestus-logo.webp" type="image/webp">
+     <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36" loading="lazy">
+ </picture>
  <span class="footer-brand-name">XESTUS</span>
  </a>
  <span class="footer-tagline" data-i18n="common.tagline">Intelligence Beyond Limits</span>
@@ -4058,11 +4074,56 @@
 <!-- Lucide Icons -->
 <script defer src="https://unpkg.com/lucide@latest"></script>
 
-<!-- Core App Script -->
-<!-- Core Script & Interactive Controllers -->
-<script defer src="script.js?v=4.5.0"></script>
+<!-- Security Shield, Translations Dictionary & Data Stores -->
+<script defer src="js/security-shield.js?v=4.0.0"></script>
+<script defer src="js/translations.js?v=4.2.0"></script>
+
+<!-- Progressive Digital Seva Hub Loader (On-Demand / Intersection Loading) -->
+<script>
+(function() {
+    var sevaLoaded = false;
+    function loadDigitalSeva() {
+        if (sevaLoaded) return;
+        sevaLoaded = true;
+        var s1 = document.createElement('script');
+        s1.src = 'js/digital-seva-data.js?v=4.0.0';
+        s1.onload = function() {
+            var s2 = document.createElement('script');
+            s2.src = 'js/digital-seva-hub.js?v=4.0.0';
+            document.body.appendChild(s2);
+        };
+        document.body.appendChild(s1);
+    }
+    window.XESTUS_LOAD_DIGITAL_SEVA = loadDigitalSeva;
+
+    if (window.location.hash && (window.location.hash.includes('digital') || window.location.hash.includes('seva'))) {
+        loadDigitalSeva();
+    } else {
+        var sec = document.getElementById('digital-services');
+        if (sec && 'IntersectionObserver' in window) {
+            var obs = new IntersectionObserver(function(entries) {
+                if (entries.some(function(e) { return e.isIntersecting; })) {
+                    loadDigitalSeva();
+                    obs.disconnect();
+                }
+            }, { rootMargin: '350px 0px' });
+            obs.observe(sec);
+        }
+        ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function(ev) {
+            window.addEventListener(ev, loadDigitalSeva, { once: true, passive: true });
+        });
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(function() { setTimeout(loadDigitalSeva, 3500); });
+        } else {
+            setTimeout(loadDigitalSeva, 4500);
+        }
+    }
+})();
+</script>
+
+<!-- Core App Script & Interactive Controllers -->
+<script defer src="script.min.js?v=4.5.0"></script>
 <script defer src="js/nav-core.js?v=4.0.0"></script>
-<script defer src="js/digital-seva-hub.js?v=4.0.0"></script>
 <script defer src="js/xestus-tools.js?v=4.1.0"></script>
 <script defer src="js/ai-assistant.js?v=4.0.0"></script>
 

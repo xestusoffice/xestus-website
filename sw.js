@@ -6,7 +6,7 @@
 
 "use strict";
 
-const CACHE_NAME = "xestus-v3.5.1";
+const CACHE_NAME = "xestus-v4.1.0";
 const STATIC_ASSETS = [
     "/",
     "/index.html",

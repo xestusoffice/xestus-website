@@ -443,16 +443,22 @@ function initApp() {
         trackedSections.forEach((sec) => navObserver.observe(sec));
     }
 
-    // Initial Hash Check & Auto-scroll on load
-    function handleInitialHash() {
+    // Initial Hash Check & Auto-scroll on load (Instant to eliminate forced reflow during audit)
+    function handleInitialHash(isInitial) {
         if (window.location.hash && window.location.hash.length > 1) {
-            setTimeout(() => {
+            if (isInitial === true) {
+                const cleanId = window.location.hash.substring(1);
+                const targetEl = document.getElementById(cleanId);
+                if (targetEl) {
+                    try { targetEl.scrollIntoView({ behavior: "auto" }); } catch(_) {}
+                }
+            } else {
                 navigateToSection(window.location.hash);
-            }, 150);
+            }
         }
     }
-    handleInitialHash();
-    window.addEventListener("hashchange", handleInitialHash);
+    handleInitialHash(true);
+    window.addEventListener("hashchange", () => handleInitialHash(false));
 
     // --------------------------------------------------------------------------
     // 3. Consolidated Scroll State & Progress Bar (rAF Throttled)

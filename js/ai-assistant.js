@@ -340,6 +340,9 @@
         // B. Chat Open / Close / Toggle
         // ---------------------------------------------------------------------
         function openChat() {
+            if (typeof window.XESTUS_LOAD_DIGITAL_SEVA === "function") {
+                window.XESTUS_LOAD_DIGITAL_SEVA();
+            }
             isChatOpen = true;
             chatPanel.classList.add("is-open");
             chatPanel.setAttribute("aria-hidden", "false");

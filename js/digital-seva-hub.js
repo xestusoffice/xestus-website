@@ -27,7 +27,7 @@
         activeModal: null,
         activeTabInModal: "overview",
         currentLang: "en",
-        visibleLimit: 9999
+        visibleLimit: 12
     };
 
     function getActiveLanguage() {
