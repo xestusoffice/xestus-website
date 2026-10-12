@@ -82,8 +82,11 @@
                 </div>
                 <div class="cookie-banner-body">
                     <h3 class="cookie-banner-title">Cookie &amp; Privacy Preferences</h3>
-                    <p class="cookie-banner-text">
-                        We use essential cookies for platform security, along with privacy-respecting analytics and non-invasive advertising (Google AdSense) to deliver free developer utilities. All tool computations execute 100% in your browser. Review our <a href="/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="/cookie-policy.html" target="_blank" rel="noopener">Cookie Policy</a>.
+                    <p class="cookie-banner-text cookie-banner-lead">
+                        We use essential cookies for security &amp; non-invasive ads to keep developer tools 100% free.
+                    </p>
+                    <p class="cookie-banner-text cookie-banner-links">
+                        Review our <a href="/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="/cookie-policy.html" target="_blank" rel="noopener">Cookie Policy</a>.
                     </p>
                 </div>
                 <div class="cookie-banner-actions">
@@ -198,9 +201,20 @@
         }
     };
 
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", renderBanner);
-    } else {
+    let bannerRendered = false;
+    function triggerBanner() {
+        if (bannerRendered) return;
+        bannerRendered = true;
         renderBanner();
+    }
+
+    ["scroll", "pointerdown", "touchstart", "keydown"].forEach((ev) => {
+        window.addEventListener(ev, triggerBanner, { once: true, passive: true });
+    });
+
+    if ("requestIdleCallback" in window) {
+        requestIdleCallback(() => setTimeout(triggerBanner, 4000));
+    } else {
+        setTimeout(triggerBanner, 5000);
     }
 })();

@@ -295,10 +295,15 @@ function initApp() {
         } catch (_) {}
 
         const themeLabels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+        const currentThemeLabel = themeLabels[theme] || "Night";
         const themeIcons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
 
         const currentLabel = document.querySelector(".theme-current-label");
-        if (currentLabel) currentLabel.textContent = themeLabels[theme] || "Night";
+        if (currentLabel) currentLabel.textContent = currentThemeLabel;
+
+        if (themeBtn) {
+            themeBtn.setAttribute("aria-label", `${currentThemeLabel} - Select Website Theme Mode`);
+        }
 
         const activeIcon = document.querySelector(".theme-active-icon");
         if (activeIcon) activeIcon.setAttribute("data-lucide", themeIcons[theme] || "moon");
@@ -694,7 +699,8 @@ function initApp() {
 
             ctx.globalAlpha = 1.0;
 
-            if (isHeroVisible && !prefersReducedMotion && tier !== "tier-4") {
+            const isMobileScreen = typeof window !== "undefined" && window.innerWidth < 768;
+            if (isHeroVisible && !prefersReducedMotion && tier !== "tier-4" && !isMobileScreen) {
                 animId = requestAnimationFrame(drawStarfield);
             } else {
                 animId = null;
@@ -704,10 +710,10 @@ function initApp() {
         function initStarfieldCanvas() {
             resizeCanvas();
             createParticles();
-            if (!prefersReducedMotion) {
+            drawStarfield();
+            const tier = window.XESTUS_PERF ? window.XESTUS_PERF.getTier() : "tier-1";
+            if (!prefersReducedMotion && window.innerWidth >= 768 && tier !== "tier-4") {
                 animId = requestAnimationFrame(drawStarfield);
-            } else {
-                drawStarfield();
             }
         }
 
@@ -721,7 +727,9 @@ function initApp() {
             const heroObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     isHeroVisible = entry.isIntersecting;
-                    if (isHeroVisible && !prefersReducedMotion && !animId) {
+                    const tier = window.XESTUS_PERF ? window.XESTUS_PERF.getTier() : "tier-1";
+                    const isMobileScreen = window.innerWidth < 768;
+                    if (isHeroVisible && !prefersReducedMotion && !animId && !isMobileScreen && tier !== "tier-4") {
                         animId = requestAnimationFrame(drawStarfield);
                     } else if (!isHeroVisible && animId) {
                         cancelAnimationFrame(animId);
@@ -860,8 +868,8 @@ function initApp() {
         function resizeCoreCanvas() {
             if (!coreContainer) return;
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
-            coreW = coreContainer.clientWidth || 480;
-            coreH = coreContainer.clientHeight || 480;
+            coreW = Math.max(280, coreContainer.clientWidth || 480);
+            coreH = Math.max(280, coreContainer.clientHeight || 480);
             coreCanvas.width = coreW * dpr;
             coreCanvas.height = coreH * dpr;
             ctx.scale(dpr, dpr);
@@ -1087,10 +1095,13 @@ function initApp() {
 
         // Draw Translucent Glass Neural Sphere Shell with Fresnel Rim Glow
         function drawGlassSphereShell(cx, cy, radius, baseScale = 1, tier = "tier-1") {
+            const shellR = Math.max(1, radius * baseScale);
+            if (shellR <= 2) return;
+
             ctx.save();
 
             // Inner volumetric cyan core glow
-            const innerGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius * baseScale);
+            const innerGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, shellR);
             innerGlow.addColorStop(0, "rgba(0, 191, 255, 0.22)");
             innerGlow.addColorStop(0.5, "rgba(10, 30, 65, 0.35)");
             innerGlow.addColorStop(0.85, "rgba(0, 191, 255, 0.18)");
@@ -1098,7 +1109,7 @@ function initApp() {
 
             ctx.fillStyle = innerGlow;
             ctx.beginPath();
-            ctx.arc(cx, cy, radius * baseScale, 0, Math.PI * 2);
+            ctx.arc(cx, cy, shellR, 0, Math.PI * 2);
             ctx.fill();
 
             // Glass Sphere Glowing Fresnel Rim
@@ -1114,7 +1125,8 @@ function initApp() {
             ctx.strokeStyle = "rgba(255, 255, 255, 0.55)";
             ctx.lineWidth = 1.8;
             ctx.beginPath();
-            ctx.arc(cx, cy, radius * baseScale - 2, -Math.PI * 0.85, -Math.PI * 0.45);
+            const highlightR = Math.max(0.5, shellR - 2);
+            ctx.arc(cx, cy, highlightR, -Math.PI * 0.85, -Math.PI * 0.45);
             ctx.stroke();
 
             // Spherical Latitude & Longitude Coordinate Lines (Subtle Wireframe)
@@ -1122,8 +1134,8 @@ function initApp() {
                 ctx.strokeStyle = "rgba(0, 191, 255, 0.15)";
                 ctx.lineWidth = 0.8;
                 [-0.5, 0, 0.5].forEach((lat) => {
-                    const latR = Math.sqrt(1 - lat * lat) * (radius * baseScale);
-                    const latY = cy + lat * (radius * baseScale);
+                    const latR = Math.max(0.1, Math.sqrt(Math.max(0, 1 - lat * lat)) * shellR);
+                    const latY = cy + lat * shellR;
                     ctx.beginPath();
                     ctx.ellipse(cx, latY, latR, latR * 0.25, 0, 0, Math.PI * 2);
                     ctx.stroke();
@@ -1187,14 +1199,15 @@ function initApp() {
         }
 
         function renderInnovationCore() {
-            if (!isCoreVisible) return;
+            if (!isCoreVisible || coreW <= 0 || coreH <= 0) return;
             const tier = window.XESTUS_PERF ? window.XESTUS_PERF.getTier() : "tier-1";
+            const isMobileScreen = typeof window !== "undefined" && window.innerWidth < 768;
 
             ctx.clearRect(0, 0, coreW, coreH);
 
             const cx = coreW / 2;
             const cy = coreH / 2 - 14;
-            const baseScale = Math.min(coreW / 480, 1.15);
+            const baseScale = Math.max(0.2, Math.min(coreW / 480, 1.15));
             const sphereRadius = 96 * baseScale;
 
             if (!prefersReducedMotion && tier !== "tier-4") {
@@ -1498,7 +1511,7 @@ function initApp() {
             // 11. Draw Floating 3D Quantum Data Crystal (Upper Right)
             drawQuantumCrystal(cx, cy, baseScale, tier);
 
-            if (isCoreVisible && !prefersReducedMotion && tier !== "tier-4") {
+            if (isCoreVisible && !prefersReducedMotion && tier !== "tier-4" && !isMobileScreen) {
                 coreAnimId = requestAnimationFrame(renderInnovationCore);
             } else {
                 coreAnimId = null;
@@ -1507,10 +1520,10 @@ function initApp() {
 
         function initInnovationCore() {
             resizeCoreCanvas();
-            if (!prefersReducedMotion) {
+            renderInnovationCore();
+            const tier = window.XESTUS_PERF ? window.XESTUS_PERF.getTier() : "tier-1";
+            if (!prefersReducedMotion && window.innerWidth >= 768 && tier !== "tier-4") {
                 coreAnimId = requestAnimationFrame(renderInnovationCore);
-            } else {
-                renderInnovationCore();
             }
         }
 
@@ -1520,20 +1533,25 @@ function initApp() {
             requestAnimationFrame(initInnovationCore);
         }
 
-        if ("IntersectionObserver" in window && heroSection) {
+        if ("IntersectionObserver" in window && coreContainer) {
             const coreObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     isCoreVisible = entry.isIntersecting;
                     const tier = window.XESTUS_PERF ? window.XESTUS_PERF.getTier() : "tier-1";
-                    if (isCoreVisible && !prefersReducedMotion && tier !== "tier-4" && !coreAnimId) {
-                        coreAnimId = requestAnimationFrame(renderInnovationCore);
+                    const isMobileScreen = window.innerWidth < 768;
+                    if (isCoreVisible) {
+                        if (!prefersReducedMotion && tier !== "tier-4" && !isMobileScreen) {
+                            if (!coreAnimId) coreAnimId = requestAnimationFrame(renderInnovationCore);
+                        } else {
+                            renderInnovationCore();
+                        }
                     } else if (!isCoreVisible && coreAnimId) {
                         cancelAnimationFrame(coreAnimId);
                         coreAnimId = null;
                     }
                 });
             }, { threshold: 0.05 });
-            coreObserver.observe(heroSection);
+            coreObserver.observe(coreContainer);
         }
 
         // Parallax Interaction & Proximity
@@ -3079,6 +3097,9 @@ function initApp() {
         // Update current indicator in navbar
         if (currentLangLabel) {
             currentLangLabel.textContent = lang.toUpperCase();
+        }
+        if (langBtn) {
+            langBtn.setAttribute("aria-label", `${lang.toUpperCase()} - Select Language`);
         }
 
         // Update active classes on dropdown options

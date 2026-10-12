@@ -13353,9 +13353,13 @@ html[data-theme="eye-protect"] .btn-whatsapp-direct:hover,
 
 .cookie-banner-text {
     font-size: 13px;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #cbd5e1;
     margin: 0;
+}
+
+.cookie-banner-lead {
+    margin-bottom: 4px;
 }
 
 .cookie-banner-text a {

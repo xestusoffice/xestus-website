@@ -60,7 +60,7 @@
             }
         })();
     </script>
-    <script defer src="js/cookie-consent.min.js?v=4.1.0"></script>
+    <script defer src="js/cookie-consent.min.js?v=4.2.0"></script>
 
     <!-- Google AdSense - Progressive Non-Blocking Loader -->
     <script>
@@ -143,8 +143,8 @@
     </noscript>
 
     <!-- Core Stylesheet (Minified Production Bundle) -->
-    <link rel="preload" as="style" href="style.min.css?v=4.6.0">
-    <link rel="stylesheet" href="style.min.css?v=4.6.0">
+    <link rel="preload" as="style" href="style.min.css?v=4.7.0">
+    <link rel="stylesheet" href="style.min.css?v=4.7.0">
     <link rel="manifest" href="manifest.json">
 
 
@@ -314,11 +314,11 @@
 
         <!-- Mobile PWA Install & Bookmark Action Strip -->
         <li class="mobile-app-strip" aria-label="Web App and Bookmark Options">
-            <button type="button" class="mobile-app-btn btn-install-pwa" id="pwaInstallBtn" aria-label="Install XESTUS Web App">
+            <button type="button" class="mobile-app-btn btn-install-pwa" id="pwaInstallBtn" aria-label="Install Web App">
                 <i data-lucide="download" aria-hidden="true"></i>
                 <span data-i18n="pwa.install_app">Install Web App</span>
             </button>
-            <button type="button" class="mobile-app-btn btn-bookmark-site" id="bookmarkSiteBtn" aria-label="Bookmark XESTUS Website">
+            <button type="button" class="mobile-app-btn btn-bookmark-site" id="bookmarkSiteBtn" aria-label="Bookmark Site">
                 <i data-lucide="bookmark" aria-hidden="true"></i>
                 <span data-i18n="pwa.bookmark_site">Bookmark Site</span>
             </button>
@@ -346,18 +346,18 @@
         
         <!-- Desktop PWA Install & Bookmark Action Strip -->
         <div class="desktop-app-strip" aria-label="Web App and Bookmark Options">
-            <button type="button" class="desktop-app-btn btn-install-pwa" id="desktopPwaBtn" aria-label="Install XESTUS Web App" title="Install XESTUS Web App">
+            <button type="button" class="desktop-app-btn btn-install-pwa" id="desktopPwaBtn" aria-label="Install Web App" title="Install XESTUS Web App">
                 <i data-lucide="download" aria-hidden="true"></i>
                 <span data-i18n="pwa.install_app">Install Web App</span>
             </button>
-            <button type="button" class="desktop-app-btn btn-bookmark-site" id="desktopBookmarkBtn" aria-label="Bookmark XESTUS Website" title="Bookmark XESTUS Website">
+            <button type="button" class="desktop-app-btn btn-bookmark-site" id="desktopBookmarkBtn" aria-label="Bookmark Site" title="Bookmark XESTUS Website">
                 <i data-lucide="bookmark" aria-hidden="true"></i>
                 <span data-i18n="pwa.bookmark_site">Bookmark Site</span>
             </button>
         </div>
 
         <div class="theme-switcher" id="themeSwitcher">
-            <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Website Theme Mode" title="Select Theme (Day, Night, Eye Protection)">
+            <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Night - Select Website Theme Mode" title="Select Theme (Day, Night, Eye Protection)">
                 <i data-lucide="moon" class="theme-active-icon" aria-hidden="true"></i>
                 <span class="theme-current-label">Night</span>
                 <i data-lucide="chevron-down" class="theme-chevron" aria-hidden="true"></i>
@@ -380,7 +380,7 @@
 
         <!-- Language Switcher Dropdown -->
         <div class="lang-switcher" id="langSwitcher">
-            <button type="button" class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Language" title="Select Website Language">
+            <button type="button" class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="EN - Select Language" title="Select Website Language">
                 <i data-lucide="globe" aria-hidden="true"></i>
                 <span class="lang-current-label">EN</span>
                 <i data-lucide="chevron-down" class="lang-chevron" aria-hidden="true"></i>
@@ -503,7 +503,7 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn-stats-inspect" id="btnStatsInspect" aria-haspopup="dialog" aria-controls="statsModal" aria-label="View XESTUS live activity breakdown" title="View detailed rolling activity statistics">
+                    <button type="button" class="btn-stats-inspect" id="btnStatsInspect" aria-haspopup="dialog" aria-controls="statsModal" aria-label="View Activity Breakdown" title="View detailed rolling activity statistics">
                         <span data-i18n="stats.view_activity">View Activity</span>
                         <i data-lucide="arrow-up-right" class="stats-inspect-icon" aria-hidden="true"></i>
                     </button>
@@ -794,80 +794,80 @@
     </div>
 
     <!-- Hierarchical Filter Bar (Jurisdiction & Category Chips) -->
-    <div class="digital-filter-bar reveal-item" role="tablist" aria-label="Digital Seva Categories and Jurisdictions">
-        <button type="button" class="digital-filter-btn seva-filter-pill active" data-filter-type="all" data-value="all" role="tab" aria-selected="true">
+    <div class="digital-filter-bar reveal-item" role="group" aria-label="Digital Seva Categories and Jurisdictions">
+        <button type="button" class="digital-filter-btn seva-filter-pill active" data-filter-type="all" data-value="all" aria-pressed="true">
             <i data-lucide="layout-grid" aria-hidden="true"></i>
             <span data-i18n="digital.filter_all">All Services</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="govLevel" data-value="Central" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="govLevel" data-value="Central" aria-pressed="false">
             <i data-lucide="landmark" aria-hidden="true"></i>
             <span>Central Govt (GoI)</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="govLevel" data-value="State" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="govLevel" data-value="State" aria-pressed="false">
             <i data-lucide="building" aria-hidden="true"></i>
             <span>West Bengal Govt (WB)</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="wb-edistrict" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="wb-edistrict" aria-pressed="false">
             <i data-lucide="map-pin" aria-hidden="true"></i>
             <span>Local / District (e-District)</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="master" data-value="master" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="master" data-value="master" aria-pressed="false">
             <i data-lucide="shield-check" aria-hidden="true"></i>
             <span>Master Gateways</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="identity-docs" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="identity-docs" aria-pressed="false">
             <i data-lucide="file-badge" aria-hidden="true"></i>
             <span>Documents &amp; Identity</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="education" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="education" aria-pressed="false">
             <i data-lucide="graduation-cap" aria-hidden="true"></i>
             <span>Education &amp; Admissions</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="scholarships" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="scholarships" aria-pressed="false">
             <i data-lucide="award" aria-hidden="true"></i>
             <span>Scholarships</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="jobs" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="jobs" aria-pressed="false">
             <i data-lucide="briefcase" aria-hidden="true"></i>
             <span>Jobs &amp; Careers</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="healthcare" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="healthcare" aria-pressed="false">
             <i data-lucide="heart-pulse" aria-hidden="true"></i>
             <span>Health &amp; Medical</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="driving-vehicles" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="driving-vehicles" aria-pressed="false">
             <i data-lucide="car" aria-hidden="true"></i>
             <span>Transport &amp; Driving</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="land-property" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="land-property" aria-pressed="false">
             <i data-lucide="home" aria-hidden="true"></i>
             <span>Land &amp; Property</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="agriculture" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="agriculture" aria-pressed="false">
             <i data-lucide="sprout" aria-hidden="true"></i>
             <span>Agriculture</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="welfare-schemes" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="welfare-schemes" aria-pressed="false">
             <i data-lucide="gift" aria-hidden="true"></i>
             <span>Welfare &amp; Schemes</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="women-girls" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="women-girls" aria-pressed="false">
             <i data-lucide="users" aria-hidden="true"></i>
             <span>Women &amp; Child</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="skill-development" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="skill-development" aria-pressed="false">
             <i data-lucide="award" aria-hidden="true"></i>
             <span>Youth &amp; Skills</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="tax-gst" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="tax-gst" aria-pressed="false">
             <i data-lucide="receipt" aria-hidden="true"></i>
             <span>Finance &amp; Tax</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="business-startup" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="category" data-value="business-startup" aria-pressed="false">
             <i data-lucide="building-2" aria-hidden="true"></i>
             <span>Business &amp; MSME</span>
         </button>
-        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="govLevel" data-value="Private" role="tab" aria-selected="false">
+        <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="govLevel" data-value="Private" aria-pressed="false">
             <i data-lucide="zap" aria-hidden="true"></i>
             <span>Private Services</span>
         </button>
@@ -3587,7 +3587,7 @@
                 </button>
 
                 <!-- Truthful Telemetry / Activity Dialog Trigger -->
-                <button type="button" class="btn-followers-count" id="btnFollowersCount" aria-haspopup="dialog" aria-controls="statsModal" aria-label="View verified system telemetry" title="Click to view verified activity breakdown">
+                <button type="button" class="btn-followers-count" id="btnFollowersCount" aria-haspopup="dialog" aria-controls="statsModal" aria-label="Telemetry &amp; Activity - verified system telemetry" title="Click to view verified activity breakdown">
                     <span class="count-pulse-dot" aria-hidden="true"></span>
                     <i data-lucide="activity" class="count-icon" aria-hidden="true"></i>
                     <span class="count-text">Telemetry &amp; Activity</span>
@@ -4060,7 +4060,7 @@
     </button>
 
     <!-- AI Assistant Launcher Button -->
-    <button type="button" class="ai-launcher-btn" id="aiLauncherBtn" aria-label="Open XESTUS AI Assistant" aria-expanded="false" aria-haspopup="dialog">
+    <button type="button" class="ai-launcher-btn" id="aiLauncherBtn" aria-label="Ask XESTUS AI Assistant" aria-expanded="false" aria-haspopup="dialog">
         <div class="ai-launcher-icon-wrap">
             <i data-lucide="bot" class="ai-main-icon" aria-hidden="true"></i>
             <span class="ai-status-pulse" aria-hidden="true"></span>
@@ -4238,7 +4238,7 @@
 </script>
 
 <!-- Core App Script & Interactive Controllers (All Minified Bundles) -->
-<script defer src="script.min.js?v=4.6.0"></script>
+<script defer src="script.min.js?v=4.7.0"></script>
 <script defer src="js/nav-core.min.js?v=4.1.0"></script>
 <script defer src="js/xestus-tools.min.js?v=4.2.0"></script>
 
