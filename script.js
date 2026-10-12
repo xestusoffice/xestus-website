@@ -599,8 +599,6 @@ function initApp() {
             height = heroSection.clientHeight;
             starfieldCanvas.width = width * dpr;
             starfieldCanvas.height = height * dpr;
-            starfieldCanvas.style.width = `${width}px`;
-            starfieldCanvas.style.height = `${height}px`;
             ctx.scale(dpr, dpr);
         }
 
@@ -866,8 +864,6 @@ function initApp() {
             coreH = coreContainer.clientHeight || 480;
             coreCanvas.width = coreW * dpr;
             coreCanvas.height = coreH * dpr;
-            coreCanvas.style.width = `${coreW}px`;
-            coreCanvas.style.height = `${coreH}px`;
             ctx.scale(dpr, dpr);
         }
 
@@ -1509,12 +1505,19 @@ function initApp() {
             }
         }
 
-        resizeCoreCanvas();
+        function initInnovationCore() {
+            resizeCoreCanvas();
+            if (!prefersReducedMotion) {
+                coreAnimId = requestAnimationFrame(renderInnovationCore);
+            } else {
+                renderInnovationCore();
+            }
+        }
 
-        if (!prefersReducedMotion) {
-            coreAnimId = requestAnimationFrame(renderInnovationCore);
+        if ("requestIdleCallback" in window) {
+            requestIdleCallback(initInnovationCore);
         } else {
-            renderInnovationCore();
+            requestAnimationFrame(initInnovationCore);
         }
 
         if ("IntersectionObserver" in window && heroSection) {
@@ -1876,6 +1879,7 @@ function initApp() {
         }
 
         // Display modal
+        caseStudyModal.removeAttribute("inert");
         caseStudyModal.classList.add("is-open");
         caseStudyModal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
@@ -1888,6 +1892,7 @@ function initApp() {
 
     function closeCaseStudyModal() {
         if (!caseStudyModal) return;
+        caseStudyModal.setAttribute("inert", "");
         caseStudyModal.classList.remove("is-open");
         caseStudyModal.setAttribute("aria-hidden", "true");
         document.body.classList.remove("modal-open");
@@ -2274,6 +2279,7 @@ function initApp() {
             });
         }
 
+        digitalSevaModal.removeAttribute("inert");
         digitalSevaModal.classList.add("is-open");
         digitalSevaModal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
@@ -2285,6 +2291,7 @@ function initApp() {
 
     function closeDigitalSevaModal() {
         if (!digitalSevaModal) return;
+        digitalSevaModal.setAttribute("inert", "");
         digitalSevaModal.classList.remove("is-open");
         digitalSevaModal.setAttribute("aria-hidden", "true");
         document.body.classList.remove("modal-open");
@@ -3808,6 +3815,7 @@ function initApp() {
     function openStatsModal(triggerBtn) {
         if (!statsModal) return;
         lastStatsFocusedElement = triggerBtn || document.activeElement;
+        statsModal.removeAttribute("inert");
         statsModal.classList.add("is-open");
         statsModal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
@@ -3818,6 +3826,7 @@ function initApp() {
 
     function closeStatsModal() {
         if (!statsModal) return;
+        statsModal.setAttribute("inert", "");
         statsModal.classList.remove("is-open");
         statsModal.setAttribute("aria-hidden", "true");
         document.body.classList.remove("modal-open");

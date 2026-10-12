@@ -344,6 +344,7 @@
                 window.XESTUS_LOAD_DIGITAL_SEVA();
             }
             isChatOpen = true;
+            chatPanel.removeAttribute("inert");
             chatPanel.classList.add("is-open");
             chatPanel.setAttribute("aria-hidden", "false");
             launcherBtn.classList.add("is-active");
@@ -361,6 +362,7 @@
 
         function closeChat() {
             isChatOpen = false;
+            chatPanel.setAttribute("inert", "");
             chatPanel.classList.remove("is-open");
             chatPanel.setAttribute("aria-hidden", "true");
             launcherBtn.classList.remove("is-active");

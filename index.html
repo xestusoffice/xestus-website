@@ -39,8 +39,28 @@
             gtag('config', 'G-EF3ZRR55YY');
         })();
     </script>
-    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
-    <script defer src="js/cookie-consent.js?v=4.0.0"></script>
+    <script>
+        (function() {
+            var gtmLoaded = false;
+            function loadGTM() {
+                if (gtmLoaded) return;
+                gtmLoaded = true;
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY';
+                s.async = true;
+                document.head.appendChild(s);
+            }
+            ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
+                window.addEventListener(ev, loadGTM, { once: true, passive: true });
+            });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadGTM, 3500); });
+            } else {
+                setTimeout(loadGTM, 4500);
+            }
+        })();
+    </script>
+    <script defer src="js/cookie-consent.min.js?v=4.1.0"></script>
 
     <!-- Google AdSense - Progressive Non-Blocking Loader -->
     <script>
@@ -100,11 +120,10 @@
     <meta name="twitter:description" content="AI Software, Autonomous Agent Swarms, Web Platforms &amp; Enterprise Automation.">
     <meta name="twitter:image" content="https://xestus.in/assets/images/xestus-logo.png">
 
-    <!-- Favicon, Manifest & PWA Metadata -->
+    <!-- Favicon & PWA Metadata -->
     <link rel="icon" type="image/webp" href="assets/images/xestus-logo.webp">
     <link rel="icon" type="image/png" href="assets/images/xestus-logo.png">
     <link rel="apple-touch-icon" href="assets/images/icon-192.png">
-    <link rel="manifest" href="manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -126,6 +145,7 @@
     <!-- Core Stylesheet (Minified Production Bundle) -->
     <link rel="preload" as="style" href="style.min.css?v=4.6.0">
     <link rel="stylesheet" href="style.min.css?v=4.6.0">
+    <link rel="manifest" href="manifest.json">
 
 
     <!-- Unified Structured Data / JSON-LD -->
@@ -3731,7 +3751,7 @@
 </footer>
 
 <!-- Accessible Legal / Policy Modal Dialog -->
-<div id="legalModal" class="case-study-modal legal-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Legal and Privacy Policy" aria-labelledby="legalModalTitle">
+<div id="legalModal" class="case-study-modal legal-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-label="Legal and Privacy Policy" aria-labelledby="legalModalTitle">
  <div class="case-study-backdrop" id="legalModalBackdrop"></div>
  <div class="case-study-dialog legal-dialog" role="document">
  <button type="button" class="modal-close-btn" id="legalModalCloseBtn" aria-label="Close Legal Information">
@@ -3745,7 +3765,7 @@
 </div>
 
 <!-- Accessible Case Study Modal Dialog -->
-<div id="caseStudyModal" class="case-study-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Case Study and Technical Details" aria-labelledby="modalProjectTitle">
+<div id="caseStudyModal" class="case-study-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-label="Case Study and Technical Details" aria-labelledby="modalProjectTitle">
  <div class="case-study-backdrop" id="modalBackdrop"></div>
  <div class="case-study-dialog" role="document">
  <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close Case Study Details">
@@ -3759,7 +3779,7 @@
 </div>
 
 <!-- Accessible Digital Seva Service Modal Dialog -->
-<div id="digitalSevaModal" class="case-study-modal digital-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Digital Seva Service Details" aria-labelledby="digitalModalTitle">
+<div id="digitalSevaModal" class="case-study-modal digital-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-label="Digital Seva Service Details" aria-labelledby="digitalModalTitle">
     <div class="case-study-backdrop" id="digitalModalBackdrop"></div>
     <div class="case-study-dialog digital-dialog" role="document">
         <button type="button" class="modal-close-btn" id="digitalModalCloseBtn" aria-label="Close Service Details">
@@ -3775,7 +3795,7 @@
 <!-- =========================
      XESTUS LIVE STATS MODAL
 ========================= -->
-<div id="statsModal" class="case-study-modal stats-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="statsModalTitle">
+<div id="statsModal" class="case-study-modal stats-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-labelledby="statsModalTitle">
     <div class="case-study-backdrop" id="statsModalBackdrop"></div>
     <div class="case-study-dialog stats-modal-dialog" role="document">
         <button type="button" class="modal-close-btn" id="statsModalCloseBtn" aria-label="Close Live Activity Dialog">
@@ -3850,7 +3870,7 @@
 <!-- ==========================================================================
      COMMUNITY & FOLLOW MODAL DIALOG
      ========================================================================== -->
-<div id="communityModal" class="case-study-modal community-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="communityModalTitle">
+<div id="communityModal" class="case-study-modal community-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-labelledby="communityModalTitle">
     <div class="case-study-backdrop" id="communityModalBackdrop"></div>
     <div class="case-study-dialog community-dialog" role="document">
         <button type="button" class="modal-close-btn" id="communityModalCloseBtn" aria-label="Close Community Dialog">
@@ -3903,7 +3923,7 @@
      DIGITAL SEVA HUB MODALS
      ========================================================================== -->
 <!-- Digital Seva Hub Master Detail Modal -->
-<div id="sevaDetailModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sevaModalTitle">
+<div id="sevaDetailModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-labelledby="sevaModalTitle">
     <div class="case-study-backdrop seva-modal-close-btn"></div>
     <div class="case-study-dialog seva-modal-dialog" role="document">
         <button type="button" class="modal-close-btn seva-modal-close-btn" aria-label="Close Service Guide">
@@ -3917,7 +3937,7 @@
 </div>
 
 <!-- 59-Category Taxonomy Explorer Modal -->
-<div id="sevaCategoryModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sevaCategoryModalTitle">
+<div id="sevaCategoryModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-labelledby="sevaCategoryModalTitle">
     <div class="case-study-backdrop seva-modal-close-btn"></div>
     <div class="case-study-dialog seva-modal-dialog category-explorer-dialog" role="document">
         <button type="button" class="modal-close-btn seva-modal-close-btn" aria-label="Close Category Catalog">
@@ -3938,7 +3958,7 @@
 </div>
 
 <!-- Scam Defense & Cyber Protection Hub Modal -->
-<div id="sevaScamModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sevaScamModalTitle">
+<div id="sevaScamModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-labelledby="sevaScamModalTitle">
     <div class="case-study-backdrop seva-modal-close-btn"></div>
     <div class="case-study-dialog seva-modal-dialog scam-center-dialog" role="document">
         <button type="button" class="modal-close-btn seva-modal-close-btn" aria-label="Close Scam Defense Center">
@@ -3959,7 +3979,7 @@
 </div>
 
 <!-- XESTUS Assisted Inquiry & Application Guidance Modal -->
-<div id="sevaAssistModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sevaAssistModalTitle">
+<div id="sevaAssistModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-labelledby="sevaAssistModalTitle">
     <div class="case-study-backdrop seva-modal-close-btn"></div>
     <div class="case-study-dialog seva-modal-dialog assist-modal-dialog" role="document">
         <button type="button" class="modal-close-btn seva-modal-close-btn" aria-label="Close Assistance Form">
@@ -4049,7 +4069,7 @@
     </button>
 
     <!-- Expandable AI Chat Panel -->
-    <div class="ai-chat-panel" id="aiChatPanel" role="dialog" aria-modal="false" aria-hidden="true" aria-labelledby="aiChatTitle">
+    <div class="ai-chat-panel" id="aiChatPanel" role="dialog" aria-modal="false" aria-hidden="true" inert aria-labelledby="aiChatTitle">
         <div class="ai-chat-header">
             <div class="ai-header-info">
                 <div class="ai-header-avatar">
@@ -4087,15 +4107,92 @@
     </div>
 </div>
 
-<!-- EmailJS -->
-<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<!-- Progressive EmailJS Client Loader (Loads on contact form interaction or viewport proximity) -->
+<script>
+(function() {
+    var emailLoaded = false;
+    function loadEmailJS() {
+        if (emailLoaded) return;
+        emailLoaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+        s.onload = function() {
+            if (typeof initEmailJS === 'function') initEmailJS();
+        };
+        document.body.appendChild(s);
+    }
+    window.XESTUS_LOAD_EMAILJS = loadEmailJS;
+
+    var cSec = document.getElementById('contact');
+    if (cSec && 'IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+            if (entries.some(function(e) { return e.isIntersecting; })) {
+                loadEmailJS();
+                obs.disconnect();
+            }
+        }, { rootMargin: '300px 0px' });
+        obs.observe(cSec);
+    }
+    var cForm = document.getElementById('contactForm');
+    if (cForm) {
+        cForm.addEventListener('focusin', loadEmailJS, { once: true, passive: true });
+        cForm.addEventListener('pointerdown', loadEmailJS, { once: true, passive: true });
+    }
+})();
+</script>
 
 <!-- Lucide Icons -->
 <script defer src="https://unpkg.com/lucide@latest"></script>
 
-<!-- Security Shield, Translations Dictionary & Data Stores -->
-<script defer src="js/security-shield.js?v=4.0.0"></script>
-<script defer src="js/translations.js?v=4.2.0"></script>
+<!-- Security Shield (Minified Production Bundle) -->
+<script defer src="js/security-shield.min.js?v=4.1.0"></script>
+
+<!-- Progressive Multilingual Dictionary Loader -->
+<script>
+(function() {
+    var transLoaded = false;
+    function loadTranslations(cb) {
+        if (transLoaded) {
+            if (typeof cb === 'function') cb();
+            return;
+        }
+        transLoaded = true;
+        var s = document.createElement('script');
+        s.src = 'js/translations.min.js?v=4.3.0';
+        s.onload = function() {
+            if (typeof cb === 'function') cb();
+            window.dispatchEvent(new CustomEvent('xestus:translations-loaded'));
+        };
+        document.body.appendChild(s);
+    }
+    window.XESTUS_LOAD_TRANSLATIONS = loadTranslations;
+
+    // Detect non-English preference (URL parameter or localStorage)
+    var savedLang = null;
+    try { savedLang = localStorage.getItem('xestus_lang'); } catch(e) {}
+    var urlParams = (typeof URLSearchParams !== 'undefined') ? new URLSearchParams(window.location.search) : null;
+    var urlLang = urlParams ? urlParams.get('lang') : null;
+    var targetLang = urlLang || savedLang;
+
+    if (targetLang && targetLang !== 'en') {
+        loadTranslations(function() {
+            if (typeof window.setLanguage === 'function') window.setLanguage(targetLang, false);
+        });
+    } else {
+        var switcher = document.getElementById('langSwitcher');
+        if (switcher) {
+            ['pointerenter', 'focusin', 'click'].forEach(function(ev) {
+                switcher.addEventListener(ev, function() { loadTranslations(); }, { once: true, passive: true });
+            });
+        }
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(function() { setTimeout(loadTranslations, 3500); });
+        } else {
+            setTimeout(loadTranslations, 4500);
+        }
+    }
+})();
+</script>
 
 <!-- Progressive Digital Seva Hub Loader (On-Demand / Intersection Loading) -->
 <script>
@@ -4140,11 +4237,41 @@
 })();
 </script>
 
-<!-- Core App Script & Interactive Controllers -->
-<script defer src="script.min.js?v=4.5.0"></script>
-<script defer src="js/nav-core.js?v=4.0.0"></script>
-<script defer src="js/xestus-tools.js?v=4.1.0"></script>
-<script defer src="js/ai-assistant.js?v=4.0.0"></script>
+<!-- Core App Script & Interactive Controllers (All Minified Bundles) -->
+<script defer src="script.min.js?v=4.6.0"></script>
+<script defer src="js/nav-core.min.js?v=4.1.0"></script>
+<script defer src="js/xestus-tools.min.js?v=4.2.0"></script>
+
+<!-- Progressive AI Assistant Loader (Loads on interaction or idle) -->
+<script>
+(function() {
+    var aiLoaded = false;
+    function loadAIAssistant() {
+        if (aiLoaded) return;
+        aiLoaded = true;
+        var s = document.createElement('script');
+        s.src = 'js/ai-assistant.min.js?v=4.1.0';
+        document.body.appendChild(s);
+    }
+    window.XESTUS_LOAD_AI = loadAIAssistant;
+
+    var container = document.getElementById('floatingAssistantContainer');
+    if (container) {
+        ['pointerenter', 'focusin', 'click'].forEach(function(ev) {
+            container.addEventListener(ev, loadAIAssistant, { once: true, passive: true });
+        });
+    }
+    var aiLauncher = document.getElementById('aiLauncherBtn');
+    if (aiLauncher) {
+        aiLauncher.addEventListener('click', loadAIAssistant, { once: true });
+    }
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() { setTimeout(loadAIAssistant, 4000); });
+    } else {
+        setTimeout(loadAIAssistant, 5000);
+    }
+})();
+</script>
 
 <!-- XESTUS Connection Lost Overlay -->
 <div id="connectionOverlay" class="connection-overlay">
