@@ -56,6 +56,10 @@
             try {
                 (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
             } catch (e) {}
+        } else {
+            if (typeof window.XESTUS_LOAD_ADSENSE === 'function') {
+                window.XESTUS_LOAD_ADSENSE();
+            }
         }
 
         updateGoogleConsent(state.analytics, state.advertising);

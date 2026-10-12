@@ -81,14 +81,10 @@
                 s.crossOrigin = 'anonymous';
                 document.head.appendChild(s);
             }
+            window.XESTUS_LOAD_ADSENSE = loadAdSense;
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(function() { setTimeout(loadAdSense, 3000); });
-            } else {
-                setTimeout(loadAdSense, 4000);
-            }
         })();
     </script>
 
@@ -105,7 +101,7 @@
     <!-- Canonical & International Alternate URLs -->
     <link rel="canonical" href="https://xestus.in/">
     <link rel="alternate" hreflang="x-default" href="https://xestus.in/">
-    <link rel="alternate" hreflang="en" href="https://xestus.in/?lang=en">
+    <link rel="alternate" hreflang="en" href="https://xestus.in/">
     <link rel="alternate" hreflang="bn" href="https://xestus.in/?lang=bn">
     <link rel="alternate" hreflang="hi" href="https://xestus.in/?lang=hi">
 
@@ -208,6 +204,60 @@
 "Event-Driven Workflow Automation",
 "Cloud Infrastructure & Reverse Proxies",
 "Technical CAD Drafting"
+ ]
+ },
+ {
+"@type":"FAQPage",
+"@id":"https://xestus.in/#faq",
+"mainEntity": [
+ {
+"@type":"Question",
+"name":"Who owns the intellectual property and source code of custom projects?",
+"acceptedAnswer": {
+"@type":"Answer",
+"text":"You do. Upon project completion and final settlement, 100% of the custom source code, documentation, architectural schemas, and deployed assets belong exclusively to you or your organization under clear contractual ownership."
+ }
+ },
+ {
+"@type":"Question",
+"name":"What is the typical turnaround timeline for custom software or automation?",
+"acceptedAnswer": {
+"@type":"Answer",
+"text":"Turnaround times depend on system complexity: focused automation workflows and landing platforms typically take 3–7 business days, while custom AI agent swarms and enterprise RAG systems take 2–4 weeks with continuous milestone demos."
+ }
+ },
+ {
+"@type":"Question",
+"name":"How does XESTUS help ordinary people with online form filling and applications?",
+"acceptedAnswer": {
+"@type":"Answer",
+"text":"We provide personalized, step-by-step assistance in accurately filling college admissions, scholarship forms, job applications, document compression/formatting, and exam registrations. You review all details before final submission."
+ }
+ },
+ {
+"@type":"Question",
+"name":"Is digital form assistance affordable for students and individuals?",
+"acceptedAnswer": {
+"@type":"Answer",
+"text":"Yes. Our digital assistance services are intentionally priced at accessible, transparent rates with zero hidden fees. We believe practical digital help should be easily reachable for everyone."
+ }
+ },
+ {
+"@type":"Question",
+"name":"How do you ensure data confidentiality and privacy?",
+"acceptedAnswer": {
+"@type":"Answer",
+"text":"We treat all client briefs, technical schemas, and personal application documents under strict confidentiality. We are ready to execute Non-Disclosure Agreements (NDAs) before discussing sensitive enterprise architectures."
+ }
+ },
+ {
+"@type":"Question",
+"name":"How does the XESTUS development lab and edge hardware operate?",
+"acceptedAnswer": {
+"@type":"Answer",
+"text":"Our public website runs with 99.98% reliability on global edge CDNs, completely decoupled from local experiments. Our Samsung Galaxy F41 ARM64 Linux node serves strictly as an internal development, micro-server, and cybersecurity research lab."
+ }
+ }
  ]
  }
  ]
