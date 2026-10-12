@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="night">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://pagead2.googlesyndication.com https://unpkg.com https://cdn.jsdelivr.net;">
+
     <!-- Google Analytics (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
     <script>
@@ -14,12 +21,34 @@
     <script defer src="../../js/cookie-consent.js?v=4.0.0"></script>
 
     <!-- Google AdSense - Official Publisher Code -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869" crossorigin="anonymous"></script>
+    <!-- Google AdSense - Progressive Non-Blocking Loader -->
+    <script>
+        (function() {
+            var adsLoaded = false;
+            function loadAdSense() {
+                if (adsLoaded) return;
+                adsLoaded = true;
+                var s = document.createElement('script');
+                s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869';
+                s.async = true;
+                s.crossOrigin = 'anonymous';
+                document.head.appendChild(s);
+            }
+            ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function(ev) {
+                window.addEventListener(ev, loadAdSense, { once: true, passive: true });
+            });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3500); });
+            } else {
+                setTimeout(loadAdSense, 4500);
+            }
+        })();
+    </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://pagead2.googlesyndication.com https://unpkg.com https://cdn.jsdelivr.net;">
+    
+    
+    
+    
     <title>Free Online Office & Text Tools | Word Counter, QR Code, Invoices | XESTUS</title>
     <meta name="description" content="Free online office and text utilities for business, content creators, and shopkeepers. Word counter, character counter, text case converter, QR code generator, and invoice maker.">
     <link rel="canonical" href="https://xestus.in/tools/office/">

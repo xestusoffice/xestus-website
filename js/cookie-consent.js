@@ -24,21 +24,11 @@
     } catch (e) {}
 
     if (storedConsent) {
-        gtag("consent", "default", {
+        gtag("consent", "update", {
             ad_storage: storedConsent.advertising ? "granted" : "denied",
             ad_user_data: storedConsent.advertising ? "granted" : "denied",
             ad_personalization: storedConsent.advertising ? "granted" : "denied",
-            analytics_storage: storedConsent.analytics ? "granted" : "denied",
-            wait_for_update: 500
-        });
-    } else {
-        // Default restricted state prior to user interaction
-        gtag("consent", "default", {
-            ad_storage: "denied",
-            ad_user_data: "denied",
-            ad_personalization: "denied",
-            analytics_storage: "denied",
-            wait_for_update: 500
+            analytics_storage: storedConsent.analytics ? "granted" : "denied"
         });
     }
 

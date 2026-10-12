@@ -2,6 +2,13 @@
 <html lang="en" data-theme="night">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://pagead2.googlesyndication.com https://unpkg.com https://cdn.jsdelivr.net;">
+
     <!-- Immediate Theme Initialization (Prevents Flash of Unstyled Theme) -->
     <script>
         (function() {
@@ -35,19 +42,29 @@
     <script defer src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
     <script defer src="js/cookie-consent.js?v=4.0.0"></script>
 
-    
-    
-
-        <!-- Google AdSense - Official Publisher Code -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869"
-     crossorigin="anonymous"></script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://pagead2.googlesyndication.com https://unpkg.com https://cdn.jsdelivr.net;">
+    <!-- Google AdSense - Progressive Non-Blocking Loader -->
+    <script>
+        (function() {
+            var adsLoaded = false;
+            function loadAdSense() {
+                if (adsLoaded) return;
+                adsLoaded = true;
+                var s = document.createElement('script');
+                s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869';
+                s.async = true;
+                s.crossOrigin = 'anonymous';
+                document.head.appendChild(s);
+            }
+            ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function(ev) {
+                window.addEventListener(ev, loadAdSense, { once: true, passive: true });
+            });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3500); });
+            } else {
+                setTimeout(loadAdSense, 4500);
+            }
+        })();
+    </script>
 
 
     <!-- Primary Page Metadata -->
@@ -83,8 +100,9 @@
     <meta name="twitter:image" content="https://xestus.in/assets/images/xestus-logo.png">
 
     <!-- Favicon, Manifest & PWA Metadata -->
+    <link rel="icon" type="image/webp" href="assets/images/xestus-logo.webp">
     <link rel="icon" type="image/png" href="assets/images/xestus-logo.png">
-    <link rel="apple-touch-icon" href="assets/images/xestus-logo.png">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.png">
     <link rel="manifest" href="manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -98,15 +116,15 @@
     <link rel="dns-prefetch" href="https://unpkg.com">
 
     <!-- Google Fonts (Poppins) Non-blocking Preload -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
     </noscript>
 
     <!-- Core Stylesheet (Minified Production Bundle) -->
-    <link rel="preload" as="style" href="style.min.css?v=1790936593562">
-    <link rel="stylesheet" href="style.min.css?v=1790936593562">
+    <link rel="preload" as="style" href="style.min.css?v=4.6.0">
+    <link rel="stylesheet" href="style.min.css?v=4.6.0">
 
 
     <!-- Unified Structured Data / JSON-LD -->

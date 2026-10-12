@@ -457,7 +457,9 @@ function initApp() {
             }
         }
     }
-    handleInitialHash(true);
+    if (window.location.hash && window.location.hash.length > 1) {
+        requestAnimationFrame(() => handleInitialHash(true));
+    }
     window.addEventListener("hashchange", () => handleInitialHash(false));
 
     // --------------------------------------------------------------------------
@@ -478,8 +480,8 @@ function initApp() {
             legacyNav.classList.toggle("scrolled", scrollY > 30);
         }
 
-        // Progress Bar
-        if (progressBar) {
+        // Progress Bar (Read layout properties only when scrolled)
+        if (progressBar && scrollY > 0) {
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             if (scrollHeight > 0) {
                 const progress = (scrollY / scrollHeight) * 100;
@@ -497,7 +499,10 @@ function initApp() {
         }
     }, { passive: true });
 
-    onScrollUpdate();
+    // Schedule initial check without triggering synchronous layout thrashing
+    if (window.scrollY > 0) {
+        requestAnimationFrame(onScrollUpdate);
+    }
 
     // --------------------------------------------------------------------------
     // 4. Scroll Reveal (IntersectionObserver)
@@ -698,13 +703,20 @@ function initApp() {
             }
         }
 
-        resizeCanvas();
-        createParticles();
+        function initStarfieldCanvas() {
+            resizeCanvas();
+            createParticles();
+            if (!prefersReducedMotion) {
+                animId = requestAnimationFrame(drawStarfield);
+            } else {
+                drawStarfield();
+            }
+        }
 
-        if (!prefersReducedMotion) {
-            animId = requestAnimationFrame(drawStarfield);
+        if ("requestIdleCallback" in window) {
+            requestIdleCallback(initStarfieldCanvas);
         } else {
-            drawStarfield();
+            requestAnimationFrame(initStarfieldCanvas);
         }
 
         if ("IntersectionObserver" in window && heroSection) {
@@ -3074,41 +3086,49 @@ function initApp() {
             btn.classList.toggle("active", btnLang === lang);
         });
 
-        // Translate data-i18n elements with zero-failure English fallback
-        document.querySelectorAll("[data-i18n]").forEach((el) => {
-            const key = el.getAttribute("data-i18n");
-            const val = dict[key] || fallbackDict[key];
-            if (val) {
-                el.textContent = val;
-            }
-        });
+        // Only run full DOM text translation if non-English, or if explicitly switching
+        const isInitialEnglish = (lang === "en" && !updateUrl);
+        if (!isInitialEnglish) {
+            // Translate data-i18n elements with zero-failure English fallback
+            document.querySelectorAll("[data-i18n]").forEach((el) => {
+                const key = el.getAttribute("data-i18n");
+                const val = dict[key] || fallbackDict[key];
+                if (val) {
+                    el.textContent = val;
+                }
+            });
 
-        // Translate placeholders
-        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-            const key = el.getAttribute("data-i18n-placeholder");
-            const val = dict[key] || fallbackDict[key];
-            if (val) {
-                el.placeholder = val;
-            }
-        });
+            // Translate placeholders
+            document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+                const key = el.getAttribute("data-i18n-placeholder");
+                const val = dict[key] || fallbackDict[key];
+                if (val) {
+                    el.placeholder = val;
+                }
+            });
 
-        // Translate titles
-        document.querySelectorAll("[data-i18n-title]").forEach((el) => {
-            const key = el.getAttribute("data-i18n-title");
-            const val = dict[key] || fallbackDict[key];
-            if (val) {
-                el.title = val;
-            }
-        });
+            // Translate titles
+            document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+                const key = el.getAttribute("data-i18n-title");
+                const val = dict[key] || fallbackDict[key];
+                if (val) {
+                    el.title = val;
+                }
+            });
 
-        // Translate aria-labels
-        document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
-            const key = el.getAttribute("data-i18n-aria-label");
-            const val = dict[key] || fallbackDict[key];
-            if (val) {
-                el.setAttribute("aria-label", val);
+            // Translate aria-labels
+            document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
+                const key = el.getAttribute("data-i18n-aria-label");
+                const val = dict[key] || fallbackDict[key];
+                if (val) {
+                    el.setAttribute("aria-label", val);
+                }
+            });
+
+            if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+                lucide.createIcons();
             }
-        });
+        }
 
         // Synchronize Follow UI button texts in active language
         if (typeof syncFollowUI === "function") {
@@ -3124,10 +3144,6 @@ function initApp() {
         try {
             window.dispatchEvent(new CustomEvent("xestus:language-changed", { detail: { lang } }));
         } catch (e) {}
-
-        if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
-            lucide.createIcons();
-        }
     }
 
     // General toast notification feedback
@@ -3975,9 +3991,3 @@ if (document.readyState === "loading") {
 } else {
     initApp();
 }
-
-window.addEventListener("load", () => {
-    if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
-        lucide.createIcons();
-    }
-});
