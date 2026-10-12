@@ -28,6 +28,12 @@
             function loadAdSense() {
                 if (adsLoaded) return;
                 adsLoaded = true;
+                try {
+                    var stored = JSON.parse(localStorage.getItem('xestus_cookie_consent_v2') || 'null');
+                    if (!stored || !stored.advertising) {
+                        (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+                    }
+                } catch(e) {}
                 var s = document.createElement('script');
                 s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869';
                 s.async = true;
@@ -38,9 +44,9 @@
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
             if ('requestIdleCallback' in window) {
-                requestIdleCallback(function() { setTimeout(loadAdSense, 3500); });
+                requestIdleCallback(function() { setTimeout(loadAdSense, 4000); });
             } else {
-                setTimeout(loadAdSense, 4500);
+                setTimeout(loadAdSense, 5000);
             }
         })();
     </script>

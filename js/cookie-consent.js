@@ -52,6 +52,12 @@
             localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
         } catch (e) {}
 
+        if (!state.advertising) {
+            try {
+                (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+            } catch (e) {}
+        }
+
         updateGoogleConsent(state.analytics, state.advertising);
         removeBanner();
     }
