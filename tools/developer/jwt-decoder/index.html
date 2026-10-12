@@ -53,6 +53,11 @@
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3000); });
+            } else {
+                setTimeout(loadAdSense, 4000);
+            }
         })();
     </script>
 
@@ -65,6 +70,7 @@
 
     <!-- SEO Metadata -->
     <title>JWT Decoder — Decode JSON Web Tokens & Inspect Claims In-Browser | XESTUS</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
     <meta name="description" content="Decode and inspect JSON Web Tokens (JWT) in real time. View Header, Payload, and Signature claims without exposing private signing keys.">
     <meta name="keywords" content="jwt decoder, decode jwt token, jwt debugger, jwt expiration checker, json web token">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">

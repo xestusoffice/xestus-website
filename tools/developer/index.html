@@ -43,6 +43,11 @@
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3000); });
+            } else {
+                setTimeout(loadAdSense, 4000);
+            }
         })();
     </script>
 
@@ -51,6 +56,7 @@
     
     
     <title>Free Developer Utilities Online | JSON, Base64, JWT, UUID, Regex | XESTUS Tools</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
     <meta name="description" content="Free, 100% private developer utilities. Format & validate JSON, decode Base64 and JWT, generate UUIDs and secure passwords, test regex expressions, and compare code diffs.">
     <meta name="keywords" content="developer tools, json formatter, jwt decoder, base64 encoder, uuid generator, regex tester, text diff online, developer utilities">
     <link rel="canonical" href="https://xestus.in/tools/developer/">

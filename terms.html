@@ -55,6 +55,11 @@
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3000); });
+            } else {
+                setTimeout(loadAdSense, 4000);
+            }
         })();
     </script>
 
@@ -67,6 +72,7 @@
 
     <!-- Primary Metadata -->
     <title>Terms of Service | XESTUS — Platform &amp; Engineering Agreement</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
     <meta name="description" content="Official Terms of Service and Conditions of Use for XESTUS (xestus.in). Details client engagements, IP ownership transfer, browser tool usage terms, and warranties.">
     <meta name="author" content="Sudip Khatua, XESTUS">
     <meta name="robots" content="index, follow">
@@ -88,7 +94,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
-    <link rel="stylesheet" href="style.min.css?v=4.6.0">
+    <link rel="stylesheet" href="style.min.css?v=4.8.0">
 
     <!-- Schema.org WebPage JSON-LD -->
     <script type="application/ld+json">

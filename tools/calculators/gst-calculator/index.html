@@ -53,6 +53,11 @@
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3000); });
+            } else {
+                setTimeout(loadAdSense, 4000);
+            }
         })();
     </script>
 
@@ -65,6 +70,7 @@
 
     <!-- SEO Metadata -->
     <title>GST Calculator India — Inclusive & Exclusive Tax, CGST, SGST, IGST | XESTUS</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
     <meta name="description" content="Calculate Goods and Services Tax (GST) for standard slab rates (5%, 12%, 18%, 28%) and custom tax rates with intra-state CGST/SGST and inter-state IGST breakdown.">
     <meta name="keywords" content="gst calculator, calculate gst online, gst inclusive exclusive, india gst tax, cgst sgst calculator">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">

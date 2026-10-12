@@ -53,6 +53,11 @@
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3000); });
+            } else {
+                setTimeout(loadAdSense, 4000);
+            }
         })();
     </script>
 
@@ -65,6 +70,7 @@
 
     <!-- SEO Metadata -->
     <title>Text Diff Checker — Compare Text & Code Differences Side-by-Side | XESTUS</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
     <meta name="description" content="Compare two text snippets or code files side-by-side or inline. Highlights additions, deletions, and line-by-line differences using Myers diff algorithm.">
     <meta name="keywords" content="text diff online, code diff checker, compare two texts, diff viewer tool">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">

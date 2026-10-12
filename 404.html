@@ -44,6 +44,11 @@
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3000); });
+            } else {
+                setTimeout(loadAdSense, 4000);
+            }
         })();
     </script>
 
@@ -57,6 +62,7 @@
 
     <!-- Primary Metadata -->
     <title>404 — Page Not Found | XESTUS</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
     <link rel="canonical" href="https://xestus.in/404.html">
     <meta name="description" content="The requested coordinates do not correspond to an active module in the XESTUS architecture cluster. Return to mission control.">
     <meta name="robots" content="noindex, follow">
@@ -75,7 +81,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Lucide Icons -->
-    <link rel="stylesheet" href="style.min.css?v=4.6.0">
+    <link rel="stylesheet" href="style.min.css?v=4.8.0">
     <script defer src="https://unpkg.com/lucide@latest"></script>
 
     <style>

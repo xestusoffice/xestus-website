@@ -53,6 +53,11 @@
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3000); });
+            } else {
+                setTimeout(loadAdSense, 4000);
+            }
         })();
     </script>
 
@@ -65,6 +70,7 @@
 
     <!-- SEO Metadata -->
     <title>Universal Unit Converter — Length, Weight, Temp, Area, Speed, Storage | XESTUS</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
     <meta name="description" content="Convert between metric and imperial units for length, mass/weight, temperature, area, speed, volume, and digital data storage with high-precision decimals.">
     <meta name="keywords" content="unit converter, length converter, kg to lbs, celsius to fahrenheit, data storage converter">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">

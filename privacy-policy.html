@@ -55,6 +55,11 @@
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3000); });
+            } else {
+                setTimeout(loadAdSense, 4000);
+            }
         })();
     </script>
 
@@ -67,6 +72,7 @@
 
     <!-- Primary Metadata -->
     <title>Privacy Policy | XESTUS — Data Protection, Cookies &amp; AdSense Compliance</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
     <meta name="description" content="Official Privacy Policy for XESTUS (xestus.in). Learn how we protect user privacy, manage browser-side developer tools, use cookies, and comply with GDPR, CCPA, and Google AdSense standards.">
     <meta name="author" content="Sudip Khatua, XESTUS">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -88,7 +94,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
-    <link rel="stylesheet" href="style.min.css?v=4.6.0">
+    <link rel="stylesheet" href="style.min.css?v=4.8.0">
 
     <!-- Schema.org -->
     <script type="application/ld+json">

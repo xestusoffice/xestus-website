@@ -53,6 +53,11 @@
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3000); });
+            } else {
+                setTimeout(loadAdSense, 4000);
+            }
         })();
     </script>
 
@@ -65,6 +70,7 @@
 
     <!-- SEO Metadata -->
     <title>Image Compressor — Reduce JPG, PNG, WebP File Size In-Browser | XESTUS</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
     <meta name="description" content="Compress and reduce image file sizes (JPG, PNG, WebP) directly in your browser. Maintain high visual quality with 100% private, zero-server uploads.">
     <meta name="keywords" content="image compressor, compress image size, reduce photo kb, compress jpg online, png optimizer">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">

@@ -53,6 +53,11 @@
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3000); });
+            } else {
+                setTimeout(loadAdSense, 4000);
+            }
         })();
     </script>
 
@@ -65,6 +70,7 @@
 
     <!-- SEO Metadata -->
     <title>JPG to PNG Converter — Convert JPEG Images to Lossless PNG | XESTUS</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
     <meta name="description" content="Convert JPG and JPEG images to PNG format instantly in your browser with lossless color rendering and zero server uploads.">
     <meta name="keywords" content="jpg to png, png to jpg, convert image format, image converter online">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">

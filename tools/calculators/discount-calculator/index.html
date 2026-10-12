@@ -53,6 +53,11 @@
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadAdSense, { once: true, passive: true });
             });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 3000); });
+            } else {
+                setTimeout(loadAdSense, 4000);
+            }
         })();
     </script>
 
@@ -65,6 +70,7 @@
 
     <!-- SEO Metadata -->
     <title>Discount Calculator — Calculate Sale Price, Savings & Stacked Discounts | XESTUS</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
     <meta name="description" content="Calculate final sale price, total money saved, and stacked double discounts (e.g., 20% off + extra 10% coupon) with instant in-browser calculations.">
     <meta name="keywords" content="discount calculator, sale price calculator, percentage discount, calculate savings">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
