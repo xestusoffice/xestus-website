@@ -53,11 +53,6 @@
             ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
                 window.addEventListener(ev, loadGTM, { once: true, passive: true });
             });
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(function() { setTimeout(loadGTM, 3500); });
-            } else {
-                setTimeout(loadGTM, 4500);
-            }
         })();
     </script>
     <script defer src="js/cookie-consent.min.js?v=4.2.0"></script>
@@ -4244,8 +4239,8 @@
 })();
 </script>
 
-<!-- Lucide Icons -->
-<script defer src="https://unpkg.com/lucide@latest"></script>
+<!-- Lucide Icons (Self-Hosted Local Bundle) -->
+<script defer src="js/lucide.min.js?v=1.57.0"></script>
 
 <!-- Security Shield (Minified Production Bundle) -->
 <script defer src="js/security-shield.min.js?v=4.1.0"></script>
@@ -4325,17 +4320,12 @@
                     loadDigitalSeva();
                     obs.disconnect();
                 }
-            }, { rootMargin: '350px 0px' });
+            }, { rootMargin: '600px 0px' });
             obs.observe(sec);
         }
         ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function(ev) {
             window.addEventListener(ev, loadDigitalSeva, { once: true, passive: true });
         });
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(function() { setTimeout(loadDigitalSeva, 3500); });
-        } else {
-            setTimeout(loadDigitalSeva, 4500);
-        }
     }
 })();
 </script>
@@ -4360,18 +4350,13 @@
 
     var container = document.getElementById('floatingAssistantContainer');
     if (container) {
-        ['pointerenter', 'focusin', 'click'].forEach(function(ev) {
+        ['pointerenter', 'focusin', 'click', 'touchstart'].forEach(function(ev) {
             container.addEventListener(ev, loadAIAssistant, { once: true, passive: true });
         });
     }
     var aiLauncher = document.getElementById('aiLauncherBtn');
     if (aiLauncher) {
         aiLauncher.addEventListener('click', loadAIAssistant, { once: true });
-    }
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(function() { setTimeout(loadAIAssistant, 4000); });
-    } else {
-        setTimeout(loadAIAssistant, 5000);
     }
 })();
 </script>
