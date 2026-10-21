@@ -282,4 +282,40 @@
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://xestus.in/blog/</loc>
+        <lastmod>2026-10-21</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://xestus.in/blog/understanding-client-side-privacy/</loc>
+        <lastmod>2026-10-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://xestus.in/blog/how-compound-interest-and-emi-work/</loc>
+        <lastmod>2026-10-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://xestus.in/blog/guide-to-autonomous-ai-agents-and-mcp/</loc>
+        <lastmod>2026-10-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://xestus.in/blog/optimizing-web-performance-and-core-web-vitals/</loc>
+        <lastmod>2026-10-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://xestus.in/blog/developer-utilities-and-encoding-guide/</loc>
+        <lastmod>2026-10-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
 </urlset>

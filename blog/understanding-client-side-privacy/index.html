@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net https://*.adtrafficquality.google https://adtrafficquality.google; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://pagead2.googlesyndication.com https://unpkg.com https://cdn.jsdelivr.net;">
+
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                document.documentElement.setAttribute('data-theme', 'night');
+                localStorage.setItem('xestus_theme', 'night');
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Analytics -->
+    <script defer src="../../js/cookie-consent.min.js?v=4.1.0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+
+    <!-- Google AdSense - Progressive Non-Blocking Loader -->
+    <script>
+        (function() {
+            var adsLoaded = false;
+            function loadAdSense() {
+                if (adsLoaded) return;
+                adsLoaded = true;
+                try {
+                    var stored = JSON.parse(localStorage.getItem('xestus_cookie_consent_v2') || 'null');
+                    if (!stored || !stored.advertising) {
+                        (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+                    }
+                } catch(e) {}
+                var s = document.createElement('script');
+                s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869';
+                s.async = true;
+                s.crossOrigin = 'anonymous';
+                document.head.appendChild(s);
+            }
+            window.XESTUS_LOAD_ADSENSE = loadAdSense;
+            ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
+                window.addEventListener(ev, loadAdSense, { once: true, passive: true });
+            });
+        })();
+    </script>
+
+    <!-- Primary Metadata -->
+    <title>Understanding In-Browser Processing: Why Client-Side Tools Guarantee 100% Data Privacy | XESTUS</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
+    <meta name="description" content="Discover how client-side web utilities operate directly in device RAM with zero server uploads. A deep dive into WebAssembly, Web Crypto, and modern privacy architecture.">
+    <meta name="keywords" content="client side privacy, in-browser processing, zero server upload, Web Crypto API, web privacy, secure file converter">
+    <meta name="author" content="Sudip Khatua, XESTUS">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://xestus.in/blog/understanding-client-side-privacy/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="XESTUS">
+    <meta property="og:url" content="https://xestus.in/blog/understanding-client-side-privacy/">
+    <meta property="og:title" content="Understanding In-Browser Processing: Why Client-Side Tools Guarantee 100% Data Privacy">
+    <meta property="og:description" content="Learn how WebAssembly and Web Crypto keep your sensitive PDFs, images, and credentials on your device.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../style.min.css?v=4.8.0">
+    <link rel="stylesheet" href="../blog.min.css?v=1.0.0">
+
+    <!-- Schema.org Article, FAQPage, BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Understanding In-Browser Processing: Why Client-Side Tools Guarantee 100% Data Privacy",
+      "description": "Learn how modern WebAssembly, Canvas API, and Web Crypto execute complex operations directly on your device with zero server uploads.",
+      "author": {
+        "@type": "Person",
+        "name": "Sudip Khatua",
+        "url": "https://www.linkedin.com/in/sudip-khatua-16bb07354"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://xestus.in/assets/images/xestus-logo.png"
+        }
+      },
+      "datePublished": "2026-10-15",
+      "dateModified": "2026-10-21",
+      "mainEntityOfPage": "https://xestus.in/blog/understanding-client-side-privacy/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between client-side and server-side file conversion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In server-side processing, your file is uploaded over the internet to a third-party server, processed remotely, and then downloaded. In client-side processing, your web browser's JavaScript or WebAssembly engine processes the file entirely inside your device's memory without sending a single byte across the internet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I verify that a tool does not upload my files to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can open your browser's Developer Tools (F12 or right-click > Inspect), switch to the Network tab, and perform the tool action. If no HTTP POST or PUT requests are made, your file never left your computer."
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://xestus.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog & Guides",
+          "item": "https://xestus.in/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Client-Side Privacy",
+          "item": "https://xestus.in/blog/understanding-client-side-privacy/"
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <li class="desktop-nav-item"><a href="../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="../../index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="../../index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="../../tools/index.html" class="nav-link">Tools</a></li>
+                <li class="desktop-nav-item"><a href="../index.html" class="nav-link active">Articles</a></li>
+                <li class="desktop-nav-item"><a href="../../about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="../../contact.html" class="nav-link">Contact</a></li>
+
+                <!-- Mobile Drawer -->
+                <li class="mobile-nav-item"><a href="../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="mobile-nav-item"><a href="../../index.html#services" class="nav-link">Services</a></li>
+                <li class="mobile-nav-item"><a href="../../tools/index.html" class="nav-link">Tools Directory</a></li>
+                <li class="mobile-nav-item"><a href="../index.html" class="nav-link active">Articles &amp; Guides</a></li>
+                <li class="mobile-nav-item"><a href="../../about.html" class="nav-link">About</a></li>
+                <li class="mobile-nav-item"><a href="../../contact.html" class="nav-link">Contact</a></li>
+
+                <li class="mobile-theme-strip">
+                    <span class="theme-strip-title"><i data-lucide="palette"></i> Theme:</span>
+                    <button type="button" class="mobile-theme-btn" data-theme="day">Day</button>
+                    <button type="button" class="mobile-theme-btn active" data-theme="night">Night</button>
+                    <button type="button" class="mobile-theme-btn" data-theme="eye-protect">Eye Protect</button>
+                </li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
+                    </div>
+                </div>
+                <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="blog-main">
+        <div class="article-container">
+            <!-- Breadcrumbs -->
+            <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span class="sep">/</span>
+                <a href="../index.html">Articles &amp; Guides</a>
+                <span class="sep">/</span>
+                <span>Client-Side Privacy</span>
+            </nav>
+
+            <!-- Article Header -->
+            <header class="article-header">
+                <div class="article-header-meta">
+                    <span class="blog-badge">Security &amp; Privacy Architecture</span>
+                    <span class="blog-read-time"><i data-lucide="clock" style="width:13px; height:13px;"></i> 6 min read</span>
+                    <span style="color:var(--text-muted);">•</span>
+                    <time datetime="2026-10-15" style="color:var(--text-muted); font-size:12px;">October 15, 2026</time>
+                </div>
+                <h1 class="article-title">
+                    Understanding In-Browser Processing: Why Client-Side Tools Guarantee 100% Data Privacy
+                </h1>
+                <p class="article-lead">
+                    Every day, millions of users unknowingly upload confidential contracts, government IDs, bank statements, and proprietary code to free online converters. Here is how modern in-browser engineering eliminates this vulnerability forever.
+                </p>
+
+                <div class="article-author-bar">
+                    <div class="article-author-info">
+                        <img src="../../assets/images/xestus-logo.png" alt="Sudip Khatua" class="article-author-avatar">
+                        <div class="article-author-details">
+                            <h4>Sudip Khatua</h4>
+                            <p>Founder &amp; Lead Architect, XESTUS</p>
+                        </div>
+                    </div>
+                    <div class="article-share-quick">
+                        <span style="font-size:12px; color:var(--text-muted); margin-right:4px;">Share:</span>
+                        <button type="button" class="share-btn share-whatsapp" data-share="whatsapp" title="Share on WhatsApp"><i data-lucide="message-circle" style="width:16px; height:16px;"></i></button>
+                        <button type="button" class="share-btn share-linkedin" data-share="linkedin" title="Share on LinkedIn"><i data-lucide="linkedin" style="width:16px; height:16px;"></i></button>
+                        <button type="button" class="share-btn share-x" data-share="x" title="Share on X"><i data-lucide="twitter" style="width:16px; height:16px;"></i></button>
+                        <button type="button" class="share-btn share-copy" data-share="copy" title="Copy Link"><i data-lucide="link" style="width:16px; height:16px;"></i></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <nav class="article-toc" aria-label="Table of Contents">
+                <div class="article-toc-title"><i data-lucide="list"></i> In this Guide</div>
+                <ul>
+                    <li><a href="#the-hidden-risk">1. The Hidden Threat of Cloud-Based Converters</a></li>
+                    <li><a href="#how-client-side-works">2. How Modern Browsers Execute Code Locally</a></li>
+                    <li><a href="#web-technologies">3. Core Technologies: WebAssembly, Canvas &amp; Web Crypto</a></li>
+                    <li><a href="#security-comparison">4. Comparison: Cloud SaaS vs. XESTUS In-Browser Execution</a></li>
+                    <li><a href="#verification-guide">5. How to Prove Zero Uploads with Chrome DevTools</a></li>
+                    <li><a href="#faq">6. Frequently Asked Questions</a></li>
+                </ul>
+            </nav>
+
+            <!-- Article Body -->
+            <article class="article-content">
+                <h2 id="the-hidden-risk">1. The Hidden Threat of Cloud-Based Converters</h2>
+                <p>
+                    When you search for an "online PDF compressor", "image resizer", or "JSON validator", the vast majority of search results rely on legacy server-side architectures. In this model, you drag a file into the browser, and behind the scenes, an HTTP <code>POST</code> request transmits your document across public internet backbones to an unknown server cluster.
+                </p>
+                <p>
+                    Once that file hits remote storage (often unencrypted S3 buckets or temporary server volumes), several critical risks emerge:
+                </p>
+                <ul>
+                    <li><strong>Retention &amp; Logging:</strong> Server logs frequently preserve filenames, metadata, and timestamps. Even if the service claims to delete files "within 1 hour", backup snapshots and log pipelines may persist data indefinitely.</li>
+                    <li><strong>Man-in-the-Middle Interception:</strong> In insecure networks or improperly configured SSL endpoints, corporate documents and personal photos can be intercepted in transit.</li>
+                    <li><strong>Unsanctioned AI Model Training:</strong> Modern web terms of service frequently hide clauses granting the operator rights to ingest uploaded documents into proprietary machine learning models.</li>
+                </ul>
+
+                <div class="callout-box warning">
+                    <div class="callout-icon">⚠️</div>
+                    <div class="callout-content">
+                        <h4>Security Warning</h4>
+                        <p>Never upload bank statements, tax documents, medical reports, or proprietary source code to tools that make backend network requests during execution.</p>
+                    </div>
+                </div>
+
+                <h2 id="how-client-side-works">2. How Modern Browsers Execute Code Locally</h2>
+                <p>
+                    Over the past decade, web browsers have transformed from passive document viewers into high-performance execution sandboxes. Modern consumer devices—whether an entry-level smartphone or a multi-core workstation—have immense compute power.
+                </p>
+                <p>
+                    <strong>In-Browser (Client-Side) execution</strong> takes advantage of this power. Instead of sending your file to the cloud, the application sends the <em>algorithm to your browser</em>. When you select a document or input numbers, the computation happens entirely inside your device's Random Access Memory (RAM).
+                </p>
+
+                <h2 id="web-technologies">3. Core Technologies: WebAssembly, Canvas &amp; Web Crypto</h2>
+                <p>
+                    At XESTUS, our entire tools suite is engineered on four foundational browser APIs that make zero-server processing blisteringly fast:
+                </p>
+                <ul>
+                    <li><strong>HTML5 File API &amp; ArrayBuffers:</strong> Allows JavaScript to read local binary streams directly into memory buffers without triggering network activity.</li>
+                    <li><strong>HTML5 Canvas 2D &amp; WebGL:</strong> Enables lossless image compression, format transcoding (PNG to WebP/JPEG), and spatial resizing directly through the client's GPU hardware acceleration.</li>
+                    <li><strong>Web Cryptography API (SubtleCrypto):</strong> Provides native, cryptographically secure hash generation (SHA-256, SHA-512) and key derivation routines running at compiled machine-code speeds inside the browser.</li>
+                    <li><strong>Web Workers:</strong> Offloads heavy mathematical iterations, prime number calculations, and regex evaluations to separate CPU threads so your user interface remains silky-smooth at 60 FPS.</li>
+                </ul>
+
+                <div class="callout-box key-takeaway">
+                    <div class="callout-icon">💡</div>
+                    <div class="callout-content">
+                        <h4>Zero Network Footprint</h4>
+                        <p>Because the logic runs locally, your tools continue to function even if you immediately disconnect your device from Wi-Fi or mobile data after the page loads!</p>
+                    </div>
+                </div>
+
+                <h2 id="security-comparison">4. Comparison: Cloud SaaS vs. XESTUS In-Browser Execution</h2>
+                <div class="table-responsive">
+                    <table class="article-table">
+                        <thead>
+                            <tr>
+                                <th>Security &amp; Operational Dimension</th>
+                                <th>Traditional Cloud SaaS Tools</th>
+                                <th>XESTUS In-Browser Architecture</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Data Transmission</strong></td>
+                                <td>Full document uploaded over WAN</td>
+                                <td><strong>Zero bytes transmitted (100% Local)</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Server Data Storage</strong></td>
+                                <td>Saved to remote disk / cloud buckets</td>
+                                <td><strong>Never written to any server</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Execution Latency</strong></td>
+                                <td>Slow (Upload time + Queue + Download)</td>
+                                <td><strong>Instantaneous (Limited only by RAM)</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Offline Reliability</strong></td>
+                                <td>Fails immediately without internet</td>
+                                <td><strong>Works completely offline</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Data Breach Vulnerability</strong></td>
+                                <td>High (Remote server hack exposes all files)</td>
+                                <td><strong>Zero (No centralized repository exists)</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="verification-guide">5. How to Prove Zero Uploads with Chrome DevTools</h2>
+                <p>
+                    In technology, trust should never be blind—it should be verifiable. You can independently confirm that XESTUS utilities never leak your data using your browser's built-in developer tools:
+                </p>
+                <ol>
+                    <li>Press <kbd>F12</kbd> (or right-click anywhere and select <strong>Inspect</strong>).</li>
+                    <li>Click on the <strong>Network</strong> tab at the top of the DevTools panel.</li>
+                    <li>Filter by <strong>Fetch/XHR</strong> to isolate API calls and data transmissions.</li>
+                    <li>Now, upload an image into our Image Resizer or generate a SHA-256 hash.</li>
+                    <li>Observe the Network activity: you will see exactly <strong>0 requests</strong> made. Your data stayed securely in your local memory.</li>
+                </ol>
+
+                <h2 id="faq">6. Frequently Asked Questions</h2>
+                <h3>Can XESTUS tools work without an active internet connection?</h3>
+                <p>
+                    Yes. Once the initial tool asset is cached by our Service Worker, you can disconnect your computer from the internet entirely and all image processing, date math, text formatting, and cryptographic routines will function normally.
+                </p>
+
+                <h3>Are my financial calculations saved anywhere?</h3>
+                <p>
+                    No. Every calculation performed on our EMI, GST, or compound interest calculators exists strictly in browser memory for your current session. Refreshing the tab completely purges all values.
+                </p>
+            </article>
+
+            <!-- Related Tools Box -->
+            <section class="related-tools-box">
+                <h3><i data-lucide="wrench" style="vertical-align:middle; margin-right:8px; color:var(--cyan-bright);"></i> Explore Our In-Browser Private Utilities</h3>
+                <p>Test the privacy-first architecture yourself with zero server uploads:</p>
+                <div class="related-tools-grid">
+                    <a href="../../tools/security/hash-generator/" class="related-tool-item">
+                        <span>SHA &amp; MD5 Hash Generator</span>
+                        <i data-lucide="shield" style="width:16px; height:16px;"></i>
+                    </a>
+                    <a href="../../tools/calculators/emi-calculator/" class="related-tool-item">
+                        <span>Private Loan EMI Calculator</span>
+                        <i data-lucide="calculator" style="width:16px; height:16px;"></i>
+                    </a>
+                    <a href="../../tools/developer/base64-converter/" class="related-tool-item">
+                        <span>Base64 Encoder / Decoder</span>
+                        <i data-lucide="binary" style="width:16px; height:16px;"></i>
+                    </a>
+                    <a href="../../tools/image/image-compressor/" class="related-tool-item">
+                        <span>Client-Side Image Compressor</span>
+                        <i data-lucide="image" style="width:16px; height:16px;"></i>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Author Bio Card -->
+            <section class="author-bio-card">
+                <img src="../../assets/images/xestus-logo.png" alt="Sudip Khatua" class="author-bio-avatar">
+                <div class="author-bio-content">
+                    <h3>About the Author: Sudip Khatua</h3>
+                    <div class="author-bio-role">Founder, CEO &amp; Lead Systems Architect at XESTUS</div>
+                    <p>
+                        Sudip Khatua specializes in autonomous agent swarm architectures, edge web platforms, and privacy-preserving client-side computation. At XESTUS, he leads engineering efforts to replace fragile cloud dependencies with zero-telemetry in-browser software.
+                    </p>
+                    <a href="https://www.linkedin.com/in/sudip-khatua-16bb07354" target="_blank" rel="noopener noreferrer" style="color:var(--cyan-bright); font-size:13px; font-weight:600; text-decoration:none;">
+                        Connect on LinkedIn →
+                    </a>
+                </div>
+            </section>
+
+            <!-- Share Banner -->
+            <section class="article-share-banner">
+                <h4>Found this guide valuable?</h4>
+                <p>Share it with developers, colleagues, or students who care about digital privacy and data security.</p>
+                <div class="share-banner-buttons">
+                    <button type="button" class="share-pill-btn whatsapp" data-share="whatsapp" data-title="Understanding In-Browser Processing: Why Client-Side Tools Guarantee 100% Data Privacy">
+                        <i data-lucide="message-circle"></i> WhatsApp
+                    </button>
+                    <button type="button" class="share-pill-btn telegram" data-share="telegram" data-title="Understanding In-Browser Processing: Why Client-Side Tools Guarantee 100% Data Privacy">
+                        <i data-lucide="send"></i> Telegram
+                    </button>
+                    <button type="button" class="share-pill-btn linkedin" data-share="linkedin" data-title="Understanding In-Browser Processing: Why Client-Side Tools Guarantee 100% Data Privacy">
+                        <i data-lucide="linkedin"></i> LinkedIn
+                    </button>
+                    <button type="button" class="share-pill-btn x" data-share="x" data-title="Understanding In-Browser Processing: Why Client-Side Tools Guarantee 100% Data Privacy">
+                        <i data-lucide="twitter"></i> X (Twitter)
+                    </button>
+                    <button type="button" class="share-pill-btn copy" data-share="copy">
+                        <i data-lucide="link"></i> Copy Link
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../index.html#home" class="footer-logo">
+                        <img src="../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="../../privacy-policy.html" class="legal-link-btn">Privacy Policy</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../terms.html" class="legal-link-btn">Terms of Service</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../disclaimer.html" class="legal-link-btn">Disclaimer</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../cookie-policy.html" class="legal-link-btn">Cookie Policy</a>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="../index.html" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← All Articles</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script defer src="../../js/lucide.min.js?v=1.57.0"></script>
+    <script defer src="../../js/share-widget.min.js?v=1.0.0"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) lucide.createIcons();
+            const themeKey = "xestus_theme";
+            const themeBtn = document.getElementById("themeBtn");
+            const themeSwitcher = document.getElementById("themeSwitcher");
+            const themeOpts = document.querySelectorAll(".theme-opt");
+            const mobileThemeBtns = document.querySelectorAll(".mobile-theme-btn");
+            const currentLabel = document.querySelector(".theme-current-label");
+            const activeIcon = document.querySelector(".theme-active-icon");
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                try { localStorage.setItem(themeKey, theme); } catch (_) {}
+                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
+                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
+                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
+                mobileThemeBtns.forEach(b => b.classList.toggle("active", b.getAttribute("data-theme") === theme));
+                if (window.lucide) lucide.createIcons();
+            }
+
+            const savedTheme = localStorage.getItem(themeKey) || "night";
+            setTheme(savedTheme);
+
+            if (themeBtn && themeSwitcher) {
+                themeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    themeSwitcher.classList.toggle("is-open");
+                });
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            mobileThemeBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    setTheme(btn.getAttribute("data-theme"));
+                });
+            });
+
+            const mobileBtn = document.getElementById("mobileMenuBtn");
+            const primaryNav = document.getElementById("primaryNav");
+            if (mobileBtn && primaryNav) {
+                mobileBtn.addEventListener("click", () => {
+                    primaryNav.classList.toggle("is-active");
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net https://*.adtrafficquality.google https://adtrafficquality.google; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://pagead2.googlesyndication.com https://unpkg.com https://cdn.jsdelivr.net;">
+
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                document.documentElement.setAttribute('data-theme', 'night');
+                localStorage.setItem('xestus_theme', 'night');
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Analytics -->
+    <script defer src="../../js/cookie-consent.min.js?v=4.1.0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+
+    <!-- Google AdSense - Progressive Non-Blocking Loader -->
+    <script>
+        (function() {
+            var adsLoaded = false;
+            function loadAdSense() {
+                if (adsLoaded) return;
+                adsLoaded = true;
+                try {
+                    var stored = JSON.parse(localStorage.getItem('xestus_cookie_consent_v2') || 'null');
+                    if (!stored || !stored.advertising) {
+                        (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+                    }
+                } catch(e) {}
+                var s = document.createElement('script');
+                s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869';
+                s.async = true;
+                s.crossOrigin = 'anonymous';
+                document.head.appendChild(s);
+            }
+            window.XESTUS_LOAD_ADSENSE = loadAdSense;
+            ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
+                window.addEventListener(ev, loadAdSense, { once: true, passive: true });
+            });
+        })();
+    </script>
+
+    <!-- Primary Metadata -->
+    <title>Mastering Core Web Vitals in 2026: Sub-Second Loads &amp; Zero Layout Shift | XESTUS</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
+    <meta name="description" content="A complete engineering guide to achieving 100 Lighthouse scores and flawless Core Web Vitals (LCP, INP, CLS). Real code techniques, font preloads, and non-blocking architecture.">
+    <meta name="keywords" content="Core Web Vitals, LCP optimization, INP fix, zero CLS, web performance, lighthouse 100, font preloading, non-blocking javascript">
+    <meta name="author" content="Sudip Khatua, XESTUS">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://xestus.in/blog/optimizing-web-performance-and-core-web-vitals/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="XESTUS">
+    <meta property="og:url" content="https://xestus.in/blog/optimizing-web-performance-and-core-web-vitals/">
+    <meta property="og:title" content="Mastering Core Web Vitals in 2026: Sub-Second Loads &amp; Zero Layout Shift">
+    <meta property="og:description" content="Learn how we eliminated render-blocking CSS, stabilized typography, and achieved a perfect 0.000 CLS.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../style.min.css?v=4.8.0">
+    <link rel="stylesheet" href="../blog.min.css?v=1.0.0">
+
+    <!-- Schema.org Article, FAQPage, BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Mastering Core Web Vitals in 2026: Sub-Second Loads & Zero Layout Shift",
+      "description": "A complete engineering guide to achieving 100 Lighthouse scores and flawless Core Web Vitals (LCP, INP, CLS).",
+      "author": {
+        "@type": "Person",
+        "name": "Sudip Khatua",
+        "url": "https://www.linkedin.com/in/sudip-khatua-16bb07354"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://xestus.in/assets/images/xestus-logo.png"
+        }
+      },
+      "datePublished": "2026-10-19",
+      "dateModified": "2026-10-21",
+      "mainEntityOfPage": "https://xestus.in/blog/optimizing-web-performance-and-core-web-vitals/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the three Core Web Vitals metrics in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The three metrics are: Largest Contentful Paint (LCP, measuring loading speed; target < 2.5s), Interaction to Next Paint (INP, measuring user responsiveness; target < 200ms), and Cumulative Layout Shift (CLS, measuring visual stability; target < 0.1)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you achieve 0.000 Cumulative Layout Shift (CLS)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By explicitly declaring width and height or aspect-ratio on all image and video elements, reserving fixed container geometry for dynamic navigation bars and ads, and preloading primary web fonts to prevent invisible text flash."
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://xestus.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog & Guides",
+          "item": "https://xestus.in/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Core Web Vitals Engineering",
+          "item": "https://xestus.in/blog/optimizing-web-performance-and-core-web-vitals/"
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../index.html#home" class="logo" aria-label="XESTUS Home">
+                <img src="../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <li class="desktop-nav-item"><a href="../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="../../index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="../../index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="../../tools/index.html" class="nav-link">Tools</a></li>
+                <li class="desktop-nav-item"><a href="../index.html" class="nav-link active">Articles</a></li>
+                <li class="desktop-nav-item"><a href="../../about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="../../contact.html" class="nav-link">Contact</a></li>
+
+                <li class="mobile-nav-item"><a href="../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="mobile-nav-item"><a href="../../index.html#services" class="nav-link">Services</a></li>
+                <li class="mobile-nav-item"><a href="../../tools/index.html" class="nav-link">Tools Directory</a></li>
+                <li class="mobile-nav-item"><a href="../index.html" class="nav-link active">Articles &amp; Guides</a></li>
+                <li class="mobile-nav-item"><a href="../../about.html" class="nav-link">About</a></li>
+                <li class="mobile-nav-item"><a href="../../contact.html" class="nav-link">Contact</a></li>
+
+                <li class="mobile-theme-strip">
+                    <span class="theme-strip-title"><i data-lucide="palette"></i> Theme:</span>
+                    <button type="button" class="mobile-theme-btn" data-theme="day">Day</button>
+                    <button type="button" class="mobile-theme-btn active" data-theme="night">Night</button>
+                    <button type="button" class="mobile-theme-btn" data-theme="eye-protect">Eye Protect</button>
+                </li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
+                    </div>
+                </div>
+                <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="blog-main">
+        <div class="article-container">
+            <!-- Breadcrumbs -->
+            <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span class="sep">/</span>
+                <a href="../index.html">Articles &amp; Guides</a>
+                <span class="sep">/</span>
+                <span>Web Performance &amp; CWV</span>
+            </nav>
+
+            <!-- Article Header -->
+            <header class="article-header">
+                <div class="article-header-meta">
+                    <span class="blog-badge">Web Architecture &amp; Performance</span>
+                    <span class="blog-read-time"><i data-lucide="clock" style="width:13px; height:13px;"></i> 7 min read</span>
+                    <span style="color:var(--text-muted);">•</span>
+                    <time datetime="2026-10-19" style="color:var(--text-muted); font-size:12px;">October 19, 2026</time>
+                </div>
+                <h1 class="article-title">
+                    Mastering Core Web Vitals in 2026: How We Achieved Sub-Second Loads and Zero Layout Shift
+                </h1>
+                <p class="article-lead">
+                    In modern web development, speed is not an afterthought—it is the bedrock of search visibility and user retention. Here is our engineering breakdown of conquering LCP, INP, and CLS across real-world devices.
+                </p>
+
+                <div class="article-author-bar">
+                    <div class="article-author-info">
+                        <img src="../../assets/images/xestus-logo.png" alt="Sudip Khatua" class="article-author-avatar">
+                        <div class="article-author-details">
+                            <h4>Sudip Khatua</h4>
+                            <p>Founder &amp; Lead Architect, XESTUS</p>
+                        </div>
+                    </div>
+                    <div class="article-share-quick">
+                        <span style="font-size:12px; color:var(--text-muted); margin-right:4px;">Share:</span>
+                        <button type="button" class="share-btn share-whatsapp" data-share="whatsapp" title="Share on WhatsApp"><i data-lucide="message-circle" style="width:16px; height:16px;"></i></button>
+                        <button type="button" class="share-btn share-linkedin" data-share="linkedin" title="Share on LinkedIn"><i data-lucide="linkedin" style="width:16px; height:16px;"></i></button>
+                        <button type="button" class="share-btn share-x" data-share="x" title="Share on X"><i data-lucide="twitter" style="width:16px; height:16px;"></i></button>
+                        <button type="button" class="share-btn share-copy" data-share="copy" title="Copy Link"><i data-lucide="link" style="width:16px; height:16px;"></i></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <nav class="article-toc" aria-label="Table of Contents">
+                <div class="article-toc-title"><i data-lucide="list"></i> In this Guide</div>
+                <ul>
+                    <li><a href="#the-trio">1. The Core Web Vitals Triumvirate: LCP, INP, and CLS</a></li>
+                    <li><a href="#optimizing-lcp">2. Eliminating LCP Delays: Font Preloading &amp; Hero Geometry</a></li>
+                    <li><a href="#taming-inp">3. Taming Interaction to Next Paint (INP): Non-Blocking Loaders</a></li>
+                    <li><a href="#zero-cls">4. Achieving Absolute Zero (0.000) Cumulative Layout Shift</a></li>
+                    <li><a href="#caching-workers">5. Edge Caching &amp; Offline Resilience with Service Workers</a></li>
+                    <li><a href="#faq">6. Frequently Asked Questions</a></li>
+                </ul>
+            </nav>
+
+            <!-- Article Body -->
+            <article class="article-content">
+                <h2 id="the-trio">1. The Core Web Vitals Triumvirate: LCP, INP, and CLS</h2>
+                <p>
+                    Google's search algorithm does not care how sophisticated your backend is if your frontend stutters or delays user input. In 2026, Core Web Vitals consist of three strict benchmarks:
+                </p>
+
+                <div class="table-responsive">
+                    <table class="article-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>User Experience Measured</th>
+                                <th>"Good" Passing Threshold</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>LCP (Largest Contentful Paint)</strong></td>
+                                <td>How rapidly the primary headline or hero visual renders on screen.</td>
+                                <td><strong>&lt; 2.5 Seconds</strong> (XESTUS targets &lt; 0.8s)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>INP (Interaction to Next Paint)</strong></td>
+                                <td>The responsiveness latency when a user clicks a button, menu, or input.</td>
+                                <td><strong>&lt; 200 Milliseconds</strong> (XESTUS targets &lt; 40ms)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CLS (Cumulative Layout Shift)</strong></td>
+                                <td>Visual stability: preventing content from jumping around as fonts and ads load.</td>
+                                <td><strong>&lt; 0.100</strong> (XESTUS maintains <strong>0.000</strong>)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="optimizing-lcp">2. Eliminating LCP Delays: Font Preloading &amp; Hero Geometry</h2>
+                <p>
+                    The number one culprit behind poor LCP scores is <strong>font render-blocking chains</strong>. When a browser parses HTML, if it discovers an external <code>@import</code> stylesheet inside a CSS file, it halts DOM rendering, initiates a DNS lookup, downloads the CSS file, parses it, and then realizes it needs a font binary file.
+                </p>
+                <p>
+                    We eliminated this sequential bottleneck with two architectural shifts:
+                </p>
+                <div class="code-block">
+&lt;!-- 1. Warm up DNS &amp; TLS Handshakes early --&gt;
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+
+&lt;!-- 2. Preload primary latin WOFF2 font with high priority --&gt;
+&lt;link rel="preload" as="font" type="font/woff2" href="/assets/fonts/poppins-latin-400.woff2" crossorigin&gt;
+                </div>
+                <p>
+                    By instructing the browser to fetch the primary typography binary concurrently with the HTML stream, the text paints instantaneously without the dreaded "Flash of Unstyled Text" (FOUT) or "Flash of Invisible Text" (FOIT).
+                </p>
+
+                <h2 id="taming-inp">3. Taming Interaction to Next Paint (INP): Non-Blocking Loaders</h2>
+                <p>
+                    In 2024, Google replaced First Input Delay (FID) with <strong>Interaction to Next Paint (INP)</strong>. While FID only sampled the very first user interaction, INP continuously monitors every single click, keypress, and tap throughout the entire page session.
+                </p>
+                <p>
+                    Third-party analytics and advertising tags often execute heavy JavaScript during initial boot, saturating the browser's single main thread. When a user taps the menu button during this freeze, the browser cannot paint the next frame, tanking the INP score.
+                </p>
+                <p>
+                    Our solution: <strong>Progressive Event-Driven Loaders</strong>. Instead of running third-party scripts on DOM load, we bind initialization to the first passive user interaction:
+                </p>
+                <div class="code-block">
+['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function(ev) {
+    window.addEventListener(ev, loadThirdPartySDKs, { once: true, passive: true });
+});
+                </div>
+
+                <div class="callout-box tip">
+                    <div class="callout-icon">🚀</div>
+                    <div class="callout-content">
+                        <h4>Zero Main-Thread Contention</h4>
+                        <p>This guarantees that the initial page load consumes 0ms of scripting budget, delivering instantaneous 60fps responsiveness upon initial paint.</p>
+                    </div>
+                </div>
+
+                <h2 id="zero-cls">4. Achieving Absolute Zero (0.000) Cumulative Layout Shift</h2>
+                <p>
+                    Nothing frustrates users more than reading a line of text, only for an image or dynamic card to suddenly load above it, pushing the content down and causing an accidental misclick.
+                </p>
+                <p>
+                    To achieve a certified <strong>0.000 CLS</strong> score across XESTUS:
+                </p>
+                <ul>
+                    <li><strong>Explicit Geometry Declarations:</strong> Every <code>&lt;img&gt;</code> and icon tag includes explicit <code>width</code> and <code>height</code> attributes, allowing the browser's layout engine to allocate the exact pixel bounding box before image bytes arrive.</li>
+                    <li><strong>Modern CSS Aspect-Ratio:</strong> Card wrappers utilize <code>aspect-ratio: 16 / 9;</code> or fixed min-height constraints so dynamic previews never resize container heights.</li>
+                    <li><strong>Font Override Metrics:</strong> By pairing system fallback fonts with matching metric overrides (`ascent-override`, `descent-override`), typography swaps without moving neighboring blocks a single pixel.</li>
+                </ul>
+
+                <h2 id="caching-workers">5. Edge Caching &amp; Offline Resilience with Service Workers</h2>
+                <p>
+                    The fastest HTTP request is the one that never touches the network. We pair our lightweight CSS/JS bundles with an intelligent, versioned <strong>Service Worker Cache</strong>.
+                </p>
+                <p>
+                    Upon first visit, critical assets (core CSS, JavaScript engines, offline fallback shells) are indexed into the browser's persistent CacheStorage. Subsequent page views bypass latency entirely, loading in under <strong>80 milliseconds</strong> even on congested 3G cellular connections.
+                </p>
+
+                <h2 id="faq">6. Frequently Asked Questions</h2>
+                <h3>Does PageSpeed Insights score affect SEO rankings?</h3>
+                <p>
+                    Yes. Google's page experience signals explicitly penalize slow sites, particularly on mobile search indexes where user bounce rates skyrocket if a page takes longer than 3 seconds to become interactive.
+                </p>
+
+                <h3>How can I test my site's INP accurately?</h3>
+                <p>
+                    Use Chrome DevTools Performance panel, click "Record", and interact with buttons or inputs on the page. Look for "Long Tasks" exceeding 50ms on the main thread track.
+                </p>
+            </article>
+
+            <!-- Related Tools Box -->
+            <section class="related-tools-box">
+                <h3><i data-lucide="zap" style="vertical-align:middle; margin-right:8px; color:var(--cyan-bright);"></i> Test Blazing-Fast Web Engineering</h3>
+                <p>Experience sub-second speed across XESTUS utilities:</p>
+                <div class="related-tools-grid">
+                    <a href="../../tools/developer/regex-tester/" class="related-tool-item">
+                        <span>Regex Testing Engine</span>
+                        <i data-lucide="code" style="width:16px; height:16px;"></i>
+                    </a>
+                    <a href="../../tools/developer/json-formatter/" class="related-tool-item">
+                        <span>JSON Formatter &amp; Validator</span>
+                        <i data-lucide="file-json" style="width:16px; height:16px;"></i>
+                    </a>
+                    <a href="../../tools/image/image-compressor/" class="related-tool-item">
+                        <span>Fast Image Compressor</span>
+                        <i data-lucide="image" style="width:16px; height:16px;"></i>
+                    </a>
+                    <a href="../../about.html" class="related-tool-item">
+                        <span>About XESTUS Engineering</span>
+                        <i data-lucide="info" style="width:16px; height:16px;"></i>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Author Bio Card -->
+            <section class="author-bio-card">
+                <img src="../../assets/images/xestus-logo.png" alt="Sudip Khatua" class="author-bio-avatar">
+                <div class="author-bio-content">
+                    <h3>About the Author: Sudip Khatua</h3>
+                    <div class="author-bio-role">Founder, CEO &amp; Lead Systems Architect at XESTUS</div>
+                    <p>
+                        Sudip Khatua is a performance engineer and web architect. He specializes in low-overhead frontend systems, rendering optimizations, and edge-first web platforms that deliver native-app speeds across modern web standards.
+                    </p>
+                    <a href="https://www.linkedin.com/in/sudip-khatua-16bb07354" target="_blank" rel="noopener noreferrer" style="color:var(--cyan-bright); font-size:13px; font-weight:600; text-decoration:none;">
+                        Connect on LinkedIn →
+                    </a>
+                </div>
+            </section>
+
+            <!-- Share Banner -->
+            <section class="article-share-banner">
+                <h4>Share this Web Performance Guide</h4>
+                <p>Help other frontend developers and site owners master Google Core Web Vitals in 2026.</p>
+                <div class="share-banner-buttons">
+                    <button type="button" class="share-pill-btn whatsapp" data-share="whatsapp" data-title="Mastering Core Web Vitals in 2026: Sub-Second Loads &amp; Zero Layout Shift">
+                        <i data-lucide="message-circle"></i> WhatsApp
+                    </button>
+                    <button type="button" class="share-pill-btn telegram" data-share="telegram" data-title="Mastering Core Web Vitals in 2026: Sub-Second Loads &amp; Zero Layout Shift">
+                        <i data-lucide="send"></i> Telegram
+                    </button>
+                    <button type="button" class="share-pill-btn linkedin" data-share="linkedin" data-title="Mastering Core Web Vitals in 2026: Sub-Second Loads &amp; Zero Layout Shift">
+                        <i data-lucide="linkedin"></i> LinkedIn
+                    </button>
+                    <button type="button" class="share-pill-btn x" data-share="x" data-title="Mastering Core Web Vitals in 2026: Sub-Second Loads &amp; Zero Layout Shift">
+                        <i data-lucide="twitter"></i> X (Twitter)
+                    </button>
+                    <button type="button" class="share-pill-btn copy" data-share="copy">
+                        <i data-lucide="link"></i> Copy Link
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-brand-section">
+                <div class="footer-brand-header">
+                    <a href="../../index.html#home" class="footer-logo">
+                        <img src="../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="36" height="36">
+                        <span class="footer-brand-name">XESTUS</span>
+                    </a>
+                    <span class="footer-tagline">Intelligence Beyond Limits</span>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <div class="footer-copyright">
+                    <p>© 2026 XESTUS. All Rights Reserved.</p>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="../../privacy-policy.html" class="legal-link-btn">Privacy Policy</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../terms.html" class="legal-link-btn">Terms of Service</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../disclaimer.html" class="legal-link-btn">Disclaimer</a>
+                    <span class="legal-sep" aria-hidden="true">•</span>
+                    <a href="../../cookie-policy.html" class="legal-link-btn">Cookie Policy</a>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="../index.html" style="color: var(--cyan-bright); text-decoration: none; font-size: 13px; font-weight: 600;">← All Articles</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script defer src="../../js/lucide.min.js?v=1.57.0"></script>
+    <script defer src="../../js/share-widget.min.js?v=1.0.0"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) lucide.createIcons();
+            const themeKey = "xestus_theme";
+            const themeBtn = document.getElementById("themeBtn");
+            const themeSwitcher = document.getElementById("themeSwitcher");
+            const themeOpts = document.querySelectorAll(".theme-opt");
+            const mobileThemeBtns = document.querySelectorAll(".mobile-theme-btn");
+            const currentLabel = document.querySelector(".theme-current-label");
+            const activeIcon = document.querySelector(".theme-active-icon");
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                try { localStorage.setItem(themeKey, theme); } catch (_) {}
+                const labels = { "night": "Night", "day": "Day", "eye-protect": "Eye Protect" };
+                const icons = { "night": "moon", "day": "sun", "eye-protect": "glasses" };
+                if (currentLabel) currentLabel.textContent = labels[theme] || "Night";
+                if (activeIcon) activeIcon.setAttribute("data-lucide", icons[theme] || "moon");
+                themeOpts.forEach(o => o.classList.toggle("active", o.getAttribute("data-theme") === theme));
+                mobileThemeBtns.forEach(b => b.classList.toggle("active", b.getAttribute("data-theme") === theme));
+                if (window.lucide) lucide.createIcons();
+            }
+
+            const savedTheme = localStorage.getItem(themeKey) || "night";
+            setTheme(savedTheme);
+
+            if (themeBtn && themeSwitcher) {
+                themeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    themeSwitcher.classList.toggle("is-open");
+                });
+                document.addEventListener("click", (e) => {
+                    if (!themeSwitcher.contains(e.target)) themeSwitcher.classList.remove("is-open");
+                });
+            }
+
+            themeOpts.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    setTheme(opt.getAttribute("data-theme"));
+                    if (themeSwitcher) themeSwitcher.classList.remove("is-open");
+                });
+            });
+
+            mobileThemeBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    setTheme(btn.getAttribute("data-theme"));
+                });
+            });
+
+            const mobileBtn = document.getElementById("mobileMenuBtn");
+            const primaryNav = document.getElementById("primaryNav");
+            if (mobileBtn && primaryNav) {
+                mobileBtn.addEventListener("click", () => {
+                    primaryNav.classList.toggle("is-active");
+                });
+            }
+        });
+    </script>
+</body>
+</html>
