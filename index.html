@@ -187,8 +187,8 @@
     </style>
 
     <!-- Core Stylesheet (Minified Production Bundle) -->
-    <link rel="preload" as="style" href="style.min.css?v=4.8.0">
-    <link rel="stylesheet" href="style.min.css?v=4.8.0">
+    <link rel="preload" as="style" href="style.min.css?v=4.8.1">
+    <link rel="stylesheet" href="style.min.css?v=4.8.1">
     <link rel="manifest" href="manifest.json">
 
 
@@ -4028,7 +4028,7 @@
      DIGITAL SEVA HUB MODALS
      ========================================================================== -->
 <!-- Digital Seva Hub Master Detail Modal -->
-<div id="sevaDetailModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-labelledby="sevaModalTitle">
+<div id="sevaDetailModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sevaModalTitle">
     <div class="case-study-backdrop seva-modal-close-btn"></div>
     <div class="case-study-dialog seva-modal-dialog" role="document">
         <button type="button" class="modal-close-btn seva-modal-close-btn" aria-label="Close Service Guide">
@@ -4042,7 +4042,7 @@
 </div>
 
 <!-- 59-Category Taxonomy Explorer Modal -->
-<div id="sevaCategoryModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-labelledby="sevaCategoryModalTitle">
+<div id="sevaCategoryModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sevaCategoryModalTitle">
     <div class="case-study-backdrop seva-modal-close-btn"></div>
     <div class="case-study-dialog seva-modal-dialog category-explorer-dialog" role="document">
         <button type="button" class="modal-close-btn seva-modal-close-btn" aria-label="Close Category Catalog">
@@ -4063,7 +4063,7 @@
 </div>
 
 <!-- Scam Defense & Cyber Protection Hub Modal -->
-<div id="sevaScamModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-labelledby="sevaScamModalTitle">
+<div id="sevaScamModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sevaScamModalTitle">
     <div class="case-study-backdrop seva-modal-close-btn"></div>
     <div class="case-study-dialog seva-modal-dialog scam-center-dialog" role="document">
         <button type="button" class="modal-close-btn seva-modal-close-btn" aria-label="Close Scam Defense Center">
@@ -4084,7 +4084,7 @@
 </div>
 
 <!-- XESTUS Assisted Inquiry & Application Guidance Modal -->
-<div id="sevaAssistModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" inert aria-labelledby="sevaAssistModalTitle">
+<div id="sevaAssistModal" class="case-study-modal seva-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sevaAssistModalTitle">
     <div class="case-study-backdrop seva-modal-close-btn"></div>
     <div class="case-study-dialog seva-modal-dialog assist-modal-dialog" role="document">
         <button type="button" class="modal-close-btn seva-modal-close-btn" aria-label="Close Assistance Form">
@@ -4274,7 +4274,7 @@
 
     // Detect non-English preference (URL parameter or localStorage)
     var savedLang = null;
-    try { savedLang = localStorage.getItem('xestus_lang'); } catch(e) {}
+    try { savedLang = localStorage.getItem('xestus_user_language') || localStorage.getItem('xestus_lang'); } catch(e) {}
     var urlParams = (typeof URLSearchParams !== 'undefined') ? new URLSearchParams(window.location.search) : null;
     var urlLang = urlParams ? urlParams.get('lang') : null;
     var targetLang = urlLang || savedLang;
@@ -4310,7 +4310,7 @@
         s1.src = 'js/digital-seva-data.js?v=4.0.0';
         s1.onload = function() {
             var s2 = document.createElement('script');
-            s2.src = 'js/digital-seva-hub.js?v=4.0.0';
+            s2.src = 'js/digital-seva-hub.js?v=4.0.1';
             document.body.appendChild(s2);
         };
         document.body.appendChild(s1);
@@ -4346,24 +4346,34 @@
 <script>
 (function() {
     var aiLoaded = false;
-    function loadAIAssistant() {
+    function loadAIAssistant(autoOpen) {
         if (aiLoaded) return;
         aiLoaded = true;
         var s = document.createElement('script');
         s.src = 'js/ai-assistant.min.js?v=4.1.0';
+        if (autoOpen) {
+            s.onload = function() {
+                var btn = document.getElementById('aiLauncherBtn');
+                if (btn) btn.click();
+            };
+        }
         document.body.appendChild(s);
     }
     window.XESTUS_LOAD_AI = loadAIAssistant;
 
     var container = document.getElementById('floatingAssistantContainer');
     if (container) {
-        ['pointerenter', 'focusin', 'click', 'touchstart'].forEach(function(ev) {
-            container.addEventListener(ev, loadAIAssistant, { once: true, passive: true });
+        ['pointerenter', 'focusin', 'touchstart'].forEach(function(ev) {
+            container.addEventListener(ev, function() { loadAIAssistant(false); }, { once: true, passive: true });
         });
     }
     var aiLauncher = document.getElementById('aiLauncherBtn');
     if (aiLauncher) {
-        aiLauncher.addEventListener('click', loadAIAssistant, { once: true });
+        aiLauncher.addEventListener('click', function() {
+            if (!aiLoaded) {
+                loadAIAssistant(true);
+            }
+        });
     }
 })();
 </script>

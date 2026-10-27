@@ -2764,6 +2764,7 @@ function initApp() {
             });
         }
 
+        legalModal.removeAttribute("inert");
         legalModal.classList.add("is-open");
         legalModal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
@@ -2775,6 +2776,7 @@ function initApp() {
 
     function closeLegalModal() {
         if (!legalModal) return;
+        legalModal.setAttribute("inert", "");
         legalModal.classList.remove("is-open");
         legalModal.setAttribute("aria-hidden", "true");
         document.body.classList.remove("modal-open");
@@ -3056,6 +3058,11 @@ function initApp() {
     function setLanguage(lang, updateUrl = true) {
         const allTrans = window.XESTUS_TRANSLATIONS || window.translations;
         if (!allTrans) {
+            if (typeof window.XESTUS_LOAD_TRANSLATIONS === "function") {
+                window.XESTUS_LOAD_TRANSLATIONS(() => {
+                    setLanguage(lang, updateUrl);
+                });
+            }
             return;
         }
         if (!SUPPORTED_LANGS.includes(lang) || !allTrans[lang]) {
@@ -3291,16 +3298,15 @@ function initApp() {
     });
 
     // --------------------------------------------------------------------------
-    // 13B. Exclusively Dark Cyber-Aesthetic System (Permanent Night Mode)
+    // 13B. Theme Helper Bridge
     // --------------------------------------------------------------------------
-    document.documentElement.setAttribute("data-theme", "night");
-    try {
-        localStorage.setItem("xestus_theme", "night");
-    } catch (e) {}
-
     function setTheme(theme) {
-        document.documentElement.setAttribute("data-theme", "night");
-        try { localStorage.setItem("xestus_theme", "night"); } catch (e) {}
+        if (typeof applyTheme === "function") {
+            applyTheme(theme);
+        } else {
+            document.documentElement.setAttribute("data-theme", theme);
+            try { localStorage.setItem("xestus_theme", theme); } catch (e) {}
+        }
     }
     window.setTheme = setTheme;
 

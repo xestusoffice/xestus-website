@@ -304,7 +304,7 @@
                         <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">Original Size</div>
                         <div id="origSize" style="font-size:18px; font-weight:800; color:var(--text-primary);">0 KB</div>
                         <div style="margin-top:10px; max-height:240px; overflow:hidden; border-radius:12px; border:1px solid var(--border-subtle);">
-                            <img id="previewOrig" style="max-width:100%; height:auto; display:block; margin:0 auto;">
+                            <img id="previewOrig" alt="Original image preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" style="max-width:100%; height:auto; display:none; margin:0 auto;">
                         </div>
                     </div>
 
@@ -312,7 +312,7 @@
                         <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">Compressed Size</div>
                         <div id="compSize" style="font-size:18px; font-weight:800; color:#00ff88;">0 KB</div>
                         <div style="margin-top:10px; max-height:240px; overflow:hidden; border-radius:12px; border:1px solid var(--border-subtle);">
-                            <img id="previewComp" style="max-width:100%; height:auto; display:block; margin:0 auto;">
+                            <img id="previewComp" alt="Compressed image preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" style="max-width:100%; height:auto; display:none; margin:0 auto;">
                         </div>
                     </div>
                 </div>
@@ -568,6 +568,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     previewOrig.src = e.target.result;
+                    previewOrig.style.display = 'block';
                     loadedImg = new Image();
                     loadedImg.onload = () => {
                         controls.style.display = 'block';
@@ -593,6 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (compressedBlobUrl) URL.revokeObjectURL(compressedBlobUrl);
                     compressedBlobUrl = URL.createObjectURL(blob);
                     previewComp.src = compressedBlobUrl;
+                    previewComp.style.display = 'block';
                     compSize.textContent = formatBytes(blob.size);
                     const savedPct = (((originalFile.size - blob.size) / originalFile.size) * 100).toFixed(0);
                     if (savedPct > 0) {
@@ -614,100 +616,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
   
 
-<!-- TOOL_FUNCTIONAL_LOGIC -->
-<script>
-window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-EF3ZRR55YY');
 
-document.addEventListener('DOMContentLoaded', () => {
-            const dropzone = document.getElementById('dropzone');
-            const fileInput = document.getElementById('fileInput');
-            const controls = document.getElementById('compressionControls');
-            const qualityRange = document.getElementById('qualityRange');
-            const qualityVal = document.getElementById('qualityVal');
-            const origSize = document.getElementById('origSize');
-            const compSize = document.getElementById('compSize');
-            const previewOrig = document.getElementById('previewOrig');
-            const previewComp = document.getElementById('previewComp');
-            const btnDownload = document.getElementById('btnDownloadCompressed');
-
-            let loadedImg = null;
-            let originalFile = null;
-            let compressedBlobUrl = null;
-
-            dropzone.addEventListener('click', () => fileInput.click());
-            dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('drag-over'); });
-            dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
-            dropzone.addEventListener('drop', (e) => {
-                e.preventDefault();
-                dropzone.classList.remove('drag-over');
-                if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
-            });
-
-            fileInput.addEventListener('change', () => {
-                if (fileInput.files.length) handleFile(fileInput.files[0]);
-            });
-
-            function formatBytes(bytes) {
-                if (bytes < 1024) return bytes + ' B';
-                if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-                return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
-            }
-
-            function handleFile(file) {
-                if (!file.type.startsWith('image/')) return;
-                originalFile = file;
-                origSize.textContent = formatBytes(file.size);
-
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    previewOrig.src = e.target.result;
-                    loadedImg = new Image();
-                    loadedImg.onload = () => {
-                        controls.style.display = 'block';
-                        compressImage();
-                    };
-                    loadedImg.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-
-            function compressImage() {
-                if (!loadedImg) return;
-                const canvas = document.createElement('canvas');
-                canvas.width = loadedImg.width;
-                canvas.height = loadedImg.height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(loadedImg, 0, 0);
-
-                const q = parseInt(qualityRange.value, 10) / 100;
-                qualityVal.textContent = qualityRange.value + '%';
-
-                canvas.toBlob((blob) => {
-                    if (compressedBlobUrl) URL.revokeObjectURL(compressedBlobUrl);
-                    compressedBlobUrl = URL.createObjectURL(blob);
-                    previewComp.src = compressedBlobUrl;
-                    compSize.textContent = formatBytes(blob.size);
-                    const savedPct = (((originalFile.size - blob.size) / originalFile.size) * 100).toFixed(0);
-                    if (savedPct > 0) {
-                        compSize.textContent += ` (${savedPct}% smaller)`;
-                    }
-                }, 'image/jpeg', q);
-            }
-
-            qualityRange.addEventListener('input', compressImage);
-
-            btnDownload.addEventListener('click', () => {
-                if (!compressedBlobUrl) return;
-                const a = document.createElement('a');
-                a.download = 'xestus-compressed-' + (originalFile ? originalFile.name : 'image.jpg');
-                a.href = compressedBlobUrl;
-                a.click();
-            });
-        });
-</script>
-<!-- /TOOL_FUNCTIONAL_LOGIC -->
 </body>
 </html>

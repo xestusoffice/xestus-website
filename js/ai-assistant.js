@@ -311,6 +311,7 @@
                     updateFollowBtnState();
                     // Open Community Modal Dialog
                     if (communityModal) {
+                        communityModal.removeAttribute("inert");
                         communityModal.classList.add("is-open");
                         communityModal.setAttribute("aria-hidden", "false");
                         document.body.classList.add("modal-open");
@@ -318,6 +319,7 @@
                 } else {
                     // Open Community channels
                     if (communityModal) {
+                        communityModal.removeAttribute("inert");
                         communityModal.classList.add("is-open");
                         communityModal.setAttribute("aria-hidden", "false");
                         document.body.classList.add("modal-open");
@@ -328,6 +330,7 @@
 
         function closeCommunityModal() {
             if (!communityModal) return;
+            communityModal.setAttribute("inert", "");
             communityModal.classList.remove("is-open");
             communityModal.setAttribute("aria-hidden", "true");
             document.body.classList.remove("modal-open");

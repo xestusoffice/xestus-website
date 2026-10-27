@@ -17421,6 +17421,24 @@ textarea,
 }
 
 
+/* Ensure all Digital Seva modal interactive elements receive touch & click events */
+.seva-modal-dialog,
+.modal-action-bar,
+.btn-modal-action,
+.modal-tab-nav,
+.modal-tab-btn,
+.modal-close-btn {
+    pointer-events: auto !important;
+    touch-action: manipulation;
+}
+
+.btn-share-modal *,
+.btn-share-modal span,
+.btn-share-modal i,
+.btn-share-modal svg {
+    pointer-events: none !important;
+}
+
 /* ==========================================================================
    XESTUS BUTTER-SMOOTH 120 FPS GPU COMPOSITOR ENGINE
    Eliminates all scrolling lag, frame drops, and GPU memory saturation.
@@ -20008,4 +20026,13 @@ select option {
     .xestus-tools-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Ensure modal sits above everything and suppresses floating elements */
+.case-study-modal {
+    z-index: 1000000 !important;
+}
+body.modal-open .xestus-cookie-banner,
+body.modal-open .xestus-floating-assistant {
+    display: none !important;
 }

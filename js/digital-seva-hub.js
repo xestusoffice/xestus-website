@@ -1101,22 +1101,29 @@
 
             // Tab Switching Listeners
             bodyEl.querySelectorAll(".modal-tab-btn").forEach((tabBtn) => {
-                tabBtn.addEventListener("click", () => {
+                const switchTab = (e) => {
+                    if (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
                     const targetTab = tabBtn.getAttribute("data-tab");
                     bodyEl.querySelectorAll(".modal-tab-btn").forEach((b) => {
-                        b.classList.toggle("active", b === tabBtn);
-                        b.setAttribute("aria-selected", b === tabBtn ? "true" : "false");
+                        const isActive = b === tabBtn;
+                        b.classList.toggle("active", isActive);
+                        b.setAttribute("aria-selected", isActive ? "true" : "false");
                     });
                     bodyEl.querySelectorAll(".modal-tab-pane").forEach((pane) => {
                         pane.classList.toggle("active", pane.id === targetTab);
                     });
-                });
+                };
+                tabBtn.addEventListener("click", switchTab);
             });
 
             // Button to trigger assistance modal from inside service modal
             const btnModalShare = bodyEl.querySelector("#btnModalShareService");
             if (btnModalShare) {
-                btnModalShare.addEventListener("click", () => {
+                btnModalShare.addEventListener("click", (e) => {
+                    if (e) { e.preventDefault(); e.stopPropagation(); }
                     const sId = btnModalShare.getAttribute("data-service-id");
                     const sTitle = btnModalShare.getAttribute("data-service-title");
                     shareService(sId, sTitle);
@@ -1125,14 +1132,16 @@
 
             const btnModalAssist = bodyEl.querySelector("#btnModalTriggerAssist");
             if (btnModalAssist) {
-                btnModalAssist.addEventListener("click", () => {
+                btnModalAssist.addEventListener("click", (e) => {
+                    if (e) { e.preventDefault(); e.stopPropagation(); }
                     closeModal(modal);
                     openAssistanceModal(name);
                 });
             }
             const btnPaneSupport = bodyEl.querySelector("#btnPaneRequestSupport");
             if (btnPaneSupport) {
-                btnPaneSupport.addEventListener("click", () => {
+                btnPaneSupport.addEventListener("click", (e) => {
+                    if (e) { e.preventDefault(); e.stopPropagation(); }
                     closeModal(modal);
                     openAssistanceModal(name);
                 });
@@ -1146,6 +1155,7 @@
             window.history.replaceState({ serviceId }, "", url.toString());
         } catch (_) {}
 
+        modal.removeAttribute("inert");
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
@@ -1175,6 +1185,7 @@
         const feedback = document.getElementById("assistSubmitFeedback");
         if (feedback) feedback.style.display = "none";
 
+        modal.removeAttribute("inert");
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
@@ -1353,6 +1364,7 @@
             searchInput.oninput = (e) => renderCatModalItems(e.target.value);
         }
 
+        modal.removeAttribute("inert");
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
@@ -1412,6 +1424,7 @@
             `;
         }
 
+        modal.removeAttribute("inert");
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
@@ -1438,6 +1451,7 @@
             }
         } catch (_) {}
 
+        modal.setAttribute("inert", "");
         modal.classList.remove("is-open");
         modal.setAttribute("aria-hidden", "true");
         document.body.classList.remove("modal-open");
