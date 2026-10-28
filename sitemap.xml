@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://xestus.in/</loc>
-        <lastmod>2026-10-12</lastmod>
+        <lastmod>2026-10-28</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -44,7 +44,7 @@
     </url>
     <url>
         <loc>https://xestus.in/tools/</loc>
-        <lastmod>2026-10-12</lastmod>
+        <lastmod>2026-10-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.95</priority>
     </url>
@@ -110,9 +110,9 @@
     </url>
     <url>
         <loc>https://xestus.in/tools/calculators/gst-calculator/</loc>
-        <lastmod>2026-10-12</lastmod>
+        <lastmod>2026-10-28</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.85</priority>
+        <priority>0.95</priority>
     </url>
     <url>
         <loc>https://xestus.in/tools/calculators/percentage-calculator/</loc>
@@ -242,9 +242,9 @@
     </url>
     <url>
         <loc>https://xestus.in/tools/office/invoice-generator/</loc>
-        <lastmod>2026-10-12</lastmod>
+        <lastmod>2026-10-28</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.85</priority>
+        <priority>0.90</priority>
     </url>
     <url>
         <loc>https://xestus.in/tools/office/qr-generator/</loc>
