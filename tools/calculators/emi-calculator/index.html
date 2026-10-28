@@ -301,6 +301,25 @@
         <!-- Tool Workspace (Pure Action-First UI) -->
         <section class="tool-workspace" aria-label="Loan EMI Calculator Workspace">
             <div class="calc-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 1rem;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <label for="emiCurrency" style="font-size: 13px; font-weight: 600; color: var(--text-secondary);"><i data-lucide="globe" style="width: 14px; height: 14px; vertical-align: middle;"></i> Currency:</label>
+          <select id="emiCurrency" class="calc-input" style="width: auto; padding: 4px 8px; font-weight: 600; font-size: 13px;">
+            <option value="₹" data-locale="en-IN" selected>₹ INR (India)</option>
+            <option value="$" data-locale="en-US">$ USD (United States)</option>
+            <option value="€" data-locale="de-DE">€ EUR (Eurozone)</option>
+            <option value="£" data-locale="en-GB">£ GBP (United Kingdom)</option>
+            <option value="A$" data-locale="en-AU">A$ AUD (Australia)</option>
+            <option value="C$" data-locale="en-CA">C$ CAD (Canada)</option>
+            <option value="S$" data-locale="en-SG">S$ SGD (Singapore)</option>
+            <option value="AED " data-locale="en-AE">AED (UAE / Gulf)</option>
+            <option value="₱" data-locale="en-PH">₱ PHP (Philippines)</option>
+            <option value="¥" data-locale="ja-JP">¥ JPY (Japan)</option>
+            <option value="R$" data-locale="pt-BR">R$ BRL (Brazil)</option>
+          </select>
+        </div>
+      </div>
+
       <div class="calc-presets">
         <span class="preset-label">Quick Presets:</span>
         <button type="button" class="btn-preset active" data-amt="2500000" data-rate="8.5" data-yrs="20">Home Loan (₹25L, 8.5%, 20Y)</button>
@@ -312,7 +331,7 @@
         <div class="calc-input-group">
           <label class="calc-label" for="loanAmount">Loan Amount (Principal)</label>
           <div class="input-with-affix">
-            <span class="affix">₹</span>
+            <span class="affix" id="emiAffix">₹</span>
             <input type="number" id="loanAmount" class="calc-input" value="2500000" min="1000" step="1000">
           </div>
           <input type="range" id="loanAmountRange" min="10000" max="10000000" step="10000" value="2500000" class="calc-slider">
@@ -683,8 +702,15 @@ Total Interest Payable = Total Payment - P</pre>
       const tenureYearsBtn = document.getElementById('tenureYearsBtn');
       const tenureMonthsBtn = document.getElementById('tenureMonthsBtn');
 
-      function formatINR(num) {
-        return '₹' + Math.round(num).toLocaleString('en-IN');
+      const emiCurrencySel = document.getElementById('emiCurrency');
+      const emiAffix = document.getElementById('emiAffix');
+
+      function formatVal(num) {
+        const opt = emiCurrencySel ? emiCurrencySel.options[emiCurrencySel.selectedIndex] : null;
+        const sym = emiCurrencySel ? emiCurrencySel.value : '₹';
+        const locale = (opt && opt.getAttribute('data-locale')) || 'en-IN';
+        const prefix = sym.endsWith(' ') ? sym : (sym.length > 1 ? sym + ' ' : sym);
+        return prefix + Math.round(num).toLocaleString(locale);
       }
 
       function calculate() {
@@ -694,10 +720,10 @@ Total Interest Payable = Total Payment - P</pre>
         const N = isYears ? tenureVal * 12 : tenureVal;
 
         if (P <= 0 || annualRate <= 0 || N <= 0) {
-          document.getElementById('monthlyEmiDisplay').textContent = '₹0';
-          document.getElementById('principalDisplay').textContent = formatINR(P);
-          document.getElementById('interestDisplay').textContent = '₹0';
-          document.getElementById('totalPaymentDisplay').textContent = formatINR(P);
+          document.getElementById('monthlyEmiDisplay').textContent = formatVal(0);
+          document.getElementById('principalDisplay').textContent = formatVal(P);
+          document.getElementById('interestDisplay').textContent = formatVal(0);
+          document.getElementById('totalPaymentDisplay').textContent = formatVal(P);
           return;
         }
 
@@ -706,10 +732,10 @@ Total Interest Payable = Total Payment - P</pre>
         const totalPayment = emi * N;
         const totalInterest = totalPayment - P;
 
-        document.getElementById('monthlyEmiDisplay').textContent = formatINR(emi);
-        document.getElementById('principalDisplay').textContent = formatINR(P);
-        document.getElementById('interestDisplay').textContent = formatINR(totalInterest);
-        document.getElementById('totalPaymentDisplay').textContent = formatINR(totalPayment);
+        document.getElementById('monthlyEmiDisplay').textContent = formatVal(emi);
+        document.getElementById('principalDisplay').textContent = formatVal(P);
+        document.getElementById('interestDisplay').textContent = formatVal(totalInterest);
+        document.getElementById('totalPaymentDisplay').textContent = formatVal(totalPayment);
 
         const pRatio = Math.round((P / totalPayment) * 100);
         const iRatio = 100 - pRatio;
@@ -742,10 +768,10 @@ Total Interest Payable = Total Payment - P</pre>
           tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
           tr.innerHTML = `
             <td style="padding: 6px 8px; text-align: left; color: #fff;">Year ${yr}</td>
-            <td style="padding: 6px 8px; color: #38d6ff;">${formatINR(yrPrincipal)}</td>
-            <td style="padding: 6px 8px; color: #ffaa00;">${formatINR(yrInterest)}</td>
-            <td style="padding: 6px 8px; color: #aaa;">${formatINR(yrPrincipal + yrInterest)}</td>
-            <td style="padding: 6px 8px; color: #00ff88;">${formatINR(Math.max(0, balance))}</td>
+            <td style="padding: 6px 8px; color: #38d6ff;">${formatVal(yrPrincipal)}</td>
+            <td style="padding: 6px 8px; color: #ffaa00;">${formatVal(yrInterest)}</td>
+            <td style="padding: 6px 8px; color: #aaa;">${formatVal(yrPrincipal + yrInterest)}</td>
+            <td style="padding: 6px 8px; color: #00ff88;">${formatVal(Math.max(0, balance))}</td>
           `;
           tbody.appendChild(tr);
         }
@@ -799,6 +825,13 @@ Total Interest Payable = Total Payment - P</pre>
         const text = `Loan EMI Summary (XESTUS):\nPrincipal: ${document.getElementById('principalDisplay').textContent}\nMonthly EMI: ${document.getElementById('monthlyEmiDisplay').textContent}\nTotal Interest: ${document.getElementById('interestDisplay').textContent}\nTotal Repayment: ${document.getElementById('totalPaymentDisplay').textContent}`;
         navigator.clipboard.writeText(text).then(() => alert('Loan EMI summary copied to clipboard!'));
       });
+
+      if (emiCurrencySel) {
+        emiCurrencySel.addEventListener('change', () => {
+          if (emiAffix) emiAffix.textContent = emiCurrencySel.value.trim();
+          calculate();
+        });
+      }
 
       calculate();
     })();

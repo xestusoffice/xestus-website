@@ -65,10 +65,10 @@
     
 
     <!-- SEO Metadata -->
-    <title>GST Calculator Online India (2026) — Inclusive &amp; Exclusive | XESTUS</title>
+    <title>Global GST &amp; VAT Calculator Online (2026) — Multi-Currency Tax Split | XESTUS</title>
     <meta name="google-adsense-account" content="ca-pub-1489572262543869">
-    <meta name="description" content="Free Online GST Calculator India. Instant inclusive &amp; exclusive tax calculation for 5%, 12%, 18%, 28% slabs with CGST, SGST &amp; IGST breakdown. Fast &amp; 100% accurate.">
-    <meta name="keywords" content="gst calculator, gst calculator online, gst calculator india, gst inclusive calculator, gst exclusive calculator, calculate gst amount, cgst sgst calculator, indian gst tax rates">
+    <meta name="description" content="Calculate GST, VAT, and Sales Tax online for India (5%, 12%, 18%, 28%), US, UK, EU, Australia, Canada, UAE, Philippines, and worldwide. Multi-currency (₹, $, €, £, AED, ₱). Fast &amp; 100% free.">
+    <meta name="keywords" content="gst calculator, vat calculator, global gst calculator, vat calculator uk, sales tax calculator usa, gst calculator australia, gst calculator india, calculate gst amount, multi currency tax">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://xestus.in/tools/calculators/gst-calculator/">
     <link rel="manifest" href="../../../manifest.json">
@@ -76,8 +76,8 @@
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xestus.in/tools/calculators/gst-calculator/">
-    <meta property="og:title" content="GST Calculator Online India (2026) — Inclusive &amp; Exclusive | XESTUS">
-    <meta property="og:description" content="Calculate GST for 5%, 12%, 18%, 28% slabs with CGST, SGST &amp; IGST breakdown. Free, instant, inclusive &amp; exclusive modes.">
+    <meta property="og:title" content="Global GST &amp; VAT Calculator Online (2026) | XESTUS Tools">
+    <meta property="og:description" content="Calculate GST, VAT, and Sales Tax online with multi-currency support for India, US, UK, EU, Australia, Canada, UAE, Philippines &amp; worldwide.">
     <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
 
     <!-- Fonts & CSS -->
@@ -97,9 +97,9 @@
     {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "GST Calculator (India Inclusive & Exclusive)",
+  "name": "Global GST & VAT Calculator (India, US, UK, EU & Worldwide)",
   "url": "https://xestus.in/tools/calculators/gst-calculator/",
-  "description": "Calculate Goods and Services Tax (GST) for standard slab rates (5%, 12%, 18%, 28%) and custom tax rates with intra-state CGST/SGST and inter-state IGST breakdown.",
+  "description": "Calculate Goods and Services Tax (GST), Value Added Tax (VAT), and Sales Tax for India (5%, 12%, 18%, 28%), US, UK, EU, Australia, Canada, UAE, Philippines, and worldwide with multi-currency support and CGST/SGST/IGST breakdown.",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "All",
   "browserRequirements": "Requires JavaScript. Requires HTML5.",
@@ -141,7 +141,7 @@
     {
       "@type": "ListItem",
       "position": 4,
-      "name": "GST Calculator (India Inclusive & Exclusive)",
+      "name": "Global GST & VAT Calculator (India, US, UK, EU & Worldwide)",
       "item": "https://xestus.in/tools/calculators/gst-calculator/"
     }
   ]
@@ -280,14 +280,14 @@
             <span class="breadcrumb-sep">/</span>
             <a href="../../../tools/calculators/">Calculators & Finance</a>
             <span class="breadcrumb-sep">/</span>
-            <span class="breadcrumb-current">GST Calculator (India Inclusive & Exclusive)</span>
+            <span class="breadcrumb-current">GST &amp; VAT Calculator (Global &amp; India)</span>
         </nav>
 
         <!-- Tool Header -->
         <header class="tool-header">
             <div class="tool-badge-row">
                 <span class="tool-category-badge"><i data-lucide="calculator" style="width:14px;height:14px;"></i> Calculators & Finance</span>
-                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser • Zero Server Logs</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser • Multi-Currency • Zero Server Logs</span>
                 
                 <div class="tool-meta-actions">
                     <button type="button" class="btn-fav-star" id="btnToggleFav">
@@ -300,9 +300,9 @@
                     </button>
                 </div>
             </div>
-            <h1 class="tool-title">GST Calculator (India Inclusive & Exclusive)</h1>
+            <h1 class="tool-title">GST &amp; VAT Calculator (Global &amp; India)</h1>
             <p class="tool-description">
-                Calculate GST amount, total price, and CGST/SGST/IGST breakdown for standard rates (5%, 12%, 18%, 28%) or custom tax.
+                Calculate GST, VAT, and Sales Tax for India (5%, 12%, 18%, 28%), US, UK, EU, Australia, Canada, UAE, Philippines, and worldwide with multi-currency support.
             </p>
         </header>
 
@@ -310,6 +310,26 @@
         <section class="tool-workspace" aria-label="GST Calculator (India Inclusive & Exclusive) Workspace">
             <div class="calc-grid-2col">
             <div class="calc-form-panel">
+                <div class="calc-field-group">
+                    <label for="taxCountryPreset"><i data-lucide="globe" style="width:14px;height:14px;vertical-align:middle;"></i> Country &amp; Tax Standard</label>
+                    <select id="taxCountryPreset" class="tool-select" style="width:100%; font-weight:600;">
+                        <option value="in" selected>🇮🇳 India (₹ INR) — GST (5%, 12%, 18%, 28%)</option>
+                        <option value="us">🇺🇸 United States ($ USD) — Sales Tax (4%, 6%, 7%, 8.25%, 10%)</option>
+                        <option value="uk">🇬🇧 United Kingdom (£ GBP) — VAT (5%, 20%)</option>
+                        <option value="eu">🇪🇺 European Union (€ EUR) — VAT (19%, 20%, 21%, 25%)</option>
+                        <option value="au">🇦🇺 Australia ($ AUD) — GST (10%)</option>
+                        <option value="ca">🇨🇦 Canada ($ CAD) — GST / HST (5%, 13%, 15%)</option>
+                        <option value="sg">🇸🇬 Singapore ($ SGD) — GST (9%)</option>
+                        <option value="ae">🇦🇪 UAE / Gulf (AED د.إ) — VAT (5%)</option>
+                        <option value="ph">🇵🇭 Philippines (₱ PHP) — VAT (12%)</option>
+                        <option value="custom">🌐 Worldwide / Custom Currency &amp; Rate</option>
+                    </select>
+                </div>
+
+                <div class="calc-field-group" id="customCurrencyWrap" style="display:none;">
+                    <label for="customCurrencySym">Custom Currency Symbol</label>
+                    <input type="text" id="customCurrencySym" class="calc-input" value="$" maxlength="5" placeholder="e.g. $, €, ¥, kr, R$, CHF">
+                </div>
                 <div class="calc-field-group">
                     <label for="gstAmountType">Calculation Mode</label>
                     <div class="tool-btn-group" style="width:100%;">
@@ -319,16 +339,16 @@
                 </div>
 
                 <div class="calc-field-group">
-                    <label for="gstInitialAmount">Initial Amount (₹)</label>
+                    <label for="gstInitialAmount">Initial Amount (<span id="currencySymLabel">₹</span>)</label>
                     <div class="calc-input-wrap">
-                        <span class="calc-input-prefix">₹</span>
+                        <span class="calc-input-prefix" id="currencyInputPrefix">₹</span>
                         <input type="number" id="gstInitialAmount" class="calc-input has-prefix" value="10000" min="0" step="any" placeholder="Enter amount...">
                     </div>
                 </div>
 
                 <div class="calc-field-group">
-                    <label>GST Rate (%)</label>
-                    <div class="calc-rate-pills">
+                    <label><span id="taxRateLabel">GST</span> Rate (%)</label>
+                    <div class="calc-rate-pills" id="calcRatePills">
                         <button type="button" class="calc-rate-btn" data-rate="5">5%</button>
                         <button type="button" class="calc-rate-btn" data-rate="12">12%</button>
                         <button type="button" class="calc-rate-btn active" data-rate="18">18%</button>
@@ -341,7 +361,7 @@
                     </div>
                 </div>
 
-                <div class="calc-field-group">
+                <div class="calc-field-group" id="supplyTypeGroup">
                     <label for="gstSupplyType">Transaction Type</label>
                     <select id="gstSupplyType" class="tool-select" style="width:100%;">
                         <option value="intra">Intra-State (CGST 50% + SGST 50%)</option>
@@ -362,7 +382,7 @@
                         <span class="row-val" id="resNetPrice">₹ 10,000.00</span>
                     </div>
                     <div class="calc-breakdown-row">
-                        <span class="row-lbl">Total GST Tax:</span>
+                        <span class="row-lbl" id="totalTaxLabel">Total GST Tax:</span>
                         <span class="row-val" id="resGstAmount" style="color:var(--cyan-bright);">₹ 1,800.00</span>
                     </div>
                     <div class="calc-breakdown-row" id="cgstRow">
@@ -731,135 +751,358 @@ Under the Indian indirect taxation regime, goods and services are taxed under di
   </script>
   <script>
 document.addEventListener('DOMContentLoaded', () => {
-            let isExclusive = true;
-            let currentRate = 18;
+    let isExclusive = true;
+    let currentCountry = 'in';
+    let currentRate = 18;
 
-            const btnExclusive = document.getElementById('btnExclusive');
-            const btnInclusive = document.getElementById('btnInclusive');
-            const amountInput = document.getElementById('gstInitialAmount');
-            const ratePills = document.querySelectorAll('.calc-rate-btn');
-            const customRateWrap = document.getElementById('customRateWrap');
-            const customRateInput = document.getElementById('gstCustomRate');
-            const supplyTypeSelect = document.getElementById('gstSupplyType');
+    const COUNTRY_CONFIGS = {
+        in: {
+            name: 'India',
+            currency: '₹',
+            locale: 'en-IN',
+            taxName: 'GST',
+            rates: [5, 12, 18, 28],
+            defaultRate: 18,
+            hasBifurcation: true,
+            supplyTypes: [
+                { value: 'intra', label: 'Intra-State (CGST 50% + SGST 50%)' },
+                { value: 'inter', label: 'Inter-State (IGST 100%)' }
+            ]
+        },
+        us: {
+            name: 'United States',
+            currency: '$',
+            locale: 'en-US',
+            taxName: 'Sales Tax',
+            rates: [4, 6, 7, 8.25, 10],
+            defaultRate: 7,
+            hasBifurcation: false,
+            supplyTypes: [
+                { value: 'standard', label: 'State & Local Combined Sales Tax' }
+            ]
+        },
+        uk: {
+            name: 'United Kingdom',
+            currency: '£',
+            locale: 'en-GB',
+            taxName: 'VAT',
+            rates: [5, 20],
+            defaultRate: 20,
+            hasBifurcation: false,
+            supplyTypes: [
+                { value: 'standard', label: 'Standard UK VAT (HMRC Rates)' }
+            ]
+        },
+        eu: {
+            name: 'European Union',
+            currency: '€',
+            locale: 'de-DE',
+            taxName: 'VAT',
+            rates: [19, 20, 21, 25],
+            defaultRate: 20,
+            hasBifurcation: false,
+            supplyTypes: [
+                { value: 'standard', label: 'EU Standard Member State VAT' }
+            ]
+        },
+        au: {
+            name: 'Australia',
+            currency: '$',
+            locale: 'en-AU',
+            taxName: 'GST',
+            rates: [10],
+            defaultRate: 10,
+            hasBifurcation: false,
+            supplyTypes: [
+                { value: 'standard', label: 'Australian ATO Standard GST (10%)' }
+            ]
+        },
+        ca: {
+            name: 'Canada',
+            currency: '$',
+            locale: 'en-CA',
+            taxName: 'GST / HST',
+            rates: [5, 13, 15],
+            defaultRate: 13,
+            hasBifurcation: false,
+            supplyTypes: [
+                { value: 'standard', label: 'Federal GST / Harmonized HST' }
+            ]
+        },
+        sg: {
+            name: 'Singapore',
+            currency: '$',
+            locale: 'en-SG',
+            taxName: 'GST',
+            rates: [9],
+            defaultRate: 9,
+            hasBifurcation: false,
+            supplyTypes: [
+                { value: 'standard', label: 'IRAS Singapore Standard GST (9%)' }
+            ]
+        },
+        ae: {
+            name: 'UAE & Gulf',
+            currency: 'AED ',
+            locale: 'en-AE',
+            taxName: 'VAT',
+            rates: [5],
+            defaultRate: 5,
+            hasBifurcation: false,
+            supplyTypes: [
+                { value: 'standard', label: 'Federal Tax Authority Standard VAT (5%)' }
+            ]
+        },
+        ph: {
+            name: 'Philippines',
+            currency: '₱',
+            locale: 'en-PH',
+            taxName: 'VAT',
+            rates: [12],
+            defaultRate: 12,
+            hasBifurcation: false,
+            supplyTypes: [
+                { value: 'standard', label: 'BIR Standard Value-Added Tax (12%)' }
+            ]
+        },
+        custom: {
+            name: 'Worldwide / Custom',
+            currency: '$',
+            locale: 'en-US',
+            taxName: 'Tax',
+            rates: [5, 10, 15, 20],
+            defaultRate: 10,
+            hasBifurcation: false,
+            supplyTypes: [
+                { value: 'standard', label: 'Standard Rate Computation' }
+            ]
+        }
+    };
 
-            const resTotalLabel = document.getElementById('resTotalLabel');
-            const resTotalAmount = document.getElementById('resTotalAmount');
-            const resNetPrice = document.getElementById('resNetPrice');
-            const resGstAmount = document.getElementById('resGstAmount');
-            const resCgst = document.getElementById('resCgst');
-            const resSgst = document.getElementById('resSgst');
-            const resIgst = document.getElementById('resIgst');
-            const cgstPct = document.getElementById('cgstPct');
-            const sgstPct = document.getElementById('sgstPct');
-            const igstPct = document.getElementById('igstPct');
-            const cgstRow = document.getElementById('cgstRow');
-            const sgstRow = document.getElementById('sgstRow');
-            const igstRow = document.getElementById('igstRow');
+    const countrySelect = document.getElementById('taxCountryPreset');
+    const customCurrencyWrap = document.getElementById('customCurrencyWrap');
+    const customCurrencySym = document.getElementById('customCurrencySym');
+    const currencySymLabel = document.getElementById('currencySymLabel');
+    const currencyInputPrefix = document.getElementById('currencyInputPrefix');
+    const taxRateLabel = document.getElementById('taxRateLabel');
+    const calcRatePills = document.getElementById('calcRatePills');
+    const supplyTypeGroup = document.getElementById('supplyTypeGroup');
+    const supplyTypeSelect = document.getElementById('gstSupplyType');
 
-            function formatINR(val) {
-                return '₹ ' + val.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            }
+    const btnExclusive = document.getElementById('btnExclusive');
+    const btnInclusive = document.getElementById('btnInclusive');
+    const amountInput = document.getElementById('gstInitialAmount');
+    const customRateWrap = document.getElementById('customRateWrap');
+    const customRateInput = document.getElementById('gstCustomRate');
 
-            function calculate() {
-                const amount = parseFloat(amountInput.value) || 0;
-                let rate = currentRate;
-                if (currentRate === 'custom') {
-                    rate = parseFloat(customRateInput.value) || 0;
-                }
+    const resTotalLabel = document.getElementById('resTotalLabel');
+    const resTotalAmount = document.getElementById('resTotalAmount');
+    const resNetPrice = document.getElementById('resNetPrice');
+    const totalTaxLabel = document.getElementById('totalTaxLabel');
+    const resGstAmount = document.getElementById('resGstAmount');
+    const resCgst = document.getElementById('resCgst');
+    const resSgst = document.getElementById('resSgst');
+    const resIgst = document.getElementById('resIgst');
+    const cgstPct = document.getElementById('cgstPct');
+    const sgstPct = document.getElementById('sgstPct');
+    const igstPct = document.getElementById('igstPct');
+    const cgstRow = document.getElementById('cgstRow');
+    const sgstRow = document.getElementById('sgstRow');
+    const igstRow = document.getElementById('igstRow');
 
-                let base = 0;
-                let gst = 0;
-                let total = 0;
+    function getActiveCurrency() {
+        const config = COUNTRY_CONFIGS[currentCountry] || COUNTRY_CONFIGS.custom;
+        if (currentCountry === 'custom') {
+            return customCurrencySym.value.trim() || '$';
+        }
+        return config.currency;
+    }
 
-                if (isExclusive) {
-                    base = amount;
-                    gst = (base * rate) / 100;
-                    total = base + gst;
-                    resTotalLabel.textContent = 'Total Gross Amount (with GST)';
-                } else {
-                    total = amount;
-                    base = (total * 100) / (100 + rate);
-                    gst = total - base;
-                    resTotalLabel.textContent = 'Original MRP (with GST)';
-                }
+    function getActiveLocale() {
+        const config = COUNTRY_CONFIGS[currentCountry] || COUNTRY_CONFIGS.custom;
+        return config.locale || 'en-US';
+    }
 
-                resTotalAmount.textContent = formatINR(total);
-                resNetPrice.textContent = formatINR(base);
-                resGstAmount.textContent = formatINR(gst);
+    function formatCurrency(val) {
+        const sym = getActiveCurrency();
+        const locale = getActiveLocale();
+        const numStr = Number(val).toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        return (sym.endsWith(' ') ? sym : sym + ' ') + numStr;
+    }
 
-                const isInter = supplyTypeSelect.value === 'inter';
-                if (isInter) {
-                    cgstRow.style.display = 'none';
-                    sgstRow.style.display = 'none';
-                    igstRow.style.display = 'flex';
-                    igstPct.textContent = rate;
-                    resIgst.textContent = formatINR(gst);
-                } else {
-                    cgstRow.style.display = 'flex';
-                    sgstRow.style.display = 'flex';
-                    igstRow.style.display = 'none';
-                    const halfRate = (rate / 2).toFixed(2).replace(/\.00$/, '');
-                    cgstPct.textContent = halfRate;
-                    sgstPct.textContent = halfRate;
-                    resCgst.textContent = formatINR(gst / 2);
-                    resSgst.textContent = formatINR(gst / 2);
-                }
-            }
+    function renderCountryPresets() {
+        const config = COUNTRY_CONFIGS[currentCountry] || COUNTRY_CONFIGS.custom;
+        const sym = getActiveCurrency();
 
-            btnExclusive.addEventListener('click', () => {
-                isExclusive = true;
-                btnExclusive.className = 'tool-btn tool-btn-primary';
-                btnInclusive.className = 'tool-btn tool-btn-secondary';
-                calculate();
-            });
+        currencySymLabel.textContent = sym.trim();
+        currencyInputPrefix.textContent = sym.trim();
+        taxRateLabel.textContent = config.taxName;
+        totalTaxLabel.textContent = 'Total ' + config.taxName + ' Tax:';
 
-            btnInclusive.addEventListener('click', () => {
-                isExclusive = false;
-                btnInclusive.className = 'tool-btn tool-btn-primary';
-                btnExclusive.className = 'tool-btn tool-btn-secondary';
-                calculate();
-            });
+        btnExclusive.textContent = config.taxName + ' Exclusive (+ Add ' + config.taxName + ')';
+        btnInclusive.textContent = config.taxName + ' Inclusive (Remove ' + config.taxName + ')';
 
-            ratePills.forEach(pill => {
-                pill.addEventListener('click', () => {
-                    ratePills.forEach(p => p.classList.remove('active'));
-                    pill.classList.add('active');
-                    const r = pill.getAttribute('data-rate');
-                    if (r === 'custom') {
-                        currentRate = 'custom';
-                        customRateWrap.style.display = 'flex';
-                    } else {
-                        currentRate = parseFloat(r);
-                        customRateWrap.style.display = 'none';
-                    }
-                    calculate();
-                });
-            });
+        // Custom currency input toggle
+        if (currentCountry === 'custom') {
+            customCurrencyWrap.style.display = 'block';
+        } else {
+            customCurrencyWrap.style.display = 'none';
+        }
 
-            amountInput.addEventListener('input', calculate);
-            customRateInput.addEventListener('input', calculate);
-            supplyTypeSelect.addEventListener('change', calculate);
+        // Supply type toggle (CGST/SGST bifurcation is specific to India)
+        if (config.hasBifurcation) {
+            supplyTypeGroup.style.display = 'block';
+            supplyTypeSelect.innerHTML = config.supplyTypes.map(s => '<option value="' + s.value + '">' + s.label + '</option>').join('');
+        } else {
+            supplyTypeGroup.style.display = 'none';
+        }
 
-            document.getElementById('btnResetGst').addEventListener('click', () => {
-                amountInput.value = '10000';
-                currentRate = 18;
+        // Render rate pills
+        calcRatePills.innerHTML = '';
+        config.rates.forEach(r => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'calc-rate-btn' + (r === config.defaultRate ? ' active' : '');
+            btn.setAttribute('data-rate', r);
+            btn.textContent = r + '%';
+            btn.addEventListener('click', () => {
+                calcRatePills.querySelectorAll('.calc-rate-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentRate = r;
                 customRateWrap.style.display = 'none';
-                ratePills.forEach(p => p.classList.toggle('active', p.getAttribute('data-rate') === '18'));
                 calculate();
             });
+            calcRatePills.appendChild(btn);
+        });
 
-            document.getElementById('btnCopyGst').addEventListener('click', () => {
-                const text = `XESTUS GST Summary\nMode: ${isExclusive ? 'GST Exclusive' : 'GST Inclusive'}\nBase Price: ${resNetPrice.textContent}\nGST Tax: ${resGstAmount.textContent}\nFinal Total: ${resTotalAmount.textContent}`;
-                navigator.clipboard.writeText(text).then(() => {
-                    const btnText = document.getElementById('copyGstText');
-                    btnText.textContent = 'Copied!';
-                    setTimeout(() => { btnText.textContent = 'Copy Summary'; }, 2000);
-                });
-            });
-
+        // Add custom rate pill
+        const customBtn = document.createElement('button');
+        customBtn.type = 'button';
+        customBtn.className = 'calc-rate-btn';
+        customBtn.setAttribute('data-rate', 'custom');
+        customBtn.textContent = 'Custom';
+        customBtn.addEventListener('click', () => {
+            calcRatePills.querySelectorAll('.calc-rate-btn').forEach(b => b.classList.remove('active'));
+            customBtn.classList.add('active');
+            currentRate = 'custom';
+            customRateWrap.style.display = 'flex';
             calculate();
         });
-</script>
+        calcRatePills.appendChild(customBtn);
+
+        currentRate = config.defaultRate;
+        customRateWrap.style.display = 'none';
+        customRateInput.value = config.defaultRate;
+
+        calculate();
+    }
+
+    function calculate() {
+        const config = COUNTRY_CONFIGS[currentCountry] || COUNTRY_CONFIGS.custom;
+        const amount = parseFloat(amountInput.value) || 0;
+        let rate = currentRate;
+        if (currentRate === 'custom') {
+            rate = parseFloat(customRateInput.value) || 0;
+        }
+
+        let base = 0;
+        let tax = 0;
+        let total = 0;
+
+        if (isExclusive) {
+            base = amount;
+            tax = (base * rate) / 100;
+            total = base + tax;
+            resTotalLabel.textContent = 'Total Gross Amount (with ' + config.taxName + ')';
+        } else {
+            total = amount;
+            base = (total * 100) / (100 + rate);
+            tax = total - base;
+            resTotalLabel.textContent = 'Original MRP / Gross (with ' + config.taxName + ')';
+        }
+
+        resTotalAmount.textContent = formatCurrency(total);
+        resNetPrice.textContent = formatCurrency(base);
+        resGstAmount.textContent = formatCurrency(tax);
+
+        if (config.hasBifurcation) {
+            const isInter = supplyTypeSelect.value === 'inter';
+            if (isInter) {
+                cgstRow.style.display = 'none';
+                sgstRow.style.display = 'none';
+                igstRow.style.display = 'flex';
+                igstPct.textContent = rate;
+                resIgst.textContent = formatCurrency(tax);
+            } else {
+                cgstRow.style.display = 'flex';
+                sgstRow.style.display = 'flex';
+                igstRow.style.display = 'none';
+                const halfRate = (rate / 2).toFixed(2).replace(/\.00$/, '');
+                cgstPct.textContent = halfRate;
+                sgstPct.textContent = halfRate;
+                resCgst.textContent = formatCurrency(tax / 2);
+                resSgst.textContent = formatCurrency(tax / 2);
+            }
+        } else {
+            cgstRow.style.display = 'none';
+            sgstRow.style.display = 'none';
+            igstRow.style.display = 'none';
+        }
+    }
+
+    countrySelect.addEventListener('change', () => {
+        currentCountry = countrySelect.value;
+        renderCountryPresets();
+    });
+
+    customCurrencySym.addEventListener('input', () => {
+        currencySymLabel.textContent = customCurrencySym.value.trim() || '$';
+        currencyInputPrefix.textContent = customCurrencySym.value.trim() || '$';
+        calculate();
+    });
+
+    btnExclusive.addEventListener('click', () => {
+        isExclusive = true;
+        btnExclusive.className = 'tool-btn tool-btn-primary';
+        btnInclusive.className = 'tool-btn tool-btn-secondary';
+        calculate();
+    });
+
+    btnInclusive.addEventListener('click', () => {
+        isExclusive = false;
+        btnInclusive.className = 'tool-btn tool-btn-primary';
+        btnExclusive.className = 'tool-btn tool-btn-secondary';
+        calculate();
+    });
+
+    amountInput.addEventListener('input', calculate);
+    customRateInput.addEventListener('input', calculate);
+    supplyTypeSelect.addEventListener('change', calculate);
+
+    document.getElementById('btnResetGst').addEventListener('click', () => {
+        amountInput.value = '10000';
+        countrySelect.value = 'in';
+        currentCountry = 'in';
+        renderCountryPresets();
+    });
+
+    document.getElementById('btnCopyGst').addEventListener('click', () => {
+        const config = COUNTRY_CONFIGS[currentCountry] || COUNTRY_CONFIGS.custom;
+        const text = 'XESTUS ' + config.taxName + ' Summary (' + config.name + ')\n' +
+            'Mode: ' + (isExclusive ? config.taxName + ' Exclusive' : config.taxName + ' Inclusive') + '\n' +
+            'Base Price: ' + resNetPrice.textContent + '\n' +
+            'Tax Amount: ' + resGstAmount.textContent + '\n' +
+            'Total: ' + resTotalAmount.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            const btnText = document.getElementById('copyGstText');
+            btnText.textContent = 'Copied!';
+            setTimeout(() => { btnText.textContent = 'Copy Summary'; }, 2000);
+        });
+    });
+
+    // Initialize country presets
+    renderCountryPresets();
+});</script>
   
 
 

@@ -280,11 +280,20 @@
       <div class="invoice-ctrls" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;">
         <div style="display: flex; gap: 0.5rem; align-items: center;">
           <label class="calc-label" style="margin: 0;">Currency:</label>
-          <select id="invCurrency" class="calc-input" style="width: auto; padding: 4px 8px;">
-            <option value="₹">₹ INR</option>
-            <option value="$">$ USD</option>
-            <option value="€">€ EUR</option>
-            <option value="£">£ GBP</option>
+          <select id="invCurrency" class="calc-input" style="width: auto; padding: 4px 8px; font-weight: 600;">
+            <option value="₹" data-locale="en-IN" selected>₹ INR (India)</option>
+            <option value="$" data-locale="en-US">$ USD (United States)</option>
+            <option value="€" data-locale="de-DE">€ EUR (Eurozone)</option>
+            <option value="£" data-locale="en-GB">£ GBP (United Kingdom)</option>
+            <option value="A$" data-locale="en-AU">A$ AUD (Australia)</option>
+            <option value="C$" data-locale="en-CA">C$ CAD (Canada)</option>
+            <option value="S$" data-locale="en-SG">S$ SGD (Singapore)</option>
+            <option value="AED " data-locale="en-AE">AED (UAE / Gulf)</option>
+            <option value="₱" data-locale="en-PH">₱ PHP (Philippines)</option>
+            <option value="¥" data-locale="ja-JP">¥ JPY (Japan)</option>
+            <option value="R$" data-locale="pt-BR">R$ BRL (Brazil)</option>
+            <option value="₽" data-locale="ru-RU">₽ RUB (Russia)</option>
+            <option value="CHF " data-locale="de-CH">CHF (Switzerland)</option>
           </select>
         </div>
         <div style="display: flex; gap: 0.5rem;">
@@ -598,9 +607,16 @@ Grand Total = Taxable Value + Tax Amount + Shipping Charges</pre>
       const currencySel = document.getElementById('invCurrency');
       document.getElementById('invDate').valueAsDate = new Date();
 
+      function formatInv(val) {
+        const opt = currencySel.options[currencySel.selectedIndex];
+        const sym = currencySel.value;
+        const locale = (opt && opt.getAttribute('data-locale')) || 'en-US';
+        const numStr = Number(val).toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        return (sym.endsWith(' ') ? sym : sym + ' ') + numStr;
+      }
+
       function renderItems() {
         tbody.innerHTML = '';
-        const sym = currencySel.value;
         let subtotal = 0;
         let taxTotal = 0;
 
@@ -617,7 +633,7 @@ Grand Total = Taxable Value + Tax Amount + Shipping Charges</pre>
             <td style="padding: 6px;"><input type="number" class="calc-input item-qty" data-idx="${idx}" value="${item.qty}" min="1" style="text-align: right; width: 100%;"></td>
             <td style="padding: 6px;"><input type="number" class="calc-input item-rate" data-idx="${idx}" value="${item.rate}" min="0" step="any" style="text-align: right; width: 100%;"></td>
             <td style="padding: 6px;"><input type="number" class="calc-input item-tax" data-idx="${idx}" value="${item.tax}" min="0" max="100" style="text-align: right; width: 100%;"></td>
-            <td style="padding: 6px; text-align: right; font-family: 'JetBrains Mono', monospace; color: #fff;">${sym}${(lineAmt + lineTax).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+            <td style="padding: 6px; text-align: right; font-family: 'JetBrains Mono', monospace; color: #fff;">${formatInv(lineAmt + lineTax)}</td>
             <td style="padding: 6px; text-align: center;" class="invoice-ctrls">
               <button type="button" class="btn-icon remove-item-btn" data-idx="${idx}" title="Remove" style="color: #ff5555;"><i data-lucide="trash-2" style="width: 14px; height: 14px;"></i></button>
             </td>
@@ -626,9 +642,9 @@ Grand Total = Taxable Value + Tax Amount + Shipping Charges</pre>
         });
 
         const grand = subtotal + taxTotal;
-        document.getElementById('invSubtotal').textContent = sym + subtotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
-        document.getElementById('invTaxTotal').textContent = sym + taxTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
-        document.getElementById('invGrandTotal').textContent = sym + grand.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+        document.getElementById('invSubtotal').textContent = formatInv(subtotal);
+        document.getElementById('invTaxTotal').textContent = formatInv(taxTotal);
+        document.getElementById('invGrandTotal').textContent = formatInv(grand);
 
         if (window.lucide) lucide.createIcons();
         attachListeners();

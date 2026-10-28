@@ -295,9 +295,26 @@
             <div class="calc-grid-2col">
             <div class="calc-form-panel">
                 <div class="calc-field-group">
-                    <label for="origPrice">Original Price (₹)</label>
+                    <label for="discCurrency"><i data-lucide="globe" style="width:14px;height:14px;vertical-align:middle;"></i> Currency</label>
+                    <select id="discCurrency" class="tool-select" style="width:100%; font-weight:600;">
+                        <option value="₹" data-locale="en-IN" selected>₹ INR (India)</option>
+                        <option value="$" data-locale="en-US">$ USD (United States)</option>
+                        <option value="€" data-locale="de-DE">€ EUR (Eurozone)</option>
+                        <option value="£" data-locale="en-GB">£ GBP (United Kingdom)</option>
+                        <option value="A$" data-locale="en-AU">A$ AUD (Australia)</option>
+                        <option value="C$" data-locale="en-CA">C$ CAD (Canada)</option>
+                        <option value="S$" data-locale="en-SG">S$ SGD (Singapore)</option>
+                        <option value="AED " data-locale="en-AE">AED (UAE / Gulf)</option>
+                        <option value="₱" data-locale="en-PH">₱ PHP (Philippines)</option>
+                        <option value="¥" data-locale="ja-JP">¥ JPY (Japan)</option>
+                        <option value="R$" data-locale="pt-BR">R$ BRL (Brazil)</option>
+                    </select>
+                </div>
+
+                <div class="calc-field-group">
+                    <label for="origPrice">Original Price (<span id="discCurrencySym">₹</span>)</label>
                     <div class="calc-input-wrap">
-                        <span class="calc-input-prefix">₹</span>
+                        <span class="calc-input-prefix" id="discInputPrefix">₹</span>
                         <input type="number" id="origPrice" class="calc-input has-prefix" value="2999" min="0" step="any">
                     </div>
                 </div>
@@ -583,6 +600,17 @@ It supports single percentage discounts (e.g., 25% off), flat price reductions (
 document.addEventListener('DOMContentLoaded', () => {
             const p = document.getElementById('origPrice'), d1 = document.getElementById('discPercent'), d2 = document.getElementById('extraDiscPercent');
             const resFinal = document.getElementById('resFinalPrice'), resOrig = document.getElementById('resOrigPrice'), resSaved = document.getElementById('resTotalSaved');
+            const currencySel = document.getElementById('discCurrency');
+            const currencySym = document.getElementById('discCurrencySym');
+            const inputPrefix = document.getElementById('discInputPrefix');
+
+            function formatVal(val) {
+                const opt = currencySel.options[currencySel.selectedIndex];
+                const sym = currencySel.value;
+                const locale = (opt && opt.getAttribute('data-locale')) || 'en-IN';
+                const prefix = sym.endsWith(' ') ? sym : sym + ' ';
+                return prefix + Number(val).toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
 
             function calc() {
                 const orig = parseFloat(p.value) || 0;
@@ -594,10 +622,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const saved = orig - finalP;
                 const savedPct = orig > 0 ? ((saved / orig) * 100).toFixed(1) : '0';
 
-                resOrig.textContent = '₹ ' + orig.toLocaleString('en-IN', { minimumFractionDigits: 2 });
-                resFinal.textContent = '₹ ' + finalP.toLocaleString('en-IN', { minimumFractionDigits: 2 });
-                resSaved.textContent = `₹ ${saved.toLocaleString('en-IN', { minimumFractionDigits: 2 })} (${savedPct}%)`;
+                resOrig.textContent = formatVal(orig);
+                resFinal.textContent = formatVal(finalP);
+                resSaved.textContent = formatVal(saved) + ' (' + savedPct + '%)';
             }
+
+            currencySel.addEventListener('change', () => {
+                currencySym.textContent = currencySel.value.trim();
+                inputPrefix.textContent = currencySel.value.trim();
+                calc();
+            });
 
             p.addEventListener('input', calc);
             d1.addEventListener('input', calc);
