@@ -137,6 +137,7 @@ function initLucide() {
 }
 
 function initApp() {
+    window.__XESTUS_MAIN_APP_ACTIVE__ = true;
     initLucide();
     initEmailJS();
 
@@ -183,6 +184,7 @@ function initApp() {
         setNavState(false);
         if (navMoreDropdown) {
             navMoreDropdown.classList.remove("is-open");
+            navMoreDropdown.classList.add("dropdown-dismissed");
             if (navMoreBtn) navMoreBtn.setAttribute("aria-expanded", "false");
         }
         if (themeSwitcher) {
@@ -265,8 +267,18 @@ function initApp() {
         navMoreBtn.addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
-            const isOpen = navMoreDropdown.classList.toggle("is-open");
-            navMoreBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            if (navMoreDropdown.classList.contains("dropdown-dismissed")) {
+                navMoreDropdown.classList.remove("dropdown-dismissed");
+                navMoreDropdown.classList.add("is-open");
+                navMoreBtn.setAttribute("aria-expanded", "true");
+            } else {
+                const isOpen = navMoreDropdown.classList.toggle("is-open");
+                navMoreBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            }
+        });
+
+        navMoreDropdown.addEventListener("mouseleave", () => {
+            navMoreDropdown.classList.remove("dropdown-dismissed");
         });
     }
 
@@ -275,6 +287,11 @@ function initApp() {
         navMoreMenu.addEventListener("click", (e) => {
             const item = e.target.closest(".nav-dropdown-item");
             if (!item) return;
+            if (navMoreDropdown) {
+                navMoreDropdown.classList.remove("is-open");
+                navMoreDropdown.classList.add("dropdown-dismissed");
+                if (navMoreBtn) navMoreBtn.setAttribute("aria-expanded", "false");
+            }
             const href = item.getAttribute("href");
             if (href && href.startsWith("#")) {
                 e.preventDefault();
@@ -382,6 +399,7 @@ function initApp() {
         }
         if (navMoreDropdown && !navMoreDropdown.contains(e.target)) {
             navMoreDropdown.classList.remove("is-open");
+            navMoreDropdown.classList.remove("dropdown-dismissed");
             if (navMoreBtn) navMoreBtn.setAttribute("aria-expanded", "false");
         }
         if (themeSwitcher && !themeSwitcher.contains(e.target)) {
