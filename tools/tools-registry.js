@@ -118,7 +118,18 @@ window.XESTUS_TOOLS_REGISTRY = {
       description: "Calculate monthly EMI, total interest payable, and loan amortization for home, personal, car, or business loans.",
       keywords: ["emi calculator", "loan emi calculator", "home loan emi", "car loan calculator", "interest calculator"],
       url: "/tools/calculators/emi-calculator/",
-      related: ["gst-calculator", "percentage-calculator"]
+      related: ["gst-calculator", "salary-calculator"]
+    },
+    {
+      slug: "salary-calculator",
+      title: "In-Hand Salary Calculator (India 2026)",
+      category: "calculators",
+      icon: "banknote",
+      badge: "Trending",
+      description: "Calculate exact monthly take-home salary from annual CTC with New vs Old Tax Regime comparison, EPF, and tax deductions.",
+      keywords: ["in hand salary calculator", "ctc to in hand calculator", "salary calculator 2026", "take home salary", "new tax regime salary"],
+      url: "/tools/calculators/salary-calculator/",
+      related: ["gst-calculator", "emi-calculator", "invoice-generator"]
     },
     {
       slug: "unit-converter",

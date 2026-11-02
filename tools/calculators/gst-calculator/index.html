@@ -1086,6 +1086,12 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCountryPresets();
     });
 
+    document.getElementById('btnShareWhatsAppGst').addEventListener('click', () => {
+        const config = COUNTRY_CONFIGS[currentCountry] || COUNTRY_CONFIGS.custom;
+        const msg = encodeURIComponent('Free ' + config.taxName + ' Calculator with multi-currency & tax breakdown on XESTUS: ' + window.location.href);
+        window.open('https://api.whatsapp.com/send?text=' + msg, '_blank');
+    });
+
     document.getElementById('btnCopyGst').addEventListener('click', () => {
         const config = COUNTRY_CONFIGS[currentCountry] || COUNTRY_CONFIGS.custom;
         const text = 'XESTUS ' + config.taxName + ' Summary (' + config.name + ')\n' +

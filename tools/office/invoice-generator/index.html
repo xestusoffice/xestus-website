@@ -669,6 +669,15 @@ Grand Total = Taxable Value + Tax Amount + Shipping Charges</pre>
 
       currencySel.addEventListener('change', renderItems);
       document.getElementById('invPrintBtn').addEventListener('click', () => window.print());
+      const invWhatsAppBtn = document.getElementById('invWhatsAppBtn');
+      if (invWhatsAppBtn) {
+        invWhatsAppBtn.addEventListener('click', () => {
+          const grand = document.getElementById('invGrandTotal').textContent;
+          const comp = document.getElementById('invCompany').value || 'Invoice';
+          const msg = encodeURIComponent('Need to create professional client invoices, bills & receipts for free with tax breakdown and instant PDF download? Try: https://xestus.in/tools/office/invoice-generator/');
+          window.open('https://api.whatsapp.com/send?text=' + msg, '_blank');
+        });
+      }
       document.getElementById('invResetBtn').addEventListener('click', () => {
         if (confirm('Reset invoice items?')) {
           items.length = 0;

@@ -65,10 +65,10 @@
     
 
     <!-- SEO Metadata -->
-    <title>Image Resizer — Change Image Dimensions & Aspect Ratio Online | XESTUS</title>
+    <title>Govt Exam Photo & Signature Resizer (20KB - 50KB) — Free Online | XESTUS</title>
     <meta name="google-adsense-account" content="ca-pub-1489572262543869">
-    <meta name="description" content="Resize image dimensions in pixels, percentage, or centimeters with locked aspect ratios. 100% client-side photo resizer for web, social media, and print.">
-    <meta name="keywords" content="image resizer, resize photo online, change photo dimensions, passport size photo resize">
+    <meta name="description" content="Resize photos to exact 20KB - 50KB and signatures to 10KB - 20KB for SSC, UPSC, Railway, IBPS, and State Govt exam online forms. 100% free, private in-browser tool.">
+    <meta name="keywords" content="ssc photo resizer, signature resizer 10 to 20 kb, upsc photo resizer 20 to 50 kb, govt exam photo resize, passport size photo resize, image resizer online">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://xestus.in/tools/image/image-resizer/">
     <link rel="manifest" href="../../../manifest.json">
@@ -268,9 +268,9 @@
                     </button>
                 </div>
             </div>
-            <h1 class="tool-title">Image Dimension Resizer</h1>
+            <h1 class="tool-title">Govt Exam Photo &amp; Signature Resizer (20KB – 50KB)</h1>
             <p class="tool-description">
-                Resize photo dimensions by exact pixels, percentage, or aspect ratio. Perfect for passport photos, social media, and web assets.
+                Resize photo &amp; signature dimensions and compress to exact file size (20KB - 50KB, 10KB - 20KB) for SSC, UPSC, IBPS, Railway, Passport, and online job application forms.
             </p>
         </header>
 
@@ -287,12 +287,26 @@
       <div id="resizerControls" style="display: none; margin-top: 1.5rem;">
         <!-- Preset Buttons -->
         <div class="calc-presets">
-          <span class="preset-label">Quick Presets:</span>
-          <button type="button" class="btn-preset active" data-w="" data-h="">Custom</button>
-          <button type="button" class="btn-preset" data-w="413" data-h="531">Passport Photo (3.5x4.5cm)</button>
-          <button type="button" class="btn-preset" data-w="1080" data-h="1080">Instagram Square (1080x1080)</button>
-          <button type="button" class="btn-preset" data-w="1280" data-h="720">YouTube 720p HD</button>
-          <button type="button" class="btn-preset" data-w="1920" data-h="1080">Full HD (1920x1080)</button>
+          <span class="preset-label">Govt Exam &amp; Web Presets:</span>
+          <button type="button" class="btn-preset active" data-w="" data-h="" data-kb="">Custom</button>
+          <button type="button" class="btn-preset" data-w="350" data-h="450" data-kb="45">🎯 SSC / UPSC Photo (20-50 KB)</button>
+          <button type="button" class="btn-preset" data-w="140" data-h="60" data-kb="18">✍️ Govt Signature (10-20 KB)</button>
+          <button type="button" class="btn-preset" data-w="413" data-h="531" data-kb="95">🛂 Passport Photo (3.5x4.5cm)</button>
+          <button type="button" class="btn-preset" data-w="200" data-h="230" data-kb="45">🏛️ IBPS / Bank (200x230)</button>
+          <button type="button" class="btn-preset" data-w="1080" data-h="1080" data-kb="">📱 Instagram (1080x1080)</button>
+          <button type="button" class="btn-preset" data-w="1920" data-h="1080" data-kb="">🖥️ Full HD (1920x1080)</button>
+        </div>
+
+        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap; background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: 8px; padding: 10px 14px;">
+          <label style="display: flex; align-items: center; gap: 0.5rem; color: #fff; font-weight: 600; cursor: pointer;">
+            <input type="checkbox" id="enableTargetKbCheckbox">
+            <span>Compress to Exact Max Size (KB)</span>
+          </label>
+          <div id="targetKbWrap" style="display: none; align-items: center; gap: 6px;">
+            <input type="number" id="targetKbInput" class="calc-input" value="50" min="5" max="5000" step="5" style="width: 90px; padding: 4px 8px; text-align: right;">
+            <span style="color: var(--text-secondary); font-size: 13px;">KB max</span>
+          </div>
+          <span style="font-size: 12px; color: #a855f7;">(Ideal for UPSC, SSC, Police &amp; Railway forms)</span>
         </div>
 
         <div class="calc-grid-2" style="margin-top: 1.25rem;">
@@ -330,9 +344,25 @@
           <canvas id="previewCanvas" style="max-width: 100%; max-height: 350px; border-radius: 6px; border: 1px solid #333; box-shadow: 0 4px 20px rgba(0,0,0,0.5);"></canvas>
         </div>
 
-        <div class="tool-btn-row" style="margin-top: 1.5rem;">
+        <div class="tool-btn-row" style="margin-top: 1.5rem; display: flex; gap: 10px; flex-wrap: wrap;">
           <button type="button" class="btn-tool-secondary" id="changeImageBtn"><i data-lucide="refresh-cw"></i> Choose Another</button>
-          <button type="button" class="btn-tool-primary" id="downloadResizedBtn"><i data-lucide="download"></i> Download Resized Image</button>
+          <button type="button" class="btn-tool-primary" id="downloadResizedBtn" style="flex: 2;"><i data-lucide="download"></i> Download Resized Image</button>
+          <button type="button" class="btn-tool-secondary" id="shareWhatsAppBtn" style="background: rgba(37, 211, 102, 0.15); border-color: rgba(37, 211, 102, 0.4); color: #25d366; display: inline-flex; align-items: center; gap: 6px;">
+            <i data-lucide="share-2"></i> <span>Share on WhatsApp</span>
+          </button>
+        </div>
+
+        <!-- Ecosystem Cross-Tool Navigation Banner -->
+        <div style="margin-top: 1.5rem; padding: 12px 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <span style="font-size: 13px; color: var(--text-secondary); display: inline-flex; align-items: center; gap: 8px;">
+            <i data-lucide="sparkles" style="width: 16px; height: 16px; color: #a855f7;"></i>
+            More XESTUS Productivity Tools:
+          </span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <a href="../../pdf/image-to-pdf/" class="btn-ghost-sm" style="text-decoration: none; font-size: 12px; padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(255,85,136,0.3); color: #ff5588; background: rgba(255,85,136,0.08);">Image to PDF &rarr;</a>
+            <a href="../../calculators/gst-calculator/" class="btn-ghost-sm" style="text-decoration: none; font-size: 12px; padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(0,191,255,0.3); color: #00bfff; background: rgba(0,191,255,0.08);">GST Calculator &rarr;</a>
+            <a href="../../office/invoice-generator/" class="btn-ghost-sm" style="text-decoration: none; font-size: 12px; padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(0,255,136,0.3); color: #00ff88; background: rgba(0,255,136,0.08);">Invoice Maker &rarr;</a>
+          </div>
         </div>
       </div>
     </div>
@@ -551,6 +581,7 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
       let originalWidth = 0;
       let originalHeight = 0;
       let origFileName = 'resized_image';
+      let lastResizedBlob = null;
 
       const dropzone = document.getElementById('imgDropzone');
       const fileInput = document.getElementById('imgFileInput');
@@ -561,6 +592,11 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
       const formatSel = document.getElementById('outputFormat');
       const canvas = document.getElementById('previewCanvas');
       const ctx = canvas.getContext('2d');
+      const resizedMeta = document.getElementById('resizedMeta');
+
+      const enableTargetKb = document.getElementById('enableTargetKbCheckbox');
+      const targetKbWrap = document.getElementById('targetKbWrap');
+      const targetKbInput = document.getElementById('targetKbInput');
 
       dropzone.addEventListener('click', () => fileInput.click());
       dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.style.borderColor = '#00ff88'; });
@@ -607,8 +643,64 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
         canvas.width = w;
         canvas.height = h;
         ctx.drawImage(originalImg, 0, 0, w, h);
-        document.getElementById('resizedMeta').textContent = `${w} x ${h} px`;
+
+        const fmt = formatSel.value;
+        const maxKb = enableTargetKb.checked ? parseFloat(targetKbInput.value) || 50 : 0;
+
+        if (maxKb > 0 && (fmt === 'image/jpeg' || fmt === 'image/webp')) {
+          // Binary search quality to stay under maxKb
+          let minQ = 0.05;
+          let maxQ = 0.95;
+          let bestBlob = null;
+          let iterations = 0;
+
+          function checkQuality(q, callback) {
+            canvas.toBlob(blob => {
+              callback(blob);
+            }, fmt, q);
+          }
+
+          function step() {
+            const currentQ = (minQ + maxQ) / 2;
+            checkQuality(currentQ, blob => {
+              iterations++;
+              const kb = blob.size / 1024;
+              if (kb <= maxKb) {
+                bestBlob = blob;
+                minQ = currentQ; // try higher quality
+              } else {
+                maxQ = currentQ; // reduce quality
+              }
+
+              if (iterations < 6 && (maxQ - minQ) > 0.05) {
+                step();
+              } else {
+                lastResizedBlob = bestBlob || blob;
+                const finalKb = (lastResizedBlob.size / 1024).toFixed(1);
+                resizedMeta.innerHTML = `${w} x ${h} px • <span style="color:#00ff88; font-weight:700;">${finalKb} KB</span> (Target: &le; ${maxKb} KB)`;
+              }
+            });
+          }
+          step();
+        } else {
+          canvas.toBlob(blob => {
+            lastResizedBlob = blob;
+            const finalKb = (blob.size / 1024).toFixed(1);
+            resizedMeta.textContent = `${w} x ${h} px • ${finalKb} KB`;
+          }, fmt, 0.92);
+        }
       }
+
+      enableTargetKb.addEventListener('change', () => {
+        targetKbWrap.style.display = enableTargetKb.checked ? 'inline-flex' : 'none';
+        if (enableTargetKb.checked && formatSel.value === 'image/png') {
+          formatSel.value = 'image/jpeg';
+        }
+        drawResized();
+      });
+
+      targetKbInput.addEventListener('input', drawResized);
+      formatSel.addEventListener('change', drawResized);
 
       widthInput.addEventListener('input', () => {
         if (lockAspect.checked && originalWidth > 0) {
@@ -634,8 +726,14 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
             lockAspect.checked = false;
             widthInput.value = btn.dataset.w;
             heightInput.value = btn.dataset.h;
-            drawResized();
           }
+          if (btn.dataset.kb) {
+            enableTargetKb.checked = true;
+            targetKbWrap.style.display = 'inline-flex';
+            targetKbInput.value = btn.dataset.kb;
+            if (formatSel.value === 'image/png') formatSel.value = 'image/jpeg';
+          }
+          drawResized();
         });
       });
 
@@ -648,165 +746,27 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
       document.getElementById('downloadResizedBtn').addEventListener('click', () => {
         const fmt = formatSel.value;
         const ext = fmt === 'image/jpeg' ? 'jpg' : (fmt === 'image/webp' ? 'webp' : 'png');
-        const dataUrl = canvas.toDataURL(fmt, 0.92);
-        const a = document.createElement('a');
-        a.href = dataUrl;
-        a.download = `${origFileName}_${canvas.width}x${canvas.height}.${ext}`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        if (lastResizedBlob) {
+          const url = URL.createObjectURL(lastResizedBlob);
+          const link = document.createElement('a');
+          link.download = `${origFileName}_resized.${ext}`;
+          link.href = url;
+          link.click();
+          URL.revokeObjectURL(url);
+        } else {
+          const dataUrl = canvas.toDataURL(fmt, 0.92);
+          const link = document.createElement('a');
+          link.download = `${origFileName}_resized.${ext}`;
+          link.href = dataUrl;
+          link.click();
+        }
+      });
+
+      document.getElementById('shareWhatsAppBtn').addEventListener('click', () => {
+        const text = encodeURIComponent('Need to resize photos to exact 20-50KB or signatures to 10-20KB for SSC, UPSC, or Govt exam forms without watermarks? Try this free in-browser tool: ' + window.location.href);
+        window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
       });
     })();
-</script>
-  
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Tool-specific Functional Logic
-      (function() {
-            try {
-                document.documentElement.setAttribute('data-theme', 'night');
-                localStorage.setItem('xestus_theme', 'night');
-            } catch (e) {}
-        })();
-
-window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-EF3ZRR55YY');
-
-// Initialize Related Tools from Registry
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.XestusTools && window.XestusTools.renderRelatedTools) {
-        window.XestusTools.renderRelatedTools('image-resizer', 'relatedToolsGrid');
-      }
-      if (window.MyXestus) {
-        window.MyXestus.initToolPage('image-resizer', 'Image Dimension Resizer');
-      }
-      // FAQ Accordion Toggle
-      document.querySelectorAll('.faq-question').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const ans = btn.nextElementSibling;
-          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-          btn.setAttribute('aria-expanded', !isExpanded);
-          ans.style.display = isExpanded ? 'none' : 'block';
-        });
-      });
-      if (window.lucide) lucide.createIcons();
-    });
-
-(function() {
-      let originalImg = null;
-      let originalWidth = 0;
-      let originalHeight = 0;
-      let origFileName = 'resized_image';
-
-      const dropzone = document.getElementById('imgDropzone');
-      const fileInput = document.getElementById('imgFileInput');
-      const controls = document.getElementById('resizerControls');
-      const widthInput = document.getElementById('targetWidth');
-      const heightInput = document.getElementById('targetHeight');
-      const lockAspect = document.getElementById('lockAspectCheckbox');
-      const formatSel = document.getElementById('outputFormat');
-      const canvas = document.getElementById('previewCanvas');
-      const ctx = canvas.getContext('2d');
-
-      dropzone.addEventListener('click', () => fileInput.click());
-      dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.style.borderColor = '#00ff88'; });
-      dropzone.addEventListener('dragleave', () => dropzone.style.borderColor = '#444');
-      dropzone.addEventListener('drop', e => {
-        e.preventDefault();
-        dropzone.style.borderColor = '#444';
-        if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
-      });
-
-      fileInput.addEventListener('change', e => {
-        if (e.target.files.length) handleFile(e.target.files[0]);
-      });
-
-      function handleFile(file) {
-        if (!file.type.startsWith('image/')) {
-          alert('Please choose a valid image file.');
-          return;
-        }
-        origFileName = file.name.substring(0, file.name.lastIndexOf('.')) || 'resized_image';
-        const reader = new FileReader();
-        reader.onload = evt => {
-          const img = new Image();
-          img.onload = () => {
-            originalImg = img;
-            originalWidth = img.naturalWidth;
-            originalHeight = img.naturalHeight;
-            widthInput.value = originalWidth;
-            heightInput.value = originalHeight;
-            document.getElementById('origMeta').textContent = `${originalWidth} x ${originalHeight} px (${(file.size / 1024).toFixed(1)} KB)`;
-            dropzone.style.display = 'none';
-            controls.style.display = 'block';
-            drawResized();
-          };
-          img.src = evt.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-
-      function drawResized() {
-        if (!originalImg) return;
-        const w = parseInt(widthInput.value, 10) || 1;
-        const h = parseInt(heightInput.value, 10) || 1;
-        canvas.width = w;
-        canvas.height = h;
-        ctx.drawImage(originalImg, 0, 0, w, h);
-        document.getElementById('resizedMeta').textContent = `${w} x ${h} px`;
-      }
-
-      widthInput.addEventListener('input', () => {
-        if (lockAspect.checked && originalWidth > 0) {
-          const w = parseInt(widthInput.value, 10) || 1;
-          heightInput.value = Math.round((w / originalWidth) * originalHeight);
-        }
-        drawResized();
-      });
-
-      heightInput.addEventListener('input', () => {
-        if (lockAspect.checked && originalHeight > 0) {
-          const h = parseInt(heightInput.value, 10) || 1;
-          widthInput.value = Math.round((h / originalHeight) * originalWidth);
-        }
-        drawResized();
-      });
-
-      document.querySelectorAll('.btn-preset').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.btn-preset').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          if (btn.dataset.w && btn.dataset.h) {
-            lockAspect.checked = false;
-            widthInput.value = btn.dataset.w;
-            heightInput.value = btn.dataset.h;
-            drawResized();
-          }
-        });
-      });
-
-      document.getElementById('changeImageBtn').addEventListener('click', () => {
-        dropzone.style.display = 'block';
-        controls.style.display = 'none';
-        fileInput.value = '';
-      });
-
-      document.getElementById('downloadResizedBtn').addEventListener('click', () => {
-        const fmt = formatSel.value;
-        const ext = fmt === 'image/jpeg' ? 'jpg' : (fmt === 'image/webp' ? 'webp' : 'png');
-        const dataUrl = canvas.toDataURL(fmt, 0.92);
-        const a = document.createElement('a');
-        a.href = dataUrl;
-        a.download = `${origFileName}_${canvas.width}x${canvas.height}.${ext}`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      });
-    })();
-    });
   </script>
 
 

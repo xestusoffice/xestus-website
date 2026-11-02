@@ -133,6 +133,12 @@
         <priority>0.85</priority>
     </url>
     <url>
+        <loc>https://xestus.in/tools/calculators/salary-calculator/</loc>
+        <lastmod>2026-11-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.95</priority>
+    </url>
+    <url>
         <loc>https://xestus.in/tools/calculators/date-calculator/</loc>
         <lastmod>2026-10-12</lastmod>
         <changefreq>weekly</changefreq>
@@ -218,9 +224,9 @@
     </url>
     <url>
         <loc>https://xestus.in/tools/image/image-resizer/</loc>
-        <lastmod>2026-10-12</lastmod>
+        <lastmod>2026-11-02</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.85</priority>
+        <priority>0.95</priority>
     </url>
     <url>
         <loc>https://xestus.in/tools/image/jpg-to-png/</loc>
