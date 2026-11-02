@@ -14020,9 +14020,13 @@ img, video, iframe, canvas, svg {
     }
 
     .search-chip-btn {
-        font-size: 11.5px;
-        padding: 6px 10px;
-        min-height: 32px;
+        font-size: 12px;
+        padding: 8px 14px;
+        min-height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 3px;
     }
 
     .seva-task-grid {
@@ -17208,8 +17212,8 @@ button.btn-assist-modal-trigger:hover {
 
     .btn-outlier-nav {
         height: 28px !important;
-        min-height: 28px !important;
-        padding: 0 6px !important;
+        min-height: 40px !important;
+        padding: 4px 10px !important;
         font-size: 9.5px !important;
         gap: 3px !important;
     }
@@ -18954,8 +18958,8 @@ body, h1, h2, h3, h4, h5, h6, p, span, a, button, label, input, select, textarea
 
     .mobile-theme-btn {
         flex: 1 1 auto !important;
-        min-height: 34px !important;
-        padding: 4px 6px !important;
+        min-height: 44px !important;
+        padding: 6px 10px !important;
         background: rgba(255, 255, 255, 0.05) !important;
         border: 1px solid rgba(255, 255, 255, 0.15) !important;
         border-radius: 8px !important;
