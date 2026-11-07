@@ -3644,9 +3644,10 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
         },
         {
                 "service_id": "ssc-recruitment-cgl-chsl-gd",
+                "dedicated_page_url": "digital-seva/wb-govt-jobs/",
                 "service_name": {
-                        "en": "Staff Selection Commission (SSC — CGL, CHSL, MTS, GD)",
-                        "bn": "স্টাফ সিলেকশন কমিশন (SSC — সিজিএল, সিএইচএসএল, এমটিএস, জিডি)",
+                        "en": "Staff Selection Commission (SSC — GD Constable, CGL, CHSL, MTS & OTR)",
+                        "bn": "স্টাফ সিলেকশন কমিশন (SSC — জিডি কনস্টেবল, সিজিএল, সিএইচএসএল, এমটিএস ও ওটিআর)",
                         "hi": "कर्मचारी चयन आयोग (SSC — CGL, CHSL, MTS, GD)"
                 },
                 "short_description": {
@@ -6482,9 +6483,10 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
         },
         {
                 "service_id": "wbpsc-recruitment-wbcs-clerkship",
+                "dedicated_page_url": "digital-seva/wb-govt-jobs/",
                 "service_name": {
-                        "en": "West Bengal Public Service Commission (WBPSC — WBCS, Clerkship & Misc)",
-                        "bn": "পশ্চিমবঙ্গ পাবলিক সার্ভিস কমিশন (WBPSC — ডাব্লুবিসিএস, ক্লার্কশিপ ও ফুড এসআই)",
+                        "en": "West Bengal Public Service Commission (WBPSC — Clerkship, Miscellaneous, WBCS & Food SI)",
+                        "bn": "পশ্চিমবঙ্গ পাবলিক সার্ভিস কমিশন (WBPSC — ক্লার্কশিপ, মিসলেনিয়াস, ডাব্লুবিসিএস ও ফুড এসআই)",
                         "hi": "पश्चिम बंगाल लोक सेवा आयोग (WBPSC — डब्ल्यूबीसीएस, क्लर्कशिप)"
                 },
                 "short_description": {
@@ -6603,6 +6605,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
         },
         {
                 "service_id": "wbp-police-recruitment-constable-si",
+                "dedicated_page_url": "digital-seva/wb-govt-jobs/",
                 "service_name": {
                         "en": "West Bengal Police Recruitment Board (WBPRB — Constable, SI & Kolkata Police)",
                         "bn": "পশ্চিমবঙ্গ পুলিশ নিয়োগ বোর্ড (WBPRB — কনস্টেবল, এসআই ও কলকাতা পুলিশ)",
@@ -6738,7 +6741,145 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                 }
         },
         {
+                "service_id": "wbssc-group-c-d-recruitment",
+                "dedicated_page_url": "digital-seva/wb-govt-jobs/",
+                "service_name": {
+                        "en": "West Bengal Staff Selection Commission (WBSSC — Group C & Group D Recruitment)",
+                        "bn": "পশ্চিমবঙ্গ স্টাফ সিলেকশন কমিশন (WBSSC — গ্রুপ সি ও গ্রুপ ডি নিয়োগ)",
+                        "hi": "पश्चिम बंगाल कर्मचारी चयन आयोग (WBSSC — ग्रुप सी और ग्रुप डी)"
+                },
+                "short_description": {
+                        "en": "Official portal of West Bengal Staff Selection Commission for recruitment of Group C (Clerical) and Group D (Peon, Lab Attendant, Night Guard) staff across State Government departments.",
+                        "bn": "পশ্চিমবঙ্গ সরকারের বিভিন্ন দপ্তরে গ্রুপ সি (করণিক) এবং গ্রুপ ডি (পিয়ন, নাইট গার্ড, ল্যাব অ্যাটেনডেন্ট) পদে স্থায়ী কর্মী নিয়োগের অফিশিয়াল কমিশন পোর্টাল।",
+                        "hi": "पश्चिम बंगाल राज्य सरकार के विभागों में ग्रुप सी और ग्रुप डी पदों पर भर्ती का आधिकारिक स्टाफ सिलेक्शन कमीशन पोर्टल।"
+                },
+                "category": "wb-govt-jobs",
+                "category_name": {
+                        "en": "West Bengal Govt Jobs (WBPSC/WBP)",
+                        "bn": "পশ্চিমবঙ্গ সরকারি চাকরি (WBPSC/WBP)",
+                        "hi": "पश्चिम बंगाल सरकारी नौकरियां"
+                },
+                "subcategory": "State Ministerial & Subordinate Staff",
+                "authority": "West Bengal Staff Selection Commission (WBSSC), Government of West Bengal",
+                "government_level": "West Bengal",
+                "service_type": "Job",
+                "target_users": [
+                        "Job Seeker",
+                        "Student"
+                ],
+                "eligibility": {
+                        "en": [
+                                "Indian citizen residing in West Bengal with proficiency in Bengali or Nepali.",
+                                "Group D: Minimum Class 8 (VIII) passed from a recognized school.",
+                                "Group C (Clerk): Class 10 (Madhyamik) passed with basic computer typing knowledge.",
+                                "Age Limit: 18 to 40 years (Relaxation: SC/ST 5 years, OBC 3 years, PwD up to 45 years)."
+                        ],
+                        "bn": [
+                                "বাংলা বা নেপালি ভাষায় পারদর্শী পশ্চিমবঙ্গের ভারতীয় নাগরিক।",
+                                "গ্রুপ ডি: ন্যূনতম অষ্টম শ্রেণি পাস।",
+                                "গ্রুপ সি (ক্লার্ক): মাধ্যমিক পাস এবং টাইপিংয়ের বেসিক কম্পিউটার জ্ঞান।",
+                                "বয়সসীমা: ১৮ থেকে ৪০ বছর (এসসি/এসটি ৫ বছর, ওবিসি ৩ বছর ছাড়)।"
+                        ],
+                        "hi": [
+                                "ग्रुप डी के लिए 8वीं पास, ग्रुप सी के लिए 10वीं पास और कंप्यूटर ज्ञान। आयु 18-40 वर्ष।"
+                        ]
+                },
+                "required_documents": {
+                        "en": [
+                                "Class 8 School Leaving Certificate (Group D) or Madhyamik Admit Card (Group C/Age Proof)",
+                                "Aadhaar Card / Voter ID for Identity Verification",
+                                "Caste Certificate (SC/ST/OBC-A/OBC-B issued by SDO/BDO)",
+                                "Scanned Passport Photograph (20KB - 50KB)",
+                                "Scanned Signature (10KB - 20KB)"
+                        ],
+                        "bn": [
+                                "অষ্টম শ্রেণি পাশের সার্টিফিকেট (গ্রুপ ডি) অথবা মাধ্যমিক অ্যাডমিট কার্ড (গ্রুপ সি/বয়সের প্রমাণ)",
+                                "আধার কার্ড অথবা ভোটার আইডি",
+                                "কাস্ট সার্টিফিকেট (প্রযোজ্য ক্ষেত্রে)",
+                                "পাসপোর্ট সাইজ ছবি (২০-৫০ কেবি)",
+                                "স্বাক্ষরের স্ক্যান কপি (১০-২০ কেবি)।"
+                        ],
+                        "hi": [
+                                "शैक्षणिक प्रमाण पत्र, 10वीं का एडमिट कार्ड, आधार कार्ड, जाति प्रमाण पत्र, फोटो और हस्ताक्षर।"
+                        ]
+                },
+                "application_fee": {
+                        "en": "Nominal application and processing fee. Exemption for SC/ST and PwD candidates of West Bengal as per State Govt rules.",
+                        "bn": "জেনারেল ও ওবিসি প্রার্থীদের জন্য নির্ধারিত নামমাত্র ফি। রাজ্যের এসসি, এসটি ও প্রতিবন্ধীদের জন্য সম্পূর্ণ ফি মকুব।",
+                        "hi": "सामान्य/ओबीसी के लिए नाममात्र शुल्क। पश्चिम बंगाल के एससी/एसटी के लिए निःशुल्क।"
+                },
+                "benefits": {
+                        "en": [
+                                "Permanent Government employment in West Bengal Secretariats, Directorates, and District Offices.",
+                                "WB ROPA Pay Scale Level 1 (Group D) and Level 6 (Group C Clerk) with regular DA, HRA, Medical, and Pensionary benefits."
+                        ],
+                        "bn": [
+                                "পশ্চিমবঙ্গ সরকারের বিভিন্ন সচিবালয় ও জেলা অফিসে স্থায়ী চাকরি।",
+                                "সরকারি রোপা পে-স্কেল অনুযায়ী নিয়মিত বেতন, ডিএ, এইচআরএ ও পেনশন সুবিধা।"
+                        ],
+                        "hi": [
+                                "पश्चिम बंगाल सरकार में स्थायी पद और नियमित वेतन भत्ते।"
+                        ]
+                },
+                "process_steps": {
+                        "en": [
+                                "Visit official WBSSC portal (wbssc.gov.in).",
+                                "Click on 'Current Advertisements' and select the Group C or Group D notification.",
+                                "Complete Candidate One-Time Registration using Mobile Number & Email ID.",
+                                "Fill personal details, educational qualifications, and district posting preferences.",
+                                "Upload scanned photo and signature adhering to pixel and file size norms (use XESTUS Image Resizer).",
+                                "Review the draft preview and submit application fee via GRIPS / Net Banking / UPI.",
+                                "Download and safely store the generated Application Confirmation Slip with Registration Number."
+                        ],
+                        "bn": [
+                                "অফিসিয়াল wbssc.gov.in পোর্টালে যান।",
+                                "বিজ্ঞপ্তি তালিকা থেকে গ্রুপ সি বা গ্রুপ ডি নোটিফিকেশন নির্বাচন করুন।",
+                                "মোবাইল ও ইমেল দিয়ে ওটিআর রেজিস্ট্রেশন সম্পন্ন করুন।",
+                                "ব্যক্তিগত ও শিক্ষাগত যোগ্যতা এবং পছন্দের জেলার তথ্য পূরণ করুন।",
+                                "ছবি ও সই সঠিক সাইজে আপলোড করুন (XESTUS Image Resizer ব্যবহার করতে পারেন)।",
+                                "অনলাইন পেমেন্ট সম্পন্ন করে কনফার্মেশন স্লিপটি প্রিন্ট করে রাখুন।"
+                        ],
+                        "hi": [
+                                "wbssc.gov.in पर जाएं। भर्ती का चयन कर फॉर्म भरें, फोटो अपलोड करें और सबमिट करें।"
+                        ]
+                },
+                "official_homepage": "https://wbssc.gov.in/",
+                "official_apply_url": "https://wbssc.gov.in/",
+                "official_status_url": "https://wbssc.gov.in/",
+                "official_helpline": "033-2334-4340 (WBSSC Helpdesk)",
+                "official_email": "wbssc.kol@gmail.com",
+                "state": "West Bengal",
+                "availability": "Online 24x7",
+                "active_status": true,
+                "verification_status": "officially_verified",
+                "source_url": "https://wbssc.gov.in/",
+                "last_verified": "07 Nov 2026",
+                "is_popular": true,
+                "intent_tags": [
+                        "wbssc",
+                        "wbssc group c",
+                        "wbssc group d",
+                        "wbssc recruitment 2026",
+                        "wbssc clerk",
+                        "wb group d apply online",
+                        "wbssc gov in",
+                        "west bengal staff selection commission",
+                        "গ্রুপ সি নিয়োগ",
+                        "গ্রুপ ডি চাকরি",
+                        "ডাব্লুবিএসএসসি",
+                        "পশ্চিমবঙ্গ গ্রুপ ডি",
+                        "डब्ल्यूबीएसएससी",
+                        "ग्रुप डी भर्ती"
+                ],
+                "scam_warning": {
+                        "en": "Recruitment is strictly based on written merit exams conducted by WBSSC. Do not fall victim to touts claiming guaranteed school/clerical jobs for money.",
+                        "bn": "সতর্কতা: গ্রুপ সি বা গ্রুপ ডি পদে চাকরি পাইয়ে দেওয়ার নামে কোনো দালাল বা চক্রকে অর্থ দেবেন না। নিয়োগ কেবল লিখিত পরীক্ষা ও মেধার ভিত্তিতে হয়।",
+                        "hi": "नौकरी दिलाने के नाम पर किसी भी दलाल को पैसे न दें। चयन केवल परीक्षा मेरिट से होता है।"
+                }
+        },
+        {
                 "service_id": "rrb-indian-railway-recruitment-board",
+                "dedicated_page_url": "digital-seva/wb-govt-jobs/",
                 "service_name": {
                         "en": "Railway Recruitment Boards (RRB Centralized — ALP, Technician, NTPC & Group D)",
                         "bn": "রেলওয়ে রিক্রুটমেন্ট বোর্ড (RRB — সহকারী লোকো পাইলট, টেকনিশিয়ান, এনটিপিসি ও গ্রুপ ডি)",
@@ -6865,6 +7006,282 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                         "en": "Railway recruitment is conducted 100% on computerized CBT merit. Beware of fake agents promising railway appointments for cash. Never fall for fake appointment letters.",
                         "bn": "রেলের চাকরি সম্পূর্ণ কম্পিউটারাইজড পরীক্ষার মাধ্যমে হয়। টাকার বিনিময়ে রেলের চাকরি দেওয়ার দাবি করা প্রতারকদের থেকে সম্পূর্ণ দূরে থাকুন।",
                         "hi": "रेलवे में नौकरी केवल सीबीटी परीक्षा से मिलती है। किसी भी दलाल को पैसे न दें।"
+                }
+        },
+        {
+                "service_id": "ibps-recruitment-po-clerk-rrb",
+                "dedicated_page_url": "digital-seva/wb-govt-jobs/",
+                "service_name": {
+                        "en": "Institute of Banking Personnel Selection (IBPS — PO, Clerk, SO & RRB Office Assistant)",
+                        "bn": "ইনস্টিটিউট অফ ব্যাংকিং পার্সোনেল সিলেকশন (IBPS — ব্যাংক পিও, ক্লার্ক ও গ্রামীণ ব্যাংক)",
+                        "hi": "बैंकिंग कार्मिक चयन संस्थान (IBPS — बैंक पीओ, क्लर्क और आरआरबी)"
+                },
+                "short_description": {
+                        "en": "Centralized recruiting authority for 11 Public Sector Banks (PNB, Canara, BoB, etc.) and Regional Rural Banks conducting annual CRP for Probationary Officers (PO), Clerks, and Specialist Officers.",
+                        "bn": "ভারতের রাষ্ট্রায়ত্ত ব্যাংক (PNB, Canara, BoB ইত্যাদি) ও গ্রামীণ ব্যাংকগুলিতে পিও, ক্লার্ক এবং স্পেশালিস্ট অফিসার নিয়োগের কেন্দ্রীয় অফিশিয়াল পোর্টাল।",
+                        "hi": "सार्वजनिक क्षेत्र के 11 प्रमुख बैंकों में पीओ, क्लर्क और ग्रामीण बैंकों में भर्ती का आधिकारिक आईबीपीएस पोर्टल।"
+                },
+                "category": "banking-jobs",
+                "category_name": {
+                        "en": "Banking Jobs (IBPS/SBI)",
+                        "bn": "ব্যাংকিং চাকরি (IBPS/SBI)",
+                        "hi": "बैंकिंग नौकरियां (IBPS/SBI)"
+                },
+                "subcategory": "Public Sector Banking",
+                "authority": "Institute of Banking Personnel Selection (IBPS)",
+                "government_level": "Central",
+                "service_type": "Job",
+                "target_users": [
+                        "Job Seeker",
+                        "Student"
+                ],
+                "eligibility": {
+                        "en": [
+                                "Degree (Graduation) in any discipline from a recognized University recognized by Govt of India.",
+                                "Clerk / Office Assistant: 20 to 28 years; PO / Management Trainee: 20 to 30 years.",
+                                "Working knowledge of operating computer systems and local language proficiency (Bengali for West Bengal vacancies)."
+                        ],
+                        "bn": [
+                                "যে কোনো স্বীকৃত বিশ্ববিদ্যালয় থেকে স্নাতক (Graduate)।",
+                                "ক্লার্ক: ২০ থেকে ২৮ বছর; পিও (PO): ২০ থেকে ৩০ বছর (সংরক্ষিত শ্রেণির বয়সে ছাড় প্রযোজ্য)।",
+                                "কম্পিউটার জ্ঞান এবং স্থানীয় ভাষা হিসেবে বাংলায় পারদর্শিতা।"
+                        ],
+                        "hi": [
+                                "मान्यता प्राप्त विश्वविद्यालय से स्नातक। क्लर्क के लिए 20-28 वर्ष, पीओ के लिए 20-30 वर्ष। स्थानीय भाषा का ज्ञान।"
+                        ]
+                },
+                "required_documents": {
+                        "en": [
+                                "Graduation Degree & Consolidated Marksheet",
+                                "Scanned Passport Photograph (4.5cm x 3.5cm, 20-50 KB)",
+                                "Scanned Signature with black ink (10-20 KB)",
+                                "Left Thumb Impression on white paper with black/blue ink (20-50 KB)",
+                                "Handwritten Declaration in English as per prescribed text (50-100 KB)",
+                                "Aadhaar Card / PAN Card / Voter ID"
+                        ],
+                        "bn": [
+                                "স্নাতক ডিগ্রির মার্কশিট ও সার্টিফিকেট",
+                                "পাসপোর্ট সাইজ ছবি (২০-৫০ কেবি)",
+                                "কালো কালিতে করা স্বাক্ষর (১০-২০ কেবি)",
+                                "বাঁ হাতের বুড়ো আঙুলের ছাপ (২০-৫০ কেবি)",
+                                "হাতে লেখা ইংরেজি ডিক্লারেশন (৫০-১০০ কেবি)",
+                                "আধার কার্ড বা ভোটার আইডি।"
+                        ],
+                        "hi": [
+                                "स्नातक अंकपत्र, पासपोर्ट फोटो, हस्ताक्षर, बाएं अंगूठे का निशान, हस्तलिखित घोषणा और फोटो आईडी।"
+                        ]
+                },
+                "application_fee": {
+                        "en": "₹850 for General/EWS/OBC; ₹175 for SC/ST/PwBD candidates.",
+                        "bn": "জেনারেল, ইডব্লিউএস ও ওবিসি প্রার্থীদের জন্য ₹৮৫০; এসসি, এসটি ও প্রতিবন্ধীদের জন্য ₹১৭৫।",
+                        "hi": "सामान्य/ओबीसी/ईडब्ल्यूएस के लिए ₹850; एससी/एसटी/दिव्यांग के लिए ₹175।"
+                },
+                "benefits": {
+                        "en": [
+                                "Permanent officer and clerical career across leading nationalized banks in India.",
+                                "Structured pay scale (12th Bipartite Settlement), DA, HRA, Medical, LFC, and subsidized home loans."
+                        ],
+                        "bn": [
+                                "ভারতের জাতীয়কৃত ব্যাংকে স্থায়ী সম্মানজনক চাকরি।",
+                                "১২তম দ্বিপাক্ষিক চুক্তি অনুযায়ী চমৎকার বেতন, ডিএ, মেডিক্যাল ও গৃহঋণের ছাড়।"
+                        ],
+                        "hi": [
+                                "राष्ट्रीयकृत बैंकों में आकर्षक वेतन, भत्ते और सुरक्षित करियर।"
+                        ]
+                },
+                "process_steps": {
+                        "en": [
+                                "Visit official portal (ibps.in) and click on CRP Clerical / CRP PO / CRP RRBs.",
+                                "Click 'Click here for New Registration' and enter basic contact info to generate Registration No. and Password.",
+                                "Fill educational details, percentage, bank preferences (order of choice).",
+                                "Upload photo, signature, left thumb impression, and handwritten declaration (format text accurately).",
+                                "Preview entire application and verify spelling before final submit.",
+                                "Pay online application fee via Debit/Credit Card, Net Banking, or UPI.",
+                                "Download and print complete e-Receipt and submitted Application Form for future document verification."
+                        ],
+                        "bn": [
+                                "ibps.in পোর্টালে গিয়ে সংশ্লিষ্ট CRP (PO/Clerk/RRB) লিংকে ক্লিক করুন।",
+                                "'Click here for New Registration' দিয়ে নাম, মোবাইল ও ইমেল দিয়ে রেজিস্ট্রেশন করুন।",
+                                "শিক্ষাগত যোগ্যতা এবং ব্যাংকের পছন্দের তালিকা পূরণ করুন।",
+                                "ছবি, স্বাক্ষর, বাঁ হাতের বুড়ো আঙুলের ছাপ এবং হ্যান্ডরিটেন ডিক্লারেশন আপলোড করুন।",
+                                "সম্পূর্ণ ফর্ম প্রিভিউ করে অনলাইনে ফি জমা দিন।",
+                                "আবেদনপত্র ও পেমেন্ট রিসিট ডাউনলোড করে প্রিন্ট রাখুন।"
+                        ],
+                        "hi": [
+                                "ibps.in पर पंजीकरण करें। विवरण भरें, फोटो-हस्ताक्षर अपलोड करें और ऑनलाइन फीस जमा करें।"
+                        ]
+                },
+                "official_homepage": "https://www.ibps.in/",
+                "official_apply_url": "https://www.ibps.in/",
+                "official_status_url": "https://www.ibps.in/",
+                "official_helpline": "1800-222-366 / 1800-103-4566 (IBPS Candidate Helpdesk)",
+                "official_email": "ibps@ibps.in",
+                "state": "All India",
+                "availability": "Online 24x7 as per Annual Calendar",
+                "active_status": true,
+                "verification_status": "officially_verified",
+                "source_url": "https://www.ibps.in/",
+                "last_verified": "07 Nov 2026",
+                "is_popular": true,
+                "intent_tags": [
+                        "ibps",
+                        "ibps clerk apply online",
+                        "ibps po 2026",
+                        "ibps rrb office assistant",
+                        "ibps calendar",
+                        "ibps in",
+                        "bank clerk recruitment",
+                        "bank po exam",
+                        "আইবিপিএস ক্লার্ক",
+                        "ব্যাংক ক্লার্ক নিয়োগ",
+                        "ব্যাংক পিও পরীক্ষা",
+                        "গ্রামীণ ব্যাংক চাকরি",
+                        "आईबीपीएस",
+                        "बैंक भर्ती",
+                        "बैंक पीओ"
+                ],
+                "scam_warning": {
+                        "en": "IBPS conducts online examinations on strict objective merit. Never share your registration credentials or trust unauthorized coaching institutes promising guaranteed bank placement.",
+                        "bn": "আইবিপিএস পরীক্ষা সম্পূর্ণ অনলাইন মেধার ভিত্তিতে হয়। পাস করিয়ে দেওয়ার প্রলোভন দেখানো কোনো প্রতারককে টাকা দেবেন না।",
+                        "hi": "आईबीपीएस परीक्षा पूरी तरह योग्यता पर आधारित है। किसी भी दलाल के झांसे में न आएं।"
+                }
+        },
+        {
+                "service_id": "sbi-careers-recruitment-po-clerk",
+                "dedicated_page_url": "digital-seva/wb-govt-jobs/",
+                "service_name": {
+                        "en": "State Bank of India Recruitment (SBI — Probationary Officers & Junior Associates / Clerk)",
+                        "bn": "স্টেট ব্যাংক অফ ইন্ডিয়া নিয়োগ (SBI — পিও ও জুনিয়র অ্যাসোসিয়েট / ক্লার্ক)",
+                        "hi": "भारतीय स्टेट बैंक भर्ती (SBI — पीओ और जूनियर एसोसिएट / क्लर्क)"
+                },
+                "short_description": {
+                        "en": "Official State Bank of India career portal for hiring Probationary Officers (PO), Junior Associates (Customer Support & Sales), and Specialist Cadre Officers across India.",
+                        "bn": "ভারতের বৃহত্তম বাণিজ্যিক ব্যাংক স্টেট ব্যাংক অফ ইন্ডিয়ার অফিশিয়াল ক্যারিয়ার পোর্টাল: এসবিআই পিও, জুনিয়র অ্যাসোসিয়েট (ক্লার্ক) এবং স্পেশালিস্ট অফিসার নিয়োগ।",
+                        "hi": "भारतीय स्टेट बैंक का आधिकारिक करियर पोर्टल: एसबीआई पीओ, जूनियर एसोसिएट (क्लर्क) और विशेषज्ञ अधिकारियों की भर्ती।"
+                },
+                "category": "banking-jobs",
+                "category_name": {
+                        "en": "Banking Jobs (IBPS/SBI)",
+                        "bn": "ব্যাংকিং চাকরি (IBPS/SBI)",
+                        "hi": "बैंकिंग नौकरियां (IBPS/SBI)"
+                },
+                "subcategory": "State Bank of India",
+                "authority": "State Bank of India (Central Recruitment & Promotion Department)",
+                "government_level": "Central",
+                "service_type": "Job",
+                "target_users": [
+                        "Job Seeker",
+                        "Student"
+                ],
+                "eligibility": {
+                        "en": [
+                                "Graduation in any discipline from a recognized University or equivalent qualification.",
+                                "Age Limit: Junior Associate (20 to 28 years); Probationary Officer (21 to 30 years).",
+                                "Proficiency in the specified opted local language of the State (Bengali for West Bengal Circle)."
+                        ],
+                        "bn": [
+                                "যে কোনো স্বীকৃত বিশ্ববিদ্যালয় থেকে স্নাতক পাস।",
+                                "বয়সসীমা: জুনিয়র অ্যাসোসিয়েট ২০-২৮ বছর; প্রবেশনারি অফিসার ২১-৩০ বছর (এসসি/এসটি ৫ বছর, ওবিসি ৩ বছর ছাড়)।",
+                                "পশ্চিমবঙ্গ সার্কেলের জন্য বাংলা ভাষায় পারদর্শী হতে হবে।"
+                        ],
+                        "hi": [
+                                "मान्यता प्राप्त विश्वविद्यालय से स्नातक। जूनियर एसोसिएट के लिए 20-28 वर्ष, पीओ के लिए 21-30 वर्ष।"
+                        ]
+                },
+                "required_documents": {
+                        "en": [
+                                "Graduation Certificate & Marksheets",
+                                "Aadhaar Card / Voter Card / PAN Card",
+                                "Scanned Passport Photograph & Signature",
+                                "Left Thumb Impression & Hand Written Declaration",
+                                "Caste / EWS / Disability Certificate (if applicable)"
+                        ],
+                        "bn": [
+                                "স্নাতক পাসের সার্টিফিকেট",
+                                "আধার কার্ড / ভোটার কার্ড",
+                                "পাসপোর্ট ছবি ও সই স্ক্যান",
+                                "হাতে লেখা ডিক্লারেশন ও বুড়ো আঙুলের ছাপ",
+                                "কাস্ট বা ইডব্লিউএস সার্টিফিকেট।"
+                        ],
+                        "hi": [
+                                "स्नातक डिग्री, फोटो आईडी, फोटो, हस्ताक्षर, अंगूठे का निशान और जाति प्रमाण पत्र।"
+                        ]
+                },
+                "application_fee": {
+                        "en": "₹750 for General / EWS / OBC. ₹0 (Completely Free) for SC / ST / PwBD candidates.",
+                        "bn": "জেনারেল, ইডব্লিউএস ও ওবিসি প্রার্থীদের জন্য ₹৭৫০। এসসি, এসটি ও প্রতিবন্ধী প্রার্থীদের জন্য সম্পূর্ণ বিনামূল্যে (₹০)।",
+                        "hi": "सामान्य/ओबीसी/ईडब्ल्यूएस के लिए ₹750। एससी/एसटी/दिव्यांग उम्मीदवारों के लिए पूर्णतः निःशुल्क।"
+                },
+                "benefits": {
+                        "en": [
+                                "Highest starting basic pay and perks in the Indian banking industry.",
+                                "Rapid promotion pathways to Scale II, III, and executive management roles.",
+                                "Comprehensive medical cover, concessional housing loans, and pension benefits."
+                        ],
+                        "bn": [
+                                "ভারতীয় ব্যাংকিং ক্ষেত্রে সর্বোচ্চ প্রাথমিক বেতন ও সুযোগ-সুবিধা।",
+                                "দ্রুত পদোন্নতির মাধ্যমে উচ্চ প্রশাসনিক পদে যাওয়ার সুযোগ।",
+                                "সম্পূর্ণ মেডিক্যাল বীমা, কম সুদে গৃহঋণ ও পেনশন সুবিধা।"
+                        ],
+                        "hi": [
+                                "बैंकिंग उद्योग में उच्चतम वेतन, भत्ते और तेजी से पदोन्नति के अवसर।"
+                        ]
+                },
+                "process_steps": {
+                        "en": [
+                                "Visit sbi.co.in/web/careers or bank.sbi/careers.",
+                                "Click on 'Join SBI' -> 'Current Openings'.",
+                                "Select 'Recruitment of Junior Associates' or 'Recruitment of Probationary Officers'.",
+                                "Click 'Apply Online' -> 'Click here for New Registration'.",
+                                "Fill demographic, academic, and circle posting preferences (select West Bengal).",
+                                "Upload photo (20-50KB), signature (10-20KB), thumb impression, and handwritten declaration.",
+                                "Make online fee payment and save the confirmation PDF along with the fee receipt."
+                        ],
+                        "bn": [
+                                "sbi.co.in/web/careers বা bank.sbi/careers ওয়েবসাইটে যান।",
+                                "'Current Openings' থেকে কাঙ্ক্ষিত নিয়োগ বিজ্ঞপ্তি বেছে নিন।",
+                                "'Apply Online' এ গিয়ে নিউ রেজিস্ট্রেশন সম্পন্ন করুন।",
+                                "ব্যক্তিগত বিবরণ, শিক্ষাগত তথ্য ও সার্কেল হিসেবে পশ্চিমবঙ্গ নির্বাচন করুন।",
+                                "ছবি, সই, বাঁ হাতের বুড়ো আঙুলের ছাপ ও ডিক্লারেশন আপলোড করুন।",
+                                "অনলাইন ফি জমা দিয়ে কনফার্মেশন ফর্মটি প্রিন্ট রাখুন।"
+                        ],
+                        "hi": [
+                                "sbi.co.in/web/careers पर जाएं, भर्ती लिंक चुनें, फॉर्म भरें और ऑनलाइन आवेदन करें।"
+                        ]
+                },
+                "official_homepage": "https://sbi.co.in/web/careers",
+                "official_apply_url": "https://sbi.co.in/web/careers/current-openings",
+                "official_status_url": "https://sbi.co.in/web/careers/current-openings",
+                "official_helpline": "022-2282-0427 (SBI Central Recruitment Helpdesk)",
+                "official_email": "crpd@sbi.co.in",
+                "state": "All India",
+                "availability": "Online 24x7 as per Notification",
+                "active_status": true,
+                "verification_status": "officially_verified",
+                "source_url": "https://sbi.co.in/web/careers",
+                "last_verified": "07 Nov 2026",
+                "is_popular": true,
+                "intent_tags": [
+                        "sbi careers",
+                        "sbi clerk",
+                        "sbi po recruitment",
+                        "sbi junior associate apply online",
+                        "sbi co in web careers",
+                        "sbi notification 2026",
+                        "sbi clerk exam",
+                        "bank recruitment",
+                        "এসবিআই ক্লার্ক নিয়োগ",
+                        "এসবিআই পিও",
+                        "স্টেট ব্যাংক চাকরি",
+                        "এসবিআই জুনিয়র অ্যাসোসিয়েট",
+                        "एसबीआई क्लर्क",
+                        "एसबीआई पीओ",
+                        "स्टेट बैंक भर्ती"
+                ],
+                "scam_warning": {
+                        "en": "SBI recruitment notices are published exclusively on sbi.co.in/web/careers or bank.sbi/careers. Beware of spoof websites imitating SBI or fake offer letters on social media.",
+                        "bn": "সতর্কবার্তা: এসবিআই নিয়োগ কেবল sbi.co.in/web/careers অফিশিয়াল সাইটেই প্রকাশিত হয়। ভুয়ো ওয়েবসাইট বা সোশ্যাল মিডিয়ার জাল অফার লেটার থেকে সাবধান থাকুন।",
+                        "hi": "एसबीआई भर्ती केवल आधिकारिक sbi.co.in/web/careers पोर्टल पर होती है। किसी भी फर्जी वेबसाइट से बचें।"
                 }
         },
         {
