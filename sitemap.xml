@@ -42,6 +42,12 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+        <url>
+        <loc>https://xestus.in/digital-seva/farmer-id/</loc>
+        <lastmod>2026-11-07</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.95</priority>
+    </url>
     <url>
         <loc>https://xestus.in/tools/</loc>
         <lastmod>2026-10-28</lastmod>

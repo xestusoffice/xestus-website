@@ -925,6 +925,10 @@
             <i data-lucide="layout-grid" aria-hidden="true"></i>
             <span data-i18n="digital.filter_all">All Services</span>
         </button>
+        <button type="button" class="digital-filter-btn seva-filter-pill btn-favorite-filter" data-filter-type="favorites" data-value="favorites" aria-pressed="false" id="btnFilterFavorites" title="View your bookmarked and saved portals">
+            <i data-lucide="star" aria-hidden="true"></i>
+            <span data-i18n="digital.filter_favorites">Bookmarks (<span id="sevaFavCountBadge">0</span>)</span>
+        </button>
         <button type="button" class="digital-filter-btn seva-filter-pill" data-filter-type="govLevel" data-value="Central" aria-pressed="false">
             <i data-lucide="landmark" aria-hidden="true"></i>
             <span>Central Govt (GoI)</span>
@@ -4329,10 +4333,10 @@
         if (sevaLoaded) return;
         sevaLoaded = true;
         var s1 = document.createElement('script');
-        s1.src = 'js/digital-seva-data.js?v=4.0.0';
+        s1.src = 'js/digital-seva-data.js?v=4.2.0';
         s1.onload = function() {
             var s2 = document.createElement('script');
-            s2.src = 'js/digital-seva-hub.js?v=4.0.1';
+            s2.src = 'js/digital-seva-hub.js?v=4.2.0';
             document.body.appendChild(s2);
         };
         document.body.appendChild(s1);

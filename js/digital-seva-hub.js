@@ -30,6 +30,52 @@
         visibleLimit: 12
     };
 
+    
+    // -------------------------------------------------------------------------
+    // 1.1 BOOKMARK & FAVORITES ENGINE (Client-Side LocalStorage Persistence)
+    // -------------------------------------------------------------------------
+    const FAVORITES_STORAGE_KEY = "xestus_seva_favorites";
+
+    function getFavorites() {
+        try {
+            const data = localStorage.getItem(FAVORITES_STORAGE_KEY);
+            return data ? JSON.parse(data) : [];
+        } catch (_) {
+            return [];
+        }
+    }
+
+    function isServiceFavorited(serviceId) {
+        return getFavorites().includes(serviceId);
+    }
+
+    function toggleFavorite(serviceId) {
+        try {
+            let favs = getFavorites();
+            let isFav = false;
+            if (favs.includes(serviceId)) {
+                favs = favs.filter((id) => id !== serviceId);
+                isFav = false;
+            } else {
+                favs.push(serviceId);
+                isFav = true;
+            }
+            localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favs));
+            updateFavoritesBadge();
+            return isFav;
+        } catch (_) {
+            return false;
+        }
+    }
+
+    function updateFavoritesBadge() {
+        const count = getFavorites().length;
+        const badge = document.getElementById("sevaFavCountBadge");
+        if (badge) {
+            badge.textContent = count;
+        }
+    }
+
     function getActiveLanguage() {
         try {
             const stored = localStorage.getItem("xestus_user_language");
@@ -275,6 +321,10 @@
         const resultsWithScores = [];
 
         for (const service of allServices) {
+            // Favorites Only Filter
+            if (state.favoritesOnly && !isServiceFavorited(service.service_id)) {
+                continue;
+            }
             // Category Filter
             if (state.activeCategory && !serviceMatchesCategory(service, state.activeCategory)) {
                 continue;
@@ -420,6 +470,8 @@
             levelBadgeText = (lang === "bn") ? "🟢 কেন্দ্রীয় সরকার" : (lang === "hi") ? "🟢 केंद्र सरकार" : "🟢 Central Govt";
         }
 
+        const isFav = isServiceFavorited(s.service_id);
+        const favLabel = isFav ? (lang === 'bn' ? 'বুকমার্ক থেকে মুছুন' : (lang === 'hi' ? 'बुकमार्क से हटाएं' : 'Remove from Bookmarks')) : (lang === 'bn' ? 'বুকমার্কে সেভ করুন' : (lang === 'hi' ? 'बुकमार्क करें' : 'Bookmark this Service'));
         const docsSummary = (s.required_documents && s.required_documents.en && s.required_documents.en.length > 0)
             ? s.required_documents.en.slice(0, 2).join(", ")
             : "Standard identity & address proof";
@@ -428,8 +480,13 @@
             <div class="seva-service-card" data-service-id="${s.service_id}" tabindex="0" role="region" aria-label="${escapeHTML(name)} Service Card">
                 <div class="seva-card-header">
                     <div class="seva-meta-strip">
-                        <span class="seva-authority-pill ${levelBadgeClass}">${escapeHTML(levelBadgeText)}</span>
-                        <span class="seva-category-tag">${escapeHTML(catName)}</span>
+                        <div class="seva-meta-pills">
+                            <span class="seva-authority-pill ${levelBadgeClass}">${escapeHTML(levelBadgeText)}</span>
+                            <span class="seva-category-tag">${escapeHTML(catName)}</span>
+                        </div>
+                        <button type="button" class="btn-card-favorite ${isFav ? 'is-favorited' : ''}" data-service-id="${s.service_id}" aria-label="${favLabel}" title="${favLabel}">
+                            <i data-lucide="star" aria-hidden="true"></i>
+                        </button>
                     </div>
                     <div class="seva-badge-row">
                         ${getVerificationBadgeHTML(s.verification_status, s.last_verified)}
@@ -468,6 +525,12 @@
                         <a href="${escapeHTML(officialLink)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-card-portal" title="Open authentic official statutory portal">
                             <span>${lang === 'bn' ? 'অফিসিয়াল পোর্টাল' : lang === 'hi' ? 'आधिकारिक पोर्टल' : 'Open Portal'}</span>
                             <i data-lucide="external-link" aria-hidden="true"></i>
+                        </a>
+                    ` : ''}
+                    ${s.dedicated_page_url ? `
+                        <a href="${escapeHTML(s.dedicated_page_url)}" class="btn-card-action btn-card-dedicated" title="Open comprehensive guide and portal details">
+                            <i data-lucide="book-open" aria-hidden="true"></i>
+                            <span>${lang === 'bn' ? 'গাইড পেজ ↗' : (lang === 'hi' ? 'गाइड पेज ↗' : 'Guide Page ↗')}</span>
                         </a>
                     ` : ''}
                     <button type="button" class="btn-card-action btn-card-share" data-service-id="${s.service_id}" data-service-title="${escapeHTML(name)}" title="Share direct link to this service"><i data-lucide="share-2" aria-hidden="true"></i><span>${lang === 'bn' ? 'শেয়ার' : lang === 'hi' ? 'शेयर' : 'Share'}</span></button>
@@ -541,6 +604,7 @@
                             syncTaskCards(null);
                         } else if (type === "govLevel") {
                             state.activeGovLevel = "all";
+        state.favoritesOnly = false;
                             syncFilterButtons("govLevel", "all");
                         }
                         renderServicesGrid(false);
@@ -675,6 +739,32 @@
         if (!container) return;
 
         // View Guide & Checklist button
+        // Favorite / Bookmark Button Click Handler
+        container.querySelectorAll(".btn-card-favorite").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                const sId = btn.getAttribute("data-service-id");
+                if (!sId) return;
+                const lang = getActiveLanguage();
+                const isFav = toggleFavorite(sId);
+                btn.classList.toggle("is-favorited", isFav);
+                const newTitle = isFav ? (lang === 'bn' ? 'বুকমার্ক থেকে মুছুন' : (lang === 'hi' ? 'बुकमार्क से हटाएं' : 'Remove from Bookmarks')) : (lang === 'bn' ? 'বুকমার্কে সেভ করুন' : (lang === 'hi' ? 'बुकमार्क करें' : 'Bookmark this Service'));
+                btn.setAttribute("title", newTitle);
+                btn.setAttribute("aria-label", newTitle);
+                if (window.lucide && typeof window.lucide.createIcons === "function") {
+                    try { window.lucide.createIcons({ root: btn }); } catch (_) {}
+                }
+                const toastMsg = isFav 
+                    ? (lang === 'bn' ? '⭐ বুকমার্কে সেভ করা হয়েছে!' : (lang === 'hi' ? '⭐ बुकमार्क में सहेजा गया!' : '⭐ Saved to Bookmarks!'))
+                    : (lang === 'bn' ? 'বুকমার্ক থেকে সরানো হয়েছে' : (lang === 'hi' ? 'बुकमार्क से हटाया गया' : 'Removed from Bookmarks'));
+                showShareToast(toastMsg);
+                if (state.favoritesOnly) {
+                    renderServicesGrid(false);
+                }
+            });
+        });
+
         container.querySelectorAll(".btn-card-share").forEach((btn) => {
             btn.addEventListener("click", (e) => {
                 e.stopPropagation();
@@ -920,6 +1010,10 @@
                         </span>
                         <span class="seva-category-tag">${escapeHTML(catName)}</span>
                         ${getVerificationBadgeHTML(service.verification_status, service.last_verified)}
+                        <button type="button" class="btn-card-favorite modal-fav-btn ${isServiceFavorited(service.service_id) ? 'is-favorited' : ''}" id="btnModalToggleFavorite" aria-label="Toggle Bookmark" title="Toggle Bookmark">
+                            <i data-lucide="star" aria-hidden="true"></i>
+                            <span>${isServiceFavorited(service.service_id) ? (lang === 'bn' ? 'বুকমার্কড' : 'Bookmarked') : (lang === 'bn' ? 'বুকমার্ক' : 'Bookmark')}</span>
+                        </button>
                     </div>
                     <div class="modal-auth-box">
                         <i data-lucide="landmark" class="modal-auth-icon"></i>
@@ -933,6 +1027,12 @@
 
                 <!-- Verified Action Links Bar -->
                 <div class="modal-action-bar">
+                    ${service.dedicated_page_url ? `
+                        <a href="${escapeHTML(service.dedicated_page_url)}" class="btn-modal-action btn-dedicated-guide" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(6, 182, 212, 0.25) 100%); border-color: #34d399; color: #6ee7b7; font-weight: 700;">
+                            <i data-lucide="book-open"></i>
+                            <span>${lang === 'bn' ? 'সম্পূর্ণ গাইড পেজ দেখুন ↗' : (lang === 'hi' ? 'संपूर्ण गाइड पेज देखें ↗' : 'View Dedicated Guide ↗')}</span>
+                        </a>
+                    ` : ""}
                     ${primaryUrl ? `
                         <a href="${escapeHTML(primaryUrl)}" target="_blank" rel="noopener noreferrer" class="btn-modal-action btn-apply-primary">
                             <i data-lucide="external-link"></i>
@@ -1127,6 +1227,34 @@
                     const sId = btnModalShare.getAttribute("data-service-id");
                     const sTitle = btnModalShare.getAttribute("data-service-title");
                     shareService(sId, sTitle);
+                });
+            }
+
+            const btnModalFav = bodyEl.querySelector("#btnModalToggleFavorite");
+            if (btnModalFav) {
+                btnModalFav.addEventListener("click", (e) => {
+                    if (e) { e.preventDefault(); e.stopPropagation(); }
+                    const isFav = toggleFavorite(service.service_id);
+                    btnModalFav.classList.toggle("is-favorited", isFav);
+                    const labelSpan = btnModalFav.querySelector("span");
+                    if (labelSpan) {
+                        labelSpan.textContent = isFav ? (lang === 'bn' ? 'বুকমার্কড' : 'Bookmarked') : (lang === 'bn' ? 'বুকমার্ক' : 'Bookmark');
+                    }
+                    if (window.lucide && typeof window.lucide.createIcons === "function") {
+                        try { window.lucide.createIcons({ root: btnModalFav }); } catch (_) {}
+                    }
+                    const toastMsg = isFav 
+                        ? (lang === 'bn' ? '⭐ বুকমার্কে সেভ করা হয়েছে!' : '⭐ Saved to Bookmarks!')
+                        : (lang === 'bn' ? 'বুকমার্ক থেকে সরানো হয়েছে' : 'Removed from Bookmarks');
+                    showShareToast(toastMsg);
+                    // Also update main grid card favorite button if present
+                    const mainCardBtn = document.querySelector(`.seva-service-card[data-service-id="${service.service_id}"] .btn-card-favorite`);
+                    if (mainCardBtn) {
+                        mainCardBtn.classList.toggle("is-favorited", isFav);
+                        if (window.lucide && typeof window.lucide.createIcons === "function") {
+                            try { window.lucide.createIcons({ root: mainCardBtn }); } catch (_) {}
+                        }
+                    }
                 });
             }
 
@@ -1574,6 +1702,14 @@
                     state.activeGovLevel = "all";
                     syncFilterButtons("category", val);
                     syncTaskCards(val);
+                    renderServicesGrid(true);
+                    scrollServicesIntoView();
+                } else if (filterType === "favorites") {
+                    state.favoritesOnly = true;
+                    state.activeCategory = null;
+                    state.activeGovLevel = "all";
+                    syncFilterButtons("favorites", "favorites");
+                    syncTaskCards(null);
                     renderServicesGrid(true);
                     scrollServicesIntoView();
                 } else if (filterType === "master") {

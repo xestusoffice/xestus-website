@@ -1757,6 +1757,170 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
     // =========================================================================
     const SERVICES = [
         {
+                "service_id": "wb-farmer-registry-id",
+                "service_name": {
+                        "en": "West Bengal Farmer Registry (AgriStack) — Farmer ID Generation & Download",
+                        "bn": "পশ্চিমবঙ্গ কৃষক রেজিস্ট্রি (AgriStack) — ফার্মার আইডি তৈরি ও কার্ড ডাউনলোড",
+                        "hi": "पश्चिम बंगाल किसान रजिस्ट्री (AgriStack) — फार्मर आईडी जनरेशन व डाउनलोड"
+                },
+                "short_description": {
+                        "en": "Official West Bengal AgriStack portal for generating unique digital Farmer ID. Mandatory for PM-KISAN, Krishak Bandhu, crop insurance (BSB), and agricultural subsidies.",
+                        "bn": "পশ্চিমবঙ্গ সরকারের অফিশিয়াল এগ্রিস্ট্যাক কৃষক রেজিস্ট্রি পোর্টাল। পিএম-কিসান, কৃষক বন্ধু, শস্য বীমা ও সরকারি অনুদানের জন্য ডিজিটাল ফার্মার আইডি তৈরি ও স্ট্যাটাস যাচাই।",
+                        "hi": "पश्चिम बंगाल आधिकारिक एग्रीस्टैक पोर्टल। पीएम-किसान, कृषक बंधु और फसल बीमा के लिए विशिष्ट डिजिटल किसान आईडी बनाएं व डाउनलोड करें।"
+                },
+                "category": "agriculture",
+                "category_name": {
+                        "en": "Farmers & Agriculture",
+                        "bn": "কৃষক ও কৃষি সেবা",
+                        "hi": "किसान और कृषि"
+                },
+                "subcategory": "Farmer ID & Land Registry",
+                "authority": "Department of Agriculture (Govt of WB) & Ministry of Agriculture (Govt of India)",
+                "government_level": "West Bengal",
+                "service_type": "Government Portal",
+                "target_users": [
+                        "Farmer",
+                        "Landowner",
+                        "Sharecropper (Bargadar)"
+                ],
+                "eligibility": {
+                        "en": [
+                                "All farmers holding cultivable agricultural land in West Bengal (recorded in Banglarbhumi ROR / Khatian).",
+                                "Aadhaar card linked with an active mobile number for OTP authentication.",
+                                "Valid bank account seeded with Aadhaar for DBT benefit transfers."
+                        ],
+                        "bn": [
+                                "পশ্চিমবঙ্গে চাষযোগ্য কৃষিজমির মালিক সকল কৃষক (বাংলারভূমি খতিয়ান / পর্চায় নাম নথিভুক্ত)।",
+                                "ওটিপি যাচাইয়ের জন্য আধার কার্ডের সাথে সচল মোবাইল নম্বর লিংক থাকা আবশ্যক।",
+                                "সরকারি অনুদান ও ভর্তুকি সরাসরি পাওয়ার জন্য আধার-সংযুক্ত ব্যাংক অ্যাকাউন্ট।"
+                        ],
+                        "hi": [
+                                "पश्चिम बंगाल में कृषि भूमि रखने वाले सभी किसान (बांगलारभूमि खतियान में दर्ज)।",
+                                "ओटीपी सत्यापन के लिए आधार से लिंक मोबाइल नंबर।",
+                                "डीबीटी लाभ हेतु आधार से जुड़ा बैंक खाता।"
+                        ]
+                },
+                "required_documents": {
+                        "en": [
+                                "Aadhaar Card (linked with mobile for OTP)",
+                                "Banglarbhumi Land Records (Khatian / Porcha / Dag No)",
+                                "Bank Passbook with IFSC Code",
+                                "Voter ID Card (EPIC)",
+                                "Krishak Bandhu ID / PM-KISAN Registration No (if already enrolled)"
+                        ],
+                        "bn": [
+                                "আধার কার্ড (মোবাইল নম্বর লিংক করা)",
+                                "জমির পর্চা / খতিয়ান / দাগ নম্বর (বাংলারভূমি রেকর্ড)",
+                                "ব্যাংক পাসবুক (IFSC কোড ও অ্যাকাউন্ট নম্বর)",
+                                "ভোটার আইডি কার্ড (EPIC)",
+                                "কৃষক বন্ধু আইডি বা পিএম-কিসান রেজিস্ট্রেশন নম্বর (যদি থাকে)"
+                        ],
+                        "hi": [
+                                "आधार कार्ड (मोबाइल से लिंक)",
+                                "भूमि रिकॉर्ड (खतियान / पर्चा / दाग संख्या)",
+                                "बैंक पासबुक",
+                                "मतदाता पहचान पत्र (वोटर आईडी)",
+                                "कृषक बंधु / पीएम-किसान विवरण"
+                        ]
+                },
+                "application_fee": {
+                        "en": "100% Free of Cost on Official Portal.",
+                        "bn": "সরকারি পোর্টালে সম্পূর্ণ বিনামূল্যে।",
+                        "hi": "आधिकारिक पोर्टल पर पूर्णतः निःशुल्क।"
+                },
+                "benefits": {
+                        "en": [
+                                "Universal Digital Farmer ID valid across all Central & State agricultural schemes.",
+                                "Mandatory authentication for PM-KISAN (₹6,000/year) and Krishak Bandhu (up to ₹10,000/year).",
+                                "Hassle-free enrollment in Bangla Shasya Bima (BSB) Crop Insurance.",
+                                "Direct procurement of paddy at Minimum Support Price (MSP) in Kisan Mandis.",
+                                "Priority access to subsidized farm seeds, fertilizers, and modern farm equipment."
+                        ],
+                        "bn": [
+                                "কেন্দ্রীয় ও রাজ্য সরকারের সমস্ত কৃষি প্রকল্পের জন্য একটি মাত্র সার্বজনীন ডিজিটাল ফার্মার আইডি।",
+                                "পিএম-কিসান (বার্ষিক ₹৬,০০০) এবং কৃষক বন্ধু (বার্ষিক ₹১০,০০০) অনুদানের বাধ্যতামূলক যাচাইকরণ।",
+                                "বাংলা শস্য বীমা (BSB) প্রকল্পে সহজে অন্তর্ভুক্তি।",
+                                "সরকারি কিষাণ মান্ডিতে সরাসরি সহায়ক মূল্যে (MSP) ধান বিক্রির সুবিধা।",
+                                "ভর্তুকিযুক্ত বীজ, সার ও কৃষি যন্ত্রপাতি পাওয়ার অগ্রাধিকার।"
+                        ],
+                        "hi": [
+                                "सभी सरकारी कृषि योजनाओं के लिए एक विशिष्ट डिजिटल पहचान।",
+                                "पीएम-किसान और कृषक बंधु योजनाओं का निर्बाध लाभ।",
+                                "फसल बीमा और न्यूनतम समर्थन मूल्य (MSP) पर धान खरीद की सुविधा।"
+                        ]
+                },
+                "process_steps": {
+                        "en": [
+                                "Step 1: Open the official West Bengal Farmer Registry portal (wbfr.agristack.gov.in).",
+                                "Step 2: Click on 'Farmer Self Registration' / 'E-KYC'.",
+                                "Step 3: Enter your 12-digit Aadhaar number and verify with OTP received on linked mobile.",
+                                "Step 4: Select District, Block, Mouza, and enter Banglarbhumi Khatian / Plot Number to link land.",
+                                "Step 5: Verify land records fetched automatically from Banglarbhumi database.",
+                                "Step 6: Submit application to instantly generate your unique digital Farmer ID card and download PDF."
+                        ],
+                        "bn": [
+                                "ধাপ ১: অফিশিয়াল পশ্চিমবঙ্গ কৃষক রেজিস্ট্রি পোর্টালে যান (wbfr.agristack.gov.in)।",
+                                "ধাপ ২: 'Farmer Self Registration' অথবা 'e-KYC' অপশনে ক্লিক করুন।",
+                                "ধাপ ৩: ১২ সংখ্যার আধার নম্বর লিখুন এবং মোবাইলে আসা OTP দিয়ে যাচাই করুন।",
+                                "ধাপ ৪: জেলা, ব্লক ও মৌজা সিলেক্ট করে বাংলারভূমি খতিয়ান / দাগ নম্বর দিয়ে জমি লিংক করুন।",
+                                "ধাপ ৫: স্ক্রিনে ভেসে ওঠা জমির রেকর্ডের সাথে আপনার পর্চা মিলিয়ে সাবমিট করুন।",
+                                "ধাপ ৬: সাথে সাথেই আপনার ডিজিটাল ফার্মার আইডি তৈরি হয়ে যাবে এবং আইডি কার্ড ডাউনলোড করে প্রিন্ট করুন।"
+                        ],
+                        "hi": [
+                                "चरण 1: आधिकारिक पोर्टल wbfr.agristack.gov.in खोलें।",
+                                "चरण 2: 'Farmer Self Registration' पर क्लिक करें।",
+                                "चरण 3: आधार नंबर दर्ज करें और ओटीपी सत्यापित करें।",
+                                "चरण 4: जिला, ब्लॉक और खतियान संख्या भरकर जमीन लिंक करें।",
+                                "चरण 5: विवरण सत्यापित कर सबमिट करें और अपना फार्मर आईडी कार्ड डाउनलोड करें।"
+                        ]
+                },
+                "official_homepage": "https://wbfr.agristack.gov.in/farmer-registry-wb/#/",
+                "official_apply_url": "https://wbfr.agristack.gov.in/farmer-registry-wb/#/",
+                "official_status_url": "https://wbfr.agristack.gov.in/farmer-registry-wb/#/",
+                "official_helpline": "1800-180-1551 (Kisan Call Centre) / 8336957370 (Krishak Bandhu Helpdesk)",
+                "official_email": "support.agristack@gov.in",
+                "state": "West Bengal",
+                "availability": "Online Portal + Bangla Sahayata Kendra (BSK) + Block ADA Office",
+                "active_status": true,
+                "verification_status": "officially_verified",
+                "source_url": "https://wbfr.agristack.gov.in/farmer-registry-wb/#/",
+                "last_verified": "07 Nov 2026",
+                "is_popular": true,
+                "dedicated_page_url": "digital-seva/farmer-id/",
+                "intent_tags": [
+                        "farmer id",
+                        "farmer id card",
+                        "farmer id card download",
+                        "farmer id search",
+                        "farmer id apply online",
+                        "wbfr agristack",
+                        "wbfr agristack gov in",
+                        "wbfr",
+                        "agristack",
+                        "agristack wb",
+                        "wb farmer registry",
+                        "farmer registry west bengal",
+                        "krishak id",
+                        "krishak bandhu farmer id",
+                        "ফার্মার আইডি",
+                        "ফার্মার আইডি কার্ড",
+                        "ফার্মার আইডি ডাউনলোড",
+                        "কৃষক আইডি",
+                        "কৃষক রেজিস্ট্রি",
+                        "এগ্রিস্ট্যাক কৃষক আইডি",
+                        "ফার্মার আইডি পশ্চিমবঙ্গ",
+                        "ফার্মার আইডি চেক",
+                        "किसान रजिस्ट्री",
+                        "फार्मर आईडी",
+                        "एग्रीस्टैक"
+                ],
+                "scam_warning": {
+                        "en": "Never pay any middleman or unauthorized websites for Farmer ID generation. The official AgriStack portal (wbfr.agristack.gov.in) and BSK centers provide this 100% free of charge.",
+                        "bn": "ফার্মার আইডি তৈরির জন্য কোনো দালাল বা ভুয়ো ওয়েবসাইটকে টাকা দেবেন না। সরকারি পোর্টাল (wbfr.agristack.gov.in) এবং বাংলা সহায়তা কেন্দ্র (BSK)-তে এটি সম্পূর্ণ বিনামূল্যে তৈরি হয়।",
+                        "hi": "फार्मर आईडी के लिए किसी भी अनधिकृत वेबसाइट या बिचौलिए को पैसे न दें। यह आधिकारिक पोर्टल पर पूरी तरह निःशुल्क है।"
+                }
+        },
+        {
                 "service_id": "outlier-ai-freelance",
                 "service_name": {
                         "en": "Outlier AI — Train the Next Generation of AI as a Freelancer",
