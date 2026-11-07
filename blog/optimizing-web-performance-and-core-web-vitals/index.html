@@ -74,8 +74,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
-    <link rel="stylesheet" href="../../style.min.css?v=4.8.0">
-    <link rel="stylesheet" href="../blog.min.css?v=1.0.0">
+    <link rel="stylesheet" href="../../style.min.css?v=4.8.1">
+    <link rel="stylesheet" href="../blog.min.css?v=1.0.1">
 
     <!-- Schema.org Article, FAQPage, BreadcrumbList -->
     <script type="application/ld+json">
@@ -201,8 +201,10 @@
                         <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
                     </div>
                 </div>
-                <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
-                    <i data-lucide="menu"></i>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
                 </button>
             </div>
         </nav>
@@ -526,11 +528,15 @@
                 });
             });
 
-            const mobileBtn = document.getElementById("mobileMenuBtn");
+            const menuToggle = document.getElementById("menuToggle");
             const primaryNav = document.getElementById("primaryNav");
-            if (mobileBtn && primaryNav) {
-                mobileBtn.addEventListener("click", () => {
+            if (menuToggle && primaryNav) {
+                menuToggle.addEventListener("click", () => {
+                    const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+                    menuToggle.setAttribute("aria-expanded", !isExpanded);
+                    menuToggle.classList.toggle("is-active");
                     primaryNav.classList.toggle("is-active");
+                    document.body.classList.toggle("nav-open");
                 });
             }
         });

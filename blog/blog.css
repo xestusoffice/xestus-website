@@ -101,26 +101,38 @@
 }
 
 .blog-filter-btn {
-    padding: 8px 18px;
+    padding: 9px 20px;
     border-radius: var(--radius-full, 9999px);
-    border: 1px solid var(--border-subtle);
-    background: var(--bg-card);
-    color: var(--text-secondary);
+    border: 1.5px solid rgba(0, 191, 255, 0.35);
+    background: rgba(14, 22, 40, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #e2e8f0;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
-.blog-filter-btn:hover,
+.blog-filter-btn:hover {
+    background: rgba(0, 191, 255, 0.16);
+    border-color: #00f2fe;
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
 .blog-filter-btn.active {
-    background: var(--cyan-subtle);
-    border-color: var(--cyan-primary);
-    color: var(--cyan-bright);
-    box-shadow: 0 4px 15px var(--cyan-glow);
+    background: linear-gradient(135deg, #00bfff, #0077cc);
+    border-color: #38d6ff;
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 6px 24px rgba(0, 191, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
 }
 
 /* Blog Cards Grid */
@@ -138,17 +150,20 @@
 }
 
 .blog-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
+    background: rgba(14, 22, 40, 0.65);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-lg, 20px);
-    padding: 24px;
+    padding: 26px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-decoration: none;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .blog-card::before {
@@ -160,13 +175,14 @@
     height: 3px;
     background: linear-gradient(90deg, var(--cyan-primary), #00ff88);
     opacity: 0;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.3s ease;
 }
 
 .blog-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--cyan-border-hover);
-    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-5px);
+    background: rgba(20, 32, 58, 0.82);
+    border-color: rgba(0, 191, 255, 0.6);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 191, 255, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .blog-card:hover::before {
@@ -805,4 +821,97 @@
 .toast-notice.show {
     transform: translateY(0);
     opacity: 1;
+}
+
+/* ==========================================================================
+   THEME OVERRIDES: DAY & EYE-PROTECT MODES
+   ========================================================================== */
+[data-theme="day"] .blog-filter-btn {
+    background: #ffffff !important;
+    border: 1.5px solid #0284c7 !important;
+    color: #0f172a !important;
+    font-weight: 600 !important;
+    box-shadow: 0 3px 12px rgba(2, 132, 199, 0.12) !important;
+}
+
+[data-theme="day"] .blog-filter-btn:hover {
+    background: rgba(2, 132, 199, 0.1) !important;
+    border-color: #0369a1 !important;
+    color: #0284c7 !important;
+    box-shadow: 0 5px 18px rgba(2, 132, 199, 0.25) !important;
+    transform: translateY(-2px);
+}
+
+[data-theme="day"] .blog-filter-btn.active {
+    background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+    border-color: #0284c7 !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35) !important;
+}
+
+[data-theme="day"] .blog-card,
+[data-theme="day"] .article-author-bar,
+[data-theme="day"] .author-bio-card,
+[data-theme="day"] .article-toc,
+[data-theme="day"] .article-share-banner,
+[data-theme="day"] .related-tools-box {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06) !important;
+}
+
+[data-theme="day"] .blog-card:hover {
+    border-color: #0284c7 !important;
+    box-shadow: 0 16px 36px rgba(2, 132, 199, 0.16) !important;
+    transform: translateY(-5px);
+}
+
+[data-theme="day"] .blog-author-name,
+[data-theme="day"] .blog-card-title a {
+    color: #0f172a !important;
+}
+
+[data-theme="eye-protect"] .blog-filter-btn {
+    background: #fdfbf7 !important;
+    border: 1.5px solid #0e7490 !important;
+    color: #2c241b !important;
+    font-weight: 600 !important;
+    box-shadow: 0 3px 12px rgba(14, 116, 144, 0.12) !important;
+}
+
+[data-theme="eye-protect"] .blog-filter-btn:hover {
+    background: rgba(14, 116, 144, 0.1) !important;
+    border-color: #155e75 !important;
+    color: #0e7490 !important;
+    box-shadow: 0 5px 18px rgba(14, 116, 144, 0.25) !important;
+    transform: translateY(-2px);
+}
+
+[data-theme="eye-protect"] .blog-filter-btn.active {
+    background: linear-gradient(135deg, #0e7490, #164e63) !important;
+    border-color: #0e7490 !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(14, 116, 144, 0.35) !important;
+}
+
+[data-theme="eye-protect"] .blog-card,
+[data-theme="eye-protect"] .article-author-bar,
+[data-theme="eye-protect"] .author-bio-card,
+[data-theme="eye-protect"] .article-toc,
+[data-theme="eye-protect"] .article-share-banner,
+[data-theme="eye-protect"] .related-tools-box {
+    background: #fdfbf7 !important;
+    border: 1.5px solid #e5dacb !important;
+    box-shadow: 0 4px 18px rgba(60, 40, 20, 0.05) !important;
+}
+
+[data-theme="eye-protect"] .blog-card:hover {
+    border-color: #0e7490 !important;
+    box-shadow: 0 16px 36px rgba(14, 116, 144, 0.16) !important;
+    transform: translateY(-5px);
+}
+
+[data-theme="eye-protect"] .blog-author-name,
+[data-theme="eye-protect"] .blog-card-title a {
+    color: #2c241b !important;
 }
