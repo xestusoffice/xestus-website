@@ -4,6 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Immediate Client-Side Smart Routing (Zero Flash) -->
+    <script>
+        (function() {
+            try {
+                var raw = (window.location.pathname || '') + (window.location.search || '');
+                var p = decodeURIComponent(raw).toLowerCase();
+                if (p.includes('speed') && (p.includes('test') || p.includes('meter') || p.includes('speedtest'))) {
+                    window.location.replace('/tools/productivity/speed-test/');
+                } else if (p.includes('resume') || p.includes('biodata') || p.includes('cv')) {
+                    window.location.replace('/tools/office/resume-builder/');
+                } else if (p.includes('resizer') || (p.includes('image') && p.includes('resize'))) {
+                    window.location.replace('/tools/image/image-resizer/');
+                } else if (p.includes('farmer') || p.includes('wbfr') || p.includes('krishi')) {
+                    window.location.replace('/digital-seva/farmer-id/');
+                } else if (p.includes('govt-job') || p.includes('wb-govt-jobs')) {
+                    window.location.replace('/digital-seva/wb-govt-jobs/');
+                }
+            } catch(e) {}
+        })();
+    </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net https://*.adtrafficquality.google https://adtrafficquality.google; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com https://*.adtrafficquality.google https://pagead2.googlesyndication.com https://unpkg.com https://cdn.jsdelivr.net;">
@@ -447,18 +468,6 @@
     </main>
 
     <script>
-        (function() {
-            try {
-                var path = decodeURIComponent(window.location.pathname || '').toLowerCase();
-                if (path.includes('speed') && path.includes('test')) {
-                    window.location.replace('/tools/productivity/speed-test/');
-                } else if (path.includes('resume') || path.includes('biodata') || path.includes('cv')) {
-                    window.location.replace('/tools/office/resume-builder/');
-                } else if (path.includes('resizer') || (path.includes('image') && path.includes('resize'))) {
-                    window.location.replace('/tools/image/image-resizer/');
-                }
-            } catch(e) {}
-        })();
         if (typeof lucide !== "undefined") {
             lucide.createIcons();
         }
