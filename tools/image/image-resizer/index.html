@@ -285,14 +285,20 @@
       <div id="resizerControls" style="display: none; margin-top: 1.5rem;">
         <!-- Preset Buttons -->
         <div class="calc-presets">
-          <span class="preset-label">Govt Exam &amp; Web Presets:</span>
-          <button type="button" class="btn-preset active" data-w="" data-h="" data-kb="">Custom</button>
-          <button type="button" class="btn-preset" data-w="350" data-h="450" data-kb="45">🎯 SSC / UPSC Photo (20-50 KB)</button>
-          <button type="button" class="btn-preset" data-w="140" data-h="60" data-kb="18">✍️ Govt Signature (10-20 KB)</button>
-          <button type="button" class="btn-preset" data-w="413" data-h="531" data-kb="95">🛂 Passport Photo (3.5x4.5cm)</button>
-          <button type="button" class="btn-preset" data-w="200" data-h="230" data-kb="45">🏛️ IBPS / Bank (200x230)</button>
-          <button type="button" class="btn-preset" data-w="1080" data-h="1080" data-kb="">📱 Instagram (1080x1080)</button>
-          <button type="button" class="btn-preset" data-w="1920" data-h="1080" data-kb="">🖥️ Full HD (1920x1080)</button>
+          <span class="preset-label" style="font-weight:700; color:var(--cyan-bright);"><i data-lucide="zap" style="width:14px;height:14px;vertical-align:middle;"></i> Fast Govt Exam &amp; Web Presets:</span>
+          <div class="preset-pills-wrap" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+            <button type="button" class="btn-preset active" data-w="" data-h="" data-kb="" data-preset="custom">Custom Size</button>
+            <button type="button" class="btn-preset" data-w="350" data-h="450" data-kb="45" data-preset="wbpsc-photo">🎯 WBPSC Photo (20-50 KB)</button>
+            <button type="button" class="btn-preset" data-w="200" data-h="100" data-kb="18" data-preset="wbpsc-sign">✍️ WBPSC Sign (10-20 KB)</button>
+            <button type="button" class="btn-preset" data-w="138" data-h="177" data-kb="45" data-preset="wbp-photo">👮 WB Police Photo (20-50 KB)</button>
+            <button type="button" class="btn-preset" data-w="350" data-h="85" data-kb="18" data-preset="wbp-sign">✍️ WB Police Sign (10-20 KB)</button>
+            <button type="button" class="btn-preset" data-w="350" data-h="450" data-kb="45" data-preset="ssc-photo">🏛️ SSC GD/CGL Photo (20-50 KB)</button>
+            <button type="button" class="btn-preset" data-w="140" data-h="60" data-kb="18" data-preset="ssc-sign">✍️ SSC Sign (10-20 KB)</button>
+            <button type="button" class="btn-preset" data-w="350" data-h="450" data-kb="65" data-preset="rrb-photo">🚆 Railway RRB Photo (30-70 KB)</button>
+            <button type="button" class="btn-preset" data-w="140" data-h="60" data-kb="50" data-preset="rrb-sign">✍️ Railway RRB Sign (30-70 KB)</button>
+            <button type="button" class="btn-preset" data-w="413" data-h="531" data-kb="95" data-preset="passport">🛂 Passport 3.5×4.5 cm (Max 100 KB)</button>
+            <button type="button" class="btn-preset" data-w="1000" data-h="1400" data-kb="95" data-preset="farmer-doc">🌾 Farmer ID / Khatian Doc (&le; 100 KB)</button>
+          </div>
         </div>
 
         <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap; background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: 8px; padding: 10px 14px;">
@@ -319,25 +325,49 @@
         </div>
 
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; flex-wrap: wrap; gap: 1rem;">
-          <label style="display: flex; align-items: center; gap: 0.5rem; color: #aaa; cursor: pointer;">
-            <input type="checkbox" id="lockAspectCheckbox" checked>
-            <span>Lock Aspect Ratio</span>
-          </label>
+          <div style="display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; color: #aaa; cursor: pointer; font-size: 13.5px;">
+              <input type="checkbox" id="lockAspectCheckbox" checked>
+              <span>Lock Aspect Ratio</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; color: var(--cyan-bright); cursor: pointer; font-size: 13.5px; font-weight: 500;">
+              <input type="checkbox" id="smartCropCheckbox" checked>
+              <span>Smart Face/Center Fit (No Distortion)</span>
+            </label>
+          </div>
           <div style="display: flex; gap: 0.5rem; align-items: center;">
-            <label class="calc-label" style="margin: 0;">Format:</label>
+            <label class="calc-label" style="margin: 0;">Output Format:</label>
             <select id="outputFormat" class="calc-input" style="width: auto; padding: 4px 8px;">
-              <option value="image/jpeg">JPEG (.jpg)</option>
+              <option value="image/jpeg">JPEG (.jpg - Standard Govt)</option>
               <option value="image/png">PNG (.png)</option>
               <option value="image/webp">WebP (.webp)</option>
             </select>
           </div>
         </div>
 
+        <!-- Govt Exam Special Enhancements Bar -->
+        <div style="margin-top: 1rem; padding: 10px 14px; background: rgba(0, 255, 136, 0.05); border: 1px solid rgba(0, 255, 136, 0.2); border-radius: 8px; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+          <span style="font-size: 12.5px; font-weight: 600; color: #00ff88; display: inline-flex; align-items: center; gap: 5px;">
+            <i data-lucide="sparkles" style="width:14px;height:14px;"></i> Form Enhancers:
+          </span>
+          <label style="display: flex; align-items: center; gap: 0.4rem; color: #fff; cursor: pointer; font-size: 12.5px;">
+            <input type="checkbox" id="enhanceSignCheckbox">
+            <span>✍️ Whiten Paper &amp; Darken Signature</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.4rem; color: #fff; cursor: pointer; font-size: 12.5px;">
+            <input type="checkbox" id="brightenBgCheckbox">
+            <span>💡 Brighten &amp; Clear Gray Background</span>
+          </label>
+        </div>
+
         <!-- Preview comparison -->
         <div style="margin-top: 1.5rem; text-align: center;">
-          <div style="display: flex; justify-content: space-around; font-size: 0.85rem; color: #888; margin-bottom: 0.5rem;">
+          <div style="display: flex; justify-content: space-around; font-size: 0.85rem; color: #888; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 8px;">
             <span>Original: <strong id="origMeta" style="color: #fff;">-</strong></span>
             <span>Resized: <strong id="resizedMeta" style="color: #00ff88;">-</strong></span>
+          </div>
+          <div id="complianceBadge" style="margin: 8px auto 12px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 600; background: rgba(0, 255, 136, 0.12); color: #00ff88; border: 1px solid rgba(0, 255, 136, 0.3);">
+            <i data-lucide="check-circle" style="width:14px;height:14px;"></i> Form Ready: Valid for Online Application
           </div>
           <canvas id="previewCanvas" style="max-width: 100%; max-height: 350px; border-radius: 6px; border: 1px solid #333; box-shadow: 0 4px 20px rgba(0,0,0,0.5);"></canvas>
         </div>
@@ -360,6 +390,8 @@
             <a href="../../pdf/image-to-pdf/" class="btn-ghost-sm" style="text-decoration: none; font-size: 12px; padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(255,85,136,0.3); color: #ff5588; background: rgba(255,85,136,0.08);">Image to PDF &rarr;</a>
             <a href="../../calculators/gst-calculator/" class="btn-ghost-sm" style="text-decoration: none; font-size: 12px; padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(0,191,255,0.3); color: #00bfff; background: rgba(0,191,255,0.08);">GST Calculator &rarr;</a>
             <a href="../../office/invoice-generator/" class="btn-ghost-sm" style="text-decoration: none; font-size: 12px; padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(0,255,136,0.3); color: #00ff88; background: rgba(0,255,136,0.08);">Invoice Maker &rarr;</a>
+            <a href="../../office/resume-builder/" class="btn-ghost-sm" style="text-decoration: none; font-size: 12px; padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(0,240,255,0.3); color: var(--cyan-bright); background: rgba(0,240,255,0.08);">Bio-data Maker &rarr;</a>
+            <a href="../../productivity/speed-test/" class="btn-ghost-sm" style="text-decoration: none; font-size: 12px; padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(234,179,8,0.3); color: #facc15; background: rgba(234,179,8,0.08);">Speed Test &rarr;</a>
           </div>
         </div>
       </div>
@@ -579,6 +611,7 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
       let originalWidth = 0;
       let originalHeight = 0;
       let origFileName = 'resized_image';
+      let activePresetSlug = 'custom';
       let lastResizedBlob = null;
 
       const dropzone = document.getElementById('imgDropzone');
@@ -587,10 +620,14 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
       const widthInput = document.getElementById('targetWidth');
       const heightInput = document.getElementById('targetHeight');
       const lockAspect = document.getElementById('lockAspectCheckbox');
+      const smartCrop = document.getElementById('smartCropCheckbox');
+      const enhanceSign = document.getElementById('enhanceSignCheckbox');
+      const brightenBg = document.getElementById('brightenBgCheckbox');
       const formatSel = document.getElementById('outputFormat');
       const canvas = document.getElementById('previewCanvas');
       const ctx = canvas.getContext('2d');
       const resizedMeta = document.getElementById('resizedMeta');
+      const complianceBadge = document.getElementById('complianceBadge');
 
       const enableTargetKb = document.getElementById('enableTargetKbCheckbox');
       const targetKbWrap = document.getElementById('targetKbWrap');
@@ -611,7 +648,7 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
 
       function handleFile(file) {
         if (!file.type.startsWith('image/')) {
-          alert('Please choose a valid image file.');
+          alert('Please choose a valid image file (JPG, PNG, WebP).');
           return;
         }
         origFileName = file.name.substring(0, file.name.lastIndexOf('.')) || 'resized_image';
@@ -622,9 +659,11 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
             originalImg = img;
             originalWidth = img.naturalWidth;
             originalHeight = img.naturalHeight;
-            widthInput.value = originalWidth;
-            heightInput.value = originalHeight;
-            document.getElementById('origMeta').textContent = `${originalWidth} x ${originalHeight} px (${(file.size / 1024).toFixed(1)} KB)`;
+            if (!widthInput.value || activePresetSlug === 'custom') {
+              widthInput.value = originalWidth;
+              heightInput.value = originalHeight;
+            }
+            document.getElementById('origMeta').textContent = `${originalWidth} × ${originalHeight} px (${(file.size / 1024).toFixed(1)} KB)`;
             dropzone.style.display = 'none';
             controls.style.display = 'block';
             drawResized();
@@ -634,21 +673,99 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
         reader.readAsDataURL(file);
       }
 
+      function updateCompliance(finalKb, maxKb) {
+        if (!complianceBadge) return;
+        if (maxKb > 0) {
+          if (finalKb <= maxKb && finalKb >= Math.min(15, maxKb * 0.3)) {
+            complianceBadge.style.background = 'rgba(0, 255, 136, 0.12)';
+            complianceBadge.style.color = '#00ff88';
+            complianceBadge.style.borderColor = 'rgba(0, 255, 136, 0.3)';
+            complianceBadge.innerHTML = `<i data-lucide="check-circle" style="width:14px;height:14px;"></i> 100% Form Compliant: ${finalKb} KB (Passes &le; ${maxKb} KB Rule)`;
+          } else if (finalKb > maxKb) {
+            complianceBadge.style.background = 'rgba(239, 68, 68, 0.12)';
+            complianceBadge.style.color = '#ef4444';
+            complianceBadge.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+            complianceBadge.innerHTML = `<i data-lucide="alert-triangle" style="width:14px;height:14px;"></i> Alert: ${finalKb} KB exceeds maximum ${maxKb} KB limit`;
+          } else {
+            complianceBadge.style.background = 'rgba(56, 189, 248, 0.12)';
+            complianceBadge.style.color = '#38bdf8';
+            complianceBadge.style.borderColor = 'rgba(56, 189, 248, 0.3)';
+            complianceBadge.innerHTML = `<i data-lucide="info" style="width:14px;height:14px;"></i> Form Ready: ${finalKb} KB (Under ${maxKb} KB limit)`;
+          }
+        } else {
+          complianceBadge.style.background = 'rgba(0, 255, 136, 0.12)';
+          complianceBadge.style.color = '#00ff88';
+          complianceBadge.style.borderColor = 'rgba(0, 255, 136, 0.3)';
+          complianceBadge.innerHTML = `<i data-lucide="check-circle" style="width:14px;height:14px;"></i> Ready: ${finalKb} KB • Resized Successfully`;
+        }
+        if (window.lucide && window.lucide.createIcons) {
+          window.lucide.createIcons();
+        }
+      }
+
       function drawResized() {
         if (!originalImg) return;
         const w = parseInt(widthInput.value, 10) || 1;
         const h = parseInt(heightInput.value, 10) || 1;
         canvas.width = w;
         canvas.height = h;
-        ctx.drawImage(originalImg, 0, 0, w, h);
+
+        // Clean white background base
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, w, h);
+
+        // Smart Crop vs Stretch
+        if (smartCrop && smartCrop.checked && !lockAspect.checked) {
+          const targetAspect = w / h;
+          const srcAspect = originalWidth / originalHeight;
+          let sx = 0, sy = 0, sw = originalWidth, sh = originalHeight;
+          if (srcAspect > targetAspect) {
+            // Source is wider than target: crop left and right
+            sw = originalHeight * targetAspect;
+            sx = (originalWidth - sw) / 2;
+          } else {
+            // Source is taller than target: crop top and bottom (20% top bias to protect face/head)
+            sh = originalWidth / targetAspect;
+            sy = Math.max(0, (originalHeight - sh) * 0.20);
+          }
+          ctx.drawImage(originalImg, sx, sy, sw, sh, 0, 0, w, h);
+        } else {
+          ctx.drawImage(originalImg, 0, 0, w, h);
+        }
+
+        // Apply filters
+        if (enhanceSign && enhanceSign.checked) {
+          const imgData = ctx.getImageData(0, 0, w, h);
+          const d = imgData.data;
+          for (let i = 0; i < d.length; i += 4) {
+            const lum = 0.299 * d[i] + 0.587 * d[i+1] + 0.114 * d[i+2];
+            if (lum > 140) {
+              d[i] = 255; d[i+1] = 255; d[i+2] = 255; // Pure white paper
+            } else {
+              const f = lum / 140;
+              d[i] = Math.round(d[i] * f * 0.65);
+              d[i+1] = Math.round(d[i+1] * f * 0.65);
+              d[i+2] = Math.round(d[i+2] * f * 0.65);
+            }
+          }
+          ctx.putImageData(imgData, 0, 0);
+        } else if (brightenBg && brightenBg.checked) {
+          const imgData = ctx.getImageData(0, 0, w, h);
+          const d = imgData.data;
+          for (let i = 0; i < d.length; i += 4) {
+            d[i] = Math.min(255, Math.round(d[i] * 1.12 + 10));
+            d[i+1] = Math.min(255, Math.round(d[i+1] * 1.12 + 10));
+            d[i+2] = Math.min(255, Math.round(d[i+2] * 1.12 + 10));
+          }
+          ctx.putImageData(imgData, 0, 0);
+        }
 
         const fmt = formatSel.value;
         const maxKb = enableTargetKb.checked ? parseFloat(targetKbInput.value) || 50 : 0;
 
         if (maxKb > 0 && (fmt === 'image/jpeg' || fmt === 'image/webp')) {
-          // Binary search quality to stay under maxKb
           let minQ = 0.05;
-          let maxQ = 0.95;
+          let maxQ = 0.98;
           let bestBlob = null;
           let iterations = 0;
 
@@ -670,12 +787,13 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
                 maxQ = currentQ; // reduce quality
               }
 
-              if (iterations < 6 && (maxQ - minQ) > 0.05) {
+              if (iterations < 7 && (maxQ - minQ) > 0.03) {
                 step();
               } else {
                 lastResizedBlob = bestBlob || blob;
-                const finalKb = (lastResizedBlob.size / 1024).toFixed(1);
-                resizedMeta.innerHTML = `${w} x ${h} px • <span style="color:#00ff88; font-weight:700;">${finalKb} KB</span> (Target: &le; ${maxKb} KB)`;
+                const finalKb = parseFloat((lastResizedBlob.size / 1024).toFixed(1));
+                resizedMeta.innerHTML = `${w} × ${h} px • <span style="color:#00ff88; font-weight:700;">${finalKb} KB</span> (Limit: &le; ${maxKb} KB)`;
+                updateCompliance(finalKb, maxKb);
               }
             });
           }
@@ -683,8 +801,9 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
         } else {
           canvas.toBlob(blob => {
             lastResizedBlob = blob;
-            const finalKb = (blob.size / 1024).toFixed(1);
-            resizedMeta.textContent = `${w} x ${h} px • ${finalKb} KB`;
+            const finalKb = parseFloat((blob.size / 1024).toFixed(1));
+            resizedMeta.textContent = `${w} × ${h} px • ${finalKb} KB`;
+            updateCompliance(finalKb, 0);
           }, fmt, 0.92);
         }
       }
@@ -699,6 +818,9 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
 
       targetKbInput.addEventListener('input', drawResized);
       formatSel.addEventListener('change', drawResized);
+      if (smartCrop) smartCrop.addEventListener('change', drawResized);
+      if (enhanceSign) enhanceSign.addEventListener('change', drawResized);
+      if (brightenBg) brightenBg.addEventListener('change', drawResized);
 
       widthInput.addEventListener('input', () => {
         if (lockAspect.checked && originalWidth > 0) {
@@ -720,6 +842,8 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
         btn.addEventListener('click', () => {
           document.querySelectorAll('.btn-preset').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
+          activePresetSlug = btn.dataset.preset || 'custom';
+
           if (btn.dataset.w && btn.dataset.h) {
             lockAspect.checked = false;
             widthInput.value = btn.dataset.w;
@@ -731,6 +855,15 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
             targetKbInput.value = btn.dataset.kb;
             if (formatSel.value === 'image/png') formatSel.value = 'image/jpeg';
           }
+
+          // Auto-toggle enhancers for signatures
+          if (activePresetSlug.includes('sign')) {
+            if (enhanceSign) enhanceSign.checked = true;
+            if (brightenBg) brightenBg.checked = false;
+          } else {
+            if (enhanceSign) enhanceSign.checked = false;
+          }
+
           drawResized();
         });
       });
@@ -744,29 +877,28 @@ Calculated Height: <strong>720 px (1280 / 1.777)</strong>
       document.getElementById('downloadResizedBtn').addEventListener('click', () => {
         const fmt = formatSel.value;
         const ext = fmt === 'image/jpeg' ? 'jpg' : (fmt === 'image/webp' ? 'webp' : 'png');
+        const prefix = activePresetSlug !== 'custom' ? `xestus_${activePresetSlug}` : `${origFileName}_resized`;
         if (lastResizedBlob) {
           const url = URL.createObjectURL(lastResizedBlob);
           const link = document.createElement('a');
-          link.download = `${origFileName}_resized.${ext}`;
+          link.download = `${prefix}.${ext}`;
           link.href = url;
           link.click();
           URL.revokeObjectURL(url);
         } else {
           const dataUrl = canvas.toDataURL(fmt, 0.92);
           const link = document.createElement('a');
-          link.download = `${origFileName}_resized.${ext}`;
+          link.download = `${prefix}.${ext}`;
           link.href = dataUrl;
           link.click();
         }
       });
 
       document.getElementById('shareWhatsAppBtn').addEventListener('click', () => {
-        const text = encodeURIComponent('Need to resize photos to exact 20-50KB or signatures to 10-20KB for SSC, UPSC, or Govt exam forms without watermarks? Try this free in-browser tool: ' + window.location.href);
+        const text = encodeURIComponent('Need to resize photos to exact 20-50KB or signatures to 10-20KB for WBPSC, WB Police, SSC, or Railway forms? Try this free in-browser tool: ' + window.location.href);
         window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
       });
     })();
   </script>
-
-
 </body>
 </html>

@@ -336,4 +336,17 @@
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
+  <!-- Office & Productivity Tools (2026 High Utility) -->
+  <url>
+    <loc>https://xestus.in/tools/office/resume-builder/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://xestus.in/tools/productivity/speed-test/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
 </urlset>

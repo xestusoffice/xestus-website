@@ -188,6 +188,17 @@ window.XESTUS_TOOLS_REGISTRY = {
       url: "/tools/office/invoice-generator/",
       related: ["gst-calculator", "qr-generator"]
     },
+    {
+      slug: "resume-builder",
+      title: "Smart Resume & Bio-Data Maker (English & বাংলা)",
+      category: "office",
+      icon: "file-text",
+      badge: "High Demand",
+      description: "Create professional job resumes, CVs, and government contractual bio-data in English and Bengali. Free instant A4 PDF download.",
+      keywords: ["resume builder", "biodata maker", "cv maker online", "bengali biodata", "govt job biodata format"],
+      url: "/tools/office/resume-builder/",
+      related: ["word-counter", "invoice-generator", "image-resizer"]
+    },
 
     // --- IMAGE UTILITIES ---
     {
@@ -406,6 +417,17 @@ window.XESTUS_TOOLS_REGISTRY = {
       keywords: ["online stopwatch", "digital stopwatch", "lap timer", "stopwatch milliseconds"],
       url: "/tools/student/stopwatch/",
       related: ["pomodoro-timer", "age-calculator"]
+    },
+    {
+      slug: "speed-test",
+      title: "Instant Internet Speed Test",
+      category: "productivity",
+      icon: "gauge",
+      badge: "Zero Ads",
+      description: "Test real internet download speed, upload speed, latency (ping), and jitter in 10 seconds. Free lightweight broadband meter.",
+      keywords: ["internet speed test", "broadband speed meter", "check wifi speed", "ping test online"],
+      url: "/tools/productivity/speed-test/",
+      related: ["pomodoro-timer", "stopwatch"]
     },
     {
       slug: "jpg-to-png",
