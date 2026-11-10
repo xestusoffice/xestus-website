@@ -697,7 +697,7 @@
             const progressRatio = speedToAngleRatio(speed);
             const progressAngle = startAngle + (endAngle - startAngle) * progressRatio;
 
-            if (clamped > 0) {
+            if (progressRatio > 0) {
                 const grad = ctx.createLinearGradient(0, cy, w, cy);
                 if (phase === 'upload') {
                     // Purple to Cyan gradient for Upload
