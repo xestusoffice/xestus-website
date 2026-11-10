@@ -1394,7 +1394,7 @@
                         </div>
                         <div class="whatsapp-dispatch-card">
                             <div class="wa-status-pill">
-                                <span class="wa-live-dot"></span> Sending to XESTUS Business WhatsApp: <strong>+91 8145338006</strong>
+                                <span class="wa-live-dot"></span> Connecting to XESTUS Official Business WhatsApp Desk...
                             </div>
                             <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-direct" id="directWhatsAppBtn">
                                 <i data-lucide="message-circle"></i>
