@@ -447,6 +447,18 @@
     </main>
 
     <script>
+        (function() {
+            try {
+                var path = decodeURIComponent(window.location.pathname || '').toLowerCase();
+                if (path.includes('speed') && path.includes('test')) {
+                    window.location.replace('/tools/productivity/speed-test/');
+                } else if (path.includes('resume') || path.includes('biodata') || path.includes('cv')) {
+                    window.location.replace('/tools/office/resume-builder/');
+                } else if (path.includes('resizer') || (path.includes('image') && path.includes('resize'))) {
+                    window.location.replace('/tools/image/image-resizer/');
+                }
+            } catch(e) {}
+        })();
         if (typeof lucide !== "undefined") {
             lucide.createIcons();
         }
