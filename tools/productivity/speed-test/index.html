@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -480,7 +483,7 @@
 
                 <!-- Run Button -->
                 <div>
-                    <button type="button" class="btn-speed-run" id="btnRunSpeed">
+                    <button type="button" class="btn-speed-run" id="btnRunSpeed" onclick="window.runBenchmark && window.runBenchmark()">
                         <i data-lucide="play" style="width: 18px; height: 18px; fill: currentColor;"></i>
                         <span id="btnRunText">Start Speed Test</span>
                     </button>
@@ -1036,6 +1039,7 @@
         });
 
         btnRunSpeed.addEventListener('click', runBenchmark);
+        window.runBenchmark = runBenchmark;
 
         if (window.lucide && window.lucide.createIcons) {
             window.lucide.createIcons();
