@@ -63,10 +63,10 @@
     
 
     <!-- SEO Metadata -->
-    <title>Age & Date Difference Calculator — Exact Years, Months, Days, Hours | XESTUS</title>
+    <title>Age Calculator &amp; Govt Job Cut-Off Eligibility (WBP, WBPSC, SSC, WBFR) | XESTUS</title>
     <meta name="google-adsense-account" content="ca-pub-1489572262543869">
-    <meta name="description" content="Calculate your exact age down to years, months, weeks, days, and hours from date of birth. Compare dates and track upcoming birthday milestones with 100% in-browser privacy.">
-    <meta name="keywords" content="age calculator, calculate exact age, date difference calculator, how old am i, days between dates">
+    <meta name="description" content="Calculate your exact age in years, months, and days. Check Govt Exam cut-off eligibility for WBP Police, WBPSC, SSC, Railway, and WBFR Farmer Registry with SC/ST/OBC category age relaxations. 100% in-browser privacy.">
+    <meta name="keywords" content="age calculator, wbfr.age, govt job age calculator, cut off date calculator, wbp age limit, wbpsc age relaxation, ssc age calculator, agristack farmer age limit, days between dates">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://xestus.in/tools/calculators/age-calculator/">
     <link rel="manifest" href="../../../manifest.json">
@@ -74,8 +74,8 @@
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xestus.in/tools/calculators/age-calculator/">
-    <meta property="og:title" content="Age & Date Difference Calculator | XESTUS Tools">
-    <meta property="og:description" content="Calculate your exact age down to years, months, weeks, days, and hours from date of birth. Compare dates and track upcoming birthday milestones with 100% in-browser privacy.">
+    <meta property="og:title" content="Age Calculator &amp; Govt Job Cut-Off Eligibility | XESTUS Tools">
+    <meta property="og:description" content="Calculate exact chronological age and check cut-off eligibility for WBP Police, WBPSC, SSC, Railway, and WBFR Farmer Registry with category age relaxations.">
     <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
 
     <!-- Fonts & CSS -->
@@ -95,7 +95,7 @@
     {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Age & Date Difference Calculator",
+  "name": "Age & Govt Job Cut-Off Eligibility Calculator",
   "url": "https://xestus.in/tools/calculators/age-calculator/",
   "description": "Calculate your exact age down to years, months, weeks, days, and hours from date of birth. Compare dates and track upcoming birthday milestones with 100% in-browser privacy.",
   "applicationCategory": "UtilityApplication",
@@ -150,6 +150,30 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the age requirement for West Bengal Farmer Registry (WBFR / AgriStack)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For West Bengal Farmer Registry (WBFR / AgriStack Farmer ID), the applicant must be at least 18 years of age on the registration date. There is no upper age limit; any adult Indian citizen possessing land or cultivation rights can apply."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is age calculated on a government exam cutoff date?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Competitive recruitment boards such as WBPSC, WBP, SSC, and Railway declare a specific cutoff date (e.g. 01/01/2026). The calculator determines your exact chronological age in completed years, months, and days on that cutoff date and compares it with the official prescribed age bracket."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What age relaxations apply for SC, ST, and OBC candidates in West Bengal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In West Bengal state exams, OBC candidates (OBC-A and OBC-B) receive 3 years upper age relaxation, SC and ST candidates receive 5 years relaxation, and PwBD candidates receive 10 years relaxation beyond the unreserved upper limit."
+      }
+    },
     {
       "@type": "Question",
       "name": "How does this calculator handle leap years and different month lengths?",
@@ -300,54 +324,189 @@
             </div>
             <h1 class="tool-title">Age & Date Difference Calculator</h1>
             <p class="tool-description">
-                Find exact age in years, months, weeks, days, and hours, plus calculate exact difference between two dates.
+                Find exact age in years, months, weeks, days, and hours, or switch to <strong>Govt Exam Mode</strong> to check cutoff eligibility for WBP Police, WBPSC, SSC, Railway, and WBFR Farmer Registry with SC/ST/OBC category age relaxations.
             </p>
         </header>
 
         <!-- Tool Workspace (Pure Action-First UI) -->
         <section class="tool-workspace" aria-label="Age & Date Difference Calculator Workspace">
-            <div class="calc-grid-2col">
-            <div class="calc-form-panel">
-                <div class="calc-field-group">
-                    <label for="birthDate">Date of Birth</label>
-                    <input type="date" id="birthDate" class="calc-input" value="2000-01-01">
+            <!-- Mode Switcher Tabs -->
+            <div class="calc-mode-nav" style="display: flex; gap: 10px; margin-bottom: 22px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 14px; overflow-x: auto;">
+                <button type="button" class="calc-mode-tab active" id="tabGeneralAge" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 10px; border: 1.5px solid #00ff88; background: rgba(0, 255, 136, 0.12); color: #ffffff; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s ease;">
+                    <i data-lucide="calendar" style="width: 16px; height: 16px; color: #00ff88;"></i>
+                    <span>Standard Age &amp; Milestones</span>
+                </button>
+                <button type="button" class="calc-mode-tab" id="tabGovtExam" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 10px; border: 1.5px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.03); color: var(--text-secondary, #94a3b8); font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s ease;">
+                    <i data-lucide="award" style="width: 16px; height: 16px; color: #ffaa00;"></i>
+                    <span>🎯 Govt Exam &amp; Scheme Eligibility Mode</span>
+                    <span style="font-size: 11px; background: rgba(255, 170, 0, 0.2); color: #ffaa00; padding: 2px 8px; border-radius: 12px; font-weight: 800; letter-spacing: 0.3px;">WBP • WBPSC • WBFR</span>
+                </button>
+            </div>
+
+            <!-- VIEW 1: Standard Age Calculator -->
+            <div id="viewGeneralAge" class="calc-grid-2col">
+                <div class="calc-form-panel">
+                    <div class="calc-field-group">
+                        <label for="birthDate">Date of Birth</label>
+                        <input type="date" id="birthDate" class="calc-input" value="2000-01-01">
+                    </div>
+                    <div class="calc-field-group">
+                        <label for="targetDate">Age at the Date of</label>
+                        <input type="date" id="targetDate" class="calc-input">
+                    </div>
+                    <div class="tool-btn-group" style="margin-top:8px;">
+                        <button type="button" class="tool-btn tool-btn-primary" id="btnCalcAge" style="flex:1;"><i data-lucide="calculator"></i> <span>Calculate Age</span></button>
+                        <button type="button" class="tool-btn" id="btnTodayAge">Set to Today</button>
+                    </div>
                 </div>
-                <div class="calc-field-group">
-                    <label for="targetDate">Age at the Date of</label>
-                    <input type="date" id="targetDate" class="calc-input">
-                </div>
-                <div class="tool-btn-group" style="margin-top:8px;">
-                    <button type="button" class="tool-btn tool-btn-primary" id="btnCalcAge" style="flex:1;"><i data-lucide="calculator"></i> <span>Calculate Age</span></button>
-                    <button type="button" class="tool-btn" id="btnTodayAge">Set to Today</button>
+
+                <div class="calc-result-panel">
+                    <div class="calc-summary-hero">
+                        <div class="summary-lbl">Exact Age</div>
+                        <div class="summary-val" id="resAgeYears" style="font-size:26px;">26 Years, 8 Months, 24 Days</div>
+                    </div>
+
+                    <div class="calc-breakdown-list">
+                        <div class="calc-breakdown-row">
+                            <span class="row-lbl">Total Months:</span>
+                            <span class="row-val" id="resTotalMonths">320 Months</span>
+                        </div>
+                        <div class="calc-breakdown-row">
+                            <span class="row-lbl">Total Weeks:</span>
+                            <span class="row-val" id="resTotalWeeks">1,394 Weeks</span>
+                        </div>
+                        <div class="calc-breakdown-row">
+                            <span class="row-lbl">Total Days:</span>
+                            <span class="row-val" id="resTotalDays">9,764 Days</span>
+                        </div>
+                        <div class="calc-breakdown-row">
+                            <span class="row-lbl">Next Birthday In:</span>
+                            <span class="row-val" id="resNextBday" style="color:var(--cyan-bright, #00bfff);">3 Months, 7 Days</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="calc-result-panel">
-                <div class="calc-summary-hero">
-                    <div class="summary-lbl">Exact Age</div>
-                    <div class="summary-val" id="resAgeYears" style="font-size:26px;">26 Years, 8 Months, 24 Days</div>
+            <!-- VIEW 2: Govt Exam & Scheme Eligibility Calculator -->
+            <div id="viewGovtExam" class="calc-grid-2col" style="display: none;">
+                <div class="calc-form-panel">
+                    <!-- Preset Selector -->
+                    <div class="calc-field-group">
+                        <label for="govtExamPreset"><i data-lucide="briefcase" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i> Exam / Scheme Target</label>
+                        <select id="govtExamPreset" class="calc-input" style="cursor: pointer; font-weight: 600;">
+                            <option value="wbfr" selected>🌾 WBFR / AgriStack Farmer Registry (18+ Yrs, No Upper Limit)</option>
+                            <option value="wbp-constable">👮 WB Police Constable (WBP) — 18 to 30 Years</option>
+                            <option value="wbp-si">⭐ WB Police Sub-Inspector (SI) — 20 to 30 Years</option>
+                            <option value="wbpsc-clerk">🏛️ WBPSC Clerkship &amp; Miscellaneous — 18 to 40 Years</option>
+                            <option value="wbpsc-food">🌾 WBPSC Food Sub-Inspector (Food SI) — 18 to 40 Years</option>
+                            <option value="wbcs">🏆 West Bengal Civil Service (WBCS Gr A/B/C) — 21 to 36 Years</option>
+                            <option value="ssc-cgl">🏢 SSC CGL / CHSL / MTS — 18 to 32 Years</option>
+                            <option value="rrb">🚆 Railway RRB (NTPC / Group D) — 18 to 33 / 36 Years</option>
+                            <option value="custom">⚙️ Custom Exam / Scheme (Specify Limits)</option>
+                        </select>
+                    </div>
+
+                    <!-- Category Relaxation -->
+                    <div class="calc-field-group">
+                        <label for="govtCategory"><i data-lucide="shield" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i> Reservation Category (Age Relaxation)</label>
+                        <select id="govtCategory" class="calc-input" style="cursor: pointer;">
+                            <option value="0" selected>General / Unreserved (UR) — 0 Years</option>
+                            <option value="3">OBC-A / OBC-B — +3 Years Relaxation</option>
+                            <option value="5">SC / ST — +5 Years Relaxation</option>
+                            <option value="10">PwBD / Persons with Disabilities — +10 Years Relaxation</option>
+                            <option value="exm">Ex-Servicemen (Military Service + 3 Years)</option>
+                        </select>
+                    </div>
+
+                    <!-- DOB Input -->
+                    <div class="calc-field-group">
+                        <label for="govtDob"><i data-lucide="user" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i> Candidate Date of Birth</label>
+                        <input type="date" id="govtDob" class="calc-input" value="2000-01-01">
+                    </div>
+
+                    <!-- Cut-Off Date Input & Quick Buttons -->
+                    <div class="calc-field-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <label for="govtCutoff" style="margin-bottom: 0;"><i data-lucide="clock" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i> Exam Cut-Off Date</label>
+                            <div style="display: flex; gap: 6px;">
+                                <button type="button" class="tool-btn" id="btnCutoff2026" style="padding: 2px 8px; font-size: 11px;">01/01/2026</button>
+                                <button type="button" class="tool-btn" id="btnCutoffJuly" style="padding: 2px 8px; font-size: 11px;">01/07/2026</button>
+                                <button type="button" class="tool-btn" id="btnCutoffToday" style="padding: 2px 8px; font-size: 11px;">Today</button>
+                            </div>
+                        </div>
+                        <input type="date" id="govtCutoff" class="calc-input" value="2026-01-01">
+                    </div>
+
+                    <!-- Custom Limits Row (Hidden unless custom is chosen) -->
+                    <div id="customLimitsRow" style="display: none; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                        <div class="calc-field-group" style="margin-bottom: 0;">
+                            <label for="customMinAge">Min Age (Years)</label>
+                            <input type="number" id="customMinAge" class="calc-input" value="18" min="0" max="100">
+                        </div>
+                        <div class="calc-field-group" style="margin-bottom: 0;">
+                            <label for="customMaxAge">Max Age (Years)</label>
+                            <input type="number" id="customMaxAge" class="calc-input" value="40" min="0" max="100">
+                        </div>
+                    </div>
+
+                    <div class="tool-btn-group" style="margin-top: 10px;">
+                        <button type="button" class="tool-btn tool-btn-primary" id="btnCheckGovtAge" style="flex:1;">
+                            <i data-lucide="check-circle-2"></i> <span>Verify Exam Eligibility</span>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="calc-breakdown-list">
-                    <div class="calc-breakdown-row">
-                        <span class="row-lbl">Total Months:</span>
-                        <span class="row-val" id="resTotalMonths">320 Months</span>
+                <div class="calc-result-panel">
+                    <!-- Dynamic Verdict Card -->
+                    <div id="verdictCard" style="padding: 22px; border-radius: 12px; background: rgba(0, 255, 136, 0.08); border: 1.5px solid rgba(0, 255, 136, 0.4); text-align: center; margin-bottom: 16px; transition: all 0.3s ease;">
+                        <div id="verdictBadge" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; background: #00ff88; color: #070c18; font-weight: 800; font-size: 14px; margin-bottom: 10px;">
+                            <i data-lucide="check" style="width: 16px; height: 16px;"></i> <span id="verdictBadgeText">ELIGIBLE FOR APPLICATION</span>
+                        </div>
+                        <div id="verdictTitle" style="font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 6px;">
+                            You Meet All Age Criteria!
+                        </div>
+                        <p id="verdictDesc" style="font-size: 13px; color: var(--text-secondary, #94a3b8); margin: 0; line-height: 1.5;">
+                            Your calculated age is comfortably within the permissible age window on the cut-off date.
+                        </p>
                     </div>
-                    <div class="calc-breakdown-row">
-                        <span class="row-lbl">Total Weeks:</span>
-                        <span class="row-val" id="resTotalWeeks">1,394 Weeks</span>
+
+                    <!-- Breakdown Metrics -->
+                    <div class="calc-breakdown-list">
+                        <div class="calc-breakdown-row">
+                            <span class="row-lbl">Exact Age on Cut-Off Date:</span>
+                            <span class="row-val" id="govtResExactAge" style="font-weight: 700; color: #ffffff;">26 Years, 0 Months, 0 Days</span>
+                        </div>
+                        <div class="calc-breakdown-row">
+                            <span class="row-lbl">Prescribed Age Range:</span>
+                            <span class="row-val" id="govtResAgeRange">18 to 40 Years</span>
+                        </div>
+                        <div class="calc-breakdown-row">
+                            <span class="row-lbl">Category Relaxation Applied:</span>
+                            <span class="row-val" id="govtResRelaxation" style="color: #00ff88;">UR (No relaxation)</span>
+                        </div>
+                        <div class="calc-breakdown-row">
+                            <span class="row-lbl">Effective Max Age Limit:</span>
+                            <span class="row-val" id="govtResEffectiveMax">40 Years</span>
+                        </div>
+                        <div class="calc-breakdown-row">
+                            <span class="row-lbl">Margin / Time Remaining:</span>
+                            <span class="row-val" id="govtResMargin" style="color: var(--cyan-bright, #00bfff);">14 Years Remaining</span>
+                        </div>
                     </div>
-                    <div class="calc-breakdown-row">
-                        <span class="row-lbl">Total Days:</span>
-                        <span class="row-val" id="resTotalDays">9,764 Days</span>
-                    </div>
-                    <div class="calc-breakdown-row">
-                        <span class="row-lbl">Next Birthday In:</span>
-                        <span class="row-val" id="resNextBday" style="color:var(--cyan-bright);">3 Months, 7 Days</span>
+
+                    <!-- Action Link Cards -->
+                    <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;">
+                        <a href="/digital-seva/farmer-id/" id="linkFarmerSeva" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: 8px; background: rgba(0, 191, 255, 0.08); border: 1px solid rgba(0, 191, 255, 0.25); color: #00bfff; text-decoration: none; font-size: 13px; font-weight: 600;">
+                            <span>🌾 Apply on WB Farmer Registry (AgriStack)</span>
+                            <i data-lucide="external-link" style="width: 14px; height: 14px;"></i>
+                        </a>
+                        <a href="/tools/pdf/pdf-compressor/" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: 8px; background: rgba(0, 255, 136, 0.08); border: 1px solid rgba(0, 255, 136, 0.25); color: #00ff88; text-decoration: none; font-size: 13px; font-weight: 600;">
+                            <span>📄 Compress Documents to &le;200KB for Application</span>
+                            <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
         </section>
 
         <!-- Responsive Ad Slot (AdSense Compliant) -->
@@ -622,72 +781,281 @@ Total Elapsed Days = floor((Timestamp2 - Timestamp1) / (1000 × 60 × 60 × 24))
   </script>
   <script>
 document.addEventListener('DOMContentLoaded', () => {
-            const birthInput = document.getElementById('birthDate');
-            const targetInput = document.getElementById('targetDate');
+    // Tab Mode Switcher
+    const tabGeneral = document.getElementById('tabGeneralAge');
+    const tabGovt = document.getElementById('tabGovtExam');
+    const viewGeneral = document.getElementById('viewGeneralAge');
+    const viewGovt = document.getElementById('viewGovtExam');
 
-            const now = new Date();
-            const yyyy = now.getFullYear();
-            const mm = String(now.getMonth() + 1).padStart(2, '0');
-            const dd = String(now.getDate()).padStart(2, '0');
-            targetInput.value = `${yyyy}-${mm}-${dd}`;
+    function switchMode(mode) {
+        if (mode === 'govt') {
+            tabGovt.classList.add('active');
+            tabGovt.style.border = '1.5px solid #ffaa00';
+            tabGovt.style.background = 'rgba(255, 170, 0, 0.12)';
+            tabGovt.style.color = '#ffffff';
 
-            function computeAge() {
-                const bDate = new Date(birthInput.value);
-                const tDate = new Date(targetInput.value);
+            tabGeneral.classList.remove('active');
+            tabGeneral.style.border = '1.5px solid rgba(255, 255, 255, 0.12)';
+            tabGeneral.style.background = 'rgba(255, 255, 255, 0.03)';
+            tabGeneral.style.color = '#94a3b8';
 
-                if (isNaN(bDate) || isNaN(tDate) || bDate > tDate) {
-                    document.getElementById('resAgeYears').textContent = 'Please select a valid birth date';
-                    return;
-                }
+            viewGovt.style.display = 'grid';
+            viewGeneral.style.display = 'none';
+            computeGovtEligibility();
+        } else {
+            tabGeneral.classList.add('active');
+            tabGeneral.style.border = '1.5px solid #00ff88';
+            tabGeneral.style.background = 'rgba(0, 255, 136, 0.12)';
+            tabGeneral.style.color = '#ffffff';
 
-                let years = tDate.getFullYear() - bDate.getFullYear();
-                let months = tDate.getMonth() - bDate.getMonth();
-                let days = tDate.getDate() - bDate.getDate();
+            tabGovt.classList.remove('active');
+            tabGovt.style.border = '1.5px solid rgba(255, 255, 255, 0.12)';
+            tabGovt.style.background = 'rgba(255, 255, 255, 0.03)';
+            tabGovt.style.color = '#94a3b8';
 
-                if (days < 0) {
-                    months--;
-                    const prevMonth = new Date(tDate.getFullYear(), tDate.getMonth(), 0);
-                    days += prevMonth.getDate();
-                }
+            viewGeneral.style.display = 'grid';
+            viewGovt.style.display = 'none';
+            computeStandardAge();
+        }
+        if (window.lucide) lucide.createIcons();
+    }
 
-                if (months < 0) {
-                    years--;
-                    months += 12;
-                }
+    if (tabGeneral) tabGeneral.addEventListener('click', () => switchMode('standard'));
+    if (tabGovt) tabGovt.addEventListener('click', () => switchMode('govt'));
 
-                document.getElementById('resAgeYears').textContent = `${years} Y, ${months} M, ${days} D`;
+    // Check URL parameters: e.g. ?mode=govt or ?wbfr
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('mode') === 'govt' || urlParams.has('wbfr') || window.location.hash.includes('govt')) {
+        switchMode('govt');
+    }
 
-                const diffMs = tDate - bDate;
-                const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-                const totalWeeks = Math.floor(totalDays / 7);
-                const totalMonths = years * 12 + months;
+    // --- MODE 1: Standard Age Calculator Logic ---
+    const birthInput = document.getElementById('birthDate');
+    const targetInput = document.getElementById('targetDate');
 
-                document.getElementById('resTotalMonths').textContent = totalMonths.toLocaleString() + ' Months';
-                document.getElementById('resTotalWeeks').textContent = totalWeeks.toLocaleString() + ' Weeks';
-                document.getElementById('resTotalDays').textContent = totalDays.toLocaleString() + ' Days';
+    const now = new Date();
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
+    if (targetInput) targetInput.value = `${yyyy}-${mm}-${dd}`;
 
-                // Next birthday
-                let nextBday = new Date(tDate.getFullYear(), bDate.getMonth(), bDate.getDate());
-                if (nextBday < tDate) {
-                    nextBday.setFullYear(tDate.getFullYear() + 1);
-                }
-                const bdayDiffDays = Math.ceil((nextBday - tDate) / (1000 * 60 * 60 * 24));
-                document.getElementById('resNextBday').textContent = bdayDiffDays + ' Days';
+    function calculateDetailedAge(birthStr, targetStr) {
+        const bDate = new Date(birthStr);
+        const tDate = new Date(targetStr);
+        if (isNaN(bDate) || isNaN(tDate) || bDate > tDate) return null;
+
+        let years = tDate.getFullYear() - bDate.getFullYear();
+        let months = tDate.getMonth() - bDate.getMonth();
+        let days = tDate.getDate() - bDate.getDate();
+
+        if (days < 0) {
+            months--;
+            const prevMonth = new Date(tDate.getFullYear(), tDate.getMonth(), 0);
+            days += prevMonth.getDate();
+        }
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        const diffMs = tDate - bDate;
+        const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        const totalWeeks = Math.floor(totalDays / 7);
+        const totalMonths = years * 12 + months;
+
+        return { years, months, days, totalDays, totalWeeks, totalMonths, bDate, tDate };
+    }
+
+    function computeStandardAge() {
+        if (!birthInput || !targetInput) return;
+        const res = calculateDetailedAge(birthInput.value, targetInput.value);
+        if (!res) {
+            document.getElementById('resAgeYears').textContent = 'Please select a valid birth date';
+            return;
+        }
+
+        document.getElementById('resAgeYears').textContent = `${res.years} Y, ${res.months} M, ${res.days} D`;
+        document.getElementById('resTotalMonths').textContent = res.totalMonths.toLocaleString() + ' Months';
+        document.getElementById('resTotalWeeks').textContent = res.totalWeeks.toLocaleString() + ' Weeks';
+        document.getElementById('resTotalDays').textContent = res.totalDays.toLocaleString() + ' Days';
+
+        let nextBday = new Date(res.tDate.getFullYear(), res.bDate.getMonth(), res.bDate.getDate());
+        if (nextBday < res.tDate) {
+            nextBday.setFullYear(res.tDate.getFullYear() + 1);
+        }
+        const bdayDiffDays = Math.ceil((nextBday - res.tDate) / (1000 * 60 * 60 * 24));
+        document.getElementById('resNextBday').textContent = bdayDiffDays + ' Days';
+    }
+
+    if (birthInput) birthInput.addEventListener('change', computeStandardAge);
+    if (targetInput) targetInput.addEventListener('change', computeStandardAge);
+    const btnCalc = document.getElementById('btnCalcAge');
+    if (btnCalc) btnCalc.addEventListener('click', computeStandardAge);
+    const btnToday = document.getElementById('btnTodayAge');
+    if (btnToday) btnToday.addEventListener('click', () => {
+        targetInput.value = `${yyyy}-${mm}-${dd}`;
+        computeStandardAge();
+    });
+
+    // --- MODE 2: Govt Exam Eligibility Logic ---
+    const presetSelect = document.getElementById('govtExamPreset');
+    const categorySelect = document.getElementById('govtCategory');
+    const govtDob = document.getElementById('govtDob');
+    const govtCutoff = document.getElementById('govtCutoff');
+    const customRow = document.getElementById('customLimitsRow');
+    const customMin = document.getElementById('customMinAge');
+    const customMax = document.getElementById('customMaxAge');
+
+    const PRESETS = {
+        'wbfr': { min: 18, max: 100, label: '18+ Years (No Upper Limit)', note: 'West Bengal Farmer Registry / AgriStack' },
+        'wbp-constable': { min: 18, max: 30, label: '18 to 30 Years', note: 'WB Police Constable' },
+        'wbp-si': { min: 20, max: 30, label: '20 to 30 Years', note: 'WB Police Sub-Inspector' },
+        'wbpsc-clerk': { min: 18, max: 40, label: '18 to 40 Years', note: 'WBPSC Clerkship' },
+        'wbpsc-food': { min: 18, max: 40, label: '18 to 40 Years', note: 'WBPSC Food SI' },
+        'wbcs': { min: 21, max: 36, label: '21 to 36 Years', note: 'WBCS Executive' },
+        'ssc-cgl': { min: 18, max: 32, label: '18 to 32 Years', note: 'SSC CGL / CHSL' },
+        'rrb': { min: 18, max: 33, label: '18 to 33 Years', note: 'Railway RRB' },
+        'custom': { min: 18, max: 40, label: 'Custom Limits', note: 'Custom Post' }
+    };
+
+    function handlePresetChange() {
+        const val = presetSelect.value;
+        if (val === 'custom') {
+            customRow.style.display = 'grid';
+        } else {
+            customRow.style.display = 'none';
+        }
+        computeGovtEligibility();
+    }
+
+    if (presetSelect) presetSelect.addEventListener('change', handlePresetChange);
+    if (categorySelect) categorySelect.addEventListener('change', computeGovtEligibility);
+    if (govtDob) govtDob.addEventListener('change', computeGovtEligibility);
+    if (govtCutoff) govtCutoff.addEventListener('change', computeGovtEligibility);
+    if (customMin) customMin.addEventListener('input', computeGovtEligibility);
+    if (customMax) customMax.addEventListener('input', computeGovtEligibility);
+
+    document.getElementById('btnCutoff2026')?.addEventListener('click', () => {
+        govtCutoff.value = '2026-01-01';
+        computeGovtEligibility();
+    });
+    document.getElementById('btnCutoffJuly')?.addEventListener('click', () => {
+        govtCutoff.value = '2026-07-01';
+        computeGovtEligibility();
+    });
+    document.getElementById('btnCutoffToday')?.addEventListener('click', () => {
+        govtCutoff.value = `${yyyy}-${mm}-${dd}`;
+        computeGovtEligibility();
+    });
+    document.getElementById('btnCheckGovtAge')?.addEventListener('click', computeGovtEligibility);
+
+    function computeGovtEligibility() {
+        if (!govtDob || !govtCutoff || !presetSelect) return;
+        const res = calculateDetailedAge(govtDob.value, govtCutoff.value);
+
+        const card = document.getElementById('verdictCard');
+        const badge = document.getElementById('verdictBadge');
+        const badgeText = document.getElementById('verdictBadgeText');
+        const title = document.getElementById('verdictTitle');
+        const desc = document.getElementById('verdictDesc');
+        const exactAgeEl = document.getElementById('govtResExactAge');
+        const rangeEl = document.getElementById('govtResAgeRange');
+        const relaxEl = document.getElementById('govtResRelaxation');
+        const effMaxEl = document.getElementById('govtResEffectiveMax');
+        const marginEl = document.getElementById('govtResMargin');
+
+        if (!res) {
+            exactAgeEl.textContent = 'Invalid Dates';
+            return;
+        }
+
+        const presetKey = presetSelect.value;
+        let minAge = 18;
+        let maxAge = 40;
+
+        if (presetKey === 'custom') {
+            minAge = parseFloat(customMin.value) || 18;
+            maxAge = parseFloat(customMax.value) || 40;
+        } else if (PRESETS[presetKey]) {
+            minAge = PRESETS[presetKey].min;
+            maxAge = PRESETS[presetKey].max;
+        }
+
+        let relaxationYears = 0;
+        let relaxLabel = 'UR / General (+0 Yrs)';
+        const catVal = categorySelect.value;
+
+        if (catVal === '3') {
+            relaxationYears = 3;
+            relaxLabel = 'OBC-A / OBC-B (+3 Yrs)';
+        } else if (catVal === '5') {
+            relaxationYears = 5;
+            relaxLabel = 'SC / ST (+5 Yrs)';
+        } else if (catVal === '10') {
+            relaxationYears = 10;
+            relaxLabel = 'PwBD (+10 Yrs)';
+        } else if (catVal === 'exm') {
+            relaxationYears = 3;
+            relaxLabel = 'Ex-Servicemen (+3 Yrs)';
+        }
+
+        const effectiveMax = maxAge + relaxationYears;
+        const exactAgeStr = `${res.years} Y, ${res.months} M, ${res.days} D`;
+        exactAgeEl.textContent = exactAgeStr;
+
+        rangeEl.textContent = (presetKey === 'wbfr') ? '18+ Years (No Upper Cap)' : `${minAge} to ${maxAge} Years`;
+        relaxEl.textContent = relaxLabel;
+        effMaxEl.textContent = (presetKey === 'wbfr') ? 'No Upper Limit' : `${effectiveMax} Years`;
+
+        const candidateAgeYears = res.years + (res.months / 12) + (res.days / 365.25);
+
+        if (candidateAgeYears < minAge) {
+            card.style.background = 'rgba(255, 170, 0, 0.1)';
+            card.style.borderColor = 'rgba(255, 170, 0, 0.5)';
+            badge.style.background = '#ffaa00';
+            badge.style.color = '#070c18';
+            badgeText.textContent = 'UNDERAGE';
+            title.textContent = 'Candidate is Below Minimum Age Limit';
+
+            desc.textContent = `You are younger than the required ${minAge} years on ${govtCutoff.value}. You will become eligible after turning ${minAge}.`;
+            marginEl.textContent = `Below min limit by ${Math.max(0, minAge - res.years)} Yrs`;
+            marginEl.style.color = '#ffaa00';
+        } else if (presetKey !== 'wbfr' && candidateAgeYears > effectiveMax) {
+            card.style.background = 'rgba(255, 85, 136, 0.1)';
+            card.style.borderColor = 'rgba(255, 85, 136, 0.5)';
+            badge.style.background = '#ff5588';
+            badge.style.color = '#ffffff';
+            badgeText.textContent = 'OVERAGED (NOT ELIGIBLE)';
+            title.textContent = 'Age Exceeds Maximum Prescribed Limit';
+
+            const overYears = res.years - effectiveMax;
+            desc.textContent = `Calculated age on ${govtCutoff.value} is ${exactAgeStr}, which exceeds the relaxed ceiling of ${effectiveMax} Years for this category.`;
+            marginEl.textContent = `Overaged by ${overYears} Y, ${res.months} M`;
+            marginEl.style.color = '#ff5588';
+        } else {
+            card.style.background = 'rgba(0, 255, 136, 0.1)';
+            card.style.borderColor = 'rgba(0, 255, 136, 0.5)';
+            badge.style.background = '#00ff88';
+            badge.style.color = '#070c18';
+            badgeText.textContent = 'ELIGIBLE FOR APPLICATION';
+            title.textContent = '✅ Congratulations! You Meet the Age Criteria';
+
+            if (presetKey === 'wbfr') {
+                desc.textContent = `You are ${res.years} years old on ${govtCutoff.value}. WBFR (AgriStack) has no upper age limit—you can register immediately.`;
+                marginEl.textContent = 'Fully Qualified (No Upper Cap)';
+            } else {
+                const remYears = effectiveMax - res.years - 1;
+                const remMonths = 12 - res.months;
+                desc.textContent = `You comfortably qualify for this post on cutoff date ${govtCutoff.value}. Upper ceiling for your category is ${effectiveMax} Years.`;
+                marginEl.textContent = `${Math.max(0, remYears)} Y, ${remMonths} M remaining`;
             }
+            marginEl.style.color = '#00ff88';
+        }
+        if (window.lucide) lucide.createIcons();
+    }
 
-            birthInput.addEventListener('change', computeAge);
-            targetInput.addEventListener('change', computeAge);
-            document.getElementById('btnCalcAge').addEventListener('click', computeAge);
-            document.getElementById('btnTodayAge').addEventListener('click', () => {
-                targetInput.value = `${yyyy}-${mm}-${dd}`;
-                computeAge();
-            });
-
-            computeAge();
-        });
+    computeStandardAge();
+});
 </script>
-  
-
-
 </body>
 </html>

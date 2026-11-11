@@ -89,14 +89,14 @@ window.XESTUS_TOOLS_REGISTRY = {
     },
     {
       slug: "age-calculator",
-      title: "Age & Date Difference Calculator",
+      title: "Age & Govt Job Cut-Off Eligibility Calculator",
       category: "calculators",
       icon: "calendar",
-      badge: "Everyday",
-      description: "Find exact age in years, months, weeks, days, and hours, plus calculate exact difference between two dates.",
-      keywords: ["age calculator", "calculate exact age", "date difference calculator", "how old am i", "days between dates"],
+      badge: "🎯 Govt Cut-Off",
+      description: "Calculate exact chronological age and verify cutoff eligibility for WBP Police, WBPSC, WBCS, SSC, Railway, and WBFR Farmer Registry with category relaxations.",
+      keywords: ["age calculator", "calculate exact age", "wbfr.age", "govt job age calculator", "cut off age calculator", "wbp age limit", "wbpsc age eligibility", "days between dates"],
       url: "/tools/calculators/age-calculator/",
-      related: ["timestamp-converter", "percentage-calculator"]
+      related: ["date-calculator", "timestamp-converter", "percentage-calculator"]
     },
     {
       slug: "discount-calculator",
@@ -226,6 +226,17 @@ window.XESTUS_TOOLS_REGISTRY = {
 
     // --- PDF & DOCUMENTS ---
     {
+      slug: "pdf-compressor",
+      title: "PDF Compressor (Govt Exam Form: Under 200KB & 100KB)",
+      category: "pdf",
+      icon: "file-archive",
+      badge: "🎯 Govt Preset",
+      description: "Compress PDF files online to exact sizes (under 200KB, 100KB, 300KB) for WBPSC, WBP, SSC, UPSC, Railway & AgriStack forms. 100% in-browser privacy.",
+      keywords: ["compress pdf to 200kb", "compress pdf to 100kb", "pdf compressor online", "wbpsc pdf size", "ssc pdf compressor", "reduce pdf size", "farmer id pdf compress"],
+      url: "/tools/pdf/pdf-compressor/",
+      related: ["image-to-pdf", "image-compressor", "image-resizer"]
+    },
+    {
       slug: "image-to-pdf",
       title: "Image to PDF Converter",
       category: "pdf",
@@ -234,7 +245,7 @@ window.XESTUS_TOOLS_REGISTRY = {
       description: "Convert single or multiple JPG/PNG images into a single, high-quality PDF document directly in your browser without uploading to servers.",
       keywords: ["image to pdf", "jpg to pdf", "convert photo to pdf", "png to pdf online", "combine images to pdf"],
       url: "/tools/pdf/image-to-pdf/",
-      related: ["image-compressor", "image-resizer"]
+      related: ["pdf-compressor", "image-compressor", "image-resizer"]
     },
 
     // --- STUDENT TOOLS ---

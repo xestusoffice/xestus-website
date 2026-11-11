@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070c18">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Immediate Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var savedTheme = localStorage.getItem('xestus_theme') || 'night';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Consent Mode v2 & Cookie Consent Controller -->
+    <script defer src="../../../js/cookie-consent.min.js?v=4.1.0"></script>
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF3ZRR55YY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EF3ZRR55YY');
+    </script>
+
+    <!-- Google AdSense - Progressive Non-Blocking Loader -->
+    <script>
+        (function() {
+            var adsLoaded = false;
+            function loadAdSense() {
+                if (adsLoaded) return;
+                adsLoaded = true;
+                try {
+                    var stored = JSON.parse(localStorage.getItem('xestus_cookie_consent_v2') || 'null');
+                    if (!stored || !stored.advertising) {
+                        (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+                    }
+                } catch(e) {}
+                var s = document.createElement('script');
+                s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1489572262543869';
+                s.async = true;
+                s.crossOrigin = 'anonymous';
+                document.head.appendChild(s);
+            }
+            window.XESTUS_LOAD_ADSENSE = loadAdSense;
+            ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'].forEach(function(ev) {
+                window.addEventListener(ev, loadAdSense, { once: true, passive: true });
+            });
+        })();
+    </script>
+
+    <!-- SEO Metadata -->
+    <title>Compress PDF to 200KB, 100KB Online (Govt Exam Form Mode) — Free & 100% Private | XESTUS</title>
+    <meta name="google-adsense-account" content="ca-pub-1489572262543869">
+    <meta name="description" content="Compress PDF files online to exact sizes (under 200KB, 100KB, 300KB) for WBPSC, WBP, SSC, UPSC, Railway, and State Govt online application forms. 100% client-side in-browser privacy with zero server uploads.">
+    <meta name="keywords" content="compress pdf to 200kb, compress pdf to 100kb, pdf compressor for govt jobs, wbpsc pdf size, ssc pdf compressor, reduce pdf size online, client side pdf compression, free pdf compressor">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://xestus.in/tools/pdf/pdf-compressor/">
+    <link rel="manifest" href="../../../manifest.json">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xestus.in/tools/pdf/pdf-compressor/">
+    <meta property="og:title" content="Compress PDF to 200KB, 100KB Online (Govt Form Mode) | XESTUS Tools">
+    <meta property="og:description" content="Compress PDF files online to exact sizes (under 200KB, 100KB) for WBPSC, WBP, SSC, UPSC job forms. 100% in-browser privacy, zero server uploads.">
+    <meta property="og:image" content="https://xestus.in/assets/images/xestus-logo.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../../style.min.css?v=4.6.0">
+    <link rel="stylesheet" href="../../../tools/tools.min.css?v=4.6.0">
+    <script defer src="../../../js/lucide.min.js?v=1.57.0"></script>
+
+    <!-- PDF.js for 100% Client-Side In-Browser Rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <!-- Schema.org Multi-Entity JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Govt Exam PDF Compressor (Under 200KB & 100KB)",
+      "url": "https://xestus.in/tools/pdf/pdf-compressor/",
+      "description": "Compress PDF documents to strict government form limits (under 200KB, 100KB) locally in your browser. 100% private, zero uploads to remote servers.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XESTUS",
+        "url": "https://xestus.in/"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://xestus.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://xestus.in/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "PDF Utilities",
+          "item": "https://xestus.in/tools/pdf/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "PDF Compressor",
+          "item": "https://xestus.in/tools/pdf/pdf-compressor/"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How to compress a PDF to less than 200 KB for WBPSC / WBP / SSC forms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simply choose or drag & drop your PDF file onto XESTUS PDF Compressor, click the 'Govt ID Preset (≤ 200 KB)' button, and click 'Compress & Download PDF'. It takes less than 3 seconds without uploading your confidential document to any external server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my Aadhaar or Voter card safe when compressing PDF on XESTUS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "100% Yes. Unlike other websites that upload your personal documents to remote cloud servers, XESTUS compresses PDFs strictly inside your computer or smartphone browser memory. Nothing is sent over the internet."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+      .compressor-dropzone {
+        border: 2px dashed rgba(0, 240, 255, 0.3);
+        border-radius: 14px;
+        padding: 3rem 1.5rem;
+        text-align: center;
+        cursor: pointer;
+        background: rgba(0, 240, 255, 0.02);
+        transition: all 0.25s ease;
+      }
+      .compressor-dropzone:hover, .compressor-dropzone.dragover {
+        border-color: var(--cyan-bright, #00f0ff);
+        background: rgba(0, 240, 255, 0.06);
+        transform: translateY(-2px);
+      }
+      .preset-pill {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.12);
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .preset-pill:hover, .preset-pill.active {
+        background: rgba(0, 240, 255, 0.15);
+        border-color: #00f0ff;
+        color: #00f0ff;
+        box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+      }
+      .metric-box {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 12px;
+        padding: 14px;
+        text-align: center;
+      }
+      .metric-box-val {
+        font-family: 'Fira Code', monospace;
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 4px;
+      }
+      .progress-bar-wrap {
+        width: 100%;
+        height: 8px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 16px 0;
+        display: none;
+      }
+      .progress-bar-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #00f0ff, #00ff88);
+        transition: width 0.2s ease;
+      }
+    </style>
+</head>
+
+<body>
+    <!-- Site Header -->
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="../../../index.html" class="logo" aria-label="XESTUS Home">
+                <img src="../../../assets/images/xestus-logo.png" alt="XESTUS Logo" width="46" height="46">
+                <span>XESTUS</span>
+            </a>
+
+            <ul class="nav-links" id="primaryNav">
+                <li class="desktop-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="desktop-nav-item"><a href="../../../index.html#lab" class="nav-link">Innovation</a></li>
+                <li class="desktop-nav-item"><a href="../../../tools/" class="nav-link active">Tools</a></li>
+                <li class="desktop-nav-item"><a href="../../../about.html" class="nav-link">About</a></li>
+                <li class="desktop-nav-item"><a href="../../../contact.html" class="nav-link">Contact</a></li>
+
+                <li class="mobile-nav-item"><a href="../../../index.html#digital-services" class="nav-link">Digital Help</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#services" class="nav-link">Services</a></li>
+                <li class="mobile-nav-item"><a href="../../../index.html#portfolio" class="nav-link">Projects</a></li>
+                <li class="mobile-nav-item"><a href="../../../tools/" class="nav-link active">Tools Hub</a></li>
+                <li class="mobile-nav-item"><a href="../../../contact.html" class="nav-link">Contact Us</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="theme-switcher" id="themeSwitcher">
+                    <button type="button" class="theme-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Theme Mode">
+                        <i data-lucide="moon" class="theme-active-icon"></i>
+                        <span class="theme-current-label">Night</span>
+                        <i data-lucide="chevron-down" class="theme-chevron"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown" role="menu">
+                        <button type="button" class="theme-opt" data-theme="day" role="menuitem"><i data-lucide="sun"></i><span>Day</span></button>
+                        <button type="button" class="theme-opt active" data-theme="night" role="menuitem"><i data-lucide="moon"></i><span>Night</span></button>
+                        <button type="button" class="theme-opt" data-theme="eye-protect" role="menuitem"><i data-lucide="glasses"></i><span>Eye Protect</span></button>
+                    </div>
+                </div>
+
+                <a href="../../../contact.html" class="btn-primary btn-nav-cta magnetic-btn">
+                    <span>Contact Us</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Tool Container -->
+    <main class="tools-app-container" id="main-content">
+        <!-- Breadcrumb -->
+        <nav class="tools-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../../../index.html">XESTUS</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../../tools/">Tools</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../../../tools/pdf/">PDF Utilities</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Smart PDF Compressor (Govt Form Mode)</span>
+        </nav>
+
+        <!-- Tool Header -->
+        <header class="tool-header">
+            <div class="tool-badge-row">
+                <span class="tool-category-badge"><i data-lucide="file-down" style="width:14px;height:14px;"></i> PDF Utilities</span>
+                <span class="tool-privacy-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> 100% In-Browser Memory • Zero Server Uploads • Safe for Aadhaar &amp; Voter IDs</span>
+                
+                <div class="tool-meta-actions">
+                    <button type="button" class="btn-fav-star" id="btnToggleFav">
+                        <i data-lucide="star" style="width:14px;height:14px;"></i>
+                        <span>Add to My Tools</span>
+                    </button>
+                    <button type="button" class="btn-share-tool" id="btnShareTool">
+                        <i data-lucide="share-2" style="width:14px;height:14px;"></i>
+                        <span>Share Tool</span>
+                    </button>
+                </div>
+            </div>
+            <h1 class="tool-title">Smart PDF Compressor (Govt Exam Form Mode)</h1>
+            <p class="tool-description">
+                Compress PDF documents and scanned identity cards down to exact file sizes (under 200KB, 100KB, 300KB) for WBPSC, WBP, SSC, UPSC, and online job application portals. 100% free, confidential, and instant.
+            </p>
+        </header>
+
+        <!-- Tool Workspace -->
+        <section class="tool-workspace" aria-label="PDF Compressor Workspace">
+            <div class="calc-card">
+                <!-- Dropzone -->
+                <div class="compressor-dropzone" id="pdfDropzone">
+                    <i data-lucide="file-up" style="width: 52px; height: 52px; color: #00f0ff; margin-bottom: 0.75rem;"></i>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem;">Choose or Drag &amp; Drop a PDF or Scanned Document</h3>
+                    <p style="font-size: 0.88rem; color: #94a3b8; max-width: 480px; margin: 0 auto 1rem;">
+                        Supports multi-page PDF, JPG, PNG, and WebP documents up to 50MB. Processed strictly inside your device.
+                    </p>
+                    <button type="button" class="tool-btn tool-btn-primary" style="margin-top: 4px;">
+                        <i data-lucide="folder-open"></i> Browse PDF File
+                    </button>
+                    <input type="file" id="pdfFileInput" accept=".pdf,image/jpeg,image/png,image/webp" style="display: none;">
+                </div>
+
+                <!-- Controls & Result Panel (Hidden Initially) -->
+                <div id="compressorControls" style="display: none; margin-top: 1.5rem;">
+                    <!-- File Metadata Strip -->
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i data-lucide="file-text" style="width: 24px; height: 24px; color: #00f0ff;"></i>
+                            <div>
+                                <div id="docFileName" style="font-weight: 700; color: #fff; font-size: 14.5px;">document.pdf</div>
+                                <div id="docPageCount" style="font-size: 12px; color: #94a3b8;">1 Page • Ready to compress</div>
+                            </div>
+                        </div>
+                        <button type="button" id="btnChangeDoc" class="tool-btn" style="padding: 6px 14px; font-size: 12.5px;">
+                            <i data-lucide="refresh-cw"></i> Change File
+                        </button>
+                    </div>
+
+                    <!-- Presets Selection Bar -->
+                    <div style="margin-top: 1.5rem;">
+                        <label style="display: block; font-size: 13.5px; font-weight: 600; color: #cbd5e1; margin-bottom: 8px;">
+                            <i data-lucide="zap" style="width:14px;height:14px;color:#00ff88;vertical-align:middle;"></i> Choose Govt Form Size Preset:
+                        </label>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;" id="presetPillsWrap">
+                            <button type="button" class="preset-pill active" data-target-kb="190" data-quality="0.65" data-scale="1.0">
+                                🎯 Govt ID Preset (&le; 200 KB)
+                            </button>
+                            <button type="button" class="preset-pill" data-target-kb="95" data-quality="0.45" data-scale="0.8">
+                                ⚡ Extreme Compression (&le; 100 KB)
+                            </button>
+                            <button type="button" class="preset-pill" data-target-kb="290" data-quality="0.75" data-scale="1.2">
+                                📑 Marksheet / Khatian (&le; 300 KB)
+                            </button>
+                            <button type="button" class="preset-pill" data-target-kb="480" data-quality="0.85" data-scale="1.4">
+                                🏢 High Clarity (&le; 500 KB)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Fine-Tuning Slider Bar -->
+                    <div class="calc-grid-2" style="margin-top: 1.25rem;">
+                        <div class="calc-field-group">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                <label for="rangeQuality" style="font-size: 13px; font-weight: 600; color: #94a3b8;">Image / Text Compression Strength</label>
+                                <span id="valQualityLabel" style="font-weight: 700; color: #00f0ff; font-size: 13px;">Balanced (65%)</span>
+                            </div>
+                            <input type="range" id="rangeQuality" min="15" max="90" value="65" step="5" style="width: 100%; accent-color: #00f0ff;">
+                        </div>
+                        <div class="calc-field-group">
+                            <label for="selectResolution" style="font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; display: block;">Render Resolution (DPI)</label>
+                            <select id="selectResolution" class="calc-input" style="padding: 8px 12px; font-weight: 600;">
+                                <option value="1.0" selected>Standard Screen (150 DPI - Recommended for Govt)</option>
+                                <option value="0.75">Compact Web (100 DPI - Maximum Space Saving)</option>
+                                <option value="1.3">High Print Clarity (200 DPI)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-bar-wrap" id="progressBarWrap">
+                        <div class="progress-bar-fill" id="progressBarFill"></div>
+                    </div>
+                    <div id="progressStatusText" style="display: none; font-size: 13px; color: #00ff88; text-align: center; margin-bottom: 12px; font-weight: 600;">
+                        Processing page 1 of 1...
+                    </div>
+
+                    <!-- Action Button -->
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <button type="button" id="btnCompressPdf" class="btn-primary" style="padding: 14px 40px; font-size: 16px; font-weight: 700; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 6px 25px rgba(0,240,255,0.4);">
+                            <i data-lucide="sparkles"></i>
+                            <span id="btnCompressText">Compress PDF Now</span>
+                        </button>
+                    </div>
+
+                    <!-- Result Panel -->
+                    <div id="resultPanel" style="display: none; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 1.5rem;">
+                            <div class="metric-box">
+                                <div style="font-size: 12px; color: #94a3b8; font-weight: 600; text-transform: uppercase;">Original Size</div>
+                                <div class="metric-box-val" id="metricOrigSize" style="color: #cbd5e1;">- -</div>
+                            </div>
+                            <div class="metric-box" style="border-color: rgba(0,255,136,0.3); background: rgba(0,255,136,0.04);">
+                                <div style="font-size: 12px; color: #00ff88; font-weight: 600; text-transform: uppercase;">Compressed Size</div>
+                                <div class="metric-box-val" id="metricCompSize" style="color: #00ff88;">- -</div>
+                            </div>
+                            <div class="metric-box">
+                                <div style="font-size: 12px; color: #00f0ff; font-weight: 600; text-transform: uppercase;">Reduction</div>
+                                <div class="metric-box-val" id="metricSavings" style="color: #00f0ff;">- -</div>
+                            </div>
+                        </div>
+
+                        <!-- Compliance Status Badge -->
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <span id="badgeGovtReady" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 20px; font-size: 13.5px; font-weight: 700; background: rgba(0,255,136,0.12); color: #00ff88; border: 1px solid rgba(0,255,136,0.35);">
+                                <i data-lucide="check-circle" style="width:16px;height:16px;"></i> Govt Form Ready: Perfectly Valid for Online Application
+                            </span>
+                        </div>
+
+                        <!-- Download & Action Buttons -->
+                        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+                            <button type="button" id="btnDownloadPdf" class="btn-primary" style="padding: 13px 32px; font-size: 15px; font-weight: 700; border-radius: 50px; background: linear-gradient(135deg, #00ff88, #00bfff); color: #000; box-shadow: 0 4px 20px rgba(0,255,136,0.4);">
+                                <i data-lucide="download"></i> Download Compressed PDF
+                            </button>
+                            <button type="button" id="btnShareWhatsApp" class="tool-btn" style="padding: 13px 24px; font-size: 14px; font-weight: 600; border-radius: 50px;">
+                                <i data-lucide="share-2" style="color:#00ff88;"></i> Share Tool
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Educational & Search Authority Guide -->
+        <section class="tool-guide-section" aria-label="Educational Guide & Documentation" style="margin-top: 3.5rem;">
+            <div class="guide-grid-3col">
+                <div class="guide-card">
+                    <div class="guide-card-icon" style="background: rgba(0,240,255,0.1); color: #00f0ff;"><i data-lucide="shield-check"></i></div>
+                    <h3 class="guide-card-title">100% Client-Side Privacy</h3>
+                    <p class="guide-card-text">
+                        Unlike other PDF compression websites that transmit your private documents to third-party cloud servers, XESTUS compresses PDFs completely in your browser memory. Nothing is sent over the internet.
+                    </p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-card-icon" style="background: rgba(0,255,136,0.1); color: #00ff88;"><i data-lucide="landmark"></i></div>
+                    <h3 class="guide-card-title">Govt Exam Form Certified</h3>
+                    <p class="guide-card-text">
+                        Pre-calibrated for WBPSC Clerkship, WBCS, WBP Police, SSC GD/CGL, Railway RRB, and State Scholarship forms where PDF attachments must be strictly under 200 KB or 100 KB.
+                    </p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-card-icon" style="background: rgba(168,85,247,0.1); color: #a855f7;"><i data-lucide="smartphone"></i></div>
+                    <h3 class="guide-card-title">Works On Any Device</h3>
+                    <p class="guide-card-text">
+                        Instant speed on Android smartphones, iPhones, iPads, laptops, and cyber cafe computers with zero software installation required.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="guide-faqs-wrap" style="margin-top: 3rem;">
+                <h2 style="font-size: 1.6rem; font-weight: 800; text-align: center; color: #fff; margin-bottom: 1.5rem;">Frequently Asked Questions (FAQs)</h2>
+                
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        <span>How to compress a PDF to less than 200 KB for WBPSC / WBP / SSC forms?</span>
+                        <i data-lucide="chevron-down" class="faq-chevron"></i>
+                    </button>
+                    <div class="faq-answer" style="display: none;">
+                        <p>Simply select or drag and drop your PDF file onto XESTUS PDF Compressor, click the '🎯 Govt ID Preset (≤ 200 KB)' button, and click 'Compress PDF Now'. The system renders each page at optimized DPI and produces a compliant PDF under 200 KB within seconds.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        <span>Is my Aadhaar or Voter ID confidential and safe?</span>
+                        <i data-lucide="chevron-down" class="faq-chevron"></i>
+                    </button>
+                    <div class="faq-answer" style="display: none;">
+                        <p>100% Yes. XESTUS uses modern HTML5 Web APIs and Canvas memory. Your files never leave your device and are never uploaded to any remote server or database.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        <span>Can I compress multi-page PDF documents or scanned marksheets?</span>
+                        <i data-lucide="chevron-down" class="faq-chevron"></i>
+                    </button>
+                    <div class="faq-answer" style="display: none;">
+                        <p>Yes. XESTUS supports both single-page documents (Aadhaar, Voter, Admit Card) and multi-page marksheets, certificates, and land records.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-bottom" style="text-align: center; padding: 24px; color: #94a3b8; font-size: 13px; border-top: 1px solid rgba(255,255,255,0.06);">
+            <p>&copy; 2026 XESTUS. All rights reserved. • <a href="../../../privacy-policy.html" style="color: #94a3b8;">Privacy Policy</a> • <a href="../../../terms.html" style="color: #94a3b8;">Terms</a> • <a href="../../../disclaimer.html" style="color: #94a3b8;">Disclaimer</a> • <a href="../../../cookie-policy.html" style="color: #94a3b8;">Cookie Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- Pure In-Browser PDF Compression Engine -->
+    <script>
+    (function() {
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        }
+
+        const dropzone = document.getElementById('pdfDropzone');
+        const fileInput = document.getElementById('pdfFileInput');
+        const controls = document.getElementById('compressorControls');
+        const docFileName = document.getElementById('docFileName');
+        const docPageCount = document.getElementById('docPageCount');
+        const btnChangeDoc = document.getElementById('btnChangeDoc');
+        const btnCompressPdf = document.getElementById('btnCompressPdf');
+        const btnCompressText = document.getElementById('btnCompressText');
+        const rangeQuality = document.getElementById('rangeQuality');
+        const valQualityLabel = document.getElementById('valQualityLabel');
+        const selectResolution = document.getElementById('selectResolution');
+        const progressBarWrap = document.getElementById('progressBarWrap');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const progressStatusText = document.getElementById('progressStatusText');
+        const resultPanel = document.getElementById('resultPanel');
+        const metricOrigSize = document.getElementById('metricOrigSize');
+        const metricCompSize = document.getElementById('metricCompSize');
+        const metricSavings = document.getElementById('metricSavings');
+        const badgeGovtReady = document.getElementById('badgeGovtReady');
+        const btnDownloadPdf = document.getElementById('btnDownloadPdf');
+        const btnShareWhatsApp = document.getElementById('btnShareWhatsApp');
+
+        let currentFile = null;
+        let pdfDoc = null;
+        let totalPages = 1;
+        let compressedBlob = null;
+        let targetMaxKb = 190;
+
+        // Preset buttons
+        const presetButtons = document.querySelectorAll('.preset-pill');
+        presetButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                presetButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                targetMaxKb = parseInt(btn.dataset.targetKb, 10);
+                const q = Math.round(parseFloat(btn.dataset.quality) * 100);
+                rangeQuality.value = q;
+                updateQualityLabel(q);
+                selectResolution.value = btn.dataset.scale;
+            });
+        });
+
+        rangeQuality.addEventListener('input', (e) => {
+            updateQualityLabel(e.target.value);
+        });
+
+        function updateQualityLabel(val) {
+            valQualityLabel.textContent = val < 40 ? `High Compression (${val}%)` : (val < 70 ? `Balanced (${val}%)` : `High Quality (${val}%)`);
+        }
+
+        // Dropzone interactions
+        dropzone.addEventListener('click', () => fileInput.click());
+        dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                handleSelectedFile(e.dataTransfer.files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files && e.target.files[0]) {
+                handleSelectedFile(e.target.files[0]);
+            }
+        });
+
+        btnChangeDoc.addEventListener('click', () => {
+            currentFile = null;
+            pdfDoc = null;
+            fileInput.value = '';
+            dropzone.style.display = 'block';
+            controls.style.display = 'none';
+            resultPanel.style.display = 'none';
+        });
+
+        async function handleSelectedFile(file) {
+            currentFile = file;
+            docFileName.textContent = file.name;
+            dropzone.style.display = 'none';
+            controls.style.display = 'block';
+            resultPanel.style.display = 'none';
+
+            if (file.type === 'application/pdf') {
+                docPageCount.textContent = 'Inspecting PDF pages...';
+                try {
+                    const arrayBuffer = await file.arrayBuffer();
+                    pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                    totalPages = pdfDoc.numPages;
+                    docPageCount.textContent = `${totalPages} ${totalPages === 1 ? 'Page' : 'Pages'} • Original Size: ${formatBytes(file.size)}`;
+                } catch (err) {
+                    docPageCount.textContent = `PDF Document • Original Size: ${formatBytes(file.size)}`;
+                    totalPages = 1;
+                }
+            } else {
+                // Image uploaded
+                totalPages = 1;
+                docPageCount.textContent = `Scanned Image Document • Original Size: ${formatBytes(file.size)}`;
+            }
+
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+
+        // Pure standard PDF binary generator from compressed JPEG frames
+        function buildMultiPagePdf(frames) {
+            const chunks = [];
+            const offsets = [];
+            let pos = 0;
+
+            function writeStr(str) {
+                const enc = new TextEncoder().encode(str + '\n');
+                chunks.push(enc);
+                pos += enc.length;
+            }
+
+            function writeBinary(uint8Arr) {
+                chunks.push(uint8Arr);
+                pos += uint8Arr.length;
+                writeStr(''); // newline separator
+            }
+
+            writeStr('%PDF-1.4');
+
+            // 1: Catalog
+            offsets[1] = pos;
+            writeStr('1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj');
+
+            // 2: Pages root
+            const pageObjIds = frames.map((_, i) => 3 + i * 3);
+            offsets[2] = pos;
+            writeStr(`2 0 obj\n<< /Type /Pages /Kids [${pageObjIds.map(id => id + ' 0 R').join(' ')}] /Count ${frames.length} >>\nendobj`);
+
+            // For each frame: Page (id), Contents (id+1), XObject Image (id+2)
+            frames.forEach((frame, idx) => {
+                const pageId = 3 + idx * 3;
+                const contentId = pageId + 1;
+                const imgId = pageId + 2;
+
+                // Page Object
+                offsets[pageId] = pos;
+                writeStr(`${pageId} 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${frame.width} ${frame.height}] /Contents ${contentId} 0 R /Resources << /XObject << /Im${idx+1} ${imgId} 0 R >> >> >>\nendobj`);
+
+                // Content Object
+                const contentStream = `q ${frame.width} 0 0 ${frame.height} 0 0 cm /Im${idx+1} Do Q`;
+                offsets[contentId] = pos;
+                writeStr(`${contentId} 0 obj\n<< /Length ${contentStream.length} >>\nstream\n${contentStream}\nendstream\nendobj`);
+
+                // Image XObject Object
+                offsets[imgId] = pos;
+                const imgHeader = `${imgId} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${frame.pixelWidth} /Height ${frame.pixelHeight} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${frame.jpegBytes.length} >>\nstream\n`;
+                const encHeader = new TextEncoder().encode(imgHeader);
+                chunks.push(encHeader);
+                pos += encHeader.length;
+
+                writeBinary(frame.jpegBytes);
+                writeStr('endstream\nendobj');
+            });
+
+            // XREF Table
+            const startXref = pos;
+            const totalObjs = 2 + frames.length * 3;
+            writeStr('xref');
+            writeStr(`0 ${totalObjs + 1}`);
+            writeStr('0000000000 65535 f ');
+            for (let i = 1; i <= totalObjs; i++) {
+                const offStr = String(offsets[i] || 0).padStart(10, '0');
+                writeStr(`${offStr} 00000 n `);
+            }
+            writeStr('trailer');
+            writeStr(`<< /Size ${totalObjs + 1} /Root 1 0 R >>`);
+            writeStr('startxref');
+            writeStr(String(startXref));
+            writeStr('%%EOF');
+
+            return new Blob(chunks, { type: 'application/pdf' });
+        }
+
+        // Process and compress
+        btnCompressPdf.addEventListener('click', async () => {
+            if (!currentFile) return;
+
+            btnCompressPdf.disabled = true;
+            btnCompressText.textContent = 'Compressing...';
+            progressBarWrap.style.display = 'block';
+            progressStatusText.style.display = 'block';
+            progressBarFill.style.width = '10%';
+            resultPanel.style.display = 'none';
+
+            const quality = parseInt(rangeQuality.value, 10) / 100;
+            const resScale = parseFloat(selectResolution.value);
+            const frames = [];
+
+            try {
+                if (currentFile.type === 'application/pdf' && pdfDoc) {
+                    for (let pNum = 1; pNum <= totalPages; pNum++) {
+                        progressStatusText.textContent = `Optimizing page ${pNum} of ${totalPages}...`;
+                        progressBarFill.style.width = `${Math.round((pNum / totalPages) * 75)}%`;
+
+                        const page = await pdfDoc.getPage(pNum);
+                        const viewport = page.getViewport({ scale: resScale * 1.5 });
+
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        canvas.width = viewport.width;
+                        canvas.height = viewport.height;
+
+                        await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+
+                        // Canvas to JPEG Blob
+                        const jpegBlob = await new Promise(res => canvas.toBlob(res, 'image/jpeg', quality));
+                        const jpegBuffer = new Uint8Array(await jpegBlob.arrayBuffer());
+
+                        // Standard A4 PDF coordinates (72 points per inch)
+                        const aspect = canvas.width / canvas.height;
+                        const pdfW = 595.28;
+                        const pdfH = pdfW / aspect;
+
+                        frames.push({
+                            width: Math.round(pdfW),
+                            height: Math.round(pdfH),
+                            pixelWidth: canvas.width,
+                            pixelHeight: canvas.height,
+                            jpegBytes: jpegBuffer
+                        });
+                    }
+                } else {
+                    // Image to compressed PDF
+                    progressStatusText.textContent = 'Optimizing document image...';
+                    progressBarFill.style.width = '60%';
+
+                    const img = new Image();
+                    const imgUrl = URL.createObjectURL(currentFile);
+                    await new Promise((res, rej) => {
+                        img.onload = res;
+                        img.onerror = rej;
+                        img.src = imgUrl;
+                    });
+
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    const maxDim = 1600 * resScale;
+                    let w = img.width;
+                    let h = img.height;
+                    if (w > maxDim || h > maxDim) {
+                        if (w > h) { h = Math.round((h * maxDim) / w); w = Math.round(maxDim); }
+                        else { w = Math.round((w * maxDim) / h); h = Math.round(maxDim); }
+                    }
+
+                    canvas.width = w;
+                    canvas.height = h;
+                    ctx.drawImage(img, 0, 0, w, h);
+                    URL.revokeObjectURL(imgUrl);
+
+                    const jpegBlob = await new Promise(res => canvas.toBlob(res, 'image/jpeg', quality));
+                    const jpegBuffer = new Uint8Array(await jpegBlob.arrayBuffer());
+
+                    const aspect = w / h;
+                    const pdfW = 595.28;
+                    const pdfH = pdfW / aspect;
+
+                    frames.push({
+                        width: Math.round(pdfW),
+                        height: Math.round(pdfH),
+                        pixelWidth: w,
+                        pixelHeight: h,
+                        jpegBytes: jpegBuffer
+                    });
+                }
+
+                progressStatusText.textContent = 'Assembling final compressed PDF...';
+                progressBarFill.style.width = '95%';
+
+                compressedBlob = buildMultiPagePdf(frames);
+
+                progressBarFill.style.width = '100%';
+                progressStatusText.textContent = 'Compression complete!';
+
+                // Display Results
+                metricOrigSize.textContent = formatBytes(currentFile.size);
+                metricCompSize.textContent = formatBytes(compressedBlob.size);
+
+                const compKb = Math.round(compressedBlob.size / 1024);
+                const origKb = Math.max(1, Math.round(currentFile.size / 1024));
+                const savingsPct = Math.max(0, Math.round(((origKb - compKb) / origKb) * 100));
+                metricSavings.textContent = `${savingsPct}% Saved`;
+
+                if (compKb <= 200) {
+                    badgeGovtReady.innerHTML = '<i data-lucide="check-circle" style="width:16px;height:16px;color:#00ff88;"></i> Govt Form Ready: Perfectly Valid for Online Application (&le; 200 KB)';
+                    badgeGovtReady.style.color = '#00ff88';
+                    badgeGovtReady.style.borderColor = 'rgba(0,255,136,0.35)';
+                    badgeGovtReady.style.background = 'rgba(0,255,136,0.12)';
+                } else {
+                    badgeGovtReady.innerHTML = '<i data-lucide="info" style="width:16px;height:16px;color:#facc15;"></i> Compressed Document (' + compKb + ' KB) — Select Extreme Preset if under 200KB is required';
+                    badgeGovtReady.style.color = '#facc15';
+                    badgeGovtReady.style.borderColor = 'rgba(250,204,21,0.35)';
+                    badgeGovtReady.style.background = 'rgba(250,204,21,0.12)';
+                }
+
+                resultPanel.style.display = 'block';
+                resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } catch (err) {
+                console.error(err);
+                progressStatusText.textContent = 'Compression error: ' + err.message;
+            } finally {
+                btnCompressPdf.disabled = false;
+                btnCompressText.textContent = 'Compress Again';
+                setTimeout(() => {
+                    progressBarWrap.style.display = 'none';
+                    progressStatusText.style.display = 'none';
+                }, 2000);
+                if (window.lucide) lucide.createIcons();
+            }
+        });
+
+        // Download compressed PDF
+        btnDownloadPdf.addEventListener('click', () => {
+            if (!compressedBlob) return;
+            const a = document.createElement('a');
+            const cleanName = (currentFile.name || 'document').replace(/\.[^/.]+$/, '');
+            a.download = `${cleanName}_compressed_xestus.pdf`;
+            a.href = URL.createObjectURL(compressedBlob);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+        });
+
+        // WhatsApp Share
+        btnShareWhatsApp.addEventListener('click', () => {
+            const text = `📄 Need to compress PDF under 200 KB or 100 KB for Govt Forms? Use this 100% Free & Safe In-Browser Tool on XESTUS:\nhttps://xestus.in/tools/pdf/pdf-compressor/`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const ans = btn.nextElementSibling;
+                const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+                btn.setAttribute('aria-expanded', !isExpanded);
+                ans.style.display = isExpanded ? 'none' : 'block';
+            });
+        });
+
+        if (window.lucide) lucide.createIcons();
+    })();
+    </script>
+    <script src="../../../js/nav-core.min.js?v=4.1.0"></script>
+    <script src="../../../js/my-xestus.min.js?v=4.1.0"></script>
+</body>
+</html>

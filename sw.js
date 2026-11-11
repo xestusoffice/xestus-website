@@ -1,15 +1,16 @@
 /**
  * XESTUS | Progressive Web App Service Worker & Notification Handler
  * Tagline: Intelligence Beyond Limits
- * Version: 1.0.0
+ * Version: 5.0.0
  */
 
 "use strict";
 
-const CACHE_NAME = "xestus-v4.9.0";
+const CACHE_NAME = "xestus-v5.0.0";
 const STATIC_ASSETS = [
     "/",
     "/index.html",
+    "/style.min.css",
     "/assets/images/xestus-logo.png"
 ];
 
@@ -37,6 +38,72 @@ self.addEventListener("activate", (event) => {
             );
         }).then(() => self.clients.claim())
     );
+});
+
+// Fetch Event: Meets Chromium PWA installability requirements
+// Strategy: Network-first for HTML navigations; Cache-first with background revalidation for same-origin assets
+self.addEventListener("fetch", (event) => {
+    // Only handle GET requests
+    if (event.request.method !== "GET") return;
+
+    const url = new URL(event.request.url);
+
+    // Bypass analytics, ads, and third-party advertising scripts
+    if (
+        url.hostname.includes("googletagmanager.com") ||
+        url.hostname.includes("google-analytics.com") ||
+        url.hostname.includes("pagead2.googlesyndication.com") ||
+        url.hostname.includes("googleads") ||
+        url.hostname.includes("doubleclick.net") ||
+        url.hostname.includes("adtrafficquality.google")
+    ) {
+        return;
+    }
+
+    // HTML Document Navigations: Network-first to always ensure fresh content
+    if (event.request.mode === "navigate") {
+        event.respondWith(
+            fetch(event.request)
+                .then((networkResponse) => {
+                    if (networkResponse && networkResponse.status === 200) {
+                        const responseClone = networkResponse.clone();
+                        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
+                    }
+                    return networkResponse;
+                })
+                .catch(() => {
+                    return caches.match(event.request).then((cachedResponse) => {
+                        return cachedResponse || caches.match("/index.html");
+                    });
+                })
+        );
+        return;
+    }
+
+    // Same-origin static assets: Cache-first with silent network revalidation
+    if (url.origin === self.location.origin) {
+        event.respondWith(
+            caches.match(event.request).then((cachedResponse) => {
+                if (cachedResponse) {
+                    fetch(event.request)
+                        .then((networkResponse) => {
+                            if (networkResponse && networkResponse.status === 200) {
+                                caches.open(CACHE_NAME).then((cache) => cache.put(event.request, networkResponse));
+                            }
+                        })
+                        .catch(() => {});
+                    return cachedResponse;
+                }
+                return fetch(event.request).then((networkResponse) => {
+                    if (networkResponse && networkResponse.status === 200) {
+                        const responseClone = networkResponse.clone();
+                        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
+                    }
+                    return networkResponse;
+                });
+            })
+        );
+    }
 });
 
 // Push Event: Handle Inbound Web Push Notifications

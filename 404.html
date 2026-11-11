@@ -17,6 +17,10 @@
                     window.location.replace('/tools/office/resume-builder/');
                 } else if (p.includes('resizer') || (p.includes('image') && p.includes('resize'))) {
                     window.location.replace('/tools/image/image-resizer/');
+                } else if (p.includes('wbfr.age') || (p.includes('age') && (p.includes('calc') || p.includes('cutoff') || p.includes('eligib')))) {
+                    window.location.replace('/tools/calculators/age-calculator/');
+                } else if (p.includes('pdf') && (p.includes('compress') || p.includes('reduce') || p.includes('200kb') || p.includes('100kb'))) {
+                    window.location.replace('/tools/pdf/pdf-compressor/');
                 } else if (p.includes('farmer') || p.includes('wbfr') || p.includes('krishi')) {
                     window.location.replace('/digital-seva/farmer-id/');
                 } else if (p.includes('govt-job') || p.includes('wb-govt-jobs')) {

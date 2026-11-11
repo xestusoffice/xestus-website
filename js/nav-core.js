@@ -266,15 +266,136 @@
         }
     }
 
+
+    // 3. Universal PWA Installation & Toast Notification Controller
+    function initPwaEngine() {
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/sw.js").catch(() => {});
+        }
+
+        let deferredPrompt = window.__xestusDeferredPrompt || null;
+        const installBtns = document.querySelectorAll(".btn-install-pwa");
+        const bookmarkBtns = document.querySelectorAll(".btn-bookmark-site");
+
+        function showToast(msg) {
+            let toast = document.getElementById("xestusGlobalToast");
+            if (!toast) {
+                toast = document.createElement("div");
+                toast.id = "xestusGlobalToast";
+                toast.style.cssText = "position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);z-index:999999;background:rgba(15,23,42,0.96);backdrop-filter:blur(12px);border:1.5px solid #00ff88;color:#ffffff;padding:12px 22px;border-radius:12px;font-size:13.5px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,0.5);display:flex;align-items:center;gap:10px;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1),opacity 0.3s ease;opacity:0;pointer-events:none;max-width:90vw;text-align:center;";
+                document.body.appendChild(toast);
+            }
+            toast.textContent = msg;
+            toast.style.opacity = "1";
+            toast.style.transform = "translateX(-50%) translateY(0)";
+            clearTimeout(toast.__timeout);
+            toast.__timeout = setTimeout(() => {
+                toast.style.opacity = "0";
+                toast.style.transform = "translateX(-50%) translateY(100px)";
+            }, 3800);
+        }
+        window.showToastMessage = window.showToastMessage || showToast;
+
+        function showMobileInstallPrompt() {
+            if (document.getElementById("xestusMobilePwaPrompt")) return;
+            const dismissed = localStorage.getItem("xestus_pwa_dismissed");
+            if (dismissed && (Date.now() - parseInt(dismissed, 10) < 5 * 24 * 60 * 60 * 1000)) return;
+
+            const banner = document.createElement("div");
+            banner.id = "xestusMobilePwaPrompt";
+            banner.style.cssText = "position:fixed;bottom:16px;left:14px;right:14px;max-width:440px;margin:0 auto;z-index:99998;background:rgba(7,12,24,0.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1.5px solid rgba(0,255,136,0.5);box-shadow:0 12px 36px rgba(0,0,0,0.6);border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;";
+            
+            banner.innerHTML = `
+                <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;">
+                    <img src="/assets/images/xestus-logo.png" alt="XESTUS" style="width:36px;height:36px;border-radius:8px;flex-shrink:0;">
+                    <div style="min-width:0;">
+                        <div style="font-weight:700;font-size:13px;color:#ffffff;line-height:1.2;">Install XESTUS App</div>
+                        <div style="font-size:11.5px;color:#94a3b8;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Instant offline tools &amp; seva portal</div>
+                    </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                    <button type="button" id="btnPwaPromptInstall" style="background:#00ff88;color:#070c18;font-weight:800;font-size:12px;padding:7px 14px;border-radius:10px;border:none;cursor:pointer;">Install</button>
+                    <button type="button" id="btnPwaPromptClose" style="background:transparent;color:#94a3b8;border:none;font-size:18px;cursor:pointer;padding:4px 6px;line-height:1;">&times;</button>
+                </div>
+            `;
+            document.body.appendChild(banner);
+
+            document.getElementById("btnPwaPromptInstall")?.addEventListener("click", () => {
+                triggerInstall();
+                banner.remove();
+            });
+
+            document.getElementById("btnPwaPromptClose")?.addEventListener("click", () => {
+                localStorage.setItem("xestus_pwa_dismissed", Date.now().toString());
+                banner.remove();
+            });
+        }
+
+        async function triggerInstall() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === "accepted") {
+                    showToast("✓ XESTUS Web App installed to home screen!");
+                }
+                deferredPrompt = null;
+                window.__xestusDeferredPrompt = null;
+            } else {
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                if (isIOS) {
+                    showToast("📲 Tap Share (⎋) in Safari, then tap 'Add to Home Screen'");
+                } else {
+                    showToast("📲 Tap browser menu (⋮) -> 'Install App' or 'Add to Home screen'");
+                }
+            }
+        }
+
+        window.addEventListener("beforeinstallprompt", (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            window.__xestusDeferredPrompt = e;
+            installBtns.forEach(btn => btn.classList.add("ready-to-install"));
+            if (window.innerWidth <= 768) {
+                setTimeout(showMobileInstallPrompt, 1500);
+            }
+        });
+
+        installBtns.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                triggerInstall();
+            });
+        });
+
+        window.addEventListener("appinstalled", () => {
+            deferredPrompt = null;
+            window.__xestusDeferredPrompt = null;
+            showToast("✓ Welcome to XESTUS App!");
+            const banner = document.getElementById("xestusMobilePwaPrompt");
+            if (banner) banner.remove();
+        });
+
+        bookmarkBtns.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                showToast("⭐ Press Ctrl + D (or Cmd + D) to bookmark XESTUS!");
+            });
+        });
+    }
+
     // Run on DOM ready
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", () => {
             applyStoredTheme();
             initNavigation();
+            initPwaEngine();
         });
     } else {
         applyStoredTheme();
         initNavigation();
+        initPwaEngine();
     }
 
     // Auto-load Spotlight Command Search Engine
