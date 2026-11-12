@@ -3031,6 +3031,252 @@ function initApp() {
                 }
             });
         }
+
+        // --- Space Jump Offline Mini-Game Engine ---
+        const btnPlayOfflineGame = document.getElementById("btnPlayOfflineGame");
+        const offlineGameContainer = document.getElementById("offlineGameContainer");
+        const btnCloseOfflineGame = document.getElementById("btnCloseOfflineGame");
+        const spaceCanvas = document.getElementById("spaceCanvas");
+        const spaceScore = document.getElementById("spaceScore");
+        const spaceBest = document.getElementById("spaceBest");
+
+        if (btnPlayOfflineGame && offlineGameContainer && spaceCanvas) {
+            let gameRunning = false;
+            let animId = null;
+            let score = 0;
+            let bestScore = parseInt(localStorage.getItem("xestus_space_best") || "0", 10);
+            if (spaceBest) spaceBest.textContent = bestScore;
+
+            const ctx = spaceCanvas.getContext("2d");
+            const groundY = 125;
+            let isGameOver = false;
+
+            // Player (Astronaut)
+            const player = {
+                x: 35,
+                y: groundY - 24,
+                w: 18,
+                h: 24,
+                vy: 0,
+                gravity: 0.52,
+                jumpPower: -8.8,
+                isGrounded: true
+            };
+
+            // Stars Background
+            let stars = [];
+            for (let i = 0; i < 25; i++) {
+                stars.push({
+                    x: Math.random() * spaceCanvas.width,
+                    y: Math.random() * (groundY - 10),
+                    size: Math.random() * 1.5 + 0.5,
+                    speed: Math.random() * 0.8 + 0.3
+                });
+            }
+
+            // Obstacles (Asteroids)
+            let obstacles = [];
+            let spawnTimer = 0;
+            let obstacleSpeed = 3.2;
+
+            function jump() {
+                if (isGameOver) {
+                    resetGame();
+                    return;
+                }
+                if (player.isGrounded) {
+                    player.vy = player.jumpPower;
+                    player.isGrounded = false;
+                }
+            }
+
+            function resetGame() {
+                player.y = groundY - 24;
+                player.vy = 0;
+                player.isGrounded = true;
+                obstacles = [];
+                spawnTimer = 0;
+                obstacleSpeed = 3.2;
+                score = 0;
+                isGameOver = false;
+                if (spaceScore) spaceScore.textContent = "0";
+            }
+
+            function gameLoop() {
+                if (!gameRunning) return;
+
+                ctx.fillStyle = "#050811";
+                ctx.fillRect(0, 0, spaceCanvas.width, spaceCanvas.height);
+
+                // Draw & move stars
+                ctx.fillStyle = "#ffffff";
+                stars.forEach(st => {
+                    st.x -= st.speed;
+                    if (st.x < 0) st.x = spaceCanvas.width;
+                    ctx.globalAlpha = 0.6;
+                    ctx.fillRect(st.x, st.y, st.size, st.size);
+                });
+                ctx.globalAlpha = 1.0;
+
+                // Ground Line (Glowing Cyan Track)
+                ctx.strokeStyle = "rgba(0, 191, 255, 0.4)";
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(0, groundY);
+                ctx.lineTo(spaceCanvas.width, groundY);
+                ctx.stroke();
+
+                if (!isGameOver) {
+                    // Update Player
+                    player.vy += player.gravity;
+                    player.y += player.vy;
+                    if (player.y >= groundY - player.h) {
+                        player.y = groundY - player.h;
+                        player.vy = 0;
+                        player.isGrounded = true;
+                    }
+
+                    // Spawn Obstacles
+                    spawnTimer++;
+                    if (spawnTimer > 80 + Math.random() * 50) {
+                        spawnTimer = 0;
+                        const rockH = 14 + Math.random() * 12;
+                        const rockW = 14 + Math.random() * 8;
+                        obstacles.push({
+                            x: spaceCanvas.width,
+                            y: groundY - rockH,
+                            w: rockW,
+                            h: rockH
+                        });
+                    }
+
+                    // Move & Draw Obstacles
+                    for (let i = obstacles.length - 1; i >= 0; i--) {
+                        const obs = obstacles[i];
+                        obs.x -= obstacleSpeed;
+
+                        // Draw Asteroid (Rock)
+                        ctx.fillStyle = "#475569";
+                        ctx.strokeStyle = "#00bfff";
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.roundRect ? ctx.roundRect(obs.x, obs.y, obs.w, obs.h, 4) : ctx.rect(obs.x, obs.y, obs.w, obs.h);
+                        ctx.fill();
+                        ctx.stroke();
+
+                        // Asteroid crater dot
+                        ctx.fillStyle = "#38d6ff";
+                        ctx.beginPath();
+                        ctx.arc(obs.x + obs.w * 0.4, obs.y + obs.h * 0.4, 2, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Collision Detection
+                        if (
+                            player.x + 3 < obs.x + obs.w &&
+                            player.x + player.w - 3 > obs.x &&
+                            player.y + 3 < obs.y + obs.h &&
+                            player.y + player.h > obs.y
+                        ) {
+                            isGameOver = true;
+                            if (score > bestScore) {
+                                bestScore = Math.floor(score);
+                                localStorage.setItem("xestus_space_best", bestScore);
+                                if (spaceBest) spaceBest.textContent = bestScore;
+                            }
+                        }
+
+                        if (obs.x + obs.w < 0) {
+                            obstacles.splice(i, 1);
+                        }
+                    }
+
+                    // Update Score
+                    score += 0.15;
+                    obstacleSpeed += 0.0003;
+                    if (spaceScore) spaceScore.textContent = Math.floor(score);
+                }
+
+                // Draw Astronaut
+                // Body
+                ctx.fillStyle = "#f8fafc";
+                ctx.strokeStyle = "#38bdf8";
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.roundRect ? ctx.roundRect(player.x, player.y + 8, player.w, 14, 3) : ctx.rect(player.x, player.y + 8, player.w, 14);
+                ctx.fill();
+                ctx.stroke();
+
+                // Helmet
+                ctx.fillStyle = "#ffffff";
+                ctx.beginPath();
+                ctx.arc(player.x + player.w / 2, player.y + 6, 7, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+
+                // Visor
+                ctx.fillStyle = isGameOver ? "#facc15" : "#00bfff";
+                ctx.beginPath();
+                ctx.arc(player.x + player.w / 2 + 1, player.y + 6, 3.5, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Jetpack Flame if in air
+                if (!player.isGrounded) {
+                    ctx.fillStyle = "#facc15";
+                    ctx.beginPath();
+                    ctx.moveTo(player.x - 3, player.y + 16);
+                    ctx.lineTo(player.x - 8, player.y + 20);
+                    ctx.lineTo(player.x - 3, player.y + 24);
+                    ctx.fill();
+                }
+
+                if (isGameOver) {
+                    ctx.fillStyle = "rgba(0,0,0,0.7)";
+                    ctx.fillRect(0, 0, spaceCanvas.width, spaceCanvas.height);
+
+                    ctx.fillStyle = "#ef4444";
+                    ctx.font = "bold 16px 'JetBrains Mono', monospace";
+                    ctx.textAlign = "center";
+                    ctx.fillText("COLLISION! GAME OVER", spaceCanvas.width / 2, 60);
+
+                    ctx.fillStyle = "#38d6ff";
+                    ctx.font = "12px 'JetBrains Mono', monospace";
+                    ctx.fillText("SCORE: " + Math.floor(score) + " • BEST: " + bestScore, spaceCanvas.width / 2, 85);
+
+                    ctx.fillStyle = "#facc15";
+                    ctx.font = "11px 'JetBrains Mono', monospace";
+                    ctx.fillText("▶ TAP / SPACE TO RETRY ◀", spaceCanvas.width / 2, 115);
+                }
+
+                animId = requestAnimationFrame(gameLoop);
+            }
+
+            btnPlayOfflineGame.addEventListener("click", () => {
+                btnPlayOfflineGame.style.display = "none";
+                offlineGameContainer.style.display = "block";
+                gameRunning = true;
+                resetGame();
+                animId = requestAnimationFrame(gameLoop);
+            });
+
+            btnCloseOfflineGame.addEventListener("click", () => {
+                gameRunning = false;
+                if (animId) cancelAnimationFrame(animId);
+                offlineGameContainer.style.display = "none";
+                btnPlayOfflineGame.style.display = "inline-block";
+            });
+
+            spaceCanvas.addEventListener("pointerdown", (e) => {
+                e.preventDefault();
+                jump();
+            });
+
+            window.addEventListener("keydown", (e) => {
+                if (gameRunning && (e.code === "Space" || e.code === "ArrowUp")) {
+                    e.preventDefault();
+                    jump();
+                }
+            });
+        }
     }
 
     // --------------------------------------------------------------------------

@@ -4481,6 +4481,22 @@
  ↻ Try Reconnecting
  </button>
 
+ <div style="margin-top: 14px;">
+   <button id="btnPlayOfflineGame" class="btn-offline-game" type="button">
+     🎮 Play Space Jump While Waiting
+   </button>
+ </div>
+
+ <div id="offlineGameContainer" class="offline-game-container" style="display: none;">
+   <div class="game-hud">
+     <div>SCORE: <span id="spaceScore">0</span></div>
+     <div>BEST: <span id="spaceBest">0</span></div>
+     <button id="btnCloseOfflineGame" class="btn-close-game" type="button" aria-label="Close Game">✕</button>
+   </div>
+   <canvas id="spaceCanvas" width="340" height="150"></canvas>
+   <div class="game-hint">TAP / SPACE TO JUMP • DODGE ASTEROIDS</div>
+ </div>
+
  <small>
  XESTUS Network • Waiting for the internet to come back...
  </small>
