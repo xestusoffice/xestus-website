@@ -4415,7 +4415,7 @@
 </script>
 
 <!-- Core App Script & Interactive Controllers (All Minified Bundles) -->
-<script defer src="script.min.js?v=4.7.0"></script>
+<script defer src="script.min.js?v=4.8.2"></script>
 <script defer src="js/nav-core.min.js?v=4.1.0"></script>
 <script defer src="js/xestus-tools.min.js?v=4.2.0"></script>
 
@@ -4494,7 +4494,10 @@
      <button id="btnCloseOfflineGame" class="btn-close-game" type="button" aria-label="Close Game">✕</button>
    </div>
    <canvas id="spaceCanvas" width="340" height="150"></canvas>
-   <div class="game-hint">TAP / SPACE TO JUMP • DODGE ASTEROIDS</div>
+   <button id="btnSpaceJumpAction" class="btn-offline-game" style="width: 100%; margin-top: 10px; background: linear-gradient(135deg, #00bfff 0%, #0284c7 100%); color: #ffffff; border: none; font-size: 14px; font-weight: 700; padding: 10px;" type="button">
+     🚀 TAP HERE TO JUMP! 🚀
+   </button>
+   <div class="game-hint">TAP BUTTON / SPACEBAR TO JUMP</div>
  </div>
 
  <small>
@@ -4503,6 +4506,18 @@
 
  </div>
 </div>
+
+<!-- Offline Game Direct Preview Trigger -->
+<script>
+(function() {
+    if (window.location.hash.includes('offline') || window.location.search.includes('offline')) {
+        var ov = document.getElementById('connectionOverlay');
+        var btn = document.getElementById('btnPlayOfflineGame');
+        if (ov) ov.classList.add('show');
+        setTimeout(function() { if (btn) btn.click(); }, 300);
+    }
+})();
+</script>
 
 </body>
 </html>

@@ -3265,6 +3265,14 @@ function initApp() {
                 btnPlayOfflineGame.style.display = "inline-block";
             });
 
+            const btnJumpAction = document.getElementById("btnSpaceJumpAction");
+            if (btnJumpAction) {
+                btnJumpAction.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    jump();
+                });
+            }
+
             spaceCanvas.addEventListener("pointerdown", (e) => {
                 e.preventDefault();
                 jump();
