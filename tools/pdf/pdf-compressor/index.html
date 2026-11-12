@@ -80,7 +80,7 @@
     <script defer src="../../../js/lucide.min.js?v=1.57.0"></script>
 
     <!-- PDF.js for 100% Client-Side In-Browser Rendering -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
     <!-- Schema.org Multi-Entity JSON-LD -->
     <script type="application/ld+json">
@@ -515,9 +515,10 @@
     <!-- Pure In-Browser PDF Compression Engine -->
     <script>
     (function() {
-        if (typeof pdfjsLib !== 'undefined') {
-            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-        }
+        function initPdfEngine() {
+            if (typeof pdfjsLib !== 'undefined') {
+                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            }
 
         const dropzone = document.getElementById('pdfDropzone');
         const fileInput = document.getElementById('pdfFileInput');
@@ -873,6 +874,13 @@
         });
 
         if (window.lucide) lucide.createIcons();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPdfEngine);
+        } else {
+            initPdfEngine();
+        }
     })();
     </script>
     <script src="../../../js/nav-core.min.js?v=4.1.0"></script>
