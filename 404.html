@@ -51,7 +51,6 @@
         gtag('config', 'G-EF3ZRR55YY');
     </script>
 
-        <!-- Google AdSense - Official Publisher Code -->
     <!-- Google AdSense - Progressive Non-Blocking Loader -->
     <script>
         (function() {
@@ -78,19 +77,11 @@
         })();
     </script>
 
-    
-    
-    
-    
-    
-    
-
-
     <!-- Primary Metadata -->
-    <title>404 — Page Not Found | XESTUS</title>
+    <title>404 — Lost in Space | XESTUS</title>
     <meta name="google-adsense-account" content="ca-pub-1489572262543869">
     <link rel="canonical" href="https://xestus.in/404.html">
-    <meta name="description" content="The requested coordinates do not correspond to an active module in the XESTUS architecture cluster. Return to mission control.">
+    <meta name="description" content="Houston, we have a 404! Looks like our space-probe tripped over a severed data tether. Return to mission control or explore 35+ free digital tools.">
     <meta name="robots" content="noindex, follow">
     <meta name="theme-color" content="#070c18">
 
@@ -104,7 +95,7 @@
     <link rel="dns-prefetch" href="https://unpkg.com">
 
     <!-- Google Fonts (Poppins) with Swap Display -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
     <!-- Lucide Icons -->
     <link rel="stylesheet" href="style.min.css?v=4.8.0">
@@ -115,19 +106,19 @@
             --bg-void: #05070c;
             --bg-primary: #080c16;
             --bg-surface: #0e1424;
-            --bg-card: rgba(16, 25, 45, 0.75);
+            --bg-card: rgba(14, 22, 42, 0.85);
             --cyan-primary: #00bfff;
             --cyan-bright: #38d6ff;
             --cyan-glow: rgba(0, 191, 255, 0.35);
             --cyan-subtle: rgba(0, 191, 255, 0.08);
             --cyan-border: rgba(0, 191, 255, 0.25);
+            --electric-yellow: #facc15;
             --text-primary: #ffffff;
-            --text-secondary: #d1d8e6;
+            --text-secondary: #cbd5e1;
             --text-muted: #8c98ad;
-            --text-dim: #546178;
             --border-subtle: rgba(255, 255, 255, 0.08);
             --radius-md: 14px;
-            --radius-lg: 22px;
+            --radius-lg: 24px;
             --radius-full: 9999px;
             --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
@@ -148,9 +139,9 @@
             min-height: 100vh;
             background-color: var(--bg-void);
             background-image:
-                radial-gradient(circle at 50% 20%, rgba(0, 191, 255, 0.12), transparent 45%),
-                radial-gradient(circle at 80% 80%, rgba(0, 119, 204, 0.08), transparent 40%),
-                radial-gradient(circle at 20% 90%, rgba(56, 214, 255, 0.05), transparent 35%);
+                radial-gradient(circle at 50% 15%, rgba(0, 191, 255, 0.15), transparent 50%),
+                radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.1), transparent 45%),
+                radial-gradient(circle at 15% 85%, rgba(16, 185, 129, 0.08), transparent 40%);
             color: var(--text-primary);
             font-family: var(--font-primary);
             display: flex;
@@ -161,20 +152,20 @@
             overflow-x: hidden;
             position: relative;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Ambient Grid & Stars */
+        /* Ambient Stars Backdrop */
         .stars-backdrop {
             position: fixed;
             inset: 0;
             pointer-events: none;
             opacity: 0.45;
             background-image:
-                radial-gradient(circle, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
-                radial-gradient(circle, rgba(0, 191, 255, 0.6) 1px, transparent 1px);
-            background-size: 90px 90px, 140px 140px;
-            background-position: 20px 30px, 70px 90px;
+                radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+                radial-gradient(circle, rgba(56, 214, 255, 0.7) 1.2px, transparent 1.2px),
+                radial-gradient(circle, rgba(250, 204, 21, 0.6) 1px, transparent 1px);
+            background-size: 80px 80px, 130px 130px, 190px 190px;
+            background-position: 10px 20px, 40px 70px, 90px 110px;
             z-index: 1;
         }
 
@@ -197,11 +188,11 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--cyan-border);
             border-radius: var(--radius-lg);
-            padding: clamp(32px, 6vw, 56px) clamp(20px, 5vw, 48px);
+            padding: clamp(28px, 5vw, 48px) clamp(20px, 4vw, 40px);
             text-align: center;
             position: relative;
             z-index: 2;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 191, 255, 0.12);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 50px rgba(0, 191, 255, 0.15);
         }
 
         /* Brand Header */
@@ -209,14 +200,14 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
             text-decoration: none;
             color: var(--text-primary);
         }
 
         .brand-logo {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             border-radius: 10px;
             border: 1px solid var(--cyan-border);
             background: rgba(8, 12, 22, 0.8);
@@ -232,104 +223,178 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Orbital 404 Visual */
-        .visual-wrapper {
+        /* Sci-Fi Stage Visual */
+        .stage-wrapper {
             position: relative;
-            margin: 10px auto 25px;
-            width: min(340px, 85vw);
-            height: 160px;
+            width: min(360px, 100%);
+            height: 230px;
+            margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .orbit-ring {
+        /* Orbit Ring */
+        .stage-orbit {
             position: absolute;
-            width: 100%;
-            height: 80px;
-            border: 1px dashed rgba(0, 191, 255, 0.35);
+            width: 320px;
+            height: 110px;
+            border: 1.5px dashed rgba(0, 191, 255, 0.3);
             border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-14deg);
+            transform: rotate(-12deg);
+            animation: spinOrbit 20s linear infinite;
             pointer-events: none;
-            animation: spinRing 16s linear infinite;
+        }
+        @keyframes spinOrbit {
+            from { transform: rotate(-12deg); }
+            to { transform: rotate(348deg); }
         }
 
-        .orbit-node {
+        /* Large Background 404 Watermark */
+        .bg-404-text {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background: var(--cyan-bright);
-            border-radius: 50%;
-            top: -5px;
-            left: 50%;
-            box-shadow: 0 0 15px var(--cyan-primary);
-        }
-
-        @keyframes spinRing {
-            from { transform: translate(-50%, -50%) rotate(-14deg); }
-            to { transform: translate(-50%, -50%) rotate(346deg); }
-        }
-
-        .error-code {
-            font-size: clamp(80px, 18vw, 130px);
-            line-height: 1;
+            font-size: clamp(90px, 20vw, 135px);
             font-weight: 900;
-            letter-spacing: 4px;
-            background: linear-gradient(180deg, #ffffff 40%, rgba(0, 191, 255, 0.6) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 35px var(--cyan-glow);
-            position: relative;
-            z-index: 2;
+            letter-spacing: 6px;
+            color: rgba(255, 255, 255, 0.04);
+            -webkit-text-stroke: 1.5px rgba(0, 191, 255, 0.18);
+            user-select: none;
+            pointer-events: none;
+            z-index: 1;
+            font-family: 'JetBrains Mono', monospace;
+            animation: glitchSubtle 4s infinite ease-in-out;
+        }
+        @keyframes glitchSubtle {
+            0%, 92%, 100% { opacity: 0.8; transform: scale(1); filter: drop-shadow(0 0 10px rgba(0,191,255,0.1)); }
+            93% { opacity: 1; transform: translate(-2px, 1px) scale(1.02); filter: drop-shadow(0 0 25px rgba(0,191,255,0.6)); }
+            95% { opacity: 0.7; transform: translate(2px, -1px); }
+            97% { opacity: 0.9; transform: scale(1); }
         }
 
-        /* Signal Status Ribbon */
+        /* Astronaut Vector (Zero-G Floating) */
+        .astronaut-svg {
+            position: relative;
+            z-index: 3;
+            width: 210px;
+            height: 210px;
+            animation: zeroGravity 4s ease-in-out infinite;
+            cursor: pointer;
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5));
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .astronaut-svg:hover {
+            transform: scale(1.08) rotate(-4deg);
+        }
+        .astronaut-svg.tumble {
+            animation: astroTumble 0.8s ease-in-out forwards !important;
+        }
+        @keyframes astroTumble {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.15) rotate(180deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
+
+        @keyframes zeroGravity {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+        }
+
+        /* Electric Sparks & Zap Shock Keyframes */
+        .spark-bolt {
+            opacity: 0;
+            animation: zapSpark 3.2s infinite ease-in-out;
+            transform-origin: center;
+        }
+        .spark-bolt:nth-child(2) { animation-delay: 0.15s; }
+        .spark-bolt:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes zapSpark {
+            0%, 65%, 85%, 100% { opacity: 0; transform: scale(0.6); }
+            70%, 78% {
+                opacity: 1;
+                transform: scale(1.3);
+                filter: drop-shadow(0 0 10px var(--electric-yellow)) drop-shadow(0 0 18px #00f0ff);
+            }
+            74% { opacity: 0.3; transform: scale(0.9); }
+        }
+
+        /* Astronaut Shock Jiggle */
+        .astro-body-group {
+            transform-origin: center 100px;
+            animation: shockJiggle 3.2s infinite ease-in-out;
+        }
+        @keyframes shockJiggle {
+            0%, 68%, 84%, 100% { transform: translate(0, 0); }
+            70% { transform: translate(-3px, -2px) rotate(-2deg); }
+            72% { transform: translate(3px, 2px) rotate(2deg); }
+            74% { transform: translate(-2px, 3px) rotate(-1deg); }
+            76% { transform: translate(2px, -3px) rotate(1deg); }
+        }
+
+        /* Visor Expressions */
+        .visor-shock-eyes {
+            opacity: 0;
+            animation: shockEyes 3.2s infinite;
+        }
+        @keyframes shockEyes {
+            0%, 68%, 82%, 100% { opacity: 0; }
+            70%, 80% { opacity: 1; }
+        }
+
+        .antenna-bulb {
+            animation: antennaBlink 1.6s infinite alternate;
+        }
+        @keyframes antennaBlink {
+            0% { fill: #ef4444; filter: drop-shadow(0 0 2px #ef4444); }
+            100% { fill: #22c55e; filter: drop-shadow(0 0 8px #22c55e); }
+        }
+
+        /* Signal Status Badge */
         .status-badge {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             background: rgba(0, 191, 255, 0.08);
             border: 1px solid var(--cyan-border);
-            padding: 8px 18px;
+            padding: 7px 18px;
             border-radius: var(--radius-full);
             font-size: 13px;
             font-weight: 600;
             color: var(--cyan-bright);
-            letter-spacing: 0.5px;
-            margin-bottom: 22px;
-            font-family: 'Consolas', 'Courier New', monospace;
+            margin-bottom: 18px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .pulse-dot {
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #ff4757;
-            box-shadow: 0 0 10px #ff4757;
-            animation: pulseRed 1.5s infinite;
+            background: var(--electric-yellow);
+            box-shadow: 0 0 10px var(--electric-yellow);
+            animation: pulseYellow 1.4s infinite;
         }
 
-        @keyframes pulseRed {
+        @keyframes pulseYellow {
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.35; transform: scale(0.85); }
         }
 
-        /* Content Text */
         h1 {
-            font-size: clamp(24px, 5vw, 36px);
+            font-size: clamp(24px, 5vw, 34px);
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--cyan-bright) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .description {
             color: var(--text-secondary);
-            font-size: clamp(14px, 3.5vw, 16px);
-            line-height: 1.7;
+            font-size: clamp(14px, 3.5vw, 15.5px);
+            line-height: 1.65;
             max-width: 580px;
-            margin: 0 auto 32px;
+            margin: 0 auto 28px;
         }
 
         /* Action Buttons */
@@ -337,7 +402,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 14px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -345,10 +410,10 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 13px 26px;
+            gap: 8px;
+            padding: 12px 22px;
             border-radius: var(--radius-md);
-            font-size: 14.5px;
+            font-size: 14px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -379,13 +444,12 @@
             transform: translateY(-2px);
         }
 
-        /* Sub-Footer */
         .card-footer {
-            margin-top: 36px;
-            padding-top: 20px;
+            margin-top: 28px;
+            padding-top: 18px;
             border-top: 1px solid var(--border-subtle);
             color: var(--text-muted);
-            font-size: 13px;
+            font-size: 12.5px;
         }
 
         :focus-visible {
@@ -395,7 +459,14 @@
 
         @media (max-width: 480px) {
             .error-card {
-                padding: 28px 18px;
+                padding: 24px 16px;
+            }
+            .stage-wrapper {
+                height: 200px;
+            }
+            .astronaut-svg {
+                width: 180px;
+                height: 180px;
             }
             .cta-group {
                 flex-direction: column;
@@ -411,12 +482,6 @@
                 animation-duration: 0.001ms !important;
                 transition-duration: 0.001ms !important;
             }
-            .orbit-ring {
-                animation: none !important;
-            }
-            .pulse-dot {
-                animation: none !important;
-            }
         }
     </style>
 
@@ -430,7 +495,6 @@
       "description": "Requested resource was not found on XESTUS."
     }
     </script>
-  
 </head>
 
 <body>
@@ -439,26 +503,105 @@
 
     <main class="error-card" role="main">
         <a href="index.html" class="brand-header" aria-label="XESTUS Home">
-            <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" class="brand-logo" width="42" height="42">
+            <img src="assets/images/xestus-logo.png" alt="XESTUS Logo" class="brand-logo" width="40" height="40">
             <span class="brand-text">XESTUS</span>
         </a>
 
-        <div class="visual-wrapper" aria-hidden="true">
-            <div class="orbit-ring">
-                <div class="orbit-node"></div>
-            </div>
-            <div class="error-code">404</div>
+        <!-- Interactive Animated Sci-Fi Zero-G Stage -->
+        <div class="stage-wrapper" aria-label="Animated astronaut floating in zero gravity holding severed sparking cable">
+            <div class="stage-orbit" aria-hidden="true"></div>
+            <div class="bg-404-text" aria-hidden="true">404</div>
+
+            <!-- Zero-G Astronaut Vector SVG with Electric Sparks -->
+            <svg id="astroHero" class="astronaut-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Shocked astronaut in space">
+                <g class="astro-body-group">
+                    <!-- Life-Support Backpack -->
+                    <rect x="58" y="72" width="84" height="64" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5" />
+                    <circle cx="68" cy="85" r="4" fill="#00bfff" opacity="0.8" />
+                    <circle cx="68" cy="98" r="4" fill="#38bdf8" opacity="0.8" />
+                    <circle cx="68" cy="111" r="4" fill="#38bdf8" opacity="0.8" />
+
+                    <!-- Comm Antenna -->
+                    <line x1="100" y1="36" x2="100" y2="48" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" />
+                    <circle class="antenna-bulb" cx="100" cy="34" r="5" fill="#22c55e" />
+
+                    <!-- Spacesuit Body -->
+                    <path d="M72 88C72 74 128 74 128 88V134C128 142 120 148 110 148H90C80 148 72 142 72 134V88Z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2.5" />
+                    
+                    <!-- Suit Chest Telemetry Console -->
+                    <rect x="88" y="96" width="24" height="16" rx="4" fill="#0f172a" stroke="#00bfff" stroke-width="1.5" />
+                    <circle cx="95" cy="104" r="2.5" fill="#00f0ff" />
+                    <circle cx="105" cy="104" r="2.5" fill="#facc15" />
+
+                    <!-- Legs & Magnetic Boots -->
+                    <rect x="78" y="144" width="18" height="26" rx="8" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2" />
+                    <rect x="104" y="144" width="18" height="26" rx="8" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2" />
+                    <ellipse cx="87" cy="170" rx="11" ry="6" fill="#334155" />
+                    <ellipse cx="113" cy="170" rx="11" ry="6" fill="#334155" />
+
+                    <!-- Helmet -->
+                    <circle cx="100" cy="62" r="28" fill="#ffffff" stroke="#cbd5e1" stroke-width="3" />
+                    <!-- Visor Glass (Dark Cyan Glass with Reflection) -->
+                    <rect x="79" y="49" width="42" height="26" rx="12" fill="#050811" stroke="#00bfff" stroke-width="2" />
+                    <path d="M82 56C86 52 94 51 100 51" stroke="#38d6ff" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
+
+                    <!-- Visor Normal Cute Eyes -->
+                    <g class="visor-eyes">
+                        <circle cx="93" cy="62" r="3" fill="#38d6ff" />
+                        <circle cx="107" cy="62" r="3" fill="#38d6ff" />
+                        <circle cx="94" cy="61" r="1" fill="#ffffff" />
+                        <circle cx="108" cy="61" r="1" fill="#ffffff" />
+                    </g>
+
+                    <!-- Visor Shocked Expression (O_O on zap!) -->
+                    <g class="visor-shock-eyes">
+                        <circle cx="92" cy="62" r="4.5" fill="#facc15" stroke="#ffffff" stroke-width="1" />
+                        <circle cx="108" cy="62" r="4.5" fill="#facc15" stroke="#ffffff" stroke-width="1" />
+                        <circle cx="92" cy="62" r="2" fill="#000000" />
+                        <circle cx="108" cy="62" r="2" fill="#000000" />
+                        <ellipse cx="100" cy="67" rx="3" ry="1.5" fill="#facc15" />
+                    </g>
+
+                    <!-- Left Arm Holding Severed Cable -->
+                    <path d="M72 92Q52 102 46 118" stroke="#f8fafc" stroke-width="12" stroke-linecap="round" />
+                    <path d="M72 92Q52 102 46 118" stroke="#cbd5e1" stroke-width="2" fill="none" />
+                    <circle cx="45" cy="120" r="7" fill="#334155" />
+
+                    <!-- Right Arm Floating in Surprise -->
+                    <path d="M128 92Q146 80 156 68" stroke="#f8fafc" stroke-width="12" stroke-linecap="round" />
+                    <path d="M128 92Q146 80 156 68" stroke="#cbd5e1" stroke-width="2" fill="none" />
+                    <circle cx="158" cy="66" r="7" fill="#334155" />
+
+                    <!-- Severed Data Cable from Hand -->
+                    <path d="M45 124Q42 140 56 150Q70 160 86 156" stroke="#0f172a" stroke-width="4.5" fill="none" stroke-linecap="round" />
+                    <path d="M86 156L91 154M86 156L92 158" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+
+                    <!-- Floating Disconnected Cable End -->
+                    <path d="M110 162Q126 166 142 152Q152 142 158 126" stroke="#0f172a" stroke-width="4.5" fill="none" stroke-linecap="round" />
+                    <path d="M110 162L105 160M110 162L106 165" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+
+                    <!-- Dynamic Lightning Arc Sparks -->
+                    <g>
+                        <path class="spark-bolt" d="M88 155L96 161L94 153L106 161" stroke="#facc15" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                        <path class="spark-bolt" d="M91 150L100 154L98 162L108 158" stroke="#00f0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                        <g class="spark-bolt" transform="translate(97, 157)">
+                            <line x1="-5" y1="0" x2="5" y2="0" stroke="#ffffff" stroke-width="2" />
+                            <line x1="0" y1="-5" x2="0" y2="5" stroke="#ffffff" stroke-width="2" />
+                        </g>
+                    </g>
+                </g>
+            </svg>
         </div>
 
         <div class="status-badge" role="status">
             <span class="pulse-dot" aria-hidden="true"></span>
-            <span>STATUS: ROUTE_UNRESOLVED // HTTP_404</span>
+            <span>TETHER_DISCONNECTED // 404_ORBIT</span>
         </div>
 
-        <h1>Coordinates Unreachable</h1>
+        <h1>Houston, We Unplugged the Route!</h1>
 
         <p class="description">
-            The requested module path does not correspond to an active service node in the XESTUS architecture mesh. The route may have been migrated or decommissioned.
+            Looks like our orbital probe tripped over a severed data tether! The coordinates you requested have drifted out of satellite range.
         </p>
 
         <div class="cta-group">
@@ -466,21 +609,53 @@
                 <i data-lucide="home" aria-hidden="true"></i>
                 <span>Return to Mission Control</span>
             </a>
-            <a href="index.html#contact" class="btn btn-secondary">
-                <i data-lucide="mail" aria-hidden="true"></i>
-                <span>Contact Engineering</span>
+            <a href="tools/" class="btn btn-secondary">
+                <i data-lucide="wrench" aria-hidden="true"></i>
+                <span>Explore 35+ Free Tools</span>
+            </a>
+            <a href="digital-seva/farmer-id/" class="btn btn-secondary">
+                <i data-lucide="shield-check" aria-hidden="true"></i>
+                <span>WB Digital Seva Hub</span>
             </a>
         </div>
 
         <div class="card-footer">
-            <span>XESTUS Architecture • Intelligence Beyond Limits</span>
+            <span>XESTUS Architecture • 100% In-Browser Practical Systems</span>
         </div>
     </main>
 
+    <!-- Interactive Tumble Easter Egg Script -->
     <script>
-        if (typeof lucide !== "undefined") {
-            lucide.createIcons();
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+
+            // Click / Tap Astronaut Easter Egg Tumble
+            const astro = document.getElementById('astroHero');
+            if (astro) {
+                astro.addEventListener('click', function() {
+                    if (astro.classList.contains('tumble')) return;
+                    astro.classList.add('tumble');
+                    // Play subtle synthesized space beep using Web Audio API (zero external files)
+                    try {
+                        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(580, ctx.currentTime);
+                        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15);
+                        gain.gain.setValueAtTime(0.08, ctx.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start();
+                        osc.stop(ctx.currentTime + 0.25);
+                    } catch(e) {}
+                    setTimeout(() => astro.classList.remove('tumble'), 850);
+                });
+            }
+        });
     </script>
     <script src="js/security-shield.min.js?v=4.1.0"></script>
     <script src="js/nav-core.min.js?v=4.1.0"></script>
