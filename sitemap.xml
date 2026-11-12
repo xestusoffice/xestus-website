@@ -55,6 +55,12 @@
         <priority>0.95</priority>
     </url>
     <url>
+        <loc>https://xestus.in/digital-seva/banglarbhumi/</loc>
+        <lastmod>2026-11-12</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.98</priority>
+    </url>
+    <url>
         <loc>https://xestus.in/tools/</loc>
         <lastmod>2026-10-28</lastmod>
         <changefreq>weekly</changefreq>
@@ -281,6 +287,12 @@
         <lastmod>2026-11-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://xestus.in/tools/pdf/pdf-merge/</loc>
+        <lastmod>2026-11-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.88</priority>
     </url>
     <url>
         <loc>https://xestus.in/tools/pdf/image-to-pdf/</loc>

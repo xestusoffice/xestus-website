@@ -234,7 +234,18 @@ window.XESTUS_TOOLS_REGISTRY = {
       description: "Compress PDF files online to exact sizes (under 200KB, 100KB, 300KB) for WBPSC, WBP, SSC, UPSC, Railway & AgriStack forms. 100% in-browser privacy.",
       keywords: ["compress pdf to 200kb", "compress pdf to 100kb", "pdf compressor online", "wbpsc pdf size", "ssc pdf compressor", "reduce pdf size", "farmer id pdf compress"],
       url: "/tools/pdf/pdf-compressor/",
-      related: ["image-to-pdf", "image-compressor", "image-resizer"]
+      related: ["pdf-merge", "image-to-pdf", "image-compressor"]
+    },
+    {
+      slug: "pdf-merge",
+      title: "PDF Merge & Document Combiner",
+      category: "pdf",
+      icon: "file-plus-2",
+      badge: "⚡ In-Browser",
+      description: "Merge multiple PDF files into one document in seconds. Combine Aadhaar front and back, college marksheets, and job documents 100% privately.",
+      keywords: ["merge pdf online", "combine pdf files", "pdf merger free", "combine aadhaar card pdf", "merge marksheets pdf", "join pdfs online"],
+      url: "/tools/pdf/pdf-merge/",
+      related: ["pdf-compressor", "image-to-pdf", "image-compressor"]
     },
     {
       slug: "image-to-pdf",
@@ -245,7 +256,7 @@ window.XESTUS_TOOLS_REGISTRY = {
       description: "Convert single or multiple JPG/PNG images into a single, high-quality PDF document directly in your browser without uploading to servers.",
       keywords: ["image to pdf", "jpg to pdf", "convert photo to pdf", "png to pdf online", "combine images to pdf"],
       url: "/tools/pdf/image-to-pdf/",
-      related: ["pdf-compressor", "image-compressor", "image-resizer"]
+      related: ["pdf-merge", "pdf-compressor", "image-compressor"]
     },
 
     // --- STUDENT TOOLS ---

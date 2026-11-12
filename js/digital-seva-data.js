@@ -3056,6 +3056,7 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                 "official_status_url": "https://banglarbhumi.gov.in/BanglarBhumi/KnowYourProperty",
                 "official_helpline": "1800 345 6655 / District BL&LRO Helpdesk",
                 "official_email": "banglarbhumi@wb.gov.in",
+                "dedicated_page_url": "digital-seva/banglarbhumi/",
                 "state": "West Bengal",
                 "availability": "Online + BL&LRO Office",
                 "active_status": true,
