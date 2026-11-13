@@ -2144,13 +2144,13 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                 },
                 "benefits": {
                         "en": [
-                                "Direct monthly financial assistance of ₹1,000 (General) or ₹1,200 (SC/ST) directly credited to the beneficiary bank account."
+                                "Direct monthly financial assistance of ₹3,000 directly credited to the beneficiary bank account via Aadhaar DBT."
                         ],
                         "bn": [
-                                "প্রতি মাসে সরাসরি ব্যাংক অ্যাকাউন্টে ₹১,০০০ (সাধারণ) বা ₹১,২০০ (এসসি/এসটি) জমা।"
+                                "প্রতি মাসে সরাসরি ব্যাংক অ্যাকাউন্টে ফ্ল্যাট ₹৩,০০০ টাকা অনুদান (বাৎসরিক ₹৩৬,০০০ টাকা) জমা।"
                         ],
                         "hi": [
-                                "प्रति माह ₹1,000 या ₹1,200 सीधे बैंक खाते में।"
+                                "प्रति माह ₹3,000 सीधे बैंक खाते में DBT के माध्यम से।"
                         ]
                 },
                 "process_steps": {
