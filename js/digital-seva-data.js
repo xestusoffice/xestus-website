@@ -3491,8 +3491,9 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                 "active_status": true,
                 "verification_status": "officially_verified",
                 "source_url": "https://svmcm.wb.gov.in/",
-                "last_verified": "15 Sep 2026",
+                "last_verified": "14 Nov 2026",
                 "is_popular": true,
+                "dedicated_page_url": "digital-seva/svmcm-scholarship/",
                 "intent_tags": [
                         "svmcm scholarship",
                         "swami vivekananda scholarship",
@@ -6610,6 +6611,65 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                         "en": "All WBPSC selections are strictly merit-based through competitive written exams and interviews. Never pay anyone promising backdoor appointments.",
                         "bn": "ডাব্লুবিপিএসসি নিয়োগ সম্পূর্ণ মেধার ভিত্তিতে পরীক্ষার মাধ্যমে হয়। কোনো অসদুপায় বা দালালদের টাকা দেওয়া থেকে সম্পূর্ণ বিরত থাকুন।",
                         "hi": "डब्ल्यूबीपीएससी भर्ती केवल परीक्षा और मेरिट के आधार पर होती है।"
+                }
+        },
+        {
+                "service_id": "wb-panchayat-recruitment-wbprms",
+                "dedicated_page_url": "digital-seva/wb-panchayat-recruitment/",
+                "service_name": {
+                        "en": "West Bengal Panchayat Recruitment (WBPRMS — 6,652+ Karmee, Sahayak, Secretary & Nirman Sahayak)",
+                        "bn": "পশ্চিমবঙ্গ পঞ্চায়েত রিক্রুটমেন্ট (WBPRMS — গ্রাম পঞ্চায়েত কর্মী, সহায়ক, সেক্রেটারি ও নির্মাণ সহায়ক)",
+                        "hi": "पश्चिम बंगाल पंचायत भर्ती (WBPRMS — 6,652+ ग्राम पंचायत कर्मी और सहायक)"
+                },
+                "short_description": {
+                        "en": "Official centralized recruitment portal for Gram Panchayats, Panchayat Samitis, and Zilla Parishads across West Bengal for 6,652+ posts with 100% free online application.",
+                        "bn": "পশ্চিমবঙ্গ পঞ্চায়েত ও গ্রামোন্নয়ন দপ্তরের অধীন গ্রাম পঞ্চায়েত কর্মী (৮ম শ্রেণি), সহায়ক (মাধ্যমিক), সেক্রেটারি ও অন্যান্য পদের সেন্ট্রালাইজড নিয়োগ পোর্টাল।",
+                        "hi": "पश्चिम बंगाल पंचायत भर्ती: ग्राम पंचायत कर्मी (8वीं पास), सहायक (10वीं पास), सचिव और अन्य पदों का आधिकारिक ऑनलाइन भर्ती पोर्टल।"
+                },
+                "category": "wb-govt-jobs",
+                "category_name": {
+                        "en": "West Bengal Govt Jobs (WBPSC/WBP)",
+                        "bn": "পশ্চিমবঙ্গ সরকারি চাকরি (WBPSC/WBP)",
+                        "hi": "पश्चिम बंगाल सरकारी नौकरियां"
+                },
+                "subcategory": "Panchayat & Rural Governance",
+                "authority": "Department of Panchayats & Rural Development, Government of West Bengal",
+                "government_level": "West Bengal",
+                "service_type": "Job",
+                "target_users": [
+                        "Job Seeker",
+                        "Student"
+                ],
+                "official_homepage": "https://wbprms.in/",
+                "official_apply_url": "https://wbprms.in/",
+                "official_status_url": "https://wbprms.in/",
+                "official_helpline": "1800-345-5555 / Contact District DLSC Office",
+                "official_email": "support.wbprms@wb.gov.in",
+                "state": "West Bengal",
+                "availability": "Online Portal",
+                "active_status": true,
+                "verification_status": "officially_verified",
+                "source_url": "https://wbprms.in/",
+                "last_verified": "14 Nov 2026",
+                "is_popular": true,
+                "intent_tags": [
+                        "wb panchayat recruitment",
+                        "wbprms.in",
+                        "wbprms registration",
+                        "gram panchayat karmee",
+                        "panchayat sahayak",
+                        "wb panchayat vacancy",
+                        "wb panchayat syllabus",
+                        "গ্রাম পঞ্চায়েত কর্মী",
+                        "পঞ্চায়েত সহায়ক",
+                        "পশ্চিমবঙ্গ পঞ্চায়েত রিক্রুটমেন্ট",
+                        "wbprms portal login",
+                        "পঞ্চায়েত চাকরি ২০২৬"
+                ],
+                "scam_warning": {
+                        "en": "WBPRMS recruitment application on wbprms.in is 100% FREE. Never pay money to unauthorized agents promising government jobs.",
+                        "bn": "WBPRMS পঞ্চায়েত পোর্টালে রেজিস্ট্রেশন ও আবেদন সম্পূর্ণ বিনামূল্যে। চাকরি দেওয়ার নাম করে দালালদের টাকা দেওয়া দণ্ডনীয় অপরাধ।",
+                        "hi": "पंचायत भर्ती आवेदन wbprms.in पर पूरी तरह से निःशुल्क है। किसी भी बिचौलिए को पैसे न दें।"
                 }
         },
         {

@@ -56,7 +56,19 @@
     </url>
     <url>
         <loc>https://xestus.in/digital-seva/annapurna-bhandar/</loc>
-        <lastmod>2026-11-13</lastmod>
+        <lastmod>2026-11-14</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.98</priority>
+    </url>
+    <url>
+        <loc>https://xestus.in/digital-seva/svmcm-scholarship/</loc>
+        <lastmod>2026-11-14</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.98</priority>
+    </url>
+    <url>
+        <loc>https://xestus.in/digital-seva/wb-panchayat-recruitment/</loc>
+        <lastmod>2026-11-14</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.98</priority>
     </url>
