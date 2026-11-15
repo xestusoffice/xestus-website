@@ -6811,11 +6811,11 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
         },
         {
                 "service_id": "wbssc-group-c-d-recruitment",
-                "dedicated_page_url": "digital-seva/wb-govt-jobs/",
+                "dedicated_page_url": "digital-seva/wb-ssc-group-c-d/",
                 "service_name": {
-                        "en": "West Bengal Staff Selection Commission (WBSSC — Group C & Group D Recruitment)",
-                        "bn": "পশ্চিমবঙ্গ স্টাফ সিলেকশন কমিশন (WBSSC — গ্রুপ সি ও গ্রুপ ডি নিয়োগ)",
-                        "hi": "पश्चिम बंगाल कर्मचारी चयन आयोग (WBSSC — ग्रुप सी और ग्रुप डी)"
+                        "en": "West Bengal School & Staff Selection Commission (WBSSC — 8,478 Group C & Group D Posts)",
+                        "bn": "পশ্চিমবঙ্গ স্কুল সার্ভিস কমিশন (WBSSC — ৮,৪৭৮ গ্রুপ সি করণিক ও গ্রুপ ডি নিয়োগ)",
+                        "hi": "पश्चिम बंगाल स्कूल व कर्मचारी चयन आयोग (WBSSC — 8,478 ग्रुप सी व ग्रुप डी भर्ती)"
                 },
                 "short_description": {
                         "en": "Official portal of West Bengal Staff Selection Commission for recruitment of Group C (Clerical) and Group D (Peon, Lab Attendant, Night Guard) staff across State Government departments.",
