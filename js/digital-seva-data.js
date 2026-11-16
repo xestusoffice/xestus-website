@@ -2340,8 +2340,9 @@ window.XESTUS_DIGITAL_SEVA_DATA = (function () {
                 "active_status": true,
                 "verification_status": "officially_verified",
                 "source_url": "https://employmentbankwb.gov.in/",
-                "last_verified": "18 Sep 2026",
+                "last_verified": "16 Nov 2026",
                 "is_popular": true,
+                "dedicated_page_url": "digital-seva/wb-yuva-shakti/",
                 "intent_tags": [
                         "yuva shakti",
                         "yuba sakti",
