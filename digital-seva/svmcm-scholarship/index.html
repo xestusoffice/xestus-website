@@ -984,10 +984,12 @@
         </div>
     </footer>
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons (Self-Hosted for Ultra-Fast Zero-Latency Render) -->
+    <script src="../../js/lucide.min.js?v=1.57.0"></script>
     <script>
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined' && lucide.createIcons) {
+            lucide.createIcons();
+        }
 
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(function(btn) {
